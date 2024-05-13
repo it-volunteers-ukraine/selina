@@ -62,6 +62,15 @@ function wp_it_volunteers_menus() {
 add_action( 'init', 'wp_it_volunteers_menus');
 
 
+function polylang_translate()
+{
+    if (function_exists('pll_register_string')) {
+        pll_register_string('відправити', 'відправити', 'General');
+    }
+}
+add_action( 'init', 'polylang_translate' );
+
+
 /** ACF add options page */
 if( function_exists('acf_add_options_page') ) {
 
