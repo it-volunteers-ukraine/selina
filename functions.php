@@ -50,10 +50,18 @@ function add_google_fonts() {
 add_action( 'wp_enqueue_scripts', 'add_google_fonts' );
 
 /** Register menus */
+// Footer's menu's named is: menu_title_numberOfColumn_numberOfRowInThisColumn in Figma
 function wp_it_volunteers_menus() {
     $locations = array(
         'header' => __( 'Header Menu', 'wp-it-volunteers' ),
         'footer' => __( 'Footer Menu', 'wp-it-volunteers' ),
+        'footer12' => __( 'Footer Menu12', 'wp-it-volunteers' ),
+        'footer21' => __( 'Footer Menu21', 'wp-it-volunteers' ),
+        'footer22' => __( 'Footer Menu22', 'wp-it-volunteers' ),
+        'footer31' => __( 'Footer Menu31', 'wp-it-volunteers' ),
+        'footer32' => __( 'Footer Menu32', 'wp-it-volunteers' ),
+        'footer41' => __( 'Footer Menu41', 'wp-it-volunteers' ),
+        'footer42' => __( 'Footer Menu42', 'wp-it-volunteers' ),
     );
 
     register_nav_menus( $locations );

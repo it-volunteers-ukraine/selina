@@ -6,29 +6,18 @@
     font-family: $primary-font;
 }
 
-.icons {
-    display: flex;
-    justify-content: space-between;
-}
-
-.contact_elem {
+.footer-wrapper{
     display: flex;
 }
 
-.white-line {
-    border: none;
-    border-top: 2px solid $white;
-    margin: 0;
-}
-
-.rights {
+.footer-copyright-wrapper {
     display: flex;
 }
 
-// $mobile: 375px;
-// $tablet: 768px;
-// $desktop: 1440px;
-// $full: 1920px;
+/* $mobile: 375px;
+$tablet: 768px;
+$desktop: 1440px;
+$full: 1920px; */
 
 
 @media screen and (min-width: $mobile) {
