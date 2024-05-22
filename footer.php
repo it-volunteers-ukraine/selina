@@ -189,9 +189,52 @@
                         <?php endif; ?>
                     </div>
                 </div>
+                <div class="footer-menu-heading-wrapper-links">
+                        <h2 class="footer-heading"><?php the_field( 'menu_title_4_3', 'option' ); ?></h2>
+                        <h2 class="footer-heading"><?php the_field( 'menu_title_4_4', 'option' ); ?></h2>
+                        <h2 class="footer-heading"><?php the_field( 'menu_title_4_5', 'option' ); ?></h2>
+                </div>
             </div>
                 <!-- Column 5 -->
-            <div class="footer-social-wrapper"></div>
+            <div class="footer-logo-social-contacts-wrapper">
+                <div class="footer-logo">
+                        <?php 
+                            if ( has_custom_logo() ) {
+                                echo get_custom_logo();
+                            }
+                        ?>
+                    <a class="footer-logo-link" href="<?php echo get_locale(  ) ==='uk'? site_url(''): site_url('/en/home/'); ?>">
+                        <p class="footer-logo-name title-h3">
+                            <?php the_field('logo_title','option'); ?>
+                        </p>
+                    </a>
+                </div>
+                <!-- Repeater for social icons -->
+                <div class="footer-socials-wrapper">
+                    <?php  
+                        $social_icons = get_field('social_icons', 'option'); 
+                        if ($social_icons) : 
+                    ?> 
+                        <ul id="" class=""> 
+                    
+                            <?php foreach($social_icons as $social_icon) : 
+                                $image = $social_icon['social_img']; 
+                                $link = $social_icon['social_link']; 
+                            ?> 
+                            <li> 
+                                <a href="<?php echo $link; ?>"> 
+                                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"> 
+                                </a> 
+                            </li> 
+                            <? endforeach; ?> 
+                        </ul> 
+                    <?php endif; ?> 
+                </div>
+                <div class="footer-contacts-wrapper">
+                    
+                </div>
+                
+            </div>
         </div>
         <!-- Underline -->
         <div class="footer-copyright-wrapper">
