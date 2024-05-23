@@ -1,1 +1,1 @@
-console.log("home");
+console.log("home"),$(document).ready((function(){$(".slider__inner").slick({slidesToShow:3,slidesToScroll:1,centerMode:!0,speed:2e3,arrows:!1,dots:!1,fade:!1,Infinite:!0,autoplay:!0,autoplaySpeed:2e3,pauseOnFocus:!1,pauseOnHover:!1,pauseOnDotsHover:!1,variableWidth:!0})}));
