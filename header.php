@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="black-logo">
-                    <img class="logo" src="<?php echo get_template_directory_uri() . '/src/images/full-logo.png'; ?>" alt="black-logo">
+                    <img class="logo" src="<?php echo get_template_directory_uri() . '/src/images/logo_icon.svg'; ?>" alt="black-logo">
                 </div>
 
                 <div class="wrapper-buttons">
