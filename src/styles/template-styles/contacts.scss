@@ -1,0 +1,52 @@
+@import "../variables.scss";
+
+.section {
+    padding: 0;
+
+    .list-contacts {
+        margin-top: 0;
+        &__background{
+            margin-top: 0;
+            width: 100%;
+            background-size: cover;
+            background-blend-mode: multiply;
+            background-color: $background;
+        }
+        &__text-box{
+            color: $primary-color;
+            padding-top: 125px;
+            padding-bottom: 148px;
+        }
+        &__heading{
+            font-weight: 800;
+            font-size: 60px;
+            line-height: 100%;
+            margin-bottom: 24px;
+        }
+        &__contacts-container{
+            display: flex;
+            gap: 36px;
+        }
+        &__link-container{
+            display: flex;
+            align-items: baseline;
+        }
+        &__cat-paw{
+            svg {
+                width: 18px;
+                height: 16px;
+                fill: $primary-color;
+            }
+        }
+        &__title{
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 100%;
+        }
+    }
+}
+
+
+
+
+
