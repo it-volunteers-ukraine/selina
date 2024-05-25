@@ -7,7 +7,7 @@ get_header();
     <main class="main">
         <section class="section list-contacts">
                 <?php
-                    $image = get_field('list-section__background');
+                    $image = get_field('list-contacts__background');
                     $image_url = is_array($image) ? $image['url'] : $image; 
                 ?>
 
