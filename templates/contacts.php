@@ -98,7 +98,40 @@ get_header();
                 </div>
                         
         </section>
-        <section class="section socials-contacts"></section>
+        <section class="section socials-contacts">
+            <div class="container">
+                <div class="socials-contacts__heading-container">
+                    <span class="list-contacts__La_cat"> 
+                        <svg width="24" height="24"> 
+                            <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-La_cat"></use> 
+                        </svg> 
+                    </span> 
+                    <h2 class="socials-contacts__heading">
+                        <?php the_field('socials-contacts__heading'); ?>
+                    </h2>
+                </div>
+                <div class="socials-contacts__icons-container">
+                    <?php  
+                        $social_icons = get_field('social_media'); 
+                        if ($social_icons) : 
+                    ?> 
+                        <ul id="" class="socials-contacts__icons-list"> 
+                            <?php foreach($social_icons as $social_icon) : 
+                                $link = $social_icon['social_link'];
+                                $image = $social_icon['social_icon']; 
+                            ?> 
+                            <li class="socials-contacts__icon"> 
+                                <a href="<?php echo $link; ?>"> 
+                                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"> 
+                                </a> 
+                            </li> 
+                            <? endforeach; ?> 
+                        </ul> 
+                    <?php endif; ?> 
+                </div>
+            </div>
+
+        </section>
         <section class="section form-contacts"></section>
     </main>
 <?php get_footer(); ?>

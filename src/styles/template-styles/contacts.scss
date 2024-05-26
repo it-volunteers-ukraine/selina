@@ -86,34 +86,47 @@
     }
 }
                             /*-------------------Section Contacts----------------*/
-.contacts-contacts{
+.contacts-contacts, .socials-contacts{
 
     padding-bottom: 50px;
 
         &__heading-container {
             display: flex;
             align-items: center;
-            gap: 12px;
             font-weight: 800;
             font-size: 26px;
             line-height: 100%;
             padding-top: 30px;
             margin-bottom: 24px;
             svg {
+                display: none;
                 width: 41px;
                 height: 37px;
                 fill: $primary-color;
+                @media screen and (min-width: $tablet) {
+                    display: block;
+                    width: 29px;
+                    height: 28px;
+                }
+              
+                @media screen and (min-width: $desktop) {
+                    display: block;
+                    width: 41px;
+                    height: 37px;
+                }
             }
             @media screen and (min-width: $tablet) {
                 padding-top: 60px;
                 margin-bottom: 30px;
                 font-size: 30px;
+                gap: 8px;
             }
           
             @media screen and (min-width: $desktop) {
                 padding-top: 80px;
                 margin-bottom: 40px;
                 font-size: 45px;
+                gap: 12px;
             }
         }
 
@@ -198,3 +211,34 @@
 }
 
                     /*-------------------Section Socials----------------*/
+
+.socials-contacts {
+    background-color: $background;
+    padding-bottom: 30px;
+
+    &__icons-list{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__icon{
+        width: 44px;
+        height: 44px;
+
+        @media screen and (min-width: $tablet) {
+            width: 44px;
+            height: 44px;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            width: 101px;
+            height: 101px;
+        }
+    }
+@media screen and (min-width: $tablet) {
+    padding-bottom: 0px;
+}
+
+@media screen and (min-width: $desktop) {
+    padding-bottom: 80px;
+}
+}
