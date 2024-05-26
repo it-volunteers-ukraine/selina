@@ -11,7 +11,14 @@ get_header();
                     $image_url = is_array($image) ? $image['url'] : $image; 
                 ?>
 
-                <div class="list-contacts__background" style="background-image: url(<?php echo esc_url($image_url); ?>);">
+                <div class="list-contacts__background">
+                <style>
+                    @media (min-width: 1440px) {
+                        .list-contacts__background {
+                        background-image: url('<?php echo esc_url($image_url); ?>');
+                        }
+                    }
+                </style>
                     <div class="container">
                         <div class="list-contacts__text-box">
                             <h2 class="list-contacts__heading">
@@ -52,7 +59,7 @@ get_header();
         <section class="section contacts-contacts">
             <div class="container">
                 <div class="contacts-contacts__heading-container">
-                    <span class="list-contacts__cat-paw"> 
+                    <span class="list-contacts__La_cat"> 
                         <svg width="24" height="24"> 
                             <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-La_cat"></use> 
                         </svg> 

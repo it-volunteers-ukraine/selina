@@ -14,20 +14,50 @@
             background-color: $background;
             
             
+            @media screen and (min-width: $tablet) {
+                
+              }
+            
+            @media screen and (min-width: $desktop) {
+                
+              }
         }
         &__text-box{
-            padding-top: 125px;
-            padding-bottom: 148px;
+            padding: 20px 0;
+            @media screen and (min-width: $tablet) {
+                padding: 30px 0;
+            }
+          
+            @media screen and (min-width: $desktop) {
+                padding-top: 125px;
+                padding-bottom: 152px;
+            }
         }
         &__heading{
             font-weight: 800;
-            font-size: 60px;
+            font-size: 30px;
             line-height: 100%;
-            margin-bottom: 24px;
+            margin-bottom: 10px;
+            @media screen and (min-width: $tablet) {
+                font-size: 45px;
+                margin-bottom: 14px;
+            }
+          
+            @media screen and (min-width: $desktop) {
+                font-size: 60px;
+                margin-bottom: 24px;
+            }
         }
         &__contacts-container{
             display: flex;
-            gap: 36px;
+            gap: 24px;
+            @media screen and (min-width: $tablet) {
+            
+            }
+          
+            @media screen and (min-width: $desktop) {
+                gap: 36px;
+            }
         }
         &__link-container{
             display: flex;
@@ -42,38 +72,69 @@
         }
         &__title{
             font-weight: 800;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 100%;
+            @media screen and (min-width: $tablet) {
+                font-size: 20px;
+            }
+          
+            @media screen and (min-width: $desktop) {
+                font-size: 20px;
+                margin-bottom: 24px;
+            }
         }
     }
+}
+                            /*-------------------Section Contacts----------------*/
+.contacts-contacts{
 
-    .contacts-contacts{
+    padding-bottom: 50px;
+
         &__heading-container {
             display: flex;
             align-items: center;
             gap: 12px;
             font-weight: 800;
-            font-size: 45px;
+            font-size: 26px;
             line-height: 100%;
-            margin-top: 80px;
-            margin-bottom: 40px;
+            padding-top: 30px;
+            margin-bottom: 24px;
             svg {
-                width: 42px;
-                height: 60px;
+                width: 41px;
+                height: 37px;
                 fill: $primary-color;
+            }
+            @media screen and (min-width: $tablet) {
+                padding-top: 60px;
+                margin-bottom: 30px;
+                font-size: 30px;
+            }
+          
+            @media screen and (min-width: $desktop) {
+                padding-top: 80px;
+                margin-bottom: 40px;
+                font-size: 45px;
             }
         }
 
-        /*Grid for cntacts list. To change for adaptive design */
+        /*-----------------------Grid for contacts list---------------------------*/
         &__contacts-list{
             display: grid;
-            grid-template-rows: 1fr 1fr 1fr;
-            grid-template-columns: 1fr 1fr;
-            margin-bottom: 104px;
-
-            /*display: grid;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-            grid-template-columns: 1fr;*/
+            grid-template-columns: 1fr;
+
+            @media screen and (min-width: $tablet) {
+                display: grid;
+                grid-template-rows: 1fr 1fr 1fr;
+                grid-template-columns: 1fr 1fr;
+            }
+          
+            @media screen and (min-width: $desktop) {
+                /*display: grid;
+                grid-template-rows: 1fr 1fr 1fr;
+                grid-template-columns: 1fr 1fr;*/
+            }
+
         }
 
         /*Horizontal lines between elements of contacts list */
@@ -82,17 +143,41 @@
             content: "";
             grid-column: 1 / -1;
             height: 3px;
+            padding: 0;
+            margin: 0;
             background-color: $background;
             
         }
         &__contacts-list::before{
-            grid-row: 2 / 3;
+            grid-row: 3;
             margin-top: 16px;
+
+            @media screen and (min-width: $tablet) {
+                grid-row: 2 / 3;
+                margin-top: 16px;
+            }
+          
+            @media screen and (min-width: $desktop) {
+                /*grid-row: 2 / 3;
+            margin-top: 16px;*/
+            }
         }
         &__contacts-list::after {
-            grid-row: 4 / 5;
+            grid-row: 6;
             margin-top: 16px;
             margin-bottom: 16px;
+
+            @media screen and (min-width: $tablet) {
+                grid-row: 4 / 5;
+                margin-top: 16px;
+                margin-bottom: 16px;
+            }
+          
+            @media screen and (min-width: $desktop) {
+                /*grid-row: 4 / 5;
+                margin-top: 16px;
+                margin-bottom: 16px;*/
+            }
         }
 
         &__contacts-title{
@@ -102,21 +187,14 @@
             color:$black;
             
         }
-    }
+
+@media screen and (min-width: $tablet) {
+    padding-bottom: 90px;
 }
 
-/*.contacts-contacts__contacts-list::before,
-.contacts-contacts__contacts-list::after {
-    content: "";
-    grid-column: 1 / -1;
-    height: 1px;
-    background-color: #ccc;
+@media screen and (min-width: $desktop) {
+    padding-bottom: 80px;
 }
-.contacts-contacts__contacts-list::before {
-    
-        grid-row: 2 / 3;
-    
 }
-.contacts-contacts__contacts-list::after {
-    grid-row: 4 / 5;
-}*/
+
+                    /*-------------------Section Socials----------------*/
