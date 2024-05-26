@@ -2,6 +2,7 @@
 
 .section {
     padding: 0;
+    color: $primary-color;
 
     .list-contacts {
         margin-top: 0;
@@ -13,7 +14,6 @@
             background-color: $background;
         }
         &__text-box{
-            color: $primary-color;
             padding-top: 125px;
             padding-bottom: 148px;
         }
@@ -42,6 +42,41 @@
             font-weight: 800;
             font-size: 20px;
             line-height: 100%;
+        }
+    }
+
+    .contacts-contacts{
+        &__heading-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 45px;
+            line-height: 100%;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            svg {
+                width: 42px;
+                height: 60px;
+                fill: $primary-color;
+            }
+        }
+        &__contacts-list{
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+
+            /*display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr;*/
+        }
+        &__contacts-value{
+            color:$black;
+        }
+        &__line{
+            width:100%;
+            height: 2px;
+            background: black;
         }
     }
 }

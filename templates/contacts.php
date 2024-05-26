@@ -49,7 +49,48 @@ get_header();
                     </div>
                 </div>
         </section>
-        <section class="section contacts-contacts"></section>
+        <section class="section contacts-contacts">
+            <div class="container">
+                <div class="contacts-contacts__heading-container">
+                    <span class="list-contacts__cat-paw"> 
+                        <svg width="24" height="24"> 
+                            <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-La_cat"></use> 
+                        </svg> 
+                    </span> 
+                    <h2 class="contacts-contacts__heading">
+                        <?php the_field('contacts-contacts__heading'); ?>
+                    </h2>
+                </div>
+                <div class="contacts-contacts__contacts-list">
+                    <?php
+                        // Check rows exists.
+                        if( have_rows('contacts-contacts__contacts-list') ):
+
+                            // Loop through rows.
+                            while( have_rows('contacts-contacts__contacts-list') ) : the_row();
+
+                                // Load sub field value.
+                                $contact_title = get_sub_field('contacts-contacts__contacts-title');
+                                $contact_value = get_sub_field('contacts-contacts__contacts-value');
+                                // Do something, but make sure you escape the value if outputting directly...
+                                ?>
+                                <div class="contacts-contacts__contacts-title">
+                                    <p><?php echo $contact_title; ?></p>
+                                </div>
+                                <div class="contacts-contacts__contacts-value">
+                                    <p><?php echo $contact_value; ?></p>
+                                </div>
+                                <?php
+                                    // End loop.
+                                    endwhile;
+                                    // No value.
+                                    else :
+                                    // Do something...
+                                    endif;
+                                ?>
+                </div>
+                        
+        </section>
         <section class="section socials-contacts"></section>
         <section class="section form-contacts"></section>
     </main>
