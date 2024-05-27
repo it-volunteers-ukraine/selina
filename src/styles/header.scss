@@ -151,12 +151,11 @@
       }
 
       .nav {
-        display: flex;
-        flex-direction: row;
 
-        #menu-header {
+        #menu-header-menu {
           display: flex;
           flex-direction: row;
+
           @media screen and (min-width: $tablet) {
             gap: 15px;
           }
@@ -177,7 +176,7 @@
         }
       }
 
-      #menu-header li:not(:nth-child(3)):not(:nth-child(5)):not(:nth-child(6)):not(:nth-child(7))::after {
+      #menu-header-menu li:not(:nth-child(3)):not(:nth-child(5)):not(:nth-child(6)):not(:nth-child(7))::after {
         content: url("../images/ic_round-arrow-left.svg");
         margin-left: 5px;
       }
