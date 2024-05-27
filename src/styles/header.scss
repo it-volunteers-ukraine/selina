@@ -2,6 +2,9 @@
 
 
 .header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 
   .top-wrapper {
     display: none;
@@ -36,7 +39,7 @@
 
         @media screen and (min-width: $desktop) {
           position: absolute;
-          left: -7px;
+          left: 0;
           right: 0;
           width: 143px;
           top: -15px;
