@@ -24,9 +24,14 @@
     .black-logo {
       position: relative;
 
+      a {
+        img {
+          filter: invert(100%) brightness(200%);
+        }
+      }
+
 
       .logo {
-
         @media screen and (min-width: $tablet) {
           position: absolute;
           width: 143px;

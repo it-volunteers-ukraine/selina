@@ -27,13 +27,7 @@
                     <div class="logo">
                         <?php
                         if (has_custom_logo()) {
-                            $custom_logo = get_custom_logo();
-                            if (preg_match('/<img[^>]+src=["\']([^"\']+)["\']/', $custom_logo, $matches)) {
-                                $original_logo_src = $matches[1];
-                                $black_logo_src = 'https://selina.it-volunteers.com/wp-content/themes/selina/src/images/logo_icon.svg';
-                                $updated_logo = str_replace($original_logo_src, $black_logo_src, $custom_logo);
-                                echo $updated_logo;
-                            }
+                           echo get_custom_logo();
                         }
                         ?>
                     </div>
