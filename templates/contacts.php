@@ -132,6 +132,51 @@ get_header();
             </div>
 
         </section>
-        <section class="section form-contacts"></section>
+        <section class="section form-contacts">
+            <div class="container">
+                <div class="form-contacts__heading-container">
+                    <span class="list-contacts__La_cat"> 
+                        <svg width="24" height="24"> 
+                            <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-La_cat"></use> 
+                        </svg> 
+                    </span> 
+                    <h2 class="form-contacts__heading">
+                        <?php the_field('form-contacts__heading'); ?>
+                    </h2>
+                </div>
+                <div class="form-contacts__info">
+                    <p>
+                        <?php the_field('form-contacts__info'); ?>
+                    </p>
+                </div>
+                <div class="form-contacts__contacts">
+                    <div class="form-contacts__mail">
+                        <div class="form-contacts__icon">
+                            <?php  
+                            $image = get_field('form-contacts__mail-icon'); 
+                            if( !empty( $image ) ): ?> 
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
+                            <?php endif; ?>
+                        </div>
+                        <div class="form-contacts__mail-address">
+                            <p><?php the_field('form-contacts__mail-address'); ?></p>
+                        </div>
+                    </div>
+                    <div class="form-contacts__phone">
+                        <div class="form-contacts__icon">
+                            <?php  
+                            $image = get_field('form-contacts__phone-icon'); 
+                            if( !empty( $image ) ): ?> 
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
+                            <?php endif; ?>
+                        </div>
+                        <div class="form-contacts__phone-number">
+                            <p><?php the_field('form-contacts__phone-number'); ?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="formaaaaaaaaaaaaaaaaaaa"></div>
+            </div>
+        </section>
     </main>
 <?php get_footer(); ?>
