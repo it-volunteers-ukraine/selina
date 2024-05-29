@@ -3,7 +3,8 @@
 
 .header {
 
-  .top-wrapper {
+  // Header top
+  .header-top {
     display: none;
 
     @media screen and (min-width: $tablet) {
@@ -22,7 +23,6 @@
     }
 
     .black-logo {
-      position: relative;
 
       a {
         img {
@@ -30,22 +30,15 @@
         }
       }
 
+      @media screen and (min-width: $tablet) {
+        position: absolute;
+        left: 51%;
+        transform: translate(-50%, 10px);
+      }
 
-      .logo {
-        @media screen and (min-width: $tablet) {
-          position: absolute;
-          width: 143px;
-          left: -57px;
-          top: -17px;
-        }
-
-        @media screen and (min-width: $desktop) {
-          position: absolute;
-          left: 0;
-          right: 0;
-          width: 143px;
-          top: -15px;
-        }
+      @media screen and (min-width: $desktop) {
+        top: 10px;
+        left: 50%;
       }
 
 
@@ -54,25 +47,21 @@
     .wrapper-buttons {
       display: flex;
       flex-direction: row;
-      width: 264px;
-      align-items: center;
       justify-content: space-between;
 
+
       @media screen and (min-width: $tablet) {
-        gap: 30px;
-        justify-content: flex-end;
+        gap: 16px;
       }
 
       @media screen and (min-width: $desktop) {
-        gap: 30px;
-        justify-content: space-between;
+        width: 264px;
       }
 
 
       .buttons {
         display: flex;
         flex-direction: row;
-        align-items: center;
         gap: 10px;
 
         .registration-btn {
@@ -113,19 +102,30 @@
 
   }
 
-  .bottom-wrapper {
+
+  // Header bottom
+  .header-bottom {
     background-color: $primary-color;
     padding: 12px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 
-    .nav {
+
+    @media screen and (min-width: $tablet) {
+      position: static;
+    }
+
+
+    .bottom-row {
       display: flex;
       flex-direction: row;
-      align-items: center;
       justify-content: space-between;
     }
 
-    .logo {
-      width: 140px;
+
+    .white-logo {
 
       @media screen and (min-width: $tablet) {
         display: none;
@@ -141,46 +141,68 @@
     }
 
 
-    .wrapper-nav {
+    //.row {
+    //
+    //  display: none;
+    //
+    //  @media screen and (min-width: $tablet) {
+    //    display: flex;
+    //    flex-direction: row;
+    //    justify-content: space-between;
+    //  }
 
-      display: none;
+
+    .nav-menu {
+
 
       @media screen and (min-width: $tablet) {
         display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
       }
 
-      .nav {
 
-        #menu-header-menu {
-          display: flex;
-          flex-direction: row;
+      // close-btn
 
-          @media screen and (min-width: $tablet) {
-            gap: 15px;
-          }
-          @media screen and (min-width: $desktop) {
-            gap: 42px;
-          }
+      .close-btn {
+        position: absolute;
+        right: 22px;
+        top: 62px;
 
-          .menu-item {
-            color: $white;
-            @media screen and (min-width: $tablet) {
-              font-size: 13px;
-            }
+        @media screen and (min-width: $tablet) {
+          display: none;
+        }
 
-            @media screen and (min-width: $desktop) {
-              font-size: 16px;
-            }
-          }
+        @media screen and (min-width: $desktop) {
+          display: none;
         }
       }
 
-      #menu-header-menu li:not(:nth-child(3)):not(:nth-child(5)):not(:nth-child(6)):not(:nth-child(7))::after {
-        content: url("../images/ic_round-arrow-left.svg");
-        margin-left: 5px;
+
+      .header__list {
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (min-width: $tablet) {
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+        }
+        @media screen and (min-width: $desktop) {
+          gap: 32px;
+        }
+
+        .menu-item {
+          color: $white;
+          @media screen and (min-width: $tablet) {
+            font-size: 13px;
+          }
+
+          @media screen and (min-width: $desktop) {
+            font-size: 16px;
+          }
+        }
       }
 
       .search {
@@ -190,6 +212,7 @@
         background-color: $white;
         padding: 2px 8px;
         display: flex;
+        width: 166px;
 
 
         @media screen and (min-width: $tablet) {
@@ -215,6 +238,33 @@
           }
         }
       }
+
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      transition: right .4s;
+      padding: 6rem 3rem 0;
+      background-color: $primary-color;
+    }
+
+
+    .hide-menu {
+      display: none;
+    }
+
+
+    .show-menu {
+      right: 0;
+    }
+
+    .header__list li:not(:nth-child(3)):not(:nth-child(5)):not(:nth-child(6)):not(:nth-child(7))::after {
+      content: url("../images/ic_round-arrow-left.svg");
+      margin-left: 5px;
     }
 
   }

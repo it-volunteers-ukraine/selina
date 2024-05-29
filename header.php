@@ -12,7 +12,7 @@
 <div class="wrapper">
     <header class="header">
         <div class="container">
-            <div class="top-wrapper">
+            <div class="header-top">
                 <div class="social-media">
                     <?php
                     $socialLinks = get_field('social-media', 'option');
@@ -23,14 +23,13 @@
                     <?php endforeach; ?>
                 </div>
 
+
                 <div class="black-logo">
-                    <div class="logo">
-                        <?php
-                        if (has_custom_logo()) {
-                           echo get_custom_logo();
-                        }
-                        ?>
-                    </div>
+                    <?php
+                    if (has_custom_logo()) {
+                        echo get_custom_logo();
+                    }
+                    ?>
                 </div>
 
                 <div class="wrapper-buttons">
@@ -58,17 +57,17 @@
                 </div>
             </div>
         </div>
-        <div class="bottom-wrapper">
+        <div class="header-bottom">
             <div class="container">
-                <div class="nav">
-                    <div class="logo">
+                <div class="bottom-row">
+                    <div class="white-logo">
                         <?php
                         if (has_custom_logo()) {
                             echo get_custom_logo();
                         }
                         ?>
                     </div>
-                    <button class="burger">
+                    <button id="header-toggle-menu" class="burger">
                         <svg width="44" height="28" viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                   d="M0 2.3125C0 1.76549 0.217298 1.24089 0.604092 0.854092C0.990886 0.467298 1.51549 0.25 2.0625 0.25H41.9375C42.4845 0.25 43.0091 0.467298 43.3959 0.854092C43.7827 1.24089 44 1.76549 44 2.3125C44 2.85951 43.7827 3.38411 43.3959 3.77091C43.0091 4.1577 42.4845 4.375 41.9375 4.375H2.0625C1.51549 4.375 0.990886 4.1577 0.604092 3.77091C0.217298 3.38411 0 2.85951 0 2.3125ZM0 14C0 13.453 0.217298 12.9284 0.604092 12.5416C0.990886 12.1548 1.51549 11.9375 2.0625 11.9375H41.9375C42.4845 11.9375 43.0091 12.1548 43.3959 12.5416C43.7827 12.9284 44 13.453 44 14C44 14.547 43.7827 15.0716 43.3959 15.4584C43.0091 15.8452 42.4845 16.0625 41.9375 16.0625H2.0625C1.51549 16.0625 0.990886 15.8452 0.604092 15.4584C0.217298 15.0716 0 14.547 0 14ZM2.0625 23.625C1.51549 23.625 0.990886 23.8423 0.604092 24.2291C0.217298 24.6159 0 25.1405 0 25.6875C0 26.2345 0.217298 26.7591 0.604092 27.1459C0.990886 27.5327 1.51549 27.75 2.0625 27.75H41.9375C42.4845 27.75 43.0091 27.5327 43.3959 27.1459C43.7827 26.7591 44 26.2345 44 25.6875C44 25.1405 43.7827 24.6159 43.3959 24.2291C43.0091 23.8423 42.4845 23.625 41.9375 23.625H2.0625Z"
@@ -76,18 +75,28 @@
                         </svg>
                     </button>
                 </div>
-                <div class="wrapper-nav">
-                    <nav class="nav">
-                        <?php wp_nav_menu([
-                            'theme_location' => 'header',
-                            'container' => false,
-                            'menu_class' => 'header__list',
-                            'menu_id' => false,
-                            'echo' => true,
-                            'items_wrap' => '<ul id="%1$s" class="header__list %2$s">%3$s</ul>',
-                        ])
-                        ?>
-                    </nav>
+                <nav id="header-nav-menu" class="nav-menu">
+                    <div id="header-close-btn" class="close-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
+                            <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                <path d="M 3 90 c -0.768 0 -1.536 -0.293 -2.121 -0.879 c -1.172 -1.171 -1.172 -3.071 0 -4.242 l 84 -84 c 1.172 -1.172 3.07 -1.172 4.242 0 c 1.172 1.171 1.172 3.071 0 4.242 l -84 84 C 4.536 89.707 3.768 90 3 90 z"
+                                      fill="#000000"/>
+                                <path d="M 87 90 c -0.768 0 -1.535 -0.293 -2.121 -0.879 l -84 -84 c -1.172 -1.171 -1.172 -3.071 0 -4.242 c 1.171 -1.172 3.071 -1.172 4.242 0 l 84 84 c 1.172 1.171 1.172 3.071 0 4.242 C 88.535 89.707 87.768 90 87 90 z"
+                                      fill="#000000"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <?php wp_nav_menu([
+                        'theme_location' => 'header',
+                        'container' => false,
+                        'menu_class' => 'header__list',
+                        'menu_id' => false,
+                        'echo' => true,
+                        'items_wrap' => '<ul id="%1$s" class="header__list %2$s">%3$s</ul>',
+                    ])
+                    ?>
+
+
                     <div class="search">
                         <div class="search-wrapper">
                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -97,8 +106,8 @@
                             </svg>
                             <input aria-label="search" type="search" placeholder="Пошук">
                         </div>
-                    </div>
-                </div>
+                </nav>
             </div>
+        </div>
     </header>
 </div>
