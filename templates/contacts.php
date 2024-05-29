@@ -133,7 +133,14 @@ get_header();
 
         </section>
         <section class="section form-contacts">
-            <div class="container">
+            <div class="container container-bg">
+                <div class="form-contacts__background">
+                                <?php  
+                                $image = get_field('form-contacts__background'); 
+                                if( !empty( $image ) ): ?> 
+                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
+                                <?php endif; ?>
+                </div>
                 <div class="form-contacts__heading-container">
                     <span class="list-contacts__La_cat"> 
                         <svg width="24" height="24"> 
@@ -175,7 +182,13 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <div class="formaaaaaaaaaaaaaaa"></div>
+                <div class="forma">
+
+                    <p>ddddddd</p>
+                    <p>ddddddd</p>
+                    <p>ddddddd</p>
+            
+                </div>
             </div>
         </section>
     </main>

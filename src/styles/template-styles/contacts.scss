@@ -245,7 +245,10 @@
                     /*-------------------Section Form----------------*/
 
 .form-contacts{
+    position: relative;
+    z-index: 1;
     background-color: $background;
+
     &__contacts{
         @media screen and (min-width: $tablet) {
             display: flex;
@@ -285,4 +288,33 @@
         width: 28px;
         height: 28px;
     }
+
+    
+    &__background {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        @media screen and (min-width: $tablet) {
+            display: block;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            bottom: 0;
+            right: 0;
+        }
+    }
+
+    &__heading-container,
+    &__info,
+    &__contacts {
+    position: relative;
+    z-index: 3;
+}
+}
+
+.container-bg {
+    position: relative;
+    z-index: 2;
 }
