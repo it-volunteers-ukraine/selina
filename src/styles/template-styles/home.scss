@@ -47,7 +47,7 @@
     background-size: cover;
     padding: 17px 23px;
     @media screen and (min-width: $tablet) {
-      padding: 65px;
+      padding: 65px 0;
       height: 100%;
     }
     @media screen and (min-width: $desktop) {
@@ -73,6 +73,93 @@
       font-size: 20px;
     }
   }
+
+  &__button-paw {
+    bottom: 215px;
+
+    width: 44px;
+    height: 41px;
+
+    position: absolute;
+    right: 18px;
+
+    @media screen and (min-width: $tablet) {
+      bottom: -33px;
+      left: 50%;
+    }
+    @media screen and (min-width: $desktop) {
+      bottom: 130.5px;
+    }
+  }
+
+  &__paw-svg-pad,
+  &__paw-svg-1,
+  &__paw-svg-2,
+  &__paw-svg-3,
+  &__paw-svg-4 {
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  &__paw-svg-pad {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &__paw-svg-1 {
+    top: 12.93px;
+    left: 0;
+    width: 11.53px;
+    height: 14.44px;
+  }
+  &__paw-svg-2 {
+    top: 0;
+    left: 8.31px;
+    width: 11.77px;
+    height: 15.75px;
+  }
+  &__paw-svg-3 {
+    top: 0;
+    right: 8.82px;
+    width: 11.77px;
+    height: 15.75px;
+  }
+  &__paw-svg-4 {
+    top: 12.93px;
+    right: 0;
+    width: 11.53px;
+    height: 14.44px;
+  }
+
+  & .paw-pagination-bullet {
+    fill: white;
+    :hover {
+      fill: $red;
+    }
+  }
+
+  & .paw-pagination-bullet-active {
+    fill: $red;
+    &,
+    * {
+      fill: $red;
+    }
+  }
+
+  &__relative-container {
+    position: relative;
+  }
+}
+
+.pgnt {
+  svg {
+    fill: white;
+  }
+}
+
+.one-arrow {
+  fill: white;
 }
 
 .partners-section {
@@ -83,6 +170,10 @@
     @media screen and (min-width: $tablet) {
       margin-bottom: 40px;
     }
+  }
+
+  &__heading-wrapper {
+    display: flex;
   }
 
   &__button {
@@ -97,44 +188,83 @@
       margin-top: 40px;
     }
   }
-}
 
-// slider
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 4px;
+  }
 
-.slider {
-  overflow: hidden;
-  max-width: 1128px;
-  margin: 0 auto;
-}
+  &__arrow-btn {
+    width: 44px;
+    height: 44px;
+    gap: 8px;
+    border-radius: 10px;
+    background-color: $primary-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 
-.slider .slick-track,
-.slider__inner {
-  width: 100%;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  @media screen and (min-width: $tablet) {
+    &:hover {
+      background-color: $white;
+
+      svg {
+        fill: $primary-color;
+      }
+    }
+  }
+
+  &__pagination {
+    display: none;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      width: fit-content;
+      margin-left: auto;
+      gap: 12px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 36px;
+    }
+  }
+  &__swiper {
+    max-width: 1128px;
+    margin: 0 auto;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (min-width: $tablet) {
+      background-color: $white;
+      border-radius: $big-br;
+    }
+    @media screen and (min-width: $desktop) {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+  }
+
+  &__item {
     background-color: $white;
-    gap: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: $big-br;
-    overflow: hidden;
-  }
-  @media screen and (min-width: $desktop) {
-    gap: 80px;
-  }
-}
-.slider__item.slick-slide {
-  background-color: $white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: $big-br;
-  height: 168px;
-  width: 168px;
-  @media screen and (min-width: $tablet) {
-    width: 111px;
+    height: 168px;
+    width: 168px;
+    @media screen and (min-width: $tablet) {
+      width: 111px;
+    }
+    @media screen and (min-width: $desktop) {
+      height: 78px;
+    }
+
+    img {
+      object-fit: scale-down;
+    }
   }
 }
 
@@ -201,6 +331,9 @@
   }
 
   &__button {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
     @media screen and (min-width: $tablet) {
       margin-bottom: 24px;
     }
@@ -213,5 +346,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 8px;
   }
 }

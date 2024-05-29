@@ -113,3 +113,9 @@ if( function_exists('acf_add_options_page') ) {
     ));
 }
 
+function loadDirectory() { ?>
+<script type="text/javascript">
+    var theme_directory = "<?php echo get_template_directory_uri() ?>";
+</script> 
+<?php } 
+add_action('wp_head', 'loadDirectory'); 
