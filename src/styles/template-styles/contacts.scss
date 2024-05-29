@@ -249,6 +249,56 @@
     z-index: 1;
     background-color: $background;
 
+    /* General settings gray-cat image: non-visible at<768px; visible at > 768px */
+    &___container-bg{
+        position: relative;
+        z-index: 2;
+    }
+    &__background {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+        z-index: -1;
+        @media screen and (min-width: $tablet) {
+            display: block;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            bottom: 0;
+            right: -150px;
+        }
+    }
+    /* END of General settings gray-cat image */
+    /* Precision settings gray-cat image: shifting dimensions of image depending screen resolution */
+    &__background_768 {
+        @media screen and (min-width: $tablet) {
+            display: block;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: none;
+        }
+    }
+
+    &__background_1440 {
+        @media screen and (min-width: $tablet) {
+            display: none;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
+    }
+/* END of Precision settings gray-cat image */
+
+    &__heading-container,
+    &__info,
+    &__contacts {
+    position: relative;
+    z-index: 3;
+    }
+
     &__contacts{
         @media screen and (min-width: $tablet) {
             display: flex;
@@ -288,33 +338,4 @@
         width: 28px;
         height: 28px;
     }
-
-    
-    &__background {
-        display: none;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: -1;
-        @media screen and (min-width: $tablet) {
-            display: block;
-        }
-        
-        @media screen and (min-width: $desktop) {
-            bottom: 0;
-            right: 0;
-        }
-    }
-
-    &__heading-container,
-    &__info,
-    &__contacts {
-    position: relative;
-    z-index: 3;
-}
-}
-
-.container-bg {
-    position: relative;
-    z-index: 2;
 }

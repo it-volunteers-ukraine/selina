@@ -133,13 +133,23 @@ get_header();
 
         </section>
         <section class="section form-contacts">
-            <div class="container container-bg">
+            <div class="container form-contacts__container-bg">
                 <div class="form-contacts__background">
-                                <?php  
-                                $image = get_field('form-contacts__background'); 
-                                if( !empty( $image ) ): ?> 
-                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
-                                <?php endif; ?>
+                    <?php  
+                        $image_default = get_field('form-contacts__background'); 
+                        $image_1440 = get_field('form-contacts__background_1440');
+                        if( !empty( $image_default ) && !empty( $image_1440 ) ): ?> 
+                            <img 
+                                src="<?php echo esc_url($image_default['url']); ?>" 
+                                alt="<?php echo esc_attr($image_default['alt']); ?>"
+                                class="form-contacts__background_768"
+                            /> 
+                            <img 
+                                src="<?php echo esc_url($image_1440['url']); ?>" 
+                                alt="<?php echo esc_attr($image_1440['alt']); ?>"
+                                class="form-contacts__background_1440"
+                            />
+                    <?php endif; ?>
                 </div>
                 <div class="form-contacts__heading-container">
                     <span class="list-contacts__La_cat"> 
@@ -184,9 +194,6 @@ get_header();
                 </div>
                 <div class="forma">
 
-                    <p>ddddddd</p>
-                    <p>ddddddd</p>
-                    <p>ddddddd</p>
             
                 </div>
             </div>
