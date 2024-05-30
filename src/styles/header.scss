@@ -37,7 +37,6 @@
       }
 
       @media screen and (min-width: $desktop) {
-        top: 10px;
         left: 50%;
       }
 
@@ -154,6 +153,7 @@
 
     .nav-menu {
 
+      display: none;
 
       @media screen and (min-width: $tablet) {
         display: flex;
