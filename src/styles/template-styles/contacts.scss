@@ -242,12 +242,20 @@
 }
 }
 
-                    /*-------------------Section Form----------------*/
+                    /*--------------------------------Section Form-------------------------*/
 
 .form-contacts{
     position: relative;
     z-index: 1;
     background-color: $background;
+    padding-bottom: 0;
+    @media screen and (min-width: $tablet) {
+        padding-bottom: 16px;
+    }
+    
+    @media screen and (min-width: $desktop) {
+        
+    }
 
     /* General settings gray-cat image: non-visible at<768px; visible at > 768px */
     &___container-bg{
@@ -300,6 +308,7 @@
     }
 
     &__contacts{
+        margin-bottom: 16px;
         @media screen and (min-width: $tablet) {
             display: flex;
             justify-content: space-between;
@@ -337,5 +346,124 @@
     &__icon{
         width: 28px;
         height: 28px;
+    }
+
+    /*----------------- Form styling---------------------- */
+
+    &__fields p{
+        @media screen and (min-width: $tablet) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 25px;
+        }
+    }
+    &__fields br {
+        display: none;
+    }
+
+    &__form-name,
+    &__form-phone,
+    &__form-email,
+    &__form-subject,
+    &__form-textarea{
+        background-color: $white;
+        border-radius: 10px;
+        width: 100%;
+        height: 48px;
+        box-sizing: border-box;
+        margin-bottom: 24px;
+        padding-left: 16px;
+    }
+
+    &__form-textarea{
+        padding-top: 17.5px;
+        height: 151px;
+    }
+
+    &__form-name::placeholder,
+    &__form-phone::placeholder,
+    &__form-email::placeholder,
+    &__form-subject::placeholder,
+    &__form-textarea::placeholder{
+        color: $primary-color;
+        opacity: 1;
+    }
+
+    &__form-required-field{
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 138%;
+        margin-bottom: 16px;
+    }
+
+    &__form-checkbox{
+        display: flex;
+        font-size: 10px;
+        line-height: 150%;
+        margin-bottom: 24px;
+    }
+
+    &__form-checkbox input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+    }
+
+    /* Underline for Politic-link */
+    &__form-checkbox a {
+        text-decoration: underline;
+        font-weight: 700;
+    }
+
+    /* Button styling */
+    &__button-wrapper p{
+        /*height: 44px;*/
+
+        @media screen and (min-width: $tablet) {
+            
+        }
+        
+        @media screen and (min-width: $desktop) {
+            /* Need do this style */
+        }
+    }
+    &__form-button{
+        background-color: $red;
+        color: $white;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 133%;
+        border-radius: 8px;
+        padding: 10px 10px 10px 14px;
+        width: 340px;
+        height: 44px;
+    }
+}
+
+/* Push checkbox to the left side */
+.wpcf7-list-item{
+    margin-left: 0px;
+}
+
+.wpcf7-spinner{
+    display: none;
+}
+
+/* Background bottom $primary-color */
+.form-contacts:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 59px;
+    background-color: $primary-color;
+    z-index: -1;
+    @media screen and (min-width: $tablet) {
+        height: 75px;
+    }
+    
+    @media screen and (min-width: $desktop) {
+        /* Need do this style */
     }
 }
