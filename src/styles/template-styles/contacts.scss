@@ -257,10 +257,20 @@
         
     }
 
+    &__content{
+        @media screen and (min-width: $desktop) {
+            width: 50%;
+        }
+    }
+
     /* General settings gray-cat image: non-visible at<768px; visible at > 768px */
-    &___container-bg{
+        &___container-bg{
         position: relative;
         z-index: 2;
+
+        @media screen and (min-width: $desktop) {
+            display: flex;
+        }
     }
     &__background {
         display: none;
@@ -273,7 +283,7 @@
         }
         
         @media screen and (min-width: $desktop) {
-            bottom: 0;
+            bottom: 130px;
             right: -150px;
         }
     }
@@ -350,16 +360,24 @@
 
     /*----------------- Form styling---------------------- */
 
-    &__fields p{
+    .wpcf7-form{
         @media screen and (min-width: $tablet) {
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: 25px;
         }
+
+        
     }
-    &__fields br {
-        display: none;
-    }
+    &__input-1 { grid-area: 1 / 1 / 2 / 2; }
+    &__input-2 { grid-area: 1 / 2 / 2 / 3; }
+    &__input-3 { grid-area: 2 / 1 / 3 / 2; }
+    &__input-4 { grid-area: 2 / 2 / 3 / 3; }
+    &__input-5 { grid-area: 3 / 1 / 4 / 2; }
+    &__form-required-field { grid-area: 4 / 1 / 5 / 2; }
+    &__form-checkbox { grid-area: 5 / 1 / 6 / 2; }
+    &__button-wrapper { grid-area: 6 / 1 / 7 / 2; }
+
 
     &__form-name,
     &__form-phone,
@@ -377,6 +395,7 @@
 
     &__form-textarea{
         padding-top: 17.5px;
+        margin-bottom: 16px;
         height: 151px;
     }
 
@@ -401,6 +420,9 @@
         font-size: 10px;
         line-height: 150%;
         margin-bottom: 24px;
+        @media screen and (min-width: $desktop) {
+            color: $white;
+        }
     }
 
     &__form-checkbox input[type="checkbox"] {
@@ -409,22 +431,16 @@
         margin-right: 12px;
     }
 
-    /* Underline for Politic-link */
+    /* -------Underline for Politic-link------ */
     &__form-checkbox a {
         text-decoration: underline;
         font-weight: 700;
     }
 
-    /* Button styling */
-    &__button-wrapper p{
-        /*height: 44px;*/
-
-        @media screen and (min-width: $tablet) {
-            
-        }
-        
+    /* -----------Button styling-------- */
+    &__button-wrapper p{  
         @media screen and (min-width: $desktop) {
-            /* Need do this style */
+            width: 153px;
         }
     }
     &__form-button{
@@ -437,6 +453,28 @@
         padding: 10px 10px 10px 14px;
         width: 340px;
         height: 44px;
+
+        @media screen and (min-width: $desktop) {
+            width: 153px;
+        }
+    }
+
+    /*------------------Up-button----------------------*/
+    &__up_btn{
+        display: none;
+        position: fixed; 
+        bottom: 16px; 
+        right: 150px;
+        z-index: 1000; 
+        background-color: transparent; 
+        cursor: pointer;
+        @media screen and (min-width: $desktop) {
+            display: block;;
+        }
+    }
+    &__up_btn-icon{
+        width: 56px; 
+        height: 56px; 
     }
 }
 
@@ -464,6 +502,23 @@
     }
     
     @media screen and (min-width: $desktop) {
-        /* Need do this style */
+        height: 285px;
     }
 }
+
+
+@media screen and (min-width: $desktop) {
+    .wpcf7-form {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+    }
+    .form-contacts__input-1 { grid-area: 1 / 1 / 2 / 2; }
+    .form-contacts__input-2 { grid-area: 1 / 2 / 2 / 3; }
+    .form-contacts__input-3 { grid-area: 2 / 1 / 3 / 2; }
+    .form-contacts__input-4 { grid-area: 2 / 2 / 3 / 3; }
+    .form-contacts__input-5 { grid-area: 3 / 1 / 4 / 3; }
+    .form-contacts__form-required-field {display: none }
+    .form-contacts__form-checkbox { grid-area: 4 / 1 / 5 / 2; }
+    .form-contacts__button-wrapper { grid-area: 4 / 2 / 5 / 3; margin-right: 0; justify-self: end;}
+}
+
