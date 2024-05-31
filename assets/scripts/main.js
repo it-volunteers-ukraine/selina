@@ -1,1 +1,1 @@
-console.log("footer part"),console.log("header part"),console.log("main");
+console.log("footer part");const toggleMenu=document.getElementById("header-toggle-menu"),closeButton=document.getElementById("header-close-btn"),navMenu=document.getElementById("header-nav-menu");toggleMenu.addEventListener("click",(()=>{navMenu.classList.add("mobile-menu"),navMenu.classList.add("show-menu")})),closeButton.addEventListener("click",(()=>{navMenu.classList.remove("show-menu")})),console.log("main");
