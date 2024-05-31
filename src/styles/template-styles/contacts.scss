@@ -12,15 +12,6 @@
             background-size: cover;
             background-blend-mode: multiply;
             background-color: $background;
-            
-            
-            @media screen and (min-width: $tablet) {
-                
-              }
-            
-            @media screen and (min-width: $desktop) {
-                
-              }
         }
         &__text-box{
             padding: 20px 0;
@@ -51,10 +42,6 @@
         &__contacts-container{
             display: flex;
             gap: 24px;
-            @media screen and (min-width: $tablet) {
-            
-            }
-          
             @media screen and (min-width: $desktop) {
                 gap: 36px;
             }
@@ -89,7 +76,6 @@
 .contacts-contacts,
 .socials-contacts,
 .form-contacts{
-
     padding-bottom: 50px;
 
         &__heading-container {
@@ -143,13 +129,6 @@
                 grid-template-rows: 1fr 1fr 1fr;
                 grid-template-columns: 1fr 1fr;
             }
-          
-            @media screen and (min-width: $desktop) {
-                /*display: grid;
-                grid-template-rows: 1fr 1fr 1fr;
-                grid-template-columns: 1fr 1fr;*/
-            }
-
         }
 
         /*Horizontal lines between elements of contacts list */
@@ -171,11 +150,6 @@
                 grid-row: 2 / 3;
                 margin-top: 16px;
             }
-          
-            @media screen and (min-width: $desktop) {
-                /*grid-row: 2 / 3;
-            margin-top: 16px;*/
-            }
         }
         &__contacts-list::after {
             grid-row: 6;
@@ -187,23 +161,14 @@
                 margin-top: 16px;
                 margin-bottom: 16px;
             }
-          
-            @media screen and (min-width: $desktop) {
-                /*grid-row: 4 / 5;
-                margin-top: 16px;
-                margin-bottom: 16px;*/
-            }
         }
-
         &__contacts-value{
             color:$black;
-            
         }
 
 @media screen and (min-width: $tablet) {
     padding-bottom: 90px;
 }
-
 @media screen and (min-width: $desktop) {
     padding-bottom: 80px;
 }
@@ -252,11 +217,6 @@
     @media screen and (min-width: $tablet) {
         padding-bottom: 16px;
     }
-    
-    @media screen and (min-width: $desktop) {
-        
-    }
-
     &__content{
         @media screen and (min-width: $desktop) {
             width: 50%;
@@ -324,10 +284,6 @@
             justify-content: space-between;
             gap: 24px;
         }
-        
-        @media screen and (min-width: $desktop) {
-            /* Need do this style for  */
-        }
     }
     &__info{
         font-weight: 500;
@@ -366,8 +322,6 @@
             grid-template-columns: 1fr 1fr;
             column-gap: 25px;
         }
-
-        
     }
     &__input-1 { grid-area: 1 / 1 / 2 / 2; }
     &__input-2 { grid-area: 1 / 2 / 2 / 3; }
@@ -437,7 +391,7 @@
         font-weight: 700;
     }
 
-    /* -----------Button styling-------- */
+    /* -----------Submit-button styling-------- */
     &__button-wrapper p{  
         @media screen and (min-width: $desktop) {
             width: 153px;

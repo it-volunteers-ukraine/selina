@@ -41,7 +41,7 @@ get_header();
                                     <a class="link" href="<?php the_field('link_socials'); ?>" target="_blank">
                                         <div class="list-contacts__link-container">
                                             <span class="list-contacts__cat-paw"> 
-                                                <svg width="24" height="24"> 
+                                                <svg width="24" height="24"fill="green" > 
                                                     <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-paw"></use> 
                                                 </svg> 
                                             </span> 
@@ -208,7 +208,7 @@ get_header();
             </div>
         </section>
     </main>
-    <!-- Script for scroll page to topd -->
+    <!-- Script for scroll page to top -->
     <script>
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
