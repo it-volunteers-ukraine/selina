@@ -25,9 +25,9 @@ get_header();
                                     <p class="first-section__info">
                                         <?php the_sub_field('first-section__info'); ?>
                                     </p>
-                                    <button class="first-section__button button red_medium_button">
+                                    <a class="first-section__button button red_medium_button">
                                         <?php the_sub_field('first-section__button'); ?>
-                                    </button>
+                                    </a>
 
                                 </div>
                             </div>
@@ -276,10 +276,11 @@ get_header();
             </div>
 
             <button class="news-section__button-all button green_medium_button">
+                <?php the_field('news-section__button-all'); ?>
                 <svg class="news-section__button-all-svg" width="16" height="15">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                 </svg>
-                <?php the_field('news-section__button-all'); ?>
+                
             </button>
         </div>
     </section>
@@ -346,9 +347,13 @@ get_header();
  style="background-image: url(<?php the_field('support-section__photo') ?>);">
  <div class="container">
     <div class="support-section__wrapper">
- <p class="support-section__heading">
+ <h2 class="support-section__heading heading">
+    <svg class="home-heading-svg" width="42" height="60">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
     <?php the_field('support-section__heading') ?>
- </p>
+ </h2>
   <p class="support-section__text">
     <?php the_field('support-section__text') ?>
  </p>
@@ -362,6 +367,56 @@ get_header();
                                 </div>
                             </div>
 </div>
+    </section>
+    <section class="feedbacks-section section">
+        <div class="container">
+            <div class="home-heading-wrapper">
+                <h2 class="news-section__heading section_heading">
+                    <svg class="home-heading-svg" width="42" height="60">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                        </use>
+                    </svg>
+                    <?php the_field('feedbacks-section__heading'); ?>
+                </h2>
+                <div class="feedbacks-section__pagination">
+                    <button class="feedbacks-section__arrow-left-btn feedbacks-section__arrow-btn">
+                        <svg class="feedbacks-section__arrow-left one-arrow" width="10.37" height="16.97">
+                            <use
+                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+                            </use>
+                        </svg>
+                    </button>
+                    <button class="feedbacks-section__arrow-right-btn feedbacks-section__arrow-btn">
+                        <svg class="feedbacks-section__arrow-right one-arrow" width="10.37" height="16.97">
+                            <use
+                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="feedbacks-section__swiper swiper">
+                <div class="feedbacks-section__list swiper-wrapper">
+                    <?php
+                    $args = array('posts_per_page' => -1, 'post_type' => 'feedbacks');
+                    $myposts = get_posts($args);
+                    foreach ($myposts as $post):
+                        setup_postdata($post); ?>
+                        <div class="swiper-slide feedbacks-section__item">
+                            
+                            <p class="feedbacks-section__name">
+                                <?php the_field('feedback_name') ?>
+                            </p>
+                            <p class="feedbacks-section__text">
+                                <?php the_field('feedback_text') ?>
+                            </p>
+                            
+                        </div>
+                    <?php endforeach;
+                    wp_reset_postdata(); ?>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
 
