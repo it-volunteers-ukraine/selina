@@ -12,7 +12,7 @@
 <div class="wrapper">
     <header class="header">
         <div class="container">
-            <div class="header-top">
+            <div id="header-top" class="header-top">
                 <div class="social-media">
                     <?php
                     $socialLinks = get_field('social-media', 'option');
@@ -53,16 +53,47 @@
                             <?php the_field('login-text', 'option'); ?>
                         </a>
                     </div>
-                    <button class="switch">
-                        <span class="language">EN</span>
-                        <svg class="flag" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 20C15.5333 20 20 15.5333 20 10H0C0 15.5333 4.46667 20 10 20Z"
-                                  fill="#FFE62E"/>
-                            <path d="M10 0C4.46667 0 0 4.46667 0 10H20C20 4.46667 15.5333 0 10 0Z"
-                                  fill="#045C6F"/>
-                        </svg>
-                    </button>
+
+                    <?php
+                    $current_language = (function_exists('pll_current_language')) ? pll_current_language('slug') : '';
+                    if (function_exists('pll_the_languages')) {
+                        $languages = pll_the_languages(array('show_names' => 1, 'show_flags' => 1, 'raw' => 1));
+                    }
+
+                    $langUrl = null;
+
+                    foreach ($languages as $language) {
+                        if ($language['slug'] != $current_language) {
+                            $langUrl = esc_url($language['url']);
+                        }
+                    }
+
+                    $inputSet = false;
+                    ?>
+
+
+                    <div class="switch">
+                        <?php foreach ($languages as $lang => $language): ?>
+                            <?php if (!$inputSet && $lang === $current_language): ?>
+                                <input
+                                        onchange="redirectToPage('<?= esc_url($langUrl); ?>')"
+                                        id="language-toggle"
+                                        class="check-toggle check-toggle-round-flat"
+                                    <?= $lang === 'ua' ? 'checked' : ''; ?>
+                                        type="checkbox"
+                                >
+                                <?php $inputSet = true; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+                        <label for="language-toggle"></label>
+
+                        <?php foreach ($languages as $lang => $language): ?>
+                            <span class="<?= $lang !== 'ua' ? 'on' : 'off' ?> flag-<?= $language['slug']; ?>">
+                         <?= $language['slug']; ?>
+                            </span>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,25 +107,12 @@
                         }
                         ?>
                     </div>
-                    <button id="header-toggle-menu" class="burger">
-                        <svg width="44" height="28" viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M0 2.3125C0 1.76549 0.217298 1.24089 0.604092 0.854092C0.990886 0.467298 1.51549 0.25 2.0625 0.25H41.9375C42.4845 0.25 43.0091 0.467298 43.3959 0.854092C43.7827 1.24089 44 1.76549 44 2.3125C44 2.85951 43.7827 3.38411 43.3959 3.77091C43.0091 4.1577 42.4845 4.375 41.9375 4.375H2.0625C1.51549 4.375 0.990886 4.1577 0.604092 3.77091C0.217298 3.38411 0 2.85951 0 2.3125ZM0 14C0 13.453 0.217298 12.9284 0.604092 12.5416C0.990886 12.1548 1.51549 11.9375 2.0625 11.9375H41.9375C42.4845 11.9375 43.0091 12.1548 43.3959 12.5416C43.7827 12.9284 44 13.453 44 14C44 14.547 43.7827 15.0716 43.3959 15.4584C43.0091 15.8452 42.4845 16.0625 41.9375 16.0625H2.0625C1.51549 16.0625 0.990886 15.8452 0.604092 15.4584C0.217298 15.0716 0 14.547 0 14ZM2.0625 23.625C1.51549 23.625 0.990886 23.8423 0.604092 24.2291C0.217298 24.6159 0 25.1405 0 25.6875C0 26.2345 0.217298 26.7591 0.604092 27.1459C0.990886 27.5327 1.51549 27.75 2.0625 27.75H41.9375C42.4845 27.75 43.0091 27.5327 43.3959 27.1459C43.7827 26.7591 44 26.2345 44 25.6875C44 25.1405 43.7827 24.6159 43.3959 24.2291C43.0091 23.8423 42.4845 23.625 41.9375 23.625H2.0625Z"
-                                  fill="white"/>
-                        </svg>
-                    </button>
-                </div>
-                <nav id="header-nav-menu" class="nav-menu">
-                    <div id="header-close-btn" class="close-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
-                            <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
-                                <path d="M 3 90 c -0.768 0 -1.536 -0.293 -2.121 -0.879 c -1.172 -1.171 -1.172 -3.071 0 -4.242 l 84 -84 c 1.172 -1.172 3.07 -1.172 4.242 0 c 1.172 1.171 1.172 3.071 0 4.242 l -84 84 C 4.536 89.707 3.768 90 3 90 z"
-                                      fill="#000000"/>
-                                <path d="M 87 90 c -0.768 0 -1.535 -0.293 -2.121 -0.879 l -84 -84 c -1.172 -1.171 -1.172 -3.071 0 -4.242 c 1.171 -1.172 3.071 -1.172 4.242 0 l 84 84 c 1.172 1.171 1.172 3.071 0 4.242 C 88.535 89.707 87.768 90 87 90 z"
-                                      fill="#000000"/>
-                            </g>
-                        </svg>
+
+                    <div id="header-menu-btn" class="menu-btn">
+                        <div class="burger"></div>
                     </div>
+                </div>
+                <nav class="nav-menu">
                     <?php wp_nav_menu([
                         'theme_location' => 'header',
                         'container' => false,
@@ -105,7 +123,94 @@
                     ])
                     ?>
 
+                    <div id="header-mobile" class="content-mobile">
+                        <nav id="header-nav-menu">
+                            <?php wp_nav_menu([
+                                'theme_location' => 'header',
+                                'container' => false,
+                                'menu_class' => 'header__list-mobile',
+                                'menu_id' => false,
+                                'echo' => true,
+                                'items_wrap' => '<ul id="%1$s" class="header__list-mobile %2$s">%3$s</ul>',
+                            ])
+                            ?>
+                            <div class="flex">
+                                <div class="social-media">
+                                    <?php
+                                    $socialLinks = get_field('social-media', 'option');
+                                    foreach ($socialLinks as $row) :
+                                        $icon = $row['social-icon'];
+                                        $link = $row['social-link'];
+                                        ?>
+                                        <a href="<?php echo esc_url($link); ?>" class="icon">
+                                            <img src="<?php echo esc_html($icon); ?>" alt="image">
+                                        </a>
+                                    <?php endforeach; ?>
+                                    <a href="mailto:<?php the_field('email', 'option') ?>"
+                                       rel="noopener noreferrer">
+                                        <img src="<?php the_field('icon-email', 'option') ?>" alt="email">
+                                    </a>
+                                    <a href="tel:<?php the_field('phone', 'option') ?>" rel="noopener noreferrer"
+                                       class="icon">
+                                        <img src="<?php the_field('icon-phone', 'option') ?>" alt="phone">
+                                    </a>
+                                </div>
+                            </div>
 
+                            <div class="buttons">
+                                <a class="button red_medium_button registration-btn"
+                                   href="<?php echo esc_attr(get_field('registration-link', 'option')); ?>">
+                                    <?php the_field('registration-text', 'option'); ?>
+                                </a>
+                                <a class="button login-btn"
+                                   href="<?php echo esc_attr(get_field('login-link', 'option')); ?>">
+                                    <?php the_field('login-text', 'option'); ?>
+                                </a>
+
+                                <?php
+                                $current_language = (function_exists('pll_current_language')) ? pll_current_language('slug') : '';
+                                if (function_exists('pll_the_languages')) {
+                                    $languages = pll_the_languages(array('show_names' => 1, 'show_flags' => 1, 'raw' => 1));
+                                }
+
+                                $langUrl = null;
+
+                                foreach ($languages as $language) {
+                                    if ($language['slug'] != $current_language) {
+                                        $langUrl = esc_url($language['url']);
+                                    }
+                                }
+
+                                $inputSet = false;
+                                ?>
+
+
+
+                                <div class="switch">
+                                    <?php foreach ($languages as $lang => $language): ?>
+                                        <?php if (!$inputSet && $lang === $current_language): ?>
+                                            <input
+                                                    onchange="redirectToPage('<?= esc_url($langUrl); ?>')"
+                                                    id="language-toggle"
+                                                    class="check-toggle check-toggle-round-flat"
+                                                <?= $lang === 'ua' ? 'checked' : ''; ?>
+                                                    type="checkbox"
+                                            >
+                                            <?php $inputSet = true; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+
+                                    <label for="language-toggle"></label>
+
+                                    <?php foreach ($languages as $lang => $language): ?>
+                                        <span class="<?= $lang !== 'ua' ? 'on' : 'off' ?> flag-<?= $language['slug']; ?>">
+                         <?= $language['slug']; ?>
+                            </span>
+                                    <?php endforeach; ?>
+                                </div>
+
+                            </div>
+                    </div>
                     <div class="search">
                         <div class="search-wrapper">
                             <button>
@@ -117,6 +222,7 @@
                             </button>
                             <input aria-label="search" type="search" placeholder="Пошук">
                         </div>
+                    </div>
                 </nav>
             </div>
         </div>
