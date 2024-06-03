@@ -47,7 +47,7 @@
     background-size: cover;
     padding: 17px 23px;
     @media screen and (min-width: $tablet) {
-      padding: 65px;
+      padding: 65px 0;
       height: 100%;
     }
     @media screen and (min-width: $desktop) {
@@ -73,16 +73,137 @@
       font-size: 20px;
     }
   }
+
+  &__button {
+    @media screen and (min-width: $desktop) {
+      min-width: 187px;
+    }
+  }
+
+  &__button-paw {
+    bottom: 215px;
+
+    width: 44px;
+    height: 41px;
+
+    position: absolute;
+    right: 18px;
+
+    @media screen and (min-width: $tablet) {
+      bottom: -33px;
+      left: 50%;
+    }
+    @media screen and (min-width: $desktop) {
+      bottom: 130.5px;
+    }
+  }
+
+  &__paw-svg-pad,
+  &__paw-svg-1,
+  &__paw-svg-2,
+  &__paw-svg-3,
+  &__paw-svg-4 {
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  &__paw-svg-pad {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &__paw-svg-1 {
+    top: 12.93px;
+    left: 0;
+    width: 11.53px;
+    height: 14.44px;
+  }
+  &__paw-svg-2 {
+    top: 0;
+    left: 8.31px;
+    width: 11.77px;
+    height: 15.75px;
+  }
+  &__paw-svg-3 {
+    top: 0;
+    right: 8.82px;
+    width: 11.77px;
+    height: 15.75px;
+  }
+  &__paw-svg-4 {
+    top: 12.93px;
+    right: 0;
+    width: 11.53px;
+    height: 14.44px;
+  }
+
+  & .paw-pagination-bullet {
+    fill: white;
+    :hover {
+      fill: $red;
+    }
+  }
+
+  & .paw-pagination-bullet-active {
+    fill: $red;
+    &,
+    * {
+      fill: $red;
+    }
+  }
+
+  &__relative-container {
+    position: relative;
+  }
+}
+
+.pgnt {
+  svg {
+    fill: white;
+  }
+}
+
+.home-heading-svg {
+  display: none;
+  @media screen and (min-width: $tablet) {
+    display: initial;
+    width: 27.14px;
+    height: 24.29px;
+  }
+  @media screen and (min-width: $desktop) {
+    display: initial;
+    width: 38px;
+    height: 34px;
+  }
+}
+
+.home-heading-wrapper {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 16px;
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.home-heading-wrapper-desk {
+  display: none;
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 40px;
+    gap: 8px;
+  }
 }
 
 .partners-section {
   background-color: $background;
   &__heading {
     color: $primary-color;
-    margin-bottom: 16px;
-    @media screen and (min-width: $tablet) {
-      margin-bottom: 40px;
-    }
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
   }
 
   &__button {
@@ -97,44 +218,92 @@
       margin-top: 40px;
     }
   }
-}
 
-// slider
+  &__arrow-btn {
+    width: 44px;
+    height: 44px;
+    gap: 8px;
+    border-radius: 10px;
+    background-color: $primary-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 
-.slider {
-  overflow: hidden;
-  max-width: 1128px;
-  margin: 0 auto;
-}
+    svg {
+      height: 15px;
+      width: 16px;
+      fill: currentColor;
+      margin-left: 4px;
+    }
 
-.slider .slick-track,
-.slider__inner {
-  width: 100%;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  @media screen and (min-width: $tablet) {
+    &:hover {
+      background-color: $white;
+
+      svg {
+        fill: $primary-color;
+      }
+    }
+  }
+
+  &__pagination {
+    display: none;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      width: fit-content;
+      margin-left: auto;
+      gap: 12px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 36px;
+    }
+  }
+  &__swiper {
+    max-width: 1128px;
+    margin: 0 auto;
+    @media screen and (min-width: $tablet) {
+      background-color: $white;
+      border-radius: $big-br;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (min-width: $tablet) {
+      padding-top: 29.5px;
+      padding-bottom: 38px;
+    }
+    @media screen and (min-width: $desktop) {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+  }
+
+  &__item {
     background-color: $white;
-    gap: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: $big-br;
-    overflow: hidden;
+    height: 168px;
+    width: 168px;
+    @media screen and (min-width: $tablet) {
+      width: 106px;
+      height: 81px;
+    }
+    @media screen and (min-width: $desktop) {
+      height: 78px;
+    }
+
+    img {
+      object-fit: scale-down;
+    }
   }
-  @media screen and (min-width: $desktop) {
-    gap: 80px;
-  }
-}
-.slider__item.slick-slide {
-  background-color: $white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: $big-br;
-  height: 168px;
-  width: 168px;
-  @media screen and (min-width: $tablet) {
-    width: 111px;
+
+  &__button {
+    gap: 8px;
   }
 }
 
@@ -142,8 +311,20 @@
   &__heading {
     color: $primary-color;
     margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
     @media screen and (min-width: $desktop) {
       display: none;
+    }
+  }
+
+  &__heading-svg {
+    display: none;
+    @media screen and (min-width: $tablet) {
+      display: initial;
+      width: 27.14px;
+      height: 24.29px;
     }
   }
 
@@ -151,7 +332,9 @@
     display: none;
     color: $primary-color;
     @media screen and (min-width: $desktop) {
-      display: initial;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
       margin-bottom: 24px;
     }
   }
@@ -201,6 +384,10 @@
   }
 
   &__button {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    gap: 8px;
     @media screen and (min-width: $tablet) {
       margin-bottom: 24px;
     }
@@ -213,5 +400,556 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+
+    fill: $white;
+    margin-left: 8px;
+  }
+}
+
+.direction-section {
+  background-color: $background;
+
+  &__repeater {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 16px;
+
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      flex-wrap: nowrap;
+      margin-top: 40px;
+    }
+  }
+
+  &__item {
+    background-color: $white;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+
+    @media screen and (min-width: $tablet) {
+      max-width: calc((100% - 24px) / 2);
+    }
+    @media screen and (min-width: $desktop) {
+      max-width: calc((100% - 24px * 2) / 3);
+      padding: 27px 24px;
+    }
+  }
+
+  &__repeater-photo {
+    width: 60px;
+    height: 60px;
+  }
+
+  &__repeater-name {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  &__repeater-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  &__repeater-btn {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    gap: 8px;
+  }
+}
+
+.wcf-section {
+  &__heading {
+    color: $primary-color;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    @media screen and (min-width: $desktop) {
+      display: none;
+    }
+  }
+
+  &__heading-svg {
+    display: none;
+    @media screen and (min-width: $tablet) {
+      display: initial;
+      width: 27.14px;
+      height: 24.29px;
+    }
+  }
+
+  &__heading-desk {
+    display: none;
+    color: $primary-color;
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__img {
+    overflow: hidden;
+    height: 459px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    @media screen and (min-width: $desktop) {
+      min-width: 544px;
+      margin-bottom: 0px;
+    }
+  }
+
+  &__img img {
+    max-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+
+  &__info {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+  }
+
+  &__wrapper {
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 40px;
+    }
+  }
+
+  &__button {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+
+    fill: $white;
+    margin-left: 8px;
+  }
+}
+
+.news-section {
+  background-color: $background;
+  &__heading {
+    color: $primary-color;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  &__button {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 4px;
+  }
+
+  &__arrow-btn {
+    width: 44px;
+    height: 44px;
+    gap: 8px;
+    border-radius: 10px;
+    background-color: $primary-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $white;
+
+      svg {
+        fill: $primary-color;
+      }
+    }
+  }
+
+  &__pagination {
+    display: none;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      width: fit-content;
+      margin-left: auto;
+      gap: 12px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 36px;
+    }
+  }
+  &__swiper {
+    max-width: 1128px;
+    margin: 0 auto;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    background-color: $white;
+    height: 468px;
+    border-radius: $big-br;
+    padding: 16px;
+    overflow: hidden;
+    box-shadow: 0px 1px 12px 0px #0000001f;
+
+    img {
+      object-fit: scale-down;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: $primary-color;
+  }
+
+  &__text {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    overflow: hidden;
+  }
+
+  &__button-all {
+    display: flex;
+    gap: 4px;
+    margin-top: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-top: 34px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+}
+
+.exhibitions-section {
+  &__heading {
+    color: $primary-color;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  &__button {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 4px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    @media screen and (min-width: $tablet) {
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 36px;
+    }
+  }
+
+  &__item {
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      gap: 24px;
+      background-color: #eff8f9;
+      padding: 16px;
+
+      img {
+        max-width: calc(50% - 24px);
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+      @media screen and (min-width: $desktop) {
+        padding: 24px;
+      }
+    }
+  }
+
+  &__name {
+    color: $primary-color;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-top: 12px;
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+
+  &__date {
+    display: flex;
+    color: $red;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1;
+    margin-top: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-top: 0;
+    }
+
+    svg {
+      fill: $red;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    margin-top: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+    svg {
+      fill: $red;
+    }
+  }
+}
+
+.support-section {
+  &__background {
+    width: 100%;
+    height: 471px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: $tablet) {
+      height: 444px;
+    }
+    @media screen and (min-width: $desktop) {
+      height: 775px;
+    }
+  }
+
+  &__wrapper {
+    padding: 16px;
+    background-color: #ffffffb2;
+    @media screen and (min-width: $desktop) {
+      background-color: transparent;
+      max-width: 646px;
+    }
+  }
+
+  &__heading {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+    color: $primary-color;
+    @media screen and (min-width: $tablet) {
+      font-size: 30px;
+    }
+    @media screen and (min-width: $desktop) {
+      font-size: 40px;
+    }
+  }
+
+  &__text {
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    @media screen and (min-width: $desktop) {
+      max-width: 646px;
+      font-size: 20px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+  }
+}
+
+.feedbacks-section {
+  background-color: $background;
+  &__heading {
+    color: $primary-color;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  &__button {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 4px;
+  }
+
+  &__arrow-btn {
+    width: 44px;
+    height: 44px;
+    gap: 8px;
+    border-radius: 10px;
+    background-color: $primary-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $white;
+
+      svg {
+        fill: $primary-color;
+      }
+    }
+  }
+
+  &__pagination {
+    display: none;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      width: fit-content;
+      margin-left: auto;
+      gap: 12px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 36px;
+    }
+  }
+  &__swiper {
+    max-width: 1128px;
+    margin: 0 auto;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    background-color: $white;
+    height: 234px;
+    border-radius: $big-br;
+    padding: 24px;
+    overflow: hidden;
+    box-shadow: 0px 1px 12px 0px #0000001f;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: $primary-color;
+  }
+
+  &__text {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    overflow: hidden;
   }
 }
