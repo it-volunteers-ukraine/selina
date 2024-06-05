@@ -249,11 +249,20 @@ get_header();
             <div class="news-section__swiper swiper">
                 <div class="news-section__list swiper-wrapper">
                     <?php
+                    $counter = 0;
                     $args = array('posts_per_page' => -1, 'post_type' => 'news');
                     $myposts = get_posts($args);
                     foreach ($myposts as $post):
+                        $count = count($myposts);
+                                $counter++;
                         setup_postdata($post); ?>
-                        <div class="swiper-slide news-section__item">
+                            <div class="swiper-slide">
+                                
+                            <div class="news-section__item">
+                                <div class="news-section__category">
+                                    
+                                    <?php the_field('news_category') ?>
+                                </div>
                             <img src="<?php the_field('news_photo') ?>" />
                             <p class="news-section__name">
                                 <?php the_field('news_name') ?>
@@ -270,6 +279,14 @@ get_header();
                                 </svg>
                             </button>
                         </div>
+                        <div class="news-section__counter-wrapper">
+                            <span>
+                        <?php echo $counter; ?>
+                        </span>/<span> 
+                        <?php echo $count; ?>
+                        </span>
+                        </div>
+</div>
                     <?php endforeach;
                     wp_reset_postdata(); ?>
                 </div>
