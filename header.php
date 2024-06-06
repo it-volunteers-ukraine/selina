@@ -185,7 +185,6 @@
                                 ?>
 
 
-
                                 <div class="switch">
                                     <?php foreach ($languages as $lang => $language): ?>
                                         <?php if (!$inputSet && $lang === $current_language): ?>

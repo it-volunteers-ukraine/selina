@@ -2,7 +2,8 @@
 
 
 .header {
-
+  position: absolute;
+  width: 100%;
   // Header top
   .header-top {
     display: none;
@@ -205,16 +206,61 @@
         }
 
         .menu-item {
-          color: $primary-color;
+          padding: 0 5px;
+          position: relative;
 
-          @media screen and (min-width: $tablet) {
-            font-size: 13px;
-            color: white;
+          a {
+            color: $primary-color;
+            text-transform: capitalize;
+            display: block;
+
+            &:hover {
+              text-shadow: 1px 0 0 currentColor;
+            }
+
+            @media screen and (min-width: $tablet) {
+              font-size: 13px;
+              color: white;
+            }
+
+            @media screen and (min-width: $desktop) {
+              font-size: 16px;
+            }
           }
 
-          @media screen and (min-width: $desktop) {
-            font-size: 16px;
+          .sub-menu {
+            width: 240px;
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            border: 1px solid $white;
+            border-radius: 8px;
+            box-shadow: 0 4px 5px 0 rgba(25, 33, 61, 0.05);
+            left: 0;
+            top: 36px;
+            gap: 0;
+            padding: 5px;
+            z-index: 1;
+            background-color: $white;
+
+            .menu-item {
+              padding: 14px 12px;
+
+              a {
+                color: $primary-color;
+                white-space: nowrap;
+              }
+            }
           }
+
+          .active-sub_menu {
+            display: flex;
+          }
+
+          .sub-menu li::after {
+            display: none;
+          }
+
         }
       }
 
@@ -260,6 +306,18 @@
   .header__list li:not(:nth-child(3)):not(:nth-child(5)):not(:nth-child(6)):not(:nth-child(7))::after {
     content: url("../images/ic_round-arrow-left.svg");
     margin-left: 5px;
+    position: absolute;
+
+    @media screen and (min-width: $tablet) {
+      top: -7px;
+      right: -9px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      top: -4px;
+      right: -10px;
+    }
+
   }
 
 
@@ -275,7 +333,7 @@
     padding: 28px 0 0 16px;
     width: 100%;
     left: 0;
-    top: 82px;
+    top: 80px;
   }
 
 
@@ -287,6 +345,16 @@
     }
 
 
+    .header__list-mobile {
+      .menu-item {
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+
+    }
+
     .flex {
       display: flex;
       flex-direction: column;
@@ -295,7 +363,11 @@
         display: flex;
         flex-direction: row;
         margin-bottom: 32px;
-        gap: 11px;
+        gap: 15px;
+
+        img {
+          width: 44px;
+        }
       }
 
     }
@@ -304,6 +376,38 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+      gap: 24px;
+
+      .login-btn {
+        border: 2px solid $primary-color;
+        color: $primary-color;
+        padding: 8px 14px;
+      }
+
+      .switch {
+        width: 86px;
+        padding: 21px 0;
+        border: 2px solid $primary-color;
+
+        input.check-toggle-round-flat + label {
+          height: 48px;
+          width: 86px;
+          top: -2px;
+        }
+
+        span {
+          font-size: 20px;
+          top: 5px;
+        }
+
+        .off {
+          padding-right: 12px;
+        }
+
+        .flag-ua {
+          left: 47px;
+        }
+      }
     }
   }
 
@@ -387,15 +491,17 @@
   }
 
   .flag-ua {
-    background-image: url("../images/ua_flag.svg");
+    background-image: url("../images/ua_flag-2.svg");
     background-repeat: no-repeat;
     left: 29px;
+    background-size: contain;
   }
 
   .flag-en {
-    background-image: url("../images/en_flag.svg");
+    background-image: url("../images/en_flag-2.svg");
     background-repeat: no-repeat;
     background-position: 5px;
+    background-size: contain;
   }
 
   input.check-toggle-round-flat:checked ~ .on {
