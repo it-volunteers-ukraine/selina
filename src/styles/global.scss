@@ -81,10 +81,17 @@
   @extend .button;
   color: $white;
   background-color: $red;
-  &:hover,
-  &:focus {
+  &:hover {
     color: $red;
     background-color: $white;
+  }
+  &:focus {
+    color: $white;
+    background-color: $red-hovered;
+  }
+  &:active {
+    color: $white;
+    background-color: $red-pressed;
   }
 }
 
