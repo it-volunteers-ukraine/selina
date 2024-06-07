@@ -79,7 +79,7 @@ get_header();
             <div class="partners-section__swiper swiper">
                 <div class="partners-section__list swiper-wrapper">
                     <?php
-                    $args = array('posts_per_page' => -1, 'post_type' => 'all_partners', 'category_name' => 'partners');
+                    $args = array('posts_per_page' => -1, 'post_type' => 'all_partners', 'category_name' => 'mainpartners');
                     $myposts = get_posts($args);
                     foreach ($myposts as $post):
                         setup_postdata($post); ?>
@@ -100,7 +100,7 @@ get_header();
         </div>
     </section>
     <section class="section who-section">
-        <div class="container">
+        <div class="container who__container">
             <div class="home-heading-wrapper">
                 <h2 class="who-section__heading section_heading">
                     <svg class="home-heading-svg" width="42" height="60">
@@ -259,17 +259,26 @@ get_header();
                             <div class="swiper-slide">
                                 
                             <div class="news-section__item">
-                                <div class="news-section__category">
-                                    
-                                    <?php the_field('news_category') ?>
+                                <?php 
+                                    $category_detail=get_the_category($post->ID);
+                                    $category_name = $category_detail[0]->cat_name;
+                                    $category_slug = $category_detail[0]->slug;
+
+                                    if($category_name):
+                                ?>
+                                <div class="news-section__category <?php echo $category_slug.'' ?>">
+                                    <?php echo $category_name.'' ?>
                                 </div>
-                            <img src="<?php the_field('news_photo') ?>" />
-                            <p class="news-section__name">
+                                <?php endif; ?>
+                            <div class="news-section__img"><img src="<?php the_field('news_photo') ?>" /></div>
+                            <div class="news-section__content-wrapper">
+                                <p class="news-section__name">
                                 <?php the_field('news_name') ?>
-                            </p>
-                            <p class="news-section__text">
-                                <?php the_field('news_text') ?>
-                            </p>
+                                </p>
+                                <p class="news-section__text">
+                                    <?php the_field('news_text') ?>
+                                </p>
+                            
                             <button class="news-section__button button red_medium_button">
                                 <?php the_field('news_btn'); ?>
                                 <svg class="news-section__button-svg" width="16" height="15">
@@ -278,6 +287,7 @@ get_header();
                                     </use>
                                 </svg>
                             </button>
+                            </div>
                         </div>
                         <div class="news-section__counter-wrapper">
                             <span>
@@ -420,10 +430,23 @@ get_header();
                     foreach ($myposts as $post):
                         setup_postdata($post); ?>
                         <div class="swiper-slide feedbacks-section__item">
+                         
                             
                             <p class="feedbacks-section__name">
                                 <?php the_field('feedback_name') ?>
                             </p>
+                            <div class="feedbacks-section__stars">
+                                <?php
+                                $start_count = (int)get_field('feedback_stars');
+                                $i = 1;
+                                while ($i <= $start_count): ?>
+                                <svg width="20" height="19">
+                                    <use
+                                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-star">
+                                    </use>
+                                </svg>
+                                <?php $i++; endwhile; ?>
+                            </div>
                             <p class="feedbacks-section__text">
                                 <?php the_field('feedback_text') ?>
                             </p>
