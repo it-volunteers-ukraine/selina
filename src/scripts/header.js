@@ -8,6 +8,10 @@ const headerTopMobile = document.getElementById('header-mobile');
 const headerList = document.querySelector('.header__list');
 const itemsList = headerList.querySelectorAll('.menu-item');
 
+// submenu - mobile
+const headerListMobile = document.querySelector('.header__list-mobile');
+const itemsListMobile = headerListMobile.querySelectorAll('.menu-item');
+
 
 burgerBtn.addEventListener('click', () => {
     burgerBtn.classList.toggle('open');
@@ -24,13 +28,20 @@ function redirectToPage(url) {
 
 
 itemsList.forEach(item => {
-    item.addEventListener('click', () => {
-        item.classList.add('active');
-        if (item.classList.contains('active')) {
-            const submenu = item.querySelector('.sub-menu');
-            if (submenu) {
-                submenu.classList.toggle('active-sub_menu');
-            }
+    item.addEventListener('click', (event) => {
+        const subMenu = item.querySelector('.sub-menu');
+        if (subMenu) {
+            subMenu.classList.toggle('active-sub_menu');
+        }
+    })
+})
+
+
+itemsListMobile.forEach(item => {
+    item.addEventListener('click', (event) => {
+        const subMenu = item.querySelector('.sub-menu');
+        if (subMenu) {
+            subMenu.classList.toggle('active-sub_menu-mobile');
         }
     })
 })

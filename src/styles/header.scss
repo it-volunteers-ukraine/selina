@@ -204,8 +204,6 @@
         }
 
         .menu-item {
-          padding: 0 5px;
-          position: relative;
 
           a {
             color: $primary-color;
@@ -227,32 +225,54 @@
           }
 
           .sub-menu {
-            width: 240px;
+            width: 270px;
             display: none;
             flex-direction: column;
             position: absolute;
             border: 1px solid $white;
             border-radius: 8px;
             box-shadow: 0 4px 5px 0 rgba(25, 33, 61, 0.05);
-            left: 0;
-            top: 36px;
+            margin-top: 14px;
             gap: 0;
-            padding: 5px;
+            padding: 6px;
             z-index: 1;
             background-color: $white;
 
             .menu-item {
-              padding: 14px 12px;
+              &:hover {
+                background-color: #cfdedd;
+                border-radius: 6px;
+                height: 41px;
+
+                a {
+                  color: $primary-color;
+                  padding-left: 35px;
+
+                  &:before {
+                    content: '';
+                    background-image: url("../../assets/images/paw-6.svg");
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    height: 17px;
+                    width: 18px;
+                    left: 15px;
+                    transform: translateY(-14%);
+                  }
+                }
+              }
 
               a {
                 color: $primary-color;
+                padding: 14px 16px 14px 10px;
                 white-space: nowrap;
+                line-height: 16px;
               }
             }
           }
 
           .active-sub_menu {
             display: flex;
+            flex-direction: column;
           }
 
           .sub-menu li::after {
@@ -278,7 +298,7 @@
         }
 
         @media screen and (min-width: $desktop) {
-          width: 264px
+          width: 264px;
         }
 
 
@@ -295,25 +315,14 @@
             color: $primary-color;
           }
         }
+
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration {
+          display: none;
+        }
       }
-    }
-
-  }
-
-
-  .header__list li:not(:nth-child(3)):not(:nth-child(5)):not(:nth-child(6)):not(:nth-child(7))::after {
-    content: url("../images/ic_round-arrow-left.svg");
-    margin-left: 5px;
-    position: absolute;
-
-    @media screen and (min-width: $tablet) {
-      top: -7px;
-      right: -9px;
-    }
-
-    @media screen and (min-width: $desktop) {
-      top: -4px;
-      right: -10px;
     }
 
   }
@@ -349,6 +358,22 @@
         font-weight: 800;
         font-size: 20px;
         margin-bottom: 16px;
+
+        a {
+          svg {
+            fill: $primary-color;
+          }
+        }
+
+        .sub-menu {
+          display: none;
+        }
+
+        .active-sub_menu-mobile {
+          display: flex;
+          flex-direction: column;
+          padding: 16px 24px;
+        }
       }
 
     }
