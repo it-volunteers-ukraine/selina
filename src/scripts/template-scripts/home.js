@@ -83,6 +83,41 @@ const newsSwiper = new Swiper(".news-section__swiper", {
     nextEl: ".news-section__arrow-right-btn",
     prevEl: ".news-section__arrow-left-btn",
   },
+  on: {
+    init: (e) => {
+      e.slides.forEach((el) => {
+        const wrapper = el.querySelector(".news-section__content-wrapper");
+        const titleHeight = wrapper
+          .querySelector(".news-section__name")
+          .getBoundingClientRect().height;
+        const buttonHeight = wrapper
+          .querySelector(".news-section__button")
+          .getBoundingClientRect().height;
+        const gaps = 12 * 2;
+        const textLineHeight = 21;
+        const text = wrapper.querySelector(".news-section__text");
+        const textMaxHeight =
+          wrapper.getBoundingClientRect().height -
+          gaps -
+          titleHeight -
+          buttonHeight;
+
+        const maxLines = Math.floor(textMaxHeight / textLineHeight);
+        text.style["-webkit-line-clamp"] = maxLines;
+      });
+    },
+  },
+});
+
+newsSwiper.on("init", (e) => {
+  console.log(e);
+  const newsList = document.querySelector("news-section__list");
+  console.log(newsList);
+  Array.from(newsList ?? []).forEach((el) => {
+    const textField = el.querySelector("news-section__text");
+    const wrapper = el.querySelector("news-section__content-wrapper");
+    console.log({ textField, wrapper });
+  });
 });
 
 const feedbacksSwiper = new Swiper(".feedbacks-section__swiper", {

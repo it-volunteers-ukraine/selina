@@ -26,37 +26,37 @@ get_header();
                             </h2>
                             <div class="list-contacts__contacts-container">
                                 <div class="list-contacts__contacts-link">
-                                    <a class="link" href="<?php the_field('link_contacts'); ?>" target="_blank">
-                                        <div class="list-contacts__link-container">
-                                            <span class="list-contacts__cat-paw"> 
-                                                <svg width="24" height="24"> 
-                                                    <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-paw"></use> 
-                                                </svg> 
-                                            </span> 
+                                    <a href="#contacts-section">    
+                                    <div class="list-contacts__link-container">
+                                            <?php  
+                                                $image = get_field('list-contacts__cat-paw-green'); 
+                                                if( !empty( $image ) ): ?> 
+                                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
+                                                <?php endif;
+                                            ?>
                                             <p class="list-contacts__title"><?php the_field('title_contacts' ); ?></p>
                                         </div>
                                     </a> 
                                 </div>
                                 <div class="list-contacts__socials-link">
-                                    <a class="link" href="<?php the_field('link_socials'); ?>" target="_blank">
+                                    <a href="#socials-section">
                                         <div class="list-contacts__link-container">
-                                            <span class="list-contacts__cat-paw"> 
-                                                <svg width="24" height="24"fill="green" > 
-                                                    <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-paw"></use> 
-                                                </svg> 
-                                            </span> 
+                                            <?php  
+                                                $image = get_field('list-contacts__cat-paw-green'); 
+                                                if( !empty( $image ) ): ?> 
+                                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
+                                                <?php endif;
+                                            ?>
                                             <p class="list-contacts__title"><?php the_field('title_socials' ); ?></p>
                                         </div>
                                     </a> 
                                 </div>
                             </div>
-                            
-
                         </div>
                     </div>
                 </div>
         </section>
-        <section class="section contacts-contacts">
+        <section class="section contacts-contacts" id="contacts-section">
             <div class="container">
                 <div class="contacts-contacts__heading-container">
                     <span class="list-contacts__La_cat"> 
@@ -98,7 +98,7 @@ get_header();
                 </div>
                         
         </section>
-        <section class="section socials-contacts">
+        <section class="section socials-contacts" id="socials-section">
             <div class="container">
                 <div class="socials-contacts__heading-container">
                     <span class="list-contacts__La_cat"> 
@@ -208,6 +208,25 @@ get_header();
             </div>
         </section>
     </main>
+
+    <!-- Script for scroll page to contacts -->
+    <script>
+        function scrollToContacts() {
+            document.getElementById('contacts-link').addEventListener('click', function() {
+            document.querySelector('#contacts-section').scrollIntoView({ behavior: 'smooth' });
+        });
+        }
+    </script>
+
+    <!-- Script for scroll page to socials -->
+    <script>
+        function scrollToContacts() {
+            document.getElementById('socials-link').addEventListener('click', function() {
+            document.querySelector('#socials-section').scrollIntoView({ behavior: 'smooth' });
+        });
+        }
+    </script>
+
     <!-- Script for scroll page to top -->
     <script>
         function scrollFunction() {

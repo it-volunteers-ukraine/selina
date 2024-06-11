@@ -32,7 +32,6 @@
                     </a>
                 </div>
 
-
                 <div class="black-logo">
                     <?php
                     if (has_custom_logo()) {
@@ -40,7 +39,6 @@
                     }
                     ?>
                 </div>
-
                 <div class="wrapper-buttons">
                     <div class="buttons">
                         <a class="button red_medium_button registration-btn"
@@ -70,7 +68,6 @@
 
                     $inputSet = false;
                     ?>
-
 
                     <div class="switch">
                         <?php foreach ($languages as $lang => $language): ?>
@@ -183,8 +180,6 @@
 
                                 $inputSet = false;
                                 ?>
-
-
 
                                 <div class="switch">
                                     <?php foreach ($languages as $lang => $language): ?>
