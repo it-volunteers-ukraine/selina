@@ -1,0 +1,13 @@
+@import "../variables";
+
+.about-us {
+    .club-section {
+        background-color: $background;
+        &__heading {
+           display: flex;
+           align-items: baseline;
+           gap: 8px;
+           margin-bottom: 24px;
+        }
+    }
+}
