@@ -62,6 +62,10 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('contact-form-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/contact-form.css', array('main'));
     }
 
+    if (is_page_template('templates/partners.php')) {
+        wp_enqueue_style('partners-style', get_template_directory_uri() . '/assets/styles/template-styles/partners.css', array('main'));
+    }
+
 }
 
 /** add fonts */

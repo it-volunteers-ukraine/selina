@@ -1,0 +1,232 @@
+@import "../variables";
+
+
+.title-wrapper {
+  margin-bottom: 16px;
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 38px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 47px;
+  }
+
+  .icon {
+    display: none;
+    @media screen and (min-width: $desktop) {
+      display: inline-block;
+    }
+  }
+}
+
+.partners {
+  .image {
+    position: relative;
+    display: none;
+    @media screen and (min-width: $desktop) {
+      display: flex;
+    }
+  }
+
+  .tablet-container {
+    padding: 0 0;
+    @media screen and (min-width: $tablet) {
+      padding: 0 0;
+    }
+
+    .banner {
+      background: $background;
+      padding: 20px 16px;
+      @media screen and (min-width: $tablet) {
+        padding: 30px 32px;
+      }
+      //padding-bottom: 5px;
+      @media screen and (min-width: $desktop) {
+        position: absolute;
+        background: none;
+        top: 200px;
+      }
+
+      .partners-title {
+        @media screen and (min-width: $desktop) {
+          margin-bottom: 20px;
+        }
+      }
+
+      .title {
+        @media screen and (min-width: $desktop) {
+          margin-bottom: 47px;
+        }
+      }
+
+      .sub-titles {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 800;
+        color: $primary-color;
+      }
+
+      .image {
+        display: none;
+      }
+    }
+  }
+
+
+}
+
+.our-friends-clubs {
+  .friends-clubs {
+    margin-bottom: 24px;
+
+    @media screen and (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+
+    .friends-clubs-item {
+      padding: 20px 20px;
+      background-color: #eff8f9;
+      border-radius: $big-br;
+
+      .image {
+        margin-bottom: 20px;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: 800;
+        text-align: center;
+      }
+    }
+  }
+
+  .show-btn {
+    display: flex;
+    gap: 6px;
+    margin: 0 auto;
+
+    @media screen and (min-width: $desktop) {
+      margin: 0;
+    }
+
+  }
+}
+
+
+.laboklin {
+  background-color: $background;
+
+  .title {
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 47px;
+    }
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .image {
+      .rounded-image {
+        border-radius: 10px;
+      }
+
+      .img {
+
+        @media screen and (min-width: $tablet) {
+          width: 344px;
+        }
+
+        @media screen and (min-width: $desktop) {
+          width: 360px;
+        }
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+
+      .description {
+        font-size: 16px;
+        margin-bottom: 40px;
+        font-weight: 500;
+        line-height: 21px;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 19px;
+          line-height: 25px;
+        }
+        @media screen and (min-width: $desktop) {
+          margin-bottom: 19px;
+        }
+      }
+
+      .links {
+        margin-bottom: 32px;
+
+        @media screen and (min-width: $tablet) {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        @media screen and (min-width: $desktop) {
+          gap: 32px;
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 30px;
+        }
+
+        a {
+          color: $primary-color;
+          font-size: 16px;
+        }
+      }
+
+      .laboklin-btn {
+        gap: 10px;
+        display: flex;
+        align-items: flex-end;
+        padding: 10px 26px;
+        border-radius: 10px;
+        @media screen and (min-width: $tablet) {
+          padding: 10px 17px;
+          gap: 7px;
+        }
+        @media screen and (min-width: $tablet) {
+          padding: 10px 13px;
+        }
+      }
+    }
+
+  }
+
+}
