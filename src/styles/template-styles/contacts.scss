@@ -390,7 +390,7 @@
     }
 
     /* -----------Submit-button styling-------- */
-    &__button-wrapper p{  
+    &__button-wrapper p{
         @media screen and (min-width: $desktop) {
             width: 153px;
         }
@@ -410,7 +410,7 @@
             width: 153px;
         }
     }
-
+    
     /*------------------Up-button----------------------*/
     &__up_btn{
         display: none;
@@ -474,3 +474,18 @@
     .form-contacts__button-wrapper { grid-area: 4 / 2 / 5 / 3; margin-right: 0; justify-self: end;}
 }
 
+.form-contacts__button-wrapper p {
+    position: relative; /* Для розміщення псевдоелемента відносно цього елемента */
+}
+
+.form-contacts__button-wrapper p::before {
+    position: relative; /* Для встановлення позиції відносно батьківського елемента */
+    content: url('http://selina-wp/wp-content/uploads/2024/06/paw-white.png');
+    display: inline-block;
+    width: 20px; /* Ширина зображення */
+    height: 20px; /* Висота зображення */
+    margin-right: 8px; /* Відступ праворуч від зображення */
+    vertical-align: middle;
+    top: 30px; /* Опускає зображення на 30 пікселів */
+    left: 250px;
+}

@@ -204,7 +204,6 @@ get_header();
                         <img class="form-contacts__up_btn-icon" src="<?php echo get_template_directory_uri(); ?>/src/images/up_btn.png" alt="up">
                     </button>
                 </div>            
-                
             </div>
         </section>
     </main>
