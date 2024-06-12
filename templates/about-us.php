@@ -22,25 +22,33 @@ get_header();
                 <?php the_field('club-section__heading'); ?>
             </h2>
             <div class="club-section__wrapper">
-                <div class="club-img-1">
-                    <?php 
-                        $image = get_field('club-img-1');
-                        if( !empty( $image ) ): ?>
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
-                    <?php endif; ?>
+                <div class="top">
+                    <div class="club-img-1">
+                        <?php 
+                            $image = get_field('club-img-1');
+                            if( !empty( $image ) ): ?>
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                        <?php endif; ?>
+                    </div>
+                    <div class="club-info-1 text">
+                        <p><?php the_field('club-info-1'); ?></p>
+                    </div>
                 </div>
-                <div class="club-info-1">
-                    <p><?php the_field('club-info-1'); ?></p>
-                </div>
-                <div class="club-img-2">
-                    <?php 
-                        $image = get_field('club-img-2');
-                        if( !empty( $image ) ): ?>
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
-                    <?php endif; ?>
-                </div>
-                <div class="club-info-2">
-                    <p><?php the_field('club-info-2'); ?></p>
+                <div class="bottom">
+                    <div class="club-img-2">
+                        <?php 
+                            $image = get_field('club-img-2');
+                            if( !empty( $image ) ): ?>
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                        <?php endif; ?>
+                    </div>
+                    <div class="club-info-2 text">
+                        <p><?php the_field('club-info-2'); ?></p>
+                        <div class="club-info-bold">
+                            <p><b><?php the_field('club-info-bold-1'); ?></b></p>
+                            <p><b><?php the_field('club-info-bold-2'); ?></b></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
