@@ -3,16 +3,65 @@
 .footer {
     background: $primary-color;
     color: $white;
-    padding-top: 80px;
-    padding-bottom: 80px;
-
+    padding-top: 32px;
+    padding-bottom: 12px;
     &__menu-list-wrapper ul {
+        display: none;
         color: yellow;
+        @media screen and (min-width: $tablet) {
+            display: block;
+          }
+      
+          @media screen and (min-width: $full) {
+            /* Need do this style */
+          }
     }
-    
+    &__socials{
+        margin-bottom: 16px;
+    }
+    &__icons-list{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__icon{
+        width: 44px;
+        height: 44px;
+    }
+    &__contacts-icon{
+        width: 44px;
+        height: 44px;
+    }
+    &__mail,
+    &__phone,
+    &__location{
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        line-height: 131%;
+    }
+    &__line{
+        border: none;
+        height: 1px;
+        background-color: $white;
+        margin: 8px 0 8px;
+    }
+    &__politic-copy{
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        
+    }
 }
 
 .menu-item li {
+    display: none;
     color: black;
+    @media screen and (min-width: $tablet) {
+        display: block;
+      }
+  
+      @media screen and (min-width: $full) {
+        /* Need do this style */
+      }
 }
 
