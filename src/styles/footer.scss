@@ -5,11 +5,24 @@
     color: $white;
     padding-top: 32px;
     padding-bottom: 12px;
+    @media screen and (min-width: $tablet) {
+        padding-top: 0;
+      }
+    &__menu-list-wrapper {
+        @media screen and (min-width: $tablet) {
+            padding: 16px 0 16px;
+        }
+    }
     &__menu-list-wrapper ul {
         display: none;
-        color: yellow;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 244%;
         @media screen and (min-width: $tablet) {
-            display: block;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            column-gap: 32px;
           }
       
           @media screen and (min-width: $full) {
@@ -18,6 +31,10 @@
     }
     &__socials{
         margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            width: 316px;
+            margin: 20px auto;
+        }
     }
     &__icons-list{
         display: flex;
@@ -26,6 +43,19 @@
     &__icon{
         width: 44px;
         height: 44px;
+    }
+    &__contacts{
+        @media screen and (min-width: $tablet) {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+          }
+      
+          @media screen and (min-width: $full) {
+            /* Need do this style */
+          }
     }
     &__contacts-icon{
         width: 44px;
@@ -38,7 +68,12 @@
         align-items: center;
         font-size: 16px;
         line-height: 131%;
+        @media screen and (min-width: $tablet) {
+            flex-direction: column;
+            width: 218px;
+          }
     }
+
     &__line{
         border: none;
         height: 1px;
@@ -49,7 +84,7 @@
         display: flex;
         justify-content: space-between;
         font-size: 10px;
-        
+        padding-top: 8px;
     }
 }
 
@@ -65,3 +100,45 @@
       }
 }
 
+.sub-menu{
+    @media screen and (min-width: $tablet) {
+        display: none !important;
+    }
+  
+    @media screen and (min-width: $full) {
+        display: block !important;
+    }
+}
+
+/* center p tsisyk street */
+#revell {
+    text-align: center;
+}
+
+/* changed order of sections 1&2 on 768px*/
+.container {
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer__socials {
+        order: 1;
+    }
+
+    .footer__menu-list-wrapper {
+        order: 2; 
+    }
+
+    .footer__contacts {
+        order: 3;
+    }
+
+    .footer__line {
+        order: 4; 
+    }
+
+    .footer__politic-copy {
+        order: 5; 
+    }
+}

@@ -71,13 +71,13 @@
             <div class="footer__location">
                 <div class="footer__contacts-icon">
                     <?php  
-                    $image = get_field('form-contacts__location-icon', 'option'); 
+                    $image = get_field('footer-contacts__location-icon', 'option'); 
                     if( !empty( $image ) ): ?> 
                         <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
                     <?php endif; ?>
                 </div>
-                <div class="form-contacts__location-address">
-                    <p><?php the_field('form-contacts__location-address', 'option'); ?></p>
+                <div class="footer-contacts__location-address">
+                    <p id="revell"><?php the_field('footer-contacts__location-address', 'option'); ?></p>
                 </div>
             </div>
         </div>
