@@ -25,9 +25,15 @@
             column-gap: 32px;
           }
       
-          @media screen and (min-width: $full) {
-            /* Need do this style */
+          @media screen and (min-width: $desktop) {
+            display: block;
           }
+    }
+    &__logo{
+        display: none;
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
     }
     &__socials{
         margin-bottom: 16px;
@@ -53,8 +59,8 @@
             padding-bottom: 8px;
           }
       
-          @media screen and (min-width: $full) {
-            /* Need do this style */
+          @media screen and (min-width: $desktop) {
+            flex-direction: column;
           }
     }
     &__contacts-icon{
@@ -71,7 +77,10 @@
         @media screen and (min-width: $tablet) {
             flex-direction: column;
             width: 218px;
-          }
+        }
+        @media screen and (min-width: $desktop) {
+        flex-direction: row;
+        }
     }
 
     &__line{
@@ -95,7 +104,7 @@
         display: block;
       }
   
-      @media screen and (min-width: $full) {
+      @media screen and (min-width: $desktop) {
         /* Need do this style */
       }
 }
@@ -105,7 +114,7 @@
         display: none !important;
     }
   
-    @media screen and (min-width: $full) {
+    @media screen and (min-width: $desktop) {
         display: block !important;
     }
 }
@@ -140,5 +149,49 @@
 
     .footer__politic-copy {
         order: 5; 
+    }
+
+    @media screen and (min-width: $desktop) {
+        display: block;
+        
+    }
+}
+
+.footer-container {
+    @media screen and (min-width: $desktop) {
+        display: grid;
+        grid-template-columns: 1fr 227px;
+        grid-template-areas: 
+        "menu logo"
+        "menu socials"
+        "menu contacts"
+        "line line"
+        "politic-copy politic-copy";
+    }
+}
+
+.footer {
+    &__menu-list-wrapper {
+        grid-area: menu;
+    }
+
+    &__logo {
+        grid-area: logo;
+    }
+    
+    &__socials {
+        grid-area: socials;
+    }
+    
+    &__contacts {
+        grid-area: contacts;
+    }
+    
+    &__line {
+        grid-area: line;
+    }
+    
+    &__politic-copy {
+        grid-area: politic-copy;
     }
 }

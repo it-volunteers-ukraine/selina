@@ -1,5 +1,5 @@
 <footer id="footer" class="footer">
-    <div class="container">
+    <div class="container footer-container">
         <!-- Menu -->
         <div class="footer__menu-list-wrapper">
             <?php $menu = wp_nav_menu( [
@@ -18,24 +18,32 @@
 
             <?php endif; ?>    
         </div>
+        <!-- Logo-Selina -->
+        <div class="footer__logo">
+                    <?php
+                    $image = get_field('footer__logo', 'option'); 
+                    if( !empty( $image ) ): ?> 
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
+                    <?php endif; ?>
+                </div>
         <!-- Social-icons -->
         <div class="footer__socials">
             <div class="footer__icons-container">
                 <?php  
-                    $social_icons = get_field('social_media'); 
+                    $social_icons = get_field('footer__socials', 'option'); 
                     if ($social_icons) : 
                 ?> 
                 <ul id="" class="footer__icons-list"> 
                     <?php foreach($social_icons as $social_icon) : 
-                        $link = $social_icon['social_link'];
-                        $image = $social_icon['social_icon']; 
+                        $link = $social_icon['footer__socials-link'];
+                        $image = $social_icon['footer__socials-image']; 
                     ?> 
                     <li class="footer__icon"> 
                         <a href="<?php echo $link; ?>"> 
                             <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"> 
                         </a> 
                     </li> 
-                    <? endforeach; ?> 
+                    <?php endforeach; ?> 
                 </ul> 
                 <?php endif; ?> 
             </div>
