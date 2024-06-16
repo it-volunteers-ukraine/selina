@@ -12,25 +12,37 @@
         @media screen and (min-width: $tablet) {
             padding: 16px 0 16px;
         }
+        @media screen and (min-width: $desktop) {
+            padding: 0;
+        }
     }
     &__menu-list-wrapper ul {
         display: none;
-        font-weight: 800;
-        font-size: 18px;
-        line-height: 244%;
         @media screen and (min-width: $tablet) {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             column-gap: 32px;
           }
-      
-          @media screen and (min-width: $desktop) {
-            display: block;
-          }
+    &__menu-list-wrapper ul li a {
+        font-weight: 800;
+        font-size: 21px;
+        line-height: 119%;
+    }
+    /* Grid for menu at 1440px */
+        @media screen and (min-width: $desktop) {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 335px;
+            row-gap: 24px;
+            column-gap: 32px;
+            justify-content: flex-start;
+        }
     }
     &__logo{
         display: none;
+        margin-bottom: -35px;
         @media screen and (min-width: $desktop) {
             display: block;
         }
@@ -41,6 +53,10 @@
             width: 316px;
             margin: 20px auto;
         }
+        @media screen and (min-width: $desktop) {
+            width: 227px;
+            margin: 0 0 -75px;
+        }
     }
     &__icons-list{
         display: flex;
@@ -49,6 +65,10 @@
     &__icon{
         width: 44px;
         height: 44px;
+        @media screen and (min-width: $desktop) {
+            width: 28px;
+            height: 28px;
+        }
     }
     &__contacts{
         @media screen and (min-width: $tablet) {
@@ -61,11 +81,18 @@
       
           @media screen and (min-width: $desktop) {
             flex-direction: column;
+            justify-content: flex-start;
+            margin: 0;
+            padding: 0;
           }
     }
     &__contacts-icon{
         width: 44px;
         height: 44px;
+        @media screen and (min-width: $desktop) {
+            width: 28px;
+            height: 28px;
+        }
     }
     &__mail,
     &__phone,
@@ -79,7 +106,7 @@
             width: 218px;
         }
         @media screen and (min-width: $desktop) {
-        flex-direction: row;
+            flex-direction: row;
         }
     }
 
@@ -97,9 +124,15 @@
     }
 }
 
-.menu-item li {
+.menu-item-custom{
+    margin: 8px 0 8px;
+}
+
+.menu-item li a {
     display: none;
-    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 131%;
     @media screen and (min-width: $tablet) {
         display: block;
       }
@@ -110,6 +143,7 @@
 }
 
 .sub-menu{
+    height: fit-content !important;
     @media screen and (min-width: $tablet) {
         display: none !important;
     }
