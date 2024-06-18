@@ -1,4 +1,11 @@
 <footer id="footer" class="footer">
+
+    <div class="up_btn-container container">
+        <button type="button" class="up_btn" onclick="topFunction()" id="myBtn" title="Go to top">
+            <img class="up_btn-icon" src="<?php echo get_template_directory_uri(); ?>/src/images/up_btn.png" alt="up">
+        </button>
+    </div>
+
     <div class="container footer-container">
         <!-- Menu -->
         <div class="footer__menu-list-wrapper">

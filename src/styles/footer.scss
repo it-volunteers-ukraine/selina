@@ -229,3 +229,31 @@
         grid-area: politic-copy;
     }
 }
+
+/*------------------Up-button----------------------*/
+.up_btn {
+    display: none;
+    position: fixed;
+    bottom: 280px;
+    right: 150px;
+    z-index: 1000;
+    background-color: transparent;
+    cursor: pointer;
+    @media screen and (min-width: $tablet) {
+        display: block;
+        bottom: 373px;
+        right: 16px;
+      }
+    @media screen and (min-width: $desktop) {
+      display: block;
+      right: 184px;
+    }
+  }
+  .up_btn-icon {
+    width: 44px;
+    height: 44px;
+    @media screen and (min-width: $desktop) {
+        width: 56px;
+        height: 56px;
+    }
+  }

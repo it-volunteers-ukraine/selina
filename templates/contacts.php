@@ -135,37 +135,4 @@ get_header();
             <?php get_template_part( 'template-parts/contact-form' ); ?>
     </main>
 
-    <!-- Script for scroll page to contacts -->
-    <script>
-        function scrollToContacts() {
-            document.getElementById('contacts-link').addEventListener('click', function() {
-            document.querySelector('#contacts-section').scrollIntoView({ behavior: 'smooth' });
-        });
-        }
-    </script>
-
-    <!-- Script for scroll page to socials -->
-    <script>
-        function scrollToContacts() {
-            document.getElementById('socials-link').addEventListener('click', function() {
-            document.querySelector('#socials-section').scrollIntoView({ behavior: 'smooth' });
-        });
-        }
-    </script>
-
-    <!-- Script for scroll page to top -->
-    <script>
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("myBtn").style.display = "block";
-            } else {
-                document.getElementById("myBtn").style.display = "none";
-            }
-        }
-
-        function topFunction() {
-            document.body.scrollTop = 0; 
-            document.documentElement.scrollTop = 0; 
-        }
-    </script>
 <?php get_footer(); ?>
