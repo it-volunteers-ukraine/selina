@@ -92,7 +92,7 @@
                     <?php endif; ?>
                 </div>
                 <div class="footer-contacts__location-address">
-                    <p id="revell"><?php the_field('footer-contacts__location-address', 'option'); ?></p>
+                    <p id="footer-address"><?php the_field('footer-contacts__location-address', 'option'); ?></p>
                 </div>
             </div>
         </div>
