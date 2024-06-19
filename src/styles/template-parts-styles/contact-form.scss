@@ -224,27 +224,6 @@
       width: 153px;
     }
   }
-<<<<<<< HEAD
-=======
-
-  /*------------------Up-button----------------------*/
-  &__up_btn {
-    display: none;
-    position: fixed;
-    bottom: 16px;
-    right: 150px;
-    z-index: 1000;
-    background-color: transparent;
-    cursor: pointer;
-    @media screen and (min-width: $desktop) {
-      display: block;
-    }
-  }
-  &__up_btn-icon {
-    width: 56px;
-    height: 56px;
-  }
->>>>>>> e7c5b05084ea21efcdacc1a01f8fad76582bf287
 }
 
 /* Push checkbox to the left side */
