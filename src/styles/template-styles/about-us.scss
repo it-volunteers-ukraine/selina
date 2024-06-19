@@ -15,7 +15,7 @@
                 gap: 12px;
                 margin-bottom: 40px; 
             }
-            .club-heading-svg {
+            .heading-svg {
                 display: none;
                 @media screen and (min-width: $tablet) {
                     display: initial;
@@ -130,5 +130,30 @@
                 }
             }    
         }
+    }
+    .map-section {
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        &__wrapper {
+            position: relative;
+            .map-img {
+                max-width: 1296px; 
+                img {
+                    width: 100%;
+                }
+            }
+            .map-img-capture {
+                position: absolute;
+                max-width: 223px;
+                top: 550px;
+                left: 100px;
+                z-index: 1;
+                img {
+                    width: 100%;
+                }
+            }
+        } 
     }
 }
