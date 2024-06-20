@@ -1,0 +1,66 @@
+@import "../variables";
+
+.join-us-section {
+  background-color: $background;
+  padding-bottom: 0;
+
+  &__heading {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.1;
+    text-align: center;
+    color: #0a142f;
+
+    @media screen and (min-width: $tablet) {
+      text-align: left;
+      width: 407px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 845px;
+    }
+  }
+
+  &__btn {
+    margin: 24px auto 0 auto;
+
+    @media screen and (min-width: $tablet) {
+      margin: 24px 0 0 0;
+    }
+  }
+}
+
+.green-block {
+  margin-top: 165px;
+  background-color: $primary-color;
+  height: 72px;
+  position: relative;
+  @media screen and (min-width: $tablet) {
+    margin-top: 60px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-top: 149px;
+  }
+}
+
+.cat-abs {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media screen and (min-width: $tablet) {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+
+  img {
+    width: 376px;
+    height: 217px;
+    @media screen and (min-width: $tablet) {
+      width: 484px;
+      height: 280px;
+    }
+    @media screen and (min-width: $desktop) {
+    }
+  }
+}

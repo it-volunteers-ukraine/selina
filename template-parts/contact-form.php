@@ -63,12 +63,6 @@
                     <div class="form-contacts__form">
                         <?php echo do_shortcode ( '[contact-form-7 id="3fcb82d" title="Контактна форма 1"]' ) ?>
                     </div>
-                </div>
-
-                <div class="form-contacts__up_btn-container">
-                    <button type="button" class="form-contacts__up_btn" onclick="topFunction()" id="myBtn" title="Go to top">
-                        <img class="form-contacts__up_btn-icon" src="<?php echo get_template_directory_uri(); ?>/src/images/up_btn.png" alt="up">
-                    </button>
                 </div>            
                 
             </div>
