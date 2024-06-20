@@ -19,9 +19,7 @@ const firstSectionSwiper = new Swiper(".first__container", {
     bulletActiveClass: "paw-pagination-bullet-active",
     renderBullet: function (index, className) {
       return `
-      <svg class="first-section__paw-svg-${
-        index + 1
-      } paw-pagination-bullet" width="11.53" height="14.44">
+      <svg class="first-section__paw-svg-${index + 1} paw-pagination-bullet">
       <use href="${theme_directory}/assets/images/sprite.svg#icon-paw${
         index + 2
       }"></use>
@@ -118,30 +116,4 @@ newsSwiper.on("init", (e) => {
     const wrapper = el.querySelector("news-section__content-wrapper");
     console.log({ textField, wrapper });
   });
-});
-
-const feedbacksSwiper = new Swiper(".feedbacks-section__swiper", {
-  effect: "slide",
-  loop: true,
-  slidesPerView: 1,
-  spaceBetween: 20,
-  breakpoints: {
-    768: {
-      slidesPerView: 2,
-    },
-    1440: {
-      slidesPerView: 3,
-    },
-  },
-  direction: "horizontal",
-  preloadImages: false,
-  lazy: {
-    loadOnTransitionStart: true,
-    loadPrevNext: true,
-  },
-  lazyPreloadPrevNext: 1,
-  navigation: {
-    nextEl: ".feedbacks-section__arrow-right-btn",
-    prevEl: ".feedbacks-section__arrow-left-btn",
-  },
 });
