@@ -79,8 +79,9 @@ function wp_it_volunteers_scripts()
 
     if (is_page_template('templates/partners.php')) {
         wp_enqueue_style('partners-style', get_template_directory_uri() . '/assets/styles/template-styles/partners.css', array('main'));
+        wp_enqueue_script('partners-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
     }
-    
+
     if (is_singular() && locate_template('template-parts/feedbacks.php')) {
         wp_enqueue_style('feedbacks-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/feedbacks.css', array('main'));
          wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
@@ -166,11 +167,13 @@ if (function_exists('acf_add_options_page')) {
     ));
 }
 
-function loadDirectory() { ?>
-<script type="text/javascript">
-    var theme_directory = "<?php echo get_template_directory_uri() ?>";
-</script> 
-<?php } 
+function loadDirectory()
+{ ?>
+    <script type="text/javascript">
+        var theme_directory = "<?php echo get_template_directory_uri() ?>";
+    </script>
+<?php }
+
 add_action('wp_head', 'loadDirectory');
 
 
@@ -186,57 +189,82 @@ function find_replace_my_fancy_svg( $items, $args ) {
 }
 add_filter( 'wp_nav_menu_items', 'find_replace_my_fancy_svg', 10, 2 );
 
-/*** AJAX breeders */
-add_action('wp_ajax_load_breeders', 'load_breeders');
-add_action('wp_ajax_nopriv_load_breeders', 'load_breeders');
 
-function load_breeders() {
-    // Перевірка nonce
-  if (!isset($_POST["nonce"]) || !wp_verify_nonce($_POST["nonce"], "breeders_nonce")) {
-    exit;
-  }
-  
-  // Отримання параметрів з AJAX-запиту
-  $page = $_POST['page'];
-  $width = $_POST['width'];
-  
-  // Визначення кількості постів на сторінку залежно від ширини
-  $number = get_breeders_per_page($width);
+function init_load_more_posts()
+{
 
-  // Отримання загальної кількості постів та кількості сторінок
-  $total_posts = wp_count_posts('breeders')->publish;
-  $total_pages = ceil($total_posts / $number);
+    wp_enqueue_script('jquery');
+    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-scripts/custom.js', array('jquery'), '1.0', true);
 
-  // Побудова запиту для отримання постів
-  $args = array(
-    'post_type' => 'breeders',
-    'posts_per_page' => $number,
-    'orderby' => 'modified',
-    'paged' => $page,
-    'post_status' => 'publish'
-  );
 
-  $query = new WP_Query($args);
-  ob_start();
-  if ($query->have_posts()) :
-    while ($query->have_posts()) : $query->the_post(); ?>
-<?php get_template_part('template-parts/one-card-breeder'); ?>
-<?php endwhile;
-  endif;
+    /* Localize the script with the ajaxurl */
+    wp_localize_script('custom-scripts', 'my_ajax', array(
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
 
-  $html = ob_get_clean();
-  wp_reset_postdata();
-
-  // Відправка відповіді JSON з HTML та кількістю сторінок
-  wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
-  wp_die();
+    wp_enqueue_script('custom-scripts');
 }
 
-// Визначення кількості постів на сторінку залежно від ширини
-function get_breeders_per_page($width) {
-      if ($width > 767.98) {
-    return 12;
-  } else {
-    return 6;
-  }
+add_action('wp_enqueue_scripts', 'init_load_more_posts');
+
+
+function load_more_posts(){
+
+    $page = $_POST['page'];
+    $width = $_POST['width'];
+
+    $number = get_posts_per_page($width);
+    $total_posts = wp_count_posts()->publish;
+    $total_pages = ceil($total_posts / $number);
+
+    $args = array(
+        'posts_per_page' => $number,
+        'order' => 'ASC',
+        'paged' => $page,
+    );
+
+
+    $query = new WP_Query($args);
+
+    ob_start();
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post(); ?>
+            <div class="friends-clubs-item">
+                <div class="flip-card friends-flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front flip-card-frame">
+                            <img class="image" src="<?php the_field('image'); ?>" alt="">
+                            <h2 class="title"><?php the_title(); ?></h2>
+                        </div>
+                        <div class="flip-card-back">
+                            <div>Test</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        $html = ob_get_clean();
+        wp_reset_postdata();
+    }
+    wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
+    wp_die();
+}
+
+add_action('wp_ajax_load_more_posts', 'load_more_posts');
+add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
+
+
+function get_posts_per_page($width){
+    if ($width > 1349.98) {
+        return 8;
+    } elseif ($width > 800) {
+        return 8;
+    } else if ($width === 768) {
+        return 9;
+    } else {
+        return 1;
+    }
 }
