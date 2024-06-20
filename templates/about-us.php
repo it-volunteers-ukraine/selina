@@ -53,9 +53,23 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="map-section section" id="about-map">
+    <section class="map-section section" id="about-map" style="background-image: url(<?php the_field('bg-img-ukraine-map') ?>);">
         <div class="container">
-
+            <h2 class="map-section__heading section_heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('map-section__heading'); ?>
+            </h2>
+            <div class="map-section__wrapper">
+                <div class="map-img">
+                    <img src="<?php the_field('map-img') ?>" />
+                </div>
+                <div class="map-img-capture">
+                    <img src="<?php the_field('map-img-capture') ?>" />
+                </div>
+            </div>
         </div>
     </section>
     <section class="management-section section" id="about-management">
@@ -74,3 +88,5 @@ get_header();
         </div>
     </section>
 </main>
+
+<?php get_footer(); ?>
