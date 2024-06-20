@@ -54,6 +54,21 @@ function wp_it_volunteers_scripts()
         wp_enqueue_script( 'about-us-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/about-us.js', array(), false, true );
     }
 
+    if (is_page_template('templates/breeders.php')) {
+        wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
+        wp_enqueue_script('breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/breeders.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
+        wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
+        wp_enqueue_script('breeders-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), false, true);
+        wp_enqueue_script('breeders-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_style('slick-style', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css', array('main'));
+        wp_enqueue_style('breeders-style', get_template_directory_uri() . '/assets/styles/template-styles/breeders.css', array('main'));
+              wp_localize_script('breeders-scripts', 'myAjax', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce'   => wp_create_nonce('breeders_nonce'),
+          ));
+    }
+
     if (is_singular() && locate_template('template-parts/loader.php')) {
         wp_enqueue_style('loader-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/loader.css', array('main'));
     }
@@ -64,7 +79,26 @@ function wp_it_volunteers_scripts()
 
     if (is_page_template('templates/partners.php')) {
         wp_enqueue_style('partners-style', get_template_directory_uri() . '/assets/styles/template-styles/partners.css', array('main'));
+        wp_enqueue_script('partners-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
     }
+
+    if (is_singular() && locate_template('template-parts/feedbacks.php')) {
+        wp_enqueue_style('feedbacks-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/feedbacks.css', array('main'));
+         wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
+        wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
+    }
+
+    if (is_singular() && locate_template('template-parts/join-us.php')) {
+        wp_enqueue_style('join-us-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/join-us.css', array('main'));
+        wp_enqueue_script('join-us-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/join-us.js', array('touch-swipe-scripts'), false, true);
+    }
+
+    if (is_singular() && locate_template('template-parts/one-card-breeder.php')) {
+        wp_enqueue_style('one-card-breeder-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-breeder.css', array('main'));
+        wp_enqueue_script('one-card-breeder-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/one-card-breeder.js', array('touch-swipe-scripts'), false, true);
+    }
+
 
 }
 
@@ -133,11 +167,13 @@ if (function_exists('acf_add_options_page')) {
     ));
 }
 
-function loadDirectory() { ?>
-<script type="text/javascript">
-    var theme_directory = "<?php echo get_template_directory_uri() ?>";
-</script> 
-<?php } 
+function loadDirectory()
+{ ?>
+    <script type="text/javascript">
+        var theme_directory = "<?php echo get_template_directory_uri() ?>";
+    </script>
+<?php }
+
 add_action('wp_head', 'loadDirectory');
 
 
@@ -152,3 +188,83 @@ function find_replace_my_fancy_svg( $items, $args ) {
     return $items;
 }
 add_filter( 'wp_nav_menu_items', 'find_replace_my_fancy_svg', 10, 2 );
+
+
+function init_load_more_posts()
+{
+
+    wp_enqueue_script('jquery');
+    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-scripts/custom.js', array('jquery'), '1.0', true);
+
+
+    /* Localize the script with the ajaxurl */
+    wp_localize_script('custom-scripts', 'my_ajax', array(
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
+
+    wp_enqueue_script('custom-scripts');
+}
+
+add_action('wp_enqueue_scripts', 'init_load_more_posts');
+
+
+function load_more_posts(){
+
+    $page = $_POST['page'];
+    $width = $_POST['width'];
+
+    $number = get_posts_per_page($width);
+    $total_posts = wp_count_posts()->publish;
+    $total_pages = ceil($total_posts / $number);
+
+    $args = array(
+        'posts_per_page' => $number,
+        'order' => 'ASC',
+        'paged' => $page,
+    );
+
+
+    $query = new WP_Query($args);
+
+    ob_start();
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post(); ?>
+            <div class="friends-clubs-item">
+                <div class="flip-card friends-flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front flip-card-frame">
+                            <img class="image" src="<?php the_field('image'); ?>" alt="">
+                            <h2 class="title"><?php the_title(); ?></h2>
+                        </div>
+                        <div class="flip-card-back">
+                            <div>Test</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        $html = ob_get_clean();
+        wp_reset_postdata();
+    }
+    wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
+    wp_die();
+}
+
+add_action('wp_ajax_load_more_posts', 'load_more_posts');
+add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
+
+
+function get_posts_per_page($width){
+    if ($width > 1349.98) {
+        return 8;
+    } elseif ($width > 800) {
+        return 8;
+    } else if ($width === 768) {
+        return 9;
+    } else {
+        return 1;
+    }
+}

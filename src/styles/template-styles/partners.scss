@@ -43,7 +43,8 @@
       @media screen and (min-width: $desktop) {
         position: absolute;
         background: none;
-        top: 200px;
+        top: 240px;
+        padding: 0;
       }
 
       .partners-title {
@@ -73,13 +74,40 @@
       }
     }
   }
-
-
 }
+
+.our-partners {
+  .our-partners-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 72px;
+
+    .our-partners-item {
+
+
+      img {
+        color: $primary-color;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 900;
+        margin: 0 auto;
+        border-radius: 16px;
+      }
+
+
+    }
+
+  }
+}
+
 
 .our-friends-clubs {
   .friends-clubs {
     margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
 
     @media screen and (min-width: $tablet) {
       display: grid;
@@ -97,11 +125,9 @@
 
 
     .friends-clubs-item {
-      padding: 20px 20px;
-      background-color: #eff8f9;
-      border-radius: $big-br;
 
       .image {
+        border-radius: 5px;
         margin-bottom: 20px;
       }
 
@@ -228,5 +254,131 @@
     }
 
   }
+}
 
+
+.our-friends-photographs {
+  .title {
+    text-align: center;
+
+    @media screen and (min-width: $desktop) {
+      text-align: left;
+    }
+  }
+
+  .photographs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+
+    @media screen and (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      margin-bottom: 37px;
+    }
+
+
+    .photographs-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 218px;
+      height: 287px;
+      background-color: $white;
+      border-radius: 10px;
+      box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+      padding: 20px;
+      gap: 12px;
+
+      .full-name {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+
+  .show-btn {
+    display: flex;
+    gap: 6px;
+  }
+}
+
+
+.flip-animations {
+  // flip card
+  .flip-card {
+    position: relative;
+    width: 264px;
+    height: 348px;
+
+    .flip-card-inner {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .5s;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      .flip-card-front, .flip-card-back {
+        backface-visibility: hidden;
+        border-radius: 16px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+
+      .flip-card-back {
+        transform: rotateY(180deg);
+
+        .link {
+          color: $primary-color;
+          font-size: 16px;
+          font-weight: 800;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+
+        .icon-paw {
+          color: #82aeb7;
+        }
+      }
+
+    }
+  }
+
+  .flip-card {
+    &:hover {
+      .flip-card-inner {
+        cursor: pointer;
+        transform: rotateY(180deg)
+      }
+    }
+  }
+}
+
+.flip-card-frame {
+  padding: 20px;
+  background-color: #eff8f9;
+}
+
+#flip-card-partners {
+  width: 168px;
+  height: 168px;
 }
