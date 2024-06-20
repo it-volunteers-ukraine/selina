@@ -3,12 +3,6 @@
 .about-us {
     .club-section {
         background-color: $background;
-        .container {
-            @media screen and (min-width: 1177px) {
-                max-width: 1128px;
-                padding: 0;
-              }
-        }
         &__heading {
             margin-bottom: 16px;
             @media screen and (min-width: $tablet){
@@ -45,6 +39,8 @@
                 grid-template-columns: 552.5px 552.5px;
                 grid-template-rows: auto auto;
                 gap: 24px;
+                width: 1128px;
+                margin: 0 auto;
             }
             .top, .bottom {
                 display: grid;
