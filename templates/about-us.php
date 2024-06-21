@@ -15,7 +15,7 @@ get_header();
     <section class="club-section section" id="about-club">
         <div class="container">
             <h2 class="club-section__heading section_heading">
-                <svg class="club-heading-svg" width="29" height="28">
+                <svg class="heading-svg" width="29" height="28">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                     </use>
                 </svg>
@@ -53,7 +53,14 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="map-section section" id="about-map" style="background-image: url(<?php the_field('bg-img-ukraine-map') ?>);">
+    <section class="map-section section" id="about-map"> 
+        <style>
+            @media screen and (min-width: 768px) {
+                .map-section {
+                background-image: url("<?php the_field('bg-img-ukraine-map') ?>"); 
+                }
+            }
+        </style>   
         <div class="container">
             <h2 class="map-section__heading section_heading">
                 <svg class="heading-svg" width="29" height="28">
@@ -62,13 +69,26 @@ get_header();
                 </svg>
                 <?php the_field('map-section__heading'); ?>
             </h2>
-            <div class="map-section__wrapper">
+            <div class="map-section__small-wrapper">
+                <div class="map-section__description text">
+                    <?php the_field('map-section__description'); ?>
+                </div> 
+                <button class="map-section__button button red_medium_button">
+                    <a href="<?php echo esc_attr( get_field('map-section__link') ); ?>">
+                        <?php the_field('map-section__btn'); ?>
+                    </a> 
+                    <svg class="map-section__button-svg" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="map-section__big-wrapper">
                 <div class="map-img">
                     <img src="<?php the_field('map-img') ?>" />
-                </div>
-                <div class="map-img-capture">
-                    <img src="<?php the_field('map-img-capture') ?>" />
-                </div>
+                    <div class="map-img-capture">
+                        <img src="<?php the_field('map-img-capture') ?>" />
+                    </div>
+                </div> 
             </div>
         </div>
     </section>

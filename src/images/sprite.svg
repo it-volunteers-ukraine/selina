@@ -10,7 +10,7 @@
 <path fill="none" stroke="#045c6f" style="stroke: var(--color2, #045c6f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.7143" d="M3.070 28.932l25.86-25.86M28.93 3.072v19.395M28.93 3.072h-19.395"></path>
 </symbol>
 <symbol id="icon-google" viewBox="0 0 37 32">
-<path fill="#045c6f" style="fill: var(--color2, #045c6f)" d="M11.048 2.526l-11.048 19.368 5.777 10.105 11.032-19.368zM14.45 21.895l-5.777 10.105h22.097l5.777-10.105zM35.587 20.21l-11.554-20.21h-11.537l11.554 20.21h11.537z"></path>
+<path fill="currentColor" d="M11.048 2.526l-11.048 19.368 5.777 10.105 11.032-19.368zM14.45 21.895l-5.777 10.105h22.097l5.777-10.105zM35.587 20.21l-11.554-20.21h-11.537l11.554 20.21h11.537z"></path>
 </symbol>
 <symbol id="icon-home" viewBox="0 0 32 32">
 <path fill="none" stroke="#045c6f" style="stroke: var(--color2, #045c6f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M2.5 16l3-3M5.5 13l10.5-10.5 10.5 10.5M5.5 13v15c0 0.828 0.672 1.5 1.5 1.5h4.5M26.5 13l3 3M26.5 13v15c0 0.828-0.672 1.5-1.5 1.5h-4.5M11.5 29.5c0.828 0 1.5-0.672 1.5-1.5v-6c0-0.828 0.672-1.5 1.5-1.5h3c0.828 0 1.5 0.672 1.5 1.5v6c0 0.828 0.672 1.5 1.5 1.5M11.5 29.5h9"></path>
