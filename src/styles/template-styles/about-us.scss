@@ -1,6 +1,77 @@
 @import "../variables";
 
 .about-us {
+   .upper-section {
+        background-color:  $light-green;
+        padding: 20px 0;
+        @media screen and (min-width: $tablet) {
+            padding: 30px 0;
+        }
+        @media screen and (min-width: $full) {
+            background-color: none;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 118.5px 0;
+        }
+        &__banner {
+            @media screen and (min-width: $full) {
+                width: 823px;
+            }
+        }
+        &__heading {
+            font-size: 30px;
+            margin-bottom: 10px;
+            @media screen and (min-width: $tablet) {
+                font-size: 45px;
+                margin-bottom: 14px;
+            }
+            @media screen and (min-width: $full) {
+                font-size: 60px;
+                margin-bottom: 24px;
+            }
+        }
+        &__sub-titles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            @media screen and (min-width: $tablet) {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                column-gap: 24px;
+            }
+            @media screen and (min-width: $full) {
+                column-gap: 36px;
+                row-gap: 16px;
+            }
+            .sub-title {
+                display: flex;
+                align-items: baseline;
+                gap: 10px;
+                font-weight: 800;
+                font-size: 16px;
+                line-height: 1;
+                color: $primary-color;
+                padding: 4px 0;
+                @media screen and (min-width: $tablet) {
+                    font-size: 20px;
+                    padding: 7.5px 0;
+                }
+                @media screen and (min-width: $full) {
+                    padding: 0;
+                }
+                &-svg {
+                    width: 14px;
+                    height: 12px;
+                    @media screen and (min-width: $full) {
+                        width: 18px;
+                        height: 16px;
+                    }
+                }
+            }  
+        }
+    }
     .club-section {
         background-color: $background;
         &__heading {
