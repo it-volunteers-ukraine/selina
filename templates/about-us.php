@@ -140,12 +140,44 @@ get_header();
     </section>
     <section class="management-section section" id="about-management"> 
         <div class="container">
-
+            <h2 class="management-section__heading section_heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('management-section__heading'); ?>
+            </h2>
+            <div class="management-section__wrapper">
+                <?php
+                    if( have_rows('managers') ):
+                        while( have_rows('managers') ) : the_row();
+                            $managerImg = get_sub_field('manager-img');
+                            $managerName = get_sub_field('manager-name');
+                            $managerPosition = get_sub_field('manager-position');
+                            ?>
+                                <div class="manager-card">
+                                    <div class="manager-img">
+                                        <img src="<?php echo  $managerImg['url']; ?>" alt="<?php echo  $managerImg['alt']; ?>">
+                                    </div>
+                                    <div class="manager-name"><?php echo $managerName; ?></div>
+                                    <div class="manager-position"><?php echo $managerPosition; ?></div>
+                                </div>
+                            <?php 
+                        endwhile;
+                    endif;
+                ?>
+            </div>
         </div>
     </section>
     <section class="documents-section section" id="about-documents">
         <div class="container">
-
+            <h2 class="documents-section__heading section_heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('documents-section__heading'); ?>
+            </h2>
         </div>
     </section>
     <?php get_template_part('template-parts/feedbacks'); ?>
