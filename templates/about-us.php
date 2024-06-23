@@ -33,21 +33,21 @@ get_header();
                         </svg>
                         <?php the_field('map-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#about-map">
+                    <a class="sub-title" href="#about-management">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('management-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#about-map">
+                    <a class="sub-title" href="#about-documents">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('documents-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#about-map">
+                    <a class="sub-title" href="#feedbacks">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
