@@ -155,12 +155,12 @@ get_header();
                             $managerName = get_sub_field('manager-name');
                             $managerPosition = get_sub_field('manager-position');
                             ?>
-                                <div class="manager-card">
-                                    <div class="manager-img">
+                                <div class="manager">
+                                    <div class="manager__img">
                                         <img src="<?php echo  $managerImg['url']; ?>" alt="<?php echo  $managerImg['alt']; ?>">
                                     </div>
-                                    <div class="manager-name"><?php echo $managerName; ?></div>
-                                    <div class="manager-position"><?php echo $managerPosition; ?></div>
+                                    <div class="manager__name"><?php echo $managerName; ?></div>
+                                    <div class="manager__position"><?php echo $managerPosition; ?></div>
                                 </div>
                             <?php 
                         endwhile;
