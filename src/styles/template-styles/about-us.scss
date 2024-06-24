@@ -307,7 +307,7 @@ html {
                 display: flex;
                 align-items: baseline;
                 gap: 8px;
-                margin-bottom: 32px; 
+                margin-bottom: 24px; 
             }
             @media screen and (min-width: $desktop){
                 gap: 12px;
@@ -330,16 +330,28 @@ html {
             display: grid;
             grid-template-columns: auto;
             gap: 24px;
+            @media screen and (min-width: $tablet) {
+                grid-template-columns: 1fr 1fr;
+            }
             .manager {
                 background-color: #fff;
                 width: 100%;
                 border-radius: 10px;
                 padding: 24px;
                 &__img {
-                    height: 380px;
+                    height: 340px;
                     border-radius: 8px;
                     overflow: hidden;
                     margin-bottom: 16px;
+                    @media screen and (min-width: 575px) {
+                        height: 600px;
+                    }
+                    @media screen and (min-width: $tablet) {
+                        height: 340px;
+                    }
+                    @media screen and (min-width: 992px) {
+                        height: 600px;
+                    }
                     img {
                         height: 100%;
                         width: 100%;
@@ -352,11 +364,19 @@ html {
                     font-size: 20px;
                     line-height: 1;
                     margin-bottom: 8px;
+                    @media screen and (min-width: $full) {
+                        font-size: 24px;
+                    }
                 }
                 &__position {
                     font-weight: 500;
                     font-size: 16px;
                     line-height: 1.31;
+                    @media screen and (min-width: $tablet) {
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 1.25;
+                    }
                 }
             }
         }
