@@ -233,16 +233,16 @@
 /*------------------Up-button----------------------*/
 .up_btn {
     display: none;
+    box-sizing: content-box;
     position: fixed;
     bottom: 280px;
-    right: 150px;
+    right: 8px;
     z-index: 1000;
     background-color: transparent;
     cursor: pointer;
     @media screen and (min-width: $tablet) {
         display: block;
-        bottom: 373px;
-        right: 16px;
+        bottom: 417px;
       }
     @media screen and (min-width: $desktop) {
       display: block;
