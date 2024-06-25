@@ -190,15 +190,17 @@ get_header();
                                         <svg class="clip-svg" width="38" height="90">
                                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
                                         </svg>
-                                        <div class="document__title"><?php echo $documentTitle; ?></div>
-                                        <button class="document-section__button button red_medium_button">
-                                            <a href="<?php echo $documentLink; ?>">
-                                                <?php the_field('open-btn', 'option'); ?>
-                                            </a> 
-                                            <svg class="document-section__button-svg" width="16" height="15">
-                                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
-                                            </svg>
-                                        </button>
+                                        <div class="document-card__content">
+                                            <div class="document-card__title"><?php echo $documentTitle; ?></div>
+                                            <button class="document-card__button button red_medium_button">
+                                                <a href="<?php echo $documentLink; ?>">
+                                                    <?php the_field('open-btn', 'option'); ?>
+                                                </a> 
+                                                <svg class="document-card__button-svg" width="16" height="15">
+                                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             <?php 

@@ -79,13 +79,13 @@ html {
         background-color: $background;
         &__heading {
             margin-bottom: 16px;
-            @media screen and (min-width: $tablet){
+            @media screen and (min-width: $tablet) {
                 display: flex;
                 align-items: baseline;
                 gap: 8px;
                 margin-bottom: 24px; 
             }
-            @media screen and (min-width: $desktop){
+            @media screen and (min-width: $desktop) {
                 gap: 12px;
                 margin-bottom: 40px; 
             }
@@ -201,20 +201,20 @@ html {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            padding: 56px;
+            padding: 56px 0;
             @media screen and (min-width: $full) {
-                padding: 80px;
+                padding: 80px 0;
             }
         }
         &__heading {
             margin-bottom: 16px;
-            @media screen and (min-width: $tablet){
+            @media screen and (min-width: $tablet) {
                 display: flex;
                 align-items: baseline;
                 gap: 8px;
                 margin-bottom: 32px; 
             }
-            @media screen and (min-width: $desktop){
+            @media screen and (min-width: $desktop) {
                 gap: 12px;
                 margin-bottom: 40px; 
             }
@@ -394,7 +394,7 @@ html {
                 display: flex;
                 align-items: baseline;
                 gap: 8px;
-                margin-bottom: 24px; 
+                margin-bottom: 32px; 
             }
             @media screen and (min-width: $desktop){
                 gap: 12px;
@@ -426,14 +426,51 @@ html {
                 width: 702px;
                 margin: 0 auto;
             }
+            @media screen and (min-width: $full) {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 24px;
+            }
             .document {
                 .document-card {
+                    position: relative;
                     background-color: #fff; 
                     height: 272px;
                     width: 100%;
                     border-radius: 10px;
+                    display: flex;
+                    justify-content: center;
                     @media screen and (min-width: $tablet) {
                         width: 340px;
+                    }
+                    @media screen and (min-width: $full) {
+                        width: 360px;
+                    }
+                    .clip-svg {
+                        position: absolute;
+                        z-index: 10;
+                        top: -27px;
+                        right: 15px;
+                        display: initial;
+                        width: 34.5px;
+                        height: 87px;
+                    }
+                    &__content {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: end;
+                        align-items: center;
+                        padding: 0 32px;
+                    }
+                    &__title {
+                        font-weight: 800;
+                        font-size: 24px;
+                        line-height: 1;
+                        text-align: center;
+                    }
+                    &__button {
+                        gap: 8px;
+                        margin: 28px 0 64px 0;
                     }
                 }
                 &:nth-child(3) {
@@ -446,14 +483,7 @@ html {
                         }
                     }
                 }
-                .clip-svg {
-                    position: absolute;
-                    z-index: 100;
-                    display: initial;
-                    width: 34.5px;
-                    height: 87px;
-                }
             }
-        }
+        }    
     }
 }
