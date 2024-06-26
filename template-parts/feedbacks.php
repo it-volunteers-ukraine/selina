@@ -1,4 +1,4 @@
-<section class="feedbacks-section section">
+<section class="feedbacks-section section" id="feedbacks">
         <div class="container">
             <div class="feedbacks-heading-wrapper">
                 <h2 class="feedbacks-section__heading section_heading">
