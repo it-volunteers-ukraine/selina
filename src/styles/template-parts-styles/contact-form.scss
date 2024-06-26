@@ -136,6 +136,9 @@
   }
   &__form-required-field {
     grid-area: 4 / 1 / 5 / 2;
+    @media screen and (min-width: $desktop) {
+      display: none;
+    }
   }
   &__form-checkbox {
     grid-area: 5 / 1 / 6 / 2;
