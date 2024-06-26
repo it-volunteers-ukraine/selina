@@ -20,8 +20,8 @@ function scrollFunction() {
         scrollTopBtn.style.display = "none";
     }
 
-    if (bottomDistance <= 373) {
-        scrollTopBtn.style.bottom = '373px';
+    if (bottomDistance <= 417) {
+        scrollTopBtn.style.bottom = '417px';
     } else {
         scrollTopBtn.style.bottom = '50px';
     }

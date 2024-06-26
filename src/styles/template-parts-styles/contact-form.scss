@@ -130,15 +130,25 @@
   }
   &__input-5 {
     grid-area: 3 / 1 / 4 / 2;
+    @media screen and (min-width: $desktop) {
+      grid-area: 3 / 1 / 4 / 3;
+    }
   }
   &__form-required-field {
     grid-area: 4 / 1 / 5 / 2;
+    @media screen and (min-width: $desktop) {
+      display: none;
+    }
   }
   &__form-checkbox {
     grid-area: 5 / 1 / 6 / 2;
   }
   &__button-wrapper {
     grid-area: 6 / 1 / 7 / 2;
+    @media screen and (min-width: $desktop) {
+      grid-area: 5 / 2 / 5 / 3;
+      justify-self: end;
+    }
   }
 
   &__form-name,
@@ -216,12 +226,19 @@
     width: 100%;
     height: 44px;
 
+        /* White paw on submit button */
+    background-image: url('../../../assets/images/paw-white.png');
+    background-size: 15px 15px;
+    background-position: 225px center;
+    background-repeat: no-repeat;
+
     @media screen and (min-width: $mobile) {
       width: 340px;
     }
 
     @media screen and (min-width: $desktop) {
       width: 153px;
+      background-position: 123px center;
     }
   }
 }
