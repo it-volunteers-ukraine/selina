@@ -1,0 +1,38 @@
+@import "../variables";
+
+.friends-clubs-item {
+
+
+  @media screen and (min-width: $tablet) {
+    width: 225px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 264px;
+  }
+
+
+  .image {
+    border-radius: 5px;
+    margin-bottom: 30px;
+
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .title {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 800;
+    text-align: center;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 14px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 15px;
+    }
+  }
+}

@@ -83,11 +83,15 @@ function wp_it_volunteers_scripts()
     if (is_page_template('templates/partners.php')) {
         wp_enqueue_style('partners-style', get_template_directory_uri() . '/assets/styles/template-styles/partners.css', array('main'));
         wp_enqueue_script('partners-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
+        wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
+        wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
+        wp_enqueue_script('partners-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/partners.js', array('touch-swipe-scripts'), false, true);
     }
 
     if (is_singular() && locate_template('template-parts/feedbacks.php')) {
         wp_enqueue_style('feedbacks-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/feedbacks.css', array('main'));
-         wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
         wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
         wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
     }
@@ -100,6 +104,14 @@ function wp_it_volunteers_scripts()
     if (is_singular() && locate_template('template-parts/one-card-breeder.php')) {
         wp_enqueue_style('one-card-breeder-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-breeder.css', array('main'));
         wp_enqueue_script('one-card-breeder-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/one-card-breeder.js', array('touch-swipe-scripts'), false, true);
+    }
+
+    if (is_singular() && locate_template('template-parts/friends-clubs-card.php')) {
+        wp_enqueue_style('friends-clubs-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/friends-clubs-card.css', array('main'));
+    }
+
+    if (is_singular() && locate_template('template-parts/photograph-card.php')) {
+        wp_enqueue_style('photograph-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/photograph-card.css', array('main'));
     }
 
 
@@ -193,17 +205,16 @@ function find_replace_my_fancy_svg( $items, $args ) {
 add_filter( 'wp_nav_menu_items', 'find_replace_my_fancy_svg', 10, 2 );
 
 
-function init_load_more_posts()
-{
+function init_load_more_posts(){
 
     wp_enqueue_script('jquery');
-    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-scripts/custom.js', array('jquery'), '1.0', true);
-
+    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-parts-scripts/load-more-button.js', array('jquery'), '1.0', true);
 
     /* Localize the script with the ajaxurl */
     wp_localize_script('custom-scripts', 'my_ajax', array(
-        'ajaxurl' => admin_url('admin-ajax.php')
-    ));
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('my_nonce')
+));
 
     wp_enqueue_script('custom-scripts');
 }
@@ -215,12 +226,23 @@ function load_more_posts(){
 
     $page = $_POST['page'];
     $width = $_POST['width'];
+    $postType = (isset($_POST['postType'])) ? $_POST['postType'] : '';
 
     $number = get_posts_per_page($width);
     $total_posts = wp_count_posts()->publish;
     $total_pages = ceil($total_posts / $number);
 
+
+    // change template-parts by custom postType
+    if ($postType === 'friends_clubs') {
+        $template = 'template-parts/friends-clubs-card';
+    } else if ($postType === 'our_photographs') {
+        $template = 'template-parts/photograph-card';
+        $number /= 2;
+    }
+
     $args = array(
+        'post_type' => $postType,
         'posts_per_page' => $number,
         'order' => 'ASC',
         'paged' => $page,
@@ -231,27 +253,14 @@ function load_more_posts(){
 
     ob_start();
 
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post(); ?>
-            <div class="friends-clubs-item">
-                <div class="flip-card friends-flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front flip-card-frame">
-                            <img class="image" src="<?php the_field('image'); ?>" alt="">
-                            <h2 class="title"><?php the_title(); ?></h2>
-                        </div>
-                        <div class="flip-card-back">
-                            <div>Test</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php
-        }
-        $html = ob_get_clean();
-        wp_reset_postdata();
-    }
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post(); ?>
+            <?php get_template_part($template) ?>
+        <?php endwhile;
+    endif;
+    $html = ob_get_clean();
+    wp_reset_postdata();
+
     wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
     wp_die();
 }
@@ -263,11 +272,9 @@ add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
 function get_posts_per_page($width){
     if ($width > 1349.98) {
         return 8;
-    } elseif ($width > 800) {
-        return 8;
-    } else if ($width === 768) {
+    } else if ($width > 767.98) {
         return 9;
     } else {
-        return 1;
+        return 8;
     }
 }
