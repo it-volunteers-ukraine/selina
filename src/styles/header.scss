@@ -2,6 +2,12 @@
 
 
 .header {
+  padding-bottom: 80px;
+
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 0;
+  }
+
   // Header top
   .header-top {
     display: none;
