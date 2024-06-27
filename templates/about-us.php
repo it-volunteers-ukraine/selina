@@ -7,7 +7,7 @@ get_header();
 <main class="about-us">
     <section class="upper-section section" id="about-upper">
         <style>
-            @media screen and (min-width: 1920px) {
+            @media screen and (min-width: 1439px) {
                 .upper-section {
                 background-image: url("<?php the_field('upper-section__background', 'option') ?>"); 
                 }
