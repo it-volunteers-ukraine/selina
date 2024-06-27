@@ -27,12 +27,14 @@
         </div>
         <!-- Logo-Selina -->
         <div class="footer__logo">
-                    <?php
-                    $image = get_field('footer__logo', 'option'); 
-                    if( !empty( $image ) ): ?> 
-                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
-                    <?php endif; ?>
-                </div>
+            <?php
+            $image = get_field('footer__logo', 'option'); 
+            if( !empty( $image ) ): ?>
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                </a>
+            <?php endif; ?>
+        </div>
         <!-- Social-icons -->
         <div class="footer__socials">
             <div class="footer__icons-container">
