@@ -90,6 +90,7 @@ function wp_it_volunteers_scripts()
     }
 
     if (is_singular() && locate_template('template-parts/feedbacks.php')) {
+         wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
         wp_enqueue_style('feedbacks-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/feedbacks.css', array('main'));
         wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
         wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
@@ -276,5 +277,66 @@ function get_posts_per_page($width){
         return 9;
     } else {
         return 8;
+    }
+}
+
+/*** AJAX breeders */
+add_action('wp_ajax_load_breeders', 'load_breeders');
+add_action('wp_ajax_nopriv_load_breeders', 'load_breeders');
+
+function load_breeders()
+{
+    // Перевірка nonce
+    if (!isset($_POST["nonce"]) || !wp_verify_nonce($_POST["nonce"], "breeders_nonce")) {
+        exit;
+    }
+
+    // Отримання параметрів з AJAX-запиту
+    $page = $_POST['page'];
+    $width = $_POST['width'];
+    $order = $_POST['order'];
+    $orderby = $_POST['orderby'];
+
+
+    // Визначення кількості постів на сторінку залежно від ширини
+    $number = get_breeders_per_page($width);
+
+    // Отримання загальної кількості постів та кількості сторінок
+    $total_posts = wp_count_posts('breeders')->publish;
+    $total_pages = ceil($total_posts / $number);
+
+    // Побудова запиту для отримання постів
+    $args = array(
+        'post_type' => 'breeders',
+        'posts_per_page' => $number,
+        'order' => $order,
+        'orderby' => $orderby,
+        'paged' => $page,
+        'post_status' => 'publish'
+    );
+
+    $query = new WP_Query($args);
+    ob_start();
+    if ($query->have_posts()):
+        while ($query->have_posts()):
+            $query->the_post(); ?>
+<?php get_template_part('template-parts/one-card-breeder'); ?>
+<?php endwhile;
+    endif;
+
+    $html = ob_get_clean();
+    wp_reset_postdata();
+
+    // Відправка відповіді JSON з HTML та кількістю сторінок
+    wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
+    wp_die();
+}
+
+function get_breeders_per_page($width)
+{
+    if ($width > 767.98) {
+        return 12;
+    } else {
+        return 6;
     }
 }

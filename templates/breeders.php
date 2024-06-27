@@ -47,9 +47,16 @@ get_header();
     </section>
     <section class="section breeders-catalogue-section" id="breeders-catalogue">
         <div class="container">
+            <div class="breeders-catalogue-section__filter-wrapper">
+                <p><?php the_field('list_text'); ?></p>
+                <select name="select" id="breeders-order">
+                    <option value="title"><?php the_field('filter_name'); ?></option>
+                    <option value="newest" selected><?php the_field('filter_date'); ?></option>
+                    <option value="oldest"><?php the_field('filter_date'); ?></option>
+                </select>
+            </div>
             <div class="breeders-catalogue-section__list">
             </div>
-
         </div>
     </section>
     <?php get_template_part('template-parts/join-us'); ?>

@@ -29,7 +29,7 @@ const firstSectionSwiper = new Swiper(".first__container", {
   },
 });
 
-const partnersSwiper = new Swiper(".partners-section__swiper", {
+const partnersSwiperHome = new Swiper(".partners-section__swiper", {
   effect: "slide",
   loop: true,
   slidesPerView: 2,

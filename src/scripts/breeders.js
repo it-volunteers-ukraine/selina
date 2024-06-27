@@ -1,11 +1,44 @@
 jQuery(document).ready(function ($) {
+  const filter = window.document.getElementById("breeders-order");
+  let orderby = "date";
+  let order = "DESC";
+  const filterChangeHandler = (e) => {
+    const option = e.target;
+    Array.from(filter.children).forEach((child) => {
+      if (child.value !== option.value) {
+        child.removeAttribute("selected");
+      } else {
+        child.setAttribute("selected", "");
+      }
+    });
+    switch (option.value) {
+      case "title":
+        orderby = "title";
+        order = "ASC";
+        break;
+      case "newest":
+        orderby = "date";
+        order = "DESC";
+        break;
+      case "oldest":
+        orderby = "date";
+        order = "ASC";
+        break;
+      default:
+        break;
+    }
+    loadBreeders(currentPage);
+  };
+  filter.addEventListener("change", filterChangeHandler);
   // Завантаження постів
-  function loadPosts(page) {
+  function loadBreeders(page) {
     var data = {
       action: "load_breeders",
       nonce: getBreedersNonce(),
       width: viewportWidth,
-      page: page,
+      page,
+      order,
+      orderby,
     };
 
     $.ajax({
@@ -59,7 +92,7 @@ jQuery(document).ready(function ($) {
   //   if (currentPage > totalPages) {
   //     currentPage = totalPages;
   //   }
-  //   loadPosts(currentPage);
+  //   loadBreeders(currentPage);
   //   updateCurrentPage();
   //   updatePaginationButtons();
   // });
@@ -70,7 +103,7 @@ jQuery(document).ready(function ($) {
   //   if (currentPage < 1) {
   //     currentPage = 1;
   //   }
-  //   loadPosts(currentPage);
+  //   loadBreeders(currentPage);
   //   updateCurrentPage();
   //   updatePaginationButtons();
   // });
@@ -80,7 +113,7 @@ jQuery(document).ready(function ($) {
       // Обробка свайпу вліво
       if (currentPage < totalPages) {
         currentPage++;
-        loadPosts(currentPage);
+        loadBreeders(currentPage);
         updateCurrentPage();
       }
     },
@@ -88,7 +121,7 @@ jQuery(document).ready(function ($) {
       // Обробка свайпу вправо
       if (currentPage > 1) {
         currentPage--;
-        loadPosts(currentPage);
+        loadBreeders(currentPage);
         updateCurrentPage();
       }
     },
@@ -96,6 +129,6 @@ jQuery(document).ready(function ($) {
   });
 
   // Початкове завантаження постів
-  loadPosts(currentPage);
+  loadBreeders(currentPage);
   updateCurrentPage();
 });
