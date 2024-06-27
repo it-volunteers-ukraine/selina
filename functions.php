@@ -191,7 +191,7 @@ function loadDirectory()
 add_action('wp_head', 'loadDirectory');
 
 
-// Add svg to menu
+// Add svg to menuuu
 function find_replace_my_fancy_svg( $items, $args ) {
     $items = str_replace(
         '%SVG%',
