@@ -208,13 +208,13 @@ html {
         }
         &__heading {
             margin-bottom: 16px;
-            @media screen and (min-width: $tablet) {
+            @media screen and (min-width: $tablet){
                 display: flex;
                 align-items: baseline;
                 gap: 8px;
                 margin-bottom: 32px; 
             }
-            @media screen and (min-width: $desktop) {
+            @media screen and (min-width: $desktop){
                 gap: 12px;
                 margin-bottom: 40px; 
             }
@@ -434,7 +434,7 @@ html {
             .document {
                 .document-card {
                     position: relative;
-                    background-color: #fff; 
+                    background-color: $light-green; 
                     height: 272px;
                     width: 100%;
                     border-radius: 10px;
