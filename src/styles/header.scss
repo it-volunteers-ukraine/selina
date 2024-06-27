@@ -203,7 +203,7 @@
           gap: 32px;
         }
 
-        .menu-item {
+        .header-menu-item {
 
           a {
             color: $primary-color;
@@ -224,7 +224,7 @@
             }
           }
 
-          .sub-menu {
+          .header-sub-menu {
             width: 270px;
             display: none;
             flex-direction: column;
@@ -238,7 +238,7 @@
             z-index: 100;
             background-color: $white;
 
-            .menu-item {
+            .header-menu-item {
               text-transform: capitalize;
 
               &:hover {
@@ -277,7 +277,7 @@
             flex-direction: column;
           }
 
-          .sub-menu li::after {
+          .header-sub-menu li::after {
             display: none;
           }
 
@@ -368,10 +368,10 @@
           }
         }
 
-        .sub-menu {
+        .header-sub-menu {
           display: none;
 
-          .menu-item {
+          .header-menu-item {
             a {
               white-space: nowrap;
             }
