@@ -45,7 +45,7 @@
       margin-bottom: 0;
     }
 
-    .partners_slider-arrow-btn {
+    .partners-btn {
       width: 44px;
       height: 44px;
       gap: 8px;
@@ -130,41 +130,65 @@
   }
 }
 
-.our-partners {
-  .grid {
+
+// pagination
+// our-partners for other screens
+#partners-posts-container {
+  display: none;
+
+
+  @media screen and (min-width: $desktop) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-
-    @media screen and (min-width: $tablet) {
-      display: grid;
-      gap: 24px;
-      grid-template-columns: repeat(4, 1fr);
-      column-gap: 0;
-    }
-
-    @media screen and (min-width: $desktop) {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      column-gap: 0;
-      gap: 48px 72px;
-    }
-
-
-    .our-partners-item {
-      img {
-        color: $primary-color;
-        text-transform: uppercase;
-        font-size: 16px;
-        font-weight: 900;
-        margin: 0 auto;
-        border-radius: 16px;
-        width: fit-content;
-      }
-
-    }
-
   }
+}
+
+#partners-posts-tablet {
+  display: none;
+
+  @media screen and (min-width: $tablet) {
+    display: grid;
+  }
+
+  @media screen and (min-width: $desktop) {
+    display: none;
+  }
+
+}
+
+#partners-posts-mobile {
+  display: grid;
+
+  @media screen and (min-width: $tablet) {
+    display: none;
+  }
+  @media screen and (min-width: $desktop) {
+    display: none;
+  }
+}
+
+.our-partners-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  @media screen and (min-width: $tablet) {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media screen and (min-width: 992px) {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media screen and (min-width: $desktop) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 48px 72px;
+  }
+
 }
 
 
@@ -172,7 +196,7 @@
   .friends-clubs {
     margin-bottom: 24px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
 
     @media screen and (min-width: $tablet) {
@@ -180,6 +204,13 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: 24px;
       margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: 992px) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
     }
 
     @media screen and (min-width: $desktop) {
@@ -358,10 +389,14 @@
   // flip card
   .flip-card {
     position: relative;
-    height: 410px;
+    height: 209px;
 
     @media screen and (min-width: $tablet) {
-      height: 300px;
+      height: 287px;
+    }
+
+    @media screen and (min-width: 992px) {
+      height: 282px;
     }
 
     @media screen and (min-width: $desktop) {
@@ -429,32 +464,6 @@
   background-color: #eff8f9;
 }
 
-
-#flip-card-partners {
-  width: 159px;
-  height: 159px;
-
-  @media screen and (min-width: $desktop) {
-    width: 168px;
-    height: 168px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    width: 158px;
-    height: 158px;
-  }
-
-  @media screen and (min-width: 992px) {
-    width: 166px;
-    height: 166px;
-  }
-
-}
-
-
-.partners_slider {
-  overflow: visible;
-}
 
 .partners-pagination {
   display: flex;
@@ -561,7 +570,14 @@
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-    padding: 20px;
+    padding: 12px;
+
+    @media screen and (min-width: $tablet) {
+      padding: 12px;
+    }
+    @media screen and (min-width: $desktop) {
+      padding: 20px;
+    }
   }
 }
 
@@ -569,7 +585,13 @@
   display: flex;
   justify-content: center;
 
+  @media screen and (min-width: 992px) {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   @media screen and (min-width: $desktop) {
+    display: flex;
     justify-content: flex-end;
   }
 
