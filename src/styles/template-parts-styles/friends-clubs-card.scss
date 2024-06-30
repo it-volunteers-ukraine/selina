@@ -1,10 +1,20 @@
 @import "../variables";
 
 .friends-clubs-item {
-
+  width: 158px;
 
   @media screen and (min-width: $tablet) {
-    width: 225px;
+    width: 218px;
+    height: 287px;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 214px;
+    height: 282px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    height: 348px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -14,25 +24,42 @@
 
   .image {
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 8px;
 
     @media screen and (min-width: $tablet) {
+      margin-bottom: 12px;
+    }
+    @media screen and (min-width: $desktop) {
       margin-bottom: 20px;
     }
   }
 
   .title {
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 10px;
+    line-height: 13px;
     font-weight: 800;
     text-align: center;
 
     @media screen and (min-width: $tablet) {
       font-size: 14px;
+      line-height: 18px;
     }
 
     @media screen and (min-width: $desktop) {
-      font-size: 15px;
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 }
+
+.nine-elem {
+  display: none;
+}
+
+.nine-elem + .friends-clubs-item:nth-child(2n+2) {
+  display: none;
+}
+
+
+
+

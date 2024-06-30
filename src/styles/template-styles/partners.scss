@@ -20,7 +20,7 @@
   .pagination-block {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 47px;
     align-items: center;
     margin-bottom: 40px;
 
@@ -45,7 +45,7 @@
       margin-bottom: 0;
     }
 
-    .partners_slider-arrow-btn {
+    .partners-btn {
       width: 44px;
       height: 44px;
       gap: 8px;
@@ -130,41 +130,65 @@
   }
 }
 
-.our-partners {
-  .grid {
+
+// pagination
+// our-partners for other screens
+#partners-posts-container {
+  display: none;
+
+
+  @media screen and (min-width: $desktop) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-
-    @media screen and (min-width: $tablet) {
-      display: grid;
-      gap: 24px;
-      grid-template-columns: repeat(4, 1fr);
-      column-gap: 0;
-    }
-
-    @media screen and (min-width: $desktop) {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      column-gap: 0;
-      gap: 48px 72px;
-    }
-
-
-    .our-partners-item {
-      img {
-        color: $primary-color;
-        text-transform: uppercase;
-        font-size: 16px;
-        font-weight: 900;
-        margin: 0 auto;
-        border-radius: 16px;
-        width: fit-content;
-      }
-
-    }
-
   }
+}
+
+#partners-posts-tablet {
+  display: none;
+
+  @media screen and (min-width: $tablet) {
+    display: grid;
+  }
+
+  @media screen and (min-width: $desktop) {
+    display: none;
+  }
+
+}
+
+#partners-posts-mobile {
+  display: grid;
+
+  @media screen and (min-width: $tablet) {
+    display: none;
+  }
+  @media screen and (min-width: $desktop) {
+    display: none;
+  }
+}
+
+.our-partners-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  @media screen and (min-width: $tablet) {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media screen and (min-width: 992px) {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media screen and (min-width: $desktop) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 48px 72px;
+  }
+
 }
 
 
@@ -172,7 +196,7 @@
   .friends-clubs {
     margin-bottom: 24px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
 
     @media screen and (min-width: $tablet) {
@@ -180,6 +204,13 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: 24px;
       margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: 992px) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
     }
 
     @media screen and (min-width: $desktop) {
@@ -315,24 +346,20 @@
 
   .photographs-title {
     font-size: 20px;
-    text-align: center;
 
     @media screen and (min-width: $tablet) {
-      text-align: left;
+      font-size: 30px;
     }
 
     @media screen and (min-width: $desktop) {
-      text-align: left;
       font-size: 45px;
     }
   }
 
   .photographs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 45px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
     margin-bottom: 32px;
 
     @media screen and (min-width: $tablet) {
@@ -358,10 +385,14 @@
   // flip card
   .flip-card {
     position: relative;
-    height: 410px;
+    height: 209px;
 
     @media screen and (min-width: $tablet) {
-      height: 300px;
+      height: 287px;
+    }
+
+    @media screen and (min-width: 992px) {
+      height: 282px;
     }
 
     @media screen and (min-width: $desktop) {
@@ -429,41 +460,10 @@
   background-color: #eff8f9;
 }
 
-
-#flip-card-partners {
-  width: 159px;
-  height: 159px;
-
-  @media screen and (min-width: $desktop) {
-    width: 168px;
-    height: 168px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    width: 158px;
-    height: 158px;
-  }
-
-  @media screen and (min-width: 992px) {
-    width: 166px;
-    height: 166px;
-  }
-
-}
-
-
-.partners_slider {
-  overflow: visible;
-}
-
 .partners-pagination {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-
-  @media screen and (min-width: $tablet) {
-    gap: 36px;
-  }
 
   @media screen and (min-width: $desktop) {
     display: none;
@@ -482,74 +482,105 @@
       display: flex;
       flex-direction: column;
       background-color: $white;
-      border-radius: $big-br;
-      width: 250px;
+      border-radius: 5px;
+      width: 138px;
       justify-content: center;
       align-items: center;
-      margin-bottom: 40px;
-      padding: 44px 12px;
-      height: 233px;
+      margin-bottom: 14px;
+      padding: 17px 12px;
 
       @media screen and (min-width: $tablet) {
-        width: 182px;
-        padding: 18px 0;
-        margin-bottom: 20px;
+        width: 194px;
+        padding: 14px 0;
+        margin-bottom: 18px;
       }
 
       @media screen and (min-width: $desktop) {
         width: 224px;
-        padding: 78px 0;
-        margin-bottom: 20px;
+        padding: 34px 0;
+        margin-bottom: 26px;
       }
 
       .positions {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
+
+        @media screen and (min-width: $desktop) {
+          margin-bottom: 12px;
+        }
       }
 
       span {
-        font-size: 17px;
-        font-weight: 700;
+        font-size: 13px;
+        font-weight: 800;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 14px;
+        }
+        @media screen and (min-width: $desktop) {
+          font-size: 16px;
+          line-height: 20px;
+        }
       }
 
       .address {
         color: $primary-color;
+        font-weight: 800;
+        @media screen and (min-width: $tablet) {
+          font-size: 16px;
+        }
       }
     }
-
 
     .social-media {
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 0 15px;
+      width: 150px;
+
+      @media screen and (min-width: $tablet) {
+        width: 194px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        width: 230px;
+        gap: 24px;
+      }
 
       a {
-        width: 30px;
-
-        @media screen and (min-width: $tablet) {
-          width: 100%;
-        }
+        width: 32px;
       }
+
     }
 
-    .block {
-      display: flex;
-      flex-direction: row;
-      gap: 24px;
+    // mobile
+    .social-media a:first-of-type + a,
+    .social-media a:first-of-type + a + a {
+      display: none;
 
-      a {
-        width: 30px;
-
-        @media screen and (min-width: $tablet) {
-          width: 100%;
-        }
+      @media screen and (min-width: $tablet) {
+        display: flex;
       }
+      @media screen and (min-width: $desktop) {
+        display: flex;
+      }
+
     }
 
+    .social-media a:nth-of-type(3) ~ a + a + a {
+      display: none;
+
+      @media screen and (min-width: $tablet) {
+        display: flex;
+      }
+      @media screen and (min-width: $desktop) {
+        display: flex;
+      }
+    }
   }
 
   .flip-card-front-friends, .flip-card-back-friends {
@@ -561,7 +592,12 @@
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
+    box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+
+    @media screen and (min-width: $desktop) {
+      padding: 20px;
+    }
   }
 }
 
@@ -569,7 +605,13 @@
   display: flex;
   justify-content: center;
 
+  @media screen and (min-width: 992px) {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   @media screen and (min-width: $desktop) {
+    display: flex;
     justify-content: flex-end;
   }
 
