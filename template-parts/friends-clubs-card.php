@@ -31,6 +31,21 @@
                 </div>
                 <div class="social-media">
                     <?php
+                    $emails = get_field('emails');
+                    if ($emails) :
+                        foreach ($emails as $row) :
+                            $iconEmail = $row['icon-email'];
+                            $email = $row['email'];
+                            ?>
+                            <a href="mailto:<?php esc_url($email); ?>"
+                               rel="noopener noreferrer">
+                                <img src="<?php echo esc_html($iconEmail); ?>" alt="email">
+                            </a>
+                        <?php
+                        endforeach;
+                    endif;
+                    ?>
+                    <?php
                     $socialLinks = get_field('social-media');
                     $countIcons = 0;
                     foreach ($socialLinks as $row) :
@@ -47,24 +62,6 @@
                         $countIcons++
                         ?>
                     <?php endforeach; ?>
-                </div>
-                <div class="block">
-                    <?php
-                    $emails = get_field('emails');
-                    if ($emails) :
-                        foreach ($emails as $row) :
-                            $iconEmail = $row['icon-email'];
-                            $email = $row['email'];
-                            ?>
-                            <a href="mailto:<?php esc_url($email); ?>"
-                               rel="noopener noreferrer">
-                                <img src="<?php echo esc_html($iconEmail); ?>" alt="email">
-                            </a>
-                        <?php
-                        endforeach;
-                    endif;
-                    ?>
-
                     <?php
                     $iconPhone = get_field('icon-phone');
                     if ($iconPhone) :

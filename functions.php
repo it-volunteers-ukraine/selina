@@ -225,7 +225,8 @@ function init_load_more_posts()
 add_action('wp_enqueue_scripts', 'init_load_more_posts');
 
 
-function load_more_posts(){
+function load_more_posts()
+{
 
     $page = $_POST['page'];
     $width = $_POST['width'];
@@ -274,6 +275,8 @@ add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
 
 function get_posts_per_page($width){
     if ($width > 1349.98) {
+        return 8;
+    } else if ($width < 767.98 || $width >= 992) {
         return 8;
     } else {
         return 9;
@@ -333,7 +336,8 @@ function load_breeders()
 }
 
 
-function load_partners_pagination(){
+function load_partners_pagination()
+{
 
     $page = $_POST['page'];
     $width = $_POST['width'];
@@ -373,7 +377,8 @@ add_action('wp_ajax_load_partners_pagination', 'load_partners_pagination');
 add_action('wp_ajax_nopriv_load_partners_pagination', 'load_partners_pagination');
 
 
-function get_partners_per_page($width){
+function get_partners_per_page($width)
+{
     if ($width > 767.98) {
         return 12;
     } else {
