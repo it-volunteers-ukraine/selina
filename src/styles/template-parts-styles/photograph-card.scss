@@ -25,7 +25,11 @@
   .full-name {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0;
+
+    @media screen and (min-width: $tablet) {
+      gap: 10px;
+    }
 
     .name {
       text-align: center;
