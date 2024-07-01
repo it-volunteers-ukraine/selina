@@ -56,7 +56,10 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
         wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
     }
-
+    if (is_page_template('templates/rules-wcf.php')) {
+        wp_enqueue_style('rules-wcf-style', get_template_directory_uri() . '/assets/styles/template-styles/rules-wcf.css', array('main'));
+        wp_enqueue_script('rules-wcf-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/rules-wcf.js', array(), false, true);
+    }
     if (is_page_template('templates/breeders.php')) {
         wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
         wp_enqueue_script('breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/breeders.js', array('touch-swipe-scripts'), false, true);
