@@ -164,6 +164,16 @@
     margin-bottom: 24px;
     padding-left: 16px;
   }
+/* Styling green paw on "Choose theme" */
+  
+
+
+
+
+
+
+/* End of Styling green paw on "Choose theme" */  
+  
 
   &__form-textarea {
     padding-top: 17.5px;
@@ -418,3 +428,101 @@
     }
   }
 }
+
+
+
+//* Dropdown. Temporary JS *//
+
+.dropdown{
+  position: relative;
+  color: $primary-color;
+  width: 343px;
+}
+
+.dropdown__button {
+  width: 100%;
+  position: relative;
+  display: block;
+  text-align: left;
+
+  background: #ffffff;
+  border: 1px solid red;
+  border-radius: 10px;
+  height: 46px;
+
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  padding-right: 35px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  cursor: pointer;
+}
+
+.dropdown__button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+
+  /* Drawing triangle */
+  width: 0;
+  height: 0;
+  border-width: 10.4px 6px 0 6px;
+  border-color: #79849B transparent transparent transparent;
+  border-style: solid;
+
+  /* Removing click from triangle */
+  pointer-events: none;
+}
+
+.dropdown__list {
+  position: absolute;
+  left: 0px;
+  top: 52px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  background: #FFFFFF;
+  box-shadow: 0px 4px 8px rgba(176, 198, 225, 0.6);
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+
+  z-index: 1;
+}
+
+.dropdown__list-item {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0px;
+  padding: 13px 20px;
+  cursor: pointer;
+}
+
+
+
+.dropdown__list-item:hover {
+    font-weight: 800;
+    padding-left: 38px;
+    background-color: $background;
+    border-radius: 6px;
+    margin: 0 6px 0 6px;
+
+    &:before {
+      content: "";
+      background-image: url("../../../assets/images/paw-6.svg");
+      background-repeat: no-repeat;
+      position: absolute;
+      height: 20px;
+      width: 18px;
+      left: 16px;
+    }
+  }
