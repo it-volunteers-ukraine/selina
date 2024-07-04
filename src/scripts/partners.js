@@ -101,4 +101,6 @@ function showPosts() {
     )
 }
 
+showPosts();
+
 window.addEventListener('resize', showPosts);
