@@ -86,6 +86,7 @@ get_header();
                     wp_reset_postdata();
                     ?>
                 </div>
+                <p class="message">No more posts<p>
                 <div id="partners-posts-tablet" class="our-partners-container">
                     <?php
                     $args = array(
