@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
     const containerPhotographs = $('#more-photographs');
     const loadBtnFriends = $('#load-more-friends');
     const loadBtnPhotographs = $('#load-more-photographs');
-    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    var viewportWidth = window.innerWidth;
 
 
     // get nonce
@@ -39,6 +39,8 @@ jQuery(document).ready(function ($) {
 
     loadBtnFriends.on('click', function () {
         var postType = $(this).data('post-type');
+        const ninthElem = $('#more-friends .nine-elem');
+        ninthElem.css('display', 'block');
         loadPosts(postType, containerFriends);
     });
 
@@ -48,3 +50,5 @@ jQuery(document).ready(function ($) {
     });
 
 });
+
+

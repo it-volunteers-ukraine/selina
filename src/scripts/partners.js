@@ -1,65 +1,3 @@
-let initMobile = false;
-let initTablet = false;
-
-let partnersSwiper = null;
-
-
-function swiperMode() {
-
-    const mobile = window.matchMedia('(min-width: 0) and (max-width: 575px)');
-    const tablet = window.matchMedia('(min-width: 576px) and (max-width: 991px)');
-    const desktop = window.matchMedia('(min-width: 992px) and (max-width:1440px)');
-    const full = window.matchMedia('(min-width: 1441px) and (max-width:1920px)');
-
-    if (tablet.matches) {
-        if (!initTablet) {
-
-            initTablet = true;
-            initMobile = false;
-
-
-            partnersSwiper = new Swiper(".partners_slider", {
-                effect: "slide",
-                loop: true,
-                slidesPerView: 4,
-                grid: {
-                    rows: 3,
-                    fill: "row",
-                },
-                preloadImages: false,
-                lazy: {
-                    loadOnTransitionStart: true,
-                    loadPrevNext: true,
-                },
-                lazyPreloadPrevNext: 1,
-                navigation: {
-                    nextEl: ".partners_slider__arrow-left-btn",
-                    prevEl: ".partners_slider__arrow-right-btn",
-                },
-            });
-
-
-        }
-    } else if (desktop.matches || full.matches) {
-
-        if (partnersSwiper) {
-            partnersSwiper.destroy();
-        }
-
-        initTablet = false;
-        initMobile = false;
-    }
-
-}
-
-window.addEventListener('DOMContentLoaded', function () {
-    swiperMode();
-});
-window.addEventListener('resize', function () {
-    swiperMode();
-});
-
-
 function flipCardMobile(event) {
     const isMobile = window.innerWidth < 991.98;
     const activeCard = event.querySelector('.flip-card-inner');
@@ -78,6 +16,91 @@ function flipCardMobile(event) {
     }
 }
 
+// pagination
+let currentPage = 1;
+let hasData = true;
+
+function loadPartners(postType) {
+    const viewportWidth = window.innerWidth;
+    $.ajax({
+        url: my_ajax.ajaxurl, /* Use the localised ajaxurl variable */
+        nonce: getNonce(),
+        type: 'POST',
+        data: {
+            action: 'load_partners_pagination',
+            page: currentPage,
+            width: viewportWidth,
+            postType: postType,
+        },
+    }).then(function (response) {
+        replacePosts(response.html);
+    }).fail(function (xhr, status, error) {
+        console.error("Request failed: " + error);
+    });
+}
+
+function getNonce() {
+    return my_ajax.nonce;
+}
 
 
+function paginatePrev() {
+    if (currentPage > 1) {
+        currentPage--;
+    }
+    loadPartners('all_partners');
+}
 
+function paginateNext() {
+    if (hasData) {
+        currentPage++;
+    }
+    loadPartners('all_partners');
+}
+
+function replacePosts(html) {
+    const viewportWidth = window.innerWidth;
+    const isMobile = viewportWidth < 768;
+    const isTablet = viewportWidth >= 767.8;
+    hasData = !!html;
+    let noPost = document.querySelector('.message');
+    if (isMobile && hasData) {
+        noPost.style.display = 'none';
+        let partnersMobile = document.getElementById('partners-posts-mobile');
+        partnersMobile.innerHTML = html;
+    } else if (isTablet && hasData) {
+        noPost.style.display = 'none';
+        let partnersTablet = document.getElementById('partners-posts-tablet');
+        partnersTablet.innerHTML = html;
+    }
+
+    if (!hasData) {
+        noPost.style.display = 'block';
+        currentPage--;
+    }
+}
+
+
+// show posts
+const cardsContainer = document.querySelector('#more-friends');
+const items = cardsContainer.querySelectorAll('.friends-clubs-item')
+
+function showPosts() {
+    const viewportWidth = window.innerWidth;
+    const isMobile = viewportWidth < 768;
+    const isLargeScreen = viewportWidth >= 992;
+
+    items.forEach(function (item, index) {
+            const everyNineElem = (index + 1) % 9 === 0;
+            if ((isMobile && everyNineElem) || (isLargeScreen && everyNineElem)) {
+                item.classList.add('nine-elem');
+            } else {
+                item.classList.remove('nine-elem');
+            }
+        }
+    )
+}
+
+showPosts();
+
+window.addEventListener('resize', showPosts);

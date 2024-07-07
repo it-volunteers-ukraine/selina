@@ -50,81 +50,79 @@ get_header();
                             <?php the_field('our-partners_title'); ?>
                         </h3>
                         <div class="partners-pagination">
-                            <button class="partners_slider__arrow-left-btn partners_slider-arrow-btn">
-                                <svg class="partners_slider__arrow-left one-arrow" width="10.37" height="16.97">
-                                    <use
-                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+                            <button onclick="paginatePrev()"
+                                    class="partners-btn">
+                                <svg width="10.37" height="16.97">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
                                     </use>
                                 </svg>
                             </button>
-                            <button class="partners_slider__arrow-right-btn partners_slider-arrow-btn">
-                                <svg class="partners_slider__arrow-right one-arrow" width="10.37" height="16.97">
-                                    <use
-                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+                            <button onclick="paginateNext()"
+                                    class="partners-btn">
+                                <svg width="10.37" height="16.97">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
                                     </use>
                                 </svg>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="swiper partners_slider">
-                    <div class="swiper-wrapper grid our-partners-container">
-                        <?php
-                        $args = array(
-                            'post_type' => 'all_partners',
-                            'post_per_page' => 8,
-                            'order' => 'ASC',
-                        );
 
-                        $loop = new WP_Query($args);
+                <div id="partners-posts-container" class="our-partners-container">
+                    <?php
+                    $args = array(
+                        'post_type' => 'all_partners',
+                        'posts_per_page' => -1,
+                        'order' => 'ASC',
+                    );
 
-                        while ($loop->have_posts()) : $loop->the_post();
-                            ?>
-                            <div class="swiper-slide">
-                                <div class="our-partners-item" onclick="flipCardMobile(this)">
-                                    <div class="flip-card" id="flip-card-partners">
-                                        <div class="flip-card-inner">
-                                            <div class="flip-card-front">
-                                                <?php
-                                                $image = get_field('partner_img');
-                                                $alt_image = get_field('partner_name');
+                    $loop = new WP_Query($args);
 
-                                                if (!empty($alt_image)) {
-                                                    $trimmed_partner_name = mb_substr($alt_image, 0, 67);
-                                                }
-                                                ?>
-                                                <img src="<?php echo the_field('partner_img') ?>"
-                                                     alt="<?php echo esc_attr($trimmed_partner_name); ?>">
-                                            </div>
-                                            <div class="flip-card-back">
-                                                <?php
-                                                $link_url = get_field('partner_link');
-                                                $link_text = get_field('link-text');
-                                                ?>
-                                                <a class="link" href="<?php echo esc_url($link_url); ?>"
-                                                   rel="noopener noreferrer">
-                                                    <?php echo esc_html($link_text) ?>
-                                                    <svg width="12" height="12">
-                                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-arrow">
-                                                        </use>
-                                                    </svg>
-                                                </a>
-                                                <svg class="icon-paw" width="42" height="38">
-                                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                                                    </use>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                        endwhile;
-                        wp_reset_postdata();
-                        ?>
-                    </div>
+                    if ($loop->have_posts()) :
+                        while ($loop->have_posts()) : $loop->the_post(); ?>
+                            <?php get_template_part('template-parts/our-partner-card') ?>
+                        <?php endwhile;
+                    endif;
+                    wp_reset_postdata();
+                    ?>
                 </div>
+                <p class="message">No more posts<p>
+                <div id="partners-posts-tablet" class="our-partners-container">
+                    <?php
+                    $args = array(
+                        'post_type' => 'all_partners',
+                        'posts_per_page' => 12,
+                        'order' => 'ASC',
+                    );
 
+                    $loop = new WP_Query($args);
+
+                    if ($loop->have_posts()) :
+                        while ($loop->have_posts()) : $loop->the_post(); ?>
+                            <?php get_template_part('template-parts/our-partner-card') ?>
+                        <?php endwhile;
+                    endif;
+                    wp_reset_postdata();
+                    ?>
+                </div>
+                <div id="partners-posts-mobile" class="our-partners-container">
+                    <?php
+                    $args = array(
+                        'post_type' => 'all_partners',
+                        'posts_per_page' => 6,
+                        'order' => 'ASC',
+                    );
+
+                    $loop = new WP_Query($args);
+
+                    if ($loop->have_posts()) :
+                        while ($loop->have_posts()) : $loop->the_post(); ?>
+                            <?php get_template_part('template-parts/our-partner-card') ?>
+                        <?php endwhile;
+                    endif;
+                    wp_reset_postdata();
+                    ?>
+                </div>
         </section>
 
         <section id="our-friends" class="section laboklin">
@@ -183,16 +181,17 @@ get_header();
                 </div>
 
                 <div id="more-friends" class="friends-clubs">
+
                     <?php
                     $args = array(
                         'post_type' => 'friends_clubs',
                         'order' => 'ASC',
-                        'posts_per_page' => 8,
+                        'posts_per_page' => 9,
                     );
 
                     $loop = new WP_Query($args);
 
-                   if ($loop->have_posts()) :
+                    if ($loop->have_posts()) :
                         while ($loop->have_posts()) : $loop->the_post(); ?>
                             <?php get_template_part('template-parts/friends-clubs-card') ?>
                         <?php endwhile;
@@ -228,6 +227,7 @@ get_header();
                 </div>
 
                 <div id="more-photographs" class="photographs">
+
                     <?php
                     $args = array(
                         'post_type' => 'our_photographs',
