@@ -59,9 +59,10 @@ get_header();
             <div class="breeders-catalogue-section__filter-wrapper">
                 <p><?php the_field('list_text'); ?></p>
                 <select name="select" id="breeders-order">
-                    <option value="title"><?php the_field('filter_name'); ?></option>
-                    <option value="newest" selected><?php the_field('filter_date'); ?></option>
-                    <option value="oldest"><?php the_field('filter_date'); ?></option>
+                    <option value="title-asc"><?php the_field('filter_name_a'); ?></option>
+                    <option value="title-desc"><?php the_field('filter_name_ya'); ?></option>
+                    <option value="date-desc" selected><?php the_field('filter_date_new'); ?></option>
+                    <option value="date-asc"><?php the_field('filter_date_old'); ?></option>
                 </select>
             </div>
             <div class="breeders-catalogue-section__list">

@@ -125,4 +125,71 @@
       width: 1128px;
     }
   }
+
+  &__filter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 6px;
+  }
+
+  & .choices {
+    background-color: $white;
+    border-radius: 10px;
+    width: fit-content;
+    color: $primary-color;
+    font-family: $primary-font;
+    margin: 0;
+
+    &.is-focused,
+    &.is-open {
+      .choices__inner {
+        border-radius: 10px;
+      }
+    }
+
+    &.is-open {
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    &::after {
+      border: none;
+      width: 12px;
+      height: 12px;
+      background-color: $primary-color;
+      border-radius: 4px;
+      margin-top: -6px;
+      background-image: url(../../../assets/images/ic_round-arrow-left.svg);
+      background-size: cover;
+    }
+  }
+
+  & .choices__inner {
+    padding: 6px 26px 6px 6px;
+    min-height: auto;
+    border: none;
+  }
+
+  & .choices__item {
+    font-size: 16px;
+  }
+
+  & .choices__list--single {
+    padding: 0;
+    font-weight: 500;
+  }
+
+  & .choices__list--dropdown {
+    border: none;
+    border-radius: 10px;
+    top: calc(100% + 6px);
+    padding: 6px;
+
+    & .choices__item--selectable {
+      padding: 8px 12px;
+      border-radius: 10px;
+    }
+  }
 }
