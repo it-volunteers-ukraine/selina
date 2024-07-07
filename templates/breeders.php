@@ -7,6 +7,13 @@ get_header();
 ?>
 <main>
     <section class="section breeders-first-section">
+        <style>
+            @media screen and (min-width: 1439px) {
+                .breeders-first-section {
+                background-image: url("<?php the_field('upper-section__background', 'option') ?>"); 
+                }
+            }
+        </style>
         <div class="container">
             <h3 class="section_heading">
                 <?php the_field('page_heading'); ?>
