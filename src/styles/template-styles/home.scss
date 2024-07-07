@@ -224,10 +224,6 @@
 .home-heading-wrapper {
   display: flex;
   align-items: baseline;
-  margin-bottom: 16px;
-  @media screen and (min-width: $tablet) {
-    margin-bottom: 40px;
-  }
 }
 
 .home-heading-wrapper-desk {
@@ -235,7 +231,6 @@
   @media screen and (min-width: $desktop) {
     display: flex;
     align-items: baseline;
-    margin-bottom: 40px;
     gap: 8px;
   }
 }
@@ -299,26 +294,17 @@
       gap: 36px;
     }
   }
-  &__swiper {
+  &__swiper-outer {
     max-width: 1128px;
     margin: 0 auto;
+
     @media screen and (min-width: $tablet) {
       background-color: $white;
       border-radius: $big-br;
-    }
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @media screen and (min-width: $tablet) {
-      padding-top: 29.5px;
-      padding-bottom: 38px;
+      padding: 29.5px 38px;
     }
     @media screen and (min-width: $desktop) {
-      padding-top: 80px;
-      padding-bottom: 80px;
+      padding: 80px;
     }
   }
 
@@ -331,11 +317,10 @@
     height: 168px;
     width: 168px;
     @media screen and (min-width: $tablet) {
-      width: 106px;
       height: 81px;
     }
     @media screen and (min-width: $desktop) {
-      height: 78px;
+      height: 85px;
     }
 
     img {
@@ -385,6 +370,10 @@
     height: 459px;
     border-radius: 10px;
     margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      min-height: 459px;
+      height: auto;
+    }
     @media screen and (min-width: $desktop) {
       min-width: 544px;
       margin-bottom: 0px;
@@ -429,6 +418,7 @@
     font-weight: 700;
     line-height: 1.5;
     gap: 8px;
+    margin-top: auto;
     @media screen and (min-width: $tablet) {
       margin-bottom: 24px;
     }
@@ -554,6 +544,10 @@
     height: 459px;
     border-radius: 10px;
     margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      min-height: 459px;
+      height: auto;
+    }
     @media screen and (min-width: $desktop) {
       min-width: 544px;
       margin-bottom: 0px;
@@ -597,6 +591,7 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 1.5;
+    margin-top: auto;
     @media screen and (min-width: $tablet) {
       margin-bottom: 24px;
     }
@@ -622,6 +617,16 @@
 
 .news-section {
   background-color: $background;
+  &__heading-wrapper {
+    align-items: center;
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+    }
+  }
   &__heading {
     color: $primary-color;
     display: flex;
@@ -764,13 +769,16 @@
   }
 }
 
-.ourlife {
+.ourlife,
+.ourlife-en {
   background-color: #9d5dde;
 }
-.webinars {
+.webinars,
+.webinars-en {
   background-color: #62c634;
 }
-.presentations {
+.presentations,
+.presentations-en {
   background-color: #398f5c;
 }
 
@@ -821,6 +829,7 @@
       gap: 24px;
       background-color: #eff8f9;
       padding: 16px;
+      box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
 
       img {
         max-width: calc(50% - 24px);
@@ -883,21 +892,19 @@
 }
 
 .support-section {
-  &__background {
-    width: 100%;
-    height: 471px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @media screen and (min-width: $tablet) {
-      height: 444px;
-    }
-    @media screen and (min-width: $desktop) {
-      height: 775px;
-    }
+  width: 100%;
+  height: 471px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: $tablet) {
+    height: 444px;
+  }
+  @media screen and (min-width: $desktop) {
+    height: 775px;
   }
 
   &__wrapper {

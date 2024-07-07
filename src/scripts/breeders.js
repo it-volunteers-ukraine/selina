@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
     }
     loadBreeders(currentPage);
   };
-  filter.addEventListener("change", filterChangeHandler);
+  filter?.addEventListener("change", filterChangeHandler);
   // Завантаження постів
   function loadBreeders(page) {
     var data = {

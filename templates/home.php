@@ -77,10 +77,11 @@ get_header();
                     </button>
                 </div>
             </div>
-            <div class="partners-section__swiper swiper">
+            <div class="partners-section__swiper-outer">
+                <div class="partners-section__swiper swiper">
                 <div class="partners-section__list swiper-wrapper">
                     <?php
-                    $args = array('posts_per_page' => -1, 'post_type' => 'all_partners', 'category_name' => 'mainpartners');
+                    $args = array('posts_per_page' => -1, 'post_type' => 'all_partners');
                     $myposts = get_posts($args);
                     foreach ($myposts as $post):
                         setup_postdata($post); ?>
@@ -90,6 +91,7 @@ get_header();
                     <?php endforeach;
                     wp_reset_postdata(); ?>
                 </div>
+            </div>
             </div>
 
             <a class="partners-section__button button red_medium_button"
@@ -226,7 +228,7 @@ get_header();
     </section>
     <section class="section news-section">
         <div class="container">
-            <div class="home-heading-wrapper">
+            <div class="home-heading-wrapper news-section__heading-wrapper">
                 <h2 class="news-section__heading section_heading">
                     <svg class="home-heading-svg" width="42" height="60">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
@@ -367,9 +369,7 @@ get_header();
                 wp_reset_postdata(); ?>
         </div>
     </section>
-    <section class="support-section section">
-        <div class="support-section__background"
-            style="background-image: url(<?php the_field('support-section__photo') ?>);">
+    <section class="support-section section" style="background-image: url(<?php the_field('support-section__photo') ?>);">
             <div class="container">
                 <div class="support-section__wrapper">
                     <h2 class="support-section__heading heading">
@@ -392,7 +392,6 @@ get_header();
                     </a>
                 </div>
             </div>
-        </div>
     </section>
     <?php get_template_part('template-parts/feedbacks'); ?>
     <?php get_template_part('template-parts/contact-form'); ?>
