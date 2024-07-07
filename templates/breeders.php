@@ -15,24 +15,26 @@ get_header();
             }
         </style>
         <div class="container">
-            <h3 class="section_heading">
+            <h3 class="section_heading breeders-first-section__heading">
                 <?php the_field('page_heading'); ?>
             </h3>
             <div class="breeders-first-section__subtitle-heading-wrapper">
-                <div class="breeders-first-section__subtitle-heading">
+                <a class="breeders-first-section__subtitle-heading"
+                href="#about-breeders">
                     <svg class="breeders-first-section__heading-svg" width="14" height="12">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
                     </svg>
                     <p><?php the_field('first_section-heading'); ?></p>
-                </div>
-                <div class="breeders-first-section__subtitle-heading">
+                </a>
+                <a class="breeders-first-section__subtitle-heading"
+                href="#breeders-catalogue">
                     <svg class="breeders-first-section__heading-svg" width="14" height="12">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
                     </svg>
                     <p><?php the_field('second_section-heading'); ?></p>
-                </div>
+                </a>
             </div>
         </div>
 
