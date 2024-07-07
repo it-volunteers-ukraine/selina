@@ -25,7 +25,8 @@ get_header();
                                     <p class="first-section__info">
                                         <?php the_sub_field('first-section__info'); ?>
                                     </p>
-                                    <a class="first-section__button button red_medium_button">
+                                    <a class="first-section__button button red_medium_button"
+                                        href="<?php the_sub_field('first-section__link'); ?>">
                                         <?php the_sub_field('first-section__button'); ?>
                                     </a>
 
@@ -76,10 +77,11 @@ get_header();
                     </button>
                 </div>
             </div>
-            <div class="partners-section__swiper swiper">
+            <div class="partners-section__swiper-outer">
+                <div class="partners-section__swiper swiper">
                 <div class="partners-section__list swiper-wrapper">
                     <?php
-                    $args = array('posts_per_page' => -1, 'post_type' => 'all_partners', 'category_name' => 'mainpartners');
+                    $args = array('posts_per_page' => -1, 'post_type' => 'all_partners');
                     $myposts = get_posts($args);
                     foreach ($myposts as $post):
                         setup_postdata($post); ?>
@@ -90,13 +92,15 @@ get_header();
                     wp_reset_postdata(); ?>
                 </div>
             </div>
+            </div>
 
-            <button class="partners-section__button button red_medium_button">
+            <a class="partners-section__button button red_medium_button"
+                href="<?php the_field('partners-section__btn_link'); ?>">
                 <?php the_field('partners-section__btn'); ?>
                 <svg class="partners-section__button-svg" width="16" height="15">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                 </svg>
-            </button>
+            </a>
         </div>
     </section>
     <section class="section who-section">
@@ -128,13 +132,14 @@ get_header();
                     <p class="who-section__info">
                         <?php the_field('who-section__text'); ?>
                     </p>
-                    <button class="who-section__button button red_medium_button">
+                    <a class="who-section__button button red_medium_button"
+                        href="<?php the_field('who-section__button-link'); ?>">
                         <?php the_field('who-section__button'); ?>
                         <svg class="who-section__button-svg" width="16" height="15">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -164,7 +169,8 @@ get_header();
                             <p class="direction-section__repeater-text">
                                 <?php the_sub_field('direction-section__repeater-text'); ?>
                             </p>
-                            <a class="direction-section__repeater-btn button red_medium_button">
+                            <a class="direction-section__repeater-btn button red_medium_button"
+                                href="<?php the_sub_field('direction-section__repeater-link'); ?>">
                                 <?php the_sub_field('direction-section__repeater-btn'); ?>
                                 <svg class="partners-section__button-svg" width="16" height="15">
                                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
@@ -208,20 +214,21 @@ get_header();
                     <p class="wcf-section__info">
                         <?php the_field('wcf-section__text'); ?>
                     </p>
-                    <button class="wcf-section__button button red_medium_button">
+                    <a class="wcf-section__button button red_medium_button"
+                        href="<?php the_field('wcf-section__link'); ?>">
                         <?php the_field('wcf-section__button'); ?>
                         <svg class="wcf-section__button-svg" width="16" height="15">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     <section class="section news-section">
         <div class="container">
-            <div class="home-heading-wrapper">
+            <div class="home-heading-wrapper news-section__heading-wrapper">
                 <h2 class="news-section__heading section_heading">
                     <svg class="home-heading-svg" width="42" height="60">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
@@ -254,61 +261,54 @@ get_header();
                     $myposts = get_posts($args);
                     foreach ($myposts as $post):
                         $count = count($myposts);
-                                $counter++;
+                        $counter++;
                         setup_postdata($post); ?>
-                            <div class="swiper-slide">
-                                
-                            <div class="news-section__item">
-                                <?php 
-                                    $category_detail=get_the_category($post->ID);
-                                    $category_name = $category_detail[0]->cat_name;
-                                    $category_slug = $category_detail[0]->slug;
+                        <div class="swiper-slide">
 
-                                    if($category_name):
-                                ?>
-                                <div class="news-section__category <?php echo $category_slug.'' ?>">
-                                    <?php echo $category_name.'' ?>
-                                </div>
+                            <div class="news-section__item">
+                                <?php
+                                $category_detail = get_the_category($post->ID);
+                                $category_name = $category_detail[0]->cat_name;
+                                $category_slug = $category_detail[0]->slug;
+
+                                if ($category_name):
+                                    ?>
+                                    <div class="news-section__category <?php echo $category_slug . '' ?>">
+                                        <?php echo $category_name . '' ?>
+                                    </div>
                                 <?php endif; ?>
-                            <div class="news-section__img"><img src="<?php the_field('news_photo') ?>" /></div>
-                            <div class="news-section__content-wrapper">
-                                <p class="news-section__name">
-                                <?php the_field('news_name') ?>
-                                </p>
-                                <p class="news-section__text">
-                                    <?php the_field('news_text') ?>
-                                </p>
-                            
-                            <button class="news-section__button button red_medium_button">
-                                <?php the_field('news_btn'); ?>
-                                <svg class="news-section__button-svg" width="16" height="15">
-                                    <use
-                                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                                    </use>
-                                </svg>
-                            </button>
+                                <div class="news-section__img"><img src="<?php the_field('news_photo') ?>" /></div>
+                                <div class="news-section__content-wrapper">
+                                    <p class="news-section__name">
+                                        <?php the_field('news_name') ?>
+                                    </p>
+                                    <p class="news-section__text">
+                                        <?php the_field('news_text') ?>
+                                    </p>
+
+                                    <a class="news-section__button button red_medium_button"
+                                        href="<?php the_field('news_link'); ?>">
+                                        <?php the_field('news_btn'); ?>
+                                        <svg class="news-section__button-svg" width="16" height="15">
+                                            <use
+                                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                                            </use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="news-section__counter-wrapper">
+                                <span>
+                                    <?php echo $counter; ?>
+                                </span>/<span>
+                                    <?php echo $count; ?>
+                                </span>
                             </div>
                         </div>
-                        <div class="news-section__counter-wrapper">
-                            <span>
-                        <?php echo $counter; ?>
-                        </span>/<span> 
-                        <?php echo $count; ?>
-                        </span>
-                        </div>
-</div>
                     <?php endforeach;
                     wp_reset_postdata(); ?>
                 </div>
             </div>
-
-            <button class="news-section__button-all button green_medium_button">
-                <?php the_field('news-section__button-all'); ?>
-                <svg class="news-section__button-all-svg" width="16" height="15">
-                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
-                </svg>
-                
-            </button>
         </div>
     </section>
     <section class="exhibitions-section section">
@@ -322,7 +322,7 @@ get_header();
             </h2>
             <div class="exhibitions-section__list">
                 <?php
-                $args = array('posts_per_page' => -1, 'post_type' => 'exhibitions');
+                $args = array('posts_per_page' => 1, 'post_type' => 'exhibitions');
                 $myposts = get_posts($args);
                 foreach ($myposts as $post):
                     setup_postdata($post); ?>
@@ -353,49 +353,48 @@ get_header();
                             <p class="exhibitions-section__text">
                                 <?php the_field('exhibition_text') ?>
                             </p>
-                            <button class="exhibitions-section__button button red_medium_button">
+                            <a class="exhibitions-section__button button red_medium_button"
+                                href="<?php the_field('exhibition_link'); ?>">
                                 <?php the_field('exhibition_btn'); ?>
                                 <svg class="exhibitions-section__button-svg" width="16" height="15">
                                     <use
                                         href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                                     </use>
                                 </svg>
-                            </button>
-                            </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             <?php endforeach;
                 wp_reset_postdata(); ?>
         </div>
     </section>
-    <section class="support-section section">
-<div class="support-section__background"
- style="background-image: url(<?php the_field('support-section__photo') ?>);">
- <div class="container">
-    <div class="support-section__wrapper">
- <h2 class="support-section__heading heading">
-    <svg class="home-heading-svg" width="42" height="60">
-                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
-                    </use>
-                </svg>
-    <?php the_field('support-section__heading') ?>
- </h2>
-  <p class="support-section__text">
-    <?php the_field('support-section__text') ?>
- </p>
-  <button class="support-section__button button red_medium_button">
-                                <?php the_field('support-section__button'); ?>
-                                <svg class="support-section__button-svg" width="16" height="15">
-                                    <use
-                                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                                    </use>
-                                </svg>
-                                </div>
-                            </div>
-</div>
+    <section class="support-section section" style="background-image: url(<?php the_field('support-section__photo') ?>);">
+            <div class="container">
+                <div class="support-section__wrapper">
+                    <h2 class="support-section__heading heading">
+                        <svg class="home-heading-svg" width="42" height="60">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                            </use>
+                        </svg>
+                        <?php the_field('support-section__heading') ?>
+                    </h2>
+                    <p class="support-section__text">
+                        <?php the_field('support-section__text') ?>
+                    </p>
+                    <a class="support-section__button button red_medium_button"
+                        href="<?php the_field('support-section__link'); ?>">
+                        <?php the_field('support-section__button'); ?>
+                        <svg class="support-section__button-svg" width="16" height="15">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
     </section>
-    <?php get_template_part( 'template-parts/feedbacks' ); ?>
-      <?php get_template_part( 'template-parts/contact-form' ); ?>
+    <?php get_template_part('template-parts/feedbacks'); ?>
+    <?php get_template_part('template-parts/contact-form'); ?>
 </main>
 
 
