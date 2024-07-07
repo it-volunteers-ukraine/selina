@@ -114,9 +114,11 @@
   height: 44px;
   padding: 0;
   background-color: $primary-color;
+  color: $white;
   &:hover,
   &:focus {
     background-color: $white;
+    color: $primary-color;
   }
 }
 

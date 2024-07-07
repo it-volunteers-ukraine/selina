@@ -10,7 +10,7 @@ get_header();
         <style>
             @media screen and (min-width: 1439px) {
                 .breeders-first-section {
-                background-image: url("<?php the_field('upper-section__background', 'option') ?>"); 
+                    background-image: url("<?php the_field('upper-section__background', 'option') ?>");
                 }
             }
         </style>
@@ -19,16 +19,14 @@ get_header();
                 <?php the_field('page_heading'); ?>
             </h3>
             <div class="breeders-first-section__subtitle-heading-wrapper">
-                <a class="breeders-first-section__subtitle-heading"
-                href="#about-breeders">
+                <a class="breeders-first-section__subtitle-heading" href="#about-breeders">
                     <svg class="breeders-first-section__heading-svg" width="14" height="12">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
                     </svg>
                     <p><?php the_field('first_section-heading'); ?></p>
                 </a>
-                <a class="breeders-first-section__subtitle-heading"
-                href="#breeders-catalogue">
+                <a class="breeders-first-section__subtitle-heading" href="#breeders-catalogue">
                     <svg class="breeders-first-section__heading-svg" width="14" height="12">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
@@ -67,7 +65,21 @@ get_header();
             </div>
             <div class="breeders-catalogue-section__list">
             </div>
-        </div>
+            <div class="breeders-catalogue-section__pagination visually-hidden">
+                <button class="breeders-catalogue-section__pagination-left btn_icon breeders-prev">
+                    <svg width="10.67" height="16.97">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+                        </use>
+                    </svg>
+                </button>
+                <div class="breeders-catalogue-section__pagination-numbers"></div>
+                <button class="breeders-catalogue-section__pagination-right btn_icon breeders-next">
+                    <svg width="10.67" height="16.97">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+                        </use>
+                    </svg>
+                </button>
+            </div>
     </section>
     <?php get_template_part('template-parts/join-us'); ?>
 </main>
