@@ -1,7 +1,7 @@
 <footer id="footer" class="footer">
 
     <div class="up_btn-container container">
-        <button type="button" class="up_btn" onclick="topFunction()" id="myBtn" title="Go to top">
+        <button type="button" class="up_btn" onclick="topFunction()" id="to-top-btn" title="Go to top">
             <img class="up_btn-icon" src="<?php echo get_template_directory_uri(); ?>/src/images/up_btn.svg" alt="up">
         </button>
     </div>
@@ -30,7 +30,7 @@
                         $image = $social_icon['footer__socials-image']; 
                     ?> 
                     <li class="footer__icon"> 
-                        <a href="<?php echo $link; ?>"> 
+                        <a href="<?php echo $link; ?>" target="_blank"> 
                             <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"> 
                         </a> 
                     </li> 
@@ -84,7 +84,7 @@
                                 $image = $social_icon['footer__socials-image']; 
                             ?> 
                             <li class="footer__icon"> 
-                                <a href="<?php echo $link; ?>"> 
+                                <a href="<?php echo $link; ?>" target="_blank"> 
                                     <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"> 
                                 </a> 
                             </li> 
@@ -185,7 +185,7 @@
         </div>
         <!-- politic & copyright -->
          <div class="footer__politic-copy">
-            <p>Політика Конфіденційності</p>
+            <p><?php the_field('footer__politic-field', 'option'); ?></p>
             <p>Selina 2024 all right reserved.</p>
          </div>
     </div>

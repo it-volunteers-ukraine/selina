@@ -40,13 +40,12 @@ const partnersSwiperHome = new Swiper(".partners-section__swiper", {
       spaceBetween: 40,
     },
 
-    1440: {
+    1439: {
       slidesPerView: 5,
-      spaceBetween: 80,
+      spaceBetween: 40,
     },
   },
   direction: "horizontal",
-  preloadImages: false,
   lazy: {
     loadOnTransitionStart: true,
     loadPrevNext: true,
@@ -66,7 +65,7 @@ const newsSwiper = new Swiper(".news-section__swiper", {
     768: {
       slidesPerView: 2,
     },
-    1440: {
+    1439: {
       slidesPerView: 3,
     },
   },

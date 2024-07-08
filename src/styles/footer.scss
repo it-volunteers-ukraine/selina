@@ -26,6 +26,7 @@
             justify-content: center;
             column-gap: 32px;
           }
+
     &__menu-list-wrapper ul li a {
         font-weight: 800;
         font-size: 21px;
@@ -36,9 +37,9 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-            height: 365px;
+            height: 345px;
             row-gap: 24px;
-            column-gap: 32px;
+            column-gap: 56px;
             justify-content: flex-start;
         }
     }
@@ -84,7 +85,7 @@
             padding-bottom: 8px;
           }
 
-          @media screen and (max-width: $tablet) {
+          @media screen and (min-width: $tablet) {
             .footer__mail {
                 order: 1;
             }
@@ -354,20 +355,22 @@
     /*------------------Up-button---------------------------*/
     .up_btn {
     display: none;
+    width: 44px;
+    height: 44px;
     box-sizing: content-box;
     position: fixed;
-    bottom: 16px;
+    // bottom: 307px;
     right: 8px;
     z-index: 1000;
     background-color: transparent;
     cursor: pointer;
     @media screen and (min-width: $tablet) {
-        display: block;
-        bottom: 417px;
+        // bottom: 401px;
       }
     @media screen and (min-width: $desktop) {
-      display: block;
-      right: 184px;
+        width: 59px;
+        height: 59px;
+        right: calc((100% - 1128px) / 2 - 8px);
     }
   }
 
@@ -400,10 +403,22 @@
         }
     }
 
-    &__contacts-icom img {
+    &__contacts-icon img {
         @media screen and (min-width: $desktop) {
             width: 28px;
             width: 28px;
+        }
+    }
+    // UA
+    .menu-item-366,
+    .menu-item-370,
+    .menu-item-365,
+    // EN
+    .menu-item-560,
+    .menu-item-561,
+    .menu-item-562 {
+        @media screen and (min-width: $desktop) {
+        height: 25px;
         }
     }
 

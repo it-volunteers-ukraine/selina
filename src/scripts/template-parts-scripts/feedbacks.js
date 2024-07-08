@@ -7,7 +7,7 @@ const feedbacksSwiper = new Swiper(".feedbacks-section__swiper", {
     768: {
       slidesPerView: 2,
     },
-    1440: {
+    1439: {
       slidesPerView: 3,
     },
   },
