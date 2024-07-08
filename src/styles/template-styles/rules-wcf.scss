@@ -3,6 +3,33 @@
 html { 
     scroll-behavior: smooth;
 }
+
+.rules-wcf-sections-headings {
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 24px; 
+    }
+    @media screen and (min-width: $desktop) {
+        gap: 12px;
+        margin-bottom: 40px; 
+    }
+    .heading-svg {
+        display: none;
+        @media screen and (min-width: $tablet) {
+            display: initial;
+            width: 26.32px;
+            height: 23.53px;
+        }
+        @media screen and (min-width: $desktop) {
+            width: 36.85px;
+            height: 32.94px;
+        }
+    }   
+}
+
 .wcf {
    .upper-section {
         background-color:  $light-green;
@@ -74,5 +101,45 @@ html {
                 }
             }  
         }
+    }
+    .about_wcf-section {
+        background-color: $background;
+        &__wrapper {
+            display: grid;
+            @media screen and (min-width: $desktop) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                grid-column-gap: 0px;
+                grid-row-gap: 40px;
+                  
+                .about_wcf-section__heading { grid-area: 1 / 1 / 2 / 2; }
+                .about_wcf-section__content { grid-area: 2 / 1 / 3 / 3; }
+                .about_wcf-section__button { grid-area: 1 / 2 / 2 / 3; }
+            }
+        }
+        &__heading {
+            @extend .rules-wcf-sections-headings;
+            @media screen and (min-width: $desktop) {
+                margin-bottom: 0; 
+            }
+
+        }
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;   
+        }
+        &__upper-card {
+            height: 462px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+        } 
     }
 }

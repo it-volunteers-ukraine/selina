@@ -60,15 +60,32 @@ get_header();
     </section>
     <section class="about_wcf-section section" id="wcf-about">
         <div class="container">
-            <div class="about_wcf-section__head-box">
-                <h2 class="about_wcf-section__heading section_heading">
+            <div class="about_wcf-section__wrapper">
+                <h2 class="about_wcf-section__heading section_heading rules-wcf-sections-headings">
                     <svg class="heading-svg" width="29" height="28">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                         </use>
                     </svg>
                     <?php the_field('about_wcf-section__heading'); ?>
                 </h2>
-                <button class="about_wcf-section button red_medium_button">
+                <div class="about_wcf-section__content">
+                    <div class="about_wcf-section__upper-card">
+                        <img src="<?php the_field('wcf-img'); ?>" />
+                    </div>
+                    <div class="about_wcf-section__lower-card">
+                        <ul class="about_wcf-section__lower-card-list">
+                            <li class="rule-1">
+                                <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>"><?php the_field('wcf_word'); ?></a><?php the_field('rule-1');?>
+                            </li>
+                            <li class="rule-2"><?php the_field('rule-2');?></li>
+                            <li class="rule-3"><?php the_field('rule-3');?></li>
+                            <li class="rule-4"><?php the_field('rule-4');?></li>
+                            <li class="rule-5 optional"><?php the_field('rule-5');?></li>
+                            <li class="rule-6 optional"><?php the_field('rule-6');?></li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="about_wcf-section__button button red_medium_button">
                     <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>">
                         <?php the_field('about_wcf-section__btn'); ?>
                     </a> 
@@ -77,36 +94,9 @@ get_header();
                     </svg>
                 </button>
             </div>
-            <div class="about_wcf-section__wrapper">
-                <div class="about_wcf__upper-card">
-                    <div class="wcf-img">
-                        <img src="<?php the_field('wcf-img'); ?>" />
-                    </div>
-                </div>
-                <div class="about_wcf__lower-card">
-                    <ul class="about_wcf__lower-card-list">
-                        <li class="rule-1">
-                            <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>"><?php the_field('wcf_word'); ?></a><?php the_field('rule-1');?>
-                        </li>
-                        <li class="rule-2"><?php the_field('rule-2');?></li>
-                        <li class="rule-3"><?php the_field('rule-3');?></li>
-                        <li class="rule-4"><?php the_field('rule-4');?></li>
-                        <li class="rule-5 optional"><?php the_field('rule-5');?></li>
-                        <li class="rule-6 optional"><?php the_field('rule-6');?></li>
-                    </ul>
-                    <button class="about_wcf-section button red_medium_button">
-                        <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>">
-                            <?php the_field('about_wcf-section__btn'); ?>
-                        </a> 
-                        <svg class="about_wcf-section__button-svg large-screen" width="21" height="20">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-arrow"></use>
-                        </svg>
-                    </button>
-                </div>
-            </div>
         </div>
     </section>
-    <section class="rules-section section" id="wcf-rules">
+    <section class="rules-section section rules-wcf-sections-headings" id="wcf-rules">
         <div class="container">
             <h2 class="rules-section__heading section_heading">
                 <svg class="heading-svg" width="29" height="28">
