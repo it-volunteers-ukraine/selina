@@ -1,8 +1,5 @@
-console.log("footer part");
-
 // Scroll to TOP
-
-let scrollTopBtn = document.getElementById("myBtn");
+let scrollTopBtn = document.getElementById("to-top-btn");
 
 window.onscroll = function() {
     scrollFunction();
@@ -20,10 +17,24 @@ function scrollFunction() {
         scrollTopBtn.style.display = "none";
     }
 
-    if (bottomDistance <= 417) {
-        scrollTopBtn.style.bottom = '417px';
+    if (window.innerWidth <= 767) {
+        if (bottomDistance <= 200) {
+            scrollTopBtn.style.bottom = '307px';
+        } else {
+            scrollTopBtn.style.bottom = '16px';
+        }
+    } else if (window.innerWidth <= 1439) {
+        if (bottomDistance <= 300) {
+            scrollTopBtn.style.bottom = '401px';
+        } else {
+            scrollTopBtn.style.bottom = '16px';
+        }
     } else {
-        scrollTopBtn.style.bottom = '50px';
+        if (bottomDistance <= 350) {
+            scrollTopBtn.style.bottom = '430px';
+        } else {
+            scrollTopBtn.style.bottom = '16px';
+        }
     }
 }
 

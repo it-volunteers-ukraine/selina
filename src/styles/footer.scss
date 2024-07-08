@@ -3,11 +3,13 @@
 .footer {
     background: $primary-color;
     color: $white;
-    padding-top: 32px;
-    padding-bottom: 12px;
-    @media screen and (min-width: $tablet) {
-        padding-top: 0;
+    padding: 32px 0 12px;
+        @media screen and (min-width: $tablet) {
+        padding: 20px 0 13px;
       }
+      @media screen and (min-width: $desktop) {
+        padding: 24px 0 16px;
+    }
     &__menu-list-wrapper {
         @media screen and (min-width: $tablet) {
             padding: 16px 0 16px;
@@ -24,6 +26,7 @@
             justify-content: center;
             column-gap: 32px;
           }
+
     &__menu-list-wrapper ul li a {
         font-weight: 800;
         font-size: 21px;
@@ -34,35 +37,40 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-            height: 365px;
+            height: 345px;
             row-gap: 24px;
-            column-gap: 32px;
+            column-gap: 56px;
             justify-content: flex-start;
         }
     }
     &__logo{
         display: none;
-        margin-bottom: -35px;
         @media screen and (min-width: $desktop) {
             display: block;
+            margin-bottom: 18px;
         }
     }
     &__socials{
         margin-bottom: 16px;
         @media screen and (min-width: $tablet) {
-            width: 316px;
-            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto 20px;
         }
         @media screen and (min-width: $desktop) {
             width: 227px;
             margin: 0 0 -75px;
         }
     }
-    &__icons-list{
+    &__icons-list {
         display: flex;
         justify-content: space-between;
+        @media screen and (min-width: $tablet) {
+            justify-content: unset;
+            gap: 24px;
+        }
     }
-    &__icon{
+    &__icon {
         width: 44px;
         height: 44px;
         @media screen and (min-width: $desktop) {
@@ -74,9 +82,20 @@
         @media screen and (min-width: $tablet) {
             display: flex;
             justify-content: space-between;
-            margin-top: 16px;
-            margin-bottom: 8px;
             padding-bottom: 8px;
+          }
+
+          @media screen and (min-width: $tablet) {
+            .footer__mail {
+                order: 1;
+            }
+            .footer__location {
+                order: 2;
+            }
+            .footer__phone {
+                order: 3;
+            }
+
           }
       
           @media screen and (min-width: $desktop) {
@@ -94,11 +113,13 @@
             height: 28px;
         }
     }
+
     &__mail,
     &__phone,
     &__location{
         display: flex;
         align-items: center;
+        gap: 8px;
         font-size: 16px;
         line-height: 131%;
         @media screen and (min-width: $tablet) {
@@ -110,17 +131,38 @@
         }
     }
 
+    &__mail,
+    &__phone{
+        margin-bottom: 4px;
+        @media screen and (min-width: $tablet) {
+            margin-bottom: 0;
+        }
+        @media screen and (min-width: $desktop) {
+            margin-bottom: 4px;
+        }
+    }
+
+    &__location{
+        padding-bottom: 8px;
+        @media screen and (min-width: $tablet) {
+            padding-bottom: 0;
+        }
+    }
+
     &__line{
         border: none;
         height: 1px;
         background-color: $white;
-        margin: 8px 0 8px;
+        margin: 8px 0;
     }
-    &__politic-copy{
+    &__politic-copy {
         display: flex;
         justify-content: space-between;
         font-size: 10px;
         padding-top: 8px;
+        @media screen and (min-width: $desktop) {
+            padding-top: 12px;
+        }
     }
 
     &__menu-list-wrapper {
@@ -153,7 +195,7 @@
         @media screen and (min-width: $tablet) {
             display: none !important;
         }
-      
+
         @media screen and (min-width: $desktop) {
             display: block !important;
         }
@@ -166,6 +208,7 @@
     .menu-item a {
         @media screen and (min-width: $tablet) {
             font-size: 18px;
+            font-weight: 800;
             line-height: 244%;
         }
         @media screen and (min-width: $desktop) {
@@ -192,11 +235,14 @@
     /* center p tsisyk street */
     #footer-address {
         text-align: center;
+        @media screen and (min-width: $desktop) {
+            text-align: left;
+        }
     }
     
     /* changed order of sections 1&2 on 768px*/
-    .container {
-        @media screen and (min-width: $tablet) {
+    // .container {
+        @media screen and (min-width: $desktop) {
             display: flex;
             flex-direction: column;
         }
@@ -221,51 +267,160 @@
             order: 5; 
         }
     
+    //     @media screen and (min-width: $desktop) {
+    //         display: block;
+    //     }
+    // }
+    
+    // .footer-container {
+    //     @media screen and (min-width: $desktop) {
+    //         display: grid;
+    //         grid-template-columns: 1fr 227px;
+    //         grid-template-areas: 
+    //         "menu logo"
+    //         "menu socials"
+    //         "menu contacts"
+    //         "line line"
+    //         "politic-copy politic-copy";
+    //     }
+    // }
+
+    
+
+    .footer__logo, .footer__socials, .footer__contacts {
         @media screen and (min-width: $desktop) {
-            display: block;
+            display: none;
         }
     }
+
+
+
     
-    .footer-container {
-        @media screen and (min-width: $desktop) {
-            display: grid;
-            grid-template-columns: 1fr 227px;
-            grid-template-areas: 
-            "menu logo"
-            "menu socials"
-            "menu contacts"
-            "line line"
-            "politic-copy politic-copy";
+    /* changed order of menu items on 768px*/
+    .footer__menu-list-wrapper {
+        @media screen and (max-width: $desktop) {
+                // "menu-item-312" "menu-item-310" "menu-item-309" "menu-item-308"
+                // "menu-item-439" "menu-item-307" "menu-item-306" "menu-item-305" "menu-item-311" "menu-item-319"
+                // "menu-item-313" "menu-item-318"
+            .menu-item-312 {
+                order: 1;
+                margin-left: 65px;
+            }
+
+            .menu-item-310 {
+                order: 2;
+            }
+            
+            .menu-item-309 {
+                order: 3;
+            }
+
+            .menu-item-308 {
+                order: 4;
+                margin-right: 65px;
+            }
+
+            .menu-item-439 {
+                order: 5;
+            }
+
+            .menu-item-307 {
+                order: 6;
+            }
+
+            .menu-item-306 {
+                order: 7;
+            }
+
+            .menu-item-305 {
+                order: 8;
+            }
+            .menu-item-311 {
+                order: 9;
+            }
+
+            .menu-item-319 {
+                order: 10;
+            }
+            .menu-item-313 {
+                order: 11;
+            }
+
+            .menu-item-318 {
+                order: 12;
+            }
         }
     }
 
     /*------------------Up-button---------------------------*/
-.up_btn {
+    .up_btn {
     display: none;
+    width: 44px;
+    height: 44px;
     box-sizing: content-box;
     position: fixed;
-    bottom: 280px;
+    // bottom: 307px;
     right: 8px;
     z-index: 1000;
     background-color: transparent;
     cursor: pointer;
     @media screen and (min-width: $tablet) {
-        display: block;
-        bottom: 417px;
+        // bottom: 401px;
       }
     @media screen and (min-width: $desktop) {
-      display: block;
-      right: 184px;
+        width: 59px;
+        height: 59px;
+        right: calc((100% - 1128px) / 2 - 8px);
     }
   }
-  .up_btn-icon {
-    width: 44px;
-    height: 44px;
-    @media screen and (min-width: $desktop) {
-        width: 56px;
-        height: 56px;
+
+//   Styles for Right-side Logo & Icons etc, appeared at $desktop (class="footer__side-part")
+
+    .big-footer-wrapper {
+        @media screen and (min-width: $desktop) {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+        }
     }
-  }
+
+    #no-display {
+        display: none;
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
+    }
+
+    &__logo-side img {
+        width: 227px;
+        height: 65px;
+    }
+
+    &__icons-list {
+        @media screen and (min-width: $desktop) {
+            gap: 16px;
+            padding: 18px 0 25px;
+        }
+    }
+
+    &__contacts-icon img {
+        @media screen and (min-width: $desktop) {
+            width: 28px;
+            width: 28px;
+        }
+    }
+    // UA
+    .menu-item-366,
+    .menu-item-370,
+    .menu-item-365,
+    // EN
+    .menu-item-560,
+    .menu-item-561,
+    .menu-item-562 {
+        @media screen and (min-width: $desktop) {
+        height: 25px;
+        }
+    }
 
 
 }
