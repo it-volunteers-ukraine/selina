@@ -13,7 +13,25 @@
   }
 }
 .breeders-first-section {
-  background-color: #cfe4e6;
+  background-color: $background;
+  padding: 20px 0;
+  @media screen and (min-width: $tablet) {
+    padding: 30px 0;
+  }
+  @media screen and (min-width: $desktop) {
+    background-color: none;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 377px;
+    padding: 118.5px 0;
+  }
+
+  &__heading {
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 24px;
+    }
+  }
 
   &__heading-svg {
     color: $primary-color;
@@ -50,6 +68,9 @@
 .about-breeders-section {
   &__heading {
     margin-bottom: 24px;
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+    }
   }
 
   &__content {
@@ -102,6 +123,111 @@
     }
     @media screen and (min-width: $desktop) {
       width: 1128px;
+    }
+  }
+
+  &__filter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 6px;
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 32px;
+    }
+  }
+
+  &__pagination-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  &__pagination-button {
+    font-family: $primary-font;
+    font-size: 24px;
+    font-weight: 800;
+
+    color: $primary-color;
+    background-color: $white;
+    border: 1px solid $primary-color;
+
+    &.is-active {
+      color: $white;
+      background-color: $primary-color;
+      border: 1px solid $white;
+    }
+  }
+
+  & .choices {
+    background-color: $white;
+    border-radius: 10px;
+    width: fit-content;
+    color: $primary-color;
+    font-family: $primary-font;
+    margin: 0;
+
+    &.is-focused,
+    &.is-open {
+      .choices__inner {
+        border-radius: 10px;
+      }
+    }
+
+    &.is-open {
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    &::after {
+      border: none;
+      width: 12px;
+      height: 12px;
+      background-color: $primary-color;
+      border-radius: 4px;
+      margin-top: -6px;
+      background-image: url(../../../assets/images/ic_round-arrow-left.svg);
+      background-size: cover;
+    }
+  }
+
+  & .choices__inner {
+    padding: 6px 26px 6px 6px;
+    min-height: auto;
+    border: none;
+  }
+
+  & .choices__item {
+    font-size: 16px;
+  }
+
+  & .choices__list--single {
+    padding: 0;
+    font-weight: 500;
+  }
+
+  & .choices__list--dropdown {
+    border: none;
+    border-radius: 10px;
+    top: calc(100% + 6px);
+    padding: 6px;
+
+    & .choices__item--selectable {
+      padding: 8px 12px;
+      border-radius: 10px;
     }
   }
 }

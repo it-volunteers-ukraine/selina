@@ -19,8 +19,30 @@ function flipCardMobile(event) {
 // pagination
 let currentPage = 1;
 let hasData = true;
-const viewportWidth = window.innerWidth;
-const isMobile = viewportWidth < 768;
+
+function loadPartners(postType) {
+    const viewportWidth = window.innerWidth;
+    $.ajax({
+        url: my_ajax.ajaxurl, /* Use the localised ajaxurl variable */
+        nonce: getNonce(),
+        type: 'POST',
+        data: {
+            action: 'load_partners_pagination',
+            page: currentPage,
+            width: viewportWidth,
+            postType: postType,
+        },
+    }).then(function (response) {
+        replacePosts(response.html);
+    }).fail(function (xhr, status, error) {
+        console.error("Request failed: " + error);
+    });
+}
+
+function getNonce() {
+    return my_ajax.nonce;
+}
+
 
 function paginatePrev() {
     if (currentPage > 1) {
@@ -37,41 +59,25 @@ function paginateNext() {
 }
 
 function replacePosts(html) {
-
+    const viewportWidth = window.innerWidth;
+    const isMobile = viewportWidth < 768;
     const isTablet = viewportWidth >= 767.8;
     hasData = !!html;
-    console.log('html', html.length > 0)
+    let noPost = document.querySelector('.message');
     if (isMobile && hasData) {
+        noPost.style.display = 'none';
         let partnersMobile = document.getElementById('partners-posts-mobile');
         partnersMobile.innerHTML = html;
     } else if (isTablet && hasData) {
+        noPost.style.display = 'none';
         let partnersTablet = document.getElementById('partners-posts-tablet');
         partnersTablet.innerHTML = html;
     }
-}
 
-function getNonce() {
-    return my_ajax.nonce;
-}
-
-function loadPartners(postType) {
-    $.ajax({
-        url: my_ajax.ajaxurl, /* Use the localised ajaxurl variable */
-        nonce: getNonce(),
-        type: 'POST',
-        data: {
-            action: 'load_partners_pagination',
-            page: currentPage,
-            width: viewportWidth,
-            postType: postType,
-        },
-        success: function (response) {
-            replacePosts(response.html)
-        },
-        error: function (xhr, status, error) {
-            console.error("Request failed: " + error);
-        }
-    });
+    if (!hasData) {
+        noPost.style.display = 'block';
+        currentPage--;
+    }
 }
 
 
@@ -81,6 +87,7 @@ const items = cardsContainer.querySelectorAll('.friends-clubs-item')
 
 function showPosts() {
     const viewportWidth = window.innerWidth;
+    const isMobile = viewportWidth < 768;
     const isLargeScreen = viewportWidth >= 992;
 
     items.forEach(function (item, index) {

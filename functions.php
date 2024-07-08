@@ -372,7 +372,7 @@ function load_partners_pagination()
     $html = ob_get_clean();
     wp_reset_postdata();
 
-    wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
+    wp_send_json(array('html' => $html, 'totalPages' => $total_pages , 'postsPerPage' => $number));
     wp_die();
 }
 

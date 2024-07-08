@@ -7,18 +7,32 @@
     box-shadow: 0px 1px 12px 0px #0000001f;
     border-radius: 8px;
     width: 343px;
+    display: flex;
+    flex-direction: column;
 
     @media screen and (min-width: $tablet) {
       width: 340px;
+      padding: 14px;
     }
     @media screen and (min-width: $desktop) {
       width: 360px;
+      padding: 24px;
     }
 
     img {
       object-fit: cover;
       overflow: hidden;
       border-radius: 8px;
+      width: 312px;
+      height: 268px;
+    }
+
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
   }
 
@@ -28,12 +42,6 @@
     font-weight: 800;
     line-height: 1.2;
     margin-top: 16px;
-    @media screen and (min-width: $tablet) {
-      margin-top: 24px;
-    }
-    @media screen and (min-width: $desktop) {
-      margin-top: 40px;
-    }
   }
 
   &__text {
@@ -41,14 +49,13 @@
     font-weight: 500;
     line-height: 1;
     margin-top: 8px;
-    @media screen and (min-width: $tablet) {
-      margin-top: 24px;
-    }
-    @media screen and (min-width: $desktop) {
-      margin-top: 40px;
-    }
     svg {
       fill: $red;
     }
+  }
+
+  &__button {
+    margin-top: 16px;
+    gap: 4px;
   }
 }
