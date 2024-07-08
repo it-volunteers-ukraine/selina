@@ -18,7 +18,7 @@ html,
 body {
   scroll-behavior: auto;
   overflow-x: hidden;
-  color: #070707;
+  color: $black;
 }
 
 html.modal__opened {
@@ -147,7 +147,7 @@ input,
 select,
 optgroup,
 textarea {
-  color: black;
+  color: $black;
   font-family: $primary-font;
   font-size: 20px;
   font-style: normal;
