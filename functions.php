@@ -78,6 +78,7 @@ function wp_it_volunteers_scripts()
 
     if (is_singular() && locate_template('template-parts/contact-form.php')) {
         wp_enqueue_style('contact-form-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/contact-form.css', array('main'));
+        wp_enqueue_script('contact-form-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/contact-form.js', array('touch-swipe-scripts'), false, true);
     }
 
     if (is_page_template('templates/partners.php')) {
