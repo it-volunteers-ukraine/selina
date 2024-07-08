@@ -4,7 +4,7 @@ html {
     scroll-behavior: smooth;
 }
 
-.rules-wcf-sections-headings {
+.rules-wcf-sections-heading {
     margin-bottom: 16px;
     @media screen and (min-width: $tablet) {
         display: flex;
@@ -109,7 +109,7 @@ html {
             @media screen and (min-width: $desktop) {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 1fr);
+                grid-template-rows: auto auto;
                 grid-column-gap: 0px;
                 grid-row-gap: 40px;
                   
@@ -119,27 +119,94 @@ html {
             }
         }
         &__heading {
-            @extend .rules-wcf-sections-headings;
+            @extend .rules-wcf-sections-heading;
             @media screen and (min-width: $desktop) {
                 margin-bottom: 0; 
             }
-
         }
         &__content {
             display: flex;
             flex-direction: column;
-            gap: 24px;   
+            gap: 24px; 
+            @media screen and (min-width: $desktop) {
+                flex-direction: row;
+            }
         }
         &__upper-card {
             height: 462px;
             width: 100%;
             background-color: #fff;
             border-radius: 10px;
+            @media screen and (min-width: $desktop) {
+                order: 2;
+                height: 698px;
+                width: 50%;
+            }
             img {
                 height: 100%;
                 width: 100%;
                 object-fit: contain;
+                border-radius: 10px;
             }
         } 
+        &__lower-card {
+            background-color: #fff;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.31;
+            padding: 24px 24px 24px 48px;
+            margin-bottom: 16px;
+            @media screen and (min-width: $tablet) {
+                font-size: 20px;
+                line-height: 1.25;
+                margin-bottom: 24px;
+            }
+            @media screen and (min-width: $desktop) {
+                order: 1;
+                width: 50%;
+                margin-bottom: 0;
+            }
+            &-list {
+                list-style-type: disc;
+                li {
+                    margin-bottom: 21.34px;
+                    @media screen and (min-width: $tablet) {
+                        margin-bottom: 25.012px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                    &:nth-child(4) {
+                        margin-bottom: 0;
+                        @media screen and (min-width: $tablet) {
+                            margin-bottom: 25.012px;
+                        }
+                    }
+                    .wcf_word {
+                        color: $blue-main;
+                    }
+                    .optional {
+                        display: none;
+                        @media screen and (min-width: $tablet) {
+                            display: initial;
+                        }
+                    }
+                }   
+            }
+        }
+        &__button {
+            @media screen and (min-width: $desktop) {
+                justify-self: flex-end;
+            }
+            svg {
+                width: 20px;
+                height: 20px;
+                stroke: #fff;
+            }
+            &:hover svg {
+                stroke: #aa0610;
+            }
+        }
     }
 }

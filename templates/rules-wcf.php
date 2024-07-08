@@ -61,7 +61,7 @@ get_header();
     <section class="about_wcf-section section" id="wcf-about">
         <div class="container">
             <div class="about_wcf-section__wrapper">
-                <h2 class="about_wcf-section__heading section_heading rules-wcf-sections-headings">
+                <h2 class="about_wcf-section__heading section_heading rules-wcf-sections-heading">
                     <svg class="heading-svg" width="29" height="28">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                         </use>
@@ -75,7 +75,7 @@ get_header();
                     <div class="about_wcf-section__lower-card">
                         <ul class="about_wcf-section__lower-card-list">
                             <li class="rule-1">
-                                <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>"><?php the_field('wcf_word'); ?></a><?php the_field('rule-1');?>
+                                <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>" target="_blank" class="wcf_word"><?php the_field('wcf_word'); ?></a><?php the_field('rule-1');?>
                             </li>
                             <li class="rule-2"><?php the_field('rule-2');?></li>
                             <li class="rule-3"><?php the_field('rule-3');?></li>
@@ -86,17 +86,17 @@ get_header();
                     </div>
                 </div>
                 <button class="about_wcf-section__button button red_medium_button">
-                    <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>">
+                    <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>" target="_blank">
                         <?php the_field('about_wcf-section__btn'); ?>
                     </a> 
-                    <svg class="about_wcf-section__button-svg large-screen" width="21" height="20">
+                    <svg class="about_wcf-section__button-svg large-screen" width="20" height="20">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-arrow"></use>
                     </svg>
                 </button>
             </div>
         </div>
     </section>
-    <section class="rules-section section rules-wcf-sections-headings" id="wcf-rules">
+    <section class="rules-section section rules-wcf-sections-heading" id="wcf-rules">
         <div class="container">
             <h2 class="rules-section__heading section_heading">
                 <svg class="heading-svg" width="29" height="28">
