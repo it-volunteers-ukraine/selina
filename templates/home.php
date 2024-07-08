@@ -52,7 +52,7 @@ get_header();
     </section>
     <section class="section partners-section">
         <div class="container">
-            <div class="home-heading-wrapper">
+            <div class="home-heading-wrapper partners-section__heading-wrapper">
                 <h2 class="partners-section__heading section_heading">
                     <svg class="home-heading-svg" width="42" height="60">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
