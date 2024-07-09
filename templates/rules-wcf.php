@@ -58,6 +58,8 @@ get_header();
             </div>
         </div>    
     </section>
+
+    <!-- About WCF section ------------------------------------------>
     <section class="about_wcf-section section" id="wcf-about">
         <div class="container">
             <div class="about_wcf-section__wrapper">
@@ -96,9 +98,11 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="rules-section section rules-wcf-sections-heading" id="wcf-rules">
+
+    <!-- WCF system rules section ----------------------------------->
+    <section class="rules-section section" id="wcf-rules">
         <div class="container">
-            <h2 class="rules-section__heading section_heading">
+            <h2 class="rules-section__heading section_heading rules-wcf-sections-heading">
                 <svg class="heading-svg" width="29" height="28">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                     </use>
@@ -106,21 +110,21 @@ get_header();
                 <?php the_field('rules-section__heading'); ?>
             </h2>
             <div class="rules-section__wrapper">
-                <div class="rules-infobox">
-                    <div class="wcf-img">
-                        <img src="<?php the_field('wcf-img'); ?>" />
-                    </div>
-                    <div class="wcf-text-large-screen">
+                <div class="rules-section__img">
+                    <img src="<?php the_field('wcf-img'); ?>" />
+                </div>
+                <div class="rules-section__infobox">
+                    <div class="infobox__large-screen">
                         <?php the_field('wcf-text-large-screen'); ?>
                     </div>
-                    <div class="wcf-text-small-screen">
+                    <div class="infobox__small-screen">
                         <?php the_field('wcf-text-small-screen'); ?>
                     </div>
-                    <button class="rules-section__button button red_medium_button">
+                    <button class="rules-section__button button red_medium_button open-btn">
                         <a href="<?php echo esc_attr( get_field('rules-section__link') ); ?>">
                             <?php the_field('open-btn', 'option'); ?>
                         </a> 
-                        <svg class="rules-section__button-svg" width="16" height="15">
+                        <svg class="rules-section__button-svg" width="16" height="14">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
                         </svg>
                     </button>

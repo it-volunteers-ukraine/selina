@@ -4,6 +4,7 @@ html {
     scroll-behavior: smooth;
 }
 
+/*Headings for sections ---------------------*/
 .rules-wcf-sections-heading {
     margin-bottom: 16px;
     @media screen and (min-width: $tablet) {
@@ -28,6 +29,16 @@ html {
             height: 32.94px;
         }
     }   
+}
+
+/*Button Open -----------------------------------*/
+.open-btn {
+    gap: 8px;
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33;
+    border: none;
 }
 
 .wcf {
@@ -102,6 +113,7 @@ html {
             }  
         }
     }
+    /*About WCF section ---------------------------*/
     .about_wcf-section {
         background-color: $background;
         &__wrapper {
@@ -207,6 +219,78 @@ html {
             &:hover svg {
                 stroke: #aa0610;
             }
+        }
+    }
+    /*WCF system rules section --------------------*/
+    .rules-section {
+        background-color: $background;
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                gap: 24px;
+            }
+        }
+        &__img {
+            height: 240px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            @media screen and (min-width: $tablet) {
+                width: 53%;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 32.6%;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+                border-radius: 10px;
+                scale: 1.2;
+            }
+        }
+        &__infobox {
+            @media screen and (min-width: $tablet) {
+                width: 47%;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 67.4%;
+            }
+            .infobox {
+                &__large-screen {
+                    display: none;
+                    @media screen and (min-width: $desktop) {
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 1.25;
+                        display: block;
+                        margin-bottom: 32px;
+                    }
+                }
+                &__small-screen {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 1.31;
+                    margin-bottom: 24px;
+                    @media screen and (min-width: $tablet) {
+                        font-size: 20px;
+                        line-height: 1.25;
+                    }
+                    @media screen and (min-width: $desktop) {
+                        display: none;
+                    }
+                }
+            }  
+        }
+        &__button {
+            @extend .open-btn;
         }
     }
 }
