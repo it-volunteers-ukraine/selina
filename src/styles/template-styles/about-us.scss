@@ -426,7 +426,7 @@ html {
                 width: 702px;
                 margin: 0 auto;
             }
-            @media screen and (min-width: $full) {
+            @media screen and (min-width: $desktop) {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 gap: 24px;
