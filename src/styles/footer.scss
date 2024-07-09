@@ -78,6 +78,11 @@
             height: 28px;
         }
     }
+    &__icon:hover {
+        @media screen and (min-width: $desktop) {
+            transform: scale(1.2);
+        }
+    }
     &__contacts{
         @media screen and (min-width: $tablet) {
             display: flex;
@@ -95,7 +100,6 @@
             .footer__phone {
                 order: 3;
             }
-
           }
       
           @media screen and (min-width: $desktop) {
@@ -105,12 +109,18 @@
             padding: 0;
           }
     }
-    &__contacts-icon{
+    &__contacts-icon {
         width: 44px;
         height: 44px;
         @media screen and (min-width: $desktop) {
             width: 28px;
             height: 28px;
+        }
+    }
+
+    &__contacts-icon:hover {
+        @media screen and (min-width: $desktop) {
+            transform: scale(1.2);
         }
     }
 
@@ -266,35 +276,12 @@
         .footer__politic-copy {
             order: 5; 
         }
-    
-    //     @media screen and (min-width: $desktop) {
-    //         display: block;
-    //     }
-    // }
-    
-    // .footer-container {
-    //     @media screen and (min-width: $desktop) {
-    //         display: grid;
-    //         grid-template-columns: 1fr 227px;
-    //         grid-template-areas: 
-    //         "menu logo"
-    //         "menu socials"
-    //         "menu contacts"
-    //         "line line"
-    //         "politic-copy politic-copy";
-    //     }
-    // }
-
-    
 
     .footer__logo, .footer__socials, .footer__contacts {
         @media screen and (min-width: $desktop) {
             display: none;
         }
     }
-
-
-
     
     /* changed order of menu items on 768px*/
     .footer__menu-list-wrapper {
@@ -355,12 +342,10 @@
     /*------------------Up-button---------------------------*/
     .up_btn {
     display: none;
-    width: 44px;
-    height: 44px;
     box-sizing: content-box;
     position: fixed;
     // bottom: 307px;
-    right: 8px;
+    right: 16px;
     z-index: 1000;
     background-color: transparent;
     cursor: pointer;
@@ -368,11 +353,47 @@
         // bottom: 401px;
       }
     @media screen and (min-width: $desktop) {
-        width: 59px;
-        height: 59px;
-        right: calc((100% - 1128px) / 2 - 8px);
+        right: calc((100% - 1128px) / 2);
     }
   }
+
+    .button-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        background: $red;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        padding-top: 5px;
+        @media screen and (min-width: $desktop) {
+            width: 59px;
+            height: 59px;
+            gap: 0;
+            padding-top: 2px;
+        }
+    }
+
+    .button-image svg {
+        @media screen and (min-width: $desktop) {
+            width: 40px;
+            height: 40px;
+            margin-bottom: -1px;
+        }
+    }
+
+    .button-image p {
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 10px;
+        line-height: 100%;
+        text-align: center;
+        @media screen and (min-width: $desktop) {
+            font-size: 12px;
+        }
+    }
 
 //   Styles for Right-side Logo & Icons etc, appeared at $desktop (class="footer__side-part")
 
