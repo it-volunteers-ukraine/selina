@@ -11,8 +11,8 @@ const itemsListMobile = headerListMobile.querySelectorAll('.menu-item');
 
 
 // dropdowns
-const headerSubmenus = document.querySelectorAll('header .sub-menu');
-const headerMenuList = document.querySelectorAll('header .header__list .menu-item');
+const headerList = document.querySelector('.header__list');
+const itemsList = headerList.querySelectorAll('.menu-item');
 
 
 burgerBtn.addEventListener('click', () => {
@@ -29,25 +29,20 @@ function redirectToPage(url) {
 }
 
 
-// remove global class ul.sub-menu
-headerSubmenus.forEach(innerMenu => {
-    innerMenu.classList.remove('sub-menu');
-    innerMenu.classList.add('header-sub-menu');
-})
-
-// remove global class li.menu-item
-headerMenuList.forEach(menuItem => {
-    menuItem.classList.remove('menu-item');
-    menuItem.classList.add('header-menu-item');
-})
-
-
-headerMenuList.forEach(item => {
+itemsList.forEach(item => {
     item.addEventListener('click', () => {
-        const subMenu = item.querySelector('.header-sub-menu');
+        const activeDropdown = item.querySelector('.sub-menu');
+        // Close other opened dropdowns
+        const otherDropdowns = document.querySelectorAll('.sub-menu.active-sub_menu');
+        otherDropdowns.forEach(dropdown => {
+            if (dropdown !== activeDropdown) {
+                dropdown.classList.remove('active-sub_menu');
+            }
+        });
 
-        if (subMenu) {
-            subMenu.classList.toggle('active-sub_menu');
+        // Toggle the clicked dropdown
+        if (activeDropdown) {
+            activeDropdown.classList.toggle('active-sub_menu');
         }
     })
 })
