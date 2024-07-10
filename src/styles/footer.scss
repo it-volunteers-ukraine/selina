@@ -284,7 +284,7 @@
             li:nth-child(1) {
                 order: 1;
                 margin-left: 65px;
-                @media screen and (min-width: 880px) {
+                @media screen and (min-width: 850px) {
                     margin-left: 0;
                 }
             }
@@ -300,7 +300,7 @@
             li:nth-child(8) {
                 order: 4;
                 margin-right: 65px;
-                @media screen and (min-width: 880px) {
+                @media screen and (min-width: 850px) {
                     margin-right: 0;
                 }
             }
