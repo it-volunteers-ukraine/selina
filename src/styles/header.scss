@@ -12,13 +12,16 @@
   .header-top {
     display: none;
 
-
     @media screen and (min-width: $tablet) {
+      padding: 16px 0;
+    }
+
+    @media screen and (min-width: $desktop) {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 0;
+      padding: 12px 0;
     }
 
 
@@ -30,6 +33,10 @@
 
       @media screen and (min-width: $tablet) {
         margin-bottom: 0;
+      }
+
+      @media screen and (min-width: $desktop) {
+        gap: 18px;
       }
 
     }
@@ -101,17 +108,16 @@
   // Header bottom
   .header-bottom {
     background-color: $primary-color;
-    padding: 12px 0;
+    padding: 16px 0;
     position: fixed;
     width: 100%;
     z-index: 100;
     top: 0;
 
-
-    @media screen and (min-width: $tablet) {
+    @media screen and (min-width: $desktop) {
       position: static;
+      padding: 12px 0;
     }
-
 
     .bottom-row {
       display: flex;
@@ -121,11 +127,10 @@
 
       .white-logo {
 
-        @media screen and (min-width: $tablet) {
+        @media screen and (min-width: $desktop) {
           display: none;
         }
       }
-
 
       // menu-btn burger
       .menu-btn {
@@ -137,6 +142,9 @@
         transition: 0.5s ease-in-out;
         position: relative;
 
+        @media screen and (min-width: $desktop) {
+          display: none;
+        }
 
         .burger {
           width: 44px;
@@ -155,11 +163,6 @@
           background: $white;
           transition: .2s ease-in-out;
           border-radius: 10px;
-        }
-
-
-        @media screen and (min-width: $tablet) {
-          display: none;
         }
 
       }
@@ -188,32 +191,27 @@
 
     .nav-menu {
 
-      @media screen and (min-width: $tablet) {
+      @media screen and (min-width: $desktop) {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
 
-
       .header__list {
         display: none;
 
-        @media screen and (min-width: $tablet) {
+        @media screen and (min-width: $desktop) {
           display: flex;
           flex-direction: row;
-          gap: 20px;
-          margin-bottom: 0;
-        }
-        @media screen and (min-width: $desktop) {
           gap: 32px;
         }
 
-        .header-menu-item {
+        .menu-item {
+          text-transform: capitalize;
 
           a {
             color: $primary-color;
-            text-transform: capitalize;
             display: block;
 
             &:hover {
@@ -230,7 +228,7 @@
             }
           }
 
-          .header-sub-menu {
+          .sub-menu {
             width: 270px;
             display: none;
             flex-direction: column;
@@ -244,8 +242,7 @@
             z-index: 100;
             background-color: $white;
 
-            .header-menu-item {
-              text-transform: capitalize;
+            .menu-item {
 
               &:hover {
                 background-color: #cfdedd;
@@ -281,9 +278,13 @@
           .active-sub_menu {
             display: flex;
             flex-direction: column;
+
+            .menu-item {
+              text-transform: none;
+            }
           }
 
-          .header-sub-menu li::after {
+          .sub-menu li::after {
             display: none;
           }
 
@@ -291,27 +292,18 @@
       }
 
       .search {
-        height: 38px;
-        border-radius: $big-br;
-        border: 1px solid $primary-color;
-        background-color: $white;
-        padding: 2px 8px;
-        width: 166px;
         display: none;
-
-
-        @media screen and (min-width: $tablet) {
-          display: flex;
-          width: 120px;
-        }
 
         @media screen and (min-width: $desktop) {
           width: 264px;
+          display: flex;
+          border-radius: $big-br;
+          border: 1px solid $primary-color;
+          background-color: $white;
+          padding: 3px 8px;
         }
 
-
         .search-wrapper {
-
           display: flex;
           flex-direction: row;
           align-items: baseline;
@@ -345,20 +337,31 @@
     height: 100vh;
     background-color: #eff8f9;
     overflow: auto;
-    padding: 28px 16px;
+    padding: 16px;
     width: 100%;
     left: 0;
     top: 80px;
+
+    @media screen and (min-width: $tablet) {
+      top: 88px;
+      left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      right: 0;
+      max-width: 487px;
+      padding-right: 32px;
+      padding-left: 32px;
+    }
   }
 
 
   .header-mobile {
     display: block;
 
-    @media screen and (min-width: $tablet) {
+    @media screen and (min-width: $desktop) {
       display: none;
     }
-
 
     .header__list-mobile {
       .menu-item {
@@ -368,18 +371,23 @@
         margin-bottom: 16px;
         text-transform: capitalize;
 
+        @media screen and (min-width: $tablet) {
+          text-align: right;
+        }
+
         a {
           svg {
             fill: $primary-color;
           }
         }
 
-        .header-sub-menu {
+        .sub-menu {
           display: none;
 
-          .header-menu-item {
+          .menu-item {
             a {
               white-space: nowrap;
+              font-weight: 500;
             }
           }
         }
@@ -405,6 +413,10 @@
         flex-direction: row;
         margin-bottom: 32px;
         gap: 15px;
+
+        @media (min-width: $tablet) {
+          gap: 31px;
+        }
 
         img {
           width: 35px;
@@ -436,8 +448,8 @@
     }
 
     .registration-btn {
-      padding: 10px 8px;
-      font-size: 17px;
+      padding: 10px 17px;
+      font-size: 18px;
     }
 
     .switch {
@@ -445,16 +457,16 @@
       padding: 19px 0;
       border: 2px solid $primary-color;
       @media (min-width: 375px) {
-        padding: 21px 0;
+        padding: 20px 0;
       }
 
       input.check-toggle-round-flat + label {
-        height: 48px;
+        height: 44px;
         width: 70px;
+        top: -2px;
         @media (min-width: 375px) {
           width: 86px;
         }
-        top: -2px;
       }
 
       span {
@@ -497,9 +509,14 @@
   font-weight: bold;
   font-size: 14px;
   text-transform: uppercase;
-  width: 50%;
+  right: 25px;
   text-align: center;
   color: $primary-color;
+
+  @media (min-width: $desktop) {
+    font-size: 16px;
+  }
+
 }
 
 .switch > span.on {
@@ -562,6 +579,7 @@ input.check-toggle-round-flat + span:after {
   background-image: url("../images/ua_flag-2.svg");
   background-repeat: no-repeat;
   left: 29px;
+  height: 20px;
   background-size: contain;
 }
 
@@ -570,6 +588,7 @@ input.check-toggle-round-flat + span:after {
   background-repeat: no-repeat;
   background-position: 5px;
   background-size: contain;
+  height: 20px;
 }
 
 input.check-toggle-round-flat:checked ~ .on {
