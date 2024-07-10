@@ -18,20 +18,20 @@ function scrollFunction() {
     }
 
     if (window.innerWidth <= 767) {
-        if (bottomDistance <= 200) {
-            scrollTopBtn.style.bottom = '307px';
+        if (bottomDistance <= 291) {
+            scrollTopBtn.style.bottom = `${291-bottomDistance + 16}px`;
         } else {
             scrollTopBtn.style.bottom = '16px';
         }
     } else if (window.innerWidth <= 1439) {
-        if (bottomDistance <= 300) {
-            scrollTopBtn.style.bottom = '401px';
+        if (bottomDistance <= 401) {
+            scrollTopBtn.style.bottom = `${401-bottomDistance + 16}px`;
         } else {
             scrollTopBtn.style.bottom = '16px';
         }
     } else {
-        if (bottomDistance <= 350) {
-            scrollTopBtn.style.bottom = '430px';
+        if (bottomDistance <= 430) {
+            scrollTopBtn.style.bottom = `${430-bottomDistance + 16}px`;
         } else {
             scrollTopBtn.style.bottom = '16px';
         }
