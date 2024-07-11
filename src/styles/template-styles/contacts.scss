@@ -1,77 +1,98 @@
 @import "../variables.scss";
 
-.section {
+.heading-section {
+    color: $blue-main;
+    background-color: $light-green;
     padding: 0;
-    color: $primary-color;
+    position: relative;
 
-    .list-contacts {
-        margin-top: 0;
-        &__background{
-            margin-top: 0;
-            width: 100%;
-            background-size: cover;
-            background-blend-mode: multiply;
-            background-color: $background;
+    @media screen and (min-width: $desktop) {
+        background-color: $light-green;
+    }
+
+    &__background-img {
+        display: none;
+
+        @media screen and (min-width: $desktop) {
+            display: block;
         }
-        &__text-box{
-            padding: 20px 0;
-            @media screen and (min-width: $tablet) {
-                padding: 30px 0;
-            }
-          
-            @media screen and (min-width: $desktop) {
-                padding-top: 125px;
-                padding-bottom: 152px;
-            }
+    }
+
+    &__wrapper {
+        padding: 20px 0;
+
+        @media screen and (min-width: $tablet) {
+            padding: 30px 0;
         }
-        &__heading{
-            font-weight: 800;
-            font-size: 30px;
-            line-height: 100%;
-            margin-bottom: 10px;
-            @media screen and (min-width: $tablet) {
-                font-size: 45px;
-                margin-bottom: 14px;
-            }
-          
-            @media screen and (min-width: $desktop) {
-                font-size: 60px;
-                margin-bottom: 24px;
-            }
+
+        @media screen and (min-width: $desktop) {
+            position: absolute;
+            background: none;
+            top: 123px;
+            padding: 0;
+            margin: auto;
         }
-        &__contacts-container{
-            display: flex;
-            gap: 24px;
-            @media screen and (min-width: $desktop) {
-                gap: 36px;
-            }
+    }
+
+    &__contacts-title {
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 30px;
+        line-height: 100%;
+        margin-bottom: 10px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 45px;
+            margin-bottom: 14px;
         }
-        &__link-container{
-            display: flex;
-            align-items: baseline;
+
+        @media screen and (min-width: $desktop) {
+            font-size: 60px;
+            margin-bottom: 24px;
         }
-        &__cat-paw-green{
-            svg {
-                width: 18px;
-                height: 16px;
-            }
+    }
+
+    &__nav {
+        display: flex;
+        gap: 24px;
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        padding: 4px 0;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            padding: 7.5px 0;
         }
-        &__title{
-            font-weight: 800;
-            font-size: 16px;
-            line-height: 100%;
-            margin-left: 10px;
-            white-space: nowrap;
-            @media screen and (min-width: $tablet) {
-                font-size: 20px;
-            }
-          
-            @media screen and (min-width: $desktop) {
-                font-size: 20px;
-            }
+
+        @media screen and (min-width: $desktop) {
+            gap: 36px;
+            padding: 0;
+        }
+    }
+
+    &__nav-li-link {
+        display: flex;
+        align-items: center;
+        gap: 10px
+    }
+
+    &__nav-li a svg {
+        @media screen and (min-width: $tablet) {
+            width: 14px;
+            height: 13px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 18px;
+            height: 16px;
         }
     }
 }
+
+
+
                             /*-------------------Section Contacts----------------*/
 .contacts-contacts,
 .socials-contacts,
