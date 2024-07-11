@@ -309,10 +309,6 @@ function load_breeders()
     // Визначення кількості постів на сторінку залежно від ширини
     $number = get_breeders_per_page($width);
 
-    // Отримання загальної кількості постів та кількості сторінок
-    $total_posts = wp_count_posts('breeders')->publish;
-    $total_pages = ceil($total_posts / $number);
-
     // Побудова запиту для отримання постів
     $args = array(
         'post_type' => 'breeders',
@@ -333,6 +329,9 @@ function load_breeders()
     endif;
 
     $html = ob_get_clean();
+
+    $total_pages = $query->max_num_pages;
+
     wp_reset_postdata();
 
     // Відправка відповіді JSON з HTML та кількістю сторінок
