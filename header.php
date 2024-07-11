@@ -24,12 +24,6 @@
                             <img src="<?php echo esc_html($icon); ?>" alt="image">
                         </a>
                     <?php endforeach; ?>
-                    <a href="mailto:<?php the_field('email', 'option') ?>" rel="noopener noreferrer">
-                        <img src="<?php the_field('icon-email', 'option') ?>" alt="email">
-                    </a>
-                    <a href="tel:<?php the_field('phone', 'option') ?>" rel="noopener noreferrer" class="icon">
-                        <img src="<?php the_field('icon-phone', 'option') ?>" alt="phone">
-                    </a>
                 </div>
 
                 <div class="black-logo">
@@ -143,14 +137,6 @@
                                             <img src="<?php echo esc_html($icon); ?>" alt="image">
                                         </a>
                                     <?php endforeach; ?>
-                                    <a href="mailto:<?php the_field('email', 'option') ?>"
-                                       rel="noopener noreferrer">
-                                        <img src="<?php the_field('icon-email', 'option') ?>" alt="email">
-                                    </a>
-                                    <a href="tel:<?php the_field('phone', 'option') ?>" rel="noopener noreferrer"
-                                       class="icon">
-                                        <img src="<?php the_field('icon-phone', 'option') ?>" alt="phone">
-                                    </a>
                                 </div>
                             </div>
 

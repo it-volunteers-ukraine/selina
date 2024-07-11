@@ -399,6 +399,10 @@
           @media screen and (min-width: 375px) {
             padding: 16px 24px;
           }
+
+          .menu-item {
+            text-transform: none;
+          }
         }
       }
 
@@ -484,7 +488,8 @@
       .flag-ua {
         left: 38px;
         @media (min-width: 375px) {
-          left: 47px;
+          left: 43px;
+          top: 4px;
         }
       }
     }
@@ -520,13 +525,28 @@
 }
 
 .switch > span.on {
-  left: 0;
+  left: -9px;
   padding-left: 2px;
+  @media (min-width: $tablet) {
+    left: -15px;
+  }
+  @media (min-width: $desktop) {
+    left: -1px;
+    top: 3px;
+  }
 }
+
 
 .switch > span.off {
   right: 0;
   padding-right: 4px;
+  @media (min-width: $tablet) {
+    top: 6px;
+  }
+  @media (min-width: $desktop) {
+    left: 27px;
+    top: 3px;
+  }
 }
 
 .check-toggle {
@@ -579,16 +599,28 @@ input.check-toggle-round-flat + span:after {
   background-image: url("../images/ua_flag-2.svg");
   background-repeat: no-repeat;
   left: 29px;
-  height: 20px;
+  height: 32px;
   background-size: contain;
+
+  @media (min-width: $desktop) {
+    height: 20px;
+    background-position: 3px;
+  }
 }
 
 .flag-en {
   background-image: url("../images/en_flag-2.svg");
   background-repeat: no-repeat;
-  background-position: 5px;
+  background-position: 14px;
   background-size: contain;
-  height: 20px;
+  height: 32px;
+  @media (min-width: $tablet) {
+    background-position: 20px;
+  }
+  @media (min-width: $desktop) {
+    height: 20px;
+    background-position: 5px;
+  }
 }
 
 input.check-toggle-round-flat:checked ~ .on {
