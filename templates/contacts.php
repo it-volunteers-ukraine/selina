@@ -71,11 +71,15 @@ get_header();
                                 $contact_value = get_sub_field('contacts-contacts__contacts-value');
                                 // Do something, but make sure you escape the value if outputting directly...
                                 ?>
-                                <div class="contacts-contacts__contacts-title">
-                                    <p><?php echo $contact_title; ?></p>
-                                </div>
-                                <div class="contacts-contacts__contacts-value">
-                                    <p><?php echo $contact_value; ?></p>
+                                <div class="contacts-contacts__title-value">
+                                    <div class="contacts-contacts__wrapper">
+                                        <div class="contacts-contacts__contacts-title">
+                                            <p><?php echo $contact_title; ?></p>
+                                        </div>
+                                        <div class="contacts-contacts__contacts-value">
+                                            <p><?php echo $contact_value; ?></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <?php
                                     // End loop.
@@ -86,7 +90,7 @@ get_header();
                                     endif;
                                 ?>
                 </div>
-                        
+            </div>
         </section>
         <section class="section socials-contacts" id="socials-section">
             <div class="container">
