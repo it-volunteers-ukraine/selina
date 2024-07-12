@@ -115,7 +115,7 @@ get_header();
                                 $image = $social_icon['social_icon']; 
                             ?> 
                             <li class="socials-contacts__icon"> 
-                                <a href="<?php echo $link; ?>"> 
+                                <a href="<?php echo $link; ?>"  target="_blank"> 
                                     <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"> 
                                 </a> 
                             </li> 
