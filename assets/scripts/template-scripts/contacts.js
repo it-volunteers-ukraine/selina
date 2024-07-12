@@ -1,0 +1,1 @@
+function scrollToContacts(){document.getElementById("contacts-link").addEventListener("click",(function(){document.querySelector("#contacts-section").scrollIntoView({behavior:"smooth"})}))}function scrollToContacts(){document.getElementById("socials-link").addEventListener("click",(function(){document.querySelector("#socials-section").scrollIntoView({behavior:"smooth"})}))}

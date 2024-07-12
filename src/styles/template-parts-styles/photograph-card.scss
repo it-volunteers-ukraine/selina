@@ -1,0 +1,38 @@
+@import "../variables";
+
+.photographs-item {
+  width: 158px;
+  height: 209px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  gap: 12px;
+
+  @media screen and (min-width: $tablet) {
+    width: 218px;
+    height: 287px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 264px;
+    height: 348px;
+  }
+
+  .full-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    @media screen and (min-width: $tablet) {
+      gap: 10px;
+    }
+
+    .name {
+      text-align: center;
+    }
+  }
+}

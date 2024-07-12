@@ -1,0 +1,537 @@
+@import "../variables.scss";
+
+/*--------------------------------Section Form-------------------------*/
+
+.form-contacts {
+  position: relative;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 131%;
+  z-index: 1;
+  background-color: $background;
+  padding-bottom: 0;
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 16px;
+  }
+  &__content {
+    @media screen and (min-width: $desktop) {
+      width: 50%;
+    }
+  }
+
+  /* General settings gray-cat image: non-visible at<768px; visible at > 768px */
+  &___container-bg {
+    position: relative;
+    z-index: 2;
+
+    @media screen and (min-width: $desktop) {
+      display: flex;
+    }
+  }
+  &__background {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    z-index: -1;
+    @media screen and (min-width: $tablet) {
+      display: block;
+    }
+
+    @media screen and (min-width: $desktop) {
+      bottom: 130px;
+      right: -150px;
+    }
+  }
+  /* END of General settings gray-cat image */
+  /* Precision settings gray-cat image: shifting dimensions of image depending screen resolution */
+  &__background_768 {
+    @media screen and (min-width: $tablet) {
+      display: block;
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: none;
+    }
+  }
+
+  &__background_1440 {
+    @media screen and (min-width: $tablet) {
+      display: none;
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: block;
+    }
+  }
+  /* END of Precision settings gray-cat image */
+
+  &__heading-container,
+  &__info,
+  &__contacts {
+    position: relative;
+    z-index: 3;
+  }
+
+  &__contacts {
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+  }
+  &__info {
+    color: $black;
+    padding-bottom: 16px;
+  }
+  &__mail,
+  &__phone {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 3.5px;
+    height: 44px;
+    color: $black;
+    @media screen and (min-width: $tablet) {
+      gap: 8px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      /* Need do this style */
+    }
+  }
+
+  &__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  /*----------------- Form styling---------------------- */
+
+  .wpcf7-form {
+    @media screen and (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 25px;
+    }
+  }
+  &__input-1 {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  &__input-2 {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  &__input-3 {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  &__input-4 {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+  &__input-5 {
+    grid-area: 3 / 1 / 4 / 2;
+    @media screen and (min-width: $desktop) {
+      grid-area: 3 / 1 / 4 / 3;
+    }
+  }
+  &__form-required-field {
+    grid-area: 4 / 1 / 5 / 2;
+    @media screen and (min-width: $desktop) {
+      display: none;
+    }
+  }
+  &__form-checkbox {
+    grid-area: 5 / 1 / 6 / 2;
+  }
+  &__button-wrapper {
+    grid-area: 6 / 1 / 7 / 2;
+    @media screen and (min-width: $desktop) {
+      grid-area: 5 / 2 / 5 / 3;
+      justify-self: end;
+    }
+  }
+
+  &__form-name,
+  &__form-phone,
+  &__form-email,
+  &__form-subject,
+  &__form-textarea {
+    background-color: $white;
+    border-radius: 10px;
+    width: 100%;
+    height: 48px;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    padding-left: 16px;
+  }
+/* Styling green paw on "Choose theme" */
+//* Dropdown JS *//
+
+.dropdown{
+  position: relative;
+  color: $primary-color;
+
+  padding-bottom: 24px;
+    
+}
+
+.dropdown__button {
+  width: 100%;
+  position: relative;
+  display: block;
+  text-align: left;
+
+  background: #ffffff;
+  border-radius: 10px;
+  height: 46px;
+
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  padding-right: 35px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  cursor: pointer;
+}
+
+.dropdown__button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+
+  /* Drawing triangle */
+  width: 0;
+  height: 0;
+  border-width: 10.4px 6px 0 6px;
+  border-color: #79849B transparent transparent transparent;
+  border-style: solid;
+
+  /* Removing click from triangle */
+  pointer-events: none;
+}
+
+.dropdown__list {
+  display: none;
+  position: absolute;
+  left: 0px;
+  top: 52px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  background: #FFFFFF;
+  box-shadow: 0px 4px 8px rgba(176, 198, 225, 0.6);
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+
+  z-index: 1;
+}
+
+.dropdown__list--visible {
+  display: block;
+}
+
+.dropdown__list-item {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0px;
+  padding: 13px 20px;
+  cursor: pointer;
+}
+
+
+
+.dropdown__list-item:hover {
+    font-weight: 800;
+    padding-left: 38px;
+    background-color: $background;
+    border-radius: 6px;
+    margin: 0 6px 0 6px;
+
+    &:before {
+      content: "";
+      background-image: url("../../../assets/images/paw-6.svg");
+      background-repeat: no-repeat;
+      position: absolute;
+      height: 20px;
+      width: 18px;
+      left: 16px;
+    }
+  }
+
+  .dropdown__input-hidden {
+    display: none;
+  }  
+
+
+
+
+
+
+/* End of Styling green paw on "Choose theme" */  
+  
+
+  &__form-textarea {
+    padding-top: 17.5px;
+    margin-bottom: 16px;
+    height: 151px;
+  }
+
+  &__form-name::placeholder,
+  &__form-phone::placeholder,
+  &__form-email::placeholder,
+  &__form-subject::placeholder,
+  &__form-textarea::placeholder {
+    color: $primary-color;
+    opacity: 1;
+  }
+
+  &__form-required-field {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 138%;
+    margin-bottom: 16px;
+  }
+
+  &__form-checkbox {
+    display: flex;
+    font-size: 10px;
+    line-height: 150%;
+    margin-bottom: 24px;
+    @media screen and (min-width: $desktop) {
+      color: $white;
+    }
+  }
+
+  &__form-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+  }
+
+  /* -------Underline for Politic-link------ */
+  &__form-checkbox a {
+    text-decoration: underline;
+    font-weight: 700;
+  }
+
+  /* -----------Submit-button styling-------- */
+  &__button-wrapper p {
+    @media screen and (min-width: $desktop) {
+      width: 153px;
+    }
+  }
+  &__form-button {
+    background-color: $red;
+    color: $white;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    border-radius: 8px;
+    padding: 10px 10px 10px 14px;
+    width: 100%;
+    height: 44px;
+
+        /* White paw on submit button */
+    background-image: url('../../../assets/images/paw-white.png');
+    background-size: 15px 15px;
+    background-position: 225px center;
+    background-repeat: no-repeat;
+
+    @media screen and (min-width: $mobile) {
+      width: 340px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      width: 153px;
+      background-position: 123px center;
+    }
+  }
+}
+
+/* Push checkbox to the left side */
+.wpcf7-list-item {
+  margin-left: 0px;
+}
+
+.wpcf7-spinner {
+  display: none;
+}
+
+.section.form-contacts {
+  padding-bottom: 0;
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 16px;
+  }
+}
+/* Background bottom $primary-color */
+.section.form-contacts:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 59px;
+  background-color: $primary-color;
+  z-index: -1;
+  @media screen and (min-width: $tablet) {
+    height: 75px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    height: 285px;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .wpcf7-form {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+  }
+  .section-form-contacts__input-1 {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .section-form-contacts__input-2 {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  .section-form-contacts__input-3 {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  .section-form-contacts__input-4 {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+  .section-form-contacts__input-5 {
+    grid-area: 3 / 1 / 4 / 3;
+  }
+  .section-form-contacts__form-required-field {
+    display: none;
+  }
+  .section-form-contacts__form-checkbox {
+    grid-area: 4 / 1 / 5 / 2;
+  }
+  .section-form-contacts__button-wrapper {
+    grid-area: 4 / 2 / 5 / 3;
+    margin-right: 0;
+    justify-self: end;
+  }
+}
+
+.list-contacts {
+  margin-top: 0;
+  &__background {
+    margin-top: 0;
+    width: 100%;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: $background;
+  }
+  &__text-box {
+    padding: 20px 0;
+    @media screen and (min-width: $tablet) {
+      padding: 30px 0;
+    }
+
+    @media screen and (min-width: $desktop) {
+      padding-top: 125px;
+      padding-bottom: 152px;
+    }
+  }
+  &__heading {
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 100%;
+    margin-bottom: 10px;
+    @media screen and (min-width: $tablet) {
+      font-size: 45px;
+      margin-bottom: 14px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 60px;
+      margin-bottom: 24px;
+    }
+  }
+  &__contacts-container {
+    display: flex;
+    gap: 24px;
+    @media screen and (min-width: $desktop) {
+      gap: 36px;
+    }
+  }
+  &__link-container {
+    display: flex;
+    align-items: baseline;
+  }
+  &__cat-paw-green {
+    svg {
+      width: 18px;
+      height: 16px;
+    }
+  }
+  &__title {
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 100%;
+    @media screen and (min-width: $tablet) {
+      font-size: 20px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 20px;
+    }
+  }
+}
+
+.form-contacts {
+  padding-bottom: 50px;
+
+  &__heading-container {
+    display: flex;
+    color: $primary-color;
+    align-items: center;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 100%;
+    margin-bottom: 24px;
+    svg {
+      display: none;
+      width: 41px;
+      height: 37px;
+      fill: $primary-color;
+      @media screen and (min-width: $tablet) {
+        display: block;
+        width: 29px;
+        height: 28px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        display: block;
+        width: 41px;
+        height: 37px;
+      }
+    }
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 30px;
+      font-size: 30px;
+      gap: 8px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+      font-size: 45px;
+      gap: 12px;
+    }
+  }
+}
+
+
+
+

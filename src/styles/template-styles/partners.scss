@@ -1,0 +1,633 @@
+@import "../variables";
+
+
+.title-wrapper {
+  margin-bottom: 16px;
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 38px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 47px;
+  }
+
+  .icon {
+    display: none;
+    @media screen and (min-width: $tablet) {
+      display: inline-block;
+    }
+  }
+
+  .pagination-block {
+    display: flex;
+    flex-direction: row;
+    gap: 47px;
+    align-items: center;
+    margin-bottom: 40px;
+
+    .mobile-title {
+      white-space: nowrap;
+      font-size: 24px;
+
+      @media screen and (min-width: $tablet) {
+        font-size: 30px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        font-size: 45px;
+      }
+
+    }
+
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 0;
+    }
+
+    .partners-btn {
+      width: 44px;
+      height: 44px;
+      gap: 8px;
+      border-radius: 10px;
+      background-color: #045c6f;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+  }
+}
+
+.partners {
+  .image {
+    position: relative;
+    display: none;
+    @media screen and (min-width: $desktop) {
+      display: flex;
+    }
+  }
+
+  .tablet-container {
+    padding: 0 0;
+    @media screen and (min-width: $tablet) {
+      padding: 0 0;
+    }
+
+    .banner {
+      background: $background;
+      padding: 20px 16px;
+      @media screen and (min-width: $tablet) {
+        padding: 30px 32px;
+      }
+      //padding-bottom: 5px;
+      @media screen and (min-width: $desktop) {
+        position: absolute;
+        background: none;
+        top: 240px;
+        padding: 0;
+      }
+
+      .partners-title {
+        margin-bottom: 10px;
+        @media screen and (min-width: $desktop) {
+          margin-bottom: 20px;
+        }
+      }
+
+      .title {
+        @media screen and (min-width: $desktop) {
+          margin-bottom: 47px;
+        }
+      }
+
+      .sub-titles {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 800;
+        color: $primary-color;
+
+        .icon-paw {
+          width: 14px;
+          height: 12px;
+
+          @media screen and (min-width: $desktop) {
+            width: 18px;
+            height: 16px;
+          }
+        }
+      }
+
+      .image {
+        display: none;
+      }
+    }
+  }
+}
+
+
+// pagination
+// our-partners for other screens
+#partners-posts-container {
+  display: none;
+
+
+  @media screen and (min-width: $desktop) {
+    display: grid;
+  }
+}
+
+#partners-posts-tablet {
+  display: none;
+
+  @media screen and (min-width: $tablet) {
+    display: grid;
+  }
+
+  @media screen and (min-width: $desktop) {
+    display: none;
+  }
+
+}
+
+#partners-posts-mobile {
+  display: grid;
+
+  @media screen and (min-width: $tablet) {
+    display: none;
+  }
+  @media screen and (min-width: $desktop) {
+    display: none;
+  }
+}
+
+.our-partners {
+  .our-partners-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    @media screen and (min-width: $tablet) {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (min-width: 992px) {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 48px 72px;
+    }
+  }
+
+  .message {
+    display: none;
+    margin-bottom: 20px;
+  }
+}
+
+
+.our-friends-clubs {
+  .friends-clubs {
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+
+    @media screen and (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: 992px) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+  }
+
+  .show-btn {
+    gap: 6px;
+
+    @media screen and (min-width: $desktop) {
+      margin: 0;
+    }
+
+  }
+}
+
+
+.laboklin {
+  background-color: $background;
+
+  .title {
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 47px;
+    }
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    .image {
+      .rounded-image {
+        border-radius: 10px;
+      }
+
+      .img {
+
+        @media screen and (min-width: $tablet) {
+          width: 344px;
+        }
+
+        @media screen and (min-width: $desktop) {
+          width: 360px;
+          height: 262px;
+        }
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+
+      .description {
+        font-size: 16px;
+        margin-bottom: 40px;
+        font-weight: 500;
+        line-height: 21px;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 19px;
+          line-height: 25px;
+        }
+        @media screen and (min-width: $desktop) {
+          margin: 0;
+          font-size: 20px;
+          line-height: 25px;
+        }
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        margin-bottom: 32px;
+
+        @media screen and (min-width: $tablet) {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        @media screen and (min-width: $desktop) {
+          gap: 32px;
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 20px;
+          margin-top: 8px;
+        }
+
+        a {
+          color: $primary-color;
+          font-size: 16px;
+        }
+      }
+
+      .laboklin-btn {
+        gap: 10px;
+        display: flex;
+        align-items: flex-end;
+        padding: 10px 26px;
+        border-radius: 10px;
+        @media screen and (min-width: $tablet) {
+          padding: 10px 17px;
+          gap: 7px;
+        }
+        @media screen and (min-width: $tablet) {
+          padding: 10px 13px;
+        }
+      }
+    }
+
+  }
+}
+
+
+.our-friends-photographs {
+  background-color: $background;
+
+  .photographs-title {
+    font-size: 20px;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 30px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 45px;
+    }
+  }
+
+  .photographs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+
+    @media screen and (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      margin-bottom: 37px;
+    }
+
+  }
+
+  .show-btn {
+    gap: 6px;
+  }
+}
+
+
+.flip-animations {
+  // flip card
+  .flip-card {
+    position: relative;
+    height: 209px;
+
+    @media screen and (min-width: $tablet) {
+      height: 287px;
+    }
+
+    @media screen and (min-width: 992px) {
+      height: 282px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      height: 348px;
+    }
+
+
+    .flip-card-inner {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .5s;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      .flip-card-front, .flip-card-back {
+        backface-visibility: hidden;
+        border-radius: 16px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+
+      .flip-card-back {
+        transform: rotateY(180deg);
+
+        .link {
+          color: $primary-color;
+          font-size: 16px;
+          font-weight: 800;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+
+        .icon-paw {
+          color: #82aeb7;
+        }
+      }
+
+    }
+  }
+
+  .flip-card {
+    &:hover {
+      @media screen and (min-width: $desktop) {
+        .flip-card-inner {
+          cursor: pointer;
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
+}
+
+#flip-card-frame {
+  background-color: #eff8f9;
+}
+
+.partners-pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  @media screen and (min-width: $desktop) {
+    display: none;
+  }
+}
+
+
+// our-friends-clubs flip-card-back
+.friends-flip-card {
+  .flip-card-back-friends {
+    transform: rotateY(180deg);
+    padding: 20px;
+    background-color: #eff8f9;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      background-color: $white;
+      border-radius: 5px;
+      width: 138px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 17px 12px;
+
+      @media screen and (min-width: $tablet) {
+        width: 194px;
+        padding: 14px 0;
+        margin-bottom: 18px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        width: 224px;
+        padding: 34px 0;
+        margin-bottom: 26px;
+      }
+
+      .positions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 8px;
+
+        @media screen and (min-width: $desktop) {
+          margin-bottom: 12px;
+        }
+      }
+
+      span {
+        font-size: 13px;
+        font-weight: 800;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 14px;
+        }
+        @media screen and (min-width: $desktop) {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+
+      .address {
+        color: $primary-color;
+        font-weight: 800;
+        @media screen and (min-width: $tablet) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .social-media {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 0 15px;
+      width: 150px;
+
+      @media screen and (min-width: $tablet) {
+        width: 194px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        width: 230px;
+        gap: 24px;
+      }
+
+      a {
+        width: 32px;
+      }
+
+    }
+
+    // mobile
+    .social-media a:first-of-type + a,
+    .social-media a:first-of-type + a + a {
+      display: none;
+
+      @media screen and (min-width: $tablet) {
+        display: flex;
+      }
+      @media screen and (min-width: $desktop) {
+        display: flex;
+      }
+
+    }
+
+    .social-media a:nth-of-type(3) ~ a + a + a {
+      display: none;
+
+      @media screen and (min-width: $tablet) {
+        display: flex;
+      }
+      @media screen and (min-width: $desktop) {
+        display: flex;
+      }
+    }
+  }
+
+  .flip-card-front-friends, .flip-card-back-friends {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+
+    @media screen and (min-width: $desktop) {
+      padding: 20px;
+    }
+  }
+}
+
+.button-flex {
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 992px) {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+}
+
+// flip mobile and tablet
+.flip-card {
+  .flip-card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+}

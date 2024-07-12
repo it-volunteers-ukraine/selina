@@ -25,7 +25,7 @@
 
   @media screen and (min-width: $tablet) {
     max-width: $desktop;
-    padding: 0 43.5px;
+    padding: 0 32px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -54,12 +54,8 @@
   font-size: 24px;
   font-weight: 800;
   line-height: 1;
-
-  @media screen and (min-width: $tablet) {
-    font-size: 45px;
-  }
   @media screen and (min-width: $desktop) {
-    font-size: 60px;
+    font-size: 45px;
   }
 }
 
@@ -71,6 +67,7 @@
   width: fit-content;
   cursor: pointer;
   border: 1px solid transparent;
+  border-radius: $big-br;
   font-family: inherit;
   font-weight: 700;
   font-size: 18px;
@@ -84,10 +81,17 @@
   @extend .button;
   color: $white;
   background-color: $red;
-  &:hover,
-  &:focus {
+  &:hover {
     color: $red;
     background-color: $white;
+  }
+  &:focus {
+    color: $white;
+    background-color: $red-hovered;
+  }
+  &:active {
+    color: $white;
+    background-color: $red-pressed;
   }
 }
 
@@ -110,9 +114,11 @@
   height: 44px;
   padding: 0;
   background-color: $primary-color;
+  color: $white;
   &:hover,
   &:focus {
     background-color: $white;
+    color: $primary-color;
   }
 }
 
