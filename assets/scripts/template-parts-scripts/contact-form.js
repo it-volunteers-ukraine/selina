@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(function(){const t=document.querySelector(".button-paw-container"),n=t.querySelector(".form-contacts__form-button");t.addEventListener("click",(function(){n.click()}))}));

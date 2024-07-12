@@ -63,6 +63,5 @@
                 <?php echo do_shortcode ( '[contact-form-7 id="3fcb82d" title="Контактна форма 1"]' ) ?>
             </div>
         </div>            
-        
     </div>
 </section>
