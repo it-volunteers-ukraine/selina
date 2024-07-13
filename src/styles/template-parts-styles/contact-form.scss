@@ -170,7 +170,7 @@
     @media screen and (min-width: $tablet) {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: 25px;
+      column-gap: 24px;
     }
   }
   &__input-1 {
@@ -415,5 +415,105 @@
   }
 }
 
+/* ------------------------------------------------------------  */
+/* Styling green paw on "Choose theme" */
+//* Dropdown JS *//
 
+.dropdown{
+  position: relative;
+  color: $primary-color;
+  padding-bottom: 24px;
+}
 
+.dropdown__button {
+  width: 100%;
+  position: relative;
+  display: block;
+  text-align: left;
+  background: $white;
+  border-radius: 10px;
+  height: 48px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  padding-right: 35px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.dropdown__button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 6px;
+  background-image: url("../../../assets/images/contact-form-dropdown-arrow.svg");
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.dropdown__button.dropdown__button--active {
+  border-radius: 10px 10px 0 0;
+}
+
+.dropdown__button.dropdown__button--active::after {
+  background-image: url("../../../assets/images/contact-form-dropdown-arrow-flipped.svg");
+}
+
+.dropdown__list {
+  display: none;
+  position: absolute;
+  left: 0px;
+  /* top: 52px; */
+  margin: 0;
+  padding: 4px 0 6px 0;
+  list-style-type: none;
+  background: $white;
+  box-shadow: 0px 4px 8px rgba(176, 198, 225, 0.6);
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  z-index: 1;
+}
+
+.dropdown__list--visible {
+  display: block;
+}
+
+.dropdown__list-item {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 131%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0px;
+  padding: 13px 20px;
+  cursor: pointer;
+}
+
+.dropdown__list-item:hover {
+    font-weight: 800;
+    line-height: 100%;
+    padding-left: 38px;
+    background-color: $background;
+    border-radius: 6px;
+    margin: 0 6px 0 6px;
+
+    &:before {
+      content: "";
+      background-image: url("../../../assets/images/paw-6.svg");
+      background-repeat: no-repeat;
+      position: absolute;
+      height: 20px;
+      width: 18px;
+      left: 16px;
+    }
+  }
+
+  .dropdown__input-hidden {
+    display: none;
+  }
