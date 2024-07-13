@@ -340,10 +340,9 @@
     padding: 16px;
     width: 100%;
     left: 0;
-    top: 80px;
+    top: 88px;
 
     @media screen and (min-width: $tablet) {
-      top: 88px;
       left: auto;
       display: flex;
       flex-direction: column;
