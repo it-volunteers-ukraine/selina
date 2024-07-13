@@ -395,7 +395,7 @@
         background-color: transparent;
         cursor: pointer;
         @media screen and (min-width: $tablet) {
-            // bottom: 401px;
+            right: 32px;
           }
         @media screen and (min-width: $desktop) {
             right: calc((100% - 1128px) / 2);

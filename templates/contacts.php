@@ -5,57 +5,47 @@ Template Name: contacts
 get_header();
 ?>
     <main class="main">
-        <section class="section list-contacts">
-                <?php
-                    $image = get_field('list-contacts__background');
-                    $image_url = is_array($image) ? $image['url'] : $image; 
-                ?>
-
-                <div class="list-contacts__background">
-                <style>
-                    @media (min-width: 1440px) {
-                        .list-contacts__background {
-                        background-image: url('<?php echo esc_url($image_url); ?>');
-                        }
-                    }
-                </style>
-                    <div class="container">
-                        <div class="list-contacts__text-box">
-                            <h2 class="list-contacts__heading">
-                                <?php the_field('list-contacts__heading'); ?>
-                            </h2>
-                            <div class="list-contacts__contacts-container">
-                                <div class="list-contacts__contacts-link">
-                                    <a href="#contacts-section">    
-                                    <div class="list-contacts__link-container">
-                                            <?php  
-                                                $image = get_field('list-contacts__cat-paw-green'); 
-                                                if( !empty( $image ) ): ?> 
-                                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
-                                                <?php endif;
-                                            ?>
-                                            <p class="list-contacts__title"><?php the_field('title_contacts' ); ?></p>
-                                        </div>
-                                    </a> 
+        <section class="section heading-section">
+            <div class="heading-section__background-img">
+                <img src="<?php the_field('upper-section__background', 'option'); ?>" alt="cat">
+            </div>
+            <div class="container">
+                <div class="heading-section__wrapper">
+                    <div class="heading-section__contacts-title">
+                        <h2><?php the_field('list-contacts'); ?></h2>
+                    </div>
+                    <div class="heading-section__nav">
+                        <div class="heading-section__nav-li">
+                            <a class="heading-section__nav-li-link" href="#contacts-section">
+                                <div class="heading-section__nav-li-icon">
+                                    <svg class="icon-paw" width="14" height="12">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                                        </use>
+                                    </svg>
                                 </div>
-                                <div class="list-contacts__socials-link">
-                                    <a href="#socials-section">
-                                        <div class="list-contacts__link-container">
-                                            <?php  
-                                                $image = get_field('list-contacts__cat-paw-green'); 
-                                                if( !empty( $image ) ): ?> 
-                                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
-                                                <?php endif;
-                                            ?>
-                                            <p class="list-contacts__title"><?php the_field('title_socials' ); ?></p>
-                                        </div>
-                                    </a> 
+                                <div class="heading-section__nav-li-text">
+                                    <p><?php the_field('nav-li-1'); ?></p>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+                        <div class="heading-section__nav-li">
+                            <a class="heading-section__nav-li-link" href="#socials-section">
+                                <div class="heading-section__nav-li-icon">
+                                    <svg class="icon-paw" width="14" height="12">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                                        </use>
+                                    </svg>
+                                </div>
+                                <div class="nav-li-text">
+                                    <p><?php the_field('nav-li-2'); ?></p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
+        
         <section class="section contacts-contacts" id="contacts-section">
             <div class="container">
                 <div class="contacts-contacts__heading-container">
@@ -81,11 +71,15 @@ get_header();
                                 $contact_value = get_sub_field('contacts-contacts__contacts-value');
                                 // Do something, but make sure you escape the value if outputting directly...
                                 ?>
-                                <div class="contacts-contacts__contacts-title">
-                                    <p><?php echo $contact_title; ?></p>
-                                </div>
-                                <div class="contacts-contacts__contacts-value">
-                                    <p><?php echo $contact_value; ?></p>
+                                <div class="contacts-contacts__title-value">
+                                    <div class="contacts-contacts__wrapper">
+                                        <div class="contacts-contacts__contacts-title">
+                                            <p><?php echo $contact_title; ?></p>
+                                        </div>
+                                        <div class="contacts-contacts__contacts-value">
+                                            <p><?php echo $contact_value; ?></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <?php
                                     // End loop.
@@ -96,7 +90,7 @@ get_header();
                                     endif;
                                 ?>
                 </div>
-                        
+            </div>
         </section>
         <section class="section socials-contacts" id="socials-section">
             <div class="container">
@@ -121,7 +115,7 @@ get_header();
                                 $image = $social_icon['social_icon']; 
                             ?> 
                             <li class="socials-contacts__icon"> 
-                                <a href="<?php echo $link; ?>"> 
+                                <a href="<?php echo $link; ?>"  target="_blank"> 
                                     <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"> 
                                 </a> 
                             </li> 
