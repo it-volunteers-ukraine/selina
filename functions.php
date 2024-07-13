@@ -277,7 +277,8 @@ add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
 
 
-function get_posts_per_page($width){
+function get_posts_per_page($width)
+{
     if ($width > 1349.98) {
         return 8;
     } else if ($width < 767.98 || $width >= 992) {
@@ -308,10 +309,6 @@ function load_breeders()
     // Визначення кількості постів на сторінку залежно від ширини
     $number = get_breeders_per_page($width);
 
-    // Отримання загальної кількості постів та кількості сторінок
-    $total_posts = wp_count_posts('breeders')->publish;
-    $total_pages = ceil($total_posts / $number);
-
     // Побудова запиту для отримання постів
     $args = array(
         'post_type' => 'breeders',
@@ -332,6 +329,9 @@ function load_breeders()
     endif;
 
     $html = ob_get_clean();
+
+    $total_pages = $query->max_num_pages;
+
     wp_reset_postdata();
 
     // Відправка відповіді JSON з HTML та кількістю сторінок
@@ -373,7 +373,7 @@ function load_partners_pagination()
     $html = ob_get_clean();
     wp_reset_postdata();
 
-    wp_send_json(array('html' => $html, 'totalPages' => $total_pages , 'postsPerPage' => $number));
+    wp_send_json(array('html' => $html, 'totalPages' => $total_pages, 'postsPerPage' => $number));
     wp_die();
 }
 
@@ -399,3 +399,15 @@ function get_breeders_per_page($width)
         return 6;
     }
 }
+
+// filter only post no pages
+function search_filter($query)
+{
+    if ($query->is_search && !is_admin()) {
+        $query->set('post_type', array('post', 'all_partners'));
+    }
+    return $query;
+}
+
+add_filter('pre_get_posts', 'search_filter');
+

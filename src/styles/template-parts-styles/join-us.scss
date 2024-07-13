@@ -4,19 +4,27 @@
   background-color: $background;
   padding-bottom: 0;
 
+  @media screen and (min-width: $desktop) {
+    padding-top: 149px;
+  }
+
   &__heading {
     font-size: 28px;
     font-weight: 800;
     line-height: 1.1;
     text-align: center;
-    color: #0a142f;
-
+    color: rgba(10, 20, 47, 1);
     @media screen and (min-width: $tablet) {
       text-align: left;
       width: 407px;
     }
     @media screen and (min-width: $desktop) {
+      width: 600px;
+      font-size: 36px;
+    }
+    @media screen and (min-width: $full) {
       width: 845px;
+      font-size: 45px;
     }
   }
 
@@ -38,6 +46,7 @@
     margin-top: 60px;
   }
   @media screen and (min-width: $desktop) {
+    height: 120px;
     margin-top: 149px;
   }
 }
@@ -61,6 +70,8 @@
       height: 280px;
     }
     @media screen and (min-width: $desktop) {
+      width: 992px;
+      height: 574px;
     }
   }
 }
