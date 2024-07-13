@@ -65,23 +65,3 @@
         </div>            
     </div>
 </section>
-
-
-<!-- Dropdown. Temporary -->
-
-        <!-- <div class="form-group">
-            <div class="dropdown">
-                <button class="dropdown__button">Оберіть тему</button>
-                <ul class="dropdown__list">
-                    <li class="dropdown__list-item" data-value="partnership">Партнерство</li>
-                    <li class="dropdown__list-item" data-value="proposition">Пропозиції/Побажання</li>
-                    <li class="dropdown__list-item" data-value="question">Питання/Зауваження</li>
-                    <li class="dropdown__list-item" data-value="other">Інше</li>
-                </ul>
-                <input class="dropdown__input-hidden" type="text" name="select-category" value="">
-            </div>
-        </div> -->
-
-
-
-        <!-- End of Dropdown. Temporary -->
