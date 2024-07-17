@@ -294,11 +294,14 @@ html {
         }
     }
     .rules-responsibility {
+        background-size: cover;
         padding: 37px 1.5px;
         @media screen and (min-width: $tablet) {
+            background-position: -410px -5px;
             padding: 56px 0 64px;
         }
         @media screen and (min-width: $desktop) {
+            background-position: 5px -200px;
             padding: 80px 0 116px;
         }
         &__title {

@@ -136,7 +136,7 @@ get_header();
         <style>
             .rules-responsibility {
                 background-image: url("<?php the_field('white-cat-bg') ?>"); 
-                background-position: -220px -365px;
+                /* background-position: -220px -365px; */
             }
         </style> 
         <div class="container">
