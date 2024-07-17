@@ -19,35 +19,35 @@ get_header();
                     <?php the_field('wcf__heading'); ?>
                 </h2>
                 <div class="upper-section__sub-titles">
-                    <a class="sub-title" href="#wcf-about">
+                    <a class="sub-title about_wcf__sub-title" href="#wcf-about">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('about_wcf-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#wcf-rules">
+                    <a class="sub-title rules__sub-title" href="#wcf-rules">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('rules-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#wcf-breeds">
+                    <a class="sub-title breeds__sub-title" href="#wcf-breeds">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('breeds-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#wcf-title_system">
+                    <a class="sub-title title_system__sub-title" href="#wcf-title_system">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('title_system-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#wcf-ems-code">
+                    <a class="sub-title wcf-ems-code__sub-title" href="#wcf-ems-code">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
