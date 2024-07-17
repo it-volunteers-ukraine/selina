@@ -60,7 +60,14 @@
                 </div>
             </div>
             <div class="form-contacts__form">
-                <?php echo do_shortcode ( '[contact-form-7 id="3fcb82d" title="Контактна форма 1"]' ) ?>
+                <?php
+                    $current_lang = pll_current_language();
+                    if ($current_lang == 'ua') {
+                        echo do_shortcode('[contact-form-7 id="d114e72" title="Контактна форма 1"]');
+                    } elseif ($current_lang == 'en') {
+                        echo do_shortcode('[contact-form-7 id="6a42c55" title="Контактна форма EN"]');
+                    }
+                ?>
             </div>
         </div>            
     </div>
