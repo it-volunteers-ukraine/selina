@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
 
-
  // Click on button "Choose theme" => open/close Dropdown
 document.querySelector('.dropdown__button').addEventListener('click', function (e) {
   e.preventDefault(); // Запобігає спрацюванню події за замовчуванням
@@ -35,7 +34,7 @@ document.querySelectorAll('.dropdown__list-item').forEach(function (listItem) {
     document.querySelector('.dropdown__button').innerText = this.innerText;
     document.querySelector('.dropdown__input-hidden').value = this.dataset.value;
     document.querySelector('.dropdown__list').classList.remove('dropdown__list--visible');
-    document.querySelector('.dropdown__button').classList.remove('dropdown__button--active'); // Видаляє клас активного стану
+    document.querySelector('.dropdown__button').classList.remove('dropdown__button--active');
   });
 });
 
@@ -43,7 +42,7 @@ document.querySelectorAll('.dropdown__list-item').forEach(function (listItem) {
 document.addEventListener('click', function (e) {
   if (!document.querySelector('.dropdown').contains(e.target)) {
     document.querySelector('.dropdown__list').classList.remove('dropdown__list--visible');
-    document.querySelector('.dropdown__button').classList.remove('dropdown__button--active'); // Видаляє клас активного стану
+    document.querySelector('.dropdown__button').classList.remove('dropdown__button--active'); 
   }
 });
 
@@ -51,6 +50,6 @@ document.addEventListener('click', function (e) {
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Tab' || e.key === 'Escape') {
     document.querySelector('.dropdown__list').classList.remove('dropdown__list--visible');
-    document.querySelector('.dropdown__button').classList.remove('dropdown__button--active'); // Видаляє клас активного стану
+    document.querySelector('.dropdown__button').classList.remove('dropdown__button--active');
   }
 });
