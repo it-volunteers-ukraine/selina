@@ -24,6 +24,12 @@
                             <img src="<?php echo esc_html($icon); ?>" alt="image">
                         </a>
                     <?php endforeach; ?>
+                    <a href="mailto:<?php the_field('email', 'option') ?>" rel="noopener noreferrer">
+                        <img src="<?php the_field('icon-email', 'option') ?>" alt="email">
+                    </a>
+                    <a href="tel:<?php the_field('phone', 'option') ?>" rel="noopener noreferrer" class="icon">
+                        <img src="<?php the_field('icon-phone', 'option') ?>" alt="phone">
+                    </a>
                 </div>
 
                 <div class="black-logo">
@@ -103,7 +109,7 @@
                         <div class="burger"></div>
                     </div>
                 </div>
-                <nav class="nav-menu">
+                <nav id="bottom-nav-container" class="nav-menu">
                     <?php wp_nav_menu([
                         'theme_location' => 'header',
                         'container' => false,
@@ -137,9 +143,18 @@
                                             <img src="<?php echo esc_html($icon); ?>" alt="image">
                                         </a>
                                     <?php endforeach; ?>
+                                    <a href="mailto:<?php the_field('email', 'option') ?>" rel="noopener noreferrer">
+                                        <img src="<?php the_field('icon-email', 'option') ?>" alt="email">
+                                    </a>
                                 </div>
                             </div>
-
+                            <div class="phone">
+                                <span><?php the_field('label-phone', 'option') ?></span>
+                                <a href="tel:<?php the_field('phone', 'option') ?>" rel="noopener noreferrer"
+                                   class="icon">
+                                    <?php the_field('phone', 'option') ?>
+                                </a>
+                            </div>
                             <div class="buttons">
                                 <a class="button red_medium_button registration-btn"
                                    href="<?php echo esc_attr(get_field('registration-link', 'option')); ?>">
