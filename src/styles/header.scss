@@ -344,7 +344,13 @@
 
           input {
             font-size: 17px;
-            width: 231px;
+            width: 304px;
+            @media screen and (min-width: $tablet) {
+              width: 383px;
+            }
+            @media screen and (min-width: $desktop) {
+              width: 231px;
+            }
           }
         }
 
