@@ -193,7 +193,7 @@
             <a href="<?php echo esc_attr( get_field('footer__politic-field-url', 'option') ); ?>" target="_blank">
                 <?php the_field('footer__politic-field', 'option'); ?>
             </a>
-            <p>Selina 2024 all right reserved.</p>
+            <p>Selina <span><?php echo date("Y"); ?></span> all right reserved.</p>
          </div>
     </div>
 </footer>
