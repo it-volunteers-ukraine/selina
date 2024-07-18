@@ -257,8 +257,20 @@ get_header();
                 <div class="news-section__list swiper-wrapper">
                     <?php
                     $counter = 0;
-                    $args = array('posts_per_page' => -1, 'post_type' => 'news');
-                    $myposts = get_posts($args);
+                   
+                    
+                    $args = array(
+                        'orderby'           => 'date', 
+                        'order'             => 'DESC',
+                        'post_type' => 'news',
+                        'showposts' => -1,
+                        'tax_query' => array(
+                            'taxonomy' => 'news_categories',
+                            'field' => 'slug',
+                        )
+                    ); 
+        
+                    $myposts = get_posts( $args );
                     foreach ($myposts as $post):
                         $count = count($myposts);
                         $counter++;
