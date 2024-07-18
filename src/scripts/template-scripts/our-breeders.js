@@ -82,7 +82,6 @@ jQuery(document).ready(function ($) {
       order,
       orderby,
     };
-
     $.ajax({
       url: myAjax.ajaxUrl,
       type: "post",

@@ -10,7 +10,9 @@
                             <p class="breeder-item__text">
                                 <?php the_field('breeder_city') ?>
                             </p>
-                            <a class="breeder-item__button button red_medium_button">
+                            <a class="breeder-item__button button red_medium_button"
+                            href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"
+                            >
                                 <?php the_field('breeder_btn'); ?>
                                 <svg class="breeder-item__button-svg" width="16" height="15">
                                     <use
