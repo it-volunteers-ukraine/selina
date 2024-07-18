@@ -3,6 +3,7 @@
 const navMenu = document.getElementById('header-nav-menu');
 const burgerBtn = document.getElementById('header-menu-btn')
 const headerTopMobile = document.getElementById('header-mobile');
+const searchMobile = document.getElementById('search-mobile');
 
 
 // submenu - mobile
@@ -19,6 +20,7 @@ burgerBtn.addEventListener('click', () => {
     burgerBtn.classList.toggle('open');
     navMenu.classList.toggle('mobile-menu');
     navMenu.classList.toggle('show-menu');
+    searchMobile.classList.toggle('show-search');
     headerTopMobile.classList.toggle('header-mobile');
 })
 
@@ -27,6 +29,21 @@ burgerBtn.addEventListener('click', () => {
 function redirectToPage(url) {
     window.location.href = url;
 }
+
+
+// close dropdown by click background
+$(window).click(function () {
+    console.log('window click')
+    console.log('itemsList', itemsList)
+    const otherDropdowns = document.querySelectorAll('.sub-menu.active-sub_menu');
+    otherDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('active-sub_menu');
+    });
+});
+
+$('#bottom-nav-container').click(function (event) {
+    event.stopPropagation();
+});
 
 
 itemsList.forEach(item => {

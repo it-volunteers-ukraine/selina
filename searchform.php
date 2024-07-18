@@ -1,4 +1,4 @@
-<form role="search" method="get" action="<?php echo home_url('/') ?>" class="search">
+<form id="search-mobile" role="search" method="get" action="<?php echo home_url('/') ?>" class="search">
     <div class="search-wrapper">
         <button type="submit">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"

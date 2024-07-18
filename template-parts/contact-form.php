@@ -65,7 +65,7 @@
                     if ($current_lang == 'ua') {
                         echo do_shortcode('[contact-form-7 id="d114e72" title="Контактна форма 1"]');
                     } elseif ($current_lang == 'en') {
-                        echo do_shortcode('[contact-form-7 id="6a42c55" title="Контактна форма EN"]');
+                        echo do_shortcode('[contact-form-7 id="2aecf2b" title="Контактна форма EN"]');
                     }
                 ?>
             </div>

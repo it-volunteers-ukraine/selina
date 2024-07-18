@@ -293,26 +293,64 @@
 
       .search {
         display: none;
+        border-radius: $big-br;
+        background-color: $white;
+        border: 1px solid $white;
 
         @media screen and (min-width: $desktop) {
           width: 264px;
           display: flex;
-          border-radius: $big-br;
-          border: 1px solid $primary-color;
-          background-color: $white;
           padding: 3px 8px;
+          border: 1px solid $primary-color;
+          position: static;
+          margin-top: 0;
         }
 
         .search-wrapper {
           display: flex;
           flex-direction: row;
           align-items: baseline;
-          gap: 5px;
+          gap: 2px;
           padding: 0 8px;
+          @media screen and (min-width: $desktop) {
+            padding: 0 0;
+          }
 
           ::placeholder {
-            font-size: 13px;
+            font-size: 16px;
             color: $primary-color;
+            @media screen and (min-width: $desktop) {
+              font-size: 13px;
+            }
+          }
+
+          button {
+            width: 24px;
+            height: 24px;
+            @media screen and (min-width: $desktop) {
+              width: 18px;
+              height: 18px;
+            }
+          }
+
+          svg {
+            width: 12px;
+            height: 12px;
+            @media screen and (min-width: $desktop) {
+              width: 10px;
+              height: 10px;
+            }
+          }
+
+          input {
+            font-size: 17px;
+            width: 304px;
+            @media screen and (min-width: $tablet) {
+              width: 383px;
+            }
+            @media screen and (min-width: $desktop) {
+              width: 231px;
+            }
           }
         }
 
@@ -349,8 +387,7 @@
       align-items: flex-end;
       right: 0;
       max-width: 487px;
-      padding-right: 32px;
-      padding-left: 32px;
+      padding: 32px;
     }
   }
 
@@ -363,16 +400,16 @@
     }
 
     .header__list-mobile {
+      text-align: right;
+      padding: 32px 0;
+      margin-top: 32px;
+
       .menu-item {
         color: $primary-color;
         font-weight: 800;
         font-size: 20px;
         margin-bottom: 16px;
         text-transform: capitalize;
-
-        @media screen and (min-width: $tablet) {
-          text-align: right;
-        }
 
         a {
           svg {
@@ -407,35 +444,68 @@
 
     }
 
-    .flex {
+    .social-media {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 32px;
+      gap: 15px;
+
+      @media (min-width: $tablet) {
+        gap: 31px;
+      }
+
+      img {
+        width: 35px;
+        @media (min-width: 375px) {
+          width: 44px;
+        }
+      }
+    }
+
+    .phone {
       display: flex;
       flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 32px;
 
-      .social-media {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 32px;
-        gap: 15px;
+      span {
+        color: $primary-color;
+        font-size: 20px;
+        font-weight: 800;
+      }
 
-        @media (min-width: $tablet) {
-          gap: 31px;
-        }
-
-        img {
-          width: 35px;
-          @media (min-width: 375px) {
-            width: 44px;
-          }
-        }
+      a {
+        font-size: 16px;
+        font-weight: 500;
       }
     }
 
   }
 
+  .show-search {
+    margin-top: 16px;
+    display: flex !important;
+    align-items: center;
+    width: 343px;
+    background: #fff;
+    position: absolute;
+    top: 93px;
+    height: 44px;
+    z-index: 1;
+    @media (min-width: $tablet) {
+      width: 423px;
+      right: 32px;
+      margin-top: 16px;
+    }
+  }
+
+
   .buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     @media (min-width: 375px) {
       gap: 24px;
@@ -474,7 +544,7 @@
 
       span {
         font-size: 18px;
-        top: 5px;
+        top: 4px;
         @media (min-width: 375px) {
           font-size: 20px;
         }
@@ -530,7 +600,7 @@
     left: -15px;
   }
   @media (min-width: $desktop) {
-    left: -1px;
+    left: -2px;
     top: 3px;
   }
 }
@@ -543,7 +613,7 @@
     top: 6px;
   }
   @media (min-width: $desktop) {
-    left: 27px;
+    left: 25px;
     top: 3px;
   }
 }
@@ -603,7 +673,7 @@ input.check-toggle-round-flat + span:after {
 
   @media (min-width: $desktop) {
     height: 20px;
-    background-position: 3px;
+    background-position: 5px;
   }
 }
 
@@ -637,4 +707,3 @@ input.check-toggle-round-flat:not(:checked) ~ .on {
 input.check-toggle-round-flat:not(:checked) ~ .off {
   background-image: none;
 }
-
