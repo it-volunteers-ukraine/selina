@@ -198,7 +198,6 @@ ol {
   list-style: none;
 }
 
-input,
 button,
 textarea,
 select {
@@ -208,6 +207,10 @@ select {
   outline: none;
   border: none;
   background: transparent;
+}
+
+input{
+  outline: none;
 }
 
 .wrapper {
