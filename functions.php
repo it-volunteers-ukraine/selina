@@ -60,18 +60,24 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('rules-wcf-style', get_template_directory_uri() . '/assets/styles/template-styles/rules-wcf.css', array('main'));
         wp_enqueue_script('rules-wcf-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/rules-wcf.js', array(), false, true);
     }
-    if (is_page_template('templates/breeders.php')) {
+    if (is_page_template('templates/single-breeders.php')) {
+        wp_enqueue_script('single-breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-breeders.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('single-breeders-style', get_template_directory_uri() . '/assets/styles/template-styles/single-breeders.css', array('main'));
+     
+    }
+
+        if (is_page_template('templates/our-breeders.php')) {
         wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
-        wp_enqueue_script('breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/breeders.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_script('our-breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/our-breeders.js', array('touch-swipe-scripts'), false, true);
         wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
         wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
-        wp_enqueue_script('breeders-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), false, true);
-        wp_enqueue_script('breeders-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_script('our-breeders-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), false, true);
+        wp_enqueue_script('our-breeders-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
         wp_enqueue_style('slick-style', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css', array('main'));
-        wp_enqueue_style('breeders-style', get_template_directory_uri() . '/assets/styles/template-styles/breeders.css', array('main'));
-        wp_localize_script('breeders-scripts', 'myAjax', array(
+        wp_enqueue_style('our-breeders-style', get_template_directory_uri() . '/assets/styles/template-styles/our-breeders.css', array('main'));
+        wp_localize_script('our-breeders-scripts', 'myAjax', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('breeders_nonce'),
+            'nonce' => wp_create_nonce('our-breeders_nonce'),
         ));
     }
 
@@ -81,6 +87,7 @@ function wp_it_volunteers_scripts()
 
     if (is_singular() && locate_template('template-parts/contact-form.php')) {
         wp_enqueue_style('contact-form-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/contact-form.css', array('main'));
+        wp_enqueue_script('contact-form-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/contact-form.js', array('touch-swipe-scripts'), false, true);
     }
 
     if (is_page_template('templates/partners.php')) {
@@ -276,7 +283,8 @@ add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
 
 
-function get_posts_per_page($width){
+function get_posts_per_page($width)
+{
     if ($width > 1349.98) {
         return 8;
     } else if ($width < 767.98 || $width >= 992) {
@@ -293,7 +301,7 @@ add_action('wp_ajax_nopriv_load_breeders', 'load_breeders');
 function load_breeders()
 {
     // Перевірка nonce
-    if (!isset($_POST["nonce"]) || !wp_verify_nonce($_POST["nonce"], "breeders_nonce")) {
+    if (!isset($_POST["nonce"]) || !wp_verify_nonce($_POST["nonce"], "our-breeders_nonce")) {
         exit;
     }
 
@@ -306,10 +314,6 @@ function load_breeders()
 
     // Визначення кількості постів на сторінку залежно від ширини
     $number = get_breeders_per_page($width);
-
-    // Отримання загальної кількості постів та кількості сторінок
-    $total_posts = wp_count_posts('breeders')->publish;
-    $total_pages = ceil($total_posts / $number);
 
     // Побудова запиту для отримання постів
     $args = array(
@@ -331,6 +335,9 @@ function load_breeders()
     endif;
 
     $html = ob_get_clean();
+
+    $total_pages = $query->max_num_pages;
+
     wp_reset_postdata();
 
     // Відправка відповіді JSON з HTML та кількістю сторінок
@@ -372,7 +379,7 @@ function load_partners_pagination()
     $html = ob_get_clean();
     wp_reset_postdata();
 
-    wp_send_json(array('html' => $html, 'totalPages' => $total_pages , 'postsPerPage' => $number));
+    wp_send_json(array('html' => $html, 'totalPages' => $total_pages, 'postsPerPage' => $number));
     wp_die();
 }
 
@@ -398,3 +405,15 @@ function get_breeders_per_page($width)
         return 6;
     }
 }
+
+// filter only post no pages
+function search_filter($query)
+{
+    if ($query->is_search && !is_admin()) {
+        $query->set('post_type', array('post', 'all_partners'));
+    }
+    return $query;
+}
+
+add_filter('pre_get_posts', 'search_filter');
+

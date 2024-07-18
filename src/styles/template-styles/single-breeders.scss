@@ -1,0 +1,196 @@
+@import "../variables";
+
+.single-breeder-first-section {
+  background-color: $background;
+  padding: 20px 0;
+  @media screen and (min-width: $tablet) {
+    padding: 30px 0;
+  }
+  @media screen and (min-width: $desktop) {
+    background-color: none;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 377px;
+    padding: 118.5px 0;
+  }
+
+  &__heading {
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__heading-svg {
+    color: $primary-color;
+    @media screen and (min-width: $desktop) {
+      width: 18px;
+      height: 16px;
+    }
+  }
+  &__subtitle-heading {
+    display: flex;
+    align-items: baseline;
+    color: $primary-color;
+    gap: 4px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1;
+    margin-top: 10px;
+    @media screen and (min-width: $tablet) {
+      gap: 10px;
+    }
+  }
+
+  &__subtitle-heading-wrapper {
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      gap: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 36px;
+    }
+  }
+}
+
+.single-breeder-heading-svg {
+  display: none;
+  @media screen and (min-width: $tablet) {
+    display: initial;
+    width: 27.14px;
+    height: 24.29px;
+  }
+  @media screen and (min-width: $desktop) {
+    display: initial;
+    width: 38px;
+    height: 34px;
+  }
+}
+
+.single-breeder-about-section {
+  &__heading {
+    margin-bottom: 24px;
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__content {
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 24px;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    color: $black;
+    @media screen and (min-width: $tablet) {
+      font-size: 20px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 0;
+    }
+  }
+  &__text-first {
+    color: black;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  &__text-second {
+    margin-top: 18.5px;
+    line-height: 1.25;
+  }
+
+  &__img {
+    width: 343px;
+    height: 379.05px;
+    border-radius: 5.49px;
+
+    @media screen and (min-width: $tablet) {
+      width: 704px;
+      height: 777.99px;
+      border-radius: 15px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 552px;
+      height: 610.02px;
+    }
+  }
+
+  &__contacts-title {
+    margin-top: 24px;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+    color: $primary-color;
+    @media screen and (min-width: $tablet) {
+      margin-top: 16px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 18.5px;
+    }
+  }
+
+  &__contacts-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+  }
+
+  &__contacts-text {
+    color: $primary-color;
+    font-weight: 800;
+    font-size: 20px;
+  }
+
+  &__socials-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 63px;
+    margin-top: 16px;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 54px;
+      margin-top: 32px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 24px;
+    }
+  }
+
+  &__socials__img {
+    width: 72px;
+    height: 72px;
+    border-radius: 4px;
+    @media screen and (min-width: $desktop) {
+      border-radius: 10px;
+    }
+  }
+}
+
+.single-breeder-our-cats-section {
+  background-color: $background;
+  &__heading {
+    margin-bottom: 24px;
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.single-breeder-free-cats-section {
+  &__heading {
+    margin-bottom: 24px;
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+    }
+  }
+}

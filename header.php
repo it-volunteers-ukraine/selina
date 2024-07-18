@@ -109,7 +109,7 @@
                         <div class="burger"></div>
                     </div>
                 </div>
-                <nav class="nav-menu">
+                <nav id="bottom-nav-container" class="nav-menu">
                     <?php wp_nav_menu([
                         'theme_location' => 'header',
                         'container' => false,
@@ -143,17 +143,18 @@
                                             <img src="<?php echo esc_html($icon); ?>" alt="image">
                                         </a>
                                     <?php endforeach; ?>
-                                    <a href="mailto:<?php the_field('email', 'option') ?>"
-                                       rel="noopener noreferrer">
+                                    <a href="mailto:<?php the_field('email', 'option') ?>" rel="noopener noreferrer">
                                         <img src="<?php the_field('icon-email', 'option') ?>" alt="email">
-                                    </a>
-                                    <a href="tel:<?php the_field('phone', 'option') ?>" rel="noopener noreferrer"
-                                       class="icon">
-                                        <img src="<?php the_field('icon-phone', 'option') ?>" alt="phone">
                                     </a>
                                 </div>
                             </div>
-
+                            <div class="phone">
+                                <span><?php the_field('label-phone', 'option') ?></span>
+                                <a href="tel:<?php the_field('phone', 'option') ?>" rel="noopener noreferrer"
+                                   class="icon">
+                                    <?php the_field('phone', 'option') ?>
+                                </a>
+                            </div>
                             <div class="buttons">
                                 <a class="button red_medium_button registration-btn"
                                    href="<?php echo esc_attr(get_field('registration-link', 'option')); ?>">
@@ -206,18 +207,7 @@
 
                             </div>
                     </div>
-                    <div class="search">
-                        <div class="search-wrapper">
-                            <button>
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9.25 9.25L7.05173 7.05173M0.75 4.41379C0.75 2.39034 2.39034 0.75 4.41379 0.75C6.43726 0.75 8.07759 2.39034 8.07759 4.41379C8.07759 6.43726 6.43726 8.07759 4.41379 8.07759C2.39034 8.07759 0.75 6.43726 0.75 4.41379Z"
-                                          stroke="#045C6F" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                            <input aria-label="search" type="search" placeholder="Пошук">
-                        </div>
-                    </div>
+                    <?php get_search_form() ?>
                 </nav>
             </div>
         </div>

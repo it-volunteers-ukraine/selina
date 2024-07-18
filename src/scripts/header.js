@@ -3,6 +3,7 @@
 const navMenu = document.getElementById('header-nav-menu');
 const burgerBtn = document.getElementById('header-menu-btn')
 const headerTopMobile = document.getElementById('header-mobile');
+const searchMobile = document.getElementById('search-mobile');
 
 
 // submenu - mobile
@@ -11,14 +12,15 @@ const itemsListMobile = headerListMobile.querySelectorAll('.menu-item');
 
 
 // dropdowns
-const headerSubmenus = document.querySelectorAll('header .sub-menu');
-const headerMenuList = document.querySelectorAll('header .header__list .menu-item');
+const headerList = document.querySelector('.header__list');
+const itemsList = headerList.querySelectorAll('.menu-item');
 
 
 burgerBtn.addEventListener('click', () => {
     burgerBtn.classList.toggle('open');
     navMenu.classList.toggle('mobile-menu');
     navMenu.classList.toggle('show-menu');
+    searchMobile.classList.toggle('show-search');
     headerTopMobile.classList.toggle('header-mobile');
 })
 
@@ -29,25 +31,35 @@ function redirectToPage(url) {
 }
 
 
-// remove global class ul.sub-menu
-headerSubmenus.forEach(innerMenu => {
-    innerMenu.classList.remove('sub-menu');
-    innerMenu.classList.add('header-sub-menu');
-})
+// close dropdown by click background
+$(window).click(function () {
+    console.log('window click')
+    console.log('itemsList', itemsList)
+    const otherDropdowns = document.querySelectorAll('.sub-menu.active-sub_menu');
+    otherDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('active-sub_menu');
+    });
+});
 
-// remove global class li.menu-item
-headerMenuList.forEach(menuItem => {
-    menuItem.classList.remove('menu-item');
-    menuItem.classList.add('header-menu-item');
-})
+$('#bottom-nav-container').click(function (event) {
+    event.stopPropagation();
+});
 
 
-headerMenuList.forEach(item => {
+itemsList.forEach(item => {
     item.addEventListener('click', () => {
-        const subMenu = item.querySelector('.header-sub-menu');
+        const activeDropdown = item.querySelector('.sub-menu');
+        // Close other opened dropdowns
+        const otherDropdowns = document.querySelectorAll('.sub-menu.active-sub_menu');
+        otherDropdowns.forEach(dropdown => {
+            if (dropdown !== activeDropdown) {
+                dropdown.classList.remove('active-sub_menu');
+            }
+        });
 
-        if (subMenu) {
-            subMenu.classList.toggle('active-sub_menu');
+        // Toggle the clicked dropdown
+        if (activeDropdown) {
+            activeDropdown.classList.toggle('active-sub_menu');
         }
     })
 })

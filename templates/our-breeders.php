@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: breeders
+Template Name: breeders-page
 */
 get_header();
 
