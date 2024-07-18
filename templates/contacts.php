@@ -76,9 +76,11 @@ get_header();
                                         <div class="contacts-contacts__contacts-title">
                                             <p><?php echo $contact_title; ?></p>
                                         </div>
-                                        <div class="contacts-contacts__contacts-value">
-                                            <p><?php echo $contact_value; ?></p>
-                                        </div>
+                                        <a href="<?php the_sub_field('contacts-contacts__contacts-link') ?>" target="_blank">
+                                            <div class="contacts-contacts__contacts-value">
+                                                <p><?php echo $contact_value; ?></p>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                                 <?php
