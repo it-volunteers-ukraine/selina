@@ -158,6 +158,9 @@
         @media screen and (min-width: $tablet) {
             padding-bottom: 0;
         }
+        @media screen and (min-width: $desktop) {
+            width: 224px;
+        }
     }
 
     &__line{
@@ -352,6 +355,29 @@
             height: 25px;
         }
     }
+
+    .footer__menu-list-wrapper li:nth-child(2) .menu-item {
+        @media screen and (min-width: $desktop) {
+            width: 178px;
+            // color: red;
+        }
+    }
+
+    .footer__menu-list-wrapper li:nth-child(3) .menu-item {
+        @media screen and (min-width: $desktop) {
+            width: 177px;
+            // color: red;
+        }
+    }
+
+    .footer__menu-list-wrapper li:nth-child(5) .menu-item {
+        @media screen and (min-width: $desktop) {
+            width: 162px;
+            // color: red;
+        }
+    }
+
+
 
 //   Styles for Right-side Logo & Icons etc, appeared at $desktop (class="footer__side-part")
 
