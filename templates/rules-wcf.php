@@ -195,8 +195,7 @@ get_header();
         </div>
     </section>
             
-        
-    
+    <!-- Breeds standards section ----------------------------------->
     <section class="breeds-section section" id="wcf-breeds">
         <div class="container">
             <h2 class="breeds-section__heading section_heading">
@@ -207,7 +206,7 @@ get_header();
                 <?php the_field('breeds-section__heading'); ?>
             </h2>
             <div class="breeds-section__wrapper">
-            <div class="breeds-section__img">
+                <div class="breeds-section__img">
                     <img src="<?php the_field('breeds-section-img'); ?>" />
                 </div>
                 <div class="breeds-section__infobox">
@@ -226,6 +225,7 @@ get_header();
             </div>
         </div>
     </section>
+
     <section class="title_system-section section" id="wcf-title_system">
         <div class="container">
             <h2 class="title_system-section__heading section_heading">
@@ -238,16 +238,38 @@ get_header();
             <div class="title_system-section__wrapper"></div>
         </div>
     </section>
+
+    <!-- WCF EMS CODE section --------------------------------------->
     <section class="wcf-ems-code-section section" id="wcf-ems-code">
         <div class="container">
-            <h2 class="wcf-ems-code__heading section_heading">
+            <h2 class="wcf-ems-code-section__heading section_heading">
                 <svg class="heading-svg" width="29" height="28">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                     </use>
                 </svg>
                 <?php the_field('wcf-ems-code__heading'); ?>
             </h2>
-            <div class="wcf-ems-code__wrapper"></div>
+            <div class="wcf-ems-code-section__wrapper">
+                <div class="wcf-ems-code-section__img">
+                    <img src="<?php the_field('wcf-ems-code-section-img'); ?>" />
+                </div>
+                <div class="wcf-ems-code-section__infobox">
+                    <div class="wcf-ems-code-infobox__large-screen">
+                        <?php the_field('wcf-ems-code-large-screen'); ?>
+                    </div>
+                    <div class="wcf-ems-code-infobox__small-screen">
+                        <?php the_field('wcf-ems-code-small-screen'); ?>
+                    </div>
+                    <button class="wcf-ems-code-section__button button red_medium_button open-btn">
+                        <a href="<?php echo esc_attr( get_field('wcf-ems-code-section__link') ); ?>" target="_blank">
+                            <?php the_field('open-btn', 'option'); ?>
+                        </a> 
+                        <svg class="rules-section__button-svg" width="16" height="14">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 </main>
