@@ -19,35 +19,35 @@ get_header();
                     <?php the_field('wcf__heading'); ?>
                 </h2>
                 <div class="upper-section__sub-titles">
-                    <a class="sub-title" href="#wcf-about">
+                    <a class="sub-title about_wcf__sub-title" href="#wcf-about">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('about_wcf-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#wcf-rules">
+                    <a class="sub-title rules__sub-title" href="#wcf-rules">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('rules-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#wcf-breeds">
+                    <a class="sub-title breeds__sub-title" href="#wcf-breeds">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('breeds-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#wcf-title_system">
+                    <a class="sub-title title_system__sub-title" href="#wcf-title_system">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
                         </svg>
                         <?php the_field('title_system-section__heading'); ?>
                     </a>
-                    <a class="sub-title" href="#wcf-ems-code">
+                    <a class="sub-title wcf-ems-code__sub-title" href="#wcf-ems-code">
                         <svg class="sub-title-svg" width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>
@@ -136,7 +136,7 @@ get_header();
         <style>
             .rules-responsibility {
                 background-image: url("<?php the_field('white-cat-bg') ?>"); 
-                background-position: -220px -365px;
+                /* background-position: -220px -365px; */
             }
         </style> 
         <div class="container">
@@ -195,8 +195,7 @@ get_header();
         </div>
     </section>
             
-        
-    
+    <!-- Breeds standards section ----------------------------------->
     <section class="breeds-section section" id="wcf-breeds">
         <div class="container">
             <h2 class="breeds-section__heading section_heading">
@@ -206,9 +205,27 @@ get_header();
                 </svg>
                 <?php the_field('breeds-section__heading'); ?>
             </h2>
-            <div class="breeds-section__wrapper"></div>
+            <div class="breeds-section__wrapper">
+                <div class="breeds-section__img">
+                    <img src="<?php the_field('breeds-section-img'); ?>" />
+                </div>
+                <div class="breeds-section__infobox">
+                    <div class="infobox__breed-standards">
+                        <?php the_field('infobox__breed-standards'); ?>
+                    </div>
+                    <button class="breeds-section__button button red_medium_button open-btn">
+                        <a href="<?php echo esc_attr( get_field('breeds-section__link') ); ?>" target="_blank">
+                            <?php the_field('open-btn', 'option'); ?>
+                        </a> 
+                        <svg class="rules-section__button-svg" width="16" height="14">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
+
     <section class="title_system-section section" id="wcf-title_system">
         <div class="container">
             <h2 class="title_system-section__heading section_heading">
@@ -221,16 +238,38 @@ get_header();
             <div class="title_system-section__wrapper"></div>
         </div>
     </section>
+
+    <!-- WCF EMS CODE section --------------------------------------->
     <section class="wcf-ems-code-section section" id="wcf-ems-code">
         <div class="container">
-            <h2 class="wcf-ems-code__heading section_heading">
+            <h2 class="wcf-ems-code-section__heading section_heading">
                 <svg class="heading-svg" width="29" height="28">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                     </use>
                 </svg>
                 <?php the_field('wcf-ems-code__heading'); ?>
             </h2>
-            <div class="wcf-ems-code__wrapper"></div>
+            <div class="wcf-ems-code-section__wrapper">
+                <div class="wcf-ems-code-section__img">
+                    <img src="<?php the_field('wcf-ems-code-section-img'); ?>" />
+                </div>
+                <div class="wcf-ems-code-section__infobox">
+                    <div class="wcf-ems-code-infobox__large-screen">
+                        <?php the_field('wcf-ems-code-large-screen'); ?>
+                    </div>
+                    <div class="wcf-ems-code-infobox__small-screen">
+                        <?php the_field('wcf-ems-code-small-screen'); ?>
+                    </div>
+                    <button class="wcf-ems-code-section__button button red_medium_button open-btn">
+                        <a href="<?php echo esc_attr( get_field('wcf-ems-code-section__link') ); ?>" target="_blank">
+                            <?php the_field('open-btn', 'option'); ?>
+                        </a> 
+                        <svg class="rules-section__button-svg" width="16" height="14">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 </main>

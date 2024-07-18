@@ -60,18 +60,24 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('rules-wcf-style', get_template_directory_uri() . '/assets/styles/template-styles/rules-wcf.css', array('main'));
         wp_enqueue_script('rules-wcf-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/rules-wcf.js', array(), false, true);
     }
-    if (is_page_template('templates/breeders.php')) {
+    if (is_page_template('templates/single-breeders.php')) {
+        wp_enqueue_script('single-breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-breeders.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('single-breeders-style', get_template_directory_uri() . '/assets/styles/template-styles/single-breeders.css', array('main'));
+     
+    }
+
+        if (is_page_template('templates/our-breeders.php')) {
         wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
-        wp_enqueue_script('breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/breeders.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_script('our-breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/our-breeders.js', array('touch-swipe-scripts'), false, true);
         wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
         wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
-        wp_enqueue_script('breeders-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), false, true);
-        wp_enqueue_script('breeders-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_script('our-breeders-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), false, true);
+        wp_enqueue_script('our-breeders-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
         wp_enqueue_style('slick-style', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css', array('main'));
-        wp_enqueue_style('breeders-style', get_template_directory_uri() . '/assets/styles/template-styles/breeders.css', array('main'));
-        wp_localize_script('breeders-scripts', 'myAjax', array(
+        wp_enqueue_style('our-breeders-style', get_template_directory_uri() . '/assets/styles/template-styles/our-breeders.css', array('main'));
+        wp_localize_script('our-breeders-scripts', 'myAjax', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('breeders_nonce'),
+            'nonce' => wp_create_nonce('our-breeders_nonce'),
         ));
     }
 
@@ -295,7 +301,7 @@ add_action('wp_ajax_nopriv_load_breeders', 'load_breeders');
 function load_breeders()
 {
     // Перевірка nonce
-    if (!isset($_POST["nonce"]) || !wp_verify_nonce($_POST["nonce"], "breeders_nonce")) {
+    if (!isset($_POST["nonce"]) || !wp_verify_nonce($_POST["nonce"], "our-breeders_nonce")) {
         exit;
     }
 

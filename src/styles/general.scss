@@ -198,13 +198,20 @@ ol {
   list-style: none;
 }
 
-input,
 button,
 textarea,
 select {
   color: inherit;
   font: inherit;
   cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+input{
+  color: inherit;
+  font: inherit;
   outline: none;
   border: none;
   background: transparent;

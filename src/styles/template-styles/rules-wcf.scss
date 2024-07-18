@@ -57,7 +57,7 @@ html {
             padding: 118.5px 0;
         }
         &__banner {
-            @media screen and (min-width: $full) {
+            @media screen and (min-width: $desktop) {
                 width: 823px;
             }
         }
@@ -68,21 +68,17 @@ html {
                 font-size: 45px;
                 margin-bottom: 14px;
             }
-            @media screen and (min-width: $full) {
+            @media screen and (min-width: $desktop) {
                 font-size: 60px;
                 margin-bottom: 24px;
             }
         }
         &__sub-titles {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            @media screen and (min-width: $tablet) {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                column-gap: 24px;
-            }
-            @media screen and (min-width: $full) {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            column-gap: 24px;
+            @media screen and (min-width: $desktop) {
                 column-gap: 36px;
                 row-gap: 16px;
             }
@@ -99,13 +95,13 @@ html {
                     font-size: 20px;
                     padding: 7.5px 0;
                 }
-                @media screen and (min-width: $full) {
+                @media screen and (min-width: $desktop) {
                     padding: 0;
                 }
                 &-svg {
                     width: 14px;
                     height: 12px;
-                    @media screen and (min-width: $full) {
+                    @media screen and (min-width: $desktop) {
                         width: 18px;
                         height: 16px;
                     }
@@ -262,6 +258,7 @@ html {
             }
             @media screen and (min-width: $desktop) {
                 width: 67.4%;
+                align-self: center;
             }
             .infobox {
                 &__large-screen {
@@ -294,11 +291,14 @@ html {
         }
     }
     .rules-responsibility {
+        background-size: cover;
         padding: 37px 1.5px;
         @media screen and (min-width: $tablet) {
+            background-position: -410px -5px;
             padding: 56px 0 64px;
         }
         @media screen and (min-width: $desktop) {
+            background-position: 5px -200px;
             padding: 80px 0 116px;
         }
         &__title {
@@ -380,6 +380,128 @@ html {
                     }
                 }
             }  
+        }
+    }
+    /*Breed standards section ----------------------*/
+    .breeds-section {
+        background-color: $background;
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                gap: 24px;
+            }
+        }
+        &__img {
+            height: 240px;
+            width: 340px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            align-self: center;
+            @media screen and (min-width: $tablet) {
+                width: 360px;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+        &__infobox {
+            @media screen and (min-width: $desktop) {
+                align-self: center;
+            }
+            .infobox {
+                &__breed-standards {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 1.31;
+                    margin-bottom: 24px;
+                    @media screen and (min-width: $tablet) {
+                        font-size: 20px;
+                        line-height: 1.25;
+                    }
+                    @media screen and (min-width: $desktop) {
+                        margin-bottom: 32px;
+                    }
+                }
+            }  
+        }
+        &__button {
+            @extend .open-btn;
+        }
+    }
+    /*WCF EMC CODE section ---------------------------*/
+    .wcf-ems-code-section {
+        background-color: $background;
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                gap: 24px;
+            }
+        }
+        &__img {
+            height: 240px;
+            width: 340px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            align-self: center;
+            @media screen and (min-width: $desktop) {
+                width: 360px;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+        &__infobox {
+            @media screen and (min-width: $desktop) {
+                align-self: center;
+            }
+            .wcf-ems-code-infobox {
+                &__large-screen {
+                    display: none;
+                    @media screen and (min-width: $desktop) {
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 1.25;
+                        display: block;
+                        margin-bottom: 32px;
+                    }
+                }
+                &__small-screen {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 1.31;
+                    margin-bottom: 24px;
+                    @media screen and (min-width: $tablet) {
+                        font-size: 20px;
+                        line-height: 1.25;
+                    }
+                    @media screen and (min-width: $desktop) {
+                        display: none;
+                    }
+                }
+            }  
+        }
+        &__button {
+            @extend .open-btn;
         }
     }
 }
