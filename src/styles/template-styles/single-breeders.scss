@@ -92,28 +92,105 @@
     @media screen and (min-width: $tablet) {
       font-size: 20px;
     }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 0;
+    }
   }
   &__text-first {
     color: black;
     font-weight: 800;
+    line-height: 1.1;
   }
   &__text-second {
     margin-top: 18.5px;
+    line-height: 1.25;
   }
 
   &__img {
     width: 343px;
-    height: 266px;
-    border-radius: 8px;
+    height: 379.05px;
+    border-radius: 5.49px;
 
     @media screen and (min-width: $tablet) {
       width: 704px;
-      height: 546px;
+      height: 777.99px;
+      border-radius: 15px;
     }
     @media screen and (min-width: $desktop) {
       width: 552px;
       height: 610.02px;
-      border-radius: 15px;
+    }
+  }
+
+  &__contacts-title {
+    margin-top: 24px;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+    color: $primary-color;
+    @media screen and (min-width: $tablet) {
+      margin-top: 16px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 18.5px;
+    }
+  }
+
+  &__contacts-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+  }
+
+  &__contacts-text {
+    color: $primary-color;
+    font-weight: 800;
+    font-size: 20px;
+  }
+
+  &__socials-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 63px;
+    margin-top: 16px;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 54px;
+      margin-top: 32px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 24px;
+    }
+  }
+
+  &__socials__img {
+    width: 72px;
+    height: 72px;
+    border-radius: 4px;
+    @media screen and (min-width: $desktop) {
+      border-radius: 10px;
+    }
+  }
+}
+
+.single-breeder-our-cats-section {
+  background-color: $background;
+  &__heading {
+    margin-bottom: 24px;
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.single-breeder-free-cats-section {
+  &__heading {
+    margin-bottom: 24px;
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
     }
   }
 }

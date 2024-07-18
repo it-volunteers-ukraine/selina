@@ -46,7 +46,7 @@ get_header();
     <section class="section single-breeder-about-section" id="about-single-breeder">
         <div class="container">
             <h2 class="section_heading single-breeder-about-section__heading">
-                <svg class="breeders-heading-svg" width="42" height="60">
+                <svg class="single-breeder-heading-svg" width="42" height="60">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                     </use>
                 </svg>
@@ -56,10 +56,67 @@ get_header();
                 <div class="single-breeder-about-section__text">
                     <p class="single-breeder-about-section__text-first"><?php the_field('breeder-page_about-subtitle'); ?></p>
                     <p class="single-breeder-about-section__text-second"><?php the_field('breeder-page_about-text'); ?></p>
+                    <p class="single-breeder-about-section__contacts-title"><?php the_field('breeder-page_about-connect'); ?></p>
+                    <div class="single-breeder-about-section__contacts-wrapper">
+                        <p class="single-breeder-about-section__contacts-text"><?php the_field('breeder-page_about-mail-name'); ?></p>
+                    <a class="single-breeder-about-section__contacts-link" href="mailto:<?php the_field('breeder-page_about-mail-mail') ?>" rel="noopener noreferrer">
+                        <?php the_field('breeder-page_about-mail-mail') ?>
+                    </a>
+                    </div>
+                    <div class="single-breeder-about-section__contacts-wrapper">
+                        <p class="single-breeder-about-section__contacts-text"><?php the_field('breeder-page_about-phone-name'); ?></p>
+                    <a class="single-breeder-about-section__contacts-link" href="tel:<?php the_field('breeder-page_about-phone-number') ?>" rel="noopener noreferrer">
+                        <?php the_field('breeder-page_about-phone-number') ?>
+                    </a>
+                    
+                    </div>
+                    <div class="single-breeder-about-section__contacts-wrapper">
+                        <p class="single-breeder-about-section__contacts-text"><?php the_field('breeder-page_about-address-name'); ?></p>
+                        <p class="single-breeder-about-section__contacts-link"><?php the_field('breeder-page_about-address-address'); ?></p>
+                    </div>
+                    <div class="single-breeder-about-section__socials-wrapper">
+<?php
+if( have_rows('breeder-page_about-socials') ):
+    while( have_rows('breeder-page_about-socials') ) : the_row();
+         ?>
+         
+         <a class="single-breeder-about-section-link" href="<?php the_sub_field('breeder-page_about-socials-link') ?>">
+            <img class="single-breeder-about-section-socials__img" src="<?php the_sub_field('breeder-page_about-socials-icon') ?>" />
+         </a>
+        <?php 
+    endwhile;
+else :
+endif;
+?>
+
+                    </div>
                 </div>
                 <img class="single-breeder-about-section__img" src="<?php the_field('breeder_photo') ?>" />
             </div>
+
         </div>
     </section>
+    <section class="section single-breeder-our-cats-section" id="#single-breeder-our-cats">
+        <div class="container">
+            <h2 class="section_heading single-breeder-our-cats-section__heading">
+                <svg class="single-breeder-heading-svg" width="42" height="60">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('breeder-page_our-cats-title'); ?>
+            </h2>
+            </div>
+            </section>
+             <section class="section single-breeder-free-cats-section" id="#single-breeder-free-cats">
+        <div class="container">
+            <h2 class="section_heading single-breeder-free-cats-section__heading">
+                <svg class="single-breeder-heading-svg" width="42" height="60">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('breeder-page_free-cats-title'); ?>
+            </h2>
+            </div>
+            </section>
 </main>
 <?php get_footer(); ?>
