@@ -206,7 +206,24 @@ get_header();
                 </svg>
                 <?php the_field('breeds-section__heading'); ?>
             </h2>
-            <div class="breeds-section__wrapper"></div>
+            <div class="breeds-section__wrapper">
+            <div class="breeds-section__img">
+                    <img src="<?php the_field('breeds-section-img'); ?>" />
+                </div>
+                <div class="breeds-section__infobox">
+                    <div class="infobox__breed-standards">
+                        <?php the_field('infobox__breed-standards'); ?>
+                    </div>
+                    <button class="breeds-section__button button red_medium_button open-btn">
+                        <a href="<?php echo esc_attr( get_field('breeds-section__link') ); ?>" target="_blank">
+                            <?php the_field('open-btn', 'option'); ?>
+                        </a> 
+                        <svg class="rules-section__button-svg" width="16" height="14">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
     <section class="title_system-section section" id="wcf-title_system">
