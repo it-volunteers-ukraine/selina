@@ -95,9 +95,9 @@ get_header();
                 <div class="presentations__card"></div>
                 <div class="presentations__card"></div>
                 <a href="">
-                    <div class="webinars__last-button">
+                    <div class="webinars__last-button presentations__all-button">
                         <p class=webinars__last-button-text>
-                            <?php the_field('webinars__last-button-text'); ?>
+                            <?php the_field('presentations__all-button-text'); ?>
                         </p>
                         <svg class="icon-paw" width="17" height="15">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
