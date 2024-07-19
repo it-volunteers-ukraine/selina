@@ -63,7 +63,65 @@ get_header();
                 <p class=webinars__description>
                     <?php the_field('webinars__description'); ?>
                 </p>
-                <div class="webinars__card"></div>
+                <div class="webinars__card">
+
+                    <?php
+                        $args = array(
+                            'orderby' => 'date',
+                            'order' => 'DESC',
+                            'post_type' => 'news',
+                            'posts_per_page' => -1,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'news_categories',
+                                    'field' => 'slug',
+                                    'terms' => 'webinar'
+                                )
+                            )
+                        );
+
+                        $myposts = get_posts( $args );
+                        if ($myposts) {
+                            foreach ($myposts as $post) : setup_postdata($post); ?>
+                                <div class="news-section__item">
+                                    <?php
+                                    $category_detail = get_the_category($post->ID);
+                                    $category_name = $category_detail ? $category_detail[0]->cat_name : '';
+                                    $category_slug = $category_detail ? $category_detail[0]->slug : '';
+
+                                    if ($category_name):
+                                        ?>
+                                        <div class="news-section__category <?php echo esc_attr($category_slug); ?>">
+                                            <?php echo esc_html($category_name); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="news-section__img">
+                                        <img src="<?php the_field('news_photo'); ?>" alt="<?php the_field('news_name'); ?>" />
+                                    </div>
+                                    <div class="news-section__content-wrapper">
+                                        <p class="news-section__name">
+                                            <?php the_field('news_name'); ?>
+                                        </p>
+                                        <p class="news-section__text">
+                                            <?php the_field('news_text'); ?>
+                                        </p>
+                                        <a class="news-section__button button red_medium_button" href="<?php the_field('news_link'); ?>">
+                                            <?php the_field('news_btn'); ?>
+                                            <svg class="news-section__button-svg" width="16" height="15">
+                                                <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endforeach;
+                            wp_reset_postdata();
+                        } else {
+                            echo '<p>Немає вебінарів.</p>';
+                        }
+                    ?>
+
+
+                </div>
                 <a href="">
                     <div class="webinars__last-button">
                         <p class=webinars__last-button-text>
@@ -90,10 +148,64 @@ get_header();
                         <?php the_field('presentations__heading'); ?>
                     </h2>
                 </div>
-                <div class="presentations__card"></div>
-                <div class="presentations__card"></div>
-                <div class="presentations__card"></div>
-                <div class="presentations__card"></div>
+                <div class="presentations__card">
+
+                <?php
+                        $args = array(
+                            'orderby' => 'date',
+                            'order' => 'DESC',
+                            'post_type' => 'news',
+                            'posts_per_page' => -1,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'news_categories',
+                                    'field' => 'slug',
+                                    'terms' => 'presentation'
+                                )
+                            )
+                        );
+
+                        $myposts = get_posts( $args );
+                        if ($myposts) {
+                            foreach ($myposts as $post) : setup_postdata($post); ?>
+                                <div class="news-section__item">
+                                    <?php
+                                    $category_detail = get_the_category($post->ID);
+                                    $category_name = $category_detail ? $category_detail[0]->cat_name : '';
+                                    $category_slug = $category_detail ? $category_detail[0]->slug : '';
+
+                                    if ($category_name):
+                                        ?>
+                                        <div class="news-section__category <?php echo esc_attr($category_slug); ?>">
+                                            <?php echo esc_html($category_name); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="news-section__img">
+                                        <img src="<?php the_field('news_photo'); ?>" alt="<?php the_field('news_name'); ?>" />
+                                    </div>
+                                    <div class="news-section__content-wrapper">
+                                        <p class="news-section__name">
+                                            <?php the_field('news_name'); ?>
+                                        </p>
+                                        <p class="news-section__text">
+                                            <?php the_field('news_text'); ?>
+                                        </p>
+                                        <a class="news-section__button button red_medium_button" href="<?php the_field('news_link'); ?>">
+                                            <?php the_field('news_btn'); ?>
+                                            <svg class="news-section__button-svg" width="16" height="15">
+                                                <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endforeach;
+                            wp_reset_postdata();
+                        } else {
+                            echo '<p>Немає вебінарів.</p>';
+                        }
+                    ?>
+
+                </div>
                 <a href="">
                     <div class="webinars__last-button presentations__all-button">
                         <p class=webinars__last-button-text>
