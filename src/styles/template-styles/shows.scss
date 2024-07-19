@@ -90,3 +90,120 @@
         }
     }
 }
+
+.webinars, .presentations {
+    &__heading-container {
+        display: flex;
+        align-items: center;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 100%;
+        margin-bottom: 16px;
+        svg {
+            display: none;
+            
+            @media screen and (min-width: $tablet) {
+                display: block;
+                width: 29px;
+                height: 28px;
+                fill: $primary-color;
+            }
+            
+            @media screen and (min-width: $desktop) {
+                display: block;
+                width: 41px;
+                height: 37px;
+            }
+        }
+
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+            gap: 8px;
+            padding: 6px 0;
+            margin-bottom: 24px;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding: 7.5px 0;
+        }
+    }
+}
+
+.webinars {
+    background-color: $white;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 42px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+
+    &__heading-container {
+        margin-bottom: 24px;
+    }
+
+    &__description {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+        margin-bottom: 32px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            line-height: 125%;
+            margin-bottom: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 820px;
+            margin-bottom: 40px;
+        }
+    }
+    &__card {
+        width: 343px;
+        height: 536px;
+        background-color: $light-green;
+    }
+    &__last-button {
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 10px;
+        padding: 10px 10px 10px 14px;
+        width: 200px;
+        height: 44px;
+        background-color: $blue-main;
+        margin: 16px auto 0;
+        color: $white;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 133%;
+
+        @media screen and (min-width: $tablet) {
+            margin-top: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            margin: 40px 0 0;
+        }
+    }
+}
+
+.presentations {
+    background-color: $background;
+
+    &__card {
+        width: 340px;
+        height: 468px;
+        background-color: $white;
+        margin-bottom: 24px;
+    }
+}
