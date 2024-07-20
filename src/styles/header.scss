@@ -487,12 +487,20 @@
     margin-top: 16px;
     display: flex !important;
     align-items: center;
-    width: 343px;
     background: #fff;
     position: absolute;
     top: 93px;
     height: 44px;
     z-index: 1;
+
+    @media (min-width: 320px) {
+      width: 291px;
+    }
+
+    @media (min-width: 375px) {
+      width: 343px;
+    }
+
     @media (min-width: $tablet) {
       width: 423px;
       right: 32px;
@@ -506,7 +514,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+
+    @media (min-width: 320px) {
+      gap: 12px;
+    }
+
     @media (min-width: 375px) {
       gap: 24px;
     }
@@ -521,44 +533,37 @@
     }
 
     .registration-btn {
-      padding: 10px 17px;
       font-size: 18px;
+      @media (min-width: 320px) {
+        padding: 10px 11px;
+      }
+      @media (min-width: 375px) {
+        padding: 10px 17px;
+      }
     }
 
     .switch {
+      position: relative;
       width: 86px;
-      padding: 19px 0;
+      height: 44px;
       border: 2px solid $primary-color;
-      @media (min-width: 375px) {
-        padding: 20px 0;
-      }
-
-      input.check-toggle-round-flat + label {
-        height: 44px;
-        width: 70px;
-        top: -2px;
-        @media (min-width: 375px) {
-          width: 86px;
-        }
-      }
-
-      span {
-        font-size: 18px;
-        top: 4px;
-        @media (min-width: 375px) {
-          font-size: 20px;
-        }
-      }
-
-      .off {
-        padding-right: 12px;
-      }
+      border-radius: 50px;
 
       .flag-ua {
-        left: 38px;
+        @media (min-width: 320px) {
+          left: 39px;
+          top: 5px;
+          height: 30px;
+        }
+
+        @media (min-width: 330px) {
+          left: 44px;
+        }
+
         @media (min-width: 375px) {
           left: 43px;
           top: 4px;
+          height: 32px;
         }
       }
     }
@@ -567,53 +572,76 @@
 
 
 .switch {
-  position: relative;
-  display: inline-block;
-  margin: 0 5px;
-  width: 55px;
-  height: 28px;
-  border: 1px solid $primary-color;
-  border-radius: 50px;
+  @media (min-width: $desktop) {
+    position: relative;
+    width: 55px;
+    height: 28px;
+    border: 1px solid $primary-color;
+    border-radius: 50px;
+  }
+
 }
 
 .switch > span {
   position: absolute;
-  top: 2px;
   pointer-events: none;
-  font-weight: bold;
-  font-size: 14px;
-  text-transform: uppercase;
-  right: 25px;
-  text-align: center;
-  color: $primary-color;
-
-  @media (min-width: $desktop) {
-    font-size: 16px;
-  }
-
 }
 
-.switch > span.on {
-  left: -9px;
-  padding-left: 2px;
+
+.switch > span.on-lang {
+
+  @media (min-width: 320px) {
+    top: 6px;
+    left: 6px;
+  }
+
+  @media (min-width: 330px) {
+    left: 10px;
+  }
+
+  @media (min-width: 340px) {
+    left: 10px;
+  }
+
   @media (min-width: $tablet) {
-    left: -15px;
+    top: 5px;
+    left: 7px;
   }
   @media (min-width: $desktop) {
-    left: -2px;
-    top: 3px;
+    left: 5px;
+    top: 2px;
+  }
+}
+
+.switch > .off-lang {
+  @media (min-width: 320px) {
+    left: 38px;
+    top: 5px;
+  }
+
+  @media (min-width: 330px) {
+    left: 44px;
+  }
+
+  @media (min-width: $tablet) {
+    left: 44px;
+    top: 5px;
+  }
+
+  @media (min-width: $desktop) {
+    left: 25px;
+    top: 2px;
   }
 }
 
 
 .switch > span.off {
   right: 0;
-  padding-right: 4px;
   @media (min-width: $tablet) {
     top: 6px;
   }
   @media (min-width: $desktop) {
-    left: 25px;
+    left: 30px;
     top: 3px;
   }
 }
@@ -625,7 +653,6 @@
 
 .check-toggle + label {
   display: block;
-  position: relative;
   cursor: pointer;
   outline: none;
   -webkit-user-select: none;
@@ -635,11 +662,14 @@
 }
 
 input.check-toggle-round-flat + label {
-  padding: 2px;
-  height: 35px;
-  width: 56px;
-  top: -6px;
+  width: 86px;
+  height: 44px;
+  top: 0;
   position: absolute;
+  @media (min-width: $desktop) {
+    height: 28px;
+    width: 55px;
+  }
 }
 
 input.check-toggle-round-flat + label:before, input.check-toggle-round-flat + label:after {
@@ -667,28 +697,87 @@ input.check-toggle-round-flat + span:after {
 .flag-ua {
   background-image: url("../images/ua_flag-2.svg");
   background-repeat: no-repeat;
-  left: 29px;
-  height: 32px;
   background-size: contain;
+  @media (min-width: 320px) {
+    height: 28px;
+  }
+
+  @media (min-width: 330px) {
+    height: 32px;
+  }
+
+  @media (min-width: 375px) {
+    height: 32px;
+    width: 32px;
+  }
 
   @media (min-width: $desktop) {
     height: 20px;
-    background-position: 5px;
+    width: 20px;
+  }
+}
+
+
+.lang-size {
+  text-transform: uppercase;
+  color: $primary-color;
+  display: block;
+  font-weight: 800;
+  width: 28px;
+  height: 20px;
+
+  @media (min-width: 320px) {
+    font-size: 19px;
+  }
+
+  @media (min-width: 375px) {
+    left: -2px;
+    font-size: 20px;
+  }
+  @media (min-width: $tablet) {
+    width: 30px;
+    height: 20px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 22px;
+    height: 16px;
+    font-size: 16px;
+    position: absolute;
   }
 }
 
 .flag-en {
   background-image: url("../images/en_flag-2.svg");
   background-repeat: no-repeat;
-  background-position: 14px;
   background-size: contain;
-  height: 32px;
+  @media (min-width: 320px) {
+    top: 6px;
+    left: 6px;
+    width: 28px;
+    height: 30px;
+  }
+
+  @media (min-width: 375px) {
+    left: 7px;
+    top: 6px;
+  }
+
+  @media (min-width: 380px) {
+    top: 6px;
+  }
+
   @media (min-width: $tablet) {
-    background-position: 20px;
+    height: 32px;
+    width: 32px;
+    left: 5px;
+    top: 4px;
   }
   @media (min-width: $desktop) {
     height: 20px;
-    background-position: 5px;
+    width: 20px;
+    left: 3px;
+    top: 3px;
   }
 }
 
@@ -696,11 +785,11 @@ input.check-toggle-round-flat:checked ~ .on {
   background-image: none;
 }
 
-input.check-toggle-round-flat:checked ~ .off {
+input.check-toggle-round-flat:checked ~ .off-lang {
   text-indent: -99999px;
 }
 
-input.check-toggle-round-flat:not(:checked) ~ .on {
+input.check-toggle-round-flat:not(:checked) ~ .on-lang {
   text-indent: -99999px;
 }
 
