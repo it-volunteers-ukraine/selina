@@ -87,8 +87,15 @@
 
                         <?php foreach ($languages as $lang => $language): ?>
                             <span class="<?= $lang !== 'ua' ? 'on' : 'off' ?> flag-<?= $language['slug']; ?>">
-                         <?= $language['slug']; ?>
-                            </span>
+        </span>
+                            <span class="lang-size <?= $lang !== 'ua' ? 'on-lang' : 'off-lang' ?>">
+            <?= $language['slug']; ?>
+        </span>
+
+                            <!--                            <span class="--><?php //= $lang !== 'ua' ? 'on' : 'off' ?><!-- flag---><?php //= $language['slug']; ?><!--">-->
+                            <!---->
+                            <!--                            </span>-->
+                            <!--                            <span class="lang-size">--><?php //= $language['slug']; ?><!--</span>-->
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -200,8 +207,10 @@
 
                                     <?php foreach ($languages as $lang => $language): ?>
                                         <span class="<?= $lang !== 'ua' ? 'on' : 'off' ?> flag-<?= $language['slug']; ?>">
-                         <?= $language['slug']; ?>
-                            </span>
+        </span>
+                                        <span class="lang-size <?= $lang !== 'ua' ? 'on-lang' : 'off-lang' ?>">
+            <?= $language['slug']; ?>
+        </span>
                                     <?php endforeach; ?>
                                 </div>
 
