@@ -32,8 +32,8 @@
                 <div class="social-media">
                     <?php
                     $emails = get_field('emails');
+                    $countEmails = 0;
                     if ($emails) :
-                        $countEmails = 0;
                         foreach ($emails as $row) :
                             $iconEmail = $row['icon-email'];
                             $email = $row['email'];
@@ -41,34 +41,34 @@
                                 break;
                             }
                             ?>
-                            <a href="mailto:<?php esc_url($email); ?>"
-                               rel="noopener noreferrer">
+                            <a href="mailto:<?php echo esc_url($email); ?>" rel="noopener noreferrer">
                                 <img src="<?php echo esc_html($iconEmail); ?>" alt="email">
                             </a>
                             <?php
-                            $countEmails++
-                            ?>
-                        <?php
+                            $countEmails++;
                         endforeach;
                     endif;
-                    ?>
-                    <?php
+
+                    $iconsToShow = ($countEmails === 2) ? 2 : (($countEmails === 1) ? 3 : 4);
+
                     $socialLinks = get_field('social-media');
                     $countIcons = 0;
+
                     foreach ($socialLinks as $row) :
-                        $icon = $row['social-icon'];
-                        $link = $row['social-link'];
-                        if ($countIcons >= 1) {
+                        if ($countIcons >= $iconsToShow) {
                             break;
                         }
+
+                        $icon = $row['social-icon'];
+                        $link = $row['social-link'];
                         ?>
                         <a href="<?php echo esc_url($link); ?>" class="icon">
                             <img src="<?php echo esc_html($icon); ?>" alt="image">
                         </a>
                         <?php
-                        $countIcons++
-                        ?>
-                    <?php endforeach; ?>
+                        $countIcons++;
+                    endforeach;
+                    ?>
                     <?php
                     $iconPhone = get_field('icon-phone');
                     if ($iconPhone) :
