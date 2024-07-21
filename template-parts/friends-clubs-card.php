@@ -37,15 +37,15 @@
                         foreach ($emails as $row) :
                             $iconEmail = $row['icon-email'];
                             $email = $row['email'];
-                            if ($countEmails >= 2) {
-                                break;
-                            }
                             ?>
                             <a href="mailto:<?php echo esc_url($email); ?>" rel="noopener noreferrer">
                                 <img src="<?php echo esc_html($iconEmail); ?>" alt="email">
                             </a>
                             <?php
                             $countEmails++;
+                            if ($countEmails >= 2) {
+                                break;
+                            }
                         endforeach;
                     endif;
 
