@@ -20,9 +20,16 @@
   .pagination-block {
     display: flex;
     flex-direction: row;
-    gap: 47px;
     align-items: center;
     margin-bottom: 40px;
+
+    @media screen and (min-width: 320px) {
+      gap: 16px;
+    }
+
+    @media screen and (min-width: 375px) {
+      gap: 47px;
+    }
 
     .mobile-title {
       white-space: nowrap;
@@ -156,7 +163,15 @@
 }
 
 #partners-posts-mobile {
-  display: grid;
+  @media screen and (min-width: 320px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 375px) {
+    display: grid;
+  }
 
   @media screen and (min-width: $tablet) {
     display: none;
@@ -293,6 +308,7 @@
         line-height: 21px;
 
         @media screen and (min-width: $tablet) {
+          margin-bottom: 0;
           font-size: 19px;
           line-height: 25px;
         }
@@ -495,21 +511,22 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 14px;
-      padding: 17px 12px;
+      padding: 7px 12px;
 
       @media screen and (min-width: $tablet) {
         width: 194px;
-        padding: 14px 0;
+        padding: 44px 0;
         margin-bottom: 18px;
       }
 
       @media screen and (min-width: $desktop) {
         width: 224px;
-        padding: 34px 0;
+        padding: 66px 0;
         margin-bottom: 26px;
       }
 
       .positions {
+        text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -534,6 +551,7 @@
       }
 
       .address {
+        text-align: center;
         color: $primary-color;
         font-weight: 800;
         @media screen and (min-width: $tablet) {
@@ -545,7 +563,6 @@
     .social-media {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
       gap: 12px;
       padding: 0 15px;
       width: 150px;
@@ -565,30 +582,19 @@
 
     }
 
-    // mobile
-    .social-media a:first-of-type + a,
-    .social-media a:first-of-type + a + a {
+    .social-media a:last-child {
       display: none;
 
       @media screen and (min-width: $tablet) {
         display: flex;
       }
+
       @media screen and (min-width: $desktop) {
         display: flex;
       }
 
     }
 
-    .social-media a:nth-of-type(3) ~ a + a + a {
-      display: none;
-
-      @media screen and (min-width: $tablet) {
-        display: flex;
-      }
-      @media screen and (min-width: $desktop) {
-        display: flex;
-      }
-    }
   }
 
   .flip-card-front-friends, .flip-card-back-friends {

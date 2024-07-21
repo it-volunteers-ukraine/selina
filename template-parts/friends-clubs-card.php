@@ -33,14 +33,21 @@
                     <?php
                     $emails = get_field('emails');
                     if ($emails) :
+                        $countEmails = 0;
                         foreach ($emails as $row) :
                             $iconEmail = $row['icon-email'];
                             $email = $row['email'];
+                            if ($countEmails >= 2) {
+                                break;
+                            }
                             ?>
                             <a href="mailto:<?php esc_url($email); ?>"
                                rel="noopener noreferrer">
                                 <img src="<?php echo esc_html($iconEmail); ?>" alt="email">
                             </a>
+                            <?php
+                            $countEmails++
+                            ?>
                         <?php
                         endforeach;
                     endif;
@@ -51,7 +58,7 @@
                     foreach ($socialLinks as $row) :
                         $icon = $row['social-icon'];
                         $link = $row['social-link'];
-                        if ($countIcons >= 4) {
+                        if ($countIcons >= 1) {
                             break;
                         }
                         ?>
