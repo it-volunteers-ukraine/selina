@@ -511,17 +511,17 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 14px;
-      padding: 7px 12px;
+      height: 139px;
 
       @media screen and (min-width: $tablet) {
         width: 194px;
-        padding: 44px 0;
+        height: 204px;
         margin-bottom: 18px;
       }
 
       @media screen and (min-width: $desktop) {
         width: 224px;
-        padding: 66px 0;
+        height: 244px;
         margin-bottom: 26px;
       }
 
@@ -577,8 +577,11 @@
       }
 
       a {
-        width: 32px;
+        img {
+          width: 32px;
+        }
       }
+
 
     }
 
@@ -594,6 +597,11 @@
       }
 
     }
+
+    .social-media a:nth-child(5) {
+      display: none;
+    }
+
 
   }
 
