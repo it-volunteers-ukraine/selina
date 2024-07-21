@@ -582,6 +582,7 @@
         }
       }
 
+
     }
 
     .social-media a:last-child {
@@ -596,6 +597,11 @@
       }
 
     }
+
+    .social-media a:nth-child(5) {
+      display: none;
+    }
+
 
   }
 
