@@ -272,6 +272,8 @@ get_header();
             </div>
         </div>
     </section>
+    
+    <?php get_template_part('template-parts/join-us'); ?>
 </main>
 
 <?php get_footer(); ?>
