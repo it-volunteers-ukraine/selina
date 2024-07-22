@@ -438,6 +438,81 @@ html {
             @extend .open-btn;
         }
     }
+    /*Title system section ----------------------------*/
+    .title_system-section {
+        padding: 0;
+        background-color: $background;
+        @media screen and (min-width: $tablet) {
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 56px 0;
+            @media screen and (min-width: $full) {
+                padding: 80px 0;
+            }
+        }
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__small-wrapper {
+            background-color: #fff;
+            width: 100%;
+            border-radius: 10px;
+            margin: 0 auto;
+            padding: 24px;
+            gap: 24px;
+            @media screen and (min-width: $tablet) {
+                display: none;
+            }  
+        }
+        &__description {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.31;
+        } 
+        &__button {
+            @extend .open-btn;
+            margin-top: 24px;
+        }
+        &__big-wrapper {
+            display: none;
+            @media screen and (min-width: $tablet) {
+                display: flex;
+            }
+            .adult-cats {
+                display: flex;
+                flex-direction: column;
+                &__title {
+                    font-weight: 800;
+                    font-size: 27px;
+                    line-height: 1;
+                    text-align: center;
+                    color: $violet-light;
+                }
+                &__cards {
+                    display: flex;
+                    flex-direction: row;
+                }
+                &__first-card {
+                    .violet-card {
+                        background-color: $violet-light;
+                        border-radius: 6px;
+                        width: 103px;
+                        height: 125px;
+                        padding: 17.29px 4.7px 0 5.56px;
+                    }
+                }
+                &__info-in-the-card {
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                }
+            }
+        }
+    }
     /*WCF EMC CODE section ---------------------------*/
     .wcf-ems-code-section {
         background-color: $background;

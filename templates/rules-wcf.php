@@ -226,6 +226,7 @@ get_header();
         </div>
     </section>
 
+    <!-- Title system section --------------------------------------->
     <section class="title_system-section section" id="wcf-title_system">
         <div class="container">
             <h2 class="title_system-section__heading section_heading">
@@ -235,7 +236,60 @@ get_header();
                 </svg>
                 <?php the_field('title_system-section__heading'); ?>
             </h2>
-            <div class="title_system-section__wrapper"></div>
+            <div class="title_system-section__small-wrapper">
+                <div class="title_system-section__description text">
+                    <?php the_field('title_system-section__description'); ?>
+                </div> 
+                <button class="title_system-section__button button red_medium_button">
+                    <a href="<?php echo esc_attr( get_field('title_system-section__link') ); ?>" target="_blank">
+                        <?php the_field('open-btn', 'option'); ?>
+                    </a> 
+                    <svg class="map-section__button-svg" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="title_system-section__big-wrapper">
+                <article class="adult-cats">
+                    <h3 class="adult-cats__title">
+                        <?php the_field('adult-cats__title'); ?>
+                    </h3>
+                    <div class="adult-cats__cards">
+                        <div class="adult-cats__first-card">
+                            <div class="violet-card">
+                                <p class="adult-cats__info-in-the-card"><?php the_field('adult-cats__info-in-the-card-violet'); ?></p>
+                            </div>
+                            <p class="adult-cats__info-below-the-card"><?php the_field('adult-cats__info-below-the-card-violet'); ?></p>
+                        </div>
+                        <div class="adult-cats__other-cards-wrapper">
+                            <div class="other-cards">
+                                <?php
+                                    if( have_rows('adult-cats') ):
+                                        while( have_rows('adult-cats') ) : the_row();
+                                            $infoInCard = get_sub_field('info-in-card');
+                                            $infoBelowCard = get_sub_field('info-below-card');
+                                            ?>
+                                                <div class="card">
+                                                    <div class="colored-card">
+                                                        <p class="adult-cats__info-in-the-card"><?php echo $infoInCard; ?></p>
+                                                    </div>
+                                                    <p class="adult-cats__info-below-the-card"><?php echo $infoBelowCard; ?></p>
+                                                </div>
+                                            <?php 
+                                        endwhile;
+                                    endif;
+                                ?>
+                            </div>
+                            <div class="other-cards-info">
+                                <?php the_field('other-cards-info'); ?>
+                            </div> 
+                        </div>
+                    </div>
+                </article>
+                <article class="adult-neutercats"></article>
+                <article class="kittens-and-juniors"></article>
+                <article class="kittens-and-juniors-neuters"></article>
+            </div>
         </div>
     </section>
 
@@ -272,7 +326,7 @@ get_header();
             </div>
         </div>
     </section>
-    
+
     <?php get_template_part('template-parts/join-us'); ?>
 </main>
 
