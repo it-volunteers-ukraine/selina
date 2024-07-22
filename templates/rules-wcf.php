@@ -251,29 +251,47 @@ get_header();
             </div>
             <div class="title_system-section__big-wrapper">
                 <article class="adult-cats">
-                    <h3 class="adult-cats__title">
-                        <?php the_field('adult-cats__title'); ?>
-                    </h3>
+                    <div class="adult-cats__title-wrapper">
+                        <p class="adult-cats__info-above-card adult-cats__info-above-card-violet">
+                            <?php the_field('adult-cats__info-above-violet-card'); ?>
+                        </p>
+                        <h3 class="adult-cats__title">
+                            <?php the_field('adult-cats__title'); ?>
+                        </h3>
+                        <p class="adult-cats__info-above-card">
+                            <?php the_field('adult-cats__info-above-purple-card'); ?>
+                        </p>
+                    </div>
+                    <div class="adult-cats__triangles">
+                        <svg class="triangle-down-svg" width="45" height="24">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#triangle-down">
+                            </use>
+                        </svg>
+                        <svg class="triangle-up-svg" width="45" height="24">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#triangle-up">
+                            </use>
+                        </svg>
+                    </div>
                     <div class="adult-cats__cards">
-                        <div class="adult-cats__first-card">
-                            <div class="violet-card">
-                                <p class="adult-cats__info-in-the-card"><?php the_field('adult-cats__info-in-the-card-violet'); ?></p>
+                        <div class="adult-cats__first-card adult-cats__card">
+                            <div class="adult-cats__violet-card adult-cats__colored-card">
+                                <img src="<?php the_field('adult-cats__violet-card') ?>" />
                             </div>
-                            <p class="adult-cats__info-below-the-card"><?php the_field('adult-cats__info-below-the-card-violet'); ?></p>
+                            <p class="adult-cats__info-below-card"><?php the_field('adult-cats__info-below-violet-card'); ?></p>
                         </div>
                         <div class="adult-cats__other-cards-wrapper">
                             <div class="other-cards">
                                 <?php
                                     if( have_rows('adult-cats') ):
                                         while( have_rows('adult-cats') ) : the_row();
-                                            $infoInCard = get_sub_field('info-in-card');
-                                            $infoBelowCard = get_sub_field('info-below-card');
+                                            $adultCatsCard = get_sub_field('adult-cats__card');
+                                            $adultCatsInfo = get_sub_field('adult-cats__info-below-card');
                                             ?>
-                                                <div class="card">
-                                                    <div class="colored-card">
-                                                        <p class="adult-cats__info-in-the-card"><?php echo $infoInCard; ?></p>
+                                                <div class="adult-cats__card">
+                                                    <div class="adult-cats__colored-card">
+                                                        <img src="<?php echo $adultCatsCard; ?>" />
                                                     </div>
-                                                    <p class="adult-cats__info-below-the-card"><?php echo $infoBelowCard; ?></p>
+                                                    <p class="adult-cats__info-below-card"><?php echo $adultCatsInfo; ?></p>
                                                 </div>
                                             <?php 
                                         endwhile;
@@ -281,7 +299,15 @@ get_header();
                                 ?>
                             </div>
                             <div class="other-cards-info">
+                                <svg class="other-cards-info-svg" width="58" height="10">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#long-arrow-left">
+                                    </use>
+                                </svg>
                                 <?php the_field('other-cards-info'); ?>
+                                <svg class="other-cards-info-svg" width="58" height="10">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#long-arrow-right">
+                                    </use>
+                                </svg>
                             </div> 
                         </div>
                     </div>

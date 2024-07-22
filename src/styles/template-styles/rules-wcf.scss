@@ -479,10 +479,18 @@ html {
             display: none;
             @media screen and (min-width: $tablet) {
                 display: flex;
+                width: 704px;
+                margin: 0 auto;
             }
             .adult-cats {
                 display: flex;
                 flex-direction: column;
+                /*gap: 32px;*/
+                &__title-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
                 &__title {
                     font-weight: 800;
                     font-size: 27px;
@@ -490,25 +498,77 @@ html {
                     text-align: center;
                     color: $violet-light;
                 }
+                &__info-above-card {
+                    font-weight: 800;
+                    font-size: 14px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                }
+                &__info-above-card-violet {
+                    padding-left: 4px;
+                }
+                &__triangles {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .triangle-down-svg {
+                        margin: 0 0 8px 16px;
+                    }
+                    .triangle-up-svg {
+                        margin: 0 16px 11px 0;
+                    }
+                }
                 &__cards {
                     display: flex;
                     flex-direction: row;
+                    gap: 54px;
                 }
-                &__first-card {
-                    .violet-card {
-                        background-color: $violet-light;
-                        border-radius: 6px;
-                        width: 103px;
-                        height: 125px;
-                        padding: 17.29px 4.7px 0 5.56px;
+                &__card {
+                    display: flex;
+                    flex-direction: column;
+                    width: 103px;
+                }
+                &__colored-card {
+                    border-radius: 6px;
+                    height: 125px;
+                    width: 103px;
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
                     }
                 }
-                &__info-in-the-card {
+                &__info-below-card {
                     font-weight: 500;
                     font-size: 12px;
                     line-height: 1.25;
                     text-align: center;
                     color: $black;
+                }
+                &__other-cards-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    .other-cards {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                    }
+                    .other-cards-info {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 10px;
+                        align-items: center;
+                        align-self: flex-end;
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 1.17;
+                        text-align: center;
+                        color: $black;
+                    }
                 }
             }
         }
