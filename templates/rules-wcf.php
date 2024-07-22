@@ -312,7 +312,68 @@ get_header();
                         </div>
                     </div>
                 </article>
-                <article class="adult-neutercats"></article>
+                <article class="adult-neutercats">
+                    <div class="adult-cats__title-wrapper">
+                        <p class="adult-cats__info-above-card adult-cats__info-above-card-violet">
+                            <?php the_field('adult-cats__info-above-violet-card'); ?>
+                        </p>
+                        <h3 class="adult-cats__title">
+                            <?php the_field('adult-neutercats__title'); ?>
+                        </h3>
+                        <p class="adult-cats__info-above-card">
+                            <?php the_field('adult-cats__info-above-purple-card'); ?>
+                        </p>
+                    </div>
+                    <div class="adult-cats__triangles">
+                        <svg class="triangle-down-svg" width="45" height="24">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#triangle-down">
+                            </use>
+                        </svg>
+                        <svg class="triangle-up-svg" width="45" height="24">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#triangle-up">
+                            </use>
+                        </svg>
+                    </div>
+                    <div class="adult-cats__cards">
+                        <div class="adult-cats__first-card adult-cats__card">
+                            <div class="adult-cats__violet-card adult-cats__colored-card">
+                                <img src="<?php the_field('adult-neutercats__violet-card') ?>" />
+                            </div>
+                            <p class="adult-cats__info-below-card"><?php the_field('adult-neutercats__info-below-violet-card'); ?></p>
+                        </div>
+                        <div class="adult-cats__other-cards-wrapper">
+                            <div class="other-cards">
+                                <?php
+                                    if( have_rows('adult-neutercats') ):
+                                        while( have_rows('adult-neutercats') ) : the_row();
+                                            $adultNeutercatsCard = get_sub_field('adult-neutercats__card');
+                                            $adultNeutercatsInfo = get_sub_field('adult-neutercats__info-below-card');
+                                            ?>
+                                                <div class="adult-cats__card">
+                                                    <div class="adult-cats__colored-card">
+                                                        <img src="<?php echo $adultNeutercatsCard; ?>" />
+                                                    </div>
+                                                    <p class="adult-cats__info-below-card"><?php echo $adultNeutercatsInfo; ?></p>
+                                                </div>
+                                            <?php 
+                                        endwhile;
+                                    endif;
+                                ?>
+                            </div>
+                            <div class="other-cards-info">
+                                <svg class="other-cards-info-svg" width="58" height="10">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#long-arrow-left">
+                                    </use>
+                                </svg>
+                                <?php the_field('other-cards-info'); ?>
+                                <svg class="other-cards-info-svg" width="58" height="10">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#long-arrow-right">
+                                    </use>
+                                </svg>
+                            </div> 
+                        </div>
+                    </div>
+                </article>
                 <article class="kittens-and-juniors"></article>
                 <article class="kittens-and-juniors-neuters"></article>
             </div>
