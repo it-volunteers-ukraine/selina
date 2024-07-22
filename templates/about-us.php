@@ -120,7 +120,7 @@ get_header();
                     <?php the_field('map-section__description'); ?>
                 </div> 
                 <button class="map-section__button button red_medium_button">
-                    <a href="<?php echo esc_attr( get_field('map-section__link') ); ?>">
+                    <a href="<?php echo esc_attr( get_field('map-section__link') ); ?>" target="_blank">
                         <?php the_field('open-btn', 'option'); ?>
                     </a> 
                     <svg class="map-section__button-svg" width="16" height="15">
@@ -193,7 +193,7 @@ get_header();
                                         <div class="document-card__content">
                                             <div class="document-card__title"><?php echo $documentTitle; ?></div>
                                             <button class="document-card__button button red_medium_button">
-                                                <a href="<?php echo $documentLink; ?>">
+                                                <a href="<?php echo $documentLink; ?>" target="_blank">
                                                     <?php the_field('open-btn', 'option'); ?>
                                                 </a> 
                                                 <svg class="document-card__button-svg" width="16" height="15">
