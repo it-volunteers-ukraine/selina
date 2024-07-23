@@ -449,8 +449,8 @@ html {
             background-repeat: no-repeat;
             background-size: cover;
             padding: 56px 0;
-            @media screen and (min-width: $full) {
-                padding: 80px 0;
+            @media screen and (min-width: $desktop) {
+                padding: 80px 0 92px;
             }
         }
         &__heading {
@@ -485,10 +485,13 @@ html {
                 width: 704px;
                 margin: 0 auto;
             }
+            @media screen and (min-width: $desktop) {
+                gap: 80px;
+                width: 1139px;
+            }
             .adult-cats {
                 display: flex;
                 flex-direction: column;
-                /*gap: 32px;*/
                 &__title-wrapper {
                     display: flex;
                     flex-direction: row;
@@ -500,6 +503,9 @@ html {
                     line-height: 1;
                     text-align: center;
                     color: $violet-light;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 45px;
+                    }
                 }
                 &__info-above-card {
                     font-weight: 800;
@@ -507,6 +513,10 @@ html {
                     line-height: 1.25;
                     text-align: center;
                     color: $black;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 24px;
+                        line-height: 1;
+                    }
                 }
                 &__info-above-card-violet {
                     padding-left: 4px;
@@ -517,20 +527,36 @@ html {
                     justify-content: space-between;
                     .triangle-down-svg {
                         margin: 0 0 8px 16px;
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 0 13px 25px;
+                        }
                     }
                     .triangle-up-svg {
                         margin: 0 20px 11px 0;
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 35px 23px 0;
+                        }
                     }
                 }
                 &__cards {
                     display: flex;
                     flex-direction: row;
                     gap: 54px;
+                    @media screen and (min-width: $desktop) {
+                        gap: 88px;
+                    }
                 }
                 &__card {
                     display: flex;
                     flex-direction: column;
                     width: 103px;
+                    @media screen and (min-width: $desktop) {
+                        width: 168px;
+                    }
                 }
                 &__colored-card {
                     border-radius: 6px;
@@ -538,6 +564,12 @@ html {
                     width: 103px;
                     overflow: hidden;
                     margin-bottom: 10px;
+                    @media screen and (min-width: $desktop) {
+                        border-radius: 10px;
+                        width: 168px;
+                        height: 204px;
+                        margin-bottom: 16px;
+                    }
                     img {
                         height: 100%;
                         width: 100%;
@@ -550,15 +582,24 @@ html {
                     line-height: 1.25;
                     text-align: center;
                     color: $black;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 20px;
+                    }
                 }
                 &__other-cards-wrapper {
                     display: flex;
                     flex-direction: column;
                     gap: 5px;
+                    @media screen and (min-width: $desktop) {
+                        gap: 8px;
+                    }
                     .other-cards {
                         display: flex;
                         flex-direction: row;
                         gap: 5px;
+                        @media screen and (min-width: $desktop) {
+                            gap: 8px;
+                        }
                     }
                     .other-cards-info {
                         display: flex;
@@ -571,6 +612,16 @@ html {
                         line-height: 1.17;
                         text-align: center;
                         color: $black;
+                        @media screen and (min-width: $desktop) {
+                            font-size: 30px;
+                            gap: 16px;
+                        }
+                        &-svg {
+                            @media screen and (min-width: $desktop) {
+                                width: 93px;
+                                height: 15px;
+                            }
+                        }
                     }
                 }
             }
@@ -578,14 +629,25 @@ html {
                 display: flex;
                 flex-direction: column;
                 gap: 27px;
+                @media screen and (min-width: $desktop) {
+                    gap: 43px;
+                }
                 &__cards-wrapper {
                     display: flex;
                     flex-direction: row;
                     width: 266px;
                     margin: 0 auto;
+                    @media screen and (min-width: $desktop) {
+                        width: 432px;
+                    }
                     .triangle-right-svg {
                         align-self: center;
                         margin: 25px 15px 0 21px;
+                        @media screen and (min-width: $desktop) {
+                            width: 37px;
+                            height: 72px;
+                            margin: 30px 24px 0 34px;
+                        }
                     }
                 }
                 &__info-above-card {
@@ -595,6 +657,11 @@ html {
                     text-align: center;
                     color: $black;
                     margin-bottom: 10px;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 24px;
+                        line-height: 1;
+                        margin-bottom: 16px;
+                    }
                 }
                 &__colored-card {
                     margin-bottom: 0;
