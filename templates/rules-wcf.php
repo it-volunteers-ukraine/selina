@@ -374,8 +374,60 @@ get_header();
                         </div>
                     </div>
                 </article>
-                <article class="kittens-and-juniors"></article>
-                <article class="kittens-and-juniors-neuters"></article>
+                <article class="kittens-and-juniors">
+                    <h3 class="adult-cats__title">
+                        <?php the_field('kittens-and-juniors__title'); ?>
+                    </h3>
+                    <div class="kittens-and-juniors__cards-wrapper">
+                        <div class="kittens-and-juniors__green">
+                            <p class="kittens-and-juniors__info-above-card">
+                                <?php the_field('kittens-and-juniors__info-above-green-card'); ?>
+                            </p>
+                            <div class="kittens-and-juniors__green-card kittens-and-juniors__colored-card adult-cats__colored-card">
+                                <img src="<?php the_field('kittens-and-juniors__green-card') ?>" />
+                            </div>
+                        </div>
+                        <svg class="triangle-right-svg" width="24" height="45">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#triangle-right">
+                            </use>
+                        </svg>
+                        <div class="kittens-and-juniors__orange">
+                            <p class="kittens-and-juniors__info-above-card">
+                                <?php the_field('kittens-and-juniors__info-above-orange-card'); ?>
+                            </p>
+                            <div class="kittens-and-juniors__orange-card kittens-and-juniors__colored-card adult-cats__colored-card">
+                                <img src="<?php the_field('kittens-and-juniors__orange-card') ?>" />
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="kittens-and-juniors-neuters kittens-and-juniors">
+                    <h3 class="adult-cats__title">
+                        <?php the_field('kittens-and-juniors-neuters__title'); ?>
+                    </h3>
+                    <div class="kittens-and-juniors__cards-wrapper">
+                        <div class="kittens-and-juniors__green">
+                            <p class="kittens-and-juniors__info-above-card">
+                                <?php the_field('kittens-and-juniors-neuters__info-above-green-card'); ?>
+                            </p>
+                            <div class="kittens-and-juniors__green-card kittens-and-juniors__colored-card adult-cats__colored-card">
+                                <img src="<?php the_field('kittens-and-juniors-neuters__green-card') ?>" />
+                            </div>
+                        </div>
+                        <svg class="triangle-right-svg" width="24" height="45">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#triangle-right">
+                            </use>
+                        </svg>
+                        <div class="kittens-and-juniors__orange">
+                            <p class="kittens-and-juniors__info-above-card">
+                                <?php the_field('kittens-and-juniors-neuters__info-above-orange-card'); ?>
+                            </p>
+                            <div class="kittens-and-juniors__orange-card kittens-and-juniors__colored-card adult-cats__colored-card">
+                                <img src="<?php the_field('kittens-and-juniors-neuters__orange-card') ?>" />
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>

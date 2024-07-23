@@ -443,6 +443,7 @@ html {
         padding: 0;
         background-color: $background;
         @media screen and (min-width: $tablet) {
+            background-color: #fff;
             width: 100%;
             background-position: center;
             background-repeat: no-repeat;
@@ -571,6 +572,32 @@ html {
                         text-align: center;
                         color: $black;
                     }
+                }
+            }
+            .kittens-and-juniors {
+                display: flex;
+                flex-direction: column;
+                gap: 27px;
+                &__cards-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    width: 266px;
+                    margin: 0 auto;
+                    .triangle-right-svg {
+                        align-self: center;
+                        margin: 25px 15px 0 21px;
+                    }
+                }
+                &__info-above-card {
+                    font-weight: 800;
+                    font-size: 14px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                    margin-bottom: 10px;
+                }
+                &__colored-card {
+                    margin-bottom: 0;
                 }
             }
         }

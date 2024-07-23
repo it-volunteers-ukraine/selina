@@ -150,7 +150,9 @@
 <symbol id="triangle-up" width="73" height="38" viewBox="0 0 73 38" fill="none">
 <path d="M0.929688 37.333L72.1269 37.333L36.5283 0.666336L0.929688 37.333Z" fill="#070707"/>
 </symbol>
-
+<symbol id="triangle-right" width="37" height="72" viewBox="0 0 37 72" fill="none">
+<path d="M0.0976562 0.427734L0.0976562 71.6249L36.7643 36.0263L0.0976562 0.427734Z" fill="#070707"/>
+</symbol>
 
 </defs>
 </svg>
