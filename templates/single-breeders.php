@@ -105,6 +105,34 @@ endif;
                 </svg>
                 <?php the_field('breeder-page_our-cats-title'); ?>
             </h2>
+            <div>
+                <?php 
+$images = get_field('breeder-page_our-cats-gallery');
+$size = 'full'; // (thumbnail, medium, large, full or custom size)
+if( $images ): ?>
+    <ul class="single-breeder-our-cats-section__list visually-hidden">
+        <?php foreach( $images as $image_id ): ?>
+            <li single-breeder-our-cats-section__item>
+                <?php echo wp_get_attachment_image( $image_id, $size ); ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    
+<?php endif; ?>
+</div>
+
+            <div class="single-breeder-our-cats-section__sliders-wrapper">
+    <div class="slick-wrapper">
+        <ul id="slick-slider-1"></ul>
+    </div>
+    <div class="slick-wrapper">
+        <ul id="slick-slider-2"></ul>
+    </div>
+    <div class="slick-wrapper">
+        <ul id="slick-slider-3"></ul>
+    </div>
+</div>
+            
             </div>
             </section>
              <section class="section single-breeder-free-cats-section" id="#single-breeder-free-cats">
@@ -118,5 +146,6 @@ endif;
             </h2>
             </div>
             </section>
+             <?php get_template_part('template-parts/join-us'); ?>
 </main>
 <?php get_footer(); ?>

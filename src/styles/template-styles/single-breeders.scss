@@ -184,6 +184,11 @@
       margin-bottom: 40px;
     }
   }
+
+  &__sliders-wrapper {
+    display: grid;
+    grid-template-columns: 264px 551px 264px;
+  }
 }
 
 .single-breeder-free-cats-section {
