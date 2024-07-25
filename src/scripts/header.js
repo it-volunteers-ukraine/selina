@@ -31,17 +31,22 @@ function redirectToPage(url) {
 }
 
 
-// close dropdown by click background
-$(window).click(function () {
-    console.log('window click')
-    console.log('itemsList', itemsList)
-    const otherDropdowns = document.querySelectorAll('.sub-menu.active-sub_menu');
-    otherDropdowns.forEach(dropdown => {
-        dropdown.classList.remove('active-sub_menu');
+//close dropdown by click background
+document.addEventListener('DOMContentLoaded', function () {
+    window.addEventListener('click', function () {
+
+        const otherDropdowns = document.querySelectorAll('.sub-menu.active-sub_menu');
+
+        otherDropdowns.forEach(function (dropdown) {
+            dropdown.classList.remove('active-sub_menu');
+        });
     });
 });
 
-$('#bottom-nav-container').click(function (event) {
+
+const bottomNavContainer = document.getElementById('bottom-nav-container');
+
+bottomNavContainer.addEventListener('click', function (event) {
     event.stopPropagation();
 });
 
