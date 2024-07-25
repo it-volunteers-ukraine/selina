@@ -178,16 +178,73 @@
 
 .single-breeder-our-cats-section {
   background-color: $background;
-  &__heading {
-    margin-bottom: 24px;
+  &__heading-wrapper {
+    align-items: center;
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 24px;
+    }
     @media screen and (min-width: $desktop) {
       margin-bottom: 40px;
     }
   }
+  &__heading {
+    color: $primary-color;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
 
-  &__sliders-wrapper {
-    display: grid;
-    grid-template-columns: 264px 551px 264px;
+  &__heading-wrapper {
+    display: flex;
+  }
+
+  &__button {
+    margin-top: auto;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 4px;
+  }
+
+  &__arrow-btn {
+    width: 44px;
+    height: 44px;
+    gap: 8px;
+    border-radius: 10px;
+    background-color: $primary-color;
+    color: $white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $white;
+      color: $primary-color;
+    }
+  }
+  &__pagination {
+    display: none;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      width: fit-content;
+      margin-left: auto;
+      gap: 12px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 36px;
+    }
+  }
+  &__swiper {
+    max-width: 1128px;
+    margin: 0 auto;
   }
 }
 

@@ -115,7 +115,7 @@
   padding: 0;
   background-color: $primary-color;
   color: $white;
-  &:hover,
+  &:enabled:hover,
   &:focus {
     background-color: $white;
     color: $primary-color;
