@@ -406,14 +406,4 @@ function get_breeders_per_page($width)
     }
 }
 
-// filter only post no pages
-function search_filter($query)
-{
-    if ($query->is_search && !is_admin()) {
-        $query->set('post_type', array('post', 'all_partners'));
-    }
-    return $query;
-}
-
-add_filter('pre_get_posts', 'search_filter');
 
