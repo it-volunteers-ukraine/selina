@@ -7,7 +7,7 @@ get_header();
 ?>
 
     <main>
-    <section class="section heading-section-shows">
+        <section class="section heading-section-shows">
             <div class="heading-section-shows__background-img">
                 <img src="<?php the_field('upper-section__background', 'option'); ?>" alt="cat">
             </div>
