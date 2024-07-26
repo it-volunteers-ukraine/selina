@@ -14,6 +14,5 @@
                name="s"
                id="s"
         >
-        <input type="hidden" name="post_type" value="all_partners"
     </div>
 </form>

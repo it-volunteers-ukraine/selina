@@ -257,8 +257,34 @@ get_header();
                 <div class="news-section__list swiper-wrapper">
                     <?php
                     $counter = 0;
-                    $args = array('posts_per_page' => -1, 'post_type' => 'news');
-                    $myposts = get_posts($args);
+                   
+                    
+                    $args = array(
+                        'orderby'           => 'date', 
+                        'order'             => 'DESC',
+                        'post_type' => 'news',
+                        'showposts' => -1,
+                        'tax_query' => array(
+                            'relation' => 'OR',
+                            array(
+                            'taxonomy' => 'news_categories',
+                            'field' => 'slug',
+                            'terms' => 'webinar'
+                            ),
+                            array(
+                            'taxonomy' => 'news_categories',
+                            'field' => 'slug',
+                            'terms' => 'presentation'
+                            ),
+                            array(
+                            'taxonomy' => 'news_categories',
+                            'field' => 'slug',
+                            'terms' => 'our-life'
+                        )
+                        )
+                    ); 
+        
+                    $myposts = get_posts( $args );
                     foreach ($myposts as $post):
                         $count = count($myposts);
                         $counter++;
@@ -322,12 +348,22 @@ get_header();
             </h2>
             <div class="exhibitions-section__list">
                 <?php
-                $args = array('posts_per_page' => 1, 'post_type' => 'exhibitions');
+                $args = array(
+                        'orderby'           => 'date', 
+                        'order'             => 'DESC',
+                        'post_type' => 'news',
+                        'showposts' => 1,
+                        'tax_query' => array(
+                            'taxonomy' => 'news_categories',
+                            'field' => 'slug',
+                            'terms' => 'exhibition',
+                        )
+                    ); 
                 $myposts = get_posts($args);
                 foreach ($myposts as $post):
                     setup_postdata($post); ?>
                     <div class="exhibitions-section__item">
-                        <img src="<?php the_field('exhibition_photo') ?>" />
+                        <img src="<?php the_field('news_photo') ?>" />
                         <div class="exhibitions-section__text-wrapper">
                             <div class="exhibitions-section__date">
                                 <p>
@@ -336,7 +372,7 @@ get_header();
                                             href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clock">
                                         </use>
                                     </svg>
-                                    <?php the_field('exhibition_date') ?>
+                                    <?php the_field('news_date') ?>
                                 </p>
                                 <p>
                                     <svg width="18" height="18">
@@ -344,18 +380,18 @@ get_header();
                                             href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-calendar">
                                         </use>
                                     </svg>
-                                    <?php the_field('exhibition_time') ?>
+                                    <?php the_field('news_time') ?>
                                 </p>
                             </div>
                             <p class="exhibitions-section__name">
-                                <?php the_field('exhibition_name') ?>
+                                <?php the_field('news_name') ?>
                             </p>
                             <p class="exhibitions-section__text">
-                                <?php the_field('exhibition_text') ?>
+                                <?php the_field('news_text') ?>
                             </p>
                             <a class="exhibitions-section__button button red_medium_button"
-                                href="<?php the_field('exhibition_link'); ?>">
-                                <?php the_field('exhibition_btn'); ?>
+                                href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                                <?php the_field('news_btn'); ?>
                                 <svg class="exhibitions-section__button-svg" width="16" height="15">
                                     <use
                                         href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
