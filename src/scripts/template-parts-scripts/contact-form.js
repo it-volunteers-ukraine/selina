@@ -53,3 +53,23 @@ document.addEventListener('keydown', function (e) {
     document.querySelector('.dropdown__button').classList.remove('dropdown__button--active');
   }
 });
+
+// Transmission data from dropdown to standard-hidden-select in wpc7
+document.querySelectorAll('.dropdown__list-item').forEach(item => {
+  item.addEventListener('click', function() {
+      let selectedValue = this.getAttribute('data-value');
+      let hiddenSelect = document.querySelectorAll('wpcf7-select');
+      hiddenSelect.value = selectedValue;
+      
+      // Update button text to show selected item
+      document.querySelector('.dropdown__button').textContent = this.textContent;
+
+      // Update hidden input value
+      document.querySelector('.dropdown__input-hidden').value = selectedValue;
+
+      // Log values to console for verification
+      console.log('Selected value:', selectedValue);
+      console.log('Hidden select value:', hiddenSelect.value);
+      console.log('Hidden input value:', document.querySelector('.dropdown__input-hidden').value);
+  });
+});
