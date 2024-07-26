@@ -19,9 +19,9 @@ body {
   scroll-behavior: auto;
   overflow-x: hidden;
   color: $black;
-  scroll-padding-top: 87.95px;
+  scroll-padding-top: 80px;
   @media screen and (min-width: $desktop) {
-    scroll-padding-top: 30px;
+    scroll-padding-top: 0;
   }
 }
 
