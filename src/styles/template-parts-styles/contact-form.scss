@@ -539,13 +539,9 @@
     display: none;
   }
 
-  .wpcf7-response-output {
-    display: none;
-  }
-
-  .wpcf7-form-control-wrap {
+  /* .wpcf7-form-control-wrap {
     position: relative;
-  }
+  } */
 
   .wpcf7-not-valid-tip {
     position: absolute;
@@ -561,3 +557,41 @@
   .wpcf7-form-control-wrap[data-name="textarea"] .wpcf7-not-valid-tip {
     top: -4px;
   }
+
+  .wpcf7-form-control-wrap[data-name="subject"] .wpcf7-not-valid-tip {
+    display: none;
+    /* top: -200px;
+    width: 155px; */
+  }
+
+  #wpcf7-f97-o1 > form > div.form-contacts__form-checkbox > div:nth-child(1) > p > span > span > span > label > span{
+    display: none;
+  }
+
+  .wpcf7-form-control-wrap[data-name="form-checkbox"] .wpcf7-not-valid-tip {
+    width: 155px;
+    top: 30px;
+  }
+
+#hidden-select {
+  display: none;
+}
+
+
+.wpcf7-response-output {
+    background-color: $blue-main;
+    color: $white;
+    border-radius: 10px;
+  @media screen and (min-width: $tablet) {
+    position: absolute;
+    top: 350px;
+    left: 410px;
+    width: 300px;
+    background-color: $blue-main;
+    color: $white;
+    border-radius: 10px;
+  }
+  @media screen and (min-width: $desktop) {
+    left: 800px;
+  }
+}
