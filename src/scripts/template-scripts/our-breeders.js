@@ -137,6 +137,10 @@ jQuery(document).ready(function ($) {
 
   // Оновлення поточної сторінки
   function updateCurrentPage() {
+    const prevBtn = document.querySelector(".breeders-prev");
+    const nextBtn = document.querySelector(".breeders-next");
+    prevBtn.removeAttribute("disabled");
+    nextBtn.removeAttribute("disabled");
     const maxButtons = totalPages >= 3 ? 3 : totalPages;
     const startNum =
       totalPages >= maxButtons && currentPage > 2
@@ -145,7 +149,7 @@ jQuery(document).ready(function ($) {
         ? currentPage - 1
         : currentPage;
     const buttons = [];
-    for (let i = startNum; i <= startNum + 2; i++) {
+    for (let i = startNum; i <= startNum + maxButtons - 1; i++) {
       const buttonEl = document.createElement("button");
       buttonEl.classList.add(
         "breeders-catalogue-section__pagination-button",
@@ -159,6 +163,12 @@ jQuery(document).ready(function ($) {
       buttonEl.addEventListener("click", () => {
         loadBreeders(i);
       });
+    }
+    if (currentPage === 1) {
+      prevBtn.setAttribute("disabled", true);
+    }
+    if (currentPage === totalPages) {
+      nextBtn.setAttribute("disabled", true);
     }
     pagNumbersEl.append(...buttons);
   }

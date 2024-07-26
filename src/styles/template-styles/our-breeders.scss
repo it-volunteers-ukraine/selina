@@ -24,12 +24,17 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto 377px;
-    padding: 118.5px 0;
+    padding: 136.5px 0;
   }
 
   &__heading {
+    font-size: 24px;
+    @media screen and (min-width: $tablet) {
+      font-size: 45px;
+    }
     @media screen and (min-width: $desktop) {
       margin-bottom: 24px;
+      font-size: 60px;
     }
   }
 
@@ -61,15 +66,20 @@
     }
     @media screen and (min-width: $desktop) {
       gap: 36px;
+      height: 20px;
     }
   }
 }
 
 .about-breeders-section {
+  @media screen and (min-width: $desktop) {
+    padding: 40px 0;
+  }
   &__heading {
     margin-bottom: 24px;
     @media screen and (min-width: $desktop) {
       margin-bottom: 40px;
+      height: 60px;
     }
   }
 
@@ -137,11 +147,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 44px;
     margin-top: 16px;
 
     @media screen and (min-width: $tablet) {
       margin-top: 24px;
+      gap: 54px;
     }
     @media screen and (min-width: $desktop) {
       margin-top: 32px;
@@ -152,7 +163,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 16px;
   }
 
   &__pagination-button {
@@ -168,6 +179,17 @@
       color: $white;
       background-color: $primary-color;
       border: 1px solid $white;
+    }
+  }
+
+  &__pagination-right,
+  &__pagination-left {
+    &:focus {
+      color: $white;
+      background-color: $primary-color;
+    }
+    &:disabled {
+      cursor: not-allowed;
     }
   }
 
