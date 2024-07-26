@@ -1,0 +1,329 @@
+@import "../variables.scss";
+
+.heading-section-shows {
+    color: $blue-main;
+    background-color: $light-green;
+    padding: 0;
+    position: relative;
+
+    @media screen and (min-width: $desktop) {
+        background-color: $light-green;
+    }
+
+    &__background-img {
+        display: none;
+
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
+    }
+
+    &__wrapper {
+        padding: 20px 0;
+
+        @media screen and (min-width: $tablet) {
+            padding: 30px 0;
+        }
+
+        @media screen and (min-width: $desktop) {
+            position: absolute;
+            background: none;
+            top: 123px;
+            padding: 0;
+            margin: auto;
+        }
+    }
+
+    &__list-shows {
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 30px;
+        line-height: 100%;
+        margin-bottom: 10px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 45px;
+            margin-bottom: 14px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            font-size: 60px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        gap: 24px;
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        padding: 4px 0;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            padding: 7.5px 0;
+        }
+
+        @media screen and (min-width: $desktop) {
+            gap: 36px;
+            padding: 0;
+        }
+    }
+
+    &__nav-li-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__nav-li a svg {
+        @media screen and (min-width: $tablet) {
+            width: 14px;
+            height: 13px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 18px;
+            height: 16px;
+        }
+    }
+}
+
+.webinars, .presentations {
+    &__heading-container {
+        display: flex;
+        align-items: center;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 100%;
+        margin-bottom: 16px;
+        svg {
+            display: none;
+            
+            @media screen and (min-width: $tablet) {
+                display: block;
+                width: 29px;
+                height: 28px;
+                fill: $primary-color;
+            }
+            
+            @media screen and (min-width: $desktop) {
+                display: block;
+                width: 41px;
+                height: 37px;
+            }
+        }
+
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+            gap: 8px;
+            padding: 6px 0;
+            margin-bottom: 24px;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding: 7.5px 0;
+        }
+    }
+    &__news-section__item {
+        background-color: $light-green;
+        padding: 16px;
+        border-radius: 10px;
+    }
+    &__news-section__img img {
+        border-radius: 8px;
+        margin-bottom: 24px;
+    }
+    &__news-section__name {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 120%;
+        color: $blue-main;
+        margin-bottom: 16px;
+    }
+    &__news-section__text {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+        margin-bottom: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        @media screen and (min-width: $tablet) {
+            -webkit-line-clamp: 6;
+        }
+    }
+    &__news-section__button {
+        gap: 8px;
+        padding: 10px 14px;
+    }
+}
+
+.webinars {
+    background-color: $white;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 42px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+
+    &__heading-container {
+        margin-bottom: 24px;
+    }
+
+    &__description {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+        margin-bottom: 32px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            line-height: 125%;
+            margin-bottom: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 820px;
+            margin-bottom: 40px;
+        }
+    }
+    &__news-section__item {
+        @media screen and (min-width: $tablet) {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            gap: 32px;
+        }
+    }
+    &__news-section__img img {
+        @media screen and (min-width: $tablet) {
+            width: 340px;
+            object-fit: cover;
+            height: 100%;
+            margin-bottom: 0;
+        }
+        @media screen and (min-width: $desktop) {
+            width: 528px;
+        }
+    }
+    &__news-section__content-wrapper {
+        @media screen and (min-width: $desktop) {
+            display: flex;
+            flex-direction: column;
+            height: 352px;
+        }
+    }
+    &__news-section__text {
+        @media screen and (min-width: $tablet) {
+            -webkit-line-clamp: 6;
+        }
+    }
+
+    &__news-section__button {
+        @media screen and (min-width: $desktop) {
+           margin-top: auto;
+        }
+    }
+
+    &__last-button {
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 10px;
+        padding: 10px 10px 10px 14px;
+        width: 200px;
+        height: 44px;
+        background-color: $blue-main;
+        margin: 16px auto 0;
+        color: $white;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 133%;
+
+        @media screen and (min-width: $tablet) {
+            margin-top: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            margin: 40px 0 0;
+        }
+    }
+}
+
+.presentations {
+    background-color: $background;
+
+    &__cards {
+        @media screen and (min-width: $tablet) {
+           display: flex;
+           gap: 24px;
+           flex-wrap: wrap;
+        }
+    }
+    &__news-section__item {
+        background-color: $white;
+        height: 468px;
+        @media screen and (min-width: $tablet) {
+            flex: 1 1 48%;
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            height: 611px;
+            padding: 24px;
+        }
+    }
+    &__news-section__img img  {
+        height: 207px;
+        object-fit: cover;
+        @media screen and (min-width: $desktop) {
+            height: 332px;
+        }
+    }
+    &__news-section__content-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 205px;
+    }
+    &__news-section__text{
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.3;
+        overflow: hidden;
+        max-height: -webkit-min-content;
+        max-height: -moz-min-content;
+        max-height: min-content;
+        -ms-flex-negative: 1;
+        flex-shrink: 1;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    &__news-section__button {
+        margin-top: auto;
+    }
+    &__all-button {
+        width: 165px;
+        margin-top: 0;
+        @media screen and (min-width: $desktop) {
+            margin-top: 14px;
+        }
+    }
+}
