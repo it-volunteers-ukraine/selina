@@ -1,6 +1,5 @@
 @import "./variables.scss";
 
-
 .header {
   padding-bottom: 80px;
 
@@ -24,7 +23,6 @@
       padding: 12px 0;
     }
 
-
     .social-media {
       display: flex;
       flex-direction: row;
@@ -38,7 +36,6 @@
       @media screen and (min-width: $desktop) {
         gap: 18px;
       }
-
     }
 
     .black-logo {
@@ -60,8 +57,6 @@
       @media screen and (min-width: $desktop) {
         left: 50%;
       }
-
-
     }
 
     .wrapper-buttons {
@@ -70,7 +65,6 @@
       justify-content: space-between;
       gap: 15px;
 
-
       @media screen and (min-width: $tablet) {
         gap: 16px;
       }
@@ -78,7 +72,6 @@
       @media screen and (min-width: $desktop) {
         width: 264px;
       }
-
 
       .buttons {
         display: flex;
@@ -91,7 +84,6 @@
           padding: 5px 10px;
         }
 
-
         .login-btn {
           border-radius: $small-br;
           padding: 5px 11px;
@@ -99,11 +91,9 @@
           color: $primary-color;
           font-size: 13px;
         }
-
       }
     }
   }
-
 
   // Header bottom
   .header-bottom {
@@ -124,9 +114,7 @@
       flex-direction: row;
       justify-content: space-between;
 
-
       .white-logo {
-
         @media screen and (min-width: $desktop) {
           display: none;
         }
@@ -156,15 +144,14 @@
 
         .burger::before,
         .burger:after {
-          content: '';
+          content: "";
           position: absolute;
           width: 44px;
           height: 5px;
           background: $white;
-          transition: .2s ease-in-out;
+          transition: 0.2s ease-in-out;
           border-radius: 10px;
         }
-
       }
 
       .burger::before {
@@ -186,11 +173,9 @@
       .open .burger::after {
         transform: rotate(45deg);
       }
-
     }
 
     .nav-menu {
-
       @media screen and (min-width: $desktop) {
         display: flex;
         flex-direction: row;
@@ -243,7 +228,6 @@
             background-color: $white;
 
             .menu-item {
-
               &:hover {
                 background-color: #cfdedd;
                 border-radius: 6px;
@@ -254,7 +238,7 @@
                   padding-left: 35px;
 
                   &:before {
-                    content: '';
+                    content: "";
                     background-image: url("../../assets/images/paw-6.svg");
                     background-repeat: no-repeat;
                     position: absolute;
@@ -287,7 +271,6 @@
           .sub-menu li::after {
             display: none;
           }
-
         }
       }
 
@@ -362,9 +345,7 @@
         }
       }
     }
-
   }
-
 
   .content-mobile {
     display: none;
@@ -390,7 +371,6 @@
       padding: 32px;
     }
   }
-
 
   .header-mobile {
     display: block;
@@ -441,7 +421,6 @@
           }
         }
       }
-
     }
 
     .social-media {
@@ -480,7 +459,6 @@
         font-weight: 500;
       }
     }
-
   }
 
   .show-search {
@@ -507,7 +485,6 @@
       margin-top: 16px;
     }
   }
-
 
   .buttons {
     display: flex;
@@ -570,7 +547,6 @@
   }
 }
 
-
 .switch {
   @media (min-width: $desktop) {
     position: relative;
@@ -579,7 +555,6 @@
     border: 1px solid $primary-color;
     border-radius: 50px;
   }
-
 }
 
 .switch > span {
@@ -587,9 +562,7 @@
   pointer-events: none;
 }
 
-
 .switch > span.on-lang {
-
   @media (min-width: 320px) {
     top: 6px;
     left: 6px;
@@ -634,7 +607,6 @@
   }
 }
 
-
 .switch > span.off {
   right: 0;
   @media (min-width: $tablet) {
@@ -672,7 +644,8 @@ input.check-toggle-round-flat + label {
   }
 }
 
-input.check-toggle-round-flat + label:before, input.check-toggle-round-flat + label:after {
+input.check-toggle-round-flat + label:before,
+input.check-toggle-round-flat + label:after {
   display: block;
   position: absolute;
   content: "";
@@ -716,7 +689,6 @@ input.check-toggle-round-flat + span:after {
     width: 20px;
   }
 }
-
 
 .lang-size {
   text-transform: uppercase;

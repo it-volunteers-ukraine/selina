@@ -438,6 +438,237 @@ html {
             @extend .open-btn;
         }
     }
+    /*Title system section ----------------------------*/
+    .title_system-section {
+        padding: 0;
+        background-color: $background;
+        @media screen and (min-width: $tablet) {
+            background-color: #fff;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 56px 0;
+            @media screen and (min-width: $desktop) {
+                padding: 80px 0 92px;
+            }
+        }
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__small-wrapper {
+            background-color: #fff;
+            width: 100%;
+            border-radius: 10px;
+            margin: 0 auto;
+            padding: 24px;
+            gap: 24px;
+            @media screen and (min-width: $tablet) {
+                display: none;
+            }  
+        }
+        &__description {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.31;
+        } 
+        &__button {
+            @extend .open-btn;
+            margin-top: 24px;
+        }
+        &__big-wrapper {
+            display: none;
+            @media screen and (min-width: $tablet) {
+                display: flex;
+                flex-direction: column;
+                gap: 49px;
+                width: 704px;
+                margin: 0 auto;
+            }
+            @media screen and (min-width: $desktop) {
+                gap: 80px;
+                width: 1139px;
+            }
+            .adult-cats {
+                display: flex;
+                flex-direction: column;
+                &__title-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                &__title {
+                    font-weight: 800;
+                    font-size: 27px;
+                    line-height: 1;
+                    text-align: center;
+                    color: $violet-light;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 45px;
+                    }
+                }
+                &__info-above-card {
+                    font-weight: 800;
+                    font-size: 14px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 24px;
+                        line-height: 1;
+                    }
+                }
+                &__info-above-card-violet {
+                    padding-left: 4px;
+                }
+                &__triangles {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .triangle-down-svg {
+                        margin: 0 0 8px 16px;
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 0 13px 25px;
+                        }
+                    }
+                    .triangle-up-svg {
+                        margin: 0 20px 11px 0;
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 35px 23px 0;
+                        }
+                    }
+                }
+                &__cards {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 54px;
+                    @media screen and (min-width: $desktop) {
+                        gap: 88px;
+                    }
+                }
+                &__card {
+                    display: flex;
+                    flex-direction: column;
+                    width: 103px;
+                    @media screen and (min-width: $desktop) {
+                        width: 168px;
+                    }
+                }
+                &__colored-card {
+                    border-radius: 6px;
+                    height: 125px;
+                    width: 103px;
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                    @media screen and (min-width: $desktop) {
+                        border-radius: 10px;
+                        width: 168px;
+                        height: 204px;
+                        margin-bottom: 16px;
+                    }
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+                &__info-below-card {
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 20px;
+                    }
+                }
+                &__other-cards-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    @media screen and (min-width: $desktop) {
+                        gap: 8px;
+                    }
+                    .other-cards {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                        @media screen and (min-width: $desktop) {
+                            gap: 8px;
+                        }
+                    }
+                    .other-cards-info {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 10px;
+                        align-items: center;
+                        align-self: flex-end;
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 1.17;
+                        text-align: center;
+                        color: $black;
+                        @media screen and (min-width: $desktop) {
+                            font-size: 30px;
+                            gap: 16px;
+                        }
+                        &-svg {
+                            @media screen and (min-width: $desktop) {
+                                width: 93px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+            .kittens-and-juniors {
+                display: flex;
+                flex-direction: column;
+                gap: 27px;
+                @media screen and (min-width: $desktop) {
+                    gap: 43px;
+                }
+                &__cards-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    width: 266px;
+                    margin: 0 auto;
+                    @media screen and (min-width: $desktop) {
+                        width: 432px;
+                    }
+                    .triangle-right-svg {
+                        align-self: center;
+                        margin: 25px 15px 0 21px;
+                        @media screen and (min-width: $desktop) {
+                            width: 37px;
+                            height: 72px;
+                            margin: 30px 24px 0 34px;
+                        }
+                    }
+                }
+                &__info-above-card {
+                    font-weight: 800;
+                    font-size: 14px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                    margin-bottom: 10px;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 24px;
+                        line-height: 1;
+                        margin-bottom: 16px;
+                    }
+                }
+                &__colored-card {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
     /*WCF EMC CODE section ---------------------------*/
     .wcf-ems-code-section {
         background-color: $background;

@@ -37,7 +37,7 @@ get_header();
         </div>
 
     </section>
-    <section class="section about-breeders-section-" id="about-breeders">
+    <section class="section about-breeders-section" id="about-breeders">
         <div class="container">
             <h2 class="section_heading about-breeders-section__heading">
                 <svg class="breeders-heading-svg" width="42" height="60">
