@@ -558,10 +558,13 @@
     top: -4px;
   }
 
-  .wpcf7-form-control-wrap[data-name="subject"] .wpcf7-not-valid-tip {
+  .wpcf7-form-control-wrap select {
     display: none;
-    /* top: -200px;
-    width: 155px; */
+  }
+
+  .wpcf7-form-control-wrap[data-name="subject"] .wpcf7-not-valid-tip {
+    top: 0px;
+    width: 155px;
   }
 
   #wpcf7-f97-o1 > form > div.form-contacts__form-checkbox > div:nth-child(1) > p > span > span > span > label > span{
@@ -572,11 +575,6 @@
     width: 155px;
     top: 30px;
   }
-
-#hidden-select {
-  display: none;
-}
-
 
 .wpcf7-response-output {
     background-color: $blue-main;
