@@ -1,0 +1,32 @@
+@import "../variables";
+
+html { 
+    scroll-behavior: smooth;
+}
+
+/*Headings for sections ---------------------*/
+.club-membership-sections-heading {
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 24px; 
+    }
+    @media screen and (min-width: $desktop) {
+        gap: 12px;
+        margin-bottom: 40px; 
+    }
+    .heading-svg {
+        display: none;
+        @media screen and (min-width: $tablet) {
+            display: initial;
+            width: 26.32px;
+            height: 23.53px;
+        }
+        @media screen and (min-width: $desktop) {
+            width: 36.85px;
+            height: 32.94px;
+        }
+    }   
+}
