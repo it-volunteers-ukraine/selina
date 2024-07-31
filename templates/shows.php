@@ -81,7 +81,11 @@ get_header();
 
                         $myposts = get_posts( $args );
                         if ($myposts) {
-                            foreach ($myposts as $post) : setup_postdata($post); ?>
+                            foreach ($myposts as $post) : setup_postdata($post);
+                            $current_date = new DateTime();
+                            $news_date = new DateTime(get_field('news_date_meta'));
+                            if ($news_date >= $current_date) :
+                            ?>
                                 <div class="webinars__news-section__item">
                                     <?php
                                     $category_detail = get_the_category($post->ID);
@@ -96,7 +100,24 @@ get_header();
                                         <img src="<?php the_field('news_photo'); ?>" alt="<?php the_field('news_name'); ?>" />
                                     </div>
                                     <div class="webinars__news-section__content-wrapper">
-                                        <div style='color: red; padding-bottom: 16px;'>XX місяць     Час</div>
+                                        <div class="webinars__news-section__date-time">
+                                            <div class="webinars__news-section__date-container">
+                                                <svg width="22" height="22"> 
+                                                    <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
+                                                </svg> 
+                                                <p class="webinars__news-section__date">
+                                                    <?php the_field('news_date'); ?>
+                                                </p>
+                                            </div>
+                                            <div class="webinars__news-section__time-container">
+                                                <svg width="22" height="22"> 
+                                                <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#clock-icon"></use>  
+                                                </svg> 
+                                                <p class="webinars__news-section__time">
+                                                    <?php the_field('news_time'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
                                         <p class="webinars__news-section__name">
                                             <?php the_field('news_name'); ?>
                                         </p>
@@ -111,14 +132,16 @@ get_header();
                                         </a>
                                     </div>
                                 </div>
-                            <?php endforeach;
+                            <?php
+                                endif;
+                            endforeach;
                             wp_reset_postdata();
                         } else {
                             echo '<p>Немає вебінарів.</p>';
                         }
                     ?>
                 </div>
-                <a href="">
+                <a href="/">
                     <div class="webinars__last-button">
                         <p class=webinars__last-button-text>
                             <?php the_field('webinars__last-button-text'); ?>
@@ -200,7 +223,7 @@ get_header();
                     ?>
 
                 </div>
-                <a href="">
+                <a href="/">
                     <div class="webinars__last-button presentations__all-button">
                         <p class=webinars__last-button-text>
                             <?php the_field('presentations__all-button-text'); ?>
