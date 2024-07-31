@@ -102,6 +102,66 @@ get_header();
             </div>
         </div>
     </section>
+    <section class="selina-rules">
+        <style>
+            .selina-rules::before {
+                background-image: url("<?php the_field('breed-cat-bg') ?>"); 
+            }
+        </style> 
+        <div class="container">
+            <div class="selina-rules__wrapper">
+                <div class="selina-rules__title">
+                    <?php the_field('selina-rules__title'); ?>
+                </div> 
+                <div class="selina-rules__cards">
+                    <div class="selina-rules-card selina-rules-card-1">
+                        <svg class="selina-rules-card__img selina-rules-card__img-1" width="48" height="48">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
+                            </use>
+                        </svg>
+                        <p class="selina-rules-card__content selina-rules-card__content-1">
+                            <?php the_field('selina-rules-card__content-1'); ?>
+                        </p>
+                    </div>
+                    <div class="selina-rules-card selina-rules-card-2">
+                        <svg class="selina-rules-card__img selina-rules-card__img-2" width="60" height="60">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-people">
+                            </use>
+                        </svg>
+                        <p class="selina-rules-card__content selina-rules-card__content-2">
+                            <?php the_field('selina-rules-card__content-2'); ?>
+                        </p>
+                    </div>
+                    <div class="selina-rules-card selina-rules-card-3">
+                        <svg class="selina-rules-card__img selina-rules-card__img-3" width="48" height="48">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-cat">
+                            </use>
+                        </svg>
+                        <p class="selina-rules-card__content selina-rules-card__content-3">
+                            <?php the_field('selina-rules-card__content-3'); ?>
+                        </p>
+                    </div>
+                    <div class="selina-rules-card selina-rules-card-4">
+                        <svg class="selina-rules-card__img selina-rules-card__img-4" width="54" height="54">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-people-money">
+                            </use>
+                        </svg>
+                        <p class="selina-rules-card__content selina-rules-card__content-4">
+                            <?php the_field('selina-rules-card__content-4'); ?>
+                        </p>
+                    </div>
+                </div>
+                <button class="selina-rules__button button red_medium_button">
+                    <a href="<?php echo esc_attr( get_field('selina-rules__link') ); ?>" target="_blank">
+                        <?php the_field('selina-rules__btn'); ?>
+                    </a> 
+                    <svg class="rules-section__button-svg" width="16" height="14">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
 </main>
 
 <?php get_footer(); ?>
