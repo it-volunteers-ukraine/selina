@@ -147,8 +147,7 @@ get_header();
                             <?php the_field('webinars__last-button-text'); ?>
                         </p>
                         <svg class="icon-paw" width="17" height="15">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                            </use>
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                         </svg>
                     </div>
                 </a>
