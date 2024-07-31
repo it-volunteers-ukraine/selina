@@ -57,7 +57,7 @@ get_header();
     <section class="club-rules-section section" id="membership-club-rules">
         <div class="container">
             <div class="club-rules-section__wrapper">
-                <h2 class="club-rules-section__heading section_heading club-rules-sections-heading">
+                <h2 class="club-rules-section__heading section_heading club-membership-sections-heading">
                     <svg class="heading-svg" width="29" height="28">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                         </use>
@@ -115,7 +115,7 @@ get_header();
                 </div> 
                 <div class="selina-rules__cards">
                     <div class="selina-rules-card selina-rules-card-1">
-                        <svg class="selina-rules-card__img selina-rules-card__img-1" width="48" height="48">
+                        <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
                             </use>
                         </svg>
@@ -133,7 +133,7 @@ get_header();
                         </p>
                     </div>
                     <div class="selina-rules-card selina-rules-card-3">
-                        <svg class="selina-rules-card__img selina-rules-card__img-3" width="48" height="48">
+                        <svg class="selina-rules-card__img selina-rules-card__img-3" width="60" height="60">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-cat">
                             </use>
                         </svg>
@@ -142,7 +142,7 @@ get_header();
                         </p>
                     </div>
                     <div class="selina-rules-card selina-rules-card-4">
-                        <svg class="selina-rules-card__img selina-rules-card__img-4" width="54" height="54">
+                        <svg class="selina-rules-card__img selina-rules-card__img-4" width="60" height="60">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-people-money">
                             </use>
                         </svg>
@@ -162,6 +162,74 @@ get_header();
             </div>
         </div>
     </section>
+    <!-- Gallery section -->
+    <section class="gallery-section section" id="membership-gallery">
+        <div class="container">
+            <h2 class="gallery-section__heading section_heading club-membership-sections-heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('gallery-section__heading'); ?>
+            </h2>
+        </div>
+    </section>
+    <!-- Benefits section -->
+    <section class="benefits-section section" id="membership-benefits">
+        <div class="container">
+            <h2 class="benefits-section__heading section_heading club-membership-sections-heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('benefits-section__heading'); ?>
+            </h2>
+            <div class="benefits-section__wrapper">
+                <div class="benefits-section__cards">
+                    <div class="benefits">
+                        <div class="benefits__card support">
+                            <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
+                                </use>
+                            </svg>
+                            <h6 class="benefits__card-title">
+                                <?php the_field('support__title'); ?>
+                            </h6>
+                            <p class="benefits__card-text">
+                                <?php the_field('support__text'); ?>
+                            </p>
+                        </div>
+                        <div class="benefits__card knowledge">
+                            <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-book">
+                                </use>
+                            </svg>
+                            <h6 class="benefits__card-title">
+                                <?php the_field('knowledge__title'); ?>
+                            </h6>
+                            <p class="benefits__card-text">
+                                <?php the_field('knowledge__text'); ?>
+                            </p>
+                        </div>
+                        <div class="benefits__card events">
+                            <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-awards">
+                                </use>
+                            </svg>
+                            <h6 class="benefits__card-title">
+                                <?php the_field('events__title'); ?>
+                            </h6>
+                            <p class="benefits__card-text">
+                                <?php the_field('events__text'); ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </main>
 
 <?php get_footer(); ?>
