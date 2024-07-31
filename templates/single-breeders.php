@@ -6,6 +6,7 @@
 get_header();
 ?>
 <main>
+    
     <section class="section single-breeder-first-section">
         <style>
             @media screen and (min-width: 1439px) {
@@ -14,7 +15,9 @@ get_header();
                 }
             }
         </style>
+         
         <div class="container">
+           <?php get_template_part( 'template-parts/breadcrumbs' ); ?>
             <h3 class="section_heading single-breeder-first-section__heading">
                 <?php the_field('breeder_name'); ?>
             </h3>
