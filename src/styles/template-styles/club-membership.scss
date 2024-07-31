@@ -209,39 +209,66 @@ html {
         position: relative; 
         padding: 37px 0 32px;
         overflow: hidden; 
+        @media screen and (min-width: $tablet) {
+            padding: 59px 0 56px;
+        }
+        @media screen and (min-width: $desktop) {
+            padding: 80px 0;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         &__title {
             font-weight: 800;
             font-size: 24px;
             line-height: 1;
             text-align: center;
             margin-bottom: 26px;
-           /* @media screen and (min-width: $tablet) {
-                font-size: 45px;
-                padding: 0 153.71px;
+            @media screen and (min-width: $tablet) {
+                margin-bottom: 43px;
             }
             @media screen and (min-width: $desktop) {
                 font-size: 45px;
-                padding: 0 362px;
-                margin-bottom: 0;
-            }*/
+                margin-bottom: 40px;
+            }
         }
-        &__wrapper {
+        &__cards {
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 24px;
             margin-bottom: 20px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 700px;
+                margin-bottom: 47px;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 1130px;
+                margin-bottom: 64px;
+            }
         }
         &-card {
             border-radius: 10px;
             padding: 24px;
-            max-width: 340px;
+            max-width: 553px;
+            width: 340px;
             height: 204px;
             background-color: rgba(255, 255, 255, 0.7);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 16px;
+            @media screen and (min-width: $tablet) {
+                width: 338px;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 553px;
+                height: 172px;
+            }
             &__content {
                 font-weight: 800;
                 font-size: 20px;
@@ -270,5 +297,23 @@ html {
         background-position: -175px -28px;
         transform: scale(1.1);
         z-index: -1; 
+        @media screen and (min-width: 564px) {
+            background-position: 0 0;
+        }
+        @media screen and (min-width: $tablet) {
+            background-position: -0px -250px;
+        }
+        @media screen and (min-width: 1024px) {
+            background-position: -0px -600px;
+        }
+        @media screen and (min-width: $desktop) {
+            background-position: -0px -650px;
+        }
+        @media screen and (min-width: 1550px) {
+            background-position: -0px -900px;
+        }
+        @media screen and (min-width: $full) {
+            background-position: -0px -1055px;
+        }
     }
 }
