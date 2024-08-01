@@ -377,7 +377,7 @@
     width: 100%;
     left: 0;
     top: 79px;
-    height: 570px;
+    height: 590px;
 
     @media screen and (min-width: $tablet) {
       left: auto;
@@ -448,7 +448,6 @@
     .social-media {
       display: flex;
       flex-direction: row;
-      justify-content: center;
       margin-bottom: 32px;
       gap: 15px;
 
