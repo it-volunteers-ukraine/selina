@@ -1,7 +1,11 @@
 @import "./variables.scss";
 
 .header {
-  padding-bottom: 80px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 88px;
+  }
 
   @media screen and (min-width: $desktop) {
     padding-bottom: 0;
@@ -103,6 +107,14 @@
     width: 100%;
     z-index: 100;
     top: 0;
+
+    @media screen and (min-width: $tablet) {
+      top: 45px;
+    }
+
+    @media screen and (min-width: 783px) {
+      top: 32px;
+    }
 
     @media screen and (min-width: $desktop) {
       position: static;
@@ -297,6 +309,7 @@
           padding: 0 8px;
           @media screen and (min-width: $desktop) {
             padding: 0 0;
+            position: relative;
           }
 
           ::placeholder {
@@ -304,6 +317,7 @@
             color: $primary-color;
             @media screen and (min-width: $desktop) {
               font-size: 13px;
+              font-weight: inherit;
             }
           }
 
@@ -313,6 +327,8 @@
             @media screen and (min-width: $desktop) {
               width: 18px;
               height: 18px;
+              position: absolute;
+              top: -3px;
             }
           }
 
@@ -333,6 +349,8 @@
             }
             @media screen and (min-width: $desktop) {
               width: 231px;
+              box-sizing: border-box;
+              padding-left: 20px;
             }
           }
         }
@@ -359,7 +377,7 @@
     padding: 16px;
     width: 100%;
     left: 0;
-    top: 88px;
+    top: 79px;
 
     @media screen and (min-width: $tablet) {
       left: auto;
@@ -369,6 +387,7 @@
       right: 0;
       max-width: 487px;
       padding: 32px;
+      top: 134px;
     }
   }
 
@@ -381,8 +400,8 @@
 
     .header__list-mobile {
       text-align: right;
-      padding: 32px 0;
-      margin-top: 32px;
+      margin-bottom: 32px;
+      padding-top: 32px;
 
       .menu-item {
         color: $primary-color;

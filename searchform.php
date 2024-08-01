@@ -10,7 +10,7 @@
         <label class="screen-reader-text" for="s">Search for:</label>
         <input type="text"
                value="<?php echo get_search_query(); ?>"
-               placeholder="Пошук"
+               placeholder="<?php the_field('search-placeholder', 'option') ?>"
                name="s"
                id="s"
         >
