@@ -137,12 +137,12 @@ get_header();
                             endforeach;
                             wp_reset_postdata();
                         } else {
-                            echo '<p>Немає вебінарів.</p>';
+                            echo '<p>Наразі немає запланованих вебінарів.</p>';
                         }
                     ?>
                 </div>
                 <a href="/">
-                    <div class="webinars__last-button">
+                    <div class="webinars__last-button green_medium_button">
                         <p class=webinars__last-button-text>
                             <?php the_field('webinars__last-button-text'); ?>
                         </p>
@@ -168,12 +168,12 @@ get_header();
                 </div>
                 <div class="presentations__cards">
 
-                <?php
+                    <?php
                         $args = array(
                             'orderby' => 'date',
                             'order' => 'DESC',
                             'post_type' => 'news',
-                            'posts_per_page' => -1,
+                            'posts_per_page' => 4,
                             'tax_query' => array(
                                 array(
                                     'taxonomy' => 'news_categories',
@@ -217,13 +217,13 @@ get_header();
                             <?php endforeach;
                             wp_reset_postdata();
                         } else {
-                            echo '<p>Немає вебінарів.</p>';
+                            echo '<p>Наразі немає опублікованих презентацій.</p>';
                         }
                     ?>
 
                 </div>
                 <a href="/">
-                    <div class="webinars__last-button presentations__all-button">
+                    <div class="webinars__last-button presentations__all-button green_medium_button">
                         <p class=webinars__last-button-text>
                             <?php the_field('presentations__all-button-text'); ?>
                         </p>

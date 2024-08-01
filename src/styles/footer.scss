@@ -359,21 +359,18 @@
     .footer__menu-list-wrapper li:nth-child(2) .menu-item {
         @media screen and (min-width: $desktop) {
             width: 178px;
-            // color: red;
         }
     }
 
     .footer__menu-list-wrapper li:nth-child(3) .menu-item {
         @media screen and (min-width: $desktop) {
             width: 177px;
-            // color: red;
         }
     }
 
     .footer__menu-list-wrapper li:nth-child(5) .menu-item {
         @media screen and (min-width: $desktop) {
             width: 166px;
-            // color: red;
         }
     }
 
@@ -421,7 +418,6 @@
         display: none;
         box-sizing: content-box;
         position: fixed;
-        // bottom: 307px;
         right: 16px;
         z-index: 1000;
         background-color: transparent;
