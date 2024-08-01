@@ -1,0 +1,121 @@
+@import "../variables.scss";
+
+.news-section {
+  &__heading {
+    color: $primary-color;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  &__button {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 4px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+
+    @media screen and (min-width: $tablet) {}
+
+    @media screen and (min-width: $desktop) {
+      margin-top: 36px;
+    }
+  }
+
+  &__item {
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      background-color: #ffffff;
+      padding: 16px;
+      box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
+
+      img {
+        max-width: calc(50% - 12px);
+        height: auto;
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        padding: 24px;
+      }
+    }
+  }
+
+  &__name {
+    color: $primary-color;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-top: 12px;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+
+  &__date {
+    display: flex;
+    color: $red;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1;
+    margin-top: 16px;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: 0;
+    }
+
+    svg {
+      fill: $red;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    margin-top: 16px;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+
+    svg {
+      fill: $red;
+    }
+  }
+}
