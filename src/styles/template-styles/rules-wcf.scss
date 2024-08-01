@@ -43,7 +43,7 @@ html {
 
 .wcf {
    .upper-section {
-        background-color:  $light-green;
+        background-color: $light-green;
         padding: 20px 0;
         @media screen and (min-width: $tablet) {
             padding: 30px 0;
@@ -192,7 +192,7 @@ html {
                         }
                     }
                     .wcf_word {
-                        color: $blue-main;
+                        color: $primary-color;
                     }
                     .optional {
                         display: none;
@@ -385,6 +385,13 @@ html {
     /*Breed standards section ----------------------*/
     .breeds-section {
         background-color: $background;
+        padding: 32px 0 0;
+        @media screen and (min-width: $tablet) {
+            padding: 56px 0;
+        }
+        @media screen and (min-width: $desktop) {
+            padding: 80px 0;
+        }
         &__heading {
             @extend .rules-wcf-sections-heading;
         }
@@ -440,7 +447,7 @@ html {
     }
     /*Title system section ----------------------------*/
     .title_system-section {
-        padding: 0;
+        padding: 32px 0 0;
         background-color: $background;
         @media screen and (min-width: $tablet) {
             background-color: #fff;

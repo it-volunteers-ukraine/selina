@@ -100,22 +100,6 @@
         font-size: 26px;
         line-height: 100%;
         margin-bottom: 16px;
-        svg {
-            display: none;
-            
-            @media screen and (min-width: $tablet) {
-                display: block;
-                width: 29px;
-                height: 28px;
-                fill: $primary-color;
-            }
-            
-            @media screen and (min-width: $desktop) {
-                display: block;
-                width: 41px;
-                height: 37px;
-            }
-        }
 
         @media screen and (min-width: $tablet) {
             font-size: 30px;
@@ -131,6 +115,24 @@
             padding: 7.5px 0;
         }
     }
+
+    &__heading-container svg {
+        display: none;
+        
+        @media screen and (min-width: $tablet) {
+            display: block;
+            width: 29px;
+            height: 28px;
+            fill: $primary-color;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: block;
+            width: 41px;
+            height: 37px;
+        }
+    }
+
     &__news-section__item {
         background-color: $light-green;
         padding: 16px;
@@ -180,7 +182,9 @@
     }
 
     &__heading-container {
-        margin-bottom: 24px;
+        @media screen and (min-width: $desktop) {
+            margin-bottom: 24px;
+        }
     }
 
     &__description {
@@ -241,9 +245,29 @@
         }
     }
 
+    &__news-section__date-time {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        color: $red;
+    }
+
+    &__news-section__date-container,
+    &__news-section__time-container {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+
+    &__news-section__date-time p {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 100%;
+    }
+
     &__last-button {
         display: flex;
-        justify-self: center;
+        justify-content: center;
         align-items: center;
         gap: 8px;
         border-radius: 10px;
@@ -280,9 +304,9 @@
     &__news-section__item {
         background-color: $white;
         height: 468px;
+        margin-bottom: 24px;
         @media screen and (min-width: $tablet) {
             flex: 1 1 48%;
-            margin-bottom: 24px;
         }
         @media screen and (min-width: $desktop) {
             height: 611px;
@@ -313,7 +337,7 @@
         flex-shrink: 1;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
     }
     &__news-section__button {
@@ -323,7 +347,7 @@
         width: 165px;
         margin-top: 0;
         @media screen and (min-width: $desktop) {
-            margin-top: 14px;
+            margin-top: 16px;
         }
     }
 }

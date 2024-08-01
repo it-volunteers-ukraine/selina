@@ -67,6 +67,10 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('rules-wcf-style', get_template_directory_uri() . '/assets/styles/template-styles/rules-wcf.css', array('main'));
         wp_enqueue_script('rules-wcf-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/rules-wcf.js', array(), false, true);
     }
+    if (is_page_template('templates/club-membership.php')) {
+        wp_enqueue_style('club-membership-style', get_template_directory_uri() . '/assets/styles/template-styles/club-membership.css', array('main'));
+        wp_enqueue_script('club-membership-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/club-membership.js', array(), false, true);
+    }
     if (is_page_template('templates/single-breeders.php')) {
         wp_enqueue_script('home-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
         wp_enqueue_script('single-breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-breeders.js', array('touch-swipe-scripts'), false, true);
@@ -96,6 +100,10 @@ function wp_it_volunteers_scripts()
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('our-breeders_nonce'),
         ));
+    }
+
+     if (is_singular() && locate_template('template-parts/breadcrumbs.php')) {
+      wp_enqueue_style('breadcrumbs', get_template_directory_uri() . '/assets/styles/template-parts-styles/breadcrumbs.css', array('main'));
     }
 
     if (is_singular() && locate_template('template-parts/loader.php')) {
