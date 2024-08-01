@@ -498,7 +498,7 @@
   overflow: hidden;
   border-radius: 0 0 10px 10px;
   width: 100%;
-  z-index: 1;
+  z-index: 4;
 }
 
 .dropdown__list--visible {
@@ -572,6 +572,7 @@
   }
 
   .wpcf7-form-control-wrap[data-name="form-checkbox"] .wpcf7-not-valid-tip {
+    display: none;
     width: 155px;
     top: 30px;
   }
@@ -592,4 +593,12 @@
   @media screen and (min-width: $desktop) {
     left: 800px;
   }
+}
+
+.send-button-non-active {
+  cursor: not-allowed;
+}
+
+.send-button-active {
+  cursor: pointer;
 }

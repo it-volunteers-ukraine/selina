@@ -414,16 +414,22 @@
     }
 
     /*------------------Up-button---------------------------*/
+    .up_btn-container {
+        position: relative;
+    }
     .up_btn {
-        display: none;
+        /* display: none; */
         box-sizing: content-box;
-        position: fixed;
+        /* position: fixed; */
+        position: absolute;
         right: 16px;
+        bottom: 46px;
         z-index: 1000;
         background-color: transparent;
         cursor: pointer;
         @media screen and (min-width: $tablet) {
             right: 32px;
+            bottom: 38px;
           }
         @media screen and (min-width: $desktop) {
             right: calc((100% - 1128px) / 2);
