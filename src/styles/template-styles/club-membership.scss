@@ -323,6 +323,10 @@ html {
                 @media screen and (min-width: $tablet) {
                     flex-direction: row;
                     flex-wrap: wrap;
+                    & > .benefits__card:nth-child(3) {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
                 }
                 &__card {
                     display: flex;
