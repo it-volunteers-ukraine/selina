@@ -371,13 +371,13 @@
 
   .mobile-menu {
     position: fixed;
-    height: 100vh;
     background-color: #eff8f9;
     overflow: auto;
     padding: 16px;
     width: 100%;
     left: 0;
     top: 79px;
+    height: 570px;
 
     @media screen and (min-width: $tablet) {
       left: auto;
@@ -399,9 +399,11 @@
     }
 
     .header__list-mobile {
-      text-align: right;
+      text-align: left;
       margin-bottom: 32px;
-      padding-top: 32px;
+      padding-top: 82px;
+      display: flex;
+      flex-wrap: wrap;
 
       .menu-item {
         color: $primary-color;
@@ -409,6 +411,7 @@
         font-size: 20px;
         margin-bottom: 16px;
         text-transform: capitalize;
+        width: 50%;
 
         a {
           svg {
@@ -464,7 +467,7 @@
     .phone {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: flex-start;
       margin-bottom: 32px;
 
       span {
@@ -508,8 +511,6 @@
   .buttons {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
 
     @media (min-width: 320px) {
       gap: 12px;
