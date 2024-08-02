@@ -244,8 +244,7 @@ html {
         &-card {
             border-radius: 10px;
             padding: 24px;
-            max-width: 553px;
-            width: 340px;
+            max-width: 340px;
             height: 204px;
             background-color: rgba(255, 255, 255, 0.7);
             display: flex;
@@ -253,9 +252,10 @@ html {
             align-items: center;
             gap: 16px;
             @media screen and (min-width: $tablet) {
-                width: 338px;
+                max-width: 338px;
             }
             @media screen and (min-width: $desktop) {
+                max-width: 553px;
                 width: 553px;
                 height: 172px;
             }
@@ -343,6 +343,7 @@ html {
                     }
                     @media screen and (min-width: $desktop) {
                         width: 362px;
+                        height: 332px;
                     }
                     &-title {
                         font-weight: 800;
