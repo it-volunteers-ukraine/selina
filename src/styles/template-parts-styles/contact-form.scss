@@ -64,6 +64,7 @@
 
     @media screen and (min-width: $desktop) {
       display: block;
+      
     }
   }
   /* END of Precision settings gray-cat image */
@@ -498,7 +499,7 @@
   overflow: hidden;
   border-radius: 0 0 10px 10px;
   width: 100%;
-  z-index: 1;
+  z-index: 4;
 }
 
 .dropdown__list--visible {
@@ -572,24 +573,66 @@
   }
 
   .wpcf7-form-control-wrap[data-name="form-checkbox"] .wpcf7-not-valid-tip {
+    display: none;
     width: 155px;
     top: 30px;
   }
 
 .wpcf7-response-output {
+    display: none;
+    /* display: flex; */
     background-color: $blue-main;
     color: $white;
     border-radius: 10px;
-  @media screen and (min-width: $tablet) {
-    position: absolute;
-    top: 350px;
-    left: 410px;
-    width: 300px;
-    background-color: $blue-main;
-    color: $white;
-    border-radius: 10px;
-  }
-  @media screen and (min-width: $desktop) {
-    left: 800px;
-  }
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sent-form-pop-up-with-close {
+  display: none;
+  background-color: $blue-main;
+  color: $white;
+  border: 2px solid white;
+  border-radius: 10px;
+  position: fixed;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px 15px 20px;
+  max-width: 600px;
+}
+
+.pop-up-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-close{
+  width: 30px;
+  text-align: center;
+  padding: 5px 0;
+  margin-bottom: 20px;
+  margin-left: auto;
+  background: red;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.send-button-non-active {
+  cursor: not-allowed;
+}
+
+.send-button-active {
+  cursor: pointer;
 }

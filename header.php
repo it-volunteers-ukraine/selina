@@ -91,11 +91,6 @@
                             <span class="lang-size <?= $lang !== 'ua' ? 'on-lang' : 'off-lang' ?>">
             <?= $language['slug']; ?>
         </span>
-
-                            <!--                            <span class="--><?php //= $lang !== 'ua' ? 'on' : 'off' ?><!-- flag---><?php //= $language['slug']; ?><!--">-->
-                            <!---->
-                            <!--                            </span>-->
-                            <!--                            <span class="lang-size">--><?php //= $language['slug']; ?><!--</span>-->
                         <?php endforeach; ?>
                     </div>
                 </div>
