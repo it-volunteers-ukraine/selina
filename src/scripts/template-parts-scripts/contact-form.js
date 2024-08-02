@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   checkbox.addEventListener('change', toggleSubmitButton);
 
-// Pop-up for contact-form
+// Pop-up information from WP for contact-form
   submitButton.addEventListener('click', function() {
     setTimeout(function() {
         var responseOutput = document.querySelector('.wpcf7-response-output');
@@ -101,6 +101,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
   });
-
 });
 
+// Pop-up success for contact-form
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.querySelector('.wpcf7-form');
+  var popUp = document.querySelector('.sent-form-pop-up-with-close');
+  var closeBtn = document.querySelector('.popup-close');
+  var popupText = document.querySelector('.popup-text');
+  var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+          if (mutation.attributeName === 'class') {
+              if (form.classList.contains('sent')) {
+                  popupText.textContent = `Дякуємо за Ваше повідомлення. Воно було надіслане.`;
+                  popUp.style.display = 'block';
+              }
+          }
+      });
+  });
+  var config = {
+      attributes: true
+  };
+  observer.observe(form, config);
+  closeBtn.addEventListener('click', function() {
+      popUp.style.display = 'none';
+  });
+});
