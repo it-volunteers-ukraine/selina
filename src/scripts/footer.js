@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let documentHeight = document.documentElement.scrollHeight;
         let scrollTop = window.scrollY || document.documentElement.scrollTop;
         let bottomDistance = documentHeight - (scrollTop + windowHeight);
-        console.log(bottomDistance);
+        // console.log(bottomDistance);
 
         if (scrollTop < 20) {
             scrollTopBtn.style.display = "none";

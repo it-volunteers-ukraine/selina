@@ -78,4 +78,29 @@ document.addEventListener('DOMContentLoaded', function() {
   toggleSubmitButton();
 
   checkbox.addEventListener('change', toggleSubmitButton);
+
+// Pop-up for contact-form
+  submitButton.addEventListener('click', function() {
+    setTimeout(function() {
+        var responseOutput = document.querySelector('.wpcf7-response-output');
+        var popup = document.querySelector('.sent-form-pop-up-with-close');
+        var popupText = popup.querySelector('.popup-text');
+        if (responseOutput && responseOutput.textContent.trim() !== '') {
+          popupText.textContent = responseOutput.textContent;
+          popup.style.display = `flex`;
+          // console.log('Блок містить текст:', responseOutput.textContent);
+        } else {
+            // console.log('Блок порожній');
+        }
+    }, 1500);
+
+    var popup = document.querySelector('.sent-form-pop-up-with-close');
+    const closeButton = document.querySelector('.popup-close');
+    closeButton.addEventListener('click', function() {
+    popup.style.display = 'none';
+    });
+
+  });
+
 });
+
