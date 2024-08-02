@@ -228,6 +228,95 @@ get_header();
             </div>
         </div>
     </section>
+    <!-- Registration section -->
+    <section class="registration-section section" id="membership-registration">
+        <div class="container">
+            <h2 class="registration-section__heading section_heading club-membership-sections-heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('registration-section__heading'); ?>
+            </h2>
+            <div class="registration-section__wrapper">
+                <p class="registration-section__text black-text"><?php the_field('registration-section__ first-black-text'); ?></p>
+                <p class="registration-section__text red-text"><?php the_field('registration-section__ red-text'); ?></p>
+                <p class="registration-section__text black-text second-black-text"><?php the_field('registration-section__ second-black-text'); ?></p>
+                <div class="registration-section__stages">
+                    <div class="stages">
+                        <div class="stages__card prepare">
+                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
+                                </use>
+                            </svg>
+                            <p class="stages__card-title">
+                                <?php the_field('prepare__title'); ?>
+                            </p>
+                            <ul class="stages__card-text">
+                                <?php the_field('prepare__text'); ?>
+                            </ul>
+                        </div>
+                        <div class="stages__card prepare">
+                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
+                                </use>
+                            </svg>
+                            <p class="stages__card-title">
+                                <?php the_field('prepare__title'); ?>
+                            </p>
+                            <ul class="stages__card-text">
+                                <?php the_field('prepare__text'); ?>
+                            </ul>
+                        </div>
+                        <div class="stages__card prepare">
+                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
+                                </use>
+                            </svg>
+                            <p class="stages__card-title">
+                                <?php the_field('prepare__title'); ?>
+                            </p>
+                            <ul class="stages__card-text">
+                                <?php the_field('prepare__text'); ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="registration-section__stages">
+                    <div class="registration-stage">
+                        <div class="registration__number"><?php echo $registrationNumber; ?></div>
+                        <div class="registration__title"><?php echo $registrationTitle; ?></div>
+                        <ul class="registration__text"><?php echo $registrationText; ?></ul>
+                    </div>
+                    
+                    <?php
+                        if( have_rows('registration-stages') ):
+                            while( have_rows('registration-stages') ) : the_row();
+                                $registrationNumber = get_sub_field('registration__number');
+                                $registrationTitle = get_sub_field('registration__title');
+                                $registrationText = get_sub_field('registration__text');
+                                ?>
+                                    <div class="registration">
+                                        <div class="registration-stage">
+                                            <div class="registration__number"><?php echo $registrationNumber; ?></div>
+                                            <div class="registration__title"><?php echo $registrationTitle; ?></div>
+                                            <ul class="registration__text"><?php echo $registrationText; ?></ul>
+                                        </div>
+                                    </div>
+                                <?php 
+                            endwhile;
+                        endif;
+                    ?> 
+                </div> -->
+                <button class="registration-section__button button red_medium_button">
+                    <a href="<?php echo esc_attr( get_field('registration-section__link') ); ?>" target="_blank">
+                        <?php the_field('registration-section__button'); ?>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </section>
+
 
 
 </main>

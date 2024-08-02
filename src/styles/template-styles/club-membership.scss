@@ -205,6 +205,9 @@ html {
         @media screen and (min-width: $desktop) {
             padding: 80px 0;
         }
+        &__heading {
+            @extend .club-membership-sections-heading;
+        }
         &__wrapper {
             display: flex;
             flex-direction: column;
@@ -308,6 +311,9 @@ html {
     }
     /*Benefits section ------------------------------*/
     .benefits-section {
+        &__heading {
+            @extend .club-membership-sections-heading;
+        }
         &__wrapper {
             @media screen and (min-width: $tablet) {
                 width: 700px;
@@ -364,5 +370,49 @@ html {
                 }
             }
         }
+    }
+    /*Registration section ------------------------------*/
+    .registration-section {
+        background-color: $background;
+        &__heading {
+            @extend .club-membership-sections-heading;
+            margin-bottom: 24px;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            .red-text {
+                color: $red;
+            }
+        }
+        &__text {
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+        &__stages {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            /*.registration {
+                &-stage {
+                    border-radius: 10px;
+                    padding: 24px;
+                    width: 340px;
+                    height: 320px;
+                    box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+                    background: $white;
+                    gap: 24px;
+                }
+                &__number {
+                    border: 1px solid $primary-color;
+                    border-radius: 10px;
+                    width: 83px;
+                    height: 78px;
+                }
+            }*/
+        } 
     }
 }
