@@ -423,4 +423,50 @@ function get_breeders_per_page($width)
     }
 }
 
+/*** AJAX gallary*/
+    if (is_page_template('templates/gallery.php')) {
+        wp_enqueue_script('gallery-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/gallery.js', array('jquery'), false, true);
+        wp_localize_script('gallery-scripts', 'galleryAjax', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('gallery_nonce')
+        ));
+    }
+
+// Функція для обробки AJAX-запитів
+function load_more_images() {
+    // Перевірка nonce
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'gallery_nonce')) {
+        wp_send_json_error('Invalid nonce');
+    }
+
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $number = 12; // Кількість зображень на сторінку
+
+    $args = array(
+        'post_type' => 'attachment',
+        'posts_per_page' => $number,
+        'paged' => $page,
+        'post_status' => 'inherit'
+    );
+
+    $query = new WP_Query($args);
+
+    ob_start();
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            $image = wp_get_attachment_image_src(get_the_ID(), 'medium');
+            ?>
+            <div class="gallery-item">
+                <img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?>">
+            </div>
+            <?php
+        endwhile;
+    else :
+        echo '<p>No more images</p>';
+    endif;
+
+    $html = ob_get_clean();
+    wp_reset_postdata();
+}
 
