@@ -103,9 +103,14 @@
   }
 
   &__img {
-    width: 343px;
-    height: 266px;
+    width: 288px;
+    height: auto;
     border-radius: 8px;
+
+    @media screen and (min-width: $mobile) {
+      width: 343px;
+      height: 266px;
+    }
 
     @media screen and (min-width: $tablet) {
       width: 704px;
@@ -141,6 +146,13 @@
     align-items: center;
     justify-content: flex-end;
     gap: 6px;
+  }
+
+  &__filter-text {
+    font-size: 16px;
+    @media screen and (min-width: $mobile) {
+      font-size: 20px;
+    }
   }
 
   &__pagination {

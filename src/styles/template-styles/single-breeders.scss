@@ -124,9 +124,14 @@
   }
 
   &__img {
-    width: 343px;
-    height: 379.05px;
+    width: 288px;
+    height: auto;
     border-radius: 5.49px;
+
+    @media screen and (min-width: $mobile) {
+      width: 343px;
+      height: 379.05px;
+    }
 
     @media screen and (min-width: $tablet) {
       width: 704px;
@@ -192,6 +197,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 63px;
+    row-gap: 24px;
     margin-top: 16px;
     @media screen and (min-width: $tablet) {
       display: flex;
@@ -287,10 +293,15 @@
 
   &__item {
     img {
-      width: 340px;
-      height: 228px;
+      width: 288px;
+      height: auto;
       object-fit: cover;
       border-radius: 10px;
+
+      @media screen and (min-width: $mobile) {
+        width: 340px;
+        height: 228px;
+      }
       @media screen and (min-width: $tablet) {
         width: 462px;
         height: 307px;
@@ -337,11 +348,16 @@
     flex-direction: column;
     justify-content: center;
     padding: 24px 16px;
-    width: 344px;
-    height: 478px;
+    width: 288px;
+    height: auto;
     box-shadow: 0px 1px 12px 0px #0000001f;
     gap: 16px;
     border-radius: 8px;
+
+    @media screen and (min-width: $mobile) {
+      width: 344px;
+      height: 478px;
+    }
     @media screen and (min-width: $tablet) {
       width: 340px;
       padding: 24px 14px;
@@ -353,9 +369,14 @@
   }
   &__img {
     object-fit: cover;
-    width: 312px;
-    height: 268px;
+    width: 256px;
+    height: auto;
     border-radius: 8px;
+
+    @media screen and (min-width: $mobile) {
+      width: 312px;
+      height: 268px;
+    }
   }
 
   &__name {
