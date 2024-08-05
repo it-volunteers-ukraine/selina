@@ -8,7 +8,7 @@
         <?php while (have_posts()) : the_post(); ?>
             <ul class="search-results" style="padding-bottom: 220px">
                 <li>
-                    <a><?php the_title() ?></a>
+                    <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
                 </li>
             </ul>
         <?php endwhile; ?>
