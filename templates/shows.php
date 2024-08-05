@@ -100,24 +100,38 @@ get_header();
                                         <img src="<?php the_field('news_photo'); ?>" alt="<?php the_field('news_name'); ?>" />
                                     </div>
                                     <div class="webinars__news-section__content-wrapper">
-                                        <div class="webinars__news-section__date-time">
-                                            <div class="webinars__news-section__date-container">
-                                                <svg width="22" height="22"> 
-                                                    <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
-                                                </svg> 
-                                                <p class="webinars__news-section__date">
-                                                    <?php the_field('news_date'); ?>
-                                                </p>
+                                        <?php
+                                            $news_date = get_field('news_date');
+                                            $news_time = get_field('news_time');
+                                            if(!empty($news_date) || !empty($news_time)):
+                                        ?>
+                                            <div class="webinars__news-section__date-time">
+                                                <?php
+                                                    if (!empty($news_date)):
+                                                ?>
+                                                    <div class="webinars__news-section__date-container">
+                                                        <svg width="22" height="22"> 
+                                                            <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
+                                                        </svg> 
+                                                        <p class="webinars__news-section__date">
+                                                            <?php the_field('news_date'); ?>
+                                                        </p>
+                                                    </div>
+                                                <?php endif; ?>
+                                                <?php
+                                                    if(!empty($news_time)):
+                                                ?>
+                                                    <div class="webinars__news-section__time-container">
+                                                        <svg width="22" height="22"> 
+                                                        <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#clock-icon"></use>  
+                                                        </svg> 
+                                                        <p class="webinars__news-section__time">
+                                                            <?php the_field('news_time'); ?>
+                                                        </p>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
-                                            <div class="webinars__news-section__time-container">
-                                                <svg width="22" height="22"> 
-                                                <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#clock-icon"></use>  
-                                                </svg> 
-                                                <p class="webinars__news-section__time">
-                                                    <?php the_field('news_time'); ?>
-                                                </p>
-                                            </div>
-                                        </div>
+                                        <?php endif; ?>
                                         <p class="webinars__news-section__name">
                                             <?php the_field('news_name'); ?>
                                         </p>
