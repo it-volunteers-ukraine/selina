@@ -87,18 +87,22 @@ get_header();
                     <div class="single-breeder-about-section__contacts-wrapper">
                         <p class="single-breeder-about-section__contacts-text">
                             <?php the_field('breeder-page_about-address-name'); ?></p>
-                        <p class="single-breeder-about-section__contacts-link-address">
-                            <?php the_field('breeder-page_about-address-address'); ?></p>
+                        <a href="<?php echo esc_url(  the_field('breeder-page_about-address-map') ); ?>" 
+                        target="_blank"
+                        class="single-breeder-about-section__contacts-link-address">
+                            <?php the_field('breeder-page_about-address-address'); ?></a>
                     </div>
                     <div class="single-breeder-about-section__socials-wrapper">
                         <?php
                         if (have_rows('breeder-page_about-socials')):
                             while (have_rows('breeder-page_about-socials')):
                                 the_row();
+                                 $link = get_sub_field('breeder-page_about-socials-link');
                                 ?>
 
                                 <a class="single-breeder-about-section-link"
-                                    href="<?php the_sub_field('breeder-page_about-socials-link') ?>">
+                                target="_blank"
+                                    href="<?php echo esc_url(  $link ); ?>">
                                     <img class="single-breeder-about-section-socials__img"
                                         src="<?php the_sub_field('breeder-page_about-socials-icon') ?>" />
                                 </a>

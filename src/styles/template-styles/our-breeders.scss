@@ -190,7 +190,24 @@
 
   &__pagination-right,
   &__pagination-left {
-    &:focus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: $big-br;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33;
+    text-align: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background-color: $primary-color;
+    color: $white;
+    &:enabled:hover {
       color: $primary-color;
       background-color: $white;
     }

@@ -66,14 +66,14 @@ get_header();
             <div class="breeders-catalogue-section__list">
             </div>
             <div class="breeders-catalogue-section__pagination visually-hidden">
-                <button class="breeders-catalogue-section__pagination-left btn_icon breeders-prev">
+                <button class="breeders-catalogue-section__pagination-left breeders-prev">
                     <svg width="10.67" height="16.97">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
                         </use>
                     </svg>
                 </button>
                 <div class="breeders-catalogue-section__pagination-numbers"></div>
-                <button class="breeders-catalogue-section__pagination-right btn_icon breeders-next">
+                <button class="breeders-catalogue-section__pagination-right breeders-next">
                     <svg width="10.67" height="16.97">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
                         </use>

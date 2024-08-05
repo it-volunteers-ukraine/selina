@@ -184,10 +184,7 @@
       width: 219px;
     }
     @media screen and (min-width: $tablet) {
-      width: 414px;
-    }
-    @media screen and (min-width: $desktop) {
-      width: 414px;
+      width: auto;
     }
   }
 
