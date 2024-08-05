@@ -55,7 +55,7 @@ get_header();
     <section class="section breeders-catalogue-section" id="breeders-catalogue">
         <div class="container">
             <div class="breeders-catalogue-section__filter-wrapper">
-                <p><?php the_field('list_text'); ?></p>
+                <p class="breeders-catalogue-section__filter-text"><?php the_field('list_text'); ?></p>
                 <select name="select" id="breeders-order">
                     <option value="title-asc"><?php the_field('filter_name_a'); ?></option>
                     <option value="title-desc"><?php the_field('filter_name_ya'); ?></option>
