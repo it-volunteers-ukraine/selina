@@ -8,7 +8,7 @@ const searchMobile = document.getElementById('search-mobile');
 
 // submenu - mobile
 const headerListMobile = document.querySelector('.header__list-mobile');
-const itemsListMobile = headerListMobile.querySelectorAll('.menu-item');
+const itemsListMobile = headerListMobile.querySelectorAll('.menu-item-has-children');
 
 
 // dropdowns
@@ -70,11 +70,32 @@ itemsList.forEach(item => {
 })
 
 
+// sub-menu mobile
 itemsListMobile.forEach(item => {
-    item.addEventListener('click', () => {
-        const subMenu = item.querySelector('.sub-menu');
-        if (subMenu) {
-            subMenu.classList.toggle('active-sub_menu-mobile');
+    item.addEventListener('click', function() {
+
+        this.classList.toggle('active');
+
+        document.querySelectorAll('.active').forEach(elem => {
+            if (elem !== this) {
+                elem.classList.remove('active');
+            }
+        });
+
+        const activeSubMenu = this.querySelector('.sub-menu');
+
+        // close other opened sub-menu
+        const otherSubMenus = document.querySelectorAll('.sub-menu.active-sub_menu-mobile');
+
+        otherSubMenus.forEach(subMenu => {
+            if (subMenu !== activeSubMenu) {
+                subMenu.classList.remove('active-sub_menu-mobile');
+            }
+        });
+
+        // toggle the clicked active sub-menu
+        if (activeSubMenu) {
+            activeSubMenu.classList.toggle('active-sub_menu-mobile');
         }
     })
 })

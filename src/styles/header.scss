@@ -1,11 +1,7 @@
 @import "./variables.scss";
 
 .header {
-  padding-bottom: 40px;
-
-  @media screen and (min-width: $tablet) {
-    padding-bottom: 88px;
-  }
+  padding-bottom: 88px;
 
   @media screen and (min-width: $desktop) {
     padding-bottom: 0;
@@ -107,14 +103,6 @@
     width: 100%;
     z-index: 100;
     top: 0;
-
-    @media screen and (min-width: $tablet) {
-      top: 45px;
-    }
-
-    @media screen and (min-width: 783px) {
-      top: 32px;
-    }
 
     @media screen and (min-width: $desktop) {
       position: static;
@@ -376,7 +364,7 @@
     padding: 16px;
     width: 100%;
     left: 0;
-    top: 79px;
+    top: 88px;
     height: 590px;
 
     @media screen and (min-width: $tablet) {
@@ -387,7 +375,7 @@
       right: 0;
       max-width: 487px;
       padding: 32px;
-      top: 134px;
+      top: 89px;
     }
   }
 
@@ -401,17 +389,19 @@
     .header__list-mobile {
       text-align: left;
       margin-bottom: 32px;
-      padding-top: 82px;
+      padding-top: 65px;
       display: flex;
       flex-wrap: wrap;
+      position: relative;
 
       .menu-item {
         color: $primary-color;
         font-weight: 800;
         font-size: 20px;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
         text-transform: capitalize;
         width: 50%;
+        position: relative;
 
         a {
           svg {
@@ -423,6 +413,7 @@
           display: none;
 
           .menu-item {
+            margin-bottom: 8px;
             a {
               white-space: nowrap;
               font-weight: 500;
@@ -431,18 +422,19 @@
         }
 
         .active-sub_menu-mobile {
+          position: absolute;
           display: flex;
           flex-direction: column;
-          padding: 16px 15px;
-          @media screen and (min-width: 375px) {
-            padding: 16px 24px;
-          }
 
           .menu-item {
             text-transform: none;
           }
         }
       }
+    }
+
+    .active{
+      padding-bottom: 67px;
     }
 
     .social-media {
@@ -488,7 +480,7 @@
     align-items: center;
     background: #fff;
     position: absolute;
-    top: 93px;
+    top: 84px;
     height: 44px;
     z-index: 1;
 
