@@ -1,0 +1,60 @@
+@import "../variables";
+
+.single-breed-first-section {
+  background-color: $light-green;
+  padding: 20px 0;
+  @media screen and (min-width: $tablet) {
+    padding: 30px 0;
+  }
+  @media screen and (min-width: $desktop) {
+    background-color: none;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 377px;
+    padding: 31px 0 136.5px 0;
+  }
+
+  &__heading {
+    font-size: 30px;
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      font-size: 45px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 24px;
+      font-size: 60px;
+    }
+  }
+
+  &__heading-svg {
+    color: $primary-color;
+    @media screen and (min-width: $desktop) {
+      width: 18px;
+      height: 16px;
+    }
+  }
+  &__subtitle-heading {
+    display: flex;
+    align-items: baseline;
+    color: $primary-color;
+    gap: 4px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1;
+    margin-top: 10px;
+    @media screen and (min-width: $tablet) {
+      gap: 10px;
+    }
+  }
+
+  &__subtitle-heading-wrapper {
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      gap: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 36px;
+    }
+  }
+}

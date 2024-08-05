@@ -100,6 +100,9 @@ jQuery(document).ready(function ($) {
         $(".breeders-catalogue-section__list").html(response.html);
         updatePaginationButtons();
         updateCurrentPage();
+        document
+          .getElementById("breeders-catalogue")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
       },
       error: function (xhr, status, error) {
         // hideLoader();
@@ -158,6 +161,7 @@ jQuery(document).ready(function ($) {
       buttonEl.innerText = i;
       if (i === currentPage) {
         buttonEl.classList.add("is-active");
+        buttonEl.setAttribute("disabled", true);
       }
       buttons.push(buttonEl);
       buttonEl.addEventListener("click", () => {

@@ -1,5 +1,16 @@
 @import "../variables";
 
+.single-breeder__breadcrumbs {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  color: $primary-color;
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 89.5px;
+  }
+}
+
 .single-breeder-first-section {
   background-color: $light-green;
   padding: 20px 0;
@@ -152,7 +163,32 @@
   &__contacts-text {
     color: $primary-color;
     font-weight: 800;
-    font-size: 20px;
+    font-size: 16px;
+    @media screen and (min-width: $mobile) {
+      font-size: 20px;
+    }
+  }
+
+  &__contacts-link {
+    font-size: 16px;
+    @media screen and (min-width: $mobile) {
+      font-size: 20px;
+    }
+  }
+
+  &__contacts-link-address {
+    font-size: 16px;
+    width: 200px;
+    @media screen and (min-width: $mobile) {
+      font-size: 20px;
+      width: 219px;
+    }
+    @media screen and (min-width: $tablet) {
+      width: 414px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 414px;
+    }
   }
 
   &__socials-wrapper {
@@ -248,6 +284,34 @@
   &__swiper {
     max-width: 1128px;
     margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  &__item {
+    img {
+      width: 340px;
+      height: 228px;
+      object-fit: cover;
+      border-radius: 10px;
+      @media screen and (min-width: $tablet) {
+        width: 462px;
+        height: 307px;
+      }
+      @media screen and (min-width: $desktop) {
+        width: 551px;
+        height: 400px;
+      }
+    }
+  }
+  &__subtext {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 52.5px;
+    }
   }
 }
 
@@ -257,5 +321,75 @@
     @media screen and (min-width: $desktop) {
       margin-bottom: 40px;
     }
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    @media screen and (min-width: $tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media screen and (min-width: $desktop) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px 16px;
+    width: 344px;
+    height: 478px;
+    box-shadow: 0px 1px 12px 0px #0000001f;
+    gap: 16px;
+    border-radius: 8px;
+    @media screen and (min-width: $tablet) {
+      width: 340px;
+      padding: 24px 14px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 360px;
+      padding: 24px 24px;
+    }
+  }
+  &__img {
+    object-fit: cover;
+    width: 312px;
+    height: 268px;
+    border-radius: 8px;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  &__link {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-decoration: underline;
+  }
+
+  &__old {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  &__info {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
+    color: #d11f2a;
+  }
+
+  &__button {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
   }
 }
