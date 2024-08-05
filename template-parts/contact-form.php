@@ -1,4 +1,12 @@
 <section class="section form-contacts">
+    
+    <div class='sent-form-pop-up-with-close'>
+        <div class="pop-up-container">
+            <button class='popup-close'>X</button>
+            <p class="popup-text"></p>
+        </div>
+    </div>
+
     <div class="container form-contacts__container-bg">
         <div class="form-contacts__background">
             <?php  

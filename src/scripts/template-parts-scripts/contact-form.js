@@ -55,3 +55,52 @@ document.addEventListener('keydown', function(e) {
       document.querySelector('.dropdown__button').classList.remove('dropdown__button--active');
   }
 });
+
+
+// Disactive "Send" button, when checkbox is not checked
+document.addEventListener('DOMContentLoaded', function() {
+  const checkboxContainer = document.querySelector('.form-contacts__checkbox');
+  const checkbox = checkboxContainer.querySelector('input[type="checkbox"]');
+  const submitButton = document.querySelector('.form-contacts__form-button');
+  const submitButtonContainer = document.querySelector('.button-paw-container');
+
+  function toggleSubmitButton() {
+      submitButton.disabled = !checkbox.checked;
+      if (checkbox.checked) {
+        submitButtonContainer.classList.remove('send-button-non-active');
+        document.querySelector('.wpcf7-submit').classList.add('send-button-active');
+    } else {
+        submitButtonContainer.classList.add('send-button-non-active');
+    }
+    // console.log('Checkbox checked:', checkbox.checked);
+  }
+
+  toggleSubmitButton();
+
+  checkbox.addEventListener('change', toggleSubmitButton);
+
+// Pop-up for contact-form
+  submitButton.addEventListener('click', function() {
+    setTimeout(function() {
+        var responseOutput = document.querySelector('.wpcf7-response-output');
+        var popup = document.querySelector('.sent-form-pop-up-with-close');
+        var popupText = popup.querySelector('.popup-text');
+        if (responseOutput && responseOutput.textContent.trim() !== '') {
+          popupText.textContent = responseOutput.textContent;
+          popup.style.display = `flex`;
+          // console.log('Блок містить текст:', responseOutput.textContent);
+        } else {
+            // console.log('Блок порожній');
+        }
+    }, 1500);
+
+    var popup = document.querySelector('.sent-form-pop-up-with-close');
+    const closeButton = document.querySelector('.popup-close');
+    closeButton.addEventListener('click', function() {
+    popup.style.display = 'none';
+    });
+
+  });
+
+});
+
