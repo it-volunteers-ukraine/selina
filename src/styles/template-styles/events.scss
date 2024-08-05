@@ -1,0 +1,343 @@
+@import "../variables.scss";
+
+.heading-section-events {
+    color: $blue-main;
+    background-color: $light-green;
+    padding: 0;
+    position: relative;
+
+    @media screen and (min-width: $desktop) {
+        background-color: $light-green;
+    }
+
+    &__background-img {
+        display: none;
+
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
+    }
+
+    &__wrapper {
+        padding: 20px 0;
+
+        @media screen and (min-width: $tablet) {
+            padding: 30px 0;
+        }
+
+        @media screen and (min-width: $desktop) {
+            position: absolute;
+            background: none;
+            top: 123px;
+            padding: 0;
+            margin: auto;
+        }
+    }
+
+    &__list-events {
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 30px;
+        line-height: 100%;
+        margin-bottom: 10px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 45px;
+            margin-bottom: 14px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            font-size: 60px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 24px;
+        row-gap: 8px;
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        padding: 4px 0;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            padding: 7.5px 0;
+            row-gap: 15px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            column-gap: 36px;
+            row-gap: 16px;
+            padding: 0;
+            width: 660px;
+        }
+    }
+
+    &__nav-li-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__nav-li a svg {
+        @media screen and (min-width: $tablet) {
+            width: 14px;
+            height: 13px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 18px;
+            height: 16px;
+        }
+    }
+}
+
+.exhibitions {
+    background-color: $white;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 42px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+
+    &__heading-container {
+        display: flex;
+        align-items: center;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 100%;
+        margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+            gap: 8px;
+            padding: 6px 0;
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            gap: 12px;
+            padding: 7.5px 0;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__heading-container svg {
+        display: none;
+        
+        @media screen and (min-width: $tablet) {
+            display: block;
+            width: 29px;
+            height: 28px;
+            fill: $primary-color;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: block;
+            width: 41px;
+            height: 37px;
+        }
+    }
+
+    &__description {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+        margin-bottom: 32px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            line-height: 125%;
+            margin-bottom: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 820px;
+            margin-bottom: 40px;
+        }
+    }
+    &__news-section__item {
+        margin-bottom: 16px;
+        box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.1);
+        background-color: $light-green;
+        padding: 16px;
+        border-radius: 10px;
+        @media screen and (min-width: $tablet) {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+    }
+    &__news-section__img img {
+        border-radius: 8px;
+        margin-bottom: 24px;
+        @media screen and (min-width: $tablet) {
+            width: 340px;
+            object-fit: cover;
+            height: 100%;
+            margin-bottom: 0;
+        }
+        @media screen and (min-width: $desktop) {
+            width: 528px;
+        }
+    }
+    &__news-section__content-wrapper {
+        @media screen and (min-width: $desktop) {
+            display: flex;
+            flex-direction: column;
+            height: 352px;
+        }
+    }
+    &__news-section__name {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 120%;
+        color: $blue-main;
+        margin-bottom: 16px;
+    }
+    &__news-section__text {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+        margin-bottom: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        @media screen and (min-width: $tablet) {
+            -webkit-line-clamp: 6;
+        }
+    }
+
+    &__news-section__button {
+        @media screen and (min-width: $desktop) {
+           margin-top: auto;
+        }
+    }
+
+    &__news-section__date-time {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        color: $red;
+    }
+
+    &__news-section__date-container,
+    &__news-section__time-container {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+
+    &__news-section__date-time p {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 100%;
+    }
+
+    &__last-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 10px;
+        padding: 10px 10px 10px 14px;
+        width: 200px;
+        height: 44px;
+        background-color: $blue-main;
+        margin: 0 auto;
+        color: $white;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 133%;
+
+        @media screen and (min-width: $desktop) {
+            margin: 0;
+        }
+    }
+}
+
+.calendar {
+    background-color: $background;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 42px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+
+    &__heading-container {
+        display: flex;
+        align-items: center;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 100%;
+        margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+            gap: 8px;
+            padding: 6px 0;
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            gap: 12px;
+            padding: 7.5px 0;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__heading-container svg {
+        display: none;
+        
+        @media screen and (min-width: $tablet) {
+            display: block;
+            width: 29px;
+            height: 28px;
+            fill: $primary-color;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: block;
+            width: 41px;
+            height: 37px;
+        }
+    }
+
+    &__description {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+        margin-bottom: 32px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            line-height: 125%;
+            margin-bottom: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 820px;
+            margin-bottom: 40px;
+        }
+    }
+}
