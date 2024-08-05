@@ -73,6 +73,7 @@ jQuery(document).ready(function ($) {
     filter.addEventListener("change", filterChangeHandler);
   }
   // Завантаження постів
+  let initialLoadDone = false;
   function loadBreeders(page) {
     var data = {
       action: "load_breeders",
@@ -100,9 +101,14 @@ jQuery(document).ready(function ($) {
         $(".breeders-catalogue-section__list").html(response.html);
         updatePaginationButtons();
         updateCurrentPage();
-        document
-          .getElementById("breeders-catalogue")
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        if (initialLoadDone) {
+          document
+            .getElementById("breeders-catalogue")
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          initialLoadDone = true;
+        }
       },
       error: function (xhr, status, error) {
         // hideLoader();

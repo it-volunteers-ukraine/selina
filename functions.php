@@ -433,6 +433,7 @@ function get_partners_per_page($width)
 
 function get_breeders_per_page($width)
 {
+    return 1;
     if ($width > 767.98) {
         return 12;
     } else {
