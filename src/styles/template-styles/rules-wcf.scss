@@ -294,8 +294,8 @@ html {
         background-size: cover;
         padding: 37px 1.5px;
         @media screen and (min-width: $tablet) {
-            background-position: -410px -5px;
-            padding: 56px 0 64px;
+            background-position: -410px 0;
+            padding: 58px 1px 58px;
         }
         @media screen and (min-width: $desktop) {
             background-position: 5px -200px;
