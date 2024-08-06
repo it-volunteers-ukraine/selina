@@ -138,19 +138,19 @@
 <symbol id="arrow-up-right" width="20" height="20" viewBox="0 0 20 20" fill="none">
 <path d="M5.28713 14.7141L14.7152 5.28602M14.7152 5.28602V12.3571M14.7152 5.28602H7.64415" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
-<symbol id="long-arrow-left" width="94" height="15" viewBox="0 0 94 15" fill="none">
+<symbol id="long-arrow-left" viewBox="0 0 94 15" fill="none">
 <path d="M1.08189 8.20711C0.69137 7.81658 0.69137 7.18342 1.08189 6.79289L7.44586 0.428932C7.83638 0.0384079 8.46954 0.0384079 8.86007 0.428932C9.25059 0.819456 9.25059 1.45262 8.86007 1.84315L3.20322 7.5L8.86007 13.1569C9.25059 13.5474 9.25059 14.1805 8.86007 14.5711C8.46954 14.9616 7.83638 14.9616 7.44586 14.5711L1.08189 8.20711ZM93.0508 8.5H1.789V6.5H93.0508V8.5Z" fill="#070707"/>
 </symbol>
-<symbol id="long-arrow-right" width="93" height="15" viewBox="0 0 93 15" fill="none">
+<symbol id="long-arrow-right" viewBox="0 0 93 15" fill="none">
 <path d="M92.2697 8.20711C92.6602 7.81658 92.6602 7.18342 92.2697 6.79289L85.9057 0.428932C85.5152 0.0384079 84.882 0.0384079 84.4915 0.428932C84.101 0.819456 84.101 1.45262 84.4915 1.84315L90.1483 7.5L84.4915 13.1569C84.101 13.5474 84.101 14.1805 84.4915 14.5711C84.882 14.9616 85.5152 14.9616 85.9057 14.5711L92.2697 8.20711ZM0.300781 8.5H91.5626V6.5H0.300781V8.5Z" fill="#070707"/>
 </symbol>
-<symbol id="triangle-down" width="73" height="38" viewBox="0 0 73 38" fill="none">
+<symbol id="triangle-down" viewBox="0 0 73 38" fill="none">
 <path d="M72.125 0.666992L0.927788 0.666992L36.5264 37.3337L72.125 0.666992Z" fill="#070707"/>
 </symbol>
-<symbol id="triangle-up" width="73" height="38" viewBox="0 0 73 38" fill="none">
+<symbol id="triangle-up" viewBox="0 0 73 38" fill="none">
 <path d="M0.929688 37.333L72.1269 37.333L36.5283 0.666336L0.929688 37.333Z" fill="#070707"/>
 </symbol>
-<symbol id="triangle-right" width="37" height="72" viewBox="0 0 37 72" fill="none">
+<symbol id="triangle-right" viewBox="0 0 37 72" fill="none">
 <path d="M0.0976562 0.427734L0.0976562 71.6249L36.7643 36.0263L0.0976562 0.427734Z" fill="#070707"/>
 </symbol>
 <symbol id="calendar-icon" width="22" height="22" viewBox="0 0 22 22" fill="none">

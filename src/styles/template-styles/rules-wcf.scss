@@ -546,7 +546,11 @@ html {
                     flex-direction: row;
                     justify-content: space-between;
                     .triangle-down-svg {
-                        margin: 0 0 8px 16px;
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 0 8px 16px;
+                        }
                         @media screen and (min-width: $desktop) {
                             width: 73px;
                             height: 38px;
@@ -554,7 +558,11 @@ html {
                         }
                     }
                     .triangle-up-svg {
-                        margin: 0 20px 11px 0;
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 20px 11px 0;
+                        }
                         @media screen and (min-width: $desktop) {
                             width: 73px;
                             height: 38px;
@@ -637,10 +645,45 @@ html {
                             gap: 16px;
                         }
                         &-svg {
+                            @media screen and (min-width: $tablet) {
+                                width: 58px;
+                                height: 11px;
+                            }
                             @media screen and (min-width: $desktop) {
                                 width: 93px;
                                 height: 15px;
                             }
+                        }
+                    }
+                }
+            }
+            .adult-neutercats {
+                &__triangles {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .triangle-down-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 0 8px 16px;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 0 13px 25px;
+                        }
+                    }
+                    .triangle-up-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 20px 11px 0;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 35px 23px 0;
                         }
                     }
                 }
@@ -661,8 +704,12 @@ html {
                         width: 432px;
                     }
                     .triangle-right-svg {
-                        align-self: center;
-                        margin: 25px 15px 0 21px;
+                        @media screen and (min-width: $tablet) {
+                            width: 24px;
+                            height: 45px;
+                            align-self: center;
+                            margin: 25px 15px 0 21px;
+                        }
                         @media screen and (min-width: $desktop) {
                             width: 37px;
                             height: 72px;

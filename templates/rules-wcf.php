@@ -324,7 +324,7 @@ get_header();
                             <?php the_field('adult-cats__info-above-purple-card'); ?>
                         </p>
                     </div>
-                    <div class="adult-cats__triangles">
+                    <div class="adult-neutercats__triangles">
                         <svg class="triangle-down-svg" width="45" height="24">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#triangle-down">
                             </use>
@@ -361,12 +361,12 @@ get_header();
                                 ?>
                             </div>
                             <div class="other-cards-info">
-                                <svg class="other-cards-info-svg" width="58" height="10">
+                                <svg class="other-cards-info-svg" width="58" height="11">
                                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#long-arrow-left">
                                     </use>
                                 </svg>
                                 <?php the_field('other-cards-info'); ?>
-                                <svg class="other-cards-info-svg" width="58" height="10">
+                                <svg class="other-cards-info-svg" width="58" height="11">
                                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#long-arrow-right">
                                     </use>
                                 </svg>
