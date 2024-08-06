@@ -3,6 +3,7 @@
     <div class='sent-form-pop-up-with-close'>
         <div class="pop-up-container">
             <button class='popup-close'>X</button>
+            <p class="popup-thanks"></p>
             <p class="popup-text"></p>
         </div>
     </div>

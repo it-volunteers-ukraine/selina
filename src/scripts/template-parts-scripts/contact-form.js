@@ -109,11 +109,13 @@ document.addEventListener('DOMContentLoaded', function() {
   var popUp = document.querySelector('.sent-form-pop-up-with-close');
   var closeBtn = document.querySelector('.popup-close');
   var popupText = document.querySelector('.popup-text');
+  var popupThanks = document.querySelector('.popup-thanks');
   var observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
           if (mutation.attributeName === 'class') {
               if (form.classList.contains('sent')) {
-                  popupText.textContent = `Дякуємо за Ваше повідомлення. Воно було надіслане.`;
+                  popupThanks.textContent = `Дякуємо!`
+                  popupText.textContent = `Ми отримали Ваше повідомлення`;
                   popUp.style.display = 'block';
               }
           }
