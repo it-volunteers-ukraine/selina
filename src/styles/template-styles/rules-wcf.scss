@@ -229,7 +229,12 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
+                width: 704px;
                 gap: 24px;
+                margin: 0 auto;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 100%;
             }
         }
         &__img {
@@ -404,7 +409,12 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
+                width: 704px;
                 gap: 24px;
+                margin: 0 auto;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 100%;
             }
         }
         &__img {
@@ -691,7 +701,12 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
+                width: 704px;
                 gap: 24px;
+                margin: 0 auto;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 100%;
             }
         }
         &__img {
