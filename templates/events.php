@@ -109,7 +109,7 @@ get_header();
                         if ($myposts) {
                             foreach ($myposts as $post) : setup_postdata($post);
                             $current_date = new DateTime();
-                            $news_date = new DateTime(get_field('news_date_meta'));
+                            $news_date = new DateTime(get_field('news_date'));
                             if ($news_date >= $current_date) :
                             ?>
                                 <div class="exhibitions__news-section__item">
@@ -127,36 +127,53 @@ get_header();
                                     </div>
                                     <div class="exhibitions__news-section__content-wrapper">
                                         <?php
-                                            $news_date = get_field('news_date');
-                                            $news_time = get_field('news_time');
-                                            if(!empty($news_date) || !empty($news_time)):
+                                            $news_date = get_field('news_date_meta');
+                                            $news_date_start = get_field('news_date_meta-start');
+                                            if(!empty($news_date)):
                                         ?>
-                                            <div class="exhibitions__news-section__date-time">
+                                        <div class="exhibitions__news-section__date-time">
+                                                <!-- DATE -->
                                                 <?php
-                                                    if (!empty($news_date)):
+                                                    if (!empty(get_field('news_date_meta'))):
                                                 ?>
-                                                    <div class="exhibitions__news-section__date-container">
-                                                        <svg width="22" height="22"> 
-                                                            <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
-                                                        </svg> 
-                                                        <p class="exhibitions__news-section__date">
-                                                            <?php the_field('news_date'); ?>
-                                                        </p>
-                                                    </div>
-                                                <?php endif; ?>
-                                                <?php
-                                                    if(!empty($news_time)):
-                                                ?>
-                                                    <div class="exhibitions__news-section__time-container">
-                                                        <svg width="22" height="22"> 
-                                                        <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#clock-icon"></use>  
-                                                        </svg> 
-                                                        <p class="exhibitions__news-section__time">
-                                                            <?php the_field('news_time'); ?>
-                                                        </p>
-                                                    </div>
-                                                <?php endif; ?>
-                                            </div>
+                                                <div class="exhibitions__news-section__date-container">
+                                                    <svg width="22" height="22"> 
+                                                        <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
+                                                    </svg> 
+                                                    <p class="exhibitions__news-section__date">
+                                                        <?php
+                                                            if (!empty($news_date_start)) {
+                                                                $date_start = new DateTime($news_date_start);
+                                                                echo $date_start->format('j').' - ';
+                                                            }
+
+                                                            $current_lang = pll_current_language();
+                                                            if ($current_lang == 'ua') {
+                                                                $date_str = get_field('news_date_meta');
+
+                                                                if ($date_str) {
+                                                                    $date = new DateTime($date_str);
+                                                                    $months = [
+                                                                        1 => 'Січня', 2 => 'Лютого', 3 => 'Березня', 4 => 'Квітня',
+                                                                        5 => 'Травня', 6 => 'Червня', 7 => 'Липня', 8 => 'Серпня',
+                                                                        9 => 'Вересня', 10 => 'Жовтня', 11 => 'Листопада', 12 => 'Грудня'
+                                                                    ];
+                                                                    $month_num = (int) $date->format('m');
+                                                                    echo $date->format('j ') . $months[$month_num];
+                                                                }
+                                                            } elseif ($current_lang == 'en') {
+                                                                $date_str = get_field('news_date_meta');
+
+                                                                if ($date_str) {
+                                                                    $date = new DateTime($date_str);
+                                                                    echo $date->format('j F');
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
                                         <?php endif; ?>
                                         <p class="exhibitions__news-section__name">
                                             <?php the_field('news_name'); ?>
