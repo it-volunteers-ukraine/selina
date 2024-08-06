@@ -194,10 +194,10 @@ html {
                     .wcf_word {
                         color: $primary-color;
                     }
-                    .optional {
+                    &:nth-child(5), &:nth-child(6) {
                         display: none;
                         @media screen and (min-width: $tablet) {
-                            display: initial;
+                            display: list-item;
                         }
                     }
                 }   
