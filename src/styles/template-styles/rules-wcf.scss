@@ -136,7 +136,12 @@ html {
             display: flex;
             flex-direction: column;
             gap: 24px; 
+            @media screen and (min-width: $tablet) {
+                width: 704px;
+                margin: 0 auto;
+            }
             @media screen and (min-width: $desktop) {
+                width: 1129px;
                 flex-direction: row;
             }
         }
