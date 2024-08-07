@@ -420,7 +420,7 @@
     .up_btn {
         display: none;
         box-sizing: content-box;
-        position: fixed;
+        
         right: 16px;
         z-index: 1;
         background-color: transparent;
@@ -470,4 +470,17 @@
             font-size: 12px;
         }
     }
+}
+
+
+.static-container {
+    position: relative;
+}
+
+.static-button {
+    position: absolute;
+}
+
+.moving-button {
+    position: fixed;
 }
