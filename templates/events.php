@@ -226,6 +226,56 @@ get_header();
                 <p class=calendar__description>
                     <?php the_field('calendar__description'); ?>
                 </p>
+                <div class="calendar__calendars">
+                    <div class="calendar__calendar-ua">
+                        <div class="calendar__calendar-card-img">
+                            <?php
+                                $image = get_field('calendar_ua_img'); 
+                            ?>
+                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                        </div>
+                        <div class="calendar__calendar-card-heading">
+                            <p><?php the_field('calendar_ua_heading'); ?></p>
+                        </div>
+                        <div class="calendar__calendar-card-info">
+                            <p><?php the_field('calendar_ua_info'); ?></p>
+                        </div>
+                        <a href="https://www.wcf-bestcat.de/show-calendar/Ukraine/-?year=2024&month=0" target='_blank'>
+                            <div class="calendar__calendar-card-button red_medium_button">
+                                <p class='calendar__calendar-button-text'>
+                                    <?php the_field('calendar_button_text'); ?>
+                                </p>
+                                <svg class="icon-paw" width="20" height="20">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="calendar__calendar-global">
+                        <div class="calendar__calendar-card-img">
+                            <?php
+                                $image = get_field('calendar_global_img'); 
+                            ?>
+                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                        </div>
+                        <div class="calendar__calendar-card-heading">
+                            <p><?php the_field('calendar_global_heading'); ?></p>
+                        </div>
+                        <div class="calendar__calendar-card-info">
+                            <p><?php the_field('calendar_global_info'); ?></p>
+                        </div>
+                        <a href="https://www.wcf-bestcat.de/show-calendar" target='_blank'>
+                            <div class="calendar__calendar-card-button red_medium_button">
+                                <p class='calendar__calendar-button-text'>
+                                    <?php the_field('calendar_button_text'); ?>
+                                </p>
+                                <svg class="icon-paw" width="20" height="20">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
