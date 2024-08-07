@@ -136,7 +136,6 @@ get_header();
         <style>
             .rules-responsibility {
                 background-image: url("<?php the_field('white-cat-bg') ?>"); 
-                /* background-position: -220px -365px; */
             }
         </style> 
         <div class="container">
@@ -146,7 +145,7 @@ get_header();
             <div class="rules-responsibility__container">
                 <div class="rules-responsibility__wrapper">
                     <div class="responsibility-card responsibility-card-1">
-                        <svg class="responsibility-card__img responsibility-card__img-1" width="48" height="48">
+                        <svg class="responsibility-card__img responsibility-card__img-1" width="49" height="53">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-smile">
                             </use>
                         </svg>
@@ -155,7 +154,7 @@ get_header();
                         </p>
                     </div>
                     <div class="responsibility-card responsibility-card-2">
-                        <svg class="responsibility-card__img responsibility-card__img-2" width="60" height="60">
+                        <svg class="responsibility-card__img responsibility-card__img-2" width="43" height="53">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-award-dark">
                             </use>
                         </svg>
@@ -164,7 +163,7 @@ get_header();
                         </p>
                     </div>
                     <div class="responsibility-card responsibility-card-3">
-                        <svg class="responsibility-card__img responsibility-card__img-3" width="48" height="48">
+                        <svg class="responsibility-card__img responsibility-card__img-3" width="49" height="53">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-smile">
                             </use>
                         </svg>
@@ -173,7 +172,7 @@ get_header();
                         </p>
                     </div>
                     <div class="responsibility-card responsibility-card-4">
-                        <svg class="responsibility-card__img responsibility-card__img-4" width="54" height="54">
+                        <svg class="responsibility-card__img responsibility-card__img-4" width="55" height="53">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-mortarboard">
                             </use>
                         </svg>
@@ -182,7 +181,7 @@ get_header();
                         </p>
                     </div>
                     <div class="responsibility-card responsibility-card-5">
-                        <svg class="responsibility-card__img responsibility-card__img-5" width="48" height="48">
+                        <svg class="responsibility-card__img responsibility-card__img-5" width="45" height="53" >
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-award-light">
                             </use>
                         </svg>
@@ -324,7 +323,7 @@ get_header();
                             <?php the_field('adult-cats__info-above-purple-card'); ?>
                         </p>
                     </div>
-                    <div class="adult-cats__triangles">
+                    <div class="adult-neutercats__triangles">
                         <svg class="triangle-down-svg" width="45" height="24">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#triangle-down">
                             </use>
@@ -361,12 +360,12 @@ get_header();
                                 ?>
                             </div>
                             <div class="other-cards-info">
-                                <svg class="other-cards-info-svg" width="58" height="10">
+                                <svg class="other-cards-info-svg" width="58" height="11">
                                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#long-arrow-left">
                                     </use>
                                 </svg>
                                 <?php the_field('other-cards-info'); ?>
-                                <svg class="other-cards-info-svg" width="58" height="10">
+                                <svg class="other-cards-info-svg" width="58" height="11">
                                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#long-arrow-right">
                                     </use>
                                 </svg>
