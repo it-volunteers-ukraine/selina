@@ -365,7 +365,7 @@
     width: 100%;
     left: 0;
     top: 88px;
-    height: 590px;
+    padding-bottom: 35px;
 
     @media screen and (min-width: $tablet) {
       left: auto;
@@ -388,11 +388,18 @@
 
     .header__list-mobile {
       text-align: left;
-      margin-bottom: 32px;
       padding-top: 65px;
       display: flex;
       flex-wrap: wrap;
       position: relative;
+
+      @media (min-width: 320px) {
+       margin-bottom: 20px;
+      }
+
+      @media (min-width: $mobile) {
+        margin-bottom: 32px;
+      }
 
       .menu-item {
         color: $primary-color;
@@ -402,6 +409,14 @@
         text-transform: capitalize;
         width: 50%;
         position: relative;
+
+        @media (min-width: 320px) {
+          font-size: 17px;
+        }
+
+        @media (min-width: $mobile) {
+          font-size: 20px;
+        }
 
         a {
           svg {
@@ -413,7 +428,7 @@
           display: none;
 
           .menu-item {
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             a {
               white-space: nowrap;
               font-weight: 500;
@@ -434,7 +449,7 @@
     }
 
     .active{
-      padding-bottom: 67px;
+      padding-bottom: 85px;
     }
 
     .social-media {
