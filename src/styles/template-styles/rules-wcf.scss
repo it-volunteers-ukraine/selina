@@ -136,7 +136,12 @@ html {
             display: flex;
             flex-direction: column;
             gap: 24px; 
+            @media screen and (min-width: $tablet) {
+                width: 704px;
+                margin: 0 auto;
+            }
             @media screen and (min-width: $desktop) {
+                width: 1129px;
                 flex-direction: row;
             }
         }
@@ -194,10 +199,10 @@ html {
                     .wcf_word {
                         color: $primary-color;
                     }
-                    .optional {
+                    &:nth-child(5), &:nth-child(6) {
                         display: none;
                         @media screen and (min-width: $tablet) {
-                            display: initial;
+                            display: list-item;
                         }
                     }
                 }   
@@ -229,7 +234,12 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
+                width: 704px;
                 gap: 24px;
+                margin: 0 auto;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 100%;
             }
         }
         &__img {
@@ -294,8 +304,8 @@ html {
         background-size: cover;
         padding: 37px 1.5px;
         @media screen and (min-width: $tablet) {
-            background-position: -410px -5px;
-            padding: 56px 0 64px;
+            background-position: -410px 0;
+            padding: 58px 1px 58px;
         }
         @media screen and (min-width: $desktop) {
             background-position: 5px -200px;
@@ -318,8 +328,10 @@ html {
             }
         }
         &__container {
-            display: flex;
-            justify-content: center;
+            @media screen and (min-width: $tablet) {
+                display: flex;
+                justify-content: center;
+            }
         }
         &__wrapper {
             display: grid;
@@ -370,6 +382,9 @@ html {
                     width: 360px;
                     height: 190px;
                 }
+                &__img {
+                    align-self: center;
+                }
                 &__content {
                     font-weight: 800;
                     font-size: 20px;
@@ -401,17 +416,26 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
+                width: 704px;
                 gap: 24px;
+                margin: 0 auto;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 100%;
             }
         }
         &__img {
             height: 240px;
-            width: 340px;
+            width: 100%;
             border-radius: 10px;
             overflow: hidden;
             flex-shrink: 0;
             align-self: center;
+            @media screen and (min-width: 499px) {
+                height: 340px;
+            }
             @media screen and (min-width: $tablet) {
+                height: 240px;
                 width: 360px;
             }
             img {
@@ -533,7 +557,11 @@ html {
                     flex-direction: row;
                     justify-content: space-between;
                     .triangle-down-svg {
-                        margin: 0 0 8px 16px;
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 0 8px 16px;
+                        }
                         @media screen and (min-width: $desktop) {
                             width: 73px;
                             height: 38px;
@@ -541,7 +569,11 @@ html {
                         }
                     }
                     .triangle-up-svg {
-                        margin: 0 20px 11px 0;
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 20px 11px 0;
+                        }
                         @media screen and (min-width: $desktop) {
                             width: 73px;
                             height: 38px;
@@ -624,10 +656,45 @@ html {
                             gap: 16px;
                         }
                         &-svg {
+                            @media screen and (min-width: $tablet) {
+                                width: 58px;
+                                height: 11px;
+                            }
                             @media screen and (min-width: $desktop) {
                                 width: 93px;
                                 height: 15px;
                             }
+                        }
+                    }
+                }
+            }
+            .adult-neutercats {
+                &__triangles {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .triangle-down-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 0 8px 16px;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 0 13px 25px;
+                        }
+                    }
+                    .triangle-up-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 20px 11px 0;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 35px 23px 0;
                         }
                     }
                 }
@@ -648,8 +715,12 @@ html {
                         width: 432px;
                     }
                     .triangle-right-svg {
-                        align-self: center;
-                        margin: 25px 15px 0 21px;
+                        @media screen and (min-width: $tablet) {
+                            width: 24px;
+                            height: 45px;
+                            align-self: center;
+                            margin: 25px 15px 0 21px;
+                        }
                         @media screen and (min-width: $desktop) {
                             width: 37px;
                             height: 72px;
@@ -688,17 +759,26 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
+                width: 704px;
                 gap: 24px;
+                margin: 0 auto;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 100%;
             }
         }
         &__img {
             height: 240px;
-            width: 340px;
+            width: 100%;
             border-radius: 10px;
             overflow: hidden;
             flex-shrink: 0;
             align-self: center;
-            @media screen and (min-width: $desktop) {
+            @media screen and (min-width: 499px) {
+                height: 340px;
+            }
+            @media screen and (min-width: $tablet) {
+                height: 240px;
                 width: 360px;
             }
             img {
