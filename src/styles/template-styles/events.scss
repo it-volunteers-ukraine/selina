@@ -230,6 +230,7 @@
     }
 
     &__news-section__button {
+        gap: 8px;
         @media screen and (min-width: $desktop) {
            margin-top: auto;
         }

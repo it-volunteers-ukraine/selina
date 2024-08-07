@@ -182,7 +182,7 @@ get_header();
                                             <?php the_field('news_text'); ?>
                                         </p>
                                         <a class="exhibitions__news-section__button news-section__button button red_medium_button" href="<?php the_field('news_link'); ?>">
-                                            <?php the_field('news_btn'); ?>
+                                            <p><?php the_field('news_btn'); ?></p>
                                             <svg class="news-section__button-svg" width="16" height="15">
                                                 <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
                                             </svg>
@@ -201,7 +201,7 @@ get_header();
                 <a href="/">
                     <div class="exhibitions__last-button green_medium_button">
                         <p class=exhibitions__last-button-text>
-                            <?php the_field('exhibitions_last-button-text'); ?>
+                            <?php the_field('exhibitions__last-button-text'); ?>
                         </p>
                         <svg class="icon-paw" width="17" height="15">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
