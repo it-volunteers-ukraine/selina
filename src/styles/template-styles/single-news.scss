@@ -130,8 +130,8 @@
 .wrapper-news-section {
   margin-bottom: 0;
 
-  @media screen and (min-width: $tablet) {
-    margin-bottom: 23px;
+  @media screen and (min-width: $tablet) {   
+    margin-bottom: 26px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -143,13 +143,17 @@
 .wrapper-breadcrumbs-section {
   margin-bottom: 30px;
 
+  @media screen and (min-width: $tablet) {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  } 
+
   @media screen and (min-width: $desktop) {
     display: flex;
     align-items: center;
     justify-content: baseline;
     height: 80px;
-  }
-      
+  }      
 }
 
 .wrapper-news-section {
@@ -165,10 +169,10 @@
   }
 }
 
-/* Основна новина*/
-.container {
+
+.main-content-container {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   margin-top: 0px;
   margin-bottom: 0px;
   padding-left: 16px;
@@ -176,8 +180,24 @@
   background-color: #ffffff;
 
   @media screen and (min-width: $tablet) {
-    box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
-  }
+      margin-right: 32px;
+      margin-left: 32px;
+      margin-bottom: 56px;      
+      width: calc(100% - 64px);
+      box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+  
+    @media screen and (min-width: $desktop) {
+      margin-right: 32px;
+      margin-left: 32px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+}
+
+
+/* Основна новина*/
+.container {  
 
 .news-section {
   &__item {
@@ -189,6 +209,7 @@
     @media screen and (min-width: $tablet) {
       flex-direction: column;
       align-items: center;
+      width: 100%;
     }
 
     @media screen and (min-width: $desktop) {
@@ -211,7 +232,8 @@
     order: 1;
     
     @media screen and (min-width: $tablet) {
-      margin-top: 0;
+      margin-top: 26px;
+      margin-bottom: 20px;
     }
     
     @media screen and (min-width: $desktop) {
@@ -226,10 +248,14 @@
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 16px;
+    text-align: center;
     order: 2;
   
     @media screen and (min-width: $tablet) {
-      margin-top: 24px;
+      width: 100%;
+      text-align: left;
+      margin-top: 0;
+      margin-bottom: 24px;
     }
   
     @media screen and (min-width: $desktop) {
@@ -248,7 +274,9 @@
     order: 3;
         
     @media screen and (min-width: $tablet) {
-      max-width: calc(50% - 12px);
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 24px;
     }
         
     @media screen and (min-width: $desktop) {
@@ -265,7 +293,8 @@
     order: 4;
     
     @media screen and (min-width: $tablet) {
-      margin-top: 24px;
+      width: 100%;
+      margin-bottom: 24px;     
     }
     
     @media screen and (min-width: $desktop) {
@@ -280,6 +309,12 @@
     align-items: center;
     gap: 16px;
     margin-bottom: 24px;
+
+    @media screen and (min-width: $tablet) {
+        gap: 0;
+        width: 100%;
+      }
+
   }
 
   &__heading {
@@ -307,6 +342,10 @@
   &__first-button {
     align-self: flex-start;    
     order: 5;
+
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 40px;
+    }
 
     @media screen and (min-width: $desktop) {
       order: none;
@@ -336,9 +375,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 16px;
-  
-    @media screen and (min-width: $tablet) {}
+    margin-top: 16px;    
   
     @media screen and (min-width: $desktop) {
       margin-top: 36px;
@@ -350,7 +387,12 @@
 /* Галерея фото*/
 
 .wrapper-news-section-gallary {
-  padding-bottom: 24px;  
+  padding-bottom: 24px;
+  
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 0;
+  }
+
 }
 
 .news-section__gallery {
@@ -366,6 +408,14 @@
   flex-direction: column;
   gap: 24px;
   margin-bottom: 24px;
+
+  @media screen and (min-width: $tablet) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+    align-items: start;
+  }
 
   @media screen and (min-width: $desktop) {
     display: grid;

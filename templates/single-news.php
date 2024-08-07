@@ -37,6 +37,7 @@ get_header();
    </div>
 </section>
 
+<section class="main-content-container">
 <!-- Сeкція новини -->
 <section class="wrapper-news-section">
   <div class="container">    
@@ -83,7 +84,7 @@ get_header();
   </div>      
 
 <!-- Галерея з кнопкою -->
-    <section class="wrapper-news-section-gallary">
+  <section class="wrapper-news-section-gallary">
     <div class="news-section__gallery">        
         <div class="gallery" id="gallery">
             <?php
@@ -117,12 +118,12 @@ get_header();
             </div>
         <?php endif; ?>
     </div>
-    </section>
-    <?php get_template_part('template-parts/join-us'); ?>
+  </section>
+</section>
+</section>
+  <?php get_template_part('template-parts/join-us'); ?>
 </main>
-<?php
-get_footer();
-?>
+<?php get_footer(); ?>
 
 <script>
 jQuery(document).ready(function ($) {
