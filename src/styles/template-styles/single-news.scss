@@ -197,7 +197,9 @@
 
 
 /* Основна новина*/
-.container {  
+.container {
+  padding-left: 0;
+  padding-right: 0;
 
 .news-section {
   &__item {
@@ -248,7 +250,7 @@
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 16px;
-    text-align: center;
+    text-align: left;
     order: 2;
   
     @media screen and (min-width: $tablet) {
@@ -387,6 +389,8 @@
 /* Галерея фото*/
 
 .wrapper-news-section-gallary {
+  padding-left: 0;
+  padding-right: 0;
   padding-bottom: 24px;
   
   @media screen and (min-width: $tablet) {
@@ -397,10 +401,7 @@
 
 .news-section__gallery {
   text-align: center;
-  padding-top: 0;
-  padding-right: 16px;
-  padding-left: 16px;
-  padding-bottom: 0px;  
+  padding: 0px;  
 }
 
 .gallery {
