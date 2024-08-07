@@ -17,7 +17,11 @@ get_header();
         </style>
          
         <div class="container">
-           <?php get_template_part( 'template-parts/breadcrumbs' ); ?>
+
+           <div class="single-breeder__breadcrumbs">
+            <a href="<?php the_field('breeder-page_breadcrumbs_page'); ?>"><?php the_field('breeder-page_breadcrumbs_page_name'); ?></a>
+        <?php the_field('breeder_name'); ?>
+      </div>
             <h3 class="section_heading single-breeder-first-section__heading">
                 <?php the_field('breeder_name'); ?>
             </h3>
@@ -83,18 +87,22 @@ get_header();
                     <div class="single-breeder-about-section__contacts-wrapper">
                         <p class="single-breeder-about-section__contacts-text">
                             <?php the_field('breeder-page_about-address-name'); ?></p>
-                        <p class="single-breeder-about-section__contacts-link">
-                            <?php the_field('breeder-page_about-address-address'); ?></p>
+                        <a href="<?php echo esc_url(  the_field('breeder-page_about-address-map') ); ?>" 
+                        target="_blank"
+                        class="single-breeder-about-section__contacts-link-address">
+                            <?php the_field('breeder-page_about-address-address'); ?></a>
                     </div>
                     <div class="single-breeder-about-section__socials-wrapper">
                         <?php
                         if (have_rows('breeder-page_about-socials')):
                             while (have_rows('breeder-page_about-socials')):
                                 the_row();
+                                 $link = get_sub_field('breeder-page_about-socials-link');
                                 ?>
 
                                 <a class="single-breeder-about-section-link"
-                                    href="<?php the_sub_field('breeder-page_about-socials-link') ?>">
+                                target="_blank"
+                                    href="<?php echo esc_url(  $link ); ?>">
                                     <img class="single-breeder-about-section-socials__img"
                                         src="<?php the_sub_field('breeder-page_about-socials-icon') ?>" />
                                 </a>
@@ -111,7 +119,7 @@ get_header();
 
         </div>
     </section>
-    <section class="section single-breeder-our-cats-section" id="#single-breeder-our-cats">
+    <section class="section single-breeder-our-cats-section" id="single-breeder-our-cats">
         <div class="container">
             <div class="single-breeder-our-cats-section__heading-wrapper">
             <h2 class="section_heading single-breeder-our-cats-section__heading">
@@ -138,7 +146,11 @@ get_header();
                     </button>
                 </div>
             </div>
-            <div class="single-breeder-our-cats-section__swiper swiper">
+            <div class="single-breeder-our-cats-section__subtext">
+                 <?php the_field('breeder-page_our-cats-text'); ?>
+            </div>
+            <div class="single-breeder-our-cats-section__swiper">
+                <div class="single-breeder-our-cats-section__swiper-inner swiper">
                 <?php
                 $images = get_field('breeder-page_our-cats-gallery');
                 $size = 'full'; // (thumbnail, medium, large, full or custom size)
@@ -153,9 +165,10 @@ get_header();
 
                 <?php endif; ?>
             </div>
+            </div>
         </div>
     </section>
-    <section class="section single-breeder-free-cats-section" id="#single-breeder-free-cats">
+    <section class="section single-breeder-free-cats-section" id="single-breeder-free-cats">
         <div class="container">
             <h2 class="section_heading single-breeder-free-cats-section__heading">
                 <svg class="single-breeder-heading-svg" width="42" height="60">
@@ -164,6 +177,43 @@ get_header();
                 </svg>
                 <?php the_field('breeder-page_free-cats-title'); ?>
             </h2>
+            <ul class="single-breeder-free-cats-section__wrapper">
+                        <?php
+                        if (have_rows('breeder-page_free-cats-cards')):
+                            while (have_rows('breeder-page_free-cats-cards')):
+                                the_row();
+                                ?>
+                                <li class="single-breeder-free-cats-section__item">
+                                <img class="single-breeder-free-cats-section__img"
+                                        src="<?php the_sub_field('breeder-page_free-cats-img') ?>" />
+                                <p class="single-breeder-free-cats-section__name"><?php the_sub_field('breeder-page_free-cats-name') ?></p>
+                               
+                                <?php $post_object = get_sub_field('breeder-page_free-cats-breed'); ?>
+                                <?php if( $post_object ): ?>
+                                <?php // override $post
+                                $post = $post_object;
+                                setup_postdata( $post );
+                                ?>
+                                <a class="single-breeder-free-cats-section__link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+                                <?php endif; ?>
+                                 <p class="single-breeder-free-cats-section__old"><?php the_sub_field('breeder-page_free-cats-old') ?></p>
+                                <p class="single-breeder-free-cats-section__info"><?php the_sub_field('breeder-page_free-cats-info') ?></p>
+                                </li>
+                            <?php
+                            endwhile;
+                        else:
+                        endif;
+                        ?>
+
+                    </ul>
+                    <button class="single-breeder-free-cats-section__button button green_medium_button visually-hidden">
+                        <?php the_field('breeder-page_free-cats-btn-text'); ?>
+                        <svg class="single-breeder-free-cats-section__button-svg" width="16" height="15">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                    </button>
         </div>
     </section>
     <?php get_template_part('template-parts/join-us'); ?>

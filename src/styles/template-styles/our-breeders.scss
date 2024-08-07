@@ -103,9 +103,14 @@
   }
 
   &__img {
-    width: 343px;
-    height: 266px;
+    width: 288px;
+    height: auto;
     border-radius: 8px;
+
+    @media screen and (min-width: $mobile) {
+      width: 343px;
+      height: 266px;
+    }
 
     @media screen and (min-width: $tablet) {
       width: 704px;
@@ -143,6 +148,13 @@
     gap: 6px;
   }
 
+  &__filter-text {
+    font-size: 16px;
+    @media screen and (min-width: $mobile) {
+      font-size: 20px;
+    }
+  }
+
   &__pagination {
     display: flex;
     align-items: center;
@@ -171,25 +183,50 @@
     font-size: 24px;
     font-weight: 800;
 
-    color: $primary-color;
-    background-color: $white;
-    border: 1px solid $primary-color;
+    color: $white;
+    background-color: $primary-color;
+    border: 1px solid $white;
 
     &.is-active {
-      color: $white;
-      background-color: $primary-color;
-      border: 1px solid $white;
+      color: $primary-color;
+      background-color: $white;
+      border: 1px solid $primary-color;
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+    &:hover {
+      border: 1px solid $primary-color;
     }
   }
 
   &__pagination-right,
   &__pagination-left {
-    &:focus {
-      color: $white;
-      background-color: $primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: $big-br;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33;
+    text-align: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background-color: $primary-color;
+    color: $white;
+    &:enabled:hover {
+      color: $primary-color;
+      background-color: $white;
     }
     &:disabled {
       cursor: not-allowed;
+      color: $primary-color;
+      background-color: $white;
     }
   }
 

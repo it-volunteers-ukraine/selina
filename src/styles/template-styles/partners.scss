@@ -33,7 +33,14 @@
 
     .mobile-title {
       white-space: nowrap;
-      font-size: 24px;
+
+      @media screen and (min-width: 320px) {
+        font-size: 24px;
+      }
+
+      @media screen and (min-width: $mobile) {
+        font-size: 26px;
+      }
 
       @media screen and (min-width: $tablet) {
         font-size: 30px;
@@ -99,6 +106,11 @@
 
       .partners-title {
         margin-bottom: 10px;
+        font-size: 30px;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 45px;
+        }
         @media screen and (min-width: $desktop) {
           margin-bottom: 20px;
         }
@@ -118,6 +130,10 @@
         font-size: 16px;
         font-weight: 800;
         color: $primary-color;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 20px;
+        }
 
         .icon-paw {
           width: 14px;
@@ -308,6 +324,18 @@
       display: flex;
       flex-direction: column;
 
+      @media screen and (min-width: 320px) {
+        font-size: 17px;
+      }
+
+      @media screen and (min-width: $mobile) {
+        font-size: 16px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        font-size: 20px;
+      }
+
       .description {
         font-size: 16px;
         margin-bottom: 40px;
@@ -331,6 +359,7 @@
         flex-direction: column;
         margin-top: 20px;
         margin-bottom: 32px;
+        gap: 20px;
 
         @media screen and (min-width: $tablet) {
           display: flex;
@@ -376,7 +405,7 @@
   background-color: $background;
 
   .photographs-title {
-    font-size: 20px;
+    font-size: 26px;
 
     @media screen and (min-width: $tablet) {
       font-size: 30px;
