@@ -8,11 +8,11 @@ get_header();
 
 <main>
   <!-- Заголово секції -->
-<section class="news-section heading-section-news">
-    <div class="heading-news-section__background-img">
+<section class="heading-section-news">
+    <div class="heading-section-news__background-img">
       <img src="http://selina.it-volunteers.com/wp-content/uploads/2024/07/cat_upper_section_bg.jpg" alt="Background image with cat">
     </div>      
-    <h2 class="news-section__heading section_heading">
+    <h2 class="heading section_heading">
       Події
     </h2>
 </section>
@@ -21,7 +21,18 @@ get_header();
 <section class="wrapper-breadcrumbs-section">
   <div class="breadcrumbs-section">
     <p>
-      <span class="breadcrumbs-events">Виставки клубу / </span><span class="breadcrumbs-event">Ternopil - Ukraine WCF SHOW LICENSING</span>
+      <?php
+      $breadcrumb_title = get_field('breadcrumb_title');
+      $breadcrumb_link = get_field('breadcrumb_link');
+
+      if ($breadcrumb_title && $breadcrumb_link) {
+          echo '<span class="breadcrumbs-events"><a href="' . esc_url($breadcrumb_link) . '" class="breadcrumb-link">' . esc_html($breadcrumb_title) . '</a> / </span>';
+      } else {
+          echo '<span class="breadcrumbs-events breadcrumb-link">Виставки клубу / </span>';
+      }
+      ?>
+      <br class="responsive-br">
+      <span class="breadcrumbs-event breadcrumb-title">Ternopil - Ukraine WCF SHOW LICENSING</span>
     </p>
    </div>
 </section>
@@ -30,57 +41,54 @@ get_header();
 <section class="wrapper-news-section">
   <div class="container">    
     <div class="news-section__item">
-       <?php
-          if (have_posts()) : while (have_posts()) : the_post(); ?>
-            <img 
-            src="<?php the_field('news_photo'); ?>" 
-            alt="<?php the_field('news_name'); ?>" 
-            />
-            <div class="news-section__text-wrapper">
-              <div class="news-section__date">
-                <p>
-                  <svg width="18" height="18">
-                    <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-clock"></use>
-                  </svg>
-                  <?php the_field('news_date'); // Дата виставки ?>
-                </p>
-                <p>
-                  <svg width="18" height="18">
-                    <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-calendar"></use>
-                  </svg>
-                  <?php the_field('news_time'); // Час виставки ?>
-                </p>
-              </div>
-              <p class="news-section__name">
-                <?php the_field('news_name'); // Назва виставки ?>
-              </p>
-              <p class="news-section__text">
-                <?php the_field('news_text'); // Опис виставки ?>
-              </p>
-              <div class="news-section__first-button button red_medium_button">
-                <a class="news-section__first-btn" href="/">
-                  <p class="news-section__first-button-text">
-                    Заповнити Анкету
-                  </p>
-                  <svg class="news-section__button-svg" width="16" height="15">
-                    <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-arrow_left_up"></use>
-                  </svg>
-                </a>      
-              </div>
-            </div> 
+      <div class="news-section__text-wrapper">            
+        <div class="news-section__date">
+          <p>
+            <svg width="18" height="18">
+              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-calendar">                
+              </use>
+            </svg>
+            <?php the_field('news_date'); // Дата виставки ?>
+          </p>
+          <p>
+            <svg width="18" height="18">
+              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-clock">                
+              </use>
+            </svg>
+            <?php the_field('news_time'); // Час виставки ?>
+          </p>
+        </div>
+        <p class="news-section__name">
+          <?php the_field('news_name'); // Назва виставки ?>
+        </p>              
+        <img class="news-section__img"
+        src="<?php the_field('news_photo'); ?>" 
+        alt="<?php the_field('news_name'); ?>" 
+        /> 
+        <p class="news-section__text">
+          <?php the_field('news_text'); // Опис виставки ?>
+        </p>
+        <div class="news-section__first-button button red_medium_button">
+          <a class="news-section__first-btn" href="/">
+            <p class="news-section__first-button-text">
+              Заповнити Анкету
+            </p>
+            <svg class="news-section__button-svg" width="16" height="15">
+              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-arrow_left_up"></use>
+            </svg>
+          </a>      
+        </div>
       </div>
-      <?php
-      endwhile;
-      endif;
-      wp_reset_postdata();
-      ?>
+    </div> 
+  </div>      
 
-      <!-- Галерея з кнопкою -->
-    <section class="wrapper-news-section">
+<!-- Галерея з кнопкою -->
+    <section class="wrapper-news-section-gallary">
     <div class="news-section__gallery">        
         <div class="gallery" id="gallery">
             <?php
             $images = get_field('news_gallery'); // Отримуємо зображення з ACF
+            $size = 'full'; // (thumbnail, medium, large, full or custom size)
 
             // Перевірка, чи є зображення
             if ($images) {                
@@ -88,21 +96,21 @@ get_header();
                     // Виведення кожного зображення
                     echo '<div class="gallery-item">';
                     echo '<a href="' . esc_url($image['url']) . '" data-fancybox="gallery">';
-                    echo '<img src="' . esc_url($image['sizes']['thumbnail']) . '" alt="' . esc_attr($image['alt']) . '">';
+                    echo '<img src="' . esc_url($image['sizes']['medium']) . '" alt="' . esc_attr($image['alt']) . '">';
                     echo '</a>';
                     echo '</div>';
                 }
                 echo '</div>';
             } else {
                 echo '<p>No images found.</p>';
-            }
+            }            
             ?>
         </div>
         <?php if ($images && count($images) > 4): ?>
-            <div class="news-section__last-button button green_medium_button">
-                <button id="load-more" class="news-section__last-btn">
-                    <p class="news-section__last-button-text">Показати більше</p>
-                    <svg class="news-section__button-svg" width="16" height="15">
+            <div class="gallary-button button green_medium_button">
+                <button id="load-more" class="gallary-section__last-btn">
+                    <p class="gallary-section__last-btn-text">Показати більше</p>
+                    <svg class="gallary-section__button-svg" width="16" height="15">
                         <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
                 </button>        
@@ -110,6 +118,7 @@ get_header();
         <?php endif; ?>
     </div>
     </section>
+    <?php get_template_part('template-parts/join-us'); ?>
 </main>
 <?php
 get_footer();
