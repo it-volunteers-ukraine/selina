@@ -103,7 +103,7 @@ get_header();
                                 <a class="single-breeder-about-section-link"
                                 target="_blank"
                                     href="<?php echo esc_url(  $link ); ?>">
-                                    <img class="single-breeder-about-section-socials__img"
+                                    <img class="single-breeder-about-section__socials-img"
                                         src="<?php the_sub_field('breeder-page_about-socials-icon') ?>" />
                                 </a>
                             <?php
@@ -166,7 +166,24 @@ get_header();
                 <?php endif; ?>
             </div>
             </div>
+             <div class="single-breeder-our-cats-section__pagination pagination-mobile">
+                    <button class="single-breeder-our-cats-section__arrow-left-btn single-breeder-our-cats-section__arrow-btn">
+                        <svg class="single-breeder-our-cats-section__arrow-left one-arrow" width="10.37" height="16.97">
+                            <use
+                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+                            </use>
+                        </svg>
+                    </button>
+                    <button class="single-breeder-our-cats-section__arrow-right-btn single-breeder-our-cats-section__arrow-btn">
+                        <svg class="single-breeder-our-cats-section__arrow-right one-arrow" width="10.37" height="16.97">
+                            <use
+                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
         </div>
+       
     </section>
     <section class="section single-breeder-free-cats-section" id="single-breeder-free-cats">
         <div class="container">
