@@ -323,8 +323,10 @@ html {
             }
         }
         &__container {
-            display: flex;
-            justify-content: center;
+            @media screen and (min-width: $tablet) {
+                display: flex;
+                justify-content: center;
+            }
         }
         &__wrapper {
             display: grid;
@@ -419,12 +421,16 @@ html {
         }
         &__img {
             height: 240px;
-            width: 340px;
+            width: 100%;
             border-radius: 10px;
             overflow: hidden;
             flex-shrink: 0;
             align-self: center;
+            @media screen and (min-width: 499px) {
+                height: 340px;
+            }
             @media screen and (min-width: $tablet) {
+                height: 240px;
                 width: 360px;
             }
             img {
@@ -758,12 +764,16 @@ html {
         }
         &__img {
             height: 240px;
-            width: 340px;
+            width: 100%;
             border-radius: 10px;
             overflow: hidden;
             flex-shrink: 0;
             align-self: center;
-            @media screen and (min-width: $desktop) {
+            @media screen and (min-width: 499px) {
+                height: 340px;
+            }
+            @media screen and (min-width: $tablet) {
+                height: 240px;
                 width: 360px;
             }
             img {
