@@ -309,6 +309,72 @@ html {
             background-position: -0px -1055px;
         }
     }
+    /*Gallery section----------------------------------*/
+    .gallery-section {
+        &__heading {
+            @extend .club-membership-sections-heading;
+        }
+        &__text {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.31;
+            margin-bottom: 16px;
+        }
+        &__swiper {
+            width: 100%;
+            height: 228px;
+            margin-bottom: 24px;
+            @media screen and (min-width: $tablet) {
+                height: 307px;
+            }
+            @media screen and (min-width: 498px) {
+                height: 400px;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 1128px;
+            }
+            .swiper-slide {
+                width: 100%;
+                border-radius: 10px;
+                overflow: hidden;
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        &__pagination {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        &__arrow-btn {
+            width: 44px;
+            height: 44px;
+            gap: 8px;
+            border-radius: 10px;
+            background-color: $primary-color;
+            color: $white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        
+            svg {
+              height: 15px;
+              width: 16px;
+              fill: currentColor;
+              margin-left: 4px;
+            }
+        
+            &:hover {
+              background-color: $white;
+              color: $primary-color;
+            }
+        }
+    }
     /*Benefits section ------------------------------*/
     .benefits-section {
         &__heading {

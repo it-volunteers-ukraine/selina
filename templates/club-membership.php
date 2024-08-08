@@ -172,6 +172,38 @@ get_header();
                 </svg>
                 <?php the_field('gallery-section__heading'); ?>
             </h2>
+            <p class="gallery-section__text">
+                <?php the_field('gallery-section__text')?>
+            </p>
+            <?php 
+            $images = get_field('gallery-section__swiper');
+            if( $images ): ?>
+                <div class="swiper gallery-section__swiper">
+                    <div class="swiper-wrapper">
+                        <?php foreach( $images as $image ): ?>
+                            <div class="swiper-slide">
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="gallery-section__pagination">
+                <button class="gallery-section__arrow-left-btn gallery-section__arrow-btn">
+                    <svg class="gallery-section__arrow-left one-arrow" width="10.37" height="16.97">
+                        <use
+                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+                        </use>
+                    </svg>
+                </button>
+                <button class="gallery-section__arrow-right-btn gallery-section__arrow-btn">
+                    <svg class="gallery-section__arrow-right one-arrow" width="10.37" height="16.97">
+                        <use
+                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+                        </use>
+                    </svg>
+                </button>
+            </div>
         </div>
     </section>
     <!-- Benefits section -->
