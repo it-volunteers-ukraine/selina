@@ -7,8 +7,10 @@ const newsSwiper = new Swiper(
     spaceBetween: 24,
     centeredSlides: true,
     watchOverflow: true,
+    autoHeight: true,
     breakpoints: {
       768: {
+        autoHeight: false,
         centeredSlides: false,
         slidesPerView: 1.5,
         spaceBetween: 23,
