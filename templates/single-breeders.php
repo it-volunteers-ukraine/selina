@@ -17,7 +17,6 @@ get_header();
         </style>
          
         <div class="container">
-
            <div class="single-breeder__breadcrumbs">
             <a href="<?php the_field('breeder-page_breadcrumbs_page'); ?>"><?php the_field('breeder-page_breadcrumbs_page_name'); ?></a>
         <?php the_field('breeder_name'); ?>

@@ -190,7 +190,7 @@ function wp_it_volunteers_scripts()
 /** add fonts */
 function add_google_fonts()
 {
-    wp_enqueue_style('google_web_fonts', 'https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap', [], null);
+    wp_enqueue_style('google_web_fonts', 'https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap', [], null);
 }
 
 add_action('wp_enqueue_scripts', 'add_google_fonts');
@@ -510,6 +510,7 @@ function get_partners_per_page($width)
 
 function get_breeders_per_page($width)
 {
+    return 1;
     if ($width > 767.98) {
         return 12;
     } else {
