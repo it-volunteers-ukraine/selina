@@ -101,22 +101,61 @@ get_header();
                                     </div>
                                     <div class="webinars__news-section__content-wrapper">
                                         <div class="webinars__news-section__date-time">
-                                            <div class="webinars__news-section__date-container">
-                                                <svg width="22" height="22"> 
-                                                    <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
-                                                </svg> 
-                                                <p class="webinars__news-section__date">
-                                                    <?php the_field('news_date'); ?>
-                                                </p>
-                                            </div>
-                                            <div class="webinars__news-section__time-container">
-                                                <svg width="22" height="22"> 
-                                                <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#clock-icon"></use>  
-                                                </svg> 
-                                                <p class="webinars__news-section__time">
-                                                    <?php the_field('news_time'); ?>
-                                                </p>
-                                            </div>
+                                            <!-- DATE -->
+                                            <?php
+                                                if (!empty(get_field('news_date_meta'))):
+                                            ?>
+                                                <div class="webinars__news-section__date-container">
+                                                    <svg width="22" height="22"> 
+                                                        <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
+                                                    </svg> 
+                                                    <p class="webinars__news-section__date">
+                                                        <?php
+                                                            $current_lang = pll_current_language();
+                                                            if ($current_lang == 'ua') {
+                                                                $date_str = get_field('news_date_meta');
+
+                                                                if ($date_str) {
+                                                                    $date = new DateTime($date_str);
+                                                                    $months = [
+                                                                        1 => 'Січня', 2 => 'Лютого', 3 => 'Березня', 4 => 'Квітня',
+                                                                        5 => 'Травня', 6 => 'Червня', 7 => 'Липня', 8 => 'Серпня',
+                                                                        9 => 'Вересня', 10 => 'Жовтня', 11 => 'Листопада', 12 => 'Грудня'
+                                                                    ];
+                                                                    $month_num = (int) $date->format('m');
+                                                                    echo $date->format('j ') . $months[$month_num];
+                                                                }
+                                                            } elseif ($current_lang == 'en') {
+                                                                $date_str = get_field('news_date_meta');
+
+                                                                if ($date_str) {
+                                                                    $date = new DateTime($date_str);
+                                                                    echo $date->format('j F');
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                            <?php endif; ?>
+                                            <!-- TIME -->
+                                            <?php
+                                                if(!empty(get_field('news_time_meta'))):
+                                            ?>
+                                                <div class="webinars__news-section__time-container">
+                                                    <svg width="22" height="22"> 
+                                                    <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#clock-icon"></use>  
+                                                    </svg> 
+                                                    <p class="webinars__news-section__time">
+                                                        <?php
+                                                        $time_str = get_field('news_time_meta');
+                                                        if ($time_str) {
+                                                            $time = new DateTime($time_str);
+                                                            echo $time->format('H:i');
+                                                        }
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                         <p class="webinars__news-section__name">
                                             <?php the_field('news_name'); ?>

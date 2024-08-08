@@ -352,12 +352,14 @@ get_header();
                         'orderby'           => 'date', 
                         'order'             => 'DESC',
                         'post_type' => 'news',
-                        'showposts' => 1,
-                        'tax_query' => array(
-                            'taxonomy' => 'news_categories',
-                            'field' => 'slug',
-                            'terms' => 'exhibition',
-                        )
+                        'posts_per_page' => 1,
+                       'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'news_categories',
+                                    'field' => 'slug',
+                                    'terms' => 'exhibition'
+                                )
+                            )
                     ); 
                 $myposts = get_posts($args);
                 foreach ($myposts as $post):
