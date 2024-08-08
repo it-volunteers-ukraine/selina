@@ -1,6 +1,7 @@
 // Scroll to TOP
 document.addEventListener('DOMContentLoaded', function() {
     let scrollTopBtn = document.getElementById("to-top-btn");
+    const btnContainer = document.querySelector('.up_btn-container');
 
     function scrollFunction() {
         let windowHeight = window.innerHeight;
@@ -17,27 +18,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (window.innerWidth <= 767) {
             if (bottomDistance <= 292) {
-                scrollTopBtn.style.bottom = `${292-bottomDistance + 16}px`;
+                btnContainer.classList.add('static-container');
+                btnContainer.classList.remove('moving-container');
+                scrollTopBtn.classList.add('static-button');
+                scrollTopBtn.classList.remove('moving-button');
+                const buttonPosition = 48;
+                scrollTopBtn.style.bottom = `${buttonPosition}px`;
             } else {
+                btnContainer.classList.remove('static-container');
+                btnContainer.classList.add('moving-container');
+                scrollTopBtn.classList.remove('static-button');
+                scrollTopBtn.classList.add('moving-button');
+                
                 scrollTopBtn.style.bottom = '16px';
             }
-        } else if (window.innerWidth >= 768 && window.innerWidth < 850) {
+        } else if (window.innerWidth >= 768 && window.innerWidth <= 1438) {
             if (bottomDistance <= 401) {
-                scrollTopBtn.style.bottom = `${401-bottomDistance + 16}px`;
+                btnContainer.classList.add('static-container');
+                btnContainer.classList.remove('moving-container');
+                scrollTopBtn.classList.add('static-button');
+                scrollTopBtn.classList.remove('moving-button');
+                const buttonPosition = 36;
+                scrollTopBtn.style.bottom = `${buttonPosition}px`;
             } else {
+                btnContainer.classList.remove('static-container');
+                btnContainer.classList.add('moving-container');
+                scrollTopBtn.classList.remove('static-button');
+                scrollTopBtn.classList.add('moving-button');
+
                 scrollTopBtn.style.bottom = '16px';
             }
-        } else if ( window.innerWidth >= 850 && window.innerWidth <= 1438) {
-            if (bottomDistance <= 359) {
-                scrollTopBtn.style.bottom = `${359-bottomDistance + 16}px`;
-            } else {
-                scrollTopBtn.style.bottom = '16px';
-            }
-        }
-        else {
+        } else {
             if (bottomDistance <= 433 && window.innerWidth >= 1439) {
-                scrollTopBtn.style.bottom = `${433-bottomDistance + 16}px`;
+                btnContainer.classList.add('static-container');
+                btnContainer.classList.remove('moving-container');
+                scrollTopBtn.classList.add('static-button');
+                scrollTopBtn.classList.remove('moving-button');
+                const buttonPosition = 38;
+                scrollTopBtn.style.bottom = `${buttonPosition}px`;
             } else {
+                btnContainer.classList.remove('static-container');
+                btnContainer.classList.add('moving-container');
+                scrollTopBtn.classList.remove('static-button');
+                scrollTopBtn.classList.add('moving-button');
+
                 scrollTopBtn.style.bottom = '16px';
             }
         }
