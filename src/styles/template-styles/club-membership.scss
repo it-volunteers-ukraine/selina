@@ -392,27 +392,52 @@ html {
             margin-bottom: 24px;
         }
         &__stages {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            /*.registration {
-                &-stage {
+            .stages {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                &__card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 16px;
                     border-radius: 10px;
                     padding: 24px;
-                    width: 340px;
+                    width: 100%;
                     height: 320px;
                     box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
                     background: $white;
-                    gap: 24px;
+                    &-border {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: 1px solid $primary-color;
+                        border-radius: 10px;
+                        width: 83px;
+                        height: 77px;
+                    }
+                    &-title {
+                        font-weight: 800;
+                        font-size: 20px;
+                        line-height: 1;
+                        text-align: center;
+                    }
+                    &-text {
+                        list-style-type: disc;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 1.31;
+                        align-self: flex-start;
+                        text-align: left;
+                        padding-left: 24px;
+                    }
                 }
-                &__number {
-                    border: 1px solid $primary-color;
-                    border-radius: 10px;
-                    width: 83px;
-                    height: 78px;
-                }
-            }*/
+            }
         } 
+        &__button {
+            align-self: center;
+            margin-top: 16px;
+        }
     }
 }
