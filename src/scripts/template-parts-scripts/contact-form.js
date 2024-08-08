@@ -122,7 +122,12 @@ document.addEventListener('DOMContentLoaded', function() {
                       popupThanks.textContent = 'Дякуємо!';
                       popupText.textContent = 'Ми отримали Ваше повідомлення';
                   }
-                  popUp.style.display = 'block';
+                popUp.style.display = 'block';
+
+                closeBtn.addEventListener('click', function() {
+                    popUp.style.display = 'none';
+                    location.reload();
+                });
               }
           }
       });
@@ -133,8 +138,4 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   
   observer.observe(form, config);
-  
-  closeBtn.addEventListener('click', function() {
-      popUp.style.display = 'none';
-  });
 });
