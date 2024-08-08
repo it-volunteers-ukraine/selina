@@ -377,6 +377,9 @@ html {
         &__heading {
             @extend .club-membership-sections-heading;
             margin-bottom: 24px;
+            @media screen and (min-width: $desktop) {
+                margin-bottom: 40px;
+            }
         }
         &__wrapper {
             display: flex;
@@ -384,12 +387,23 @@ html {
             .red-text {
                 color: $red;
             }
+            .second-black-text {
+                @media screen and (min-width: $desktop) {
+                    order: 2;
+                    margin-bottom: 0;
+                }
+            }
         }
         &__text {
             font-weight: 800;
             font-size: 20px;
             line-height: 1;
             margin-bottom: 24px;
+            @media screen and (min-width: $desktop) {
+                font-size: 24px;
+                margin-bottom: 40px;
+            }
+
         }
         &__stages {
             .stages {
@@ -400,6 +414,7 @@ html {
                 @media screen and (min-width: $tablet) {
                     display: grid;
                     grid-template-columns: repeat(2, 338px);
+                    gap: 24px;
                     width: 704px;
                     margin: 0 auto;
     
@@ -408,6 +423,13 @@ html {
                         justify-self: center; 
                         width: 340px;   
                     }
+                }
+                @media screen and (min-width: $desktop) {
+                    display: flex;
+                    flex-direction: row;
+                    width: 1129px;
+                    order: 1;
+                    margin-bottom: 40px;
                 }
                 &__card {
                     display: flex;
@@ -423,6 +445,10 @@ html {
                     @media screen and (min-width: $tablet) {
                         height: 386px;
                         gap: 24px; 
+                    }
+                    @media screen and (min-width: $desktop) {
+                        width: 358px;
+                        height: 386px;
                     }
                     &-border {
                         display: flex;
@@ -442,6 +468,9 @@ html {
                         @media screen and (min-width: $tablet) {
                             font-size: 24px;
                             height: 48px;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            height: 24px;
                         }
                     }
                     &-text {
@@ -463,6 +492,9 @@ html {
         &__button {
             align-self: center;
             margin-top: 16px;
+            @media screen and (min-width: $desktop) {
+                order: 3;
+            }
         }
     }
 }
