@@ -884,10 +884,6 @@
     @media screen and (min-width: $tablet) {
       margin-top: 0;
     }
-
-    svg {
-      fill: $red;
-    }
   }
 
   &__text {
@@ -900,9 +896,6 @@
     }
     @media screen and (min-width: $desktop) {
       margin-top: 40px;
-    }
-    svg {
-      fill: $red;
     }
   }
 }
