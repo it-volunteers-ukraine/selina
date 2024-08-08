@@ -117,6 +117,21 @@ function wp_it_volunteers_scripts()
         ));
     }
 
+            if (is_page_template('templates/breeds-cat.php')) {
+        wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
+        wp_enqueue_script('breeds-cat-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/breeds-cat.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
+        wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
+        wp_enqueue_script('breeds-cat-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), false, true);
+        wp_enqueue_script('breeds-cat-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_style('slick-style', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css', array('main'));
+        wp_enqueue_style('breeds-cat-style', get_template_directory_uri() . '/assets/styles/template-styles/breeds-cat.css', array('main'));
+        wp_localize_script('breeds-cat-scripts', 'myAjax', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('breeds-cat_nonce'),
+        ));
+    }
+
      if (is_singular() && locate_template('template-parts/breadcrumbs.php')) {
       wp_enqueue_style('breadcrumbs', get_template_directory_uri() . '/assets/styles/template-parts-styles/breadcrumbs.css', array('main'));
     }
@@ -152,6 +167,11 @@ function wp_it_volunteers_scripts()
     if (is_singular() && locate_template('template-parts/one-card-breeder.php')) {
         wp_enqueue_style('one-card-breeder-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-breeder.css', array('main'));
         wp_enqueue_script('one-card-breeder-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/one-card-breeder.js', array('touch-swipe-scripts'), false, true);
+    }
+
+     if (is_singular() && locate_template('template-parts/one-card-breed.php')) {
+        wp_enqueue_style('one-card-breed-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-breed.css', array('main'));
+        wp_enqueue_script('one-card-breed-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/one-card-breed.js', array('touch-swipe-scripts'), false, true);
     }
 
     if (is_singular() && locate_template('template-parts/friends-clubs-card.php')) {
@@ -385,6 +405,57 @@ function load_breeders()
     wp_die();
 }
 
+/*** AJAX breeders */
+add_action('wp_ajax_load_breeds', 'load_breeds');
+add_action('wp_ajax_nopriv_load_breeds', 'load_breeds');
+
+function load_breeds()
+{
+    // Перевірка nonce
+    if (!isset($_POST["nonce"]) || !wp_verify_nonce($_POST["nonce"], "breeds-cat_nonce")) {
+        exit;
+    }
+
+    // Отримання параметрів з AJAX-запиту
+    $page = $_POST['page'];
+    $width = $_POST['width'];
+    $order = $_POST['order'];
+    $orderby = $_POST['orderby'];
+
+
+    // Визначення кількості постів на сторінку залежно від ширини
+    $number = get_breeds_per_page($width);
+
+    // Побудова запиту для отримання постів
+    $args = array(
+        'post_type' => 'breed',
+        'posts_per_page' => $number,
+        'order' => $order,
+        'orderby' => $orderby,
+        'paged' => $page,
+        'post_status' => 'publish'
+    );
+
+    $query = new WP_Query($args);
+    ob_start();
+    if ($query->have_posts()):
+        while ($query->have_posts()):
+            $query->the_post(); ?>
+            <?php get_template_part('template-parts/one-card-breed'); ?>
+        <?php endwhile;
+    endif;
+
+    $html = ob_get_clean();
+
+    $total_pages = $query->max_num_pages;
+
+    wp_reset_postdata();
+
+    // Відправка відповіді JSON з HTML та кількістю сторінок
+    wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
+    wp_die();
+}
+
 
 function load_partners_pagination()
 {
@@ -438,6 +509,15 @@ function get_partners_per_page($width)
 
 
 function get_breeders_per_page($width)
+{
+    if ($width > 767.98) {
+        return 12;
+    } else {
+        return 6;
+    }
+}
+
+function get_breeds_per_page($width)
 {
     if ($width > 767.98) {
         return 12;
