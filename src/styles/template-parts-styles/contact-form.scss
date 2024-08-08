@@ -568,7 +568,11 @@
     width: 155px;
   }
 
-  #wpcf7-f97-o1 > form > div.form-contacts__form-checkbox > div:nth-child(1) > p > span > span > span > label > span{
+  form > div.form-contacts__form-checkbox > div:nth-child(1) > p > span > span > span > label > span{
+    display: none;
+  }
+
+  form > div.form-contacts__form-checkbox > div:nth-child(1) > p > span > span > span > label > span{
     display: none;
   }
 
