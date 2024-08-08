@@ -245,10 +245,12 @@ get_header();
                 <div class="registration-section__stages">
                     <div class="stages">
                         <div class="stages__card prepare">
-                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
-                                </use>
-                            </svg>
+                            <div class="stages__card-border">
+                                <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#one">
+                                    </use>
+                                </svg>
+                            </div>
                             <p class="stages__card-title">
                                 <?php the_field('prepare__title'); ?>
                             </p>
@@ -256,58 +258,36 @@ get_header();
                                 <?php the_field('prepare__text'); ?>
                             </ul>
                         </div>
-                        <div class="stages__card prepare">
-                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
-                                </use>
-                            </svg>
+                        <div class="stages__card familiarize">
+                            <div class="stages__card-border">
+                                <svg class="stages__card-img stages__card-card-img-1" width="19" height="28">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#two">
+                                    </use>
+                                </svg>
+                            </div>
                             <p class="stages__card-title">
-                                <?php the_field('prepare__title'); ?>
+                                <?php the_field('familiarize__title'); ?>
                             </p>
                             <ul class="stages__card-text">
-                                <?php the_field('prepare__text'); ?>
+                                <?php the_field('familiarize__text'); ?>
                             </ul>
                         </div>
-                        <div class="stages__card prepare">
-                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
-                                </use>
-                            </svg>
+                        <div class="stages__card fill-out">
+                            <div class="stages__card-border">
+                                <svg class="stages__card-img stages__card-card-img-1" width="19" height="28">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#three">
+                                    </use>
+                                </svg>
+                            </div>
                             <p class="stages__card-title">
-                                <?php the_field('prepare__title'); ?>
+                                <?php the_field('fill-out__title'); ?>
                             </p>
                             <ul class="stages__card-text">
-                                <?php the_field('prepare__text'); ?>
+                                <?php the_field('fill-out__text'); ?>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="registration-section__stages">
-                    <div class="registration-stage">
-                        <div class="registration__number"><?php echo $registrationNumber; ?></div>
-                        <div class="registration__title"><?php echo $registrationTitle; ?></div>
-                        <ul class="registration__text"><?php echo $registrationText; ?></ul>
-                    </div>
-                    
-                    <?php
-                        if( have_rows('registration-stages') ):
-                            while( have_rows('registration-stages') ) : the_row();
-                                $registrationNumber = get_sub_field('registration__number');
-                                $registrationTitle = get_sub_field('registration__title');
-                                $registrationText = get_sub_field('registration__text');
-                                ?>
-                                    <div class="registration">
-                                        <div class="registration-stage">
-                                            <div class="registration__number"><?php echo $registrationNumber; ?></div>
-                                            <div class="registration__title"><?php echo $registrationTitle; ?></div>
-                                            <ul class="registration__text"><?php echo $registrationText; ?></ul>
-                                        </div>
-                                    </div>
-                                <?php 
-                            endwhile;
-                        endif;
-                    ?> 
-                </div> -->
                 <button class="registration-section__button button red_medium_button">
                     <a href="<?php echo esc_attr( get_field('registration-section__link') ); ?>" target="_blank">
                         <?php the_field('registration-section__button'); ?>
@@ -317,8 +297,7 @@ get_header();
         </div>
     </section>
 
-
-
+    <?php get_template_part('template-parts/join-us'); ?>
 </main>
 
 <?php get_footer(); ?>
