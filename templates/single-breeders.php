@@ -165,7 +165,7 @@ get_header();
                 <?php endif; ?>
             </div>
             </div>
-             <div class="single-breeder-our-cats-section__pagination pagination-mobile">
+             <div class="single-breeder-our-cats-section__pagination-mobile">
                     <button class="single-breeder-our-cats-section__arrow-left-btn single-breeder-our-cats-section__arrow-btn">
                         <svg class="single-breeder-our-cats-section__arrow-left one-arrow" width="10.37" height="16.97">
                             <use
