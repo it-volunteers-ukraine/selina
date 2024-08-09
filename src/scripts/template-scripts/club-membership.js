@@ -7,7 +7,6 @@ const swiper = new Swiper('.gallery-section__swiper', {
           slidesPerView: 1.5,
           spaceBetween: 23
         },
-        // коли ширина вікна >= 1024px
         1024: {
           slidesPerView: 2,
           spaceBetween: 24,
