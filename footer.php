@@ -11,7 +11,7 @@
         </button>
     </div>
 
-    <div class="container">
+    <div class="container footer-container">
         <!-- Logo-Selina -->
         <div class="footer__logo">
             <?php

@@ -26,12 +26,23 @@ function buttonContainerClassToggle() {
     if (bottomDistance > footerHeight) {
         btnContainer.classList.add('button-container-fixed');
         btnContainer.classList.remove('button-container-absolute');
-        btnContainer.style.bottom = '16px';
+        btnContainer.style.bottom = '0px';
         
     } else {
         btnContainer.classList.add('button-container-absolute');
         btnContainer.classList.remove('button-container-fixed');
-        btnContainer.style.bottom = (footerHeight + 16) + 'px';
+        // btnContainer.style.bottom = (footerHeight) + 'px';
+        
+        let windowWidth = window.innerWidth;
+        if (windowWidth < 768) {
+            btnContainer.style.bottom = '291px';
+        } else if (windowWidth >= 768 && windowWidth < 850) {
+            btnContainer.style.bottom = '403px';
+        } else if (windowWidth >= 850 && windowWidth <= 1438) {
+            btnContainer.style.bottom = '359px';
+        } else {
+            btnContainer.style.bottom = '430px';
+        }
     }
 }
 buttonContainerClassToggle();
