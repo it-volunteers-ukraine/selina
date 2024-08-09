@@ -16,7 +16,11 @@ get_header();
         </style>
          
         <div class="container">
-           <?php get_template_part( 'template-parts/breadcrumbs' ); ?>
+                    <div class="container">
+           <div class="single-breed__breadcrumbs">
+            <a href="<?php the_field('breed-page_breadcrumbs_page'); ?>"><?php the_field('breed-page_breadcrumbs_page_name'); ?></a>
+        <?php the_field('breed_name'); ?>
+      </div>
             <h3 class="section_heading single-breed-first-section__heading">
                 <?php the_field('breed_name'); ?>
             </h3>

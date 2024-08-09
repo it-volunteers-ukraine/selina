@@ -114,17 +114,26 @@ document.addEventListener('DOMContentLoaded', function() {
       mutations.forEach(function(mutation) {
           if (mutation.attributeName === 'class') {
               if (form.classList.contains('sent')) {
-                  popupThanks.textContent = `Дякуємо!`
-                  popupText.textContent = `Ми отримали Ваше повідомлення`;
+                  var language = document.documentElement.lang;
+                  if (language === 'en-GB') {
+                      popupThanks.textContent = 'Thank you!';
+                      popupText.textContent = 'We have received your message';
+                  } else {
+                      popupThanks.textContent = 'Дякуємо!';
+                      popupText.textContent = 'Ми отримали Ваше повідомлення';
+                  }
                   popUp.style.display = 'block';
               }
           }
       });
   });
+  
   var config = {
       attributes: true
   };
+  
   observer.observe(form, config);
+  
   closeBtn.addEventListener('click', function() {
       popUp.style.display = 'none';
   });

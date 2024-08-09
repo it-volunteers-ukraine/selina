@@ -28,7 +28,7 @@
   }
 
   &__heading {
-    font-size: 24px;
+    font-size: 30px;
     @media screen and (min-width: $tablet) {
       font-size: 45px;
     }
@@ -50,12 +50,13 @@
     align-items: baseline;
     color: $primary-color;
     gap: 4px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 800;
     line-height: 1;
     margin-top: 10px;
     @media screen and (min-width: $tablet) {
       gap: 10px;
+      font-size: 20px;
     }
   }
 

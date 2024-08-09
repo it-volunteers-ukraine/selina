@@ -371,7 +371,7 @@ get_header();
                                 <p>
                                     <svg width="18" height="18">
                                         <use
-                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clock">
+                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-red-clock">
                                         </use>
                                     </svg>
                                     <?php the_field('news_date') ?>
@@ -379,7 +379,7 @@ get_header();
                                 <p>
                                     <svg width="18" height="18">
                                         <use
-                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-calendar">
+                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-red-calendar">
                                         </use>
                                     </svg>
                                     <?php the_field('news_time') ?>
