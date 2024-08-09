@@ -279,6 +279,25 @@ get_header();
             </div>
         </section>
 
+        <section class='section beginners-tips' id='beginners-tips'>
+            <div class="container">
+                <div class="beginners-tips__heading-container">
+                    <span class="beginners-tips__La_cat"> 
+                        <svg width="24" height="24"> 
+                            <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-La_cat"></use> 
+                        </svg> 
+                    </span> 
+                    <h2 class="beginners-tips__heading">
+                        <?php the_field('beginners-tips__heading'); ?>
+                    </h2>
+                </div>
+                <div class='beginners-tips__slider-container'>
+
+                
+                </div>
+            </div>
+        </section>
+
         <?php get_template_part('template-parts/join-us') ?>
     </main>
 
