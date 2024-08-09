@@ -497,25 +497,14 @@ html {
             .stages {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
                 gap: 20px;
                 @media screen and (min-width: $tablet) {
-                    display: grid;
-                    grid-template-columns: repeat(2, 338px);
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
                     gap: 24px;
-                    width: 704px;
-                    margin: 0 auto;
-    
-                    .fill-out {
-                        grid-column: 1 / span 2;
-                        justify-self: center; 
-                        width: 340px;   
-                    }
                 }
                 @media screen and (min-width: $desktop) {
-                    display: flex;
-                    flex-direction: row;
-                    width: 1129px;
                     order: 1;
                     margin-bottom: 40px;
                 }
@@ -531,11 +520,12 @@ html {
                     box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
                     background: $white;
                     @media screen and (min-width: $tablet) {
+                        max-width: calc((100% - 24px) / 2);
                         height: 386px;
                         gap: 24px; 
                     }
                     @media screen and (min-width: $desktop) {
-                        width: 358px;
+                        max-width: calc((100% - 24px * 2) / 3);
                         height: 386px;
                     }
                     &-border {
