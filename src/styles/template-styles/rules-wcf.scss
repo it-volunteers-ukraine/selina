@@ -136,12 +136,7 @@ html {
             display: flex;
             flex-direction: column;
             gap: 24px; 
-            @media screen and (min-width: $tablet) {
-                width: 704px;
-                margin: 0 auto;
-            }
             @media screen and (min-width: $desktop) {
-                width: 1129px;
                 flex-direction: row;
             }
         }
@@ -234,12 +229,7 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
-                width: 704px;
                 gap: 24px;
-                margin: 0 auto;
-            }
-            @media screen and (min-width: $desktop) {
-                width: 100%;
             }
         }
         &__img {
@@ -248,11 +238,16 @@ html {
             background-color: #fff;
             border-radius: 10px;
             overflow: hidden;
+            flex-shrink: 0;
             @media screen and (min-width: $tablet) {
-                width: 53%;
+                width: 51.2%;
+            }
+            @media screen and (min-width: 1024px) {
+                height: 300px;
             }
             @media screen and (min-width: $desktop) {
-                width: 32.6%;
+                height: 240px;
+                width: 360px;
             }
             img {
                 height: 100%;
@@ -263,11 +258,7 @@ html {
             }
         }
         &__infobox {
-            @media screen and (min-width: $tablet) {
-                width: 47%;
-            }
             @media screen and (min-width: $desktop) {
-                width: 67.4%;
                 align-self: center;
             }
             .infobox {
@@ -301,15 +292,14 @@ html {
         }
     }
     .rules-responsibility {
-        background-size: cover;
-        padding: 37px 1.5px;
+        position: relative; 
+        overflow: hidden; 
+        padding: 21px 1.5px;
         @media screen and (min-width: $tablet) {
-            background-position: -410px 0;
             padding: 58px 1px 58px;
         }
         @media screen and (min-width: $desktop) {
-            background-position: 5px -200px;
-            padding: 80px 0 116px;
+            padding: 80px 0 110px;
         }
         &__title {
             font-weight: 800;
@@ -327,44 +317,17 @@ html {
                 margin-bottom: 0;
             }
         }
-        &__container {
-            @media screen and (min-width: $tablet) {
-                display: flex;
-                justify-content: center;
-            }
-        }
         &__wrapper {
-            display: grid;
-            grid-template-columns: auto;
+            display: flex;
+            flex-direction: column;
             gap: 22px;
             @media screen and (min-width: $tablet) {
-                grid-template-columns: repeat(2, 340px);
-
-                .responsibility-card-5 {
-                    grid-column: 1 / span 2;
-                    justify-self: center;    
-                }
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
             }
             @media screen and (min-width: $desktop) {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: repeat(2, 1fr);
                 gap: 24px;
-                    
-                .responsibility-card-1 { grid-area: 1 / 1 / 2 / 2; }
-                .responsibility-card-2 { grid-area: 1 / 2 / 2 / 3; }
-                .responsibility-card-5 { grid-area: 1 / 3 / 2 / 4; }
-
-                .responsibility-card-3 { 
-                    grid-column: 1 / 3; 
-                    grid-row: 2 / 3;
-                    justify-self: center;
-                }
-        
-                .responsibility-card-4 { 
-                    grid-column: 2 / 4; 
-                    grid-row: 2 / 3;
-                    justify-self: center;
-                }
             }
             .responsibility-card {
                 background-color: #fff;
@@ -374,9 +337,10 @@ html {
                 padding: 24px;
                 gap: 16px;
                 height: 208px;
+                width: 100%;
                 border-radius: 10px;
                 @media screen and (min-width: $tablet) {
-                    width: 340px;
+                    max-width: calc((100% - 22px) / 2);
                 }
                 @media screen and (min-width: $desktop) {
                     width: 360px;
@@ -395,6 +359,25 @@ html {
                     }
                 }
             }  
+        }
+    }
+    .rules-responsibility::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: 0;
+        transform: scale(1.1);
+        z-index: -1; 
+        @media screen and (min-width: $tablet) {
+            background-position: -400px 0;
+        }
+        @media screen and (min-width: $desktop) {
+            transform: scale(1.5);
+            background-position: 0;
         }
     }
     /*Breed standards section ----------------------*/
@@ -416,12 +399,7 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
-                width: 704px;
                 gap: 24px;
-                margin: 0 auto;
-            }
-            @media screen and (min-width: $desktop) {
-                width: 100%;
             }
         }
         &__img {
@@ -435,6 +413,13 @@ html {
                 height: 340px;
             }
             @media screen and (min-width: $tablet) {
+                height: 240px;
+                width: 51.2%;
+            }
+            @media screen and (min-width: 1024px) {
+                height: 300px;
+            }
+            @media screen and (min-width: $desktop) {
                 height: 240px;
                 width: 360px;
             }
@@ -759,12 +744,7 @@ html {
             gap: 16px;
             @media screen and (min-width: $tablet) {
                 flex-direction: row;
-                width: 704px;
                 gap: 24px;
-                margin: 0 auto;
-            }
-            @media screen and (min-width: $desktop) {
-                width: 100%;
             }
         }
         &__img {
@@ -778,6 +758,13 @@ html {
                 height: 340px;
             }
             @media screen and (min-width: $tablet) {
+                height: 240px;
+                width: 51.2%;
+            }
+            @media screen and (min-width: 1024px) {
+                height: 300px;
+            }
+            @media screen and (min-width: $desktop) {
                 height: 240px;
                 width: 360px;
             }
