@@ -421,47 +421,42 @@ html {
             }   
         }
         &__wrapper {
-            display: grid;
-            grid-template-columns: auto;
+            display: flex;
+            flex-direction: column;
             gap: 22px;
             @media screen and (min-width: $tablet) {
-                display: flex;
-                justify-content: center;
-                align-items: center;
                 flex-direction: row;
                 flex-wrap: wrap;
-                width: 702px;
-                margin: 0 auto;
+                justify-content: center;
             }
             @media screen and (min-width: $desktop) {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
+                flex-wrap: nowrap;
                 gap: 24px;
             }
             .document {
+                position: relative;
+                background-color: $light-green; 
+                height: 272px;
+                width: 100%;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                @media screen and (min-width: $tablet) {
+                    max-width: calc((100% - 22px) / 2);
+                }
+                @media screen and (min-width: $full) {
+                    max-width: calc((100% - 24px * 2) / 3);
+                }
+                .clip-svg {
+                    position: absolute;
+                    z-index: 10;
+                    top: -27px;
+                    right: 15px;
+                    display: initial;
+                    width: 34.5px;
+                    height: 87px;
+                }
                 .document-card {
-                    position: relative;
-                    background-color: $light-green; 
-                    height: 272px;
-                    width: 100%;
-                    border-radius: 10px;
-                    display: flex;
-                    justify-content: center;
-                    @media screen and (min-width: $tablet) {
-                        width: 340px;
-                    }
-                    @media screen and (min-width: $full) {
-                        width: 360px;
-                    }
-                    .clip-svg {
-                        position: absolute;
-                        z-index: 10;
-                        top: -27px;
-                        right: 15px;
-                        display: initial;
-                        width: 34.5px;
-                        height: 87px;
-                    }
                     &__content {
                         display: flex;
                         flex-direction: column;
@@ -478,16 +473,6 @@ html {
                     &__button {
                         gap: 8px;
                         margin: 28px 0 64px 0;
-                    }
-                }
-                &:nth-child(3) {
-                    @media screen and (min-width: $tablet) {
-                        width: 100%;
-                        display: flex;
-                        justify-content: center;
-                        > .document-card {
-                            width: 360px;
-                        }
                     }
                 }
             }

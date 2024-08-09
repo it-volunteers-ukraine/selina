@@ -186,7 +186,7 @@ get_header();
                             $documentLink = get_sub_field('document__link');
                             ?>
                                 <div class="document">
-                                    <div class="document-card">
+                                    
                                         <svg class="clip-svg" width="38" height="90">
                                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
                                         </svg>
@@ -201,7 +201,7 @@ get_header();
                                                 </svg>
                                             </button>
                                         </div>
-                                    </div>
+                                    
                                 </div>
                             <?php 
                         endwhile;
