@@ -442,10 +442,10 @@ get_header();
                 <?php the_field('wcf-ems-code__heading'); ?>
             </h2>
             <div class="wcf-ems-code-section__wrapper">
-                <div class="wcf-ems-code-section__img">
+                <div class="wcf-ems-code-section__item wcf-ems-code-section__img">
                     <img src="<?php the_field('wcf-ems-code-section-img'); ?>" />
                 </div>
-                <div class="wcf-ems-code-section__infobox">
+                <div class="wcf-ems-code-section__item wcf-ems-code-section__infobox">
                     <div class="wcf-ems-code-infobox__large-screen">
                         <?php the_field('wcf-ems-code-large-screen'); ?>
                     </div>
