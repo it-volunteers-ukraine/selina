@@ -219,7 +219,7 @@ get_header();
                 <?php the_field('benefits-section__heading'); ?>
             </h2>
             <div class="benefits-section__wrapper">
-                <div class="benefits-section__cards">
+                
                     <div class="benefits">
                         <div class="benefits__card support">
                             <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
@@ -258,7 +258,7 @@ get_header();
                             </p>
                         </div>
                     </div>
-                </div>
+                
             </div>
         </div>
     </section>
