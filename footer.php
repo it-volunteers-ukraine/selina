@@ -1,14 +1,16 @@
 <footer id="footer" class="footer">
 
-    <div class="button-top-container container">
-        <button type="button" class="up_btn" id="to-top-btn" title="Go to top">
-            <div class="button-image">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 5L18 11M12 5L6 11M12 5V19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <p><?php the_field('footer__to-top-field', 'option'); ?></p>
-            </div>                
-        </button>
+    <div class="container button-top-wrapper">
+        <div class="button-top-container">
+            <button type="button" class="up_btn" id="to-top-btn" title="Go to top">
+                <div class="button-image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5L18 11M12 5L6 11M12 5V19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <p><?php the_field('footer__to-top-field', 'option'); ?></p>
+                </div>                
+            </button>
+        </div>
     </div>
 
     <div class="container footer-container">

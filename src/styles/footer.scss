@@ -418,11 +418,12 @@
     }
 }
 /* ------------------------ Up-btn ------------------*/
-.button-top-container {
+.button-top-wrapper {
     display: flex;
     justify-content: end;
-    left: 50%;
-    transform: translateX(-50%);
+}
+
+.button-top-container {
     z-index: 10;
 }
 
