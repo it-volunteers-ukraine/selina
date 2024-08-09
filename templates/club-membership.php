@@ -165,13 +165,47 @@ get_header();
     <!-- Gallery section -->
     <section class="gallery-section section" id="membership-gallery">
         <div class="container">
-            <h2 class="gallery-section__heading section_heading club-membership-sections-heading">
-                <svg class="heading-svg" width="29" height="28">
-                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
-                    </use>
-                </svg>
-                <?php the_field('gallery-section__heading'); ?>
-            </h2>
+            <div class="gallery-section__wrapper">
+                <h2 class="gallery-section__heading section_heading club-membership-sections-heading">
+                    <svg class="heading-svg" width="29" height="28">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                        </use>
+                    </svg>
+                    <?php the_field('gallery-section__heading'); ?>
+                </h2>
+                <p class="gallery-section__text">
+                    <?php the_field('gallery-section__text')?>
+                </p>
+                <?php 
+                $images = get_field('gallery-section__swiper');
+                if( $images ): ?>
+                    <div class="swiper gallery-section__swiper">
+                        <div class="swiper-wrapper">
+                            <?php foreach( $images as $image ): ?>
+                                <div class="swiper-slide">
+                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class="gallery-section__pagination">
+                    <button class="gallery-section__arrow-left-btn gallery-section__arrow-btn">
+                        <svg class="gallery-section__arrow-left one-arrow" width="10.37" height="16.97">
+                            <use
+                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+                            </use>
+                        </svg>
+                    </button>
+                    <button class="gallery-section__arrow-right-btn gallery-section__arrow-btn">
+                        <svg class="gallery-section__arrow-right one-arrow" width="10.37" height="16.97">
+                            <use
+                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Benefits section -->
@@ -245,10 +279,12 @@ get_header();
                 <div class="registration-section__stages">
                     <div class="stages">
                         <div class="stages__card prepare">
-                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
-                                </use>
-                            </svg>
+                            <div class="stages__card-border">
+                                <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#one">
+                                    </use>
+                                </svg>
+                            </div>
                             <p class="stages__card-title">
                                 <?php the_field('prepare__title'); ?>
                             </p>
@@ -256,58 +292,36 @@ get_header();
                                 <?php the_field('prepare__text'); ?>
                             </ul>
                         </div>
-                        <div class="stages__card prepare">
-                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
-                                </use>
-                            </svg>
+                        <div class="stages__card familiarize">
+                            <div class="stages__card-border">
+                                <svg class="stages__card-img stages__card-card-img-1" width="19" height="28">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#two">
+                                    </use>
+                                </svg>
+                            </div>
                             <p class="stages__card-title">
-                                <?php the_field('prepare__title'); ?>
+                                <?php the_field('familiarize__title'); ?>
                             </p>
                             <ul class="stages__card-text">
-                                <?php the_field('prepare__text'); ?>
+                                <?php the_field('familiarize__text'); ?>
                             </ul>
                         </div>
-                        <div class="stages__card prepare">
-                            <svg class="stages__card-img stages__card-card-img-1" width="17" height="28">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
-                                </use>
-                            </svg>
+                        <div class="stages__card fill-out">
+                            <div class="stages__card-border">
+                                <svg class="stages__card-img stages__card-card-img-1" width="19" height="28">
+                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#three">
+                                    </use>
+                                </svg>
+                            </div>
                             <p class="stages__card-title">
-                                <?php the_field('prepare__title'); ?>
+                                <?php the_field('fill-out__title'); ?>
                             </p>
                             <ul class="stages__card-text">
-                                <?php the_field('prepare__text'); ?>
+                                <?php the_field('fill-out__text'); ?>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="registration-section__stages">
-                    <div class="registration-stage">
-                        <div class="registration__number"><?php echo $registrationNumber; ?></div>
-                        <div class="registration__title"><?php echo $registrationTitle; ?></div>
-                        <ul class="registration__text"><?php echo $registrationText; ?></ul>
-                    </div>
-                    
-                    <?php
-                        if( have_rows('registration-stages') ):
-                            while( have_rows('registration-stages') ) : the_row();
-                                $registrationNumber = get_sub_field('registration__number');
-                                $registrationTitle = get_sub_field('registration__title');
-                                $registrationText = get_sub_field('registration__text');
-                                ?>
-                                    <div class="registration">
-                                        <div class="registration-stage">
-                                            <div class="registration__number"><?php echo $registrationNumber; ?></div>
-                                            <div class="registration__title"><?php echo $registrationTitle; ?></div>
-                                            <ul class="registration__text"><?php echo $registrationText; ?></ul>
-                                        </div>
-                                    </div>
-                                <?php 
-                            endwhile;
-                        endif;
-                    ?> 
-                </div> -->
                 <button class="registration-section__button button red_medium_button">
                     <a href="<?php echo esc_attr( get_field('registration-section__link') ); ?>" target="_blank">
                         <?php the_field('registration-section__button'); ?>
@@ -317,8 +331,7 @@ get_header();
         </div>
     </section>
 
-
-
+    <?php get_template_part('template-parts/join-us'); ?>
 </main>
 
 <?php get_footer(); ?>
