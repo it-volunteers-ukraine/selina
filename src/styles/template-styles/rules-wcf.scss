@@ -110,6 +110,7 @@ html {
         }
     }
     /*About WCF section ---------------------------*/
+    
     .about_wcf-section {
         background-color: $background;
         &__wrapper {
@@ -137,24 +138,25 @@ html {
             flex-direction: column;
             gap: 24px; 
             @media screen and (min-width: $desktop) {
-                flex-direction: row;
+                flex-direction: row-reverse;
             }
         }
         &__upper-card {
-            height: 462px;
-            width: 100%;
+            overflow: hidden;
             background-color: #fff;
             border-radius: 10px;
             @media screen and (min-width: $desktop) {
-                order: 2;
-                height: 698px;
-                width: 50%;
+                width: 50%; 
             }
             img {
-                height: 100%;
-                width: 100%;
+                max-width: 100%; 
                 object-fit: contain;
-                border-radius: 10px;
+                @media screen and (min-width: $tablet) {
+                    transform: scale(1.2);
+                }
+                @media screen and (min-width: $desktop) {
+                    transform: none;
+                }
             }
         } 
         &__lower-card {
@@ -171,14 +173,14 @@ html {
                 margin-bottom: 24px;
             }
             @media screen and (min-width: $desktop) {
-                order: 1;
                 width: 50%;
                 margin-bottom: 0;
+                block-size: fit-content;
             }
             &-list {
                 list-style-type: disc;
                 li {
-                    margin-bottom: 21.34px;
+                   margin-bottom: 21.34px;
                     @media screen and (min-width: $tablet) {
                         margin-bottom: 25.012px;
                         &:last-child {
@@ -217,6 +219,7 @@ html {
             }
         }
     }
+    
     /*WCF system rules section --------------------*/
     .rules-section {
         background-color: $background;
@@ -810,5 +813,5 @@ html {
         &__button {
             @extend .open-btn;
         }
-    }
+    }  
 }
