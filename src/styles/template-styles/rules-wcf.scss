@@ -375,9 +375,11 @@ html {
         @media screen and (min-width: $tablet) {
             background-position: -400px 0;
         }
+        @media screen and (min-width: 1156px) {
+            background-position: 0;
+        }
         @media screen and (min-width: $desktop) {
             transform: scale(1.5);
-            background-position: 0;
         }
     }
     /*Breed standards section ----------------------*/
