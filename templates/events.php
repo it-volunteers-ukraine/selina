@@ -228,14 +228,16 @@ get_header();
                 </p>
                 <div class="calendar__calendars">
                     <?php
+                    $calendar_count = 0;
                     if( have_rows('calendar__calendar-card') ):
                         while( have_rows('calendar__calendar-card') ) : the_row();
                         $calendar_img = get_sub_field('calendar_img');
                         $calendar_naming = get_sub_field('calendar_naming');
                         $calendar_info = get_sub_field('calendar_info');
                         $calendar_button_text = get_sub_field('calendar_button_text');
+                        $calendar_count++;
                     ?>
-                        <div class="calendar__calendar-card">
+                        <div class="calendar__calendar-card<?php echo $calendar_count > 2 ? ' calendar__calendar-card--hidden' : ''; ?>">
                             <div class="calendar__calendar-card-img">
                                 <img src="<?php echo $calendar_img['url']; ?>" alt="<?php echo $calendar_img['alt']; ?>">
                             </div>
@@ -258,19 +260,20 @@ get_header();
                         </div>
                         <?php
                             endwhile;
-                            else :
-                            endif;
+                        endif;
                         ?>
                 </div>
                 <!-- Button if calendars > 2 -->
-                <button class='calendar__show-more-button green_medium_button'>
-                    <p class='calendar__show-more-button-text'>
-                        <?php the_field('calendar__show-more-button-text'); ?>
-                    </p>
-                    <svg class="icon-paw" width="20" height="20">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
-                    </svg>
-                </button>
+                <?php if ($calendar_count > 2): ?>
+                    <button class='calendar__show-more-button green_medium_button' id='showMoreCalendarsButton'>
+                        <p class='calendar__show-more-button-text'>
+                            <?php the_field('calendar__show-more-button-text'); ?>
+                        </p>
+                        <svg class="icon-paw" width="20" height="20">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                        </svg>
+                    </button>
+                <?php endif; ?>
             </div>
         </section>
 

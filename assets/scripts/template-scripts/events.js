@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(function(){const e=document.getElementById("showMoreCalendarsButton"),n=document.querySelectorAll(".calendar__calendar-card--hidden");let t=0;e.addEventListener("click",(function(){!function(){for(let e=t;e<t+2&&e<n.length;e++)n[e].style.display="block";t+=2}(),this.blur()}))}));

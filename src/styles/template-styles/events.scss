@@ -347,9 +347,19 @@
     &__calendars {
         @media screen and (min-width: $tablet) {
             display: flex;
-            column-gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
         }
     }
+
+    /* &__calendars > * {
+        display: none;
+    }
+
+    &__calendars > :nth-child(-n+2) {
+        display: block;
+    } */
 
     &__calendar-card {
         padding: 16px;
@@ -359,6 +369,7 @@
         margin-bottom: 24px;
         @media screen and (min-width: $tablet) {
             margin-bottom: 0;
+            width: calc((100% - 24px)/2);
         }
     }
 
@@ -395,7 +406,6 @@
     }
 
     &__show-more-button {
-        display: none;
         gap: 8px;
         @media screen and (min-width: $tablet) {
             margin-top: 24px;
@@ -403,6 +413,10 @@
         @media screen and (min-width: $desktop) {
             margin-top: 40px;
         }
+    }
+
+    &__calendar-card--hidden {
+        display: none;
     }
 }
 
