@@ -19,7 +19,7 @@ html {
             padding: 118.5px 0;
         }
         &__banner {
-            @media screen and (min-width: $full) {
+            @media screen and (min-width: $desktop) {
                 width: 823px;
             }
         }
@@ -30,21 +30,17 @@ html {
                 font-size: 45px;
                 margin-bottom: 14px;
             }
-            @media screen and (min-width: $full) {
+            @media screen and (min-width: $desktop) {
                 font-size: 60px;
                 margin-bottom: 24px;
             }
         }
         &__sub-titles {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            @media screen and (min-width: $tablet) {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                column-gap: 24px;
-            }
-            @media screen and (min-width: $full) {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            column-gap: 24px;
+            @media screen and (min-width: $desktop) {
                 column-gap: 36px;
                 row-gap: 16px;
             }
@@ -61,13 +57,13 @@ html {
                     font-size: 20px;
                     padding: 7.5px 0;
                 }
-                @media screen and (min-width: $full) {
+                @media screen and (min-width: $desktop) {
                     padding: 0;
                 }
                 &-svg {
                     width: 14px;
                     height: 12px;
-                    @media screen and (min-width: $full) {
+                    @media screen and (min-width: $desktop) {
                         width: 18px;
                         height: 16px;
                     }
