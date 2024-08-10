@@ -227,55 +227,50 @@ get_header();
                     <?php the_field('calendar__description'); ?>
                 </p>
                 <div class="calendar__calendars">
-                    <div class="calendar__calendar-ua">
-                        <div class="calendar__calendar-card-img">
-                            <?php
-                                $image = get_field('calendar_ua_img'); 
-                            ?>
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
-                        </div>
-                        <div class="calendar__calendar-card-heading">
-                            <p><?php the_field('calendar_ua_heading'); ?></p>
-                        </div>
-                        <div class="calendar__calendar-card-info">
-                            <p><?php the_field('calendar_ua_info'); ?></p>
-                        </div>
-                        <a href="https://www.wcf-bestcat.de/show-calendar/Ukraine/-?year=2024&month=0" target='_blank'>
-                            <div class="calendar__calendar-card-button red_medium_button">
-                                <p class='calendar__calendar-button-text'>
-                                    <?php the_field('calendar_button_text'); ?>
-                                </p>
-                                <svg class="icon-paw" width="20" height="20">
-                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
-                                </svg>
+                    <?php
+                    if( have_rows('calendar__calendar-card') ):
+                        while( have_rows('calendar__calendar-card') ) : the_row();
+                        $calendar_img = get_sub_field('calendar_img');
+                        $calendar_naming = get_sub_field('calendar_naming');
+                        $calendar_info = get_sub_field('calendar_info');
+                        $calendar_button_text = get_sub_field('calendar_button_text');
+                    ?>
+                        <div class="calendar__calendar-card">
+                            <div class="calendar__calendar-card-img">
+                                <img src="<?php echo $calendar_img['url']; ?>" alt="<?php echo $calendar_img['alt']; ?>">
                             </div>
-                        </a>
-                    </div>
-                    <div class="calendar__calendar-global">
-                        <div class="calendar__calendar-card-img">
-                            <?php
-                                $image = get_field('calendar_global_img'); 
-                            ?>
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
-                        </div>
-                        <div class="calendar__calendar-card-heading">
-                            <p><?php the_field('calendar_global_heading'); ?></p>
-                        </div>
-                        <div class="calendar__calendar-card-info">
-                            <p><?php the_field('calendar_global_info'); ?></p>
-                        </div>
-                        <a href="https://www.wcf-bestcat.de/show-calendar" target='_blank'>
-                            <div class="calendar__calendar-card-button red_medium_button">
-                                <p class='calendar__calendar-button-text'>
-                                    <?php the_field('calendar_button_text'); ?>
-                                </p>
-                                <svg class="icon-paw" width="20" height="20">
-                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
-                                </svg>
+                            <div class="calendar__calendar-card-heading">
+                                <p><?php echo $calendar_naming; ?></p>
                             </div>
-                        </a>
-                    </div>
+                            <div class="calendar__calendar-card-info">
+                                <p><?php echo $calendar_info; ?></p>
+                            </div>
+                            <a href="<?php the_sub_field('calendar_link') ?>" target='_blank'>
+                                <div class="calendar__calendar-card-button red_medium_button">
+                                    <p class='calendar__calendar-button-text'>
+                                        <?php echo $calendar_button_text; ?>
+                                    </p>
+                                    <svg class="icon-paw" width="20" height="20">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <?php
+                            endwhile;
+                            else :
+                            endif;
+                        ?>
                 </div>
+                <!-- Button if calendars > 2 -->
+                <button class='calendar__show-more-button green_medium_button'>
+                    <p class='calendar__show-more-button-text'>
+                        <?php the_field('calendar__show-more-button-text'); ?>
+                    </p>
+                    <svg class="icon-paw" width="20" height="20">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                    </svg>
+                </button>
             </div>
         </section>
 

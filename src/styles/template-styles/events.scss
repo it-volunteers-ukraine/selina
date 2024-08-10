@@ -334,12 +334,10 @@
         line-height: 131%;
         color: $black;
         margin-bottom: 24px;
-
         @media screen and (min-width: $tablet) {
             font-size: 20px;
             line-height: 125%;
         }
-
         @media screen and (min-width: $desktop) {
             width: 820px;
             margin-bottom: 40px;
@@ -353,23 +351,18 @@
         }
     }
 
-    &__calendar-ua,
-    &__calendar-global {
+    &__calendar-card {
         padding: 16px;
         border-radius: 10px;
         box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
         background: $white;
-    }
-
-    &__calendar-ua {
         margin-bottom: 24px;
         @media screen and (min-width: $tablet) {
             margin-bottom: 0;
         }
     }
 
-    &__calendar-ua img,
-    &__calendar-global img {
+    &__calendar-card img {
         border-radius: 8px;
         margin-bottom: 16px;
     }
@@ -396,8 +389,20 @@
     }
 
     &__calendar-card-button {
+        padding: 10px 8px 10px 16px;
         gap: 8px;
         margin-top: 12px;
+    }
+
+    &__show-more-button {
+        display: none;
+        gap: 8px;
+        @media screen and (min-width: $tablet) {
+            margin-top: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            margin-top: 40px;
+        }
     }
 }
 
