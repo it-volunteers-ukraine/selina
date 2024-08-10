@@ -75,17 +75,8 @@ get_header();
                         <img src="<?php the_field('wcf-img'); ?>" class="about_wcf-section__upper-card-img"/>
                     </div>
                     <div class="about_wcf-section__lower-card">
-                        <ul class="about_wcf-section__lower-card-list">
+                        <ul class="about_wcf-section__rules">
                             <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>" target="_blank" class="wcf_word"><?php the_field('wcf_word'); ?></a><?php the_field('about_wcf-section__rules');?>
-                            
-                            <!-- <li class="rule-1">
-                                <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>" target="_blank" class="wcf_word"><?php the_field('wcf_word'); ?></a><?php the_field('rule-1');?>
-                            </li>
-                            <li class="rule-2"><?php the_field('rule-2');?></li>
-                            <li class="rule-3"><?php the_field('rule-3');?></li>
-                            <li class="rule-4"><?php the_field('rule-4');?></li>
-                            <li class="rule-5 optional"><?php the_field('rule-5');?></li>
-                            <li class="rule-6 optional"><?php the_field('rule-6');?></li> -->
                         </ul>
                     </div>
                 </div>

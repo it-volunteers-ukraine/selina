@@ -177,17 +177,17 @@ html {
                 margin-bottom: 0;
                 block-size: fit-content;
             }
-            &-list {
+            ul {
                 list-style-type: disc;
                 li {
-                   margin-bottom: 21.34px;
+                    margin-bottom: 21.34px;
                     @media screen and (min-width: $tablet) {
                         margin-bottom: 25.012px;
                         &:last-child {
                             margin-bottom: 0;
                         }
                     }
-                    &:nth-child(4) {
+                    &:nth-child(5) {
                         margin-bottom: 0;
                         @media screen and (min-width: $tablet) {
                             margin-bottom: 25.012px;
@@ -196,13 +196,14 @@ html {
                     .wcf_word {
                         color: $primary-color;
                     }
-                    &:nth-child(5), &:nth-child(6) {
+                    &:nth-last-child(-n+2) {
                         display: none;
+            
                         @media screen and (min-width: $tablet) {
                             display: list-item;
                         }
                     }
-                }   
+                }  
             }
         }
         &__button {

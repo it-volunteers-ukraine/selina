@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
+
     function updateLayout() {
         const textElement = document.querySelector(".about_wcf-section__lower-card");
         const img = document.querySelector(".about_wcf-section__upper-card-img");
