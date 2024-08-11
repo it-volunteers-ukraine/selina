@@ -290,8 +290,37 @@ get_header();
                     </h2>
                 </div>
                 <div class='beginners-tips__slider-container'>
+                    <!-- ------------------------------------------------------- -->
+                </div>
+                <div class='beginners-tips__cards-container'>
+                    <?php
+                        $args = array(
+                            'orderby' => 'date',
+                            'order' => 'DESC',
+                            'post_type' => 'tips',
+                            'posts_per_page' => -1,   
+                        );
+                        $myposts = get_posts($args);
+                        foreach ($myposts as $post):
+                        setup_postdata($post); ?>
+                        <div class="beginners-tips__card">
+                            <svg class="beginners-tips__clip-svg" width="38" height="90">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
+                            </svg>
+                            <p class='beginners-tips__card-text'><?php the_field('tips_name') ?></p>
+                            <a href="<?php the_field('tips_button-link') ?>" class='beginners-tips__tips-button red_medium_button'>
+                                <p><?php the_field('tips_button-text') ?></p>
+                                <?php  
+                                $image = get_field('tips_button-icon');
+                                if( !empty( $image ) ): ?> 
+                                    <img class='beginners-tips__tips_button-icon' src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
+                                <?php endif; ?>
+                            </a>
+                        </div>
 
-                
+
+                    <?php endforeach;
+                        wp_reset_postdata(); ?>
                 </div>
             </div>
         </section>

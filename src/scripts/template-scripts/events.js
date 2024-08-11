@@ -16,4 +16,3 @@ document.addEventListener("DOMContentLoaded", function() {
         this.blur(); 
     });
 });
-

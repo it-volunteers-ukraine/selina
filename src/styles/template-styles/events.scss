@@ -353,14 +353,6 @@
         }
     }
 
-    /* &__calendars > * {
-        display: none;
-    }
-
-    &__calendars > :nth-child(-n+2) {
-        display: block;
-    } */
-
     &__calendar-card {
         padding: 16px;
         border-radius: 10px;
@@ -438,18 +430,18 @@
         font-weight: 800;
         font-size: 26px;
         line-height: 100%;
-        margin-bottom: 16px;
+        margin-bottom: 56px;
         @media screen and (min-width: $tablet) {
             font-size: 30px;
             gap: 8px;
             padding: 6px 0;
-            margin-bottom: 24px;
+            margin-bottom: 48px;
         }
         @media screen and (min-width: $desktop) {
             font-size: 45px;
             gap: 12px;
             padding: 7.5px 0;
-            margin-bottom: 24px;
+            margin-bottom: 64px;
         }
     }
 
@@ -468,5 +460,72 @@
             width: 41px;
             height: 37px;
         }
+    }
+
+    &__cards-container {
+        @media screen and (min-width: $tablet) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            column-gap: 24px;
+            row-gap: 48px;
+        }
+    }
+
+    &__card {
+        position: relative;
+        background-color: $light-green;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+        padding: 104px 24px 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        height: 272px;
+        @media screen and (min-width: $tablet) {
+            width: calc((100% - 24px)/2);
+        }
+        @media screen and (min-width: $desktop) {
+            width: calc((100% - 48px)/3);
+            padding: 88px 32px 64px;
+        }
+    }
+
+    &__card:nth-child(n+9) {
+        @media screen and (min-width: $tablet) and  (max-width: $desktop) {
+            display: none;
+        }
+    }
+
+    &__card:nth-child(n+10) {
+        @media screen and (min-width: $desktop) {
+            display: none;
+        }
+    }
+
+    &__clip-svg {
+        position: absolute;
+        top: -27px;
+        right: 15px;
+        display: initial;
+    }
+
+    &__card-text {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 100%;
+        text-align: center;
+        color: $black;
+        margin-bottom: 28px;
+    }
+
+    &__tips-button {
+        gap: 8px;
+    }
+
+    &__tips_button-icon {
+        width: 16px;
+        height: 15px;
     }
 }
