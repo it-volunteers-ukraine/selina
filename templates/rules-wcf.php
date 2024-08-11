@@ -117,8 +117,8 @@ get_header();
                         <a href="<?php echo esc_attr( get_field('rules-section__link') ); ?>" target="_blank">
                             <?php the_field('open-btn', 'option'); ?>
                         </a> 
-                        <svg class="rules-section__button-svg" width="16" height="14">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                        <svg class="rules-section__button-svg" width="20" height="20">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
                         </svg>
                     </button>
                 </div>
