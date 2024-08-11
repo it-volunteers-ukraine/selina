@@ -308,17 +308,41 @@ get_header();
                                 <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
                             </svg>
                             <p class='beginners-tips__card-text'><?php the_field('tips_name') ?></p>
-                            <a href="<?php the_field('tips_button-link') ?>" class='beginners-tips__tips-button red_medium_button'>
-                                <p><?php the_field('tips_button-text') ?></p>
-                                <?php  
-                                $image = get_field('tips_button-icon');
-                                if( !empty( $image ) ): ?> 
-                                    <img class='beginners-tips__tips_button-icon' src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/> 
-                                <?php endif; ?>
-                            </a>
+                <!-- Button types -->
+                            <?php
+                                $disk_link = get_field('tips_button-link-disk');
+                                $inner_link = get_field('tips_button-link-inner');
+                                $outer_link = get_field('tips_button-link-outer');
+                            ?>
+                            <?php if ( !empty ($disk_link )): ?>
+
+                            <!-- google-disk -->
+                                <a href="<?php the_field('tips_button-link-disk') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                    <p><?php the_field('tips_button-text') ?></p>
+                                    <svg width="16" height="14"> 
+                                        <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-google"></use> 
+                                    </svg>
+                                </a>
+
+                            <!-- outer-link -->
+                            <?php elseif ( !empty ($outer_link )): ?>
+                                <a href="<?php the_field('tips_button-link-outer') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                    <p><?php the_field('tips_button-text') ?></p>
+                                    <svg class="icon-paw" width="20" height="20">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
+                                    </svg>
+                                </a>
+
+                            <!-- inner-link -->
+                            <?php else : ?>
+                                <a href="<?php the_field('tips_button-link-inner') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                    <p><?php the_field('tips_button-text') ?></p>
+                                    <svg class="icon-paw" width="17" height="15">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                                    </svg>
+                                </a>
+                            <?php endif; ?>
                         </div>
-
-
                     <?php endforeach;
                         wp_reset_postdata(); ?>
                 </div>
