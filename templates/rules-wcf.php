@@ -72,18 +72,11 @@ get_header();
                 </h2>
                 <div class="about_wcf-section__content">
                     <div class="about_wcf-section__upper-card">
-                        <img src="<?php the_field('wcf-img'); ?>" />
+                        <img src="<?php the_field('wcf-img'); ?>" class="about_wcf-section__upper-card-img"/>
                     </div>
                     <div class="about_wcf-section__lower-card">
-                        <ul class="about_wcf-section__lower-card-list">
-                            <li class="rule-1">
-                                <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>" target="_blank" class="wcf_word"><?php the_field('wcf_word'); ?></a><?php the_field('rule-1');?>
-                            </li>
-                            <li class="rule-2"><?php the_field('rule-2');?></li>
-                            <li class="rule-3"><?php the_field('rule-3');?></li>
-                            <li class="rule-4"><?php the_field('rule-4');?></li>
-                            <li class="rule-5 optional"><?php the_field('rule-5');?></li>
-                            <li class="rule-6 optional"><?php the_field('rule-6');?></li>
+                        <ul class="about_wcf-section__rules">
+                            <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>" target="_blank" class="wcf_word"><?php the_field('wcf_word'); ?></a><?php the_field('about_wcf-section__rules');?>
                         </ul>
                     </div>
                 </div>
@@ -124,8 +117,8 @@ get_header();
                         <a href="<?php echo esc_attr( get_field('rules-section__link') ); ?>" target="_blank">
                             <?php the_field('open-btn', 'option'); ?>
                         </a> 
-                        <svg class="rules-section__button-svg" width="16" height="14">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                        <svg class="rules-section__button-svg" width="20" height="20">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
                         </svg>
                     </button>
                 </div>
@@ -134,7 +127,7 @@ get_header();
     </section>
     <section class="rules-responsibility">
         <style>
-            .rules-responsibility {
+            .rules-responsibility::before {
                 background-image: url("<?php the_field('white-cat-bg') ?>"); 
             }
         </style> 
@@ -142,54 +135,52 @@ get_header();
             <div class="rules-responsibility__title">
                 <?php the_field('rules-responsibility__title'); ?>
             </div> 
-            <div class="rules-responsibility__container">
-                <div class="rules-responsibility__wrapper">
-                    <div class="responsibility-card responsibility-card-1">
-                        <svg class="responsibility-card__img responsibility-card__img-1" width="49" height="53">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-smile">
-                            </use>
-                        </svg>
-                        <p class="responsibility-card__content responsibility-card__content-1">
-                            <?php the_field('responsibility-card__content-1'); ?>
-                        </p>
-                    </div>
-                    <div class="responsibility-card responsibility-card-2">
-                        <svg class="responsibility-card__img responsibility-card__img-2" width="43" height="53">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-award-dark">
-                            </use>
-                        </svg>
-                        <p class="responsibility-card__content responsibility-card__content-2">
-                            <?php the_field('responsibility-card__content-2'); ?>
-                        </p>
-                    </div>
-                    <div class="responsibility-card responsibility-card-3">
-                        <svg class="responsibility-card__img responsibility-card__img-3" width="49" height="53">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-smile">
-                            </use>
-                        </svg>
-                        <p class="responsibility-card__content responsibility-card__content-3">
-                            <?php the_field('responsibility-card__content-3'); ?>
-                        </p>
-                    </div>
-                    <div class="responsibility-card responsibility-card-4">
-                        <svg class="responsibility-card__img responsibility-card__img-4" width="55" height="53">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-mortarboard">
-                            </use>
-                        </svg>
-                        <p class="responsibility-card__content responsibility-card__content-4">
-                            <?php the_field('responsibility-card__content-4'); ?>
-                        </p>
-                    </div>
-                    <div class="responsibility-card responsibility-card-5">
-                        <svg class="responsibility-card__img responsibility-card__img-5" width="45" height="53" >
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-award-light">
-                            </use>
-                        </svg>
-                        <p class="responsibility-card__content responsibility-card__content-5">
-                            <?php the_field('responsibility-card__content-5'); ?>
-                        </p>
-                    </div> 
+            <div class="rules-responsibility__wrapper">
+                <div class="responsibility-card responsibility-card-1">
+                    <svg class="responsibility-card__img responsibility-card__img-1" width="49" height="53">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-smile">
+                        </use>
+                    </svg>
+                    <p class="responsibility-card__content responsibility-card__content-1">
+                        <?php the_field('responsibility-card__content-1'); ?>
+                    </p>
                 </div>
+                <div class="responsibility-card responsibility-card-2">
+                    <svg class="responsibility-card__img responsibility-card__img-2" width="43" height="53">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-award-dark">
+                        </use>
+                    </svg>
+                    <p class="responsibility-card__content responsibility-card__content-2">
+                        <?php the_field('responsibility-card__content-2'); ?>
+                    </p>
+                </div>
+                <div class="responsibility-card responsibility-card-3">
+                    <svg class="responsibility-card__img responsibility-card__img-3" width="49" height="53">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-smile">
+                        </use>
+                    </svg>
+                    <p class="responsibility-card__content responsibility-card__content-3">
+                        <?php the_field('responsibility-card__content-3'); ?>
+                    </p>
+                </div>
+                <div class="responsibility-card responsibility-card-4">
+                    <svg class="responsibility-card__img responsibility-card__img-4" width="55" height="53">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-mortarboard">
+                        </use>
+                    </svg>
+                    <p class="responsibility-card__content responsibility-card__content-4">
+                        <?php the_field('responsibility-card__content-4'); ?>
+                    </p>
+                </div>
+                <div class="responsibility-card responsibility-card-5">
+                    <svg class="responsibility-card__img responsibility-card__img-5" width="45" height="53" >
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#wcf-award-light">
+                        </use>
+                    </svg>
+                    <p class="responsibility-card__content responsibility-card__content-5">
+                        <?php the_field('responsibility-card__content-5'); ?>
+                    </p>
+                </div> 
             </div>
         </div>
     </section>
@@ -442,10 +433,10 @@ get_header();
                 <?php the_field('wcf-ems-code__heading'); ?>
             </h2>
             <div class="wcf-ems-code-section__wrapper">
-                <div class="wcf-ems-code-section__img">
+                <div class="wcf-ems-code-section__item wcf-ems-code-section__img">
                     <img src="<?php the_field('wcf-ems-code-section-img'); ?>" />
                 </div>
-                <div class="wcf-ems-code-section__infobox">
+                <div class="wcf-ems-code-section__item wcf-ems-code-section__infobox">
                     <div class="wcf-ems-code-infobox__large-screen">
                         <?php the_field('wcf-ems-code-large-screen'); ?>
                     </div>

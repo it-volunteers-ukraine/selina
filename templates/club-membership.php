@@ -219,44 +219,42 @@ get_header();
                 <?php the_field('benefits-section__heading'); ?>
             </h2>
             <div class="benefits-section__wrapper">
-                <div class="benefits-section__cards">
-                    <div class="benefits">
-                        <div class="benefits__card support">
-                            <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
-                                </use>
-                            </svg>
-                            <h6 class="benefits__card-title">
-                                <?php the_field('support__title'); ?>
-                            </h6>
-                            <p class="benefits__card-text">
-                                <?php the_field('support__text'); ?>
-                            </p>
-                        </div>
-                        <div class="benefits__card knowledge">
-                            <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-book">
-                                </use>
-                            </svg>
-                            <h6 class="benefits__card-title">
-                                <?php the_field('knowledge__title'); ?>
-                            </h6>
-                            <p class="benefits__card-text">
-                                <?php the_field('knowledge__text'); ?>
-                            </p>
-                        </div>
-                        <div class="benefits__card events">
-                            <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
-                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-awards">
-                                </use>
-                            </svg>
-                            <h6 class="benefits__card-title">
-                                <?php the_field('events__title'); ?>
-                            </h6>
-                            <p class="benefits__card-text">
-                                <?php the_field('events__text'); ?>
-                            </p>
-                        </div>
+                <div class="benefits">
+                    <div class="benefits__card support">
+                        <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-smile">
+                            </use>
+                        </svg>
+                        <h6 class="benefits__card-title">
+                            <?php the_field('support__title'); ?>
+                        </h6>
+                        <p class="benefits__card-text">
+                            <?php the_field('support__text'); ?>
+                        </p>
+                    </div>
+                    <div class="benefits__card knowledge">
+                        <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-book">
+                            </use>
+                        </svg>
+                        <h6 class="benefits__card-title">
+                            <?php the_field('knowledge__title'); ?>
+                        </h6>
+                        <p class="benefits__card-text">
+                            <?php the_field('knowledge__text'); ?>
+                        </p>
+                    </div>
+                    <div class="benefits__card events">
+                        <svg class="selina-rules-card__img selina-rules-card__img-1" width="60" height="60">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#red-awards">
+                            </use>
+                        </svg>
+                        <h6 class="benefits__card-title">
+                            <?php the_field('events__title'); ?>
+                        </h6>
+                        <p class="benefits__card-text">
+                            <?php the_field('events__text'); ?>
+                        </p>
                     </div>
                 </div>
             </div>
