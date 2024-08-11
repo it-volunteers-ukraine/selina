@@ -72,18 +72,11 @@ get_header();
                 </h2>
                 <div class="about_wcf-section__content">
                     <div class="about_wcf-section__upper-card">
-                        <img src="<?php the_field('wcf-img'); ?>" />
+                        <img src="<?php the_field('wcf-img'); ?>" class="about_wcf-section__upper-card-img"/>
                     </div>
                     <div class="about_wcf-section__lower-card">
-                        <ul class="about_wcf-section__lower-card-list">
-                            <li class="rule-1">
-                                <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>" target="_blank" class="wcf_word"><?php the_field('wcf_word'); ?></a><?php the_field('rule-1');?>
-                            </li>
-                            <li class="rule-2"><?php the_field('rule-2');?></li>
-                            <li class="rule-3"><?php the_field('rule-3');?></li>
-                            <li class="rule-4"><?php the_field('rule-4');?></li>
-                            <li class="rule-5 optional"><?php the_field('rule-5');?></li>
-                            <li class="rule-6 optional"><?php the_field('rule-6');?></li>
+                        <ul class="about_wcf-section__rules">
+                            <a href="<?php echo esc_attr( get_field('about_wcf-section__link') ); ?>" target="_blank" class="wcf_word"><?php the_field('wcf_word'); ?></a><?php the_field('about_wcf-section__rules');?>
                         </ul>
                     </div>
                 </div>
@@ -124,8 +117,8 @@ get_header();
                         <a href="<?php echo esc_attr( get_field('rules-section__link') ); ?>" target="_blank">
                             <?php the_field('open-btn', 'option'); ?>
                         </a> 
-                        <svg class="rules-section__button-svg" width="16" height="14">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                        <svg class="rules-section__button-svg" width="20" height="20">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
                         </svg>
                     </button>
                 </div>

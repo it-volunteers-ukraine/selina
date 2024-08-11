@@ -110,6 +110,7 @@ html {
         }
     }
     /*About WCF section ---------------------------*/
+    
     .about_wcf-section {
         background-color: $background;
         &__wrapper {
@@ -137,24 +138,25 @@ html {
             flex-direction: column;
             gap: 24px; 
             @media screen and (min-width: $desktop) {
-                flex-direction: row;
+                flex-direction: row-reverse;
             }
         }
         &__upper-card {
-            height: 462px;
-            width: 100%;
+            overflow: hidden;
             background-color: #fff;
             border-radius: 10px;
             @media screen and (min-width: $desktop) {
-                order: 2;
-                height: 698px;
-                width: 50%;
+                width: 50%; 
             }
             img {
-                height: 100%;
-                width: 100%;
+                max-width: 100%; 
                 object-fit: contain;
-                border-radius: 10px;
+                @media screen and (min-width: $tablet) {
+                    transform: scale(1.2);
+                }
+                @media screen and (min-width: $desktop) {
+                    transform: none;
+                }
             }
         } 
         &__lower-card {
@@ -171,11 +173,11 @@ html {
                 margin-bottom: 24px;
             }
             @media screen and (min-width: $desktop) {
-                order: 1;
                 width: 50%;
                 margin-bottom: 0;
+                block-size: fit-content;
             }
-            &-list {
+            ul {
                 list-style-type: disc;
                 li {
                     margin-bottom: 21.34px;
@@ -185,7 +187,7 @@ html {
                             margin-bottom: 0;
                         }
                     }
-                    &:nth-child(4) {
+                    &:nth-child(5) {
                         margin-bottom: 0;
                         @media screen and (min-width: $tablet) {
                             margin-bottom: 25.012px;
@@ -194,13 +196,14 @@ html {
                     .wcf_word {
                         color: $primary-color;
                     }
-                    &:nth-child(5), &:nth-child(6) {
+                    &:nth-last-child(-n+2) {
                         display: none;
+            
                         @media screen and (min-width: $tablet) {
                             display: list-item;
                         }
                     }
-                }   
+                }  
             }
         }
         &__button {
@@ -217,6 +220,7 @@ html {
             }
         }
     }
+    
     /*WCF system rules section --------------------*/
     .rules-section {
         background-color: $background;
@@ -375,9 +379,11 @@ html {
         @media screen and (min-width: $tablet) {
             background-position: -400px 0;
         }
+        @media screen and (min-width: 1156px) {
+            background-position: 0;
+        }
         @media screen and (min-width: $desktop) {
             transform: scale(1.5);
-            background-position: 0;
         }
     }
     /*Breed standards section ----------------------*/
@@ -808,5 +814,5 @@ html {
         &__button {
             @extend .open-btn;
         }
-    }
+    }  
 }
