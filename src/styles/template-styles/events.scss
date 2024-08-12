@@ -461,8 +461,15 @@
             height: 37px;
         }
     }
+    
+    &__slider-container {
+        @media screen and (min-width: $tablet) {
+            display: none;
+        }
+    }
 
     &__cards-container {
+        display: none;
         @media screen and (min-width: $tablet) {
             display: flex;
             flex-wrap: wrap;
@@ -498,10 +505,14 @@
         }
     }
 
-    &__card:nth-child(n+10) {
+    /* &__card:nth-child(n+10) {
         @media screen and (min-width: $desktop) {
             display: none;
         }
+    } */
+
+    &__tips-card--hidden {
+        display: none;
     }
 
     &__clip-svg {
@@ -527,5 +538,14 @@
     &__tips_button-icon {
         width: 16px;
         height: 15px;
+    }
+
+    &__show-more-button {
+        display: none;
+        margin-top: 40px;
+        gap: 8px;
+        @media screen and (min-width: $tablet) {
+            display: flex;
+        }
     }
 }

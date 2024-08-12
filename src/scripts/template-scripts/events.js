@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Calendars section
     const showMoreButton = document.getElementById('showMoreCalendarsButton');
     const hiddenCards = document.querySelectorAll('.calendar__calendar-card--hidden');
     let itemsToShow = 2;
@@ -15,4 +16,26 @@ document.addEventListener("DOMContentLoaded", function() {
         showMoreItems();
         this.blur(); 
     });
+
+    // Tips for beginners section
+    const showMoreTipsCardsButton = document.getElementById('showMoreTipsCardsButton');
+    const hiddenTipsCards = document.querySelectorAll('.beginners-tips__tips-card--hidden');
+    let cardsTipsToShow = 2;
+    let currentCardsTipsIndex = 0;
+
+    function showMoreCardsTips() {
+        for (let i = currentCardsTipsIndex; i < currentCardsTipsIndex + cardsTipsToShow && i < hiddenTipsCards.length; i++) {
+            hiddenTipsCards[i].style.display = 'block';
+        }
+        currentCardsTipsIndex += cardsTipsToShow;
+    }
+
+    showMoreTipsCardsButton.addEventListener('click', function() {
+        showMoreCardsTips();
+        document.querySelectorAll('.beginners-tips__card:nth-child(n+9)').forEach(card => {
+            card.style.display = 'flex';
+          });
+        this.blur(); 
+    });
+
 });
