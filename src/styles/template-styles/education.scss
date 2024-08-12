@@ -1,0 +1,147 @@
+@import "../variables";
+
+
+.learning-section {
+  background-color: $background;
+  padding: 20px;
+
+  @media (min-width: $tablet) {
+    padding: 30px;
+  }
+
+  @media (min-width: $desktop) {
+    background-position: center;
+    padding: 107.5px 0;
+    background-repeat: no-repeat;
+  }
+
+
+  .sub-titles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+
+    @media (min-width: $tablet) {
+      gap: 15px 24px;
+      width: 95%;
+    }
+
+    @media (min-width: $desktop) {
+      gap: 16px 36px;
+      width: 50%;
+    }
+
+    .primary {
+      color: $primary-color;
+    }
+
+    .sub-title {
+      font-size: 16px;
+      font-weight: 800;
+
+      .icon-paw {
+        width: 14px;
+        height: 12px;
+        @media (min-width: $desktop) {
+          width: 18px;
+          height: 16px;
+        }
+      }
+
+      @media (min-width: $desktop) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .learning-section_heading {
+    margin-bottom: 14px;
+    font-size: 30px;
+
+    @media (min-width: $tablet) {
+      font-size: 45px;
+      margin-bottom: 21px;
+    }
+    @media (min-width: $desktop) {
+      font-size: 60px;
+      margin-bottom: 24px;
+    }
+
+  }
+}
+
+.education-icon {
+  display: none;
+  @media (min-width: $tablet) {
+    display: inline-block;
+  }
+}
+
+
+.education-general {
+  margin-bottom: 20px;
+
+  @media (min-width: $desktop) {
+    margin-bottom: 40px;
+  }
+}
+
+.education-description {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 20px;
+
+  @media (min-width: $tablet) {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: $desktop) {
+    margin-bottom: 40px;
+  }
+}
+
+.primary-background {
+  background-color: #cfe4e6;
+}
+
+.education-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  @media (min-width: $tablet) {
+    gap: 65px 24px;
+  }
+
+  .frame {
+    background-color: $white;
+    padding: 16px;
+    height: 510px;
+
+    @media (min-width: $mobile) {
+      width: 343px;
+      height: 537px;
+    }
+
+    @media (min-width: $tablet) {
+      width: 340px;
+    }
+
+    @media (min-width: $desktop) {
+      padding: 24px;
+      height: 603px;
+      width: 552px;
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
