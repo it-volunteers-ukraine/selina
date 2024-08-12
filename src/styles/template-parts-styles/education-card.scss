@@ -1,0 +1,40 @@
+@import "../variables";
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-radius: 10px;
+
+  .image {
+    width: 260px;
+    border-radius: 10px;
+
+    @media (min-width: $mobile) {
+      width: 312px;
+    }
+
+    @media (min-width: $desktop) {
+      width: 505px;
+    }
+  }
+
+  .title {
+   font-size: 19px;
+    color: $primary-color;
+    font-weight: 800;
+
+    @media (min-width: $mobile) {
+      font-size: 24px;
+    }
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 21px;
+  }
+}
+
+.flex {
+  flex: 1 1 200px;
+}
