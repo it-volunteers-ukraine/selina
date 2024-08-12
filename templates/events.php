@@ -227,54 +227,124 @@ get_header();
                     <?php the_field('calendar__description'); ?>
                 </p>
                 <div class="calendar__calendars">
-                    <div class="calendar__calendar-ua">
-                        <div class="calendar__calendar-card-img">
-                            <?php
-                                $image = get_field('calendar_ua_img'); 
-                            ?>
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
-                        </div>
-                        <div class="calendar__calendar-card-heading">
-                            <p><?php the_field('calendar_ua_heading'); ?></p>
-                        </div>
-                        <div class="calendar__calendar-card-info">
-                            <p><?php the_field('calendar_ua_info'); ?></p>
-                        </div>
-                        <a href="https://www.wcf-bestcat.de/show-calendar/Ukraine/-?year=2024&month=0" target='_blank'>
-                            <div class="calendar__calendar-card-button red_medium_button">
-                                <p class='calendar__calendar-button-text'>
-                                    <?php the_field('calendar_button_text'); ?>
-                                </p>
-                                <svg class="icon-paw" width="20" height="20">
-                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
-                                </svg>
+                    <?php
+                    $calendar_count = 0;
+                    if( have_rows('calendar__calendar-card') ):
+                        while( have_rows('calendar__calendar-card') ) : the_row();
+                        $calendar_img = get_sub_field('calendar_img');
+                        $calendar_naming = get_sub_field('calendar_naming');
+                        $calendar_info = get_sub_field('calendar_info');
+                        $calendar_button_text = get_sub_field('calendar_button_text');
+                        $calendar_count++;
+                    ?>
+                        <div class="calendar__calendar-card<?php echo $calendar_count > 2 ? ' calendar__calendar-card--hidden' : ''; ?>">
+                            <div class="calendar__calendar-card-img">
+                                <img src="<?php echo $calendar_img['url']; ?>" alt="<?php echo $calendar_img['alt']; ?>">
                             </div>
-                        </a>
-                    </div>
-                    <div class="calendar__calendar-global">
-                        <div class="calendar__calendar-card-img">
-                            <?php
-                                $image = get_field('calendar_global_img'); 
-                            ?>
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
-                        </div>
-                        <div class="calendar__calendar-card-heading">
-                            <p><?php the_field('calendar_global_heading'); ?></p>
-                        </div>
-                        <div class="calendar__calendar-card-info">
-                            <p><?php the_field('calendar_global_info'); ?></p>
-                        </div>
-                        <a href="https://www.wcf-bestcat.de/show-calendar" target='_blank'>
-                            <div class="calendar__calendar-card-button red_medium_button">
-                                <p class='calendar__calendar-button-text'>
-                                    <?php the_field('calendar_button_text'); ?>
-                                </p>
-                                <svg class="icon-paw" width="20" height="20">
-                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
-                                </svg>
+                            <div class="calendar__calendar-card-heading">
+                                <p><?php echo $calendar_naming; ?></p>
                             </div>
-                        </a>
-                    </div>
+                            <div class="calendar__calendar-card-info">
+                                <p><?php echo $calendar_info; ?></p>
+                            </div>
+                            <a href="<?php the_sub_field('calendar_link') ?>" target='_blank'>
+                                <div class="calendar__calendar-card-button red_medium_button">
+                                    <p class='calendar__calendar-button-text'>
+                                        <?php echo $calendar_button_text; ?>
+                                    </p>
+                                    <svg class="icon-paw" width="20" height="20">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <?php
+                            endwhile;
+                        endif;
+                        ?>
+                </div>
+                <!-- Button if calendars > 2 -->
+                <?php if ($calendar_count > 2): ?>
+                    <button class='calendar__show-more-button green_medium_button' id='showMoreCalendarsButton'>
+                        <p class='calendar__show-more-button-text'>
+                            <?php the_field('calendar__show-more-button-text'); ?>
+                        </p>
+                        <svg class="icon-paw" width="20" height="20">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                        </svg>
+                    </button>
+                <?php endif; ?>
+            </div>
+        </section>
+
+        <section class='section beginners-tips' id='beginners-tips'>
+            <div class="container">
+                <div class="beginners-tips__heading-container">
+                    <span class="beginners-tips__La_cat"> 
+                        <svg width="24" height="24"> 
+                            <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-La_cat"></use> 
+                        </svg> 
+                    </span> 
+                    <h2 class="beginners-tips__heading">
+                        <?php the_field('beginners-tips__heading'); ?>
+                    </h2>
+                </div>
+                <div class='beginners-tips__slider-container'>
+                    <!-- ------------------------------------------------------- -->
+                </div>
+                <div class='beginners-tips__cards-container'>
+                    <?php
+                        $args = array(
+                            'orderby' => 'date',
+                            'order' => 'DESC',
+                            'post_type' => 'tips',
+                            'posts_per_page' => -1,   
+                        );
+                        $myposts = get_posts($args);
+                        foreach ($myposts as $post):
+                        setup_postdata($post); ?>
+                        <div class="beginners-tips__card">
+                            <svg class="beginners-tips__clip-svg" width="38" height="90">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
+                            </svg>
+                            <p class='beginners-tips__card-text'><?php the_field('tips_name') ?></p>
+                <!-- Button types -->
+                            <?php
+                                $disk_link = get_field('tips_button-link-disk');
+                                $inner_link = get_field('tips_button-link-inner');
+                                $outer_link = get_field('tips_button-link-outer');
+                            ?>
+                            <?php if ( !empty ($disk_link )): ?>
+
+                            <!-- google-disk -->
+                                <a href="<?php the_field('tips_button-link-disk') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                    <p><?php the_field('tips_button-text') ?></p>
+                                    <svg width="16" height="14"> 
+                                        <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-google"></use> 
+                                    </svg>
+                                </a>
+
+                            <!-- outer-link -->
+                            <?php elseif ( !empty ($outer_link )): ?>
+                                <a href="<?php the_field('tips_button-link-outer') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                    <p><?php the_field('tips_button-text') ?></p>
+                                    <svg class="icon-paw" width="20" height="20">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
+                                    </svg>
+                                </a>
+
+                            <!-- inner-link -->
+                            <?php else : ?>
+                                <a href="<?php the_field('tips_button-link-inner') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                    <p><?php the_field('tips_button-text') ?></p>
+                                    <svg class="icon-paw" width="17" height="15">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                                    </svg>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach;
+                        wp_reset_postdata(); ?>
                 </div>
             </div>
         </section>
