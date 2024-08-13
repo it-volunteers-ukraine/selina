@@ -37,5 +37,19 @@ document.addEventListener("DOMContentLoaded", function() {
           });
         this.blur(); 
     });
-
 });
+
+// Slider
+var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    pagination: {
+      el: ".slider-pagination",
+      type: "fraction",
+    },
+    navigation: {
+      nextEl: ".slider-button-next",
+      prevEl: ".slider-button-prev",
+    },
+  });
+
+//   Awards - gallery

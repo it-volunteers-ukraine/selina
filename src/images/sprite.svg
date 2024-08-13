@@ -191,5 +191,27 @@
 <symbol id="icon-red-calendar" viewBox="0 0 32 32">
 <path fill="none" stroke="#d11f2a" style="stroke: var(--color1, #d11f2a)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.3455" d="M16 10.182v5.818l4.364 4.364M29.091 16c0 7.23-5.861 13.091-13.091 13.091s-13.091-5.861-13.091-13.091c0-7.23 5.861-13.091 13.091-13.091s13.091 5.861 13.091 13.091z"></path>
 </symbol>
+<symbol id="slider-arrow-right" viewBox="0 0 44 44">
+<rect width="44" height="44" rx="10" fill="#045C6F"/>
+<g clip-path="url(#clip0_5049_13550)">
+<path d="M23.5609 22L16.9609 15.4L18.8463 13.5146L27.3316 22L18.8463 30.4853L16.9609 28.6L23.5609 22Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_5049_13550">
+<rect width="32" height="32" fill="white" transform="translate(6 6)"/>
+</clipPath>
+</defs>
+</symbol>
+<svg id="slider-arrow-left" width="44" height="44" viewBox="0 0 44 44">
+<rect width="44" height="44" rx="10" transform="matrix(-1 0 0 1 44 0)" fill="#045C6F"/>
+<g clip-path="url(#clip0_5049_13544)">
+<path d="M20.4391 22L27.0391 15.4L25.1537 13.5146L16.6684 22L25.1537 30.4853L27.0391 28.6L20.4391 22Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_5049_13544">
+<rect width="32" height="32" fill="white" transform="matrix(-1 0 0 1 38 6)"/>
+</clipPath>
+</defs>
+</svg>
 </defs>
 </svg>
