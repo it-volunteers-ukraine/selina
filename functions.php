@@ -437,36 +437,54 @@ function load_more_images() {
     // Перевірка nonce
     if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'gallery_nonce')) {
         wp_send_json_error('Invalid nonce');
+        wp_die();
     }
 
     $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-    $number = 12; // Кількість зображень на сторінку
+    $number = 6; // Кількість зображень на сторінку
 
-    $args = array(
-        'post_type' => 'attachment',
-        'posts_per_page' => $number,
-        'paged' => $page,
-        'post_status' => 'inherit'
-    );
+    // Отримання зображень з ACF поля
+    $images = get_field('news_gallery');
 
-    $query = new WP_Query($args);
+    if ($images) {
+        $start = ($page - 1) * $number;
+        $end = min($start + $number, count($images));
+        
+        $html = '';
 
-    ob_start();
+        for ($i = $start; $i < $end; $i++) {
+            $image = $images[$i];
+            $html .= '<div class="gallery-item">';
+            $html .= '<a href="' . esc_url($image['url']) . '">';
+            $html .= '<img src="' . esc_url($image['sizes']['medium']) . '" alt="' . esc_attr($image['alt']) . '" />';
+            $html .= '</a>';
+            $html .= '</div>';
+        }
 
-    if ($query->have_posts()) :
-        while ($query->have_posts()) : $query->the_post();
-            $image = wp_get_attachment_image_src(get_the_ID(), 'medium');
-            ?>
-            <div class="gallery-item">
-                <img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?>">
-            </div>
-            <?php
-        endwhile;
-    else :
-        echo '<p>No more images</p>';
-    endif;
+         if ($start >= count($images)) {
+            wp_send_json_error('No more images');
+        } else {
+            wp_send_json_success($html);
+        }
+    } else {
+        wp_send_json_error('No images found');
+    }
 
-    $html = ob_get_clean();
-    wp_reset_postdata();
+    wp_die();
+    
 }
 
+add_action('wp_ajax_load_more_images', 'load_more_images');
+add_action('wp_ajax_nopriv_load_more_images', 'load_more_images');
+
+function enqueue_single_news_scripts() {
+    if (is_singular('news')) {
+        wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('jquery'), null, true);
+
+        wp_localize_script('single-news-scripts', 'galleryAjax', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('gallery_nonce')
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_single_news_scripts');

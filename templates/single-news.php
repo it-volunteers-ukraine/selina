@@ -125,27 +125,3 @@ get_header();
 </main>
 <?php get_footer(); ?>
 
-<script>
-jQuery(document).ready(function ($) {
-  var images = <?php echo json_encode($images); ?>;
-  var visibleImagesCount = 6; // Кількість зображень, що показуються на початку
-  
-  // Обробник для кнопки "Показати більше"
-  $('#load-more').on('click', function () {
-    var images = <?php echo json_encode($images); ?>;
-    var startIndex = $('.gallery a').length;
-    var endIndex = startIndex + 5;
-    var html = '';
-
-    for (var i = startIndex; i < endIndex && i < images.length; i++) {
-      html += '<a href="' + images[i].url + '">';
-      html += '<img src="' + images[i].sizes.thumbnail + '" alt="' + images[i].alt + '" />';
-      html += '</a>';
-    }
-    
-    $('.gallery').append(html);
-    visibleImagesCount = endIndex; // Оновлення кількості видимих зображень     
-
-  });
-});
-</script>
