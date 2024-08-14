@@ -3,20 +3,35 @@
 .not-found {
   .not-found-section {
     background-color: $background;
+    padding-top: 0;
+    @media screen and (min-width: $desktop) {
+      padding-top: 32px;
+    }
   }
 
   .not-found-content {
     display: flex;
     flex-direction: column;
     gap: 56px;
-    align-items: center;
+    @media screen and (min-width: $desktop) {
+      flex-direction: row-reverse;
+      gap: 0;
+      align-items: flex-end;
+      justify-content: center;
+    }
 
     &__img-part {
       display: flex;
       flex-direction: column;
       align-items: center;
       img {
-        width: 227px;
+        min-width: 227px;
+        width: 60vw;
+        @media screen and (min-width: $tablet) {
+          min-width: 371.75px;
+          width: 48.4vw;
+          max-width: 455px;
+        }
       }
       h1 {
         font-family: $primary-font;
@@ -24,8 +39,17 @@
         font-size: 72px;
         line-height: 93.6px;
         color: $black;
+        @media screen and (min-width: $tablet) {
+          font-size: 108px;
+          line-height: 142.56px;
+        }
+        @media screen and (min-width: $desktop) {
+          font-size: 148px;
+          line-height: 148px;
+        }
       }
     }
+
     &__text-part {
       display: flex;
       flex-direction: column;
@@ -36,6 +60,14 @@
         font-size: 30px;
         line-height: 30px;
         color: $black;
+        @media screen and (min-width: $tablet) {
+          font-size: 45px;
+          line-height: 45px;
+        }
+        @media screen and (min-width: $tablet) {
+          font-size: 60px;
+          line-height: 60px;
+        }
       }
       p {
         font-family: $primary-font;
@@ -43,6 +75,9 @@
         font-size: 20px;
         line-height: 25px;
         color: $black;
+        @media screen and (min-width: $tablet) {
+          max-width: 548px;
+        }
       }
       a {
         width: fit-content;
