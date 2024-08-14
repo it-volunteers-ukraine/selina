@@ -424,13 +424,13 @@ function get_breeders_per_page($width)
 }
 
 /*** AJAX gallary*/
-    if (is_page_template('templates/gallery.php')) {
-        wp_enqueue_script('gallery-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/gallery.js', array('jquery'), false, true);
-        wp_localize_script('gallery-scripts', 'galleryAjax', array(
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('gallery_nonce')
-        ));
-    }
+    // if (is_page_template('templates/gallery.php')) {
+    //     wp_enqueue_script('gallery-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/gallery.js', array('jquery'), false, true);
+    //     wp_localize_script('gallery-scripts', 'galleryAjax', array(
+    //         'ajaxUrl' => admin_url('admin-ajax.php'),
+    //         'nonce' => wp_create_nonce('gallery_nonce')
+    //     ));
+    // }
 
 // Функція для обробки AJAX-запитів
 function load_more_images() {
@@ -462,12 +462,12 @@ function load_more_images() {
         }
 
          if ($start >= count($images)) {
-            wp_send_json_error('No more images');
+            wp_send_json_success(array('html' => $html, 'no_more_images' => true));
         } else {
-            wp_send_json_success($html);
+            wp_send_json_success(array('html' => $html, 'no_more_images' => false));
         }
     } else {
-        wp_send_json_error('No images found');
+        wp_send_json_error(array('message' => 'No images found'));
     }
 
     wp_die();
@@ -477,10 +477,22 @@ function load_more_images() {
 add_action('wp_ajax_load_more_images', 'load_more_images');
 add_action('wp_ajax_nopriv_load_more_images', 'load_more_images');
 
+// Скрипти для галереї
+function enqueue_gallery_scripts() {
+    if (is_page_template('templates/gallery.php')) {
+        wp_enqueue_script('gallery-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/gallery.js', array('jquery'), false, true);
+        wp_localize_script('gallery-scripts', 'galleryAjax', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('gallery_nonce')
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_gallery_scripts');
+
+// Скрипти для single-news
 function enqueue_single_news_scripts() {
     if (is_singular('news')) {
         wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('jquery'), null, true);
-
         wp_localize_script('single-news-scripts', 'galleryAjax', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('gallery_nonce')
@@ -488,3 +500,5 @@ function enqueue_single_news_scripts() {
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_single_news_scripts');
+
+

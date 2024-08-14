@@ -1,12 +1,12 @@
 jQuery(document).ready(function ($) {
-    let page = 2; // Початкова сторінка для завантаження
-    let nonce = my_ajax.nonce; // Отримати nonce з локалізованого скрипта
+    let page = 2; // Початкова сторінка для завантаження    
     let contentType = $('#load-more').data('type'); // Отримуємо тип контенту з data-атрибута кнопки
     let postId = $('#load-more').data('post-id'); // Отримуємо ID поста з data-атрибута кнопки
+    let nonce = galleryAjax.nonce; // Отримати nonce з локалізованого скрипта
 
     function loadMoreContent() {
         $.ajax({
-            url: my_ajax.ajaxurl, // Локалізована змінна для AJAX URL
+            url: galleryAjax.ajaxUrl, // Локалізована змінна для AJAX URL
             type: 'POST',
             data: {
                 action: 'load_more_content', // Загальна дія для завантаження контенту
@@ -33,6 +33,7 @@ jQuery(document).ready(function ($) {
             },
             error: function (xhr, status, error) {
                 console.error("Request failed: " + error);
+                console.log("Response:", xhr.responseText); // Перевірка відповіді сервера
             }
         });
     }
