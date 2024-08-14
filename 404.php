@@ -25,7 +25,7 @@ get_header();
 					<div class="not-found-content__text-part">
 						<h2><?php the_field('404_title', 'option') ?></h2>
 						<p><?php the_field('404_text', 'option') ?></p>
-						<a href="<?php echo get_home_url("/");?>"><?php the_field('404_text-link', 'option') ?></a>
+						<a href="<?php echo get_home_url("/");?>" class="red_medium_button button"><?php the_field('404_text-link', 'option') ?></a>
 					</div>
 				</div>
 			</div>
