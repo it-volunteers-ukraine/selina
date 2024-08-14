@@ -62,3 +62,16 @@
   animation: pawAnimation 2s infinite;
   animation-delay: 1.5s;
 }
+
+@keyframes progressBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 164px;
+  }
+}
+
+.progress-bar {
+  animation: progressBar 2s;
+}
