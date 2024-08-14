@@ -15,8 +15,16 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 170px;
-  height: 156px;
+  width: 56.67px;
+  height: 52px;
+  @media screen and (min-width: $tablet) {
+    width: 85px;
+    height: 78px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 170px;
+    height: 156px;
+  }
 }
 
 /* Анімація для лап */
@@ -38,23 +46,19 @@
   }
 }
 
-/* Додаємо анімацію до кожної лапи SVG */
 .paw-1 {
-  animation: pawAnimation 4s infinite;
-  animation-delay: 0s; /* Початок анімації */
+  animation: pawAnimation 2s infinite;
+  animation-delay: 0s;
 }
-
 .paw-2 {
-  animation: pawAnimation 4s infinite;
-  animation-delay: 1s; /* Затримка перед анімацією */
+  animation: pawAnimation 2s infinite;
+  animation-delay: 0.5s;
 }
-
 .paw-3 {
-  animation: pawAnimation 4s infinite;
-  animation-delay: 2s; /* Затримка перед анімацією */
+  animation: pawAnimation 2s infinite;
+  animation-delay: 1s;
 }
-
 .paw-4 {
-  animation: pawAnimation 4s infinite;
-  animation-delay: 3s; /* Затримка перед анімацією */
+  animation: pawAnimation 2s infinite;
+  animation-delay: 1.5s;
 }
