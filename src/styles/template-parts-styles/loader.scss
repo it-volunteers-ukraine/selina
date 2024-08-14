@@ -15,19 +15,46 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border: 8px solid $background;
-  border-top: 8px solid $primary-color;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 2s linear infinite;
+  width: 170px;
+  height: 156px;
 }
 
-@keyframes spin {
+/* Анімація для лап */
+@keyframes pawAnimation {
   0% {
-    transform: rotate(0deg);
+    fill: #ffffff;
+  }
+  25% {
+    fill: #045c6f;
+  }
+  50% {
+    fill: #ffffff;
+  }
+  75% {
+    fill: #ffffff;
   }
   100% {
-    transform: rotate(360deg);
+    fill: #ffffff;
   }
+}
+
+/* Додаємо анімацію до кожної лапи SVG */
+.paw-1 {
+  animation: pawAnimation 4s infinite;
+  animation-delay: 0s; /* Початок анімації */
+}
+
+.paw-2 {
+  animation: pawAnimation 4s infinite;
+  animation-delay: 1s; /* Затримка перед анімацією */
+}
+
+.paw-3 {
+  animation: pawAnimation 4s infinite;
+  animation-delay: 2s; /* Затримка перед анімацією */
+}
+
+.paw-4 {
+  animation: pawAnimation 4s infinite;
+  animation-delay: 3s; /* Затримка перед анімацією */
 }
