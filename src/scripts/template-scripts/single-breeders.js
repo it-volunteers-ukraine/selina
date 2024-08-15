@@ -30,11 +30,11 @@ const newsSwiper = new Swiper(
     },
   }
 );
-const freeCatList = document.querySelector(
+const freeCatList = document?.querySelector(
   ".single-breeder-free-cats-section__wrapper"
 );
 
-const freeCatListBtn = document.querySelector(
+const freeCatListBtn = document?.querySelector(
   ".single-breeder-free-cats-section__button"
 );
 
@@ -48,7 +48,7 @@ if (freeCatListChildren.length > count) {
   freeCatListBtn.classList.remove("visually-hidden");
   ca = count;
 
-  freeCatListBtn.addEventListener("click", () => {
+  freeCatListBtn?.addEventListener("click", () => {
     freeCatList.append(...freeCatListChildren.slice(ca, ca + count));
     ca = ca + count;
     if (ca >= freeCatListChildren.length) {
