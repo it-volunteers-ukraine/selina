@@ -423,68 +423,12 @@ function get_breeders_per_page($width)
     }
 }
 
-/*** AJAX gallary*/
-    // if (is_page_template('templates/gallery.php')) {
-    //     wp_enqueue_script('gallery-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/gallery.js', array('jquery'), false, true);
-    //     wp_localize_script('gallery-scripts', 'galleryAjax', array(
-    //         'ajaxUrl' => admin_url('admin-ajax.php'),
-    //         'nonce' => wp_create_nonce('gallery_nonce')
-    //     ));
-    // }
-
-// Функція для обробки AJAX-запитів
-function load_more_images() {
-    // Перевірка nonce
-    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'gallery_nonce')) {
-        wp_send_json_error('Invalid nonce');
-        wp_die();
-    }
-
-    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-    $number = 6; // Кількість зображень на сторінку
-
-    // Отримання зображень з ACF поля
-    $images = get_field('news_gallery');
-
-    if ($images) {
-        $start = ($page - 1) * $number;
-        $end = min($start + $number, count($images));
-        
-        $html = '';
-
-        for ($i = $start; $i < $end; $i++) {
-            $image = $images[$i];
-            $html .= '<div class="gallery-item">';
-            $html .= '<a href="' . esc_url($image['url']) . '">';
-            $html .= '<img src="' . esc_url($image['sizes']['medium']) . '" alt="' . esc_attr($image['alt']) . '" />';
-            $html .= '</a>';
-            $html .= '</div>';
-        }
-
-         if ($start >= count($images)) {
-            wp_send_json_success(array('html' => $html, 'no_more_images' => true));
-        } else {
-            wp_send_json_success(array('html' => $html, 'no_more_images' => false));
-        }
-    } else {
-        wp_send_json_error(array('message' => 'No images found'));
-    }
-
-    wp_die();
-    
-}
-
-add_action('wp_ajax_load_more_images', 'load_more_images');
-add_action('wp_ajax_nopriv_load_more_images', 'load_more_images');
+/*** News gallary*/  
 
 // Скрипти для галереї
 function enqueue_gallery_scripts() {
     if (is_page_template('templates/gallery.php')) {
-        wp_enqueue_script('gallery-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/gallery.js', array('jquery'), false, true);
-        wp_localize_script('gallery-scripts', 'galleryAjax', array(
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('gallery_nonce')
-        ));
+        wp_enqueue_script('gallery-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/gallery.js', array('jquery'), false, true);        
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_gallery_scripts');
@@ -492,11 +436,7 @@ add_action('wp_enqueue_scripts', 'enqueue_gallery_scripts');
 // Скрипти для single-news
 function enqueue_single_news_scripts() {
     if (is_singular('news')) {
-        wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('jquery'), null, true);
-        wp_localize_script('single-news-scripts', 'galleryAjax', array(
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('gallery_nonce')
-        ));
+        wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('jquery'), null, true);        
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_single_news_scripts');

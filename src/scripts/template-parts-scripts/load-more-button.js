@@ -1,44 +1,73 @@
 jQuery(document).ready(function ($) {
-    let page = 2; // Початкова сторінка для завантаження    
-    let contentType = $('#load-more').data('type'); // Отримуємо тип контенту з data-атрибута кнопки
-    let postId = $('#load-more').data('post-id'); // Отримуємо ID поста з data-атрибута кнопки
-    let nonce = galleryAjax.nonce; // Отримати nonce з локалізованого скрипта
+    let pageMapping = {};
+    const containerFriends = $('#more-friends');
+    const containerPhotographs = $('#more-photographs');
+    const loadBtnFriends = $('#load-more-friends');
+    const loadBtnPhotographs = $('#load-more-photographs');
+    const loadBtnGallery = $('#load-more-gallery'); // Кнопка для галереї
+    const galleryItems = $('.gallery-item'); // Елементи галереї
+    let initialItems = 6; // Кількість елементів, що показуються спочатку
+    var viewportWidth = window.innerWidth;
 
-    function loadMoreContent() {
+
+    // get nonce
+    function getNonce() {
+        return my_ajax.nonce;
+    }
+
+    function loadPosts(postType, targetContainer) {
+        if (!pageMapping[postType]) {
+            pageMapping[postType] = 2;
+        }
+
         $.ajax({
-            url: galleryAjax.ajaxUrl, // Локалізована змінна для AJAX URL
+            url: my_ajax.ajaxurl, /* Use the localised ajaxurl variable */
+            nonce: getNonce(),
             type: 'POST',
             data: {
-                action: 'load_more_content', // Загальна дія для завантаження контенту
-                page: page, // Номер сторінки
-                type: contentType, // Тип контенту
-                post_id: postId, // ID поста
-                nonce: nonce // nonce для перевірки безпеки
+                action: 'load_more_posts',
+                page: pageMapping[postType],
+                width: viewportWidth,
+                postType: postType,
             },
             success: function (response) {
-                if (response.success) {
-                    // Додаємо новий контент
-                    $('#content-container').append(response.data.html);
-
-                    // Оновлюємо номер сторінки
-                    page++;
-
-                    // Приховуємо кнопку, якщо більше немає контенту для завантаження
-                    if (response.data.no_more_content) {
-                        $('#load-more').hide();
-                    }
-                } else {
-                    console.error("Error: " + response.data.message);
-                }
+                targetContainer.append(response.html)
+                pageMapping[postType]++;
             },
             error: function (xhr, status, error) {
                 console.error("Request failed: " + error);
-                console.log("Response:", xhr.responseText); // Перевірка відповіді сервера
             }
         });
     }
 
-    $('#load-more').on('click', function () {
-        loadMoreContent();
+    // Функція для показу більше елементів галереї
+    function loadMoreGallery() {
+        let visibleItems = galleryItems.filter(":visible").length;
+        galleryItems.slice(visibleItems, visibleItems + initialItems).fadeIn();
+
+        if (galleryItems.filter(":hidden").length === 0) {
+            loadBtnGallery.hide();
+        }
+    }
+
+    loadBtnFriends.on('click', function () {
+        var postType = $(this).data('post-type');
+        const ninthElem = $('#more-friends .nine-elem');
+        ninthElem.css('display', 'block');
+        loadPosts(postType, containerFriends);
     });
+
+    loadBtnPhotographs.on('click', function () {
+        var postType = $(this).data('post-type');
+        loadPosts(postType, containerPhotographs);
+    });
+
+    // Обробка кліків для галереї
+    loadBtnGallery.on('click', function () {
+        loadMoreGallery();
+    });
+
+    // Ініціалізація - сховати частину елементів галереї
+    galleryItems.slice(initialItems).hide();
+
 });

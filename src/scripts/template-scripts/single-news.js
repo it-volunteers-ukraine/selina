@@ -1,21 +1,37 @@
-jQuery(document).ready(function ($) {
-  $('#load-more').on('click', function () {
-    let data = {
-      action: 'load_more_images',
-      nonce: galleryAjax.nonce,
-      page: Math.ceil($('.gallery a').length / 6) + 1
-    };
-       
-    $.post(galleryAjax.ajaxUrl, data, function (response) {
-      if (response.success) {
-        $('.gallery').append(response.data);
-      } else {
-        console.log('AJAX response failed:', response.data);
-      }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        console.log('AJAX request failed:', textStatus, errorThrown);
+document.addEventListener("DOMContentLoaded", function () {
+    let loadMoreButton = document.getElementById('load-more');
+    let galleryItems = document.querySelectorAll('.gallery-item');
+    let itemsToShow = 6;
+    let currentItems = itemsToShow;
 
+    // Приховуємо всі елементи, окрім перших 6
+    function hideGalleryItems() {
+        galleryItems.forEach((item, index) => {
+            if (index >= currentItems) {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Показуємо наступні 6 елементів
+    function showNextItems() {
+        let itemsToReveal = currentItems + itemsToShow;
+        for (let i = currentItems; i < itemsToReveal && i < galleryItems.length; i++) {
+            galleryItems[i].style.display = 'block';
+        }
+        currentItems = itemsToReveal;
+
+        // Якщо всі елементи показані, ховаємо кнопку
+        if (currentItems >= galleryItems.length) {
+            loadMoreButton.style.display = 'none';
+        }
+    }
+
+    // Ініціалізація
+    hideGalleryItems();
+
+    // Обробка кліку по кнопці
+    loadMoreButton.addEventListener('click', function () {
+        showNextItems();
     });
-  });
-  console.log('Script loaded completely');
 });
