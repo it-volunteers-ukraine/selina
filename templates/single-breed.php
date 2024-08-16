@@ -138,35 +138,49 @@ get_header();
     <section class="section single-breed-wfc-section" id="single-breed-wfc">
         <div class="container">
             <div class="single-breed-wfc-section__head">
-            <h2 class="section_heading single-breed-wfc-section__heading">
+                <h2 class="section_heading single-breed-wfc-section__heading">
                 <svg class="single-breed-heading-svg" width="42" height="60">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                     </use>
                 </svg>
                 <?php the_field('breed-page_wfc-title'); ?>
-            </h2>
-            <button class="single-breed-button">
+                </h2>
+                <button class="single-breed-button">
                 <svg class="single-breed-button-svg" width="18.67" height="18.67">
                     <use
                         href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-add">
                     </use>
                 </svg>
-            </button>
+                </button>
             </div>
-            <ul class="single-breed-wfc-section__list">
-                <li class="single-breed-wfc-section__item">
-                    <h3>Тіло</h3>
-                    <p>Кіт середнього розміру і елегантний. Тіло середньої довжини, міцне, гнучке, мускулисте. Ноги жилаві, довгі та стрункі. Лапи вузькі, овальні. Довгий хвіст міцний біля основи і закінчується звуженим кінчиком. Шия витончена.</p>
-                </li>
-                <li class="single-breed-wfc-section__item">
-                    <h3>Голова</h3>
-                    <p>Голова має помірну клиноподібну форму і м’яко закруглені контури. Ніс середньої довжини. Профіль злегка зігнутий. Підборіддя тверде.</p>
-                </li>
-                <li class="single-breed-wfc-section__item">
-                    <h3>Вуха</h3>
-                    <p>Вуха великі та розташовані широко. Вони широкі в основі і слабо закруглені на кінчиках. Бажані вушні кисті та відбиток пальця.</p>
-                </li>
-            </ul>
+            <?php
+                if (have_rows('breed-page_wcf-list')): ?>
+                    <ul class="single-breed-wfc-section__list">            
+                        <?php while (have_rows('breed-page_wcf-list')):
+                            the_row(); ?>
+                            <?php $wfc_title = get_sub_field('breed-page_wcf-item-title'); ?>
+                            <?php $wfc_text = get_sub_field('breed-page_wcf-item-text'); ?>
+                            <?php if ($wfc_title  && $wfc_text): ?>
+                                <li class="single-breed-wfc-section__item">
+                                    <h3><?php echo $wfc_title ;?></h3>
+                                    <p><?php echo $wfc_text ;?></p>
+                                </li>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+                                <li class="single-breed-wfc-section__item">
+                                    <h3>Варіації кольорів</h3>
+                                    <div>
+                                        <h3>Без срібла:</h3>
+                                        <ul>
+                                            <li>Радді (коричневий)</li>
+                                            <li>Радді (коричневий)</li>
+                                            <li>Радді (коричневий)</li>
+                                            <li>Радді (коричневий)</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                    </ul>
+                <?php endif; ?>
         </div>
     </section>
     <section class="section single-breed-conditions-section" id="single-breed-conditions">
