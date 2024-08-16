@@ -137,6 +137,7 @@ get_header();
     </section>
     <section class="section single-breed-wfc-section" id="single-breed-wfc">
         <div class="container">
+            <div class="single-breed-wfc-section__head">
             <h2 class="section_heading single-breed-wfc-section__heading">
                 <svg class="single-breed-heading-svg" width="42" height="60">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
@@ -144,7 +145,24 @@ get_header();
                 </svg>
                 <?php the_field('breed-page_wfc-title'); ?>
             </h2>
-
+            <button class="single-breed-button">
+                <svg class="single-breed-button-svg" width="18.67" height="18.67">
+                    <use
+                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-add">
+                    </use>
+                </svg>
+            </button>
+            </div>
+            <ul class="single-breed-wfc-section__list">
+                <li>
+                    <h3>Тіло</h3>
+                    <p>Кіт середнього розміру і елегантний. Тіло середньої довжини, міцне, гнучке, мускулисте. Ноги жилаві, довгі та стрункі. Лапи вузькі, овальні. Довгий хвіст міцний біля основи і закінчується звуженим кінчиком. Шия витончена.</p>
+                </li>
+                <li>
+                    <h3>Голова</h3>
+                    <p>Голова має помірну клиноподібну форму і м’яко закруглені контури. Ніс середньої довжини. Профіль злегка зігнутий. Підборіддя тверде.</p>
+                </li>
+            </ul>
         </div>
     </section>
     <section class="section single-breed-conditions-section" id="single-breed-conditions">
