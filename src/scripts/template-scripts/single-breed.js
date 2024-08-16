@@ -1,19 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const button = document.querySelector(".single-breed-button");
-  const list = document.querySelector(".single-breed-wfc-section__list");
+  function handleButtonClick(buttonSelector, listSelector) {
+    const button = document.querySelector(buttonSelector);
+    const list = document.querySelector(listSelector);
 
-  button.addEventListener("click", function () {
-    const svgUse = this.querySelector("use");
-    const href = svgUse.getAttribute("href");
+    button.addEventListener("click", function () {
+      const svgUse = this.querySelector("use");
+      const href = svgUse.getAttribute("href");
 
-    if (href.includes("icon-add")) {
-      svgUse.setAttribute("href", href.replace("icon-add", "icon-remove"));
-      list.classList.add("open");
-    } else {
-      svgUse.setAttribute("href", href.replace("icon-remove", "icon-add"));
-      list.classList.remove("open");
-    }
-  });
+      if (href.includes("icon-add")) {
+        svgUse.setAttribute("href", href.replace("icon-add", "icon-remove"));
+        list.classList.add("open");
+      } else {
+        svgUse.setAttribute("href", href.replace("icon-remove", "icon-add"));
+        list.classList.remove("open");
+      }
+    });
+  }
+
+  handleButtonClick(
+    ".single-breed-wfc-button",
+    ".single-breed-wfc-section__list"
+  );
+
+  handleButtonClick(
+    ".single-breed-conditions-button",
+    ".single-breed-conditions-section__list"
+  );
 });
 
 const newsSwiper = new Swiper(".single-breed-breeders-section__swiper", {

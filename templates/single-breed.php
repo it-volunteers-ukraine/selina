@@ -145,7 +145,7 @@ get_header();
                 </svg>
                 <?php the_field('breed-page_wfc-title'); ?>
                 </h2>
-                <button class="single-breed-button">
+                <button class="single-breed-wfc-button">
                 <svg class="single-breed-button-svg" width="18.67" height="18.67">
                     <use
                         href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-add">
@@ -196,14 +196,36 @@ get_header();
     </section>
     <section class="section single-breed-conditions-section" id="single-breed-conditions">
         <div class="container">
-            <h2 class="section_heading single-breed-conditions-section__heading">
+            <div class="single-breed-conditions-section__head">
+                <h2 class="section_heading single-breed-conditions-section__heading">
                 <svg class="single-breed-heading-svg" width="42" height="60">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                     </use>
                 </svg>
                 <?php the_field('breed-page_conditions-title'); ?>
-            </h2>
-
+                </h2>
+                <button class="single-breed-conditions-button">
+                <svg class="single-breed-button-svg" width="18.67" height="18.67">
+                    <use
+                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-add">
+                    </use>
+                </svg>
+                </button>
+            </div>
+            <ul class="single-breed-conditions-section__list">
+                <li class="single-breed-conditions-section__item">
+                    <h3>Фізична активність</h3>
+                    <p>Абісинські кішки - це дуже енергійні тварини, які потребують багато фізичної активності та гри. Забезпечте їм достатньо місця для бігу та гри, а також різноманітні іграшки, які сприяють фізичній активності та ментальному стимулюванню.</p>
+                </li>
+                <li class="single-breed-conditions-section__item">
+                    <h3>Фізична активність</h3>
+                    <p>Абісинські кішки - це дуже енергійні тварини, які потребують багато фізичної активності та гри. Забезпечте їм достатньо місця для бігу та гри, а також різноманітні іграшки, які сприяють фізичній активності та ментальному стимулюванню.</p>
+                </li>
+                <li class="single-breed-conditions-section__item">
+                    <h3>Фізична активність</h3>
+                    <p>Абісинські кішки - це дуже енергійні тварини, які потребують багато фізичної активності та гри. Забезпечте їм достатньо місця для бігу та гри, а також різноманітні іграшки, які сприяють фізичній активності та ментальному стимулюванню.</p>
+                </li>
+            </ul>
         </div>
     </section>
     <?php get_template_part('template-parts/join-us'); ?>
