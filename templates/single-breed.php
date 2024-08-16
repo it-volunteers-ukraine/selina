@@ -167,16 +167,27 @@ get_header();
                                 </li>
                             <?php endif; ?>
                         <?php endwhile; ?>
-                                <li class="single-breed-wfc-section__item">
+                                <li class="single-breed-wfc-section__item colors">
                                     <h3>Варіації кольорів</h3>
-                                    <div>
-                                        <h3>Без срібла:</h3>
+                                    <div class="single-breed-wfc-section__item-list">
+                                        <div class="item-wrapper">
+                                        <h4>Без срібла:</h4>
                                         <ul>
                                             <li>Радді (коричневий)</li>
-                                            <li>Радді (коричневий)</li>
-                                            <li>Радді (коричневий)</li>
-                                            <li>Радді (коричневий)</li>
+                                            <li>Блакитний</li>
+                                            <li>Оленячий</li>
+                                            <li>Сорель (Червоний)</li>
                                         </ul>
+                                        </div>
+                                        <div class="item-wrapper">
+                                        <h4>З сріблом:</h4>
+                                        <ul>
+                                            <li>Чорне срібло</li>
+                                            <li>Блакитне срібло</li>
+                                            <li>Оленяче срібло</li>
+                                            <li>Сорель срібло</li>
+                                        </ul>
+                                        </div>
                                     </div>
                                 </li>
                     </ul>
