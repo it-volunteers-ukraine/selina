@@ -212,20 +212,22 @@ get_header();
                 </svg>
                 </button>
             </div>
+            <?php
+                if (have_rows('breed-page_conditions-list')): ?>
             <ul class="single-breed-conditions-section__list">
-                <li class="single-breed-conditions-section__item">
-                    <h3>Фізична активність</h3>
-                    <p>Абісинські кішки - це дуже енергійні тварини, які потребують багато фізичної активності та гри. Забезпечте їм достатньо місця для бігу та гри, а також різноманітні іграшки, які сприяють фізичній активності та ментальному стимулюванню.</p>
-                </li>
-                <li class="single-breed-conditions-section__item">
-                    <h3>Фізична активність</h3>
-                    <p>Абісинські кішки - це дуже енергійні тварини, які потребують багато фізичної активності та гри. Забезпечте їм достатньо місця для бігу та гри, а також різноманітні іграшки, які сприяють фізичній активності та ментальному стимулюванню.</p>
-                </li>
-                <li class="single-breed-conditions-section__item">
-                    <h3>Фізична активність</h3>
-                    <p>Абісинські кішки - це дуже енергійні тварини, які потребують багато фізичної активності та гри. Забезпечте їм достатньо місця для бігу та гри, а також різноманітні іграшки, які сприяють фізичній активності та ментальному стимулюванню.</p>
-                </li>
+                <?php while (have_rows('breed-page_conditions-list')):
+                    the_row(); ?>
+                    <?php $conditions_title = get_sub_field('breed-page_conditions-item-title'); ?>
+                    <?php $conditions_text = get_sub_field('breed-page_conditions-item-text'); ?>
+                    <?php if ($conditions_title  && $conditions_text): ?>
+                        <li class="single-breed-conditions-section__item">
+                            <h3><?php echo $conditions_title ;?></h3>
+                            <p><?php echo $conditions_text ;?></p>
+                        </li>
+                    <?php endif; ?>
+                <?php endwhile; ?>
             </ul>
+            <?php endif; ?>
         </div>
     </section>
     <?php get_template_part('template-parts/join-us'); ?>
