@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.querySelector(".single-breed-button");
+  const list = document.querySelector(".single-breed-wfc-section__list");
+
+  button.addEventListener("click", function () {
+    const svgUse = this.querySelector("use");
+    const href = svgUse.getAttribute("href");
+
+    if (href.includes("icon-add")) {
+      svgUse.setAttribute("href", href.replace("icon-add", "icon-remove"));
+      list.classList.add("open");
+    } else {
+      svgUse.setAttribute("href", href.replace("icon-remove", "icon-add"));
+      list.classList.remove("open");
+    }
+  });
+});
+
 const newsSwiper = new Swiper(".single-breed-breeders-section__swiper", {
   effect: "slide",
   loop: true,
