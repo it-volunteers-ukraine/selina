@@ -168,27 +168,27 @@ get_header();
                             <?php endif; ?>
                         <?php endwhile; ?>
                                 <li class="single-breed-wfc-section__item colors">
-                                    <h3>Варіації кольорів</h3>
-                                    <div class="single-breed-wfc-section__item-list">
+                                    <?php $wfc_colorsTitle = get_field('breed-page_wcf-colors-title'); ?>
+                                    <h3><?php echo $wfc_colorsTitle ;?></h3>
+                                    <?php if (have_rows('breed-page_wcf-colors-list')): ?>
+                                        <div class="single-breed-wfc-section__item-list">
+                                        <?php while (have_rows('breed-page_wcf-colors-list')):
+                                            the_row(); ?>
+                                            <?php $wfc_colorsItemTitle = get_sub_field('breed-page_wcf-colors-item-title'); ?>
+                                            <?php $wfc_colorsItemText = get_sub_field('breed-page_wcf-colors-item-text'); ?>       
                                         <div class="item-wrapper">
-                                        <h4>Без срібла:</h4>
+                                        <h4><?php echo $wfc_colorsItemTitle ;?></h4>
                                         <ul>
-                                            <li>Радді (коричневий)</li>
-                                            <li>Блакитний</li>
-                                            <li>Оленячий</li>
-                                            <li>Сорель (Червоний)</li>
+                                            <?php while (have_rows('breed-page_wcf-colors-item-text')):
+                                            the_row(); ?>
+                                            <?php $wfc_color = get_sub_field('breed-page_wcf-colors-item-single'); ?>
+                                            <li><?php echo $wfc_color ;?></li>
+                                            <?php endwhile; ?>
                                         </ul>
                                         </div>
-                                        <div class="item-wrapper">
-                                        <h4>З сріблом:</h4>
-                                        <ul>
-                                            <li>Чорне срібло</li>
-                                            <li>Блакитне срібло</li>
-                                            <li>Оленяче срібло</li>
-                                            <li>Сорель срібло</li>
-                                        </ul>
-                                        </div>
+                                        <?php endwhile; ?>
                                     </div>
+                                    <?php endif; ?>
                                 </li>
                     </ul>
                 <?php endif; ?>
