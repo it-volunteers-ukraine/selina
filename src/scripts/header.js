@@ -116,4 +116,8 @@ jQuery(document).ready(function ($) {
   $(window).on("load", function () {
     hideLoader();
   });
+
+  setTimeout(function () {
+    hideLoader();
+  }, 5000);
 });
