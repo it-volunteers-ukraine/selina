@@ -275,6 +275,13 @@
     display: flex;
     gap: 18px;
     justify-content: space-between;
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 0px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 8px;
+    }
 
     .single-breed-button {
       width: 44px;
@@ -299,9 +306,41 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease;
+    display: flex;
+    flex-direction: column;
   }
-
   &__list.open {
     max-height: 500px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0;
+    border-bottom: 3px solid $background;
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+      padding: 24px 0;
+    }
+    @media screen and (min-width: $desktop) {
+      padding: 32px 0;
+    }
+
+    h3 {
+      font-family: $primary-font;
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 20px;
+      color: $primary-color;
+    }
+
+    p {
+      font-family: $primary-font;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 21px;
+      color: $black;
+    }
   }
 }
