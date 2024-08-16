@@ -137,12 +137,71 @@ get_header();
     </section>
     <section class="section single-breed-wfc-section" id="single-breed-wfc">
         <div class="container">
-            <h2 class="section_heading single-breed-wfc-section__heading">
+            <div class="single-breed-wfc-section__head">
+                <h2 class="section_heading single-breed-wfc-section__heading">
                 <svg class="single-breed-heading-svg" width="42" height="60">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
                     </use>
                 </svg>
                 <?php the_field('breed-page_wfc-title'); ?>
+                </h2>
+                <button class="single-breed-button">
+                <svg class="single-breed-button-svg" width="18.67" height="18.67">
+                    <use
+                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-add">
+                    </use>
+                </svg>
+                </button>
+            </div>
+            <?php
+                if (have_rows('breed-page_wcf-list')): ?>
+                    <ul class="single-breed-wfc-section__list">            
+                        <?php while (have_rows('breed-page_wcf-list')):
+                            the_row(); ?>
+                            <?php $wfc_title = get_sub_field('breed-page_wcf-item-title'); ?>
+                            <?php $wfc_text = get_sub_field('breed-page_wcf-item-text'); ?>
+                            <?php if ($wfc_title  && $wfc_text): ?>
+                                <li class="single-breed-wfc-section__item">
+                                    <h3><?php echo $wfc_title ;?></h3>
+                                    <p><?php echo $wfc_text ;?></p>
+                                </li>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+                                <li class="single-breed-wfc-section__item colors">
+                                    <?php $wfc_colorsTitle = get_field('breed-page_wcf-colors-title'); ?>
+                                    <h3><?php echo $wfc_colorsTitle ;?></h3>
+                                    <?php if (have_rows('breed-page_wcf-colors-list')): ?>
+                                        <div class="single-breed-wfc-section__item-list">
+                                        <?php while (have_rows('breed-page_wcf-colors-list')):
+                                            the_row(); ?>
+                                            <?php $wfc_colorsItemTitle = get_sub_field('breed-page_wcf-colors-item-title'); ?>
+                                            <?php $wfc_colorsItemText = get_sub_field('breed-page_wcf-colors-item-text'); ?>       
+                                        <div class="item-wrapper">
+                                        <h4><?php echo $wfc_colorsItemTitle ;?></h4>
+                                        <ul>
+                                            <?php while (have_rows('breed-page_wcf-colors-item-text')):
+                                            the_row(); ?>
+                                            <?php $wfc_color = get_sub_field('breed-page_wcf-colors-item-single'); ?>
+                                            <li><?php echo $wfc_color ;?></li>
+                                            <?php endwhile; ?>
+                                        </ul>
+                                        </div>
+                                        <?php endwhile; ?>
+                                    </div>
+                                    <?php endif; ?>
+                                </li>
+                    </ul>
+                <?php endif; ?>
+        </div>
+    </section>
+    <section class="section single-breed-conditions-section" id="single-breed-conditions">
+        <div class="container">
+            <h2 class="section_heading single-breed-conditions-section__heading">
+                <svg class="single-breed-heading-svg" width="42" height="60">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('breed-page_conditions-title'); ?>
             </h2>
 
         </div>
