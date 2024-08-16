@@ -147,6 +147,18 @@ get_header();
 
         </div>
     </section>
+    <section class="section single-breed-conditions-section" id="single-breed-conditions">
+        <div class="container">
+            <h2 class="section_heading single-breed-conditions-section__heading">
+                <svg class="single-breed-heading-svg" width="42" height="60">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('breed-page_conditions-title'); ?>
+            </h2>
+
+        </div>
+    </section>
     <?php get_template_part('template-parts/join-us'); ?>
 </main>
 <?php get_footer(); ?>
