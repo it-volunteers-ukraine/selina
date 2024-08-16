@@ -296,6 +296,7 @@
       cursor: pointer;
 
       &:hover {
+        border: 2px solid $primary-color;
         background-color: $white;
         color: $primary-color;
       }
@@ -321,6 +322,7 @@
     border-bottom: 3px solid $background;
     @media screen and (min-width: $tablet) {
       flex-direction: row;
+      justify-content: space-between;
       padding: 24px 0;
     }
     @media screen and (min-width: $desktop) {
@@ -333,6 +335,10 @@
       font-size: 20px;
       line-height: 20px;
       color: $primary-color;
+      @media screen and (min-width: $tablet) {
+        font-size: 24px;
+        line-height: 24px;
+      }
     }
 
     p {
@@ -341,6 +347,14 @@
       font-size: 16px;
       line-height: 21px;
       color: $black;
+      @media screen and (min-width: $tablet) {
+        width: 65.48%;
+        font-size: 20px;
+        line-height: 25px;
+      }
+      @media screen and (min-width: $desktop) {
+        width: 48.94%;
+      }
     }
   }
 }
