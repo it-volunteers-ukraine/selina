@@ -1,37 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let loadMoreButton = document.getElementById('load-more');
-    let galleryItems = document.querySelectorAll('.gallery-item');
-    let itemsToShow = 6;
-    let currentItems = itemsToShow;
+  // Ініціалізація Masonry
+  let grid = document.querySelector('.gallery');
+  let msnry = new Masonry(grid, {
+    itemSelector: '.gallery-item',
+    columnWidth: '.gallery-item', // Встановлення ширини колонки на основі елемента галереї
+    gutter: 10, // Відстань між елементами
+    percentPosition: true // Використання процентів замість пікселів для позиціювання
+  });
 
-    // Приховуємо всі елементи, окрім перших 6
-    function hideGalleryItems() {
-        galleryItems.forEach((item, index) => {
-            if (index >= currentItems) {
-                item.style.display = 'none';
-            }
-        });
+  let images = galleryData.images; // Дані передані з PHP
+  let visibleImagesCount = 6; // Кількість зображень, що показуються на початку
+
+  // Функція для відображення зображень
+  function displayImages() {
+    let startIndex = document.querySelectorAll('.gallery-item').length;
+    let endIndex = startIndex + visibleImagesCount;
+    let html = '';
+
+    for (let i = startIndex; i < endIndex && i < images.length; i++) {
+      html += '<div class="gallery-item">';
+      html += '<a href="' + images[i].url + '" data-fancybox="gallery">';
+      html += '<img src="' + images[i].sizes.medium + '" alt="' + images[i].alt + '" />';
+      html += '</a>';
+      html += '</div>';
     }
 
-    // Показуємо наступні 6 елементів
-    function showNextItems() {
-        let itemsToReveal = currentItems + itemsToShow;
-        for (let i = currentItems; i < itemsToReveal && i < galleryItems.length; i++) {
-            galleryItems[i].style.display = 'block';
-        }
-        currentItems = itemsToReveal;
+    // Додаємо нові елементи в DOM
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    let items = Array.from(tempDiv.childNodes);
 
-        // Якщо всі елементи показані, ховаємо кнопку
-        if (currentItems >= galleryItems.length) {
-            loadMoreButton.style.display = 'none';
-        }
-    }
+    grid.append(...items); // Додаємо нові елементи до контейнери галереї
 
-    // Ініціалізація
-    hideGalleryItems();
+    msnry.appended(items); // Оновлення Masonry з новими елементами
+    msnry.layout(); // Повторна розкладка елементів
 
-    // Обробка кліку по кнопці
-    loadMoreButton.addEventListener('click', function () {
-        showNextItems();
-    });
+    // Збільшити кількість видимих зображень
+    visibleImagesCount += endIndex - startIndex;
+  }
+
+  // Обробка кліку по кнопці для завантаження нових зображень
+  document.getElementById('load-more').addEventListener('click', function () {
+    displayImages();
+  });
+
+  // Ініціалізація - показати початкові зображення
+  displayImages(); 
+  
 });
+

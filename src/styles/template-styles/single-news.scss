@@ -416,8 +416,7 @@
 /* Галерея фото*/
 
 .wrapper-news-section-gallary {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
   padding-bottom: 24px;
   
   @media screen and (min-width: $tablet) {
@@ -427,56 +426,88 @@
 }
 
 .news-section__gallery {
-  text-align: center;
-  padding: 0px;  
-}
-
-.gallery {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-bottom: 24px;
-
-  @media screen and (min-width: $tablet) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+  padding: 0;
+  overflow: hidden;  
+  
+  @media screen and (min-width: $mobile) {
     width: 100%;
-    align-items: start;
-  }
-
-  @media screen and (min-width: $desktop) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    width: 100%;
-    align-items: start;
+    padding: 0;
+    margin: 0;
   }
   
 }
 
-.gallery-items {
-  display: contents;  
+.gallery {
+  display: grid;  
+  gap: 24px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  grid-template-columns: 1fr; /* По замовчуванню одна колонка на мобільних */ 
+  grid-template-rows: masonry;
+  
+  @media screen and (min-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr); /* Дві колонки на планшетах */
+  }
+  
+    @media screen and (min-width: $desktop) {
+      grid-template-columns: repeat(3, 1fr); /* Три колонки на десктопах */
+    }
 }
 
-.gallery-item {
+
+.gallery-item {  
   position: relative;
-  width: 100%;
-  padding-bottom: 100%;  
-  overflow: hidden;  
-  height: auto;     
+  display: block;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   border-radius: 10px;
-  object-fit: cover;
+  overflow: hidden;
+  margin-bottom: 24px;
+  width: 100%;
+  min-height: 1px;
 }
 
-.gallery-item img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  
+/* Мобільний стиль */
+@media screen and (max-width: $mobile) {
+  
+
+  .gallery-item:nth-child(1) {height: 258px}
+  .gallery-item:nth-child(2) {height: 229px}
+  .gallery-item:nth-child(3) {height: 457px}
+  .gallery-item:nth-child(4) {height: 229px}
+  .gallery-item:nth-child(5) {height: 229px}
+  .gallery-item:nth-child(6) {height: 457px}
+}
+
+/* Планшетний стиль */
+@media screen and (min-width: $tablet) and (max-width: $desktop) {
+  .gallery-item:nth-child(1) {height: 223px; width: 297px}
+  .gallery-item:nth-child(2) {height: 223px; width: 334px}
+  .gallery-item:nth-child(3) {height: 280px; width: 422px}
+  .gallery-item:nth-child(4) {height: 280px; width: 210px}
+  .gallery-item:nth-child(5) {height: 442px; width: 316px}
+  .gallery-item:nth-child(6) {height: 442px; width: 316px}
+}
+
+/* Десктопний стиль */
+@media screen and (min-width: $desktop) {
+  .gallery-item:nth-child(1) {height: 238px; width: 317px}
+  .gallery-item:nth-child(2) {height: 238px; width: 357px}
+  .gallery-item:nth-child(3) {height: 238px; width: 358px}
+  .gallery-item:nth-child(4) {height: 275px; width: 413px}
+  .gallery-item:nth-child(5) {height: 275px; width: 206px}
+  .gallery-item:nth-child(6) {height: 275px; width: 413px}
+}
+
+.gallery-item img {  
+  width: 100%;  
   display: block;
+  object-fit: cover;  
   transition: transform 0.3s ease;
 }
 
@@ -486,6 +517,7 @@
 
 .gallery-item:hover img {
   transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Кнопка */
@@ -496,11 +528,23 @@
   margin-left: auto;
   margin-right: auto;
 
+  @media screen and (min-width: $mobile) {
+      margin: 0;
+  }
+
+  @media screen and (min-width: $tablet) {
+    margin: 0;
+  }
+
   @media screen and (min-width: $desktop) {
     text-align: left;
     margin: 0;
   }
 
+}
+
+.gallary-button button:active {
+  transform: scale(0.98);
 }
 
 .gallary-section {
@@ -510,7 +554,7 @@
       gap: 8px;
       position: relative;
       z-index: 10;
-    }
+    }  
   
   &__last-btn-text {
     margin-top: 0;

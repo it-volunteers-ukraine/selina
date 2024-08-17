@@ -125,3 +125,6 @@ get_header();
 </main>
 <?php get_footer(); ?>
 
+<!-- Підключення бібліотеки Masonry -->
+<script src="<?php echo get_template_directory_uri(); ?>/assets/scripts/template-scripts/masonry-docs.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/scripts/template-scripts/single-news.js"></script>

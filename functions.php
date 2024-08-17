@@ -434,11 +434,17 @@ function enqueue_gallery_scripts() {
 add_action('wp_enqueue_scripts', 'enqueue_gallery_scripts');
 
 // Скрипти для single-news
-function enqueue_single_news_scripts() {
+function enqueue_single_news_scripts() {    
     if (is_singular('news')) {
-        wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('jquery'), null, true);        
+        // Реєстрація основного JS файлу
+        wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('jquery'), '20240815', true);
+        
+        // Отримання зображень з ACF
+        $images = get_field('news_gallery');
+        wp_localize_script('single-news-scripts', 'galleryData', array(
+            'images' => $images
+        ));
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_single_news_scripts');
-
 
