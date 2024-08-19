@@ -230,6 +230,8 @@ get_header();
             <?php endif; ?>
         </div>
     </section>
+
+    <?php get_template_part('template-parts/feedbacks-breed'); ?>
     <?php get_template_part('template-parts/join-us'); ?>
 </main>
 <?php get_footer(); ?>
