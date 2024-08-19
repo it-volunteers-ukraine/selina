@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// Slider
-var swiper = new Swiper(".mySwiper", {
+//  Slider
+let swiper = new Swiper(".mySwiper", {
     loop: true,
     pagination: {
       el: ".slider-pagination",
@@ -52,4 +52,11 @@ var swiper = new Swiper(".mySwiper", {
     },
   });
 
-//   Awards - gallery
+//  Awards - gallery
+document.getElementById('showMoreAwardsButton').addEventListener('click', function() {
+  let hiddenItems = document.querySelectorAll('.awards__gallery-photo.awards__hidden');
+  hiddenItems.forEach(function(item) {
+      item.classList.remove('awards__hidden');
+  });
+  this.blur();
+});

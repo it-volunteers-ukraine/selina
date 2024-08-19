@@ -44,7 +44,7 @@ get_header();
                             </a>
                         </div>
                         <div class="heading-section-events__nav-li">
-                            <a class="heading-section-events__nav-li-link" href="#tips">
+                            <a class="heading-section-events__nav-li-link" href="#beginners-tips">
                                 <div class="heading-section-events__nav-li-icon">
                                     <svg class="icon-paw" width="14" height="12">
                                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
@@ -289,7 +289,6 @@ get_header();
                         <?php the_field('beginners-tips__heading'); ?>
                     </h2>
                 </div>
-                <!-- ------------------------------------------------------- -->
                 <div class='beginners-tips__slider-container'>
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
@@ -361,7 +360,6 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <!-- ========================================================= -->
                 <div class='beginners-tips__cards-container'>
                     <?php
                         $tips_count = 0;
@@ -446,15 +444,16 @@ get_header();
                 </div>
                 <div class="awards__gallery">
                     <?php 
-                        $images = get_field('awards__gallery');
-                        if( $images ): ?>
-                            <?php foreach( $images as $image ): ?>
-                                <div class="awards__gallery-photo">
-                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-                                </div>
-                            <?php endforeach; ?>
+                    $images = get_field('awards__gallery');
+                    if( $images ): ?>
+                        <?php foreach( $images as $index => $image ): ?>
+                            <div class="awards__gallery-photo <?php echo $index >= 6 ? 'awards__hidden' : ''; ?>">
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                            </div>
+                        <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
+
                 <button class='awards__show-more-button green_medium_button' id='showMoreAwardsButton'>
                     <p class='awards__show-more-button-text'>
                         <?php the_field('awards__show-more-button-text'); ?>
@@ -463,6 +462,7 @@ get_header();
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
                 </button>
+
             </div>
         </section>
 
