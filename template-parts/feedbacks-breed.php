@@ -1,3 +1,5 @@
+<?php
+    if (have_rows('breed-page_feedbacks-list')): ?>
 <section class="feedbacks-section section" id="feedbacks">
         <div class="container">
             <div class="feedbacks-heading-wrapper">
@@ -27,18 +29,17 @@
             </div>
             <div class="feedbacks-section__swiper swiper">
                 <div class="feedbacks-section__list swiper-wrapper">
-                    <?php
-                    $args = array('posts_per_page' => -1, 'post_type' => 'feedbacks');
-                    $myposts = get_posts($args);
-                    foreach ($myposts as $post):
-                        setup_postdata($post); ?>
+                <?php while (have_rows('breed-page_feedbacks-list')):
+                    the_row(); ?>
+                    <?php $feedback_name = get_sub_field('feedback_name'); ?>
+                    <?php $feedback_text = get_sub_field('feedback_text'); ?>
                         <div class="swiper-slide feedbacks-section__item">
                             <p class="feedbacks-section__name">
-                                <?php the_field('feedback_name') ?>
+                                <?php echo $feedback_name ;?>
                             </p>
                             <div class="feedbacks-section__stars">
                                 <?php
-                                $start_count = (int)get_field('feedback_stars');
+                                $start_count = (int)get_sub_field('feedback_stars');
                                 $i = 1;
                                 while ($i <= $start_count): ?>
                                 <svg width="20" height="19">
@@ -49,13 +50,12 @@
                                 <?php $i++; endwhile; ?>
                             </div>
                             <p class="feedbacks-section__text">
-                                <?php the_field('feedback_text') ?>
-                            </p>
-                            
+                                <?php echo $feedback_text ;?>
+                            </p>      
                         </div>
-                    <?php endforeach;
-                    wp_reset_postdata(); ?>
+                <?php endwhile; ?>
                 </div>
             </div>
         </div>
     </section>
+<?php endif; ?>
