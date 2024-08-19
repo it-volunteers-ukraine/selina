@@ -11,14 +11,14 @@
                     <?php the_field('breed-page_feedbacks-title'); ?>
                 </h2>
                 <div class="feedbacks-section__pagination">
-                    <button class="feedbacks-section__arrow-left-btn feedbacks-section__arrow-btn">
+                    <button class="feedbacks-breed-section__arrow-left-btn feedbacks-section__arrow-btn">
                         <svg class="feedbacks-section__arrow-left one-arrow" width="10.37" height="16.97">
                             <use
                                 href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
                             </use>
                         </svg>
                     </button>
-                    <button class="feedbacks-section__arrow-right-btn feedbacks-section__arrow-btn">
+                    <button class="feedbacks-breed-section__arrow-right-btn feedbacks-section__arrow-btn">
                         <svg class="feedbacks-section__arrow-right one-arrow" width="10.37" height="16.97">
                             <use
                                 href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
@@ -27,7 +27,7 @@
                     </button>
                 </div>
             </div>
-            <div class="feedbacks-section__swiper swiper">
+            <div class="feedbacks-breed-section__swiper swiper">
                 <div class="feedbacks-section__list swiper-wrapper">
                 <?php while (have_rows('breed-page_feedbacks-list')):
                     the_row(); ?>
