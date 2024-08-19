@@ -161,6 +161,12 @@ function add_swiper()
 
 add_action('wp_enqueue_scripts', 'add_swiper');
 
+/** add Mansonty */
+function mason_script() {
+    wp_enqueue_script( 'jquery-masonry' );
+}
+add_action( 'wp_enqueue_scripts', 'mason_script' );
+
 /** Register menus */
 function wp_it_volunteers_menus()
 {
@@ -422,29 +428,4 @@ function get_breeders_per_page($width)
         return 6;
     }
 }
-
-/*** News gallary*/  
-
-// Скрипти для галереї
-function enqueue_gallery_scripts() {
-    if (is_page_template('templates/gallery.php')) {
-        wp_enqueue_script('gallery-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/gallery.js', array('jquery'), false, true);        
-    }
-}
-add_action('wp_enqueue_scripts', 'enqueue_gallery_scripts');
-
-// Скрипти для single-news
-function enqueue_single_news_scripts() {    
-    if (is_singular('news')) {
-        // Реєстрація основного JS файлу
-        wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('jquery'), '20240815', true);
-        
-        // Отримання зображень з ACF
-        $images = get_field('news_gallery');
-        wp_localize_script('single-news-scripts', 'galleryData', array(
-            'images' => $images
-        ));
-    }
-}
-add_action('wp_enqueue_scripts', 'enqueue_single_news_scripts');
 

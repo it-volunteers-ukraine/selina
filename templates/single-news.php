@@ -90,24 +90,21 @@ get_header();
             <?php
             $images = get_field('news_gallery'); // Отримуємо зображення з ACF
             $size = 'full'; // (thumbnail, medium, large, full or custom size)
-
             // Перевірка, чи є зображення
-            if ($images) {                
-                foreach (array_slice($images, 0, 6) as $image) {
-                    // Виведення кожного зображення
-                    echo '<div class="gallery-item">';
-                    echo '<a href="' . esc_url($image['url']) . '" data-fancybox="gallery">';
-                    echo '<img src="' . esc_url($image['sizes']['medium']) . '" alt="' . esc_attr($image['alt']) . '">';
-                    echo '</a>';
-                    echo '</div>';
-                }
-                echo '</div>';
-            } else {
-                echo '<p>No images found.</p>';
-            }            
-            ?>
+            if ($images): ?>
+            <ul id="container-masonry">
+              <?php foreach (array_slice($images, 0, 6) as $image): ?>
+                <li class="gallery-item">
+                  <a href="<?php echo $image['url']; ?>">
+                     <img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>" />
+                  </a>
+                  <p><?php echo $image['caption']; ?></p>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>            
         </div>
-        <?php if ($images && count($images) > 4): ?>
+        <?php if ($images && count($images) > 5): ?>
             <div class="gallary-button button green_medium_button">
                 <button id="load-more" class="gallary-section__last-btn">
                     <p class="gallary-section__last-btn-text">Показати більше</p>

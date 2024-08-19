@@ -1,51 +1,55 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Ініціалізація Masonry
-  let grid = document.querySelector('.gallery');
-  let msnry = new Masonry(grid, {
-    itemSelector: '.gallery-item',
-    columnWidth: '.gallery-item', // Встановлення ширини колонки на основі елемента галереї
-    gutter: 10, // Відстань між елементами
-    percentPosition: true // Використання процентів замість пікселів для позиціювання
+jQuery(document).ready(function ($) {
+  const gallery = $('#container-masonry').masonry({
+        columnWidth: 220, // Ширина колонки
+        itemSelector: '.gallery-item', // Елемент, який Masonry буде обробляти
+        gutter: 24, // Відстань між елементами
+        percentPosition: true // Використання процентного позиціювання
   });
+  
+  const loadMoreBtn = $('#load-more'); // Кнопка для завантаження
+  const images = galleryData.images; // Отримуємо масив зображень з PHP
+  const initialItems = 6; // Кількість елементів, що показуються спочатку
+  let currentIndex = initialItems; // Відстежуємо, скільки елементів показано
 
-  let images = galleryData.images; // Дані передані з PHP
-  let visibleImagesCount = 6; // Кількість зображень, що показуються на початку
-
-  // Функція для відображення зображень
-  function displayImages() {
-    let startIndex = document.querySelectorAll('.gallery-item').length;
-    let endIndex = startIndex + visibleImagesCount;
+  // Функція для додавання нових зображень у галерею
+  function displayImages(startIndex, endIndex) {
     let html = '';
 
     for (let i = startIndex; i < endIndex && i < images.length; i++) {
-      html += '<div class="gallery-item">';
-      html += '<a href="' + images[i].url + '" data-fancybox="gallery">';
-      html += '<img src="' + images[i].sizes.medium + '" alt="' + images[i].alt + '" />';
-      html += '</a>';
-      html += '</div>';
+        html += '<li class="gallery-item">';
+        html += '<a href="' + images[i].url + '" data-fancybox="gallery">';
+        html += '<img src="' + images[i].sizes.thumbnail + '" alt="' + images[i].alt + '" />';
+        html += '</a>';
+        if (images[i].caption) {
+          html += '<p>' + images[i].caption + '</p>';
+        }
+        html += '</li>';
     }
 
     // Додаємо нові елементи в DOM
-    let tempDiv = document.createElement('div');
-    tempDiv.innerHTML = html;
-    let items = Array.from(tempDiv.childNodes);
+    let $items = $(html);
 
-    grid.append(...items); // Додаємо нові елементи до контейнери галереї
+    // Додаємо нові елементи до галереї і оновлюємо Masonry
+    gallery.append($items).masonry('appended', $items);
 
-    msnry.appended(items); // Оновлення Masonry з новими елементами
-    msnry.layout(); // Повторна розкладка елементів
-
-    // Збільшити кількість видимих зображень
-    visibleImagesCount += endIndex - startIndex;
+    // Переконуємося, що зображення завантажилися перед оновленням layout
+    $items.imagesLoaded().progress(function () {
+      gallery.masonry('layout');
+      });
   }
 
-  // Обробка кліку по кнопці для завантаження нових зображень
-  document.getElementById('load-more').addEventListener('click', function () {
-    displayImages();
+  // Ініціалізація - показуємо початкові зображення
+  displayImages(0, initialItems);
+
+  // Обробка кліку на кнопку "Показати більше"
+  loadMoreBtn.on('click', function () {
+    const nextIndex = currentIndex + initialItems;
+    displayImages(currentIndex, nextIndex);
+    currentIndex = nextIndex;
+
+    // Якщо більше немає зображень, ховаємо кнопку
+    if (currentIndex >= images.length) {
+      loadMoreBtn.hide();
+      }
   });
-
-  // Ініціалізація - показати початкові зображення
-  displayImages(); 
-  
 });
-

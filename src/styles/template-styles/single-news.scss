@@ -440,41 +440,32 @@
 }
 
 .gallery {
-  display: grid;  
-  gap: 24px;
-  box-sizing: border-box;
+  display: block;
   margin: 0;
   padding: 0;
   width: 100%;
-  grid-template-columns: 1fr; /* По замовчуванню одна колонка на мобільних */ 
-  grid-template-rows: masonry;
-  
-  @media screen and (min-width: $tablet) {
-    grid-template-columns: repeat(2, 1fr); /* Дві колонки на планшетах */
-  }
-  
-    @media screen and (min-width: $desktop) {
-      grid-template-columns: repeat(3, 1fr); /* Три колонки на десктопах */
-    }
+  box-sizing: border-box;  
 }
 
 
 .gallery-item {  
   position: relative;
-  display: block;
-  align-items: center;
-  justify-content: center;
+  display: block;  
   box-sizing: border-box;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 24px;
   width: 100%;
+  margin-bottom: 24px; /* Відстань між елементами */
   min-height: 1px;
 }
 
 /* Мобільний стиль */
 @media screen and (max-width: $mobile) {
-  
+
+  .gallery-item {
+    width: 100%;
+  }  
 
   .gallery-item:nth-child(1) {height: 258px}
   .gallery-item:nth-child(2) {height: 229px}
@@ -486,22 +477,30 @@
 
 /* Планшетний стиль */
 @media screen and (min-width: $tablet) and (max-width: $desktop) {
-  .gallery-item:nth-child(1) {height: 223px; width: 297px}
-  .gallery-item:nth-child(2) {height: 223px; width: 334px}
-  .gallery-item:nth-child(3) {height: 280px; width: 422px}
-  .gallery-item:nth-child(4) {height: 280px; width: 210px}
-  .gallery-item:nth-child(5) {height: 442px; width: 316px}
-  .gallery-item:nth-child(6) {height: 442px; width: 316px}
+  .gallery-item {
+      width: calc(50% - 12px); /* Ширина елемента галереї на планшеті з урахуванням gutter */
+    }
+
+  .gallery-item:nth-child(1) {height: 223px;}
+  .gallery-item:nth-child(2) {height: 223px;}
+  .gallery-item:nth-child(3) {height: 280px;}
+  .gallery-item:nth-child(4) {height: 280px;}
+  .gallery-item:nth-child(5) {height: 442px;}
+  .gallery-item:nth-child(6) {height: 442px;}
 }
 
 /* Десктопний стиль */
 @media screen and (min-width: $desktop) {
-  .gallery-item:nth-child(1) {height: 238px; width: 317px}
-  .gallery-item:nth-child(2) {height: 238px; width: 357px}
-  .gallery-item:nth-child(3) {height: 238px; width: 358px}
-  .gallery-item:nth-child(4) {height: 275px; width: 413px}
-  .gallery-item:nth-child(5) {height: 275px; width: 206px}
-  .gallery-item:nth-child(6) {height: 275px; width: 413px}
+  .gallery-item {
+      width: calc(33.333% - 16px); /* Ширина елемента галереї на десктопі з урахуванням gutter */
+  }
+
+  .gallery-item:nth-child(1) {height: 238px;}
+  .gallery-item:nth-child(2) {height: 238px;}
+  .gallery-item:nth-child(3) {height: 238px;}
+  .gallery-item:nth-child(4) {height: 275px;}
+  .gallery-item:nth-child(5) {height: 275px;}
+  .gallery-item:nth-child(6) {height: 275px;}
 }
 
 .gallery-item img {  
@@ -525,8 +524,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 24px auto 0;
 
   @media screen and (min-width: $mobile) {
       margin: 0;
