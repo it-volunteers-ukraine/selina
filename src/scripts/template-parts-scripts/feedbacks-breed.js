@@ -1,6 +1,6 @@
 const feedbacksBreedSwiper = new Swiper(".feedbacks-breed-section__swiper", {
   effect: "slide",
-  loop: true,
+  loop: false,
   slidesPerView: 1,
   spaceBetween: 20,
   breakpoints: {
