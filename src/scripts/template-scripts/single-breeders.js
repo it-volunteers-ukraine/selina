@@ -7,15 +7,18 @@ const newsSwiper = new Swiper(
     spaceBetween: 24,
     centeredSlides: true,
     watchOverflow: true,
-    autoHeight: true,
+
     breakpoints: {
       768: {
-        autoHeight: false,
         centeredSlides: false,
         slidesPerView: 1.5,
         spaceBetween: 23,
       },
-      1439: { slidesPerView: 2 },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+        centeredSlides: true,
+      },
     },
     direction: "horizontal",
     preloadImages: false,
@@ -30,11 +33,11 @@ const newsSwiper = new Swiper(
     },
   }
 );
-const freeCatList = document.querySelector(
+const freeCatList = document?.querySelector(
   ".single-breeder-free-cats-section__wrapper"
 );
 
-const freeCatListBtn = document.querySelector(
+const freeCatListBtn = document?.querySelector(
   ".single-breeder-free-cats-section__button"
 );
 
@@ -48,7 +51,7 @@ if (freeCatListChildren.length > count) {
   freeCatListBtn.classList.remove("visually-hidden");
   ca = count;
 
-  freeCatListBtn.addEventListener("click", () => {
+  freeCatListBtn?.addEventListener("click", () => {
     freeCatList.append(...freeCatListChildren.slice(ca, ca + count));
     ca = ca + count;
     if (ca >= freeCatListChildren.length) {

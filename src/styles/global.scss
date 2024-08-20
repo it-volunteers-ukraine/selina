@@ -131,6 +131,44 @@
   }
 }
 
+//new red button
+.button-red_new {
+  @extend .button;
+  background-color: #d11f2a;
+  color: $white;
+  &:hover {
+    background-color: $white;
+    color: #d11f2a;
+  }
+  &:focus {
+    background-color: #aa0610;
+    color: $white;
+  }
+  &:active {
+    color: $white;
+    background-color: #960b13;
+  }
+}
+
+.button_green_new {
+  @extend .button;
+  border: 2px solid #045c6f;
+  color: #045c6f;
+
+  &:hover {
+    background-color: #045c6f;
+    color: $white;
+  }
+  &:focus {
+    background-color: #035162;
+    color: $white;
+  }
+  &:active {
+    color: $white;
+    background-color: #064b5a;
+  }
+}
+
 //btn arrow, minus, plus
 .btn_icon {
   @extend .button;

@@ -70,7 +70,7 @@ jQuery(document).ready(function ($) {
       },
     });
 
-    filter.addEventListener("change", filterChangeHandler);
+    filter?.addEventListener("change", filterChangeHandler);
   }
   // Завантаження постів
   let initialLoadDone = false;
@@ -134,7 +134,7 @@ jQuery(document).ready(function ($) {
   // Початок скрипту
   const viewportWidth =
     window.innerWidth || document.documentElement.clientWidth;
-  const paginationBlock = document.querySelector(
+  const paginationBlock = document?.querySelector(
     ".breeds-catalogue-section__pagination"
   );
   // const currentPageEl = $(".current-page");
@@ -146,8 +146,8 @@ jQuery(document).ready(function ($) {
 
   // Оновлення поточної сторінки
   function updateCurrentPage() {
-    const prevBtn = document.querySelector(".breeds-prev");
-    const nextBtn = document.querySelector(".breeds-next");
+    const prevBtn = document?.querySelector(".breeds-prev");
+    const nextBtn = document?.querySelector(".breeds-next");
     prevBtn.removeAttribute("disabled");
     nextBtn.removeAttribute("disabled");
     const maxButtons = totalPages >= 3 ? 3 : totalPages;
@@ -170,7 +170,7 @@ jQuery(document).ready(function ($) {
         buttonEl.setAttribute("disabled", true);
       }
       buttons.push(buttonEl);
-      buttonEl.addEventListener("click", () => {
+      buttonEl?.addEventListener("click", () => {
         loadBreeds(i);
       });
     }
