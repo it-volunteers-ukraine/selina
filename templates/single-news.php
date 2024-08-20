@@ -88,8 +88,7 @@ get_header();
     <div class="news-section__gallery">        
         <div class="gallery" id="gallery">
             <?php
-            $images = get_field('news_gallery'); // Отримуємо зображення з ACF
-            $size = 'full'; // (thumbnail, medium, large, full or custom size)
+            $images = get_field('news_gallery'); // Отримуємо зображення з ACF            
             // Перевірка, чи є зображення
             if ($images): ?>
             <ul id="container-masonry">
