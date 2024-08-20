@@ -347,15 +347,19 @@ get_header();
                         </div>
                         <div class='slider-navigation-pagination-container'>
                             <div class="slider-button-prev">
-                                <svg class="slider-arrow-left" width="44" height="44">
-                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#slider-arrow-left"></use>
+                                <svg class="partners-section__arrow-left one-arrow" width="10.37" height="16.97">
+                                    <use
+                                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+                                    </use>
                                 </svg>
                             </div>
                             <div class="slider-pagination"></div>
                             <div class="slider-button-next">
-                                <svg class="slider-arrow-right" width="44" height="44">
-                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#slider-arrow-right"></use>
-                                </svg>
+                            <svg class="partners-section__arrow-right one-arrow" width="10.37" height="16.97">
+                                <use
+                                    href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+                                </use>
+                            </svg>
                             </div>
                         </div>
                     </div>
