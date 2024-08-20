@@ -467,6 +467,15 @@ get_header();
                     </svg>
                 </button>
 
+                <button class='awards__show-less-button green_medium_button' id='showLessAwardsButton'>
+                    <p class='awards__show-less-button-text'>
+                        <?php the_field('awards__show-less-button-text'); ?>
+                    </p>
+                    <svg class="icon-paw" width="20" height="20">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                    </svg>
+                </button>
+
             </div>
         </section>
 

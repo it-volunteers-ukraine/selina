@@ -59,4 +59,19 @@ document.getElementById('showMoreAwardsButton').addEventListener('click', functi
       item.classList.remove('awards__hidden');
   });
   this.blur();
+  document.getElementById('showMoreAwardsButton').style.display = 'none';
+  document.getElementById('showLessAwardsButton').style.display = 'flex';
+});
+
+document.getElementById('showLessAwardsButton').addEventListener('click', function() {
+  let visibleItems = document.querySelectorAll('.awards__gallery-photo:not(.awards__hidden)');
+  visibleItems.forEach(function(item, index) {
+      if (index >= 6) {
+          item.classList.add('awards__hidden');
+      }
+  });
+
+  document.getElementById('showMoreAwardsButton').style.display = 'flex';
+  document.getElementById('showLessAwardsButton').style.display = 'none';
+  this.blur();
 });

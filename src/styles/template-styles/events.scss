@@ -686,11 +686,16 @@
         border-radius: 10px;
     }
 
-    &__show-more-button {
+    &__show-more-button,
+    &__show-less-button {
         margin-top: 24px;
         gap: 8px;
         @media screen and (min-width: $desktop) {
             margin-top: 40px;
         }
+    }
+    
+    &__show-less-button {
+        display: none;
     }
 }
