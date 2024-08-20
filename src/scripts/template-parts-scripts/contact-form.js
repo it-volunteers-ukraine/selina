@@ -47,12 +47,13 @@ document.querySelectorAll('.dropdown__list-item').forEach(function(listItem) {
 });
 
 // Click outside dropdown => to close dropdown
-document.addEventListener('click', function(e) {
-  if (!document.querySelector('.dropdown').contains(e.target)) {
-      document.querySelector('.dropdown__list').classList.remove('dropdown__list--visible');
-      document.querySelector('.dropdown__button').classList.remove('dropdown__button--active');
+document.addEventListener("click", (function(e) {
+  const dropdown = document.querySelector(".dropdown");
+  if (dropdown && !dropdown.contains(e.target)) {
+      document.querySelector(".dropdown__list").classList.remove("dropdown__list--visible");
+      document.querySelector(".dropdown__button").classList.remove("dropdown__button--active");
   }
-});
+}));
 
 // Press keys Tab or Esc => close Dropdown
 document.addEventListener('keydown', function(e) {
