@@ -17,10 +17,6 @@ get_header();
         </style>
          
         <div class="container">
-           <div class="single-breeder__breadcrumbs">
-            <a href="<?php the_field('breeder-page_breadcrumbs_page'); ?>"><?php the_field('breeder-page_breadcrumbs_page_name'); ?></a>
-        <?php the_field('breeder_name'); ?>
-      </div>
             <h3 class="section_heading single-breeder-first-section__heading">
                 <?php the_field('breeder_name'); ?>
             </h3>
@@ -51,6 +47,13 @@ get_header();
     </section>
     <section class="section single-breeder-about-section" id="about-single-breeder">
         <div class="container">
+             <div class="single-breeder__breadcrumbs">
+            <a href="<?php the_field('breeder-page_breadcrumbs_page'); ?>">
+                <?php the_field('breeder-page_breadcrumbs_page_name'); ?></a>
+                <span class="single-breeder__breadcrumbs__active">
+        <?php the_field('breeder_name'); ?>
+        </span>
+      </div>
             <h2 class="section_heading single-breeder-about-section__heading">
                 <svg class="single-breeder-heading-svg" width="42" height="60">
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">

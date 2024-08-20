@@ -83,16 +83,16 @@ const newsSwiper = new Swiper(".news-section__swiper", {
   on: {
     init: (e) => {
       e.slides.forEach((el) => {
-        const wrapper = el.querySelector(".news-section__content-wrapper");
+        const wrapper = el?.querySelector(".news-section__content-wrapper");
         const titleHeight = wrapper
-          .querySelector(".news-section__name")
+          ?.querySelector(".news-section__name")
           .getBoundingClientRect().height;
         const buttonHeight = wrapper
-          .querySelector(".news-section__button")
+          ?.querySelector(".news-section__button")
           .getBoundingClientRect().height;
         const gaps = 12 * 2;
         const textLineHeight = 21;
-        const text = wrapper.querySelector(".news-section__text");
+        const text = wrapper?.querySelector(".news-section__text");
         const textMaxHeight =
           wrapper.getBoundingClientRect().height -
           gaps -
@@ -108,11 +108,11 @@ const newsSwiper = new Swiper(".news-section__swiper", {
 
 newsSwiper.on("init", (e) => {
   console.log(e);
-  const newsList = document.querySelector("news-section__list");
+  const newsList = document?.querySelector("news-section__list");
   console.log(newsList);
   Array.from(newsList ?? []).forEach((el) => {
-    const textField = el.querySelector("news-section__text");
-    const wrapper = el.querySelector("news-section__content-wrapper");
+    const textField = el?.querySelector("news-section__text");
+    const wrapper = el?.querySelector("news-section__content-wrapper");
     console.log({ textField, wrapper });
   });
 });
