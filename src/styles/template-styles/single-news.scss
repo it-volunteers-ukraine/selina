@@ -414,110 +414,20 @@
 }
 
 /* Галерея фото*/
-
-.wrapper-news-section-gallary {
-  padding: 0;
-  padding-bottom: 24px;
-  
-  @media screen and (min-width: $tablet) {
-    padding-bottom: 0;
-  }
-
-}
-
-.news-section__gallery {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  overflow: hidden;  
-  
-  @media screen and (min-width: $mobile) {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  
+.news-section__gallery {  
+  max-width: 1440px;
 }
 
 .gallery {
-  display: block;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;  
+  display: block;      
 }
 
-
-.gallery-item {  
-  position: relative;
-  display: block;  
-  box-sizing: border-box;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 24px;
-  width: 100%;
-  margin-bottom: 24px; /* Відстань між елементами */
-  min-height: 1px;
+.gallery-item {
+  width: 330px; /* Ширина кожного зображення */
+  padding: 0px 10px 15px 10px; /* Відступи всередині елемента */
+  box-sizing: border-box; /* Урахування padding при обчисленні ширини */
 }
 
-/* Мобільний стиль */
-@media screen and (max-width: $mobile) {
-
-  .gallery-item {
-    width: 100%;
-  }  
-
-  .gallery-item:nth-child(1) {height: 258px}
-  .gallery-item:nth-child(2) {height: 229px}
-  .gallery-item:nth-child(3) {height: 457px}
-  .gallery-item:nth-child(4) {height: 229px}
-  .gallery-item:nth-child(5) {height: 229px}
-  .gallery-item:nth-child(6) {height: 457px}
-}
-
-/* Планшетний стиль */
-@media screen and (min-width: $tablet) and (max-width: $desktop) {
-  .gallery-item {
-      width: calc(50% - 12px); /* Ширина елемента галереї на планшеті з урахуванням gutter */
-    }
-
-  .gallery-item:nth-child(1) {height: 223px;}
-  .gallery-item:nth-child(2) {height: 223px;}
-  .gallery-item:nth-child(3) {height: 280px;}
-  .gallery-item:nth-child(4) {height: 280px;}
-  .gallery-item:nth-child(5) {height: 442px;}
-  .gallery-item:nth-child(6) {height: 442px;}
-}
-
-/* Десктопний стиль */
-@media screen and (min-width: $desktop) {
-  .gallery-item {
-      width: calc(33.333% - 16px); /* Ширина елемента галереї на десктопі з урахуванням gutter */
-  }
-
-  .gallery-item:nth-child(1) {height: 238px;}
-  .gallery-item:nth-child(2) {height: 238px;}
-  .gallery-item:nth-child(3) {height: 238px;}
-  .gallery-item:nth-child(4) {height: 275px;}
-  .gallery-item:nth-child(5) {height: 275px;}
-  .gallery-item:nth-child(6) {height: 275px;}
-}
-
-.gallery-item img {  
-  width: 100%;  
-  display: block;
-  object-fit: cover;  
-  transition: transform 0.3s ease;
-}
-
-.gallery-item a {
-  display: block;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-  transition: transform 0.3s ease-in-out;
-}
 
 /* Кнопка */
 .gallary-button {
