@@ -7,7 +7,6 @@ get_header();
 
 <main class="club-membership">
     <section class="upper-section section" id="club-membership-upper">
-    <section class="upper-section section" id="club-membership-upper">
         <style>
             @media screen and (min-width: 1439px) {
                 .upper-section {
