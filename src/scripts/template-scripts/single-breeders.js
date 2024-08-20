@@ -7,15 +7,18 @@ const newsSwiper = new Swiper(
     spaceBetween: 24,
     centeredSlides: true,
     watchOverflow: true,
-    autoHeight: true,
+
     breakpoints: {
       768: {
-        autoHeight: false,
         centeredSlides: false,
         slidesPerView: 1.5,
         spaceBetween: 23,
       },
-      1439: { slidesPerView: 2 },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+        centeredSlides: true,
+      },
     },
     direction: "horizontal",
     preloadImages: false,
