@@ -44,7 +44,7 @@ get_header();
                             </a>
                         </div>
                         <div class="heading-section-events__nav-li">
-                            <a class="heading-section-events__nav-li-link" href="#tips">
+                            <a class="heading-section-events__nav-li-link" href="#beginners-tips">
                                 <div class="heading-section-events__nav-li-icon">
                                     <svg class="icon-paw" width="14" height="12">
                                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
@@ -290,10 +290,83 @@ get_header();
                     </h2>
                 </div>
                 <div class='beginners-tips__slider-container'>
-                    <!-- ------------------------------------------------------- -->
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <?php
+                                $args = array(
+                                    'orderby' => 'date',
+                                    'order' => 'DESC',
+                                    'post_type' => 'tips',
+                                    'posts_per_page' => -1,   
+                                );
+                                $myposts = get_posts($args);
+                                foreach ($myposts as $post):
+                                setup_postdata($post); ?>
+                                <div class="beginners-tips__card swiper-slide">
+                                    <svg class="beginners-tips__clip-svg" width="38" height="90">
+                                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
+                                    </svg>
+                                    <p class='beginners-tips__card-text'><?php the_field('tips_name') ?></p>
+                                    <!-- Button types -->
+                                    <?php
+                                        $disk_link = get_field('tips_button-link-disk');
+                                        $inner_link = get_field('tips_button-link-inner');
+                                        $outer_link = get_field('tips_button-link-outer');
+                                    ?>
+                                    <?php if ( !empty ($disk_link )): ?>
+
+                                    <!-- google-disk -->
+                                        <a href="<?php the_field('tips_button-link-disk') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                            <p><?php the_field('tips_button-text') ?></p>
+                                            <svg width="16" height="14"> 
+                                                <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-google"></use> 
+                                            </svg>
+                                        </a>
+
+                                    <!-- outer-link -->
+                                    <?php elseif ( !empty ($outer_link )): ?>
+                                        <a href="<?php the_field('tips_button-link-outer') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                            <p><?php the_field('tips_button-text') ?></p>
+                                            <svg class="icon-paw" width="20" height="20">
+                                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
+                                            </svg>
+                                        </a>
+
+                                    <!-- inner-link -->
+                                    <?php else : ?>
+                                        <a href="<?php the_field('tips_button-link-inner') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                            <p><?php the_field('tips_button-text') ?></p>
+                                            <svg class="icon-paw" width="17" height="15">
+                                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                                            </svg>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach;
+                                wp_reset_postdata(); ?>
+                        </div>
+                        <div class='slider-navigation-pagination-container'>
+                            <div class="slider-button-prev">
+                                <svg class="partners-section__arrow-left one-arrow" width="10.37" height="16.97">
+                                    <use
+                                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+                                    </use>
+                                </svg>
+                            </div>
+                            <div class="slider-pagination"></div>
+                            <div class="slider-button-next">
+                            <svg class="partners-section__arrow-right one-arrow" width="10.37" height="16.97">
+                                <use
+                                    href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+                                </use>
+                            </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class='beginners-tips__cards-container'>
                     <?php
+                        $tips_count = 0;
                         $args = array(
                             'orderby' => 'date',
                             'order' => 'DESC',
@@ -302,13 +375,14 @@ get_header();
                         );
                         $myposts = get_posts($args);
                         foreach ($myposts as $post):
-                        setup_postdata($post); ?>
-                        <div class="beginners-tips__card">
+                        setup_postdata($post);
+                        $tips_count++; ?>
+                        <div class="beginners-tips__card<?php echo $tips_count > 9 ? ' beginners-tips__tips-card--hidden' : ''; ?>">
                             <svg class="beginners-tips__clip-svg" width="38" height="90">
                                 <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
                             </svg>
                             <p class='beginners-tips__card-text'><?php the_field('tips_name') ?></p>
-                <!-- Button types -->
+                        <!-- Button types -->
                             <?php
                                 $disk_link = get_field('tips_button-link-disk');
                                 $inner_link = get_field('tips_button-link-inner');
@@ -346,6 +420,62 @@ get_header();
                     <?php endforeach;
                         wp_reset_postdata(); ?>
                 </div>
+                <!-- Button show more tips -->
+                <?php if ($tips_count > 8): ?>
+                    <button class='beginners-tips__show-more-button green_medium_button' id='showMoreTipsCardsButton'>
+                        <p class='beginners-tips__show-more-button-text'>
+                            <?php the_field('beginners-tips__show-more-button-text'); ?>
+                        </p>
+                        <svg class="icon-paw" width="20" height="20">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                        </svg>
+                    </button>
+                <?php endif; ?>
+            </div>
+        </section>
+
+        <section class='section awards' id='awards'>
+            <div class="container">
+                <div class="awards__heading-container">
+                    <span class="awards__La_cat"> 
+                        <svg width="24" height="24"> 
+                            <use href="<?php bloginfo( 'template_url' ); ?>/assets/images/sprite.svg#icon-La_cat"></use> 
+                        </svg> 
+                    </span> 
+                    <h2 class="awards__heading">
+                        <?php the_field('awards__heading'); ?>
+                    </h2>
+                </div>
+                <div class="awards__gallery">
+                    <?php 
+                    $images = get_field('awards__gallery');
+                    if( $images ): ?>
+                        <?php foreach( $images as $index => $image ): ?>
+                            <div class="awards__gallery-photo <?php echo $index >= 6 ? 'awards__hidden' : ''; ?>">
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+
+                <button class='awards__show-more-button green_medium_button' id='showMoreAwardsButton'>
+                    <p class='awards__show-more-button-text'>
+                        <?php the_field('awards__show-more-button-text'); ?>
+                    </p>
+                    <svg class="icon-paw" width="20" height="20">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                    </svg>
+                </button>
+
+                <button class='awards__show-less-button green_medium_button' id='showLessAwardsButton'>
+                    <p class='awards__show-less-button-text'>
+                        <?php the_field('awards__show-less-button-text'); ?>
+                    </p>
+                    <svg class="icon-paw" width="20" height="20">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                    </svg>
+                </button>
+
             </div>
         </section>
 
