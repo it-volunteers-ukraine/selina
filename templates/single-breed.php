@@ -230,7 +230,47 @@ get_header();
             <?php endif; ?>
         </div>
     </section>
-
+    <section class="single-breed-documents-section section" id="single-breed-documents">
+        <div class="container">
+            <h2 class="single-breed-documents-section__heading section_heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('breed-page_adds-title'); ?>
+            </h2>
+            <div class="single-breed-documents-section__wrapper">
+                <?php
+                    if( have_rows('document-cards') ):
+                        while( have_rows('document-cards') ) : the_row();
+                            $documentTitle = get_sub_field('document__title');
+                            $documentLink = get_sub_field('document__link');
+                            ?>
+                                <div class="document">
+                                    
+                                        <svg class="clip-svg" width="38" height="90">
+                                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
+                                        </svg>
+                                        <div class="document-card__content">
+                                            <div class="document-card__title"><?php echo $documentTitle; ?></div>
+                                            <button class="document-card__button button red_medium_button">
+                                                <a href="<?php echo $documentLink; ?>" target="_blank">
+                                                    <?php the_field('open-btn', 'option'); ?>
+                                                </a> 
+                                                <svg class="document-card__button-svg" width="16" height="15">
+                                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    
+                                </div>
+                            <?php 
+                        endwhile;
+                    endif;
+                ?>
+            </div>
+        </div>
+    </section>
     <?php get_template_part('template-parts/feedbacks-breed'); ?>
     <?php get_template_part('template-parts/join-us'); ?>
 </main>

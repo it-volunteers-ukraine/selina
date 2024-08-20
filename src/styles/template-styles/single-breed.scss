@@ -506,3 +506,89 @@
     border-bottom: none;
   }
 }
+
+.single-breed-documents-section {
+  background-color: $background;
+  &__heading {
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .heading-svg {
+      display: none;
+      @media screen and (min-width: $tablet) {
+        display: initial;
+        width: 26.32px;
+        height: 23.53px;
+      }
+      @media screen and (min-width: $desktop) {
+        width: 36.85px;
+        height: 32.94px;
+      }
+    }
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @media screen and (min-width: $desktop) {
+      flex-wrap: nowrap;
+      gap: 24px;
+    }
+    .document {
+      position: relative;
+      background-color: $light-green;
+      height: 272px;
+      width: 100%;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      @media screen and (min-width: $tablet) {
+        max-width: calc((100% - 22px) / 2);
+      }
+      @media screen and (min-width: $desktop) {
+        max-width: calc((100% - 24px * 2) / 3);
+      }
+      .clip-svg {
+        position: absolute;
+        z-index: 10;
+        top: -27px;
+        right: 15px;
+        display: initial;
+        width: 34.5px;
+        height: 87px;
+      }
+      .document-card {
+        &__content {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 0 32px;
+        }
+        &__title {
+          font-weight: 800;
+          font-size: 24px;
+          line-height: 1;
+          text-align: center;
+        }
+        &__button {
+          gap: 8px;
+          margin: 28px 0 64px 0;
+        }
+      }
+    }
+  }
+}
