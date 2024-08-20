@@ -220,6 +220,12 @@ function add_swiper()
 
 add_action('wp_enqueue_scripts', 'add_swiper');
 
+/** add Masonry */
+function mason_script() {
+    wp_enqueue_script( 'jquery-masonry' );
+}
+add_action( 'wp_enqueue_scripts', 'mason_script' );
+
 /** Register menus */
 function wp_it_volunteers_menus()
 {
@@ -541,5 +547,3 @@ function get_breeds_per_page($width)
         return 6;
     }
 }
-
-
