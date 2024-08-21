@@ -201,6 +201,10 @@ if (is_singular()) {
         wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
     }
 
+    if (is_singular() && locate_template('template-parts/one-card-event.php')) {
+        wp_enqueue_style('one-card-event-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-event.css', array('main'));
+    }
+
 }
 
 /** add fonts */
