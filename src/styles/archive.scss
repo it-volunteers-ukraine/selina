@@ -33,4 +33,25 @@ html {
             }
         }
     }
+    .tags-section {
+        &__list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+    }
+    .news-section {
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        &__post {
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+            background: #ecfafc;
+        }
+    }
 }
