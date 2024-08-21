@@ -1,7 +1,7 @@
 @import "../variables.scss";
 
 .heading-section-events {
-    color: $blue-main;
+    color: $primary-color;
     background-color: $light-green;
     padding: 0;
     position: relative;
@@ -204,7 +204,7 @@
         font-weight: 800;
         font-size: 20px;
         line-height: 120%;
-        color: $blue-main;
+        color: $primary-color;
         margin-bottom: 16px;
         @media screen and (min-width: $desktop) {
             font-size: 24px;
@@ -265,7 +265,7 @@
         padding: 10px 10px 10px 14px;
         width: 200px;
         height: 44px;
-        background-color: $blue-main;
+        background-color: $primary-color;
         margin: 0 auto;
         color: $white;
         font-weight: 700;
@@ -371,7 +371,7 @@
     }
 
     &__calendar-card-heading {
-        color: $blue-main;
+        color: $primary-color;
         font-weight: 800;
         font-size: 20px;
         line-height: 120%;
@@ -603,7 +603,7 @@
     font-weight: 800;
     font-size: 24px;
     line-height: 100%;
-    color: $blue-main;
+    color: $primary-color;
     text-align: center;
 }
 

@@ -30,13 +30,15 @@ document.addEventListener("DOMContentLoaded", function() {
         currentCardsTipsIndex += cardsTipsToShow;
     }
 
-    showMoreTipsCardsButton.addEventListener('click', function() {
+    if (showMoreTipsCardsButton) {
+      showMoreTipsCardsButton.addEventListener('click', function() {
         showMoreCardsTips();
         document.querySelectorAll('.beginners-tips__card:nth-child(n+9)').forEach(card => {
             card.style.display = 'flex';
           });
         this.blur(); 
     });
+    }
 });
 
 //  Slider
