@@ -82,6 +82,7 @@
   &__subtitle-heading-wrapper {
     @media screen and (min-width: $tablet) {
       display: flex;
+      flex-wrap: wrap;
       gap: 24px;
     }
     @media screen and (min-width: $desktop) {
@@ -107,6 +108,7 @@
 
   &__wrapper {
     display: flex;
+    position: relative;
     flex-direction: column-reverse;
     gap: 24px;
     @media screen and (min-width: $tablet) {
@@ -193,6 +195,7 @@
     line-height: 1.25;
   }
 }
+
 .single-breed-heading-wrapper {
   display: flex;
   align-items: baseline;
