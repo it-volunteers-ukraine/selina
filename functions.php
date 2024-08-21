@@ -203,7 +203,6 @@ if (is_singular()) {
 
     if (is_singular() && locate_template('template-parts/one-card-event.php')) {
         wp_enqueue_style('one-card-event-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-event.css', array('main'));
-        wp_enqueue_script('one-card-event-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/one-card-event.js', array('touch-swipe-scripts'), false, true);
     }
 
 }
