@@ -1,0 +1,36 @@
+@import "./variables.scss";
+
+html { 
+    scroll-behavior: smooth;
+}
+
+.archive {
+    .upper-section {
+        background-color: $light-green;
+        padding: 24px 0;
+        @media screen and (min-width: $desktop) {
+            background-color: none;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 158px 0 159px;
+        }
+        &__banner {
+            @media screen and (min-width: $desktop) {
+                width: 648px;
+            }
+        }
+        &__heading {
+            font-size: 30px;
+            line-height: 1.13;
+            @media screen and (min-width: $tablet) {
+                font-size: 45px;
+                line-height: 1;
+            }
+            @media screen and (min-width: $desktop) {
+                font-size: 60px;
+            }
+        }
+    }
+}
