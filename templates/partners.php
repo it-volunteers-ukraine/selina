@@ -202,7 +202,7 @@ get_header();
                 <div class="button-flex">
                     <button id="load-more-friends"
                             data-post-type="friends_clubs"
-                            class="button green_medium_button show-btn">
+                            class="button button_green_new show-btn">
                         <?php the_field('show-btn'); ?>
                         <svg width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
@@ -248,7 +248,7 @@ get_header();
                 <div class="button-flex">
                     <button id="load-more-photographs"
                             data-post-type="our_photographs"
-                            class="button green_medium_button show-btn">
+                            class="button button_green_new show-btn">
                         <?php the_field('show-btn'); ?>
                         <svg width="18" height="17">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
