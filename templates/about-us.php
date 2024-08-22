@@ -68,24 +68,24 @@ get_header();
                 <?php the_field('club-section__heading'); ?>
             </h2>
             <div class="club-section__wrapper">
-                <div class="top">
+                <div class="club-section__box top">
                     <div class="club-img-1">
                         <?php 
                             $image = get_field('club-img-1');
                             if( !empty( $image ) ): ?>
-                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="club-img"/>
                         <?php endif; ?>
                     </div>
                     <div class="club-info-1 text">
                         <p><?php the_field('club-info-1'); ?></p>
                     </div>
                 </div>
-                <div class="bottom">
+                <div class="club-section__box bottom">
                     <div class="club-img-2">
                         <?php 
                             $image = get_field('club-img-2');
                             if( !empty( $image ) ): ?>
-                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="club-img"/>
                         <?php endif; ?>
                     </div>
                     <div class="club-info-2 text">
@@ -186,7 +186,7 @@ get_header();
                             $documentLink = get_sub_field('document__link');
                             ?>
                                 <div class="document">
-                                    <div class="document-card">
+                                    
                                         <svg class="clip-svg" width="38" height="90">
                                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
                                         </svg>
@@ -201,7 +201,7 @@ get_header();
                                                 </svg>
                                             </button>
                                         </div>
-                                    </div>
+                                    
                                 </div>
                             <?php 
                         endwhile;

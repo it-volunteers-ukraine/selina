@@ -6,8 +6,15 @@
   font-weight: 800;
   line-height: 1;
   color: $primary-color;
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 24px;
+  }
   @media screen and (min-width: $desktop) {
-    margin-bottom: 89.5px;
+    margin-bottom: 30px;
+  }
+
+  &__active {
+    color: #d11f2a;
   }
 }
 
@@ -21,7 +28,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto 377px;
-    padding: 31px 0 136.5px 0;
+    padding: 136.5px 0;
   }
 
   &__heading {
@@ -84,9 +91,12 @@
 }
 
 .single-breeder-about-section {
-  padding: 40px 0;
+  padding: 16px 0 40px 0;
+  @media screen and (min-width: $tablet) {
+    padding: 24px 0 80px 0;
+  }
   @media screen and (min-width: $desktop) {
-    padding: 80px 0;
+    padding: 30px 0 80px 0;
   }
   &__heading {
     margin-bottom: 24px;
@@ -308,25 +318,30 @@
     overflow: hidden;
   }
 
+  &__swiper-inner {
+    height: 228px;
+    @media screen and (min-width: 498px) {
+      height: 400px;
+    }
+    @media screen and (min-width: $tablet) {
+      height: 307px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 1128px;
+    }
+  }
+
   &__item {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
     img {
-      width: 288px;
-      height: auto;
+      border-radius: 10px;
+      display: block;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: 10px;
-
-      @media screen and (min-width: $mobile) {
-        width: 340px;
-        height: 228px;
-      }
-      @media screen and (min-width: $tablet) {
-        width: 462px;
-        height: 307px;
-      }
-      @media screen and (min-width: $desktop) {
-        width: 551px;
-        height: 400px;
-      }
     }
   }
   &__subtext {

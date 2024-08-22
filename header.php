@@ -9,6 +9,7 @@
     <title>It-volunteers</title>
 </head>
 <body>
+<?php get_template_part('template-parts/loader'); ?>
 <div class="wrapper">
     <header class="header">
         <div class="container">

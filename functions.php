@@ -27,6 +27,7 @@ function wp_it_volunteers_scripts()
     wp_enqueue_style('wp-it-volunteers-style', get_template_directory_uri() . '/assets/styles/main.css', array('main'));
     wp_enqueue_style('swiper-style', "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css", array('main'));
     wp_enqueue_style('choices-style', "https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css", array('main'));
+    wp_enqueue_style('loader-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/loader.css', array('main'));
 
     wp_enqueue_script('swiper-scripts', 'https://cdn.jsdelivr.net/npm/swiper@10.0.0/swiper-bundle.min.js', array(), false, true);
     wp_enqueue_script('wp-it-volunteers-scripts', get_template_directory_uri() . '/assets/scripts/main.js', array(), false, true);
@@ -146,22 +147,28 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('breadcrumbs', get_template_directory_uri() . '/assets/styles/template-parts-styles/breadcrumbs.css', array('main'));
     }
 
-    if (is_singular() && locate_template('template-parts/loader.php')) {
-        wp_enqueue_style('loader-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/loader.css', array('main'));
-    }
-
     if (is_singular() && locate_template('template-parts/contact-form.php')) {
         wp_enqueue_style('contact-form-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/contact-form.css', array('main'));
         wp_enqueue_script('contact-form-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/contact-form.js', array('touch-swipe-scripts'), false, true);
     }
 
-    if (is_singular() && locate_template('template-parts/feedbacks.php')) {
+if (is_singular()) {
+    if (locate_template('template-parts/feedbacks.php') || locate_template('template-parts/feedbacks-breed.php')) {
         wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
         wp_enqueue_style('feedbacks-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/feedbacks.css', array('main'));
-        wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
         wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
         wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
+
+        if (locate_template('template-parts/feedbacks.php')) {
+            wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
+        }
+
+        if (locate_template('template-parts/feedbacks-breed.php')) {
+            wp_enqueue_script('feedbacks-breed-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks-breed.js', array('touch-swipe-scripts'), false, true);
+        }
     }
+}
+
 
     if (is_singular() && locate_template('template-parts/join-us.php')) {
         wp_enqueue_style('join-us-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/join-us.css', array('main'));
@@ -194,6 +201,10 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
     }
 
+    if (is_singular() && locate_template('template-parts/one-card-event.php')) {
+        wp_enqueue_style('one-card-event-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-event.css', array('main'));
+    }
+
 }
 
 /** add fonts */
@@ -212,6 +223,12 @@ function add_swiper()
 }
 
 add_action('wp_enqueue_scripts', 'add_swiper');
+
+/** add Masonry */
+function mason_script() {
+    wp_enqueue_script( 'jquery-masonry' );
+}
+add_action( 'wp_enqueue_scripts', 'mason_script' );
 
 /** Register menus */
 function wp_it_volunteers_menus()
@@ -534,5 +551,3 @@ function get_breeds_per_page($width)
         return 6;
     }
 }
-
-

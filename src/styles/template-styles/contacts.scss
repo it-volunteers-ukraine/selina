@@ -1,7 +1,7 @@
 @import "../variables.scss";
 
 .heading-section {
-    color: $blue-main;
+    color: $primary-color;
     background-color: $light-green;
     padding: 0;
     position: relative;
@@ -203,7 +203,7 @@
         font-weight: 800;
         font-size: 20px;
         line-height: 100%;
-        color: $blue-main;
+        color: $primary-color;
         margin-bottom: 5px;
         @media screen and (min-width: $tablet) {
             font-size: 24px;

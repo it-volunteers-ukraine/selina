@@ -6,7 +6,7 @@ get_header();
 
 ?>
 
-<main>
+<main class="education">
     <section class="learning-section">
         <style>
             @media screen and (min-width: 1439px) {
@@ -98,10 +98,12 @@ get_header();
             <p class="education-description"><?php the_field('veterinary-description'); ?></p>
             <div class="education-cards">
                 <?php
-                $repeater_cards = get_field('repeater-frame-cards');
+                $repeater_cards = get_field('repeater-veterinary-cards');
                 foreach ($repeater_cards as $row) : ?>
                     <div class="card-item frame">
-                        <img class="image" src="<?= $row['image']; ?>" alt="image">
+                        <div class="card-image">
+                            <img class="image" src="<?= $row['image']; ?>" alt="image">
+                        </div>
                         <div class="title"><?= $row['title']; ?></div>
                         <div class="description"><?= $row['description']; ?></div>
                         <button class="button red_medium_button">
@@ -130,7 +132,9 @@ get_header();
                     $repeater_cards = get_field('repeater-cards');
                     foreach ($repeater_cards as $row) : ?>
                         <div class="card-item flex">
-                            <img class="image" src="<?= $row['image']; ?>" alt="image">
+                            <div class="card-image">
+                                <img class="image" src="<?= $row['image']; ?>" alt="image">
+                            </div>
                             <div class="title"><?= $row['title']; ?></div>
                             <div class="description"><?= $row['description']; ?></div>
                             <button class="button red_medium_button">
@@ -157,7 +161,9 @@ get_header();
                 $repeater_cards = get_field('repeater-frame-cards');
                 foreach ($repeater_cards as $row) : ?>
                     <div class="card-item frame">
-                        <img class="image" src="<?= $row['image']; ?>" alt="image">
+                        <div class="card-image">
+                            <img class="image" src="<?= $row['image']; ?>" alt="image">
+                        </div>
                         <div class="title"><?= $row['title']; ?></div>
                         <div class="description"><?= $row['description']; ?></div>
                         <button class="button red_medium_button">
@@ -168,7 +174,6 @@ get_header();
             </div>
         </div>
     </section>
-
         <?php get_template_part('template-parts/join-us') ?>
 </main>
 

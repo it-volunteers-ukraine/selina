@@ -4,6 +4,7 @@
     background: $primary-color;
     color: $white;
     padding: 32px 0 12px;
+    position: relative;
         @media screen and (min-width: $tablet) {
         padding: 20px 0 13px;
       }
@@ -415,72 +416,75 @@
             width: 28px;
         }
     }
-
-    /*------------------Up-button---------------------------*/
-    .up_btn {
-        display: none;
-        box-sizing: content-box;
-        
-        right: 16px;
-        z-index: 1;
-        background-color: transparent;
-        cursor: pointer;
-        @media screen and (min-width: $tablet) {
-            right: 32px;
-          }
-        @media screen and (min-width: $desktop) {
-            right: calc((100% - 1128px) / 2);
-        }
-    }
-    
-    .button-image {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1px;
-        width: 44px;
-        height: 44px;
-        border-radius: 8px;
-        background: $red;
-        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
-        padding-top: 5px;
-        @media screen and (min-width: $desktop) {
-            width: 56px;
-            height: 56px;
-            gap: 0;
-            padding-top: 2px;
-        }
-    }
-
-    .button-image svg {
-        @media screen and (min-width: $desktop) {
-            width: 40px;
-            height: 40px;
-            margin-bottom: -1px;
-        }
-    }
-
-    .button-image p {
-        font-family: var(--font-family);
-        font-weight: 800;
-        font-size: 10px;
-        line-height: 100%;
-        text-align: center;
-        @media screen and (min-width: $desktop) {
-            font-size: 12px;
-        }
-    }
+}
+/* ------------------------ Up-btn ------------------*/
+.button-top-wrapper {
+    display: flex;
+    justify-content: end;
 }
 
-
-.static-container {
-    position: relative;
+.button-top-container {
+    z-index: 10;
 }
 
-.static-button {
+.button-container-fixed {
+    position: fixed;
+    bottom: 16px;
+}
+
+.button-container-absolute {
     position: absolute;
 }
 
-.moving-button {
-    position: fixed;
+.up_btn {
+    box-sizing: content-box;
+    margin-bottom: 16px;
+    right: 16px;
+    z-index: 10;
+    background-color: transparent;
+    cursor: pointer;
+    @media screen and (min-width: $tablet) {
+        right: 32px;
+      }
+    @media screen and (min-width: $desktop) {
+        right: calc((100% - 1128px) / 2);
+    }
+}
+
+.button-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: $red;
+    box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+    padding-top: 5px;
+    @media screen and (min-width: $desktop) {
+        width: 56px;
+        height: 56px;
+        gap: 0;
+        padding-top: 2px;
+    }
+}
+
+.button-image svg {
+    @media screen and (min-width: $desktop) {
+        width: 40px;
+        height: 40px;
+        margin-bottom: -1px;
+    }
+}
+
+.button-image p {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 10px;
+    line-height: 100%;
+    text-align: center;
+    @media screen and (min-width: $desktop) {
+        font-size: 12px;
+    }
 }

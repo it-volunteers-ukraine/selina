@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(function(){const e=document.getElementById("load-more");let t=6;e.addEventListener("click",(function(){const e=document.querySelectorAll(".gallery-item.visually-hidden");for(let t=0;t<6&&t<e.length;t++)e[t].classList.remove("visually-hidden");t+=6}))}));
