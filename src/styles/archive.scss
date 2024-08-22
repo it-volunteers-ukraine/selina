@@ -41,6 +41,11 @@ html {
             gap: 16px;
         }
     }
+    .tags-section__list .active {
+        color: #fff; /* Колір тексту */
+        background-color: #28a745; /* Зелений фон */
+        border-color: #28a745; /* Зелена рамка (якщо є) */
+    }
     .news-section {
         &__wrapper {
             display: flex;
