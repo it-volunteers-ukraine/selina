@@ -1,5 +1,22 @@
 @import "../variables.scss";
 
+.news-first-section {
+  background-color: $background;
+  padding: 20px 0;
+
+  @media screen and (min-width: $tablet) {
+    padding: 30px 0;
+  }
+
+  @media screen and (min-width: $desktop) {
+    background-color: none;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 377px;
+    padding: 136.5px 0;
+  }  
+}
 
 .heading-section-news {
   position: relative;
@@ -423,9 +440,13 @@
 }
 
 .gallery-item {
-  width: 330px; /* Ширина кожного зображення */
-  padding: 0px 10px 15px 10px; /* Відступи всередині елемента */
+  width: 100%;
+  padding: 0px 10px 15px 10px;
   box-sizing: border-box; /* Урахування padding при обчисленні ширини */
+}
+
+.visually-hidden {
+  display: none;
 }
 
 
