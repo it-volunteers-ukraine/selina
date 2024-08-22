@@ -4,25 +4,7 @@ jQuery(document).ready(function ($) {
     const containerPhotographs = $('#more-photographs');
     const loadBtnFriends = $('#load-more-friends');
     const loadBtnPhotographs = $('#load-more-photographs');
-    const loadBtnGallery = $('#load-more'); // Кнопка для галереї
-    const gallery = $('.gallery'); // Контейнер галереї
-    let initialItems = 6; // Кількість елементів, що показуються спочатку
     var viewportWidth = window.innerWidth;
-
-    // Ініціалізація Masonry
-    const msnry = new Masonry(gallery[0], {
-        itemSelector: '.gallery-item',
-        columnWidth: '.gallery-item',
-        percentPosition: true
-    });
-
-    
-    // Обробка події для перерахунку Masonry після завантаження нових зображень
-    function updateMasonry() {
-        imagesLoaded(gallery[0], function() {
-            msnry.layout();
-        });
-    }
 
     // get nonce
     function getNonce() {
@@ -47,28 +29,11 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 targetContainer.append(response.html)
                 pageMapping[postType]++;
-                updateMasonry(); // Оновити Masonry після завантаження нових зображень
             },
             error: function (xhr, status, error) {
                 console.error("Request failed: " + error);
             }
         });
-    }
-
-    // Функція для показу більше елементів галереї
-    function loadMoreGallery() {        
-        let visibleItems = $('.gallery-item:visible').length;
-        $('.gallery-item').slice(visibleItems, visibleItems + initialItems).fadeIn();
-
-        if ($('.gallery-item:hidden').length === 0) {
-            loadBtnGallery.hide();
-        }
-
-        // Оновлення Masonry після завантаження нових елементів
-        setTimeout(function() {
-            updateMasonry();
-        }, 50); // Достатній час для відображення нових елементів
-        
     }
 
     loadBtnFriends.on('click', function () {
@@ -83,17 +48,6 @@ jQuery(document).ready(function ($) {
         loadPosts(postType, containerPhotographs);
     });
 
-    // Обробка кліків для галереї
-    loadBtnGallery.on('click', function () {
-        loadMoreGallery();
-    });
-
-    // Ініціалізація - сховати частину елементів галереї
-    $('.gallery-item').slice(initialItems).hide();
-
-    // Оновлення Masonry при зміні розміру вікна
-    $(window).on('resize', function () {        
-        msnry.layout();
-    });
-
 });
+
+
