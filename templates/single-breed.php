@@ -84,14 +84,22 @@ get_header();
                 <?php
                 $images = get_field('breed-page_about-images');
                 $size = 'full'; // (thumbnail, medium, large, full or custom size)
+              
                 if ($images): ?>
-                    <ul class="single-breed-about-section__list">
-                        <?php foreach (array_slice($images, 0, 4) as $image_id): ?>
-                            <li class="single-breed-about-section__item">
+                    <div class="single-breed-about-section__list">
+                        <?php foreach (array_slice($images, 0, 1) as $image_id): ?>
+                            <div class="single-breed-about-section__firstItem">
                                 <?php echo wp_get_attachment_image($image_id, $size); ?>
-                            </li>
+                            </div>
                         <?php endforeach; ?>
-                    </ul>
+                        <div class="single-breed-about-section__threeItems">
+                        <?php foreach (array_slice($images, 1, 3) as $image_id): ?>
+                            <div class="single-breed-about-section__item">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
+                        </div>
+                    </div>
                 <?php endif; ?>
                 <div class="single-breed-about-section__text">
                     <p class="single-breed-about-section__text-bold">
