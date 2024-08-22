@@ -121,57 +121,52 @@
   }
 
   &__list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-areas:
+      "b b b"
+      "b b b"
+      "b b b"
+      "b b b"
+      "b b b"
+      "c a d";
     gap: 8px;
     @media screen and (min-width: $tablet) {
-      flex-direction: row;
+      grid-template-areas:
+        "b b a"
+        "b b c"
+        "b b d";
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
       gap: 24px;
-      justify-content: start;
-      max-width: 705px;
-    }
-    @media screen and (min-width: $desktop) {
-      flex-direction: row;
-      gap: 24px;
-      justify-content: start;
-      max-width: 552px;
     }
   }
 
   &__firstItem {
-    width: 100%;
-    @media screen and (min-width: $tablet) {
-      flex: 1 1 69%;
-      max-width: 69%;
+    grid-area: b;
+
+    img {
+      border-radius: 8px;
+      height: 100%;
+      max-height: 100%;
     }
-    @media screen and (min-width: $desktop) {
-      flex: 1 1 70%;
-      max-width: 70%;
-    }
+  }
+
+  &__item1 {
+    grid-area: a;
     img {
       border-radius: 8px;
     }
   }
 
-  &__threeItems {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 8px;
-    @media screen and (min-width: $tablet) {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 31%;
-      max-width: 31%;
-      gap: 24px;
+  &__item2 {
+    grid-area: c;
+    img {
+      border-radius: 8px;
     }
-    @media screen and (min-width: $tablet) {
-      flex: 1 1 30%;
-      max-width: 30%;
-    }
+  }
 
+  &__item3 {
+    grid-area: d;
     img {
       border-radius: 8px;
     }

@@ -92,13 +92,22 @@ get_header();
                                 <?php echo wp_get_attachment_image($image_id, $size); ?>
                             </div>
                         <?php endforeach; ?>
-                        <div class="single-breed-about-section__threeItems">
-                        <?php foreach (array_slice($images, 1, 3) as $image_id): ?>
-                            <div class="single-breed-about-section__item">
+                        
+                        <?php foreach (array_slice($images, 1, 2) as $image_id): ?>
+                            <div class="single-breed-about-section__item1">
                                 <?php echo wp_get_attachment_image($image_id, $size); ?>
                             </div>
                         <?php endforeach; ?>
-                        </div>
+                        <?php foreach (array_slice($images, 2, 3) as $image_id): ?>
+                            <div class="single-breed-about-section__item2">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach (array_slice($images, 3, 4) as $image_id): ?>
+                            <div class="single-breed-about-section__item3">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
                 <div class="single-breed-about-section__text">
