@@ -23,26 +23,48 @@ get_header();
         <section class="tags-section section">
             <div class="container">
                 
-                <ul class="tags-section__list">
-                    <?php
-                    // Отримання всіх тегів з таксономії 'news_tag'
+            <ul class="tags-section__list">
+                <?php
+                    // Get the current tags from the URL
+                    $current_tags = isset($_GET['news_tag']) ? explode(',', $_GET['news_tag']) : [];
+
+                    // Get the URL of the archive for the custom post type 'news'
+                    $all_posts_url = get_post_type_archive_link('news');
+
+                    // Check if any tag is active on the current page
+                    $current_term = get_queried_object();
+                    $is_active_term = $current_term && isset($current_term->taxonomy) && $current_term->taxonomy === 'news_tag';
+                    $has_active_tag = !empty($current_tags) || $is_active_term;
+
+                    // Add the "All" button
+                    $all_active_class = $has_active_tag ? '' : 'active';
+                    echo '<li><a href="' . esc_url($all_posts_url) . '" class="' . $all_active_class . '">Всі</a></li>';
+
+                    // Get all tags from the 'news_tag' taxonomy
                     $terms = get_terms(array(
                         'taxonomy'   => 'news_tag',
-                        'hide_empty' => true, // Показувати лише ті теги, які прив'язані до постів
+                        'hide_empty' => true, // Show only tags that are attached to posts
                     ));
 
                     if (!empty($terms) && !is_wp_error($terms)) {
                         foreach ($terms as $term) {
-                            // Отримання URL для фільтрації постів по тегу
-                            $term_link = get_term_link($term);
-                            echo '<li><a href="' . esc_url($term_link) . '">' . esc_html($term->name) . '</a></li>';
+                            // Check if this tag is active
+                            $is_active = $is_active_term && $term->term_id == $current_term->term_id || in_array($term->slug, $current_tags);
+                            $active_class = $is_active ? 'active' : '';
+
+                            // Generate a new URL with the tag added or removed
+                            $new_tags = $is_active ? array_diff($current_tags, [$term->slug]) : array_merge($current_tags, [$term->slug]);
+
+                            // Create a new URL with the updated tag list
+                            $new_url = add_query_arg('news_tag', implode(',', $new_tags), $all_posts_url);
+                            echo '<li><a href="' . esc_url($new_url) . '" class="' . $active_class . '">' . esc_html($term->name) . '</a></li>';
                         }
                     } else {
                         echo '<li>Немає тегів.</li>';
                     }
-                    ?>
-                </ul>
-                
+                ?>
+            </ul>
+   
             </div>
         </section>
         <section class="news-section section">
@@ -61,8 +83,6 @@ get_header();
                                 </div> -->
                             </article>
                         <?php endwhile; ?>
-
-                        <?php the_posts_pagination(); ?>
 
                     <?php else : ?>
                         <p>Немає записів для цього архіву.</p>
