@@ -334,6 +334,7 @@
 
       @media screen and (min-width: $desktop) {
         font-size: 20px;
+        line-height: 1.25;
       }
 
       .description {
@@ -371,8 +372,8 @@
           gap: 32px;
           display: flex;
           flex-direction: row;
-          margin-bottom: 20px;
-          margin-top: 8px;
+          margin-bottom: 25px;
+          margin-top: 20px;
         }
 
         a {
