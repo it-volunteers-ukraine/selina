@@ -25,6 +25,21 @@ get_header();
                 
                 <ul class="tags-section__list">
                     <?php
+                    // Отримання поточного URL
+                    $current_url = home_url(add_query_arg(null, null));
+
+                    // Перевіряємо, чи це архів кастомного типу записів 'news'
+                     $is_news_archive = is_post_type_archive('news');
+                    $current_tag = get_queried_object();
+
+                    // Отримання URL архіву кастомного типу записів 'news'
+                    $all_posts_url = get_post_type_archive_link('news');
+
+                    // Додаємо кнопку "Всі"
+                    // Якщо не вибраний жоден тег, робимо цю кнопку активною
+                    $all_active_class = ($is_news_archive && !is_tax('news_tag')) ? 'active' : '';
+                    echo '<li><a href="' . esc_url($all_posts_url) . '" class="' . $all_active_class . '">Всі</a></li>';
+
                     // Отримання всіх тегів з таксономії 'news_tag'
                     $terms = get_terms(array(
                         'taxonomy'   => 'news_tag',
@@ -35,7 +50,9 @@ get_header();
                         foreach ($terms as $term) {
                             // Отримання URL для фільтрації постів по тегу
                             $term_link = get_term_link($term);
-                            echo '<li><a href="' . esc_url($term_link) . '">' . esc_html($term->name) . '</a></li>';
+                            // Додаємо клас "active", якщо це поточний тег
+                            $active_class = ($current_tag && $current_tag->term_id == $term->term_id) ? 'active' : '';
+                            echo '<li><a href="' . esc_url($term_link) . '" class="' . $active_class . '">' . esc_html($term->name) . '</a></li>';
                         }
                     } else {
                         echo '<li>Немає тегів.</li>';
