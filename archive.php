@@ -25,38 +25,44 @@ get_header();
                 
                 <ul class="tags-section__list">
                     <?php
-                    // Отримання поточного URL
-                    $current_url = home_url(add_query_arg(null, null));
+                    // Отримання поточних тегів з URL
+                        $current_tags = isset($_GET['news_tag']) ? explode(',', $_GET['news_tag']) : [];
 
-                    // Перевіряємо, чи це архів кастомного типу записів 'news'
-                     $is_news_archive = is_post_type_archive('news');
-                    $current_tag = get_queried_object();
+                        // Отримання URL архіву кастомного типу записів 'news'
+                        $all_posts_url = get_post_type_archive_link('news');
 
-                    // Отримання URL архіву кастомного типу записів 'news'
-                    $all_posts_url = get_post_type_archive_link('news');
+                        // Додаємо кнопку "Всі"
+                        $all_active_class = empty($current_tags) ? 'active' : '';
+                        echo '<li><a href="' . esc_url($all_posts_url) . '" class="' . $all_active_class . '">Всі</a></li>';
 
-                    // Додаємо кнопку "Всі"
-                    // Якщо не вибраний жоден тег, робимо цю кнопку активною
-                    $all_active_class = ($is_news_archive && !is_tax('news_tag')) ? 'active' : '';
-                    echo '<li><a href="' . esc_url($all_posts_url) . '" class="' . $all_active_class . '">Всі</a></li>';
+                        // Отримання всіх тегів з таксономії 'news_tag'
+                        $terms = get_terms(array(
+                            'taxonomy'   => 'news_tag',
+                            'hide_empty' => true, // Показувати лише ті теги, які прив'язані до постів
+                        ));
 
-                    // Отримання всіх тегів з таксономії 'news_tag'
-                    $terms = get_terms(array(
-                        'taxonomy'   => 'news_tag',
-                        'hide_empty' => true, // Показувати лише ті теги, які прив'язані до постів
-                    ));
+                        if (!empty($terms) && !is_wp_error($terms)) {
+                            foreach ($terms as $term) {
+                                // Перевіряємо, чи цей тег є у списку вибраних
+                                $is_active = in_array($term->slug, $current_tags);
+                                $active_class = $is_active ? 'active' : '';
+                                
+                                // Формуємо новий URL з доданим або видаленим тегом
+                                if ($is_active) {
+                                    // Якщо тег активний, видаляємо його з URL
+                                    $new_tags = array_diff($current_tags, [$term->slug]);
+                                } else {
+                                    // Якщо тег неактивний, додаємо його до URL
+                                    $new_tags = array_merge($current_tags, [$term->slug]);
+                                }
 
-                    if (!empty($terms) && !is_wp_error($terms)) {
-                        foreach ($terms as $term) {
-                            // Отримання URL для фільтрації постів по тегу
-                            $term_link = get_term_link($term);
-                            // Додаємо клас "active", якщо це поточний тег
-                            $active_class = ($current_tag && $current_tag->term_id == $term->term_id) ? 'active' : '';
-                            echo '<li><a href="' . esc_url($term_link) . '" class="' . $active_class . '">' . esc_html($term->name) . '</a></li>';
+                                // Формуємо новий URL з оновленим списком тегів
+                                $new_url = add_query_arg('news_tag', implode(',', $new_tags), $all_posts_url);
+                                echo '<li><a href="' . esc_url($new_url) . '" class="' . $active_class . '">' . esc_html($term->name) . '</a></li>';
+                            }
+                        } else {
+                            echo '<li>Немає тегів.</li>';
                         }
-                    } else {
-                        echo '<li>Немає тегів.</li>';
-                    }
                     ?>
                 </ul>
                 
@@ -78,8 +84,6 @@ get_header();
                                 </div> -->
                             </article>
                         <?php endwhile; ?>
-
-                        <?php the_posts_pagination(); ?>
 
                     <?php else : ?>
                         <p>Немає записів для цього архіву.</p>
