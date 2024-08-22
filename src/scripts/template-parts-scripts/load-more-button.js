@@ -6,7 +6,6 @@ jQuery(document).ready(function ($) {
     const loadBtnPhotographs = $('#load-more-photographs');
     var viewportWidth = window.innerWidth;
 
-
     // get nonce
     function getNonce() {
         return my_ajax.nonce;
@@ -37,7 +36,6 @@ jQuery(document).ready(function ($) {
         });
     }
 
-
     loadBtnFriends.on('click', function () {
         var postType = $(this).data('post-type');
         const ninthElem = $('#more-friends .nine-elem');
@@ -51,3 +49,4 @@ jQuery(document).ready(function ($) {
     });
 
 });
+
