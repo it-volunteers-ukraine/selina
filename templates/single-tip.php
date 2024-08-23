@@ -36,7 +36,7 @@ get_header();
             <div class="container">
                 <div class="single-tip__flex-container">
                     <div class='single-tip__tip-content'>
-                        <div class="single-tip__tip-heading">
+                        <div class="single-tip__tip-heading" id='openedTipHeading'>
                             <h3><?php the_field('tips_name'); ?></h3>
                         </div>
                         <div class="single-tip__image">
