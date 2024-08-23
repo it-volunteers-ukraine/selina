@@ -82,6 +82,7 @@
   &__subtitle-heading-wrapper {
     @media screen and (min-width: $tablet) {
       display: flex;
+      flex-wrap: wrap;
       gap: 24px;
     }
     @media screen and (min-width: $desktop) {
@@ -107,12 +108,13 @@
 
   &__wrapper {
     display: flex;
+    position: relative;
     flex-direction: column-reverse;
     gap: 24px;
     @media screen and (min-width: $tablet) {
       gap: 16px;
     }
-    @media screen and (min-width: $desktop) {
+    @media screen and (min-width: 1024px) {
       flex-direction: row;
       gap: 24px;
     }
@@ -120,63 +122,53 @@
 
   &__list {
     display: grid;
-    margin: 0 auto;
-    grid-template-columns: repeat(3, 80px);
-    grid-template-rows: 400px 80px;
+    grid-template-areas:
+      "b b b"
+      "b b b"
+      "b b b"
+      "b b b"
+      "b b b"
+      "c a d";
     gap: 8px;
-    @media screen and (min-width: $mobile) {
-      grid-template-columns: repeat(3, 109px);
-      grid-template-rows: 524.54px 109px;
-    }
     @media screen and (min-width: $tablet) {
-      grid-template-columns: 461px 219px;
-      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas:
+        "b b a"
+        "b b c"
+        "b b d";
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
       gap: 24px;
-    }
-    @media screen and (min-width: $desktop) {
-      grid-template-columns: 360px 168px;
-      grid-template-rows: repeat(3, 1fr);
     }
   }
 
-  &__item {
-    width: 80px;
-    height: 80px;
-    border-radius: 4px;
-    &:first-child {
-      width: 100%;
+  &__firstItem {
+    grid-area: b;
+
+    img {
+      border-radius: 8px;
       height: 100%;
-      grid-column: 1 / span 3;
+      max-height: 100%;
     }
-    @media screen and (min-width: $mobile) {
-      width: 109px;
-      height: 109px;
-      border-radius: 4px;
-      &:first-child {
-        width: 343px;
-        height: 524.54px;
-      }
+  }
+
+  &__item1 {
+    grid-area: a;
+    img {
+      border-radius: 8px;
     }
-    @media screen and (min-width: $tablet) {
-      width: 219px;
-      height: 219px;
-      border-radius: 10px;
-      &:first-child {
-        grid-column: unset;
-        width: 461px;
-        height: 705px;
-        grid-row: 1 / span 3;
-      }
+  }
+
+  &__item2 {
+    grid-area: c;
+    img {
+      border-radius: 8px;
     }
-    @media screen and (min-width: $desktop) {
-      width: 168px;
-      height: 168px;
-      border-radius: 10px;
-      &:first-child {
-        width: 360px;
-        height: 552px;
-        grid-row: 1 / span 3;
-      }
+  }
+
+  &__item3 {
+    grid-area: d;
+    img {
+      border-radius: 8px;
     }
   }
 
@@ -193,6 +185,7 @@
     line-height: 1.25;
   }
 }
+
 .single-breed-heading-wrapper {
   display: flex;
   align-items: baseline;
@@ -504,5 +497,91 @@
 
   &__item:last-child {
     border-bottom: none;
+  }
+}
+
+.single-breed-documents-section {
+  background-color: $background;
+  &__heading {
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .heading-svg {
+      display: none;
+      @media screen and (min-width: $tablet) {
+        display: initial;
+        width: 26.32px;
+        height: 23.53px;
+      }
+      @media screen and (min-width: $desktop) {
+        width: 36.85px;
+        height: 32.94px;
+      }
+    }
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @media screen and (min-width: $desktop) {
+      flex-wrap: nowrap;
+      gap: 24px;
+    }
+    .document {
+      position: relative;
+      background-color: $light-green;
+      height: 272px;
+      width: 100%;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      @media screen and (min-width: $tablet) {
+        max-width: calc((100% - 22px) / 2);
+      }
+      @media screen and (min-width: $desktop) {
+        max-width: calc((100% - 24px * 2) / 3);
+      }
+      .clip-svg {
+        position: absolute;
+        z-index: 10;
+        top: -27px;
+        right: 15px;
+        display: initial;
+        width: 34.5px;
+        height: 87px;
+      }
+      .document-card {
+        &__content {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 0 32px;
+        }
+        &__title {
+          font-weight: 800;
+          font-size: 24px;
+          line-height: 1;
+          text-align: center;
+        }
+        &__button {
+          gap: 8px;
+          margin: 28px 0 64px 0;
+        }
+      }
+    }
   }
 }

@@ -14,7 +14,6 @@ get_header();
                 }
             }
         </style>
-        <div class="container">
             <div class="container">
                 <h3 class="section_heading single-breed-first-section__heading">
                     <?php the_field('breed_name'); ?>
@@ -41,6 +40,27 @@ get_header();
                         </svg>
                         <p><?php the_field('breed-page_wfc-title'); ?></p>
                     </a>
+                    <a class="single-breed-first-section__subtitle-heading" href="#single-breed-conditions">
+                        <svg class="single-breed-first-section__heading-svg" width="14" height="12">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                        <p><?php the_field('breed-page_conditions-title'); ?></p>
+                    </a>
+                    <a class="single-breed-first-section__subtitle-heading" href="#single-breed-documents">
+                        <svg class="single-breed-first-section__heading-svg" width="14" height="12">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                        <p><?php the_field('breed-page_adds-title'); ?></p>
+                    </a>
+                    <a class="single-breed-first-section__subtitle-heading" href="#feedbacks">
+                        <svg class="single-breed-first-section__heading-svg" width="14" height="12">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                        <p><?php the_field('breed-page_feedbacks-title'); ?></p>
+                    </a>
                 </div>
             </div>
     </section>
@@ -64,14 +84,31 @@ get_header();
                 <?php
                 $images = get_field('breed-page_about-images');
                 $size = 'full'; // (thumbnail, medium, large, full or custom size)
+              
                 if ($images): ?>
-                    <ul class="single-breed-about-section__list">
-                        <?php foreach ($images as $image_id): ?>
-                            <li class="single-breed-about-section__item">
+                    <div class="single-breed-about-section__list">
+                        <?php foreach (array_slice($images, 0, 1) as $image_id): ?>
+                            <div class="single-breed-about-section__firstItem">
                                 <?php echo wp_get_attachment_image($image_id, $size); ?>
-                            </li>
+                            </div>
                         <?php endforeach; ?>
-                    </ul>
+                        
+                        <?php foreach (array_slice($images, 1, 2) as $image_id): ?>
+                            <div class="single-breed-about-section__item1">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach (array_slice($images, 2, 3) as $image_id): ?>
+                            <div class="single-breed-about-section__item2">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach (array_slice($images, 3, 4) as $image_id): ?>
+                            <div class="single-breed-about-section__item3">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 <?php endif; ?>
                 <div class="single-breed-about-section__text">
                     <p class="single-breed-about-section__text-bold">
@@ -230,7 +267,47 @@ get_header();
             <?php endif; ?>
         </div>
     </section>
-
+    <section class="single-breed-documents-section section" id="single-breed-documents">
+        <div class="container">
+            <h2 class="single-breed-documents-section__heading section_heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('breed-page_adds-title'); ?>
+            </h2>
+            <div class="single-breed-documents-section__wrapper">
+                <?php
+                    if( have_rows('document-cards') ):
+                        while( have_rows('document-cards') ) : the_row();
+                            $documentTitle = get_sub_field('document__title');
+                            $documentLink = get_sub_field('document__link');
+                            ?>
+                                <div class="document">
+                                    
+                                        <svg class="clip-svg" width="38" height="90">
+                                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
+                                        </svg>
+                                        <div class="document-card__content">
+                                            <div class="document-card__title"><?php echo $documentTitle; ?></div>
+                                            <button class="document-card__button button red_medium_button">
+                                                <a href="<?php echo $documentLink; ?>" target="_blank">
+                                                    <?php the_field('open-btn', 'option'); ?>
+                                                </a> 
+                                                <svg class="document-card__button-svg" width="16" height="15">
+                                                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-google"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    
+                                </div>
+                            <?php 
+                        endwhile;
+                    endif;
+                ?>
+            </div>
+        </div>
+    </section>
     <?php get_template_part('template-parts/feedbacks-breed'); ?>
     <?php get_template_part('template-parts/join-us'); ?>
 </main>

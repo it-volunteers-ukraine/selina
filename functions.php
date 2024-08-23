@@ -201,6 +201,10 @@ if (is_singular()) {
         wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
     }
 
+    if (is_singular() && locate_template('template-parts/one-card-event.php')) {
+        wp_enqueue_style('one-card-event-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-event.css', array('main'));
+    }
+
 }
 
 /** add fonts */
@@ -547,3 +551,21 @@ function get_breeds_per_page($width)
         return 6;
     }
 }
+
+// Filter news by multiple tags
+function filter_news_by_multiple_tags($query) {
+    if (!is_admin() && $query->is_main_query() && is_post_type_archive('news')) {
+        if (isset($_GET['news_tag']) && !empty($_GET['news_tag'])) {
+            $tags = explode(',', $_GET['news_tag']);
+            $query->set('tax_query', array(
+                array(
+                    'taxonomy' => 'news_tag',
+                    'field'    => 'slug',
+                    'terms'    => $tags,
+                    'operator' => 'OR',
+                ),
+            ));
+        }
+    }
+}
+add_action('pre_get_posts', 'filter_news_by_multiple_tags');

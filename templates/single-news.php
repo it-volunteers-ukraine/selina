@@ -6,20 +6,29 @@
 get_header();
 ?>
 
-<main>
-  <!-- Заголово секції -->
-<section class="heading-section-news">
+<main>  
+<section class="section heading-section-news">
+  <style>
+    @media screen and (min-width: 1439px) {
+      .news-first-section {
+        background-image: url("<?php the_field ('upper-section__background', 'option') ?>");
+      }
+    }
+  </style>
+  <div class="container">
     <div class="heading-section-news__background-img">
-      <img src="http://selina.it-volunteers.com/wp-content/uploads/2024/07/cat_upper_section_bg.jpg" alt="Background image with cat">
+      <img src="<?php the_field('upper-section__background', 'option'); ?>" alt="Background image with cat">
     </div>      
     <h2 class="heading section_heading">
       Події
     </h2>
+  </div>    
 </section>
 
   <!-- Хлібні крихти -->
-<section class="wrapper-breadcrumbs-section">
-  <div class="breadcrumbs-section">
+<section class="section wrapper-breadcrumbs-section">
+  <div class="container">
+    <div class="breadcrumbs-section">
     <p>
       <?php
       $breadcrumb_title = get_field('breadcrumb_title');
@@ -35,11 +44,12 @@ get_header();
       <span class="breadcrumbs-event breadcrumb-title">Ternopil - Ukraine WCF SHOW LICENSING</span>
     </p>
    </div>
+  </div>
 </section>
 
 <section class="main-content-container">
 <!-- Сeкція новини -->
-<section class="wrapper-news-section">
+<section class="section wrapper-news-section">
   <div class="container">    
     <div class="news-section__item">
       <div class="news-section__text-wrapper">            
@@ -84,26 +94,24 @@ get_header();
   </div>      
 
 <!-- Галерея з кнопкою -->
-  <section class="wrapper-news-section-gallary">
-    <div class="news-section__gallery">        
+  <section class="section wrapper-news-section-gallary">
+    <div class="container news-section__gallery">        
         <div class="gallery" id="gallery">
-            <?php
-            $images = get_field('news_gallery'); // Отримуємо зображення з ACF            
-            // Перевірка, чи є зображення
-            if ($images): ?>
-            <ul id="container-masonry">
-              <?php foreach (array_slice($images, 0, 6) as $image): ?>
-                <li class="gallery-item">
-                  <a href="<?php echo $image['url']; ?>">
-                     <img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>" />
-                  </a>
-                  <p><?php echo $image['caption']; ?></p>
-                </li>
-              <?php endforeach; ?>
-            </ul>
-            <?php endif; ?>            
+          <?php
+            $images = get_field('news_gallery'); /* Отримуємо зображення з ACF */
+            if($images):
+              foreach($images as $index => $image):                
+                $hidden_class = ($index >= 6) ? 'visually-hidden' : ''; /* клас visually-hidden до зображень після 6-го */
+          ?>
+          <div class="gallery-item <?php echo $hidden_class; ?>">
+            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+          </div>
+          <?php 
+                endforeach; 
+            endif;
+            ?>                               
         </div>
-        <?php if ($images && count($images) > 5): ?>
+        <?php if ($images && count($images) > 6): ?>
             <div class="gallary-button button green_medium_button">
                 <button id="load-more" class="gallary-section__last-btn">
                     <p class="gallary-section__last-btn-text">Показати більше</p>
@@ -121,6 +129,3 @@ get_header();
 </main>
 <?php get_footer(); ?>
 
-<!-- Підключення бібліотеки Masonry -->
-<script src="<?php echo get_template_directory_uri(); ?>/assets/scripts/template-scripts/masonry-docs.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/assets/scripts/template-scripts/single-news.js"></script>
