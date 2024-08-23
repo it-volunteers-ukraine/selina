@@ -33,29 +33,54 @@
             margin: auto;
         }
     }
-
     &__list-single-tip {
         font-family: var(--font-family);
         font-weight: 800;
         font-size: 30px;
         line-height: 100%;
-        margin-bottom: 10px;
-
         @media screen and (min-width: $tablet) {
             font-size: 45px;
-            margin-bottom: 14px;
         }
-
         @media screen and (min-width: $desktop) {
             font-size: 60px;
-            margin-bottom: 24px;
         }
     }
 }
 
 .single-tip {
+    &__breadcrumbs-section {
+        margin: 12px 0;
+        padding: 0;
+        @media screen and (min-width: $tablet) {
+            margin: 25.5px 0;
+        }
+        @media screen and (min-width: $desktop) {
+            margin: 32px 0;
+        }
+    }
     &__section {
-        padding-bottom: 0;
+        padding: 24px 0 0;
+        @media screen and (min-width: $tablet) {
+            padding: 0;
+        }
+        @media screen and (min-width: $desktop) {
+            padding-bottom: 80px;
+        }
+    }
+    &__breadcrumbs {
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 133%;
+        color: $primary-color;
+        @media screen and (min-width: $tablet) {
+            font-size: 16px;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 20px;
+        }
+    }
+    &__breadcrumbs-active {
+        color: $red;
     }
 
     &__flex-container {
@@ -74,6 +99,9 @@
         line-height: 117%;
         color: $black;
         margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            margin-bottom: 24px;
+        }
         @media screen and (min-width: $desktop) {
             font-size: 30px;
             line-height: 113%;
@@ -82,15 +110,19 @@
     }
     &__image {
         margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            margin-bottom: 32px;
+        }
     }
     &__text-content {
-        @media screen and (min-width: $mobile) {
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 13;
             -webkit-box-orient: vertical;
-        }
         @media screen and (min-width: $tablet) {
             -webkit-line-clamp: 17;
         }
@@ -102,6 +134,11 @@
     &__text {
         font-size: 16px;
         line-height: 131%;
+        @media screen and (min-width: $tablet) {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 125%;
+        }
     }
 
     &__sub-heading {

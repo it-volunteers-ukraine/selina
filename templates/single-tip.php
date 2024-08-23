@@ -20,12 +20,12 @@ get_header();
             </div>
         </section>
 
-        <section class="section breadcrumbs-single-tip-section">
+        <section class="section single-tip__breadcrumbs-section">
             <div class="container">
                 <div class="single-tip__breadcrumbs">
-                    <a href="<?php the_field('breed-page_breadcrumbs_page'); ?>">
-                        <?php the_field('beginners-tips__heading'); ?></a>
-                    <span class="single-tip__breadcrumbs__active">
+                    <a href="<?php the_field('single-tip__breadcrumbs_page'); ?>#beginners-tips">
+                        <?php the_field('single-tip__breadcrumbs_page_name'); ?></a>
+                    <span class="single-tip__breadcrumbs-active">
                         <?php the_field('tips_name'); ?>
                     </span>
                 </div>
@@ -43,24 +43,36 @@ get_header();
                             <img class="single-tip__image__img" src="<?php the_field('tips_image') ?>" />
                         </div>
                         <div class='single-tip__text-content'>
-                            <div class="single-tip__sub-heading">
-                                <h3><?php the_field('tips_sub-heading_1'); ?></h3>
-                            </div>
-                            <div class="single-tip__text">
-                                <p><?php the_field('tips_text_1'); ?></p>
-                            </div>
-                            <div class="single-tip__sub-heading">
-                                <h3><?php the_field('tips_sub-heading_2'); ?></h3>
-                            </div>
-                            <div class="single-tip__text">
-                                <p><?php the_field('tips_text_2'); ?></p>
-                            </div>
-                            <div class="single-tip__sub-heading">
-                                <h3><?php the_field('tips_sub-heading_3'); ?></h3>
-                            </div>
-                            <div class="single-tip__text">
-                                <p><?php the_field('tips_text_3'); ?></p>
-                            </div>
+                            <?php if ( !empty (get_field('tips_sub-heading_1'))): ?>
+                                <div class="single-tip__sub-heading">
+                                    <h3><?php the_field('tips_sub-heading_1'); ?></h3>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ( !empty (get_field('tips_text_1'))): ?>
+                                <div class="single-tip__text">
+                                    <p><?php the_field('tips_text_1'); ?></p>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ( !empty (get_field('tips_sub-heading_2'))): ?>
+                                <div class="single-tip__sub-heading">
+                                    <h3><?php the_field('tips_sub-heading_2'); ?></h3>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ( !empty (get_field('tips_text_2'))): ?>
+                                <div class="single-tip__text">
+                                    <p><?php the_field('tips_text_2'); ?></p>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ( !empty (get_field('tips_sub-heading_3'))): ?>
+                                <div class="single-tip__sub-heading">
+                                    <h3><?php the_field('tips_sub-heading_3'); ?></h3>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ( !empty (get_field('tips_text_3'))): ?>
+                                <div class="single-tip__text">
+                                    <p><?php the_field('tips_text_3'); ?></p>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <button class='single-tip__show-whole-button green_medium_button' id='showWholeTipTextButton'>
                             <p><?php the_field('tips_button-show-whole-text'); ?></p>
