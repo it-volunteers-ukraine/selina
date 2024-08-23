@@ -1,0 +1,123 @@
+@import "../variables.scss";
+
+.heading-section-single-tip {
+    color: $primary-color;
+    background-color: $light-green;
+    padding: 0;
+    position: relative;
+
+    @media screen and (min-width: $desktop) {
+        background-color: $light-green;
+    }
+
+    &__background-img {
+        display: none;
+
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
+    }
+
+    &__wrapper {
+        padding: 20px 0;
+
+        @media screen and (min-width: $tablet) {
+            padding: 30px 0;
+        }
+
+        @media screen and (min-width: $desktop) {
+            position: absolute;
+            background: none;
+            top: 123px;
+            padding: 0;
+            margin: auto;
+        }
+    }
+
+    &__list-single-tip {
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 30px;
+        line-height: 100%;
+        margin-bottom: 10px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 45px;
+            margin-bottom: 14px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            font-size: 60px;
+            margin-bottom: 24px;
+        }
+    }
+}
+
+.single-tip {
+    &__flex-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__tip-content {
+        @media screen and (min-width: $desktop) {
+            width: calc(100% - 264px - 36px);
+        }
+    }
+    &__tip-heading {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 117%;
+        color: $black;
+        margin-bottom: 16px;
+    }
+    &__image {
+        margin-bottom: 16px;
+    }
+    &__text-content {
+        @media screen and (min-width: $mobile) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 13;
+            -webkit-box-orient: vertical;
+        }
+        @media screen and (min-width: $tablet) {
+            -webkit-line-clamp: 17;
+        }
+        @media screen and (min-width: $desktop) {
+            overflow: visible;
+            -webkit-line-clamp: unset;
+        }
+    }
+    &__text {
+        font-size: 16px;
+        line-height: 131%;
+    }
+
+    &__sub-heading {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 100%;
+        color: $primary-color;
+        margin: 32px 0 24px;
+    }
+
+    &__show-whole-button {
+        margin-top: 24px;
+        gap: 8px;
+        @media screen and (min-width: $desktop) {
+            display: none;
+        }
+    }
+
+    &__sidebar {
+        display: none;
+        width: 264px;
+        margin-top: 30px;
+        background-color: $light-green;
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
+    }
+}

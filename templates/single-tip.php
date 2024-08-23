@@ -13,27 +13,67 @@ get_header();
             </div>
             <div class="container">
                 <div class="heading-section-single-tip__wrapper">
-                    <div class="heading-section-single-tip__list-events">
-                        <h2><?php the_field('list-single-tip'); ?></h2>
+                    <div class="heading-section-single-tip__list-single-tip">
+                        <h2><?php the_field('single_tip_page_heading'); ?></h2>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section breadcrumbs-single-tip-section">
-            <!-- ??????????????????????????? -->
+            <div class="container">
+                <div class="single-tip__breadcrumbs">
+                    <a href="<?php the_field('breed-page_breadcrumbs_page'); ?>">
+                        <?php the_field('beginners-tips__heading'); ?></a>
+                    <span class="single-tip__breadcrumbs__active">
+                        <?php the_field('tips_name'); ?>
+                    </span>
+                </div>
+            </div>
         </section>
 
-        <section class='section wrapper-section-single-tip'>
-            <div class="container single-tip-container">
-                <div class="sidebar-single-tip">
-                    <!-- Side navigation -->
-                </div>
-                <div class='single-tip'>
+        <section class='section single-tip__section'>
+            <div class="container single-tip__flex-container">
+                <div class='single-tip__tip-content'>
+                    <div class="single-tip__tip-heading">
+                        <h3><?php the_field('tips_name'); ?></h3>
+                    </div>
                     <div class="single-tip__image">
                         <img class="single-tip__image__img" src="<?php the_field('tips_image') ?>" />
                     </div>
+                    <div class='single-tip__text-content'>
+                        <div class="single-tip__sub-heading">
+                            <h3><?php the_field('tips_sub-heading_1'); ?></h3>
+                        </div>
+                        <div class="single-tip__text">
+                            <p><?php the_field('tips_text_1'); ?></p>
+                        </div>
+                        <div class="single-tip__sub-heading">
+                            <h3><?php the_field('tips_sub-heading_2'); ?></h3>
+                        </div>
+                        <div class="single-tip__text">
+                            <p><?php the_field('tips_text_2'); ?></p>
+                        </div>
+                        <div class="single-tip__sub-heading">
+                            <h3><?php the_field('tips_sub-heading_3'); ?></h3>
+                        </div>
+                        <div class="single-tip__text">
+                            <p><?php the_field('tips_text_3'); ?></p>
+                        </div>
+                    </div>
+                    <button class='single-tip__show-whole-button green_medium_button' id='showWholeTipTextButton'>
+                        <p><?php the_field('tips_button-show-whole-text'); ?></p>
+                        <svg class="icon-paw" width="20" height="20">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                        </svg>
+                    </button>
                 </div>
+                <div class="single-tip__sidebar">
+                    <!-- Side navigation -->
+                </div>
+            </div>
+            <div class="single-tip__slider">
+                <!-- Slider -->
             </div>
         </section>
 
