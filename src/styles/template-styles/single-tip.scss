@@ -54,6 +54,10 @@
 }
 
 .single-tip {
+    &__section {
+        padding-bottom: 0;
+    }
+
     &__flex-container {
         display: flex;
         justify-content: space-between;
@@ -70,6 +74,11 @@
         line-height: 117%;
         color: $black;
         margin-bottom: 16px;
+        @media screen and (min-width: $desktop) {
+            font-size: 30px;
+            line-height: 113%;
+            margin-bottom: 32px;
+        }
     }
     &__image {
         margin-bottom: 16px;
@@ -111,13 +120,76 @@
         }
     }
 
+    &__slider {
+        @media screen and (min-width: $tablet) {
+            margin-top: 56px;
+        }
+        @media screen and (min-width: $desktop) {
+            display: none;
+        }
+    }
+
+    &__slider-heading {
+        margin-top: 32px;
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 100%;
+        color: $black;
+    }
+
+    &__card {
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        padding: 16px 20px;
+        height: 74px;
+        width: 264px;
+        box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.16);
+        background: $light-green;
+        margin: 17px 0 24px;
+        @media screen and (min-width: $tablet) {
+            margin-bottom: 56px;
+        }
+    }
+
+    &__card-text {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+    }
+
     &__sidebar {
         display: none;
-        width: 264px;
-        margin-top: 30px;
-        background-color: $light-green;
         @media screen and (min-width: $desktop) {
             display: block;
         }
+    }
+
+    &__sidebar-heading {
+        margin-top: 72px;
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 100%;
+        color: $black;
+    }
+
+    &__sidebar-card {
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        padding: 16px 20px;
+        width: 264px;
+        height: 74px;
+        box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.16);
+        background: $light-green;
+        margin: 17px 0;
+    }
+
+    &__sidebar-card-text {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
     }
 }

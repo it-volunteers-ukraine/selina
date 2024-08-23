@@ -5,3 +5,10 @@ showWholeTipTextButton.addEventListener('click', function() {
     textContent.style.webkitLineClamp = 'unset';
     this.blur(); 
 })
+
+
+let swiper = new Swiper(".mySwiper", {
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 17,
+});
