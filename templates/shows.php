@@ -164,7 +164,7 @@ get_header();
                                         ?>
                                         
                                     <?php endif; ?>
-                                    <!-- Cutted into one-card-news.php -->
+                                    <!-- Cutted into one-card-news.php  template-part presentation -->
                                     <?php get_template_part('template-parts/one-card-news'); ?>
                                 </div>
                             <?php endforeach;

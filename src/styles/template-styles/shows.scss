@@ -265,36 +265,6 @@
             padding: 24px;
         }
     }
-    &__news-section__img img  {
-        height: 207px;
-        object-fit: cover;
-        @media screen and (min-width: $desktop) {
-            height: 332px;
-        }
-    }
-    &__news-section__content-wrapper {
-        display: flex;
-        flex-direction: column;
-        height: 205px;
-    }
-    &__news-section__text{
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.3;
-        overflow: hidden;
-        max-height: -webkit-min-content;
-        max-height: -moz-min-content;
-        max-height: min-content;
-        -ms-flex-negative: 1;
-        flex-shrink: 1;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-    }
-    &__news-section__button {
-        margin-top: auto;
-    }
     &__all-button {
         width: 165px;
         margin-top: 0;

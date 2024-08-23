@@ -103,6 +103,14 @@ function wp_it_volunteers_scripts()
 
     }
 
+    if (is_page_template('templates/single-tip.php')) {
+        wp_enqueue_script('home-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_script('single-tip-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-tip.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('single-tip-style', get_template_directory_uri() . '/assets/styles/template-styles/single-tip.css', array('main'));
+
+    }
+
+
     if (is_page_template('templates/our-breeders.php')) {
         wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
         wp_enqueue_script('our-breeders-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/our-breeders.js', array('touch-swipe-scripts'), false, true);
@@ -199,6 +207,10 @@ if (is_singular()) {
 
     if (is_singular() && locate_template('template-parts/education-card.php')) {
         wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
+    }
+
+    if (is_singular() && locate_template('template-parts/one-card-news.php')) {
+        wp_enqueue_style('one-card-news-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-news.css', array('main'));
     }
 
     if (is_singular() && locate_template('template-parts/one-card-event.php')) {
