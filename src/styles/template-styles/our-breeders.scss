@@ -84,7 +84,7 @@
   }
 
   &__content {
-    @media screen and (min-width: $desktop) {
+    @media screen and (min-width: 1024px) {
       display: flex;
       flex-direction: row-reverse;
       gap: 24px;
@@ -100,25 +100,18 @@
     @media screen and (min-width: $tablet) {
       font-size: 20px;
     }
+    @media screen and (min-width: 1024px) {
+      width: calc(50% - 12px);
+    }
   }
 
   &__img {
-    width: 288px;
+    width: 100%;
     height: auto;
     border-radius: 8px;
 
-    @media screen and (min-width: $mobile) {
-      width: 343px;
-      height: 266px;
-    }
-
-    @media screen and (min-width: $tablet) {
-      width: 704px;
-      height: 546px;
-    }
-    @media screen and (min-width: $desktop) {
-      width: 552px;
-      height: 428px;
+    @media screen and (min-width: 1024px) {
+      width: calc(50% - 12px);
     }
   }
 }

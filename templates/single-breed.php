@@ -14,7 +14,6 @@ get_header();
                 }
             }
         </style>
-        <div class="container">
             <div class="container">
                 <h3 class="section_heading single-breed-first-section__heading">
                     <?php the_field('breed_name'); ?>
@@ -41,6 +40,27 @@ get_header();
                         </svg>
                         <p><?php the_field('breed-page_wfc-title'); ?></p>
                     </a>
+                    <a class="single-breed-first-section__subtitle-heading" href="#single-breed-conditions">
+                        <svg class="single-breed-first-section__heading-svg" width="14" height="12">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                        <p><?php the_field('breed-page_conditions-title'); ?></p>
+                    </a>
+                    <a class="single-breed-first-section__subtitle-heading" href="#single-breed-documents">
+                        <svg class="single-breed-first-section__heading-svg" width="14" height="12">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                        <p><?php the_field('breed-page_adds-title'); ?></p>
+                    </a>
+                    <a class="single-breed-first-section__subtitle-heading" href="#feedbacks">
+                        <svg class="single-breed-first-section__heading-svg" width="14" height="12">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                        <p><?php the_field('breed-page_feedbacks-title'); ?></p>
+                    </a>
                 </div>
             </div>
     </section>
@@ -64,14 +84,31 @@ get_header();
                 <?php
                 $images = get_field('breed-page_about-images');
                 $size = 'full'; // (thumbnail, medium, large, full or custom size)
+              
                 if ($images): ?>
-                    <ul class="single-breed-about-section__list">
-                        <?php foreach ($images as $image_id): ?>
-                            <li class="single-breed-about-section__item">
+                    <div class="single-breed-about-section__list">
+                        <?php foreach (array_slice($images, 0, 1) as $image_id): ?>
+                            <div class="single-breed-about-section__firstItem">
                                 <?php echo wp_get_attachment_image($image_id, $size); ?>
-                            </li>
+                            </div>
                         <?php endforeach; ?>
-                    </ul>
+                        
+                        <?php foreach (array_slice($images, 1, 2) as $image_id): ?>
+                            <div class="single-breed-about-section__item1">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach (array_slice($images, 2, 3) as $image_id): ?>
+                            <div class="single-breed-about-section__item2">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach (array_slice($images, 3, 4) as $image_id): ?>
+                            <div class="single-breed-about-section__item3">
+                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 <?php endif; ?>
                 <div class="single-breed-about-section__text">
                     <p class="single-breed-about-section__text-bold">
