@@ -1,0 +1,71 @@
+@import "../variables";
+
+html { 
+    scroll-behavior: smooth;
+}
+
+.news-archive {
+    .upper-section {
+        background-color: $light-green;
+        padding: 24px 0;
+        @media screen and (min-width: $desktop) {
+            background-color: none;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 158px 0 159px;
+        }
+        &__banner {
+            @media screen and (min-width: $desktop) {
+                width: 648px;
+            }
+        }
+        &__heading {
+            font-size: 30px;
+            line-height: 1.13;
+            @media screen and (min-width: $tablet) {
+                font-size: 45px;
+                line-height: 1;
+            }
+            @media screen and (min-width: $desktop) {
+                font-size: 60px;
+            }
+        }
+    }
+    .tags-section {
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .filter-buttons a {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 16px;
+            border-radius: 4px;
+            &.active {
+                background-color: #007bff;
+                color: #fff;
+            }
+        }
+    }
+    .posts-section {
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .one-card-news {
+                max-width: 100%;
+                @media screen and (min-width: $tablet) {
+                    max-width: calc((100% - 24px) / 2); 
+                }
+
+            }
+        }
+    }
+}
