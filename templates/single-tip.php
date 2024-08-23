@@ -86,9 +86,27 @@ get_header();
                             setup_postdata($post);
                         ?>
                         <div class="single-tip__sidebar-card">
+                            <?php
+                                $disk_link = get_field('tips_button-link-disk');
+                                $inner_link = get_field('tips_button-link-inner');
+                                $outer_link = get_field('tips_button-link-outer');
+                            ?>
+                            <!-- google-disk -->
+                            <?php if ( !empty ($disk_link )): ?>
+                                <a href="<?php the_field('tips_button-link-disk') ?>"target='_blank'>
+                                    <p class='single-tip__sidebar-card-text'><?php the_field('tips_name') ?></p>
+                                </a>
+                                <!-- outer-link -->
+                            <?php elseif ( !empty ($outer_link )): ?>
+                                <a href="<?php the_field('tips_button-link-outer') ?>" target='_blank'>
+                                    <p class='single-tip__sidebar-card-text'><?php the_field('tips_name') ?></p>
+                                </a>
+                            <!-- inner-link -->
+                            <?php else : ?>
                             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" target='_blank'>
                                 <p class='single-tip__sidebar-card-text'><?php the_field('tips_name') ?></p>
                             </a>
+                            <?php endif; ?>
                         </div>
                         <?php endforeach;
                             wp_reset_postdata(); ?>
@@ -113,9 +131,27 @@ get_header();
                                 setup_postdata($post);
                             ?>
                             <div class="single-tip__card swiper-slide">
-                                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" target='_blank'>
+                                <?php
+                                $disk_link = get_field('tips_button-link-disk');
+                                $inner_link = get_field('tips_button-link-inner');
+                                $outer_link = get_field('tips_button-link-outer');
+                            ?>
+                            <!-- google-disk -->
+                            <?php if ( !empty ($disk_link )): ?>
+                                <a href="<?php the_field('tips_button-link-disk') ?>"target='_blank'>
                                     <p class='single-tip__card-text'><?php the_field('tips_name') ?></p>
                                 </a>
+                                <!-- outer-link -->
+                            <?php elseif ( !empty ($outer_link )): ?>
+                                <a href="<?php the_field('tips_button-link-outer') ?>" target='_blank'>
+                                    <p class='single-tip__card-text'><?php the_field('tips_name') ?></p>
+                                </a>
+                            <!-- inner-link -->
+                            <?php else : ?>
+                            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" target='_blank'>
+                                <p class='single-tip__card-text'><?php the_field('tips_name') ?></p>
+                            </a>
+                            <?php endif; ?>
                             </div>
                             <?php endforeach;
                                 wp_reset_postdata(); ?>
