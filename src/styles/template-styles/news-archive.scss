@@ -1,10 +1,10 @@
-@import "./variables.scss";
+@import "../variables";
 
 html { 
     scroll-behavior: smooth;
 }
 
-.archive {
+.news-archive {
     .upper-section {
         background-color: $light-green;
         padding: 24px 0;
@@ -34,29 +34,38 @@ html {
         }
     }
     .tags-section {
-        &__list {
+        .filter-buttons {
             display: flex;
-            flex-direction: row;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 24px;
+        }
+        .filter-buttons a {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 16px;
+            border-radius: 4px;
+            &.active {
+                background-color: #007bff;
+                color: #fff;
+            }
         }
     }
-    .tags-section__list .active {
-        color: #fff; /* Колір тексту */
-        background-color: #28a745; /* Зелений фон */
-        border-color: #28a745; /* Зелена рамка (якщо є) */
-    }
-    .news-section {
+    .posts-section {
         &__wrapper {
             display: flex;
             flex-direction: column;
             gap: 24px;
-        }
-        &__post {
-            border-radius: 10px;
-            padding: 16px;
-            box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
-            background: #ecfafc;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .one-card-news {
+                max-width: 100%;
+                @media screen and (min-width: $tablet) {
+                    max-width: calc((100% - 24px) / 2); 
+                }
+
+            }
         }
     }
 }
