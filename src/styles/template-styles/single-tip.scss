@@ -118,11 +118,17 @@
         }
     }
     &__text-content {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 13;
-            -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-box;
+        display: box;
+        -webkit-line-clamp: 13;
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        -ms-box-orient: vertical;
+        box-orient: vertical;
         @media screen and (min-width: $tablet) {
             -webkit-line-clamp: 17;
         }

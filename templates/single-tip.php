@@ -74,9 +74,9 @@ get_header();
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <button class='single-tip__show-whole-button green_medium_button' id='showWholeTipTextButton'>
+                        <button class='single-tip__show-whole-button button_green_new' id='showWholeTipTextButton'>
                             <p><?php the_field('tips_button-show-whole-text'); ?></p>
-                            <svg class="icon-paw" width="20" height="20">
+                            <svg class="icon-paw" width="16" height="15">
                                 <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                             </svg>
                         </button>

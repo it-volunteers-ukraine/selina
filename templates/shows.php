@@ -110,7 +110,7 @@ get_header();
                     
                 </div>
                 <a href="/">
-                    <div class="webinars__last-button green_medium_button">
+                    <div class="webinars__last-button button_green_new">
                         <p class=webinars__last-button-text>
                             <?php the_field('webinars__last-button-text'); ?>
                         </p>
@@ -176,7 +176,7 @@ get_header();
 
                 </div>
                 <a href="/">
-                    <div class="webinars__last-button presentations__all-button green_medium_button">
+                    <div class="webinars__last-button presentations__all-button button_green_new">
                         <p class=webinars__last-button-text>
                             <?php the_field('presentations__all-button-text'); ?>
                         </p>
