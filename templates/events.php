@@ -271,7 +271,7 @@ get_header();
 
                                     <!-- inner-link -->
                                     <?php else : ?>
-                                        <a href="<?php the_field('tips_button-link-inner') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
                                             <p><?php the_field('tips_button-text') ?></p>
                                             <svg class="icon-paw" width="17" height="15">
                                                 <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
@@ -346,7 +346,7 @@ get_header();
 
                             <!-- inner-link -->
                             <?php else : ?>
-                                <a href="<?php the_field('tips_button-link-inner') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
+                                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
                                     <p><?php the_field('tips_button-text') ?></p>
                                     <svg class="icon-paw" width="17" height="15">
                                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>

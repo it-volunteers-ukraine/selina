@@ -1,9 +1,11 @@
 @import "../variables";
 
-.presentations {
+.one-card-news {
     &__news-section__img img  {
         height: 207px;
         object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 24px;
         @media screen and (min-width: $desktop) {
             height: 332px;
         }
@@ -12,6 +14,13 @@
         display: flex;
         flex-direction: column;
         height: 205px;
+    }
+    &__news-section__name {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 120%;
+        color: $primary-color;
+        margin-bottom: 16px;
     }
     &__news-section__text{
         font-size: 16px;
@@ -27,15 +36,13 @@
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
+        @media screen and (min-width: $tablet) {
+            -webkit-line-clamp: 5;
+        }
     }
     &__news-section__button {
         margin-top: auto;
-    }
-    &__all-button {
-        width: 165px;
-        margin-top: 0;
-        @media screen and (min-width: $desktop) {
-            margin-top: 16px;
-        }
+        gap: 8px;
+        padding: 10px 14px;
     }
 }
