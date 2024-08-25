@@ -68,8 +68,10 @@ get_header();
             <div class="posts-section__wrapper">
                 <?php 
                     $args = array(
-                        'post_type' => array('news', 'education'), 
+                        'post_type' => array('news', 'courses'), 
                         'posts_per_page' => -1, 
+                        'orderby' => 'date', 
+                        'order' => 'DESC', 
                     );
 
                     if (!empty($active_tags)) {
@@ -102,7 +104,7 @@ get_header();
                         wp_reset_postdata();
                     } else {
                         echo 'No posts found';
-                    }
+                    }    
                 ?>
             </div>
         </div>
