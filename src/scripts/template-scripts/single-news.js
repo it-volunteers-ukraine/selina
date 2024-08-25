@@ -2,6 +2,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadMoreButton = document.getElementById('load-more');
     let visibleImagesCount = 6;
 
+    // Ініціалізація Masonry
+    let $grid = jQuery('#gallery').masonry({
+        itemSelector: '.gallery-item',
+        columnWidth: '.gallery-item',
+        percentPosition: true
+    });
+
+   
+
     loadMoreButton.addEventListener('click', function() {
         const hiddenImages = document.querySelectorAll('.gallery-item.visually-hidden');
         
@@ -10,6 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         visibleImagesCount += 6;
+
+        // Оновлення розташування елементів у Masonry після відображення нових елементів
+        $grid.imagesLoaded().progress( function() {
+            $grid.masonry('layout');
+        });
         
     });
+
+    window.addEventListener('resize', function() {
+        $grid.masonry('layout'); // Оновлення розміру елементів Masonry при зміні розміру вікна
+    });
+
+    
 });

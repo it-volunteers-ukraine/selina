@@ -431,22 +431,68 @@
 }
 
 /* Галерея фото*/
-.news-section__gallery {  
-  max-width: 1440px;
+.news-section__gallery {
+  width: 100%;
+  max-width: 1440px; 
 }
 
-.gallery {
-  display: block;      
+.gallery {    
+  position: relative;
+  border-radius: 10px;
+
+  @media screen and (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  @media screen and (min-width: $tablet) {      
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(200px, auto); /* Рядки різної висоти, щоб забезпечити адаптивність */
+    width: 100%;
+  }
+
+  
+  @media screen and (min-width: $desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    width: 100%;
+  }
+
 }
 
 .gallery-item {
-  width: 100%;
+  position: absolute;
   padding: 0px 10px 15px 10px;
-  box-sizing: border-box; /* Урахування padding при обчисленні ширини */
+  box-sizing: border-box;  
+  max-width: 100%;
+  height: auto;
+  
+  @media screen and (max-width: $mobile) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+    width: calc(50%);
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: calc(33.33%);
+  }
 }
 
 .visually-hidden {
   display: none;
+}
+
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 
