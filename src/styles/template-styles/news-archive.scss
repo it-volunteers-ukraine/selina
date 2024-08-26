@@ -52,6 +52,11 @@ html {
             }
             .word_all-btn {
                 background-color: $red;
+                display: inline-flex;
+                align-items: center;
+            }
+            .tag-svg {
+                margin-right: 8px;
             }
         }
         .filter-buttons a {
@@ -61,10 +66,9 @@ html {
             font-weight: 800;
             font-size: 20px;
             line-height: 1;
-            /*&.active {
-                background-color: #007bff;
-                color: #fff;
-            }*/
+            &.active {
+                padding: 10px 12px 10px 8px;
+            }
         }
     }
     .posts-section {

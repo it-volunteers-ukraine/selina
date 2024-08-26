@@ -25,7 +25,19 @@ get_header();
     <section class="tags-section section">
         <div class="container">
             <div class="filter-buttons">
-                <a href="<?php echo esc_url(get_permalink()); ?>" class="<?php echo (!isset($_GET['filter_tag']) || empty($_GET['filter_tag'])) ? 'active' : ''; ?> word_all-btn"><?php the_field('word_all'); ?></a>
+                <?php
+                $is_all_active = !isset($_GET['filter_tag']) || empty($_GET['filter_tag']);
+                $all_class = $is_all_active ? 'active' : '';
+                $all_url = esc_url(get_permalink());
+                ?>
+                <a href="<?php echo $all_url; ?>" class="<?php echo $all_class; ?> word_all-btn">
+                    <?php if ($is_all_active): ?>
+                        <svg class="tag-svg sub-title-svg" width="16" height="14">
+                            <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
+                        </svg>
+                    <?php endif; ?>
+                    <?php the_field('word_all'); ?>  
+                </a>
 
                 <?php
                 // Get all tags from the `news_tag` taxonomy
@@ -52,7 +64,17 @@ get_header();
                 
                     $active_class = $is_active ? 'active' : '';
                 
-                    echo '<a href="' . $new_url . '" class="' . $active_class . '" ' . $term_color_style . '>' . esc_html($term->name) . '</a>';
+                    echo '<a href="' . $new_url . '" class="' . $active_class . '" ' . $term_color_style . '>';
+
+                        // Add SVG icon if the tag is active
+                        if ($is_active) {
+                            echo '<svg class="tag-svg sub-title-svg" width="16" height="14">
+                                    <use href="' . get_template_directory_uri() . '/assets/images/sprite.svg#icon-paw"></use>
+                                </svg>';
+                            }
+                            echo esc_html($term->name);
+                    
+                    echo '</a>';
                 }
                 
                 ?>
