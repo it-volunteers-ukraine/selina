@@ -34,20 +34,37 @@ html {
         }
     }
     .tags-section {
+        @media screen and (min-width: $tablet) {
+            padding: 42px 0 32px;
+        }
+        @media screen and (min-width: $desktop) {
+            padding: 80px 0 40px;
+        }
         .filter-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 24px;
+            gap: 16px;
+            @media screen and (min-width: $tablet) {
+                gap: 12px;
+            }
+            @media screen and (min-width: $desktop) {
+                gap: 24px;
+            }
+            .word_all-btn {
+                background-color: $red;
+            }
         }
         .filter-buttons a {
-            background-color: #f0f0f0;
-            color: #333;
+            color: $white;
             padding: 10px 16px;
             border-radius: 4px;
-            &.active {
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 1;
+            /*&.active {
                 background-color: #007bff;
                 color: #fff;
-            }
+            }*/
         }
     }
     .posts-section {
