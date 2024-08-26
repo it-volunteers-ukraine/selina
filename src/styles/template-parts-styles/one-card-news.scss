@@ -1,26 +1,38 @@
 @import "../variables";
 
 .one-card-news {
-    &__news-section__img img  {
-        height: 207px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 24px;
+    &__news-section__img {
+        position: relative;
+        height: 202px;
+        padding: 0 0 58% 0;
         @media screen and (min-width: $desktop) {
             height: 332px;
         }
     }
+
+    &__news-section__img img  {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        object-fit: cover;
+        border-radius: 8px;
+    }
     &__news-section__content-wrapper {
         display: flex;
         flex-direction: column;
-        height: 205px;
+        height: 218px;
+        margin-top: 16px;
+        @media screen and (min-width: $desktop) {
+            height: 207px;
+            margin-top: 24px;
+        }
     }
     &__news-section__name {
         font-weight: 800;
         font-size: 20px;
         line-height: 120%;
         color: $primary-color;
-        margin-bottom: 16px;
+        margin-bottom:  12px;
     }
     &__news-section__text{
         font-size: 16px;
