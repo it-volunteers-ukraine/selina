@@ -84,32 +84,52 @@ get_header();
                 <?php
                 $images = get_field('breed-page_about-images');
                 $size = 'full'; // (thumbnail, medium, large, full or custom size)
-              
+                
                 if ($images): ?>
                     <div class="single-breed-about-section__list">
                         <?php foreach (array_slice($images, 0, 1) as $image_id): ?>
                             <div class="single-breed-about-section__firstItem">
-                                <?php echo wp_get_attachment_image($image_id, $size); ?>
+                                <?php 
+                                $image_url = wp_get_attachment_image_url($image_id, 'full'); // Отримання URL повнорозмірного зображення
+                                ?>
+                                <a href="<?php echo esc_url($image_url); ?>" data-lightbox="gallery" data-title="<?php echo esc_attr(get_post_meta($image_id, '_wp_attachment_image_alt', true)); ?>">
+                                    <?php echo wp_get_attachment_image($image_id, $size); ?>
+                                </a>
                             </div>
                         <?php endforeach; ?>
-                        
                         <?php foreach (array_slice($images, 1, 2) as $image_id): ?>
-                            <div class="single-breed-about-section__item1">
+                        <div class="single-breed-about-section__item1">
+                            <?php 
+                            $image_url = wp_get_attachment_image_url($image_id, 'full'); // Отримання URL повнорозмірного зображення
+                            ?>
+                            <a href="<?php echo esc_url($image_url); ?>" data-lightbox="gallery" data-title="<?php echo esc_attr(get_post_meta($image_id, '_wp_attachment_image_alt', true)); ?>">
                                 <?php echo wp_get_attachment_image($image_id, $size); ?>
-                            </div>
+                            </a>
+                        </div>
                         <?php endforeach; ?>
                         <?php foreach (array_slice($images, 2, 3) as $image_id): ?>
-                            <div class="single-breed-about-section__item2">
+                        <div class="single-breed-about-section__item2">
+                            <?php 
+                            $image_url = wp_get_attachment_image_url($image_id, 'full'); // Отримання URL повнорозмірного зображення
+                            ?>
+                            <a href="<?php echo esc_url($image_url); ?>" data-lightbox="gallery" data-title="<?php echo esc_attr(get_post_meta($image_id, '_wp_attachment_image_alt', true)); ?>">
                                 <?php echo wp_get_attachment_image($image_id, $size); ?>
-                            </div>
+                            </a>
+                        </div>
                         <?php endforeach; ?>
                         <?php foreach (array_slice($images, 3, 4) as $image_id): ?>
-                            <div class="single-breed-about-section__item3">
+                        <div class="single-breed-about-section__item3">
+                            <?php 
+                            $image_url = wp_get_attachment_image_url($image_id, 'full'); // Отримання URL повнорозмірного зображення
+                            ?>
+                            <a href="<?php echo esc_url($image_url); ?>" data-lightbox="gallery" data-title="<?php echo esc_attr(get_post_meta($image_id, '_wp_attachment_image_alt', true)); ?>">
                                 <?php echo wp_get_attachment_image($image_id, $size); ?>
-                            </div>
+                            </a>
+                        </div>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
+                
                 <div class="single-breed-about-section__text">
                     <p class="single-breed-about-section__text-bold">
                         <?php the_field('breed-page_about-text-bold'); ?>
