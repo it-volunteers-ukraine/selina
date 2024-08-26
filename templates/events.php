@@ -135,7 +135,7 @@ get_header();
                         }
                     ?>
                 </div>
-                <a href="/">
+                <a href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=exhibitions" target='_blank'>
                     <div class="exhibitions__last-button button_green_new">
                         <p class=exhibitions__last-button-text>
                             <?php the_field('exhibitions__last-button-text'); ?>
