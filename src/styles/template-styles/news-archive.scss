@@ -34,11 +34,12 @@ html {
         }
     }
     .tags-section {
+        padding: 32px 0 0 0;
         @media screen and (min-width: $tablet) {
-            padding: 42px 0 32px;
+            padding: 42px 0 0 0;
         }
         @media screen and (min-width: $desktop) {
-            padding: 80px 0 40px;
+            padding: 80px 0 0 0;
         }
         .filter-buttons {
             display: flex;
@@ -72,6 +73,12 @@ html {
         }
     }
     .posts-section {
+        @media screen and (min-width: $tablet) {
+            padding: 32px 0 56px;
+        }
+        @media screen and (min-width: $desktop) {
+            padding: 40px 0 80px;
+        }
         &__wrapper {
             display: flex;
             flex-direction: column;
@@ -81,7 +88,11 @@ html {
                 flex-wrap: wrap;
             }
             .one-card-news {
-                max-width: 100%;
+                width: 100%;
+                border-radius: 10px;
+                padding: 16px;
+                box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+                background: #ecfafc;
                 @media screen and (min-width: $tablet) {
                     max-width: calc((100% - 24px) / 2); 
                 }
