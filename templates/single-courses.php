@@ -8,6 +8,7 @@ get_header();
 <main>
     <section class="section">
             <div class="container">
+                нова сторінка
             </div>
     </section>
 
