@@ -109,8 +109,8 @@ get_header();
                     ?>
                     
                 </div>
-                <a href="/">
-                    <div class="webinars__last-button green_medium_button">
+                <a href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=webinars" target='_blank'>
+                    <div class="webinars__last-button button_green_new">
                         <p class=webinars__last-button-text>
                             <?php the_field('webinars__last-button-text'); ?>
                         </p>
@@ -175,8 +175,8 @@ get_header();
                     ?>
 
                 </div>
-                <a href="/">
-                    <div class="webinars__last-button presentations__all-button green_medium_button">
+                <a href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B1%5D=presentations" target='_blank'>
+                    <div class="webinars__last-button presentations__all-button button_green_new">
                         <p class=webinars__last-button-text>
                             <?php the_field('presentations__all-button-text'); ?>
                         </p>

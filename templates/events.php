@@ -135,12 +135,12 @@ get_header();
                         }
                     ?>
                 </div>
-                <a href="/">
-                    <div class="exhibitions__last-button green_medium_button">
+                <a href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=exhibitions" target='_blank'>
+                    <div class="exhibitions__last-button button_green_new">
                         <p class=exhibitions__last-button-text>
                             <?php the_field('exhibitions__last-button-text'); ?>
                         </p>
-                        <svg class="icon-paw" width="17" height="15">
+                        <svg class="icon-paw" width="16" height="15">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                         </svg>
                     </div>
@@ -189,7 +189,7 @@ get_header();
                                     <p class='calendar__calendar-button-text'>
                                         <?php echo $calendar_button_text; ?>
                                     </p>
-                                    <svg class="icon-paw" width="20" height="20">
+                                    <svg class="icon-paw" width="16" height="15">
                                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
                                     </svg>
                                 </div>
@@ -202,11 +202,11 @@ get_header();
                 </div>
                 <!-- Button if calendars > 2 -->
                 <?php if ($calendar_count > 2): ?>
-                    <button class='calendar__show-more-button green_medium_button' id='showMoreCalendarsButton'>
+                    <button class='calendar__show-more-button button_green_new' id='showMoreCalendarsButton'>
                         <p class='calendar__show-more-button-text'>
                             <?php the_field('calendar__show-more-button-text'); ?>
                         </p>
-                        <svg class="icon-paw" width="20" height="20">
+                        <svg class="icon-paw" width="16" height="15">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                         </svg>
                     </button>
@@ -264,7 +264,7 @@ get_header();
                                     <?php elseif ( !empty ($outer_link )): ?>
                                         <a href="<?php the_field('tips_button-link-outer') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
                                             <p><?php the_field('tips_button-text') ?></p>
-                                            <svg class="icon-paw" width="20" height="20">
+                                            <svg class="icon-paw" width="16" height="15">
                                                 <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
                                             </svg>
                                         </a>
@@ -339,7 +339,7 @@ get_header();
                             <?php elseif ( !empty ($outer_link )): ?>
                                 <a href="<?php the_field('tips_button-link-outer') ?>" class='beginners-tips__tips-button red_medium_button' target='_blank'>
                                     <p><?php the_field('tips_button-text') ?></p>
-                                    <svg class="icon-paw" width="20" height="20">
+                                    <svg class="icon-paw" width="16" height="15">
                                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
                                     </svg>
                                 </a>
@@ -359,11 +359,11 @@ get_header();
                 </div>
                 <!-- Button show more tips -->
                 <?php if ($tips_count > 8): ?>
-                    <button class='beginners-tips__show-more-button green_medium_button' id='showMoreTipsCardsButton'>
+                    <button class='beginners-tips__show-more-button button_green_new' id='showMoreTipsCardsButton'>
                         <p class='beginners-tips__show-more-button-text'>
                             <?php the_field('beginners-tips__show-more-button-text'); ?>
                         </p>
-                        <svg class="icon-paw" width="20" height="20">
+                        <svg class="icon-paw" width="16" height="15">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                         </svg>
                     </button>
@@ -395,20 +395,20 @@ get_header();
                     <?php endif; ?>
                 </div>
 
-                <button class='awards__show-more-button green_medium_button' id='showMoreAwardsButton'>
+                <button class='awards__show-more-button button_green_new' id='showMoreAwardsButton'>
                     <p class='awards__show-more-button-text'>
                         <?php the_field('awards__show-more-button-text'); ?>
                     </p>
-                    <svg class="icon-paw" width="20" height="20">
+                    <svg class="icon-paw" width="16" height="15">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
                 </button>
 
-                <button class='awards__show-less-button green_medium_button' id='showLessAwardsButton'>
+                <button class='awards__show-less-button button_green_new' id='showLessAwardsButton'>
                     <p class='awards__show-less-button-text'>
                         <?php the_field('awards__show-less-button-text'); ?>
                     </p>
-                    <svg class="icon-paw" width="20" height="20">
+                    <svg class="icon-paw" width="16" height="15">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
                 </button>
