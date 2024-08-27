@@ -181,21 +181,7 @@
         }
     }
     &__last-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         gap: 8px;
-        border-radius: 10px;
-        padding: 10px 10px 10px 14px;
-        width: 200px;
-        height: 44px;
-        background-color: $primary-color;
-        margin: 0 auto;
-        color: $white;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 133%;
-
         @media screen and (min-width: $desktop) {
             margin: 0;
         }
