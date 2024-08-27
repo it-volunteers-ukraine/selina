@@ -8,7 +8,7 @@ get_header();
 <main>
     <section class="section">
             <div class="container">
-               Приклад сторінки <h1><?php the_title(); ?></h1>
+               Приклад сторінки <h1 class="single-courses-title"><?php the_title(); ?></h1>
             </div>
     </section>
 
