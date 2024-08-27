@@ -326,7 +326,7 @@ function init_load_more_posts()
 {
 
     wp_enqueue_script('jquery');
-    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-parts-scripts/load-more-button.js', array('jquery'), '1.0', true);
+    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-scripts/partners.js', array('jquery'), '1.0', true);
 
     /* Localize the script with the ajaxurl */
     wp_localize_script('custom-scripts', 'my_ajax', array(
