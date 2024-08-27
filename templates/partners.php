@@ -72,8 +72,15 @@ get_header();
                     <?php
                     $args = array(
                         'post_type' => 'all_partners',
-                        'posts_per_page' => -1,
                         'order' => 'ASC',
+                        'posts_per_page' => -1,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-partners'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -91,8 +98,15 @@ get_header();
                     <?php
                     $args = array(
                         'post_type' => 'all_partners',
-                        'posts_per_page' => 12,
                         'order' => 'ASC',
+                        'posts_per_page' => 12,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-partners'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -109,8 +123,15 @@ get_header();
                     <?php
                     $args = array(
                         'post_type' => 'all_partners',
-                        'posts_per_page' => 6,
                         'order' => 'ASC',
+                        'posts_per_page' => 6,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-partners'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -184,9 +205,16 @@ get_header();
 
                     <?php
                     $args = array(
-                        'post_type' => 'friends_clubs',
+                        'post_type' => 'all_partners',
                         'order' => 'ASC',
                         'posts_per_page' => 9,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'friends-clubs'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -230,9 +258,16 @@ get_header();
 
                     <?php
                     $args = array(
-                        'post_type' => 'our_photographs',
+                        'post_type' => 'all_partners',
                         'order' => 'ASC',
                         'posts_per_page' => 4,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-photographers'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
