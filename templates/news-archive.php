@@ -51,7 +51,8 @@ get_header();
 
                 foreach ($terms as $term) {
                     $is_active = in_array($term->slug, $active_tags);
-                
+
+                    // Get color for each tag
                     $term_color = get_field('tag_color', 'news_tag_' . $term->term_id);
                     $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
                 
@@ -76,7 +77,6 @@ get_header();
                     
                     echo '</a>';
                 }
-                
                 ?>
             </div>
         </div>
@@ -114,18 +114,30 @@ get_header();
                         while ($query->have_posts()) {
                             $query->the_post();
                 ?>
-                        <div class="one-card-news">
-                            <?php  if (get_post_type() == 'news') {
-                                get_template_part('template-parts/one-card-news');
-                            } elseif (get_post_type() == 'courses') {
-                                get_template_part('template-parts/education-card');
-                            }
-                        ?>
-
-
-                            <!-- <?php get_template_part('template-parts/one-card-news');?> -->
-                        </div>
                     
+                    <div class="one-card-news">
+                        <?php  if (get_post_type() == 'news') {
+                            get_template_part('template-parts/one-card-news');
+                        } elseif (get_post_type() == 'courses') {
+                            get_template_part('template-parts/education-card');
+                        }
+                        ?>
+                        <div class="news-tags-container">
+                            <?php
+                            $tags = get_the_terms(get_the_ID(), 'news_tag');
+                            if ($tags && !is_wp_error($tags)) {
+                                foreach ($tags as $tag) {
+                                    // Get color for each tag
+                                    $term_color = get_field('tag_color', 'news_tag_' . $tag->term_id);
+                                    $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
+                                    
+                                    echo '<span class="news-tag" ' . $term_color_style . '>' . esc_html($tag->name) . '</span>';
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                        
                 <?php
                     }
                         wp_reset_postdata();
