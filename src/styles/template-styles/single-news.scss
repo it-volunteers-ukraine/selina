@@ -161,22 +161,6 @@
 
 }
 
-.wrapper-breadcrumbs-section {
-  margin-bottom: 30px;
-
-  @media screen and (min-width: $tablet) {
-    margin-top: 24px;
-    margin-bottom: 24px;
-  } 
-
-  @media screen and (min-width: $desktop) {
-    display: flex;
-    align-items: center;
-    justify-content: baseline;
-    height: 80px;
-  }      
-}
-
 .wrapper-news-section {
   margin-top: 0;
   margin-bottom: 0;
@@ -217,16 +201,6 @@
 }
 
 /* Основна новина*/
-.container {
-  padding-left: 0;
-  padding-right: 0;
-
-  @media screen and (min-width: $desktop) {
-      margin-left: 0;
-      margin-right: 0;
-      max-width: none;    
-    }
-
 .news-section {
   &__item {
     display: flex;
@@ -299,7 +273,7 @@
   }
     
   &__img {    
-    margin-bottom: 20px;    
+    margin-bottom: 20px;  
     width: 100%;
     max-width: 100%;
     height: auto;
@@ -318,10 +292,11 @@
       left: -100%;
       height: auto;
       z-index: 1;
-      width: 624px;
-      height: 444px;      
+      width: 524px;
+      height: auto;      
       order: none;
       margin-top: 24px;
+      margin-left: 10px;
     }
   }
 
@@ -381,7 +356,7 @@
     }
   
     @media screen and (min-width: $desktop) {
-      margin-top: 40px;
+      margin-top: 40px;      
     }
   }
 
@@ -427,7 +402,6 @@
       margin-top: 36px;
     }
   }
-}
 }
 
 /* Галерея фото*/
@@ -501,19 +475,21 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 24px auto 0;
+  background-color: white;
+  border-color: green;
+  border-radius: 10px;
 
-  @media screen and (min-width: $mobile) {
-      margin: 0;
-  }
+  @media screen and (max-width: $mobile) {
+      margin-left: 10px;
+    }
 
   @media screen and (min-width: $tablet) {
-    margin: 0;
+    margin-left: 10px;
   }
 
   @media screen and (min-width: $desktop) {
     text-align: left;
-    margin: 0;
+    margin-left: 10px;
   }
 
 }
@@ -529,6 +505,7 @@
       gap: 8px;
       position: relative;
       z-index: 10;
+      color: #045C6F;
     }  
   
   &__last-btn-text {

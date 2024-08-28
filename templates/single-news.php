@@ -47,7 +47,6 @@ get_header();
   </div>
 </section>
 
-<section class="main-content-container">
 <!-- Сeкція новини -->
 <section class="section wrapper-news-section">
   <div class="container">    
@@ -123,7 +122,6 @@ get_header();
         <?php endif; ?>
     </div>
   </section>
-</section>
 </section>
   <?php get_template_part('template-parts/join-us'); ?>
 </main>
