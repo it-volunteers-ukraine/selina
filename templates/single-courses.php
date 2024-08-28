@@ -69,6 +69,17 @@ get_header();
             </p>
             <?php endif; ?>
             </div>
+
+        <a href="<?php the_field('course-page_description-btn-link'); ?>" target='_blank'>
+            <div class="description-course-section__calendar-card-button red_medium_button">
+                <p class='description-course-section__calendar-button-text'>
+                    <?php the_field('course-page_description-btn-text'); ?>
+                </p>
+                <svg class="icon-paw" width="20" height="20">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right"></use>
+                </svg>
+            </div>
+        </a>
         </div>
     </section>
 
