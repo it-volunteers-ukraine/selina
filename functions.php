@@ -98,6 +98,13 @@ function wp_it_volunteers_scripts()
 
     }
 
+
+    if (is_page_template('templates/single-courses.php')) {
+        wp_enqueue_script('home-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_script('single-courses-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-courses.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('single-courses-style', get_template_directory_uri() . '/assets/styles/template-styles/single-courses.css', array('main'));
+    }
+
     if (is_page_template('templates/single-news.php')) {
         wp_enqueue_script('home-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
         wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('touch-swipe-scripts'), false, true);
@@ -326,7 +333,7 @@ function init_load_more_posts()
 {
 
     wp_enqueue_script('jquery');
-    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-parts-scripts/load-more-button.js', array('jquery'), '1.0', true);
+    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-scripts/partners.js', array('jquery'), '1.0', true);
 
     /* Localize the script with the ajaxurl */
     wp_localize_script('custom-scripts', 'my_ajax', array(
