@@ -101,7 +101,7 @@ get_header();
                                 'taxonomy' => 'news_tag',
                                 'field'    => 'slug',
                                 'terms'    => $tag,
-                                'operator' => 'IN', // Check for posts with specific tag
+                                'operator' => 'IN',
                             );
                         }
                     
@@ -115,7 +115,15 @@ get_header();
                             $query->the_post();
                 ?>
                         <div class="one-card-news">
-                            <?php get_template_part('template-parts/one-card-news');?>
+                            <?php  if (get_post_type() == 'news') {
+                                get_template_part('template-parts/one-card-news');
+                            } elseif (get_post_type() == 'courses') {
+                                get_template_part('template-parts/education-card');
+                            }
+                        ?>
+
+
+                            <!-- <?php get_template_part('template-parts/one-card-news');?> -->
                         </div>
                     
                 <?php
