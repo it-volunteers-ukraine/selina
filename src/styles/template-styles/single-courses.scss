@@ -72,4 +72,49 @@
       }
     }
   }
+
+  .description-course-section {
+    &__wrapper {
+      @media (min-width: $desktop) {
+        display: flex;
+        gap: 24px;
+        p {
+          width: 50%;
+        }
+      }
+    }
+
+    .description-course-description {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 21px;
+
+      @media (min-width: $tablet) {
+        font-size: 20px;
+        line-height: 25px;
+      }
+    }
+
+    .description-course-description1 {
+      margin-bottom: 24px;
+      @media (min-width: $desktop) {
+        display: none;
+      }
+    }
+
+    .description-course-description-deck {
+      display: none;
+      @media (min-width: $desktop) {
+        display: block;
+      }
+    }
+
+    .description-course-img {
+      margin-bottom: 24px;
+      @media (min-width: $desktop) {
+        margin-bottom: 40px;
+      }
+    }
+  }
 }

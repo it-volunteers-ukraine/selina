@@ -38,7 +38,38 @@ get_header();
     </section>
 
     <section class="section description-course-section">
-        <div class="container"></div>
+        <div class="container">
+            <?php 
+                $text_description1 = get_field('course-page_description-text1');
+                if( $text_description1 ): ?>
+            <p class="description-course-description description-course-description1">
+                <?php echo $text_description1; ?>
+            </p>
+            <?php endif; ?>
+            <?php 
+                $image = get_field('course-page_description-img');
+                if( $image ): ?>
+            <div class="description-course-img">
+                <img src="<?php echo $image; ?>" alt="image">
+            </div>
+            <?php endif; ?>
+            <div class="description-course-section__wrapper">
+            <?php 
+                $text_description1 = get_field('course-page_description-text1');
+                if( $text_description1 ): ?>
+            <p class="description-course-description description-course-description-deck">
+                <?php echo $text_description1; ?>
+            </p>
+            <?php endif; ?>
+            <?php 
+                $text_description2 = get_field('course-page_description-text2');
+                if( $text_description2 ): ?>
+            <p class="description-course-description description-course-description2">
+                <?php echo $text_description2; ?>
+            </p>
+            <?php endif; ?>
+            </div>
+        </div>
     </section>
 
     <?php get_template_part('template-parts/join-us') ?>
