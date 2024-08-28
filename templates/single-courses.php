@@ -19,19 +19,19 @@ get_header();
         <div class="container">
             <h2 class="section_heading top-course-section_heading"><?php the_title() ?></h2>
             <div class="sub-titles">
-                <a class="sub-title primary" href="#">
+                <a class="sub-title primary" href="<?php the_field('course-page_breadcrumbs_page_name'); ?>">
                     <svg class="icon-paw" width="18" height="16">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
                     </svg>
-                    Курси
+                        <?php the_field('course-page_breadcrumbs_page_name'); ?>
                 </a>
-                <a class="sub-title primary" href="#">
+                <a class="sub-title primary" href="<?php the_field('course-page_breadcrumbs_theme'); ?>">
                     <svg class="icon-paw" width="18" height="16">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
                     </svg>
-                    Анатомія
+                        <?php the_field('course-page_breadcrumbs_theme_name'); ?>
                 </a>
             </div>
         </div>
