@@ -37,6 +37,10 @@ get_header();
         </div>
     </section>
 
+    <section class="section description-course-section">
+        <div class="container"></div>
+    </section>
+
     <?php get_template_part('template-parts/join-us') ?>
 </main>
 

@@ -11,7 +11,7 @@
 
     @media (min-width: $desktop) {
       background-position: center;
-      padding: 107.5px 0;
+      padding: 100px 0;
       background-repeat: no-repeat;
     }
 
@@ -60,6 +60,7 @@
     .top-course-section_heading {
       margin-bottom: 14px;
       font-size: 30px;
+      max-width: 75%;
 
       @media (min-width: $tablet) {
         font-size: 45px;
