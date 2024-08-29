@@ -109,15 +109,13 @@ get_header();
                     ?>
                     
                 </div>
-                <a href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=webinars" target='_blank'>
-                    <div class="webinars__last-button button_green_new">
-                        <p class=webinars__last-button-text>
-                            <?php the_field('webinars__last-button-text'); ?>
-                        </p>
-                        <svg class="icon-paw" width="17" height="15">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
-                        </svg>
-                    </div>
+                <a class="webinars__last-button button_green_new" href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=webinars" target='_blank'>
+                    <p class=webinars__last-button-text>
+                        <?php the_field('webinars__last-button-text'); ?>
+                    </p>
+                    <svg class="icon-paw" width="17" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                    </svg>
                 </a>
             </div>
         </section>
@@ -175,16 +173,14 @@ get_header();
                     ?>
 
                 </div>
-                <a href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B1%5D=presentations" target='_blank'>
-                    <div class="webinars__last-button presentations__all-button button_green_new">
-                        <p class=webinars__last-button-text>
-                            <?php the_field('presentations__all-button-text'); ?>
-                        </p>
-                        <svg class="icon-paw" width="17" height="15">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                            </use>
-                        </svg>
-                    </div>
+                <a class="webinars__last-button presentations__all-button button_green_new" href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B1%5D=presentations" target='_blank'>
+                    <p class='webinars__last-button-text'>
+                        <?php the_field('presentations__all-button-text'); ?>
+                    </p>
+                    <svg class="icon-paw" width="17" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                        </use>
+                    </svg>
                 </a>
             </div>
         </section>
