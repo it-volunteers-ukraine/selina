@@ -85,7 +85,7 @@
   }
 
   &__content {
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $small-desktop) {
       display: flex;
       flex-direction: row-reverse;
       gap: 24px;
@@ -101,7 +101,7 @@
     @media screen and (min-width: $tablet) {
       font-size: 20px;
     }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $small-desktop) {
       width: calc(50% - 12px);
     }
   }
@@ -111,7 +111,7 @@
     height: auto;
     border-radius: 8px;
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $small-desktop) {
       width: calc(50% - 12px);
     }
   }
