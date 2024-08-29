@@ -444,6 +444,10 @@
     font-weight: 800;
     line-height: 1;
     color: #d11f2a;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   &__button {
