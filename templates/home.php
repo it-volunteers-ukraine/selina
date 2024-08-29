@@ -81,7 +81,18 @@ get_header();
                 <div class="partners-section__swiper swiper">
                 <div class="partners-section__list swiper-wrapper">
                     <?php
-                    $args = array('posts_per_page' => -1, 'post_type' => 'all_partners');
+                    $args = array(
+                        'post_type' => 'all_partners',
+                        'order' => 'ASC',
+                        'posts_per_page' => -1,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-partners'
+                            )
+                        )
+                    );
                     $myposts = get_posts($args);
                     foreach ($myposts as $post):
                         setup_postdata($post); ?>
