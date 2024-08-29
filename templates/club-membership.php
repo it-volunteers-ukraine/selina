@@ -6,28 +6,6 @@ get_header();
 ?>
 
 <main class="club-membership">
-
-<?php
-    // Отримання об'єкта терміна для тегу "Вебінари"
-    $webinar_tag = get_term_by('slug', 'webinars', 'news_tag'); // 'webinars' — це slug вашого тегу, а 'news_tag' — таксономія
-
-    // Отримання посилання на архів із фільтрацією за тегом
-    $webinar_tag_link = get_term_link($webinar_tag);
-
-    if (!is_wp_error($webinar_tag_link)) :
-    ?>
-        <a href="<?php echo esc_url($webinar_tag_link); ?>">
-            <div class="webinars__last-button green_medium_button">
-                <p class=webinars__last-button-text>
-                    <?php the_field('webinars__last-button-text'); ?>
-                </p>
-                <svg class="icon-paw" width="17" height="15">
-                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
-                </svg>
-            </div>
-        </a>
-<?php endif; ?>
-
     <section class="upper-section section" id="club-membership-upper">
         <style>
             @media screen and (min-width: 1439px) {
