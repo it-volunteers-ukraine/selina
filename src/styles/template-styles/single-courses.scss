@@ -1,6 +1,145 @@
 @import "../variables";
 
-.single-courses-title {
-  color: red;
-  font-weight: 600;
+.course {
+  .top-course-section {
+    background-color: $background;
+    padding: 20px;
+
+    @media (min-width: $tablet) {
+      padding: 30px;
+    }
+
+    @media (min-width: $desktop) {
+      background-position: center;
+      padding: 100px 0;
+      background-repeat: no-repeat;
+    }
+
+    .sub-titles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+
+      @media (min-width: $tablet) {
+        column-gap: 24px;
+        width: 95%;
+      }
+
+      @media (min-width: $desktop) {
+        gap: 16px 36px;
+        width: 50%;
+      }
+
+      .primary {
+        color: $primary-color;
+      }
+
+      .sub-title {
+        font-size: 16px;
+        font-weight: 800;
+
+        @media (min-width: $tablet) {
+          font-size: 20px;
+        }
+
+        .icon-paw {
+          width: 14px;
+          height: 12px;
+          @media (min-width: $desktop) {
+            width: 18px;
+            height: 16px;
+          }
+        }
+
+        @media (min-width: $desktop) {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .top-course-section_heading {
+      margin-bottom: 14px;
+      font-size: 30px;
+      max-width: 75%;
+
+      @media (min-width: $tablet) {
+        font-size: 45px;
+        margin-bottom: 21px;
+      }
+      @media (min-width: $desktop) {
+        font-size: 60px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  .description-course-section {
+    &__wrapper {
+      margin-bottom: 24px;
+      @media (min-width: $desktop) {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 40px;
+        p {
+          width: 50%;
+        }
+      }
+    }
+
+    .description-course-description {
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 21px;
+
+      @media (min-width: $tablet) {
+        font-size: 20px;
+        line-height: 25px;
+      }
+    }
+
+    .description-course-description1 {
+      margin-bottom: 24px;
+      @media (min-width: $desktop) {
+        display: none;
+      }
+    }
+
+    .description-course-description-deck {
+      display: none;
+      @media (min-width: $desktop) {
+        display: block;
+      }
+    }
+
+    .description-course-img {
+      margin-bottom: 24px;
+      @media (min-width: $desktop) {
+        margin-bottom: 40px;
+      }
+    }
+
+    &__calendar-card-button {
+      padding: 10px 12px 10px 16px;
+      gap: 8px;
+
+      @media (min-width: $desktop) {
+        padding: 19px 32px;
+        gap: 4px;
+      }
+    }
+
+    &__calendar-button-text {
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24px;
+
+      @media (min-width: $desktop) {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 24px;
+      }
+    }
+  }
 }

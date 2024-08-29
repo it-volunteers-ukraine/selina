@@ -168,6 +168,16 @@ function wp_it_volunteers_scripts()
             'nonce'   => wp_create_nonce('news-archive_nonce'),
         ));
     }
+    
+    if (is_page_template('templates/login.php')) {
+        wp_enqueue_style('login-style', get_template_directory_uri() . '/assets/styles/template-styles/login.css', array('main'));
+        wp_enqueue_script('login-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/login.js', array(), false, true);
+    }
+    
+    if (is_page_template('templates/register.php')) {
+        wp_enqueue_style('register-style', get_template_directory_uri() . '/assets/styles/template-styles/register.css', array('main'));
+        wp_enqueue_script('register-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/register.js', array(), false, true);
+    }
 
     if (is_singular() && locate_template('template-parts/breadcrumbs.php')) {
         wp_enqueue_style('breadcrumbs', get_template_directory_uri() . '/assets/styles/template-parts-styles/breadcrumbs.css', array('main'));
@@ -635,3 +645,36 @@ function load_news_archive() {
 
 add_action('wp_ajax_load_news_archive', 'load_news_archive');
 add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
+// Перенаправлення за сторінок входу, наприклад, з http://yoursite.com/wp-login.php
+ 
+function custom_login() {
+   echo header("Location: " . get_bloginfo( 'url' ) . "/login");
+}
+ 
+add_action('login_head', 'custom_login');
+ 
+function login_link_url( $url ) {
+   $url = get_bloginfo( 'url' ) . "/login";
+   return $url;
+   }
+add_filter( 'login_url', 'login_link_url', 10, 2 );
+
+function register_link_url( $url ) {
+  if ( ! is_user_logged_in() ) {
+     if ( get_option('users_can_register') )
+ $url = '<li><a href="' . get_bloginfo( 'url' ) . "/register" . '">' . __('Register', 'yourtheme') . '</a></li>';
+      else  $url = '';
+  } else { 
+        $url = '<li><a href="' . admin_url() . '">' . __('Site Admin', 'yourtheme') . '</a></li>';
+  }
+  return $url;
+}
+add_filter( 'register', 'register_link_url', 10, 2 );
+
+function redirect_non_admin_users() {
+    if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+        wp_redirect( home_url() );
+        exit;
+    }
+}
+add_action( 'admin_init', 'redirect_non_admin_users' );
