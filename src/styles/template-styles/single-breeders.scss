@@ -419,6 +419,10 @@
     font-size: 24px;
     font-weight: 800;
     line-height: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
 
   &__link {
@@ -430,6 +434,10 @@
     &:hover {
       color: blue;
     }
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
 
   &__old {
@@ -437,6 +445,10 @@
     font-weight: 500;
     line-height: 1.3;
     color: black;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
 
   &__info {
