@@ -88,9 +88,10 @@ get_header();
                 <?php 
                     $args = array(
                         'post_type' => array('news', 'courses'), 
-                        'posts_per_page' => -1, 
+                        'posts_per_page' => 6, 
                         'orderby' => 'date', 
                         'order' => 'DESC', 
+                        'paged' => 1,
                     );
 
                     if (!empty($active_tags)) {
@@ -146,6 +147,14 @@ get_header();
                     }    
                 ?>
             </div>
+            <button class="news_archive_btn button_green_new" id="load-more" data-page="1" data-max-page="<?php echo $query->max_num_pages; ?>" >
+                <p class='load_more_news_archive_btn__text'>
+                    <?php the_field('show_more_btn', 'option'); ?>
+                </p>
+                <svg class="icon-paw" width="16" height="15">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                </svg>
+            </button>
         </div>
     </section>
 

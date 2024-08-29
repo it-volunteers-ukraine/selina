@@ -87,7 +87,6 @@ html {
                 flex-direction: row;
                 flex-wrap: wrap;
             }
-            
             .one-card-news {
                 position: relative;
                 width: 100%;
@@ -102,8 +101,6 @@ html {
                     position: absolute;
                     top: 32px;
                     right: 32px;
-                    border-radius: 4px;
-                    padding: 6px 10px;
                     display: flex;
                     flex-wrap: wrap;
                     gap: 5px;
@@ -122,6 +119,14 @@ html {
                     }
                 }
             } 
+        }
+        .news_archive_btn {
+            margin: 32px auto 0;
+            gap: 8px;  
+            @media screen and (min-width: $desktop) {
+                margin: 40px auto 0 0;
+                
+            }
         }
     }
 }

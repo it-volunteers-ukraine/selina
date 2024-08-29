@@ -163,6 +163,10 @@ function wp_it_volunteers_scripts()
     if (is_page_template('templates/news-archive.php')) {
         wp_enqueue_style('news-archive-style', get_template_directory_uri() . '/assets/styles/template-styles/news-archive.css', array('main'));
         wp_enqueue_script('news-archive-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/news-archive.js', array(), false, true);
+        wp_localize_script('news-archive-scripts', 'myAjax', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce'   => wp_create_nonce('news-archive_nonce'),
+        ));
     }
 
     if (is_singular() && locate_template('template-parts/breadcrumbs.php')) {
@@ -577,3 +581,57 @@ function get_breeds_per_page($width)
         return 6;
     }
 }
+
+// load more posts in news-archive
+function load_news_archive() {
+    
+    check_ajax_referer('news-archive_nonce', 'nonce');
+
+    $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+
+    $args = array(
+        'post_type' => array('news', 'courses'),
+        'posts_per_page' => 6,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'paged' => $paged,
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) { 
+        while ($query->have_posts()) {
+            $query->the_post();
+
+            ?>
+            <div class="one-card-news">
+                <?php  if (get_post_type() == 'news') {
+                    get_template_part('template-parts/one-card-news');
+                } elseif (get_post_type() == 'courses') {
+                    get_template_part('template-parts/education-card');
+                }
+                ?>
+                <div class="news-tags-container">
+                    <?php
+                    $tags = get_the_terms(get_the_ID(), 'news_tag');
+                    if ($tags && !is_wp_error($tags)) {
+                        foreach ($tags as $tag) {
+                            $term_color = get_field('tag_color', 'news_tag_' . $tag->term_id);
+                            $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
+                            echo '<span class="news-tag" ' . $term_color_style . '>' . esc_html($tag->name) . '</span>';
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <?php
+        }
+        wp_reset_postdata();
+    } else {
+        echo 'no_more_posts';
+    }
+    wp_die();
+}
+
+add_action('wp_ajax_load_news_archive', 'load_news_archive');
+add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
