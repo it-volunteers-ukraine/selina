@@ -114,7 +114,7 @@
     @media screen and (min-width: $tablet) {
       gap: 16px;
     }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $small-desktop) {
       flex-direction: row;
       gap: 24px;
     }
