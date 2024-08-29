@@ -221,21 +221,7 @@
     }
 
     &__last-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         gap: 8px;
-        border-radius: 10px;
-        padding: 10px 10px 10px 14px;
-        width: 200px;
-        height: 44px;
-        background-color: $primary-color;
-        margin: 0 auto;
-        color: $white;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 133%;
-
         @media screen and (min-width: $desktop) {
             margin: 0;
         }
@@ -255,19 +241,17 @@
     &__news-section__item {
         background-color: $white;
         box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
-        height: 468px;
+        min-height: 468px;
         margin-bottom: 24px;
         @media screen and (min-width: $tablet) {
             flex: 1 1 48%;
         }
         @media screen and (min-width: $desktop) {
-            height: 611px;
+            min-height: 611px;
             padding: 24px;
         }
     }
     &__all-button {
-        width: 165px;
-        margin-top: 0;
         @media screen and (min-width: $desktop) {
             margin-top: 16px;
         }

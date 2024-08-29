@@ -134,7 +134,6 @@
                                 'items_wrap' => '<ul id="%1$s" class="header__list-mobile %2$s">%3$s</ul>',
                             ])
                             ?>
-                            <div class="flex">
                                 <div class="social-media">
                                     <?php
                                     $socialLinks = get_field('social-media', 'option');
@@ -150,7 +149,6 @@
                                         <img src="<?php the_field('icon-email', 'option') ?>" alt="email">
                                     </a>
                                 </div>
-                            </div>
                             <div class="phone">
                                 <span><?php the_field('label-phone', 'option') ?></span>
                                 <a href="tel:<?php the_field('phone', 'option') ?>" rel="noopener noreferrer"
