@@ -2,7 +2,7 @@
 /*
 Template Name: Login
 */
- 
+
 if($_POST) {
  
  global $wpdb;
@@ -36,7 +36,7 @@ get_header();
 <p id="message">Введіть дані для входу на сайт</p>
 <form id="login" name="form" action="<?php echo home_url(); ?>/login/" method="post">
     <p>
-     <input id="username" type="text" placeholder="Логин" name="username">
+     <input id="username" type="text" placeholder="Логін" name="username">
     </p>
     <p>
      <input id="password" type="password" placeholder="Пароль" name="password">
