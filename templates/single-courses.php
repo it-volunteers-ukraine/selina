@@ -98,10 +98,13 @@ get_header();
                 <?php echo $photoTitle; ?>
             </h2>
             <p><?php the_field('course-page_photo-text'); ?></p>
-            <ul><li><img src="" alt=""></li>
-            <li><img src="" alt=""></li>
-            <li><img src="" alt=""></li>
-            <li><img src="" alt=""></li></ul>
+            <ul>
+                <?php foreach( $photoGallery as $image ): ?>
+                    <li>
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     </section>
 
