@@ -647,8 +647,6 @@ add_action('wp_ajax_load_news_archive', 'load_news_archive');
 add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
 
 
-
-
 // Перенаправлення за сторінок входу, наприклад, з http://yoursite.com/wp-login.php
  /*
 function custom_login() {
