@@ -2,7 +2,7 @@
 /*
 Template Name: Login
 */
- 
+ /*
 if($_POST) {
  
  global $wpdb;
