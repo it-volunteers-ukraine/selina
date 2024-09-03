@@ -66,7 +66,9 @@ get_header();
                 </h2>
                 <div class="club-rules-section__content">
                     <div class="club-rules-section__upper-card">
-                        <img src="<?php the_field('club-rules-img'); ?>" />
+                        <div class="upper-card__img">
+                            <img src="<?php the_field('club-rules-img'); ?>" />
+                        </div>
                     </div>
                     <div class="club-rules-section__lower-card">
                         <div class="club-rules-section__lower-card-wrapper">
