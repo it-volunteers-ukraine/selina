@@ -122,7 +122,8 @@ get_header();
                 <?php echo $videoTitle; ?>
             </h2>
             <p><?php the_field('course-page_video-text'); ?></p>
-            <video src="<?php echo $video; ?>"></video>
+            <iframe class="course-page-video" src="https://www.youtube.com/embed/2jJPr8XuvG0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
         </div>
     </section>
 <?php endif; ?>

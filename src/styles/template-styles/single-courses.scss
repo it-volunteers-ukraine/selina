@@ -182,8 +182,15 @@
         img {
           width: 100%;
           aspect-ratio: 1/1;
+          border-radius: 12px;
         }
       }
+    }
+    .course-page-video {
+      width: 100%;
+      aspect-ratio: 3/2;
+      margin-top: 24px;
+      border-radius: 12px;
     }
   }
 }
