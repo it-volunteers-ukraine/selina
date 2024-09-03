@@ -600,7 +600,7 @@ function load_news_archive() {
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
 
     $args = array(
-        'post_type' => array('news', 'courses'),
+        'post_type' => array('news'),
         'posts_per_page' => 6,
         'orderby' => 'date',
         'order' => 'DESC',
@@ -615,12 +615,7 @@ function load_news_archive() {
 
             ?>
             <div class="one-card-news">
-                <?php  if (get_post_type() == 'news') {
-                    get_template_part('template-parts/one-card-news');
-                } elseif (get_post_type() == 'courses') {
-                    get_template_part('template-parts/education-card');
-                }
-                ?>
+                <?php  get_template_part('template-parts/one-card-news'); ?>
                 <div class="news-tags-container">
                     <?php
                     $tags = get_the_terms(get_the_ID(), 'news_tag');
