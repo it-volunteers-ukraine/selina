@@ -473,8 +473,12 @@
     .phone {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: flex-start;
       margin-bottom: 32px;
+
+      @media (min-width: $tablet) {
+        align-items: flex-end;
+      }
 
       span {
         color: $primary-color;
