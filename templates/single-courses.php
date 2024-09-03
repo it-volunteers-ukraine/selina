@@ -83,6 +83,51 @@ get_header();
         </div>
     </section>
 
+<?php 
+    $photoTitle = get_field('course-page_photo-title');
+    $photoGallery = get_field('course-page_photo-photos');
+    if( $photoTitle && $photoGallery ): ?>
+    <section class="section media-course-section ">
+        <div class="container">
+            <h2 class="media-course-section__heading section_heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php echo $photoTitle; ?>
+            </h2>
+            <p><?php the_field('course-page_photo-text'); ?></p>
+            <ul class="course-page-galery">
+                <?php foreach( $photoGallery as $image ): ?>
+                    <li class="course-page-galery__item">
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </section>
+<?php endif; ?>
+
+<?php 
+    $videoTitle = get_field('course-page_video-title');
+    $video = get_field('course-page_video');
+    if(  $videoTitle && $video ): ?>
+    <section class="section media-course-section ">
+        <div class="container">
+            <h2 class="media-course-section__heading section_heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php echo $videoTitle; ?>
+            </h2>
+            <p><?php the_field('course-page_video-text'); ?></p>
+            <iframe class="course-page-video" src="https://www.youtube.com/embed/2jJPr8XuvG0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+<?php endif; ?>
+
     <?php get_template_part('template-parts/join-us') ?>
 </main>
 
