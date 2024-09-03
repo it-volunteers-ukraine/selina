@@ -135,15 +135,13 @@ get_header();
                         }
                     ?>
                 </div>
-                <a href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=exhibitions" target='_blank'>
-                    <div class="exhibitions__last-button button_green_new">
-                        <p class=exhibitions__last-button-text>
-                            <?php the_field('exhibitions__last-button-text'); ?>
-                        </p>
-                        <svg class="icon-paw" width="16" height="15">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
-                        </svg>
-                    </div>
+                <a class="exhibitions__last-button button_green_new" href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=exhibitions" target='_blank'>
+                    <p class=exhibitions__last-button-text>
+                        <?php the_field('exhibitions__last-button-text'); ?>
+                    </p>
+                    <svg class="icon-paw" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                    </svg>
                 </a>
             </div>
         </section>
