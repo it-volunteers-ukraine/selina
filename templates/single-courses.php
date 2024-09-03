@@ -87,7 +87,6 @@ get_header();
     $photoTitle = get_field('course-page_photo-title');
     $photoGallery = get_field('course-page_photo-photos');
     if( $photoTitle && $photoGallery ): ?>
-
     <section class="section media-course-section ">
         <div class="container">
             <h2 class="media-course-section__heading section_heading">
@@ -107,7 +106,25 @@ get_header();
             </ul>
         </div>
     </section>
+<?php endif; ?>
 
+<?php 
+    $videoTitle = get_field('course-page_video-title');
+    $video = get_field('course-page_video');
+    if(  $videoTitle && $video ): ?>
+    <section class="section media-course-section ">
+        <div class="container">
+            <h2 class="media-course-section__heading section_heading">
+                <svg class="heading-svg" width="29" height="28">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php echo $videoTitle; ?>
+            </h2>
+            <p><?php the_field('course-page_video-text'); ?></p>
+            <video src="<?php echo $video; ?>"></video>
+        </div>
+    </section>
 <?php endif; ?>
 
     <?php get_template_part('template-parts/join-us') ?>
