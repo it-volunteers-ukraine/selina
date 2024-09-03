@@ -118,23 +118,28 @@ html {
             }
         }
         &__upper-card {
-            height: 462px;
-            width: 100%;
-            border-radius: 10px;
-            @media screen and (min-width: 998px) {
-                height: 643px;
+            .upper-card__img {
+                position: relative;
+                height: 462px;
+                padding: 0 0 58% 0;
+                @media screen and (min-width: $desktop) {
+                    position: inherit;
+                    height: 643px;
+                    padding: 0;
+                }
+    
+                img  {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    object-fit: cover;
+                    border-radius: 10px;
+                    @media screen and (min-width: $desktop) {
+                        position: inherit;
+                    }
+                }
             }
-            @media screen and (min-width: $desktop) {
-                width: 552px;
-                flex-shrink: 0;
-            }
-            img {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-                border-radius: 10px;
-            }
-        } 
+        }
         &__lower-card {
             display: flex;
             flex-direction: column;
