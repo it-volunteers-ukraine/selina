@@ -170,5 +170,20 @@
         }
       }
     }
+    .course-page-galery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+
+      &__item {
+        width: calc((100% - 23px) / 2);
+
+        img {
+          width: 100%;
+          aspect-ratio: 1/1;
+        }
+      }
+    }
   }
 }

@@ -98,9 +98,9 @@ get_header();
                 <?php echo $photoTitle; ?>
             </h2>
             <p><?php the_field('course-page_photo-text'); ?></p>
-            <ul>
+            <ul class="course-page-galery">
                 <?php foreach( $photoGallery as $image ): ?>
-                    <li>
+                    <li class="course-page-galery__item">
                         <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
                     </li>
                 <?php endforeach; ?>
