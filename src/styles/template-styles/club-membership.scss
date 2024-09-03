@@ -155,15 +155,8 @@ html {
             }
             &-title {
                 font-weight: 800;
-                font-size: 16px;
-                line-height: 1.31;
-                @media screen and (min-width: $tablet) {
-                    font-size: 20px;
-                    line-height: 1.25;
-                }
-                @media screen and (min-width: $desktop) {
-                    line-height: 1;
-                }
+                font-size: 20px;
+                line-height: 1;
             }
             &-list {
                 list-style-type: disc;
@@ -266,6 +259,9 @@ html {
                 font-size: 20px;
                 line-height: 1;
                 text-align: center;
+                @media screen and (min-width: $desktop) {
+                    font-size: 24px;
+                }
             }
         }
         &__button {
@@ -367,7 +363,7 @@ html {
                 @media screen and (min-width: $desktop) {
                     padding: 0 0 35.5% 0;
                 }
-                
+
                 img  {
                     height: 100%;
                     width: 100%;
