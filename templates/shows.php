@@ -173,7 +173,7 @@ get_header();
                     ?>
 
                 </div>
-                <a class="webinars__last-button presentations__all-button button_green_new" href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B1%5D=presentations" target='_blank'>
+                <a class="webinars__last-button presentations__all-button button_green_new" href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=presentations-en" target='_blank'>
                     <p class='webinars__last-button-text'>
                         <?php the_field('presentations__all-button-text'); ?>
                     </p>
