@@ -285,6 +285,7 @@ get_header();
                 <div class="button-flex">
                     <button id="load-more-photographs"
                             data-post-type="all_partners"
+                            data-post-taxonomy="partners_categories"
                             data-post-terms="our-photographers"
                             class="button button_green_new show-btn">
                         <?php the_field('show-btn'); ?>
