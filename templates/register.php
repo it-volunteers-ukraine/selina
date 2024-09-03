@@ -2,7 +2,7 @@
 /*
 Template Name: Register
 */
-/* 
+ 
 require_once(ABSPATH . WPINC . '/registration.php');
 global $wpdb, $user_ID;
 //Перевіряємо, чи вже користувач увійшов до системи
