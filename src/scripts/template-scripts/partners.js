@@ -147,7 +147,8 @@ jQuery(document).ready(function ($) {
     loadBtnPhotographs.on('click', function () {
         var postType = $(this).data('post-type');
         var taxonomy = $(this).data('post-taxonomy');
-        var terms = $(this).data('term');
+        var terms = $(this).data('post-terms');
+
         loadPosts(postType, taxonomy, terms, containerPhotographs);
     });
 

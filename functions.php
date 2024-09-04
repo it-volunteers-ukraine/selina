@@ -407,10 +407,10 @@ function load_more_posts()
     $total_pages = ceil($total_posts / $number);
 
 
-    // change template-parts by custom postType
-    if ($postType === 'all_partners') {
+    // change template-parts by terms
+    if ($terms === 'friends-clubs') {
         $template = 'template-parts/friends-clubs-card';
-    } else if ($postType === 'our_photographs') {
+    } else if ($terms === 'our-photographers') {
         $template = 'template-parts/photograph-card';
         $number /= 2;
     }

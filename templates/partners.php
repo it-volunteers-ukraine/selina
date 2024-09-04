@@ -93,7 +93,8 @@ get_header();
                     wp_reset_postdata();
                     ?>
                 </div>
-                <p class="message">No more posts<p>
+                <p class="message">No more posts
+                <p>
                 <div id="partners-posts-tablet" class="our-partners-container">
                     <?php
                     $args = array(
@@ -162,7 +163,12 @@ get_header();
                         <img class="img rounded-image" src="<?php the_field('friends-image'); ?>" alt="cat">
                     </div>
                     <div class="info">
-                        <p class="description"><?php the_field('description'); ?></p>
+                        <div class="description">
+                            <?php
+                            $description = get_field('description');
+                            echo wp_trim_words($description, 552);
+                            ?>
+                        </div>
                         <div class="links">
                             <a href="" rel="noopener noreferrer">
                                 <?php echo esc_html(the_field('prices-link')); ?>
