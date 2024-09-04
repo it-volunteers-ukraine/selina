@@ -1,9 +1,9 @@
 jQuery(document).ready(function($){
     $('#load-more').click(function(){
-        var button = $(this);
-        var page = button.data('page');
-        var newPage = page + 1;
-        var maxPage = button.data('max-page');
+        let button = $(this);
+        let page = button.data('page');
+        let newPage = page + 1;
+        let maxPage = button.data('max-page');
 
         button.addClass('loading');
 
