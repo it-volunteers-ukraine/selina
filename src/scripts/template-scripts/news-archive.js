@@ -5,6 +5,8 @@ jQuery(document).ready(function($){
         var newPage = page + 1;
         var maxPage = button.data('max-page');
 
+        button.addClass('loading');
+
         $.ajax({
             url: myAjax.ajaxUrl, 
             type: 'POST',
@@ -31,6 +33,8 @@ jQuery(document).ready(function($){
                 console.log('AJAX Error:', error);
             },
             complete: function() {
+                button.removeClass('loading');
+                button.blur();
                 console.log('AJAX request complete');
             }
         });
