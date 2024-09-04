@@ -163,10 +163,39 @@ function wp_it_volunteers_scripts()
     if (is_page_template('templates/news-archive.php')) {
         wp_enqueue_style('news-archive-style', get_template_directory_uri() . '/assets/styles/template-styles/news-archive.css', array('main'));
         wp_enqueue_script('news-archive-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/news-archive.js', array(), false, true);
+
+        // Retrieve active tags
+        $active_tags = isset($_GET['filter_tag']) ? (array)$_GET['filter_tag'] : array();
+
+        // Check for available posts
+        $args = array(
+            'post_type' => 'news',
+            'posts_per_page' => 6,
+            'paged' => 1, 
+        );
+        if (!empty($active_tags)) {
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'news_tag',
+                    'field'    => 'slug',
+                    'terms'    => $active_tags,
+                ),
+            );
+        }
+    
+        $query = new WP_Query($args);
+
+        // If there are no posts, pass this information to JavaScript
+        $has_more_posts = $query->found_posts > 6; // Are there more than 6 posts?
+
         wp_localize_script('news-archive-scripts', 'myAjax', array(
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce'   => wp_create_nonce('news-archive_nonce'),
+            'ajaxUrl'       => admin_url('admin-ajax.php'),
+            'nonce'         => wp_create_nonce('news-archive_nonce'),
+            'activeTags'    => $active_tags, // Pass active tags
+            'hasMorePosts'  => $has_more_posts, // Information about more posts
         ));
+
+        wp_reset_postdata(); // Reset the query
     }
     
     if (is_page_template('templates/login.php')) {
@@ -610,14 +639,25 @@ function load_news_archive() {
     check_ajax_referer('news-archive_nonce', 'nonce');
 
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $active_tags = isset($_POST['filter_tags']) ? (array)$_POST['filter_tags'] : array();
 
     $args = array(
-        'post_type' => array('news', 'courses'),
+        'post_type' => array('news'),
         'posts_per_page' => 6,
         'orderby' => 'date',
         'order' => 'DESC',
         'paged' => $paged,
     );
+
+    if (!empty($active_tags)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'news_tag',
+                'field'    => 'slug',
+                'terms'    => $active_tags,
+            ),
+        );
+    }
 
     $query = new WP_Query($args);
 
@@ -627,12 +667,7 @@ function load_news_archive() {
 
             ?>
             <div class="one-card-news">
-                <?php  if (get_post_type() == 'news') {
-                    get_template_part('template-parts/one-card-news');
-                } elseif (get_post_type() == 'courses') {
-                    get_template_part('template-parts/education-card');
-                }
-                ?>
+                <?php  get_template_part('template-parts/one-card-news'); ?>
                 <div class="news-tags-container">
                     <?php
                     $tags = get_the_terms(get_the_ID(), 'news_tag');
