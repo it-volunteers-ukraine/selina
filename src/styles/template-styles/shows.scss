@@ -222,6 +222,7 @@
 
     &__last-button {
         gap: 8px;
+        margin: 0 auto;
         @media screen and (min-width: $desktop) {
             margin: 0;
         }
