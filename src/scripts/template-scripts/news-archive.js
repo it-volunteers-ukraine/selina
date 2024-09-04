@@ -1,9 +1,15 @@
 jQuery(document).ready(function($){
+    // If there are no posts to load, hide the button immediately
+    if (!myAjax.hasMorePosts) {
+        $('#load-more').hide();
+    }
+
     $('#load-more').click(function(){
         let button = $(this);
         let page = button.data('page');
         let newPage = page + 1;
         let maxPage = button.data('max-page');
+        let activeTags = myAjax.activeTags; // Retrieve active tags from PHP
 
         button.addClass('loading');
 
@@ -13,6 +19,7 @@ jQuery(document).ready(function($){
             data: {
                 action: 'load_news_archive',
                 page: newPage,
+                filter_tags: activeTags, // Pass active tags in the request
                 nonce: myAjax.nonce
             },
             cache: false,
