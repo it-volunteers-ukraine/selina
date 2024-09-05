@@ -51,33 +51,90 @@ get_header();
 <section class="section wrapper-news-section">
   <div class="container">    
     <div class="news-section__item">
-      <div class="news-section__text-wrapper">            
-        <div class="news-section__date">
-          <p>
+      <div class="news-section__text-wrapper">
+
+      <!--- DATE --->
+      <?php
+                $news_date = get_field('news_date_meta');
+                $news_date_start = get_field('news_date_meta-start');
+                if (!empty(get_field('news_date_meta'))):
+            ?>
+                <div class="news-section__date">
+                    <svg width="22" height="22"> 
+                        <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
+                    </svg> 
+                    <p>
+                        <?php
+                            if (!empty($news_date_start)) {
+                                $date_start = new DateTime($news_date_start);
+                                echo $date_start->format('j').' - ';
+                            }
+                            $current_lang = pll_current_language();
+                            if ($current_lang == 'ua') {
+                                $date_str = get_field('news_date_meta');
+
+                                if ($date_str) {
+                                    $date = new DateTime($date_str);
+                                    $months = [
+                                        1 => 'Січня', 2 => 'Лютого', 3 => 'Березня', 4 => 'Квітня',
+                                        5 => 'Травня', 6 => 'Червня', 7 => 'Липня', 8 => 'Серпня',
+                                        9 => 'Вересня', 10 => 'Жовтня', 11 => 'Листопада', 12 => 'Грудня'
+                                    ];
+                                    $month_num = (int) $date->format('m');
+                                    echo $date->format('j ') . $months[$month_num];
+                                }
+                            } elseif ($current_lang == 'en') {
+                                $date_str = get_field('news_date_meta');
+
+                                if ($date_str) {
+                                    $date = new DateTime($date_str);
+                                    echo $date->format('j F');
+                                }
+                            }
+                        ?>
+                    </p>
+                </div>
+            <?php endif; ?>
+     
+        
+      <!--- TIME --->
+        <?php
+        $time_str = get_field('news_time_meta');
+        if(!empty($time_str)):
+        ?>
+        <div class="news-section__time">          
             <svg width="18" height="18">
-              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-calendar">                
-              </use>
+              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-clock"></use>
             </svg>
-            <?php the_field('news_date'); // Дата виставки ?>
-          </p>
           <p>
-            <svg width="18" height="18">
-              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-clock">                
-              </use>
-            </svg>
-            <?php the_field('news_time'); // Час виставки ?>
+            <?php
+              $time_str = get_field('news_time_meta');
+                if ($time_str) {
+                $time = new DateTime($time_str);
+                echo $time->format('H:i');
+                }
+            ?>
           </p>
+        </div>        
+        <?php endif; ?>
         </div>
+
+      <!--- NAME --->
         <p class="news-section__name">
-          <?php the_field('news_name'); // Назва виставки ?>
-        </p>              
-        <img class="news-section__img"
-        src="<?php the_field('news_photo'); ?>" 
-        alt="<?php the_field('news_name'); ?>" 
-        /> 
-        <p class="news-section__text">
-          <?php the_field('news_text'); // Опис виставки ?>
+          <?php the_field('news_name'); ?>
         </p>
+
+      <!--- IMAGE --->      
+      <div class="news-section__img-wrapper">
+        <img class="news-section__img" src="<?php the_field('news_photo'); ?>" alt="<?php the_field('news_name'); ?>" />  
+      </div> 
+      
+      <!--- TEXT --->   
+        <p class="news-section__text">
+          <?php the_field('news_text'); ?>
+        </p>
+
+      <!--- BUTTON --->
         <div class="news-section__first-button button red_medium_button">
           <a class="news-section__first-btn" href="/">
             <p class="news-section__first-button-text">
