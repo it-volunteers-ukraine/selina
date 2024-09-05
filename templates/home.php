@@ -268,31 +268,11 @@ get_header();
                 <div class="news-section__list swiper-wrapper">
                     <?php
                     $counter = 0;
-                   
-                    
                     $args = array(
                         'orderby'           => 'date', 
                         'order'             => 'DESC',
                         'post_type' => 'news',
                         'showposts' => -1,
-                        'tax_query' => array(
-                            'relation' => 'OR',
-                            array(
-                            'taxonomy' => 'news_categories',
-                            'field' => 'slug',
-                            'terms' => 'webinar'
-                            ),
-                            array(
-                            'taxonomy' => 'news_categories',
-                            'field' => 'slug',
-                            'terms' => 'presentation'
-                            ),
-                            array(
-                            'taxonomy' => 'news_categories',
-                            'field' => 'slug',
-                            'terms' => 'our-life'
-                        )
-                        )
                     ); 
         
                     $myposts = get_posts( $args );
@@ -374,7 +354,11 @@ get_header();
                     ); 
                 $myposts = get_posts($args);
                 foreach ($myposts as $post):
-                    setup_postdata($post); ?>
+                    setup_postdata($post);
+                    $current_date = new DateTime();
+                            $news_date = new DateTime(get_field('news_date_meta'));
+                            if ($news_date >= $current_date) :
+                             ?>
                     <div class="exhibitions-section__item">
                         <img src="<?php the_field('news_photo') ?>" />
                         <div class="exhibitions-section__text-wrapper">
@@ -414,7 +398,8 @@ get_header();
                         </div>
                     </div>
                 </div>
-            <?php endforeach;
+            <?php endif;
+            endforeach;
                 wp_reset_postdata(); ?>
         </div>
     </section>

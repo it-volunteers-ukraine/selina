@@ -19,14 +19,14 @@ if ($user_ID) {
  //Переконайтеся, що ім'я користувача є і ще не використовується
  $username = $wpdb->escape($_REQUEST['username']);
  if ( strpos($username, ' ') !== false ) { 
-     $errors['username'] = "Вибачте, в іменах користувачів не можна використовувати пробіли";
+     $errors['username'] = get_field('username-errors');
  }
                 //якщо поле з ім'ям користувача порожнє
  if(empty($username)) { 
- $errors['username'] = "Будь ласка, введіть ім'я користувача";
+ $errors['username'] = get_field('username-empty');
  } elseif( username_exists( $username ) ) {
                  //якщо такий користувач уже зареєстровано
- $errors['username'] = "Ім'я користувача вже існує, спробуйте інше";
+ $errors['username'] = get_field('username-exists');
  }
  
  // Перевіряємо, чи є email і чи дійсний він
@@ -72,7 +72,20 @@ if ($user_ID) {
 ?>
  
 <?php get_header(); ?>
-<p id="message"><?= isset( $message ) ? $message  : '' ?></p>
+<main>
+    <section class="section register-page-section">
+        <style>
+            @media screen and (min-width: 1439px) {
+                .register-page-section {
+                    background-image: url("<?php the_field('upper-section__background', 'option') ?>");
+                }
+            }
+        </style>
+        <div class="container">
+            <h3 class="section_heading register-page-section__heading">
+                <?php the_field('page_heading'); ?>
+            </h3>
+            <p id="message"><?= isset( $message ) ? $message  : '' ?></p>
 <form id="wp_signup_form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" style="max-width: 500px">
  
         <p>
@@ -103,7 +116,14 @@ if ($user_ID) {
         <input type="submit" id="submitbtn" name="submit" value="Зареєструватись" />
  
 </form>
- 
+        </div>
+
+    </section>
+
+
+
+<?php get_template_part('template-parts/join-us'); ?>
+     </main>
 <?php
  get_footer();
 ?>

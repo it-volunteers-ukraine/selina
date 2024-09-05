@@ -647,36 +647,8 @@ add_action('wp_ajax_load_news_archive', 'load_news_archive');
 add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
 
 
-// Перенаправлення за сторінок входу, наприклад, з http://yoursite.com/wp-login.php
- /*
-function custom_login() {
-   echo header("Location: " . get_bloginfo( 'url' ) . "/login");
-}
- 
-add_action('login_head', 'custom_login');
- 
-function login_link_url( $url ) {
-   $url = get_bloginfo( 'url' ) . "/login";
-   return $url;
-   }
-add_filter( 'login_url', 'login_link_url', 10, 2 );
+// Відключаємо адмін панель для всіх, крім адміністраторів
 
-function register_link_url( $url ) {
-  if ( ! is_user_logged_in() ) {
-     if ( get_option('users_can_register') )
- $url = '<li><a href="' . get_bloginfo( 'url' ) . "/register" . '">' . __('Register', 'yourtheme') . '</a></li>';
-      else  $url = '';
-  } else { 
-        $url = '<li><a href="' . admin_url() . '">' . __('Site Admin', 'yourtheme') . '</a></li>';
-  }
-  return $url;
-}
-add_filter( 'register', 'register_link_url', 10, 2 );
-
-function redirect_non_admin_users() {
-    if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-        wp_redirect( home_url() );
-        exit;
-    }
-}
-add_action( 'admin_init', 'redirect_non_admin_users' );
+if (!current_user_can('administrator')):
+  show_admin_bar(false);
+endif;
