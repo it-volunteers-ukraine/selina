@@ -135,7 +135,15 @@ get_header();
                         }
                     ?>
                 </div>
-                <a class="exhibitions__last-button button_green_new" href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=exhibitions-ua" target='_blank'>
+                <?php
+                    $page_lang = pll_current_language();
+                    if ($page_lang == 'ua') {
+                        $url = "https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=exhibitions-ua";
+                    } elseif ($page_lang == 'en') {
+                        $url = "https://selina.it-volunteers.com/en/archive/?filter_tag%5B0%5D=exhibitions-en";
+                    }
+                ?>
+                <a class="exhibitions__last-button button_green_new" href="<?php echo $url; ?>" target='_blank'>
                     <p class=exhibitions__last-button-text>
                         <?php the_field('exhibitions__last-button-text'); ?>
                     </p>
