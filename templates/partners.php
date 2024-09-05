@@ -166,7 +166,7 @@ get_header();
                         <div class="description">
                             <?php
                             $description = get_field('description');
-                            echo wp_trim_words($description, 552);
+                            echo mb_strimwidth($description, 0, 552);
                             ?>
                         </div>
                         <div class="links">
