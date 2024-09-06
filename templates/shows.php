@@ -96,7 +96,7 @@ get_header();
                                         ?>
                                         
                                     <?php endif; ?>
-                                    <!-- Template-part webinar ------------------------------------- -->
+                                    
                                     <?php get_template_part('template-parts/one-card-event'); ?>
                                 </div>
                             <?php
@@ -109,7 +109,15 @@ get_header();
                     ?>
                     
                 </div>
-                <a class="webinars__last-button button_green_new" href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B0%5D=webinars" target='_blank'>
+                <?php
+                    $page_lang = pll_current_language();
+                    if ($page_lang == 'ua') {
+                        $url = home_url('/arkhiv/?filter_tag%5B0%5D=webinars-ua');
+                    } elseif ($page_lang == 'en') {
+                        $url = home_url('/en/archive/?filter_tag%5B0%5D=webinars-en');
+                    }
+                ?>
+                <a class="webinars__last-button button_green_new" href="<?php echo $url; ?>" target='_blank'>
                     <p class=webinars__last-button-text>
                         <?php the_field('webinars__last-button-text'); ?>
                     </p>
@@ -162,7 +170,7 @@ get_header();
                                         ?>
                                         
                                     <?php endif; ?>
-                                    <!-- Cutted into one-card-news.php  template-part presentation -->
+                                    
                                     <?php get_template_part('template-parts/one-card-news'); ?>
                                 </div>
                             <?php endforeach;
@@ -173,7 +181,15 @@ get_header();
                     ?>
 
                 </div>
-                <a class="webinars__last-button presentations__all-button button_green_new" href="https://selina.it-volunteers.com/arkhiv/?filter_tag%5B1%5D=presentations" target='_blank'>
+                <?php
+                    $page_lang = pll_current_language();
+                    if ($page_lang == 'ua') {
+                        $url = home_url('/arkhiv/?filter_tag%5B0%5D=presentations-ua');
+                    } elseif ($page_lang == 'en') {
+                        $url = home_url('/en/archive/?filter_tag%5B0%5D=presentations-en');
+                    }
+                ?>
+                <a class="webinars__last-button presentations__all-button button_green_new" href="<?php echo $url; ?>" target='_blank'>
                     <p class='webinars__last-button-text'>
                         <?php the_field('presentations__all-button-text'); ?>
                     </p>
