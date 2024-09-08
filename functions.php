@@ -98,6 +98,13 @@ function wp_it_volunteers_scripts()
 
     }
 
+
+    if (is_page_template('templates/single-courses.php')) {
+        wp_enqueue_script('home-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_script('single-courses-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-courses.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('single-courses-style', get_template_directory_uri() . '/assets/styles/template-styles/single-courses.css', array('main'));
+    }
+
     if (is_page_template('templates/single-news.php')) {
         wp_enqueue_script('home-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
         wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('touch-swipe-scripts'), false, true);
@@ -156,6 +163,49 @@ function wp_it_volunteers_scripts()
     if (is_page_template('templates/news-archive.php')) {
         wp_enqueue_style('news-archive-style', get_template_directory_uri() . '/assets/styles/template-styles/news-archive.css', array('main'));
         wp_enqueue_script('news-archive-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/news-archive.js', array(), false, true);
+
+        // Retrieve active tags
+        $active_tags = isset($_GET['filter_tag']) ? (array)$_GET['filter_tag'] : array();
+
+        // Check for available posts
+        $args = array(
+            'post_type' => 'news',
+            'posts_per_page' => 6,
+            'paged' => 1, 
+        );
+        if (!empty($active_tags)) {
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'news_tag',
+                    'field'    => 'slug',
+                    'terms'    => $active_tags,
+                ),
+            );
+        }
+    
+        $query = new WP_Query($args);
+
+        // If there are no posts, pass this information to JavaScript
+        $has_more_posts = $query->found_posts > 6; // Are there more than 6 posts?
+
+        wp_localize_script('news-archive-scripts', 'myAjax', array(
+            'ajaxUrl'       => admin_url('admin-ajax.php'),
+            'nonce'         => wp_create_nonce('news-archive_nonce'),
+            'activeTags'    => $active_tags, // Pass active tags
+            'hasMorePosts'  => $has_more_posts, // Information about more posts
+        ));
+
+        wp_reset_postdata(); // Reset the query
+    }
+    
+    if (is_page_template('templates/login.php')) {
+        wp_enqueue_style('login-style', get_template_directory_uri() . '/assets/styles/template-styles/login.css', array('main'));
+        wp_enqueue_script('login-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/login.js', array(), false, true);
+    }
+    
+    if (is_page_template('templates/register.php')) {
+        wp_enqueue_style('register-style', get_template_directory_uri() . '/assets/styles/template-styles/register.css', array('main'));
+        wp_enqueue_script('register-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/register.js', array(), false, true);
     }
 
     if (is_singular() && locate_template('template-parts/breadcrumbs.php')) {
@@ -606,3 +656,98 @@ function get_breeds_per_page($width)
         return 6;
     }
 }
+
+// load more posts in news-archive
+function load_news_archive() {
+    
+    check_ajax_referer('news-archive_nonce', 'nonce');
+
+    $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $active_tags = isset($_POST['filter_tags']) ? (array)$_POST['filter_tags'] : array();
+
+    $args = array(
+        'post_type' => array('news'),
+        'posts_per_page' => 6,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'paged' => $paged,
+    );
+
+    if (!empty($active_tags)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'news_tag',
+                'field'    => 'slug',
+                'terms'    => $active_tags,
+            ),
+        );
+    }
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) { 
+        while ($query->have_posts()) {
+            $query->the_post();
+
+            ?>
+            <div class="one-card-news">
+                <?php  get_template_part('template-parts/one-card-news'); ?>
+                <div class="news-tags-container">
+                    <?php
+                    $tags = get_the_terms(get_the_ID(), 'news_tag');
+                    if ($tags && !is_wp_error($tags)) {
+                        foreach ($tags as $tag) {
+                            $term_color = get_field('tag_color', 'news_tag_' . $tag->term_id);
+                            $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
+                            echo '<span class="news-tag" ' . $term_color_style . '>' . esc_html($tag->name) . '</span>';
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <?php
+        }
+        wp_reset_postdata();
+    } else {
+        echo 'no_more_posts';
+    }
+    wp_die();
+}
+
+add_action('wp_ajax_load_news_archive', 'load_news_archive');
+add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
+
+
+// Перенаправлення за сторінок входу, наприклад, з http://yoursite.com/wp-login.php
+ /*
+function custom_login() {
+   echo header("Location: " . get_bloginfo( 'url' ) . "/login");
+}
+ 
+add_action('login_head', 'custom_login');
+ 
+function login_link_url( $url ) {
+   $url = get_bloginfo( 'url' ) . "/login";
+   return $url;
+   }
+add_filter( 'login_url', 'login_link_url', 10, 2 );
+
+function register_link_url( $url ) {
+  if ( ! is_user_logged_in() ) {
+     if ( get_option('users_can_register') )
+ $url = '<li><a href="' . get_bloginfo( 'url' ) . "/register" . '">' . __('Register', 'yourtheme') . '</a></li>';
+      else  $url = '';
+  } else { 
+        $url = '<li><a href="' . admin_url() . '">' . __('Site Admin', 'yourtheme') . '</a></li>';
+  }
+  return $url;
+}
+add_filter( 'register', 'register_link_url', 10, 2 );
+
+function redirect_non_admin_users() {
+    if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+        wp_redirect( home_url() );
+        exit;
+    }
+}
+add_action( 'admin_init', 'redirect_non_admin_users' );

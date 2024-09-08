@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 });
 
-const newsSwiper = new Swiper(".single-breed-breeders-section__swiper", {
+const breedsSwiper = new Swiper(".single-breed-breeders-section__swiper", {
   effect: "slide",
   loop: true,
   slidesPerView: 1,

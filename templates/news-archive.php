@@ -51,7 +51,8 @@ get_header();
 
                 foreach ($terms as $term) {
                     $is_active = in_array($term->slug, $active_tags);
-                
+
+                    // Get color for each tag
                     $term_color = get_field('tag_color', 'news_tag_' . $term->term_id);
                     $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
                 
@@ -76,7 +77,6 @@ get_header();
                     
                     echo '</a>';
                 }
-                
                 ?>
             </div>
         </div>
@@ -87,10 +87,11 @@ get_header();
             <div class="posts-section__wrapper">
                 <?php 
                     $args = array(
-                        'post_type' => array('news', 'courses'), 
-                        'posts_per_page' => -1, 
+                        'post_type' => array('news'), 
+                        'posts_per_page' => 6, 
                         'orderby' => 'date', 
                         'order' => 'DESC', 
+                        'paged' => 1,
                     );
 
                     if (!empty($active_tags)) {
@@ -101,7 +102,7 @@ get_header();
                                 'taxonomy' => 'news_tag',
                                 'field'    => 'slug',
                                 'terms'    => $tag,
-                                'operator' => 'IN', // Check for posts with specific tag
+                                'operator' => 'IN',
                             );
                         }
                     
@@ -114,10 +115,27 @@ get_header();
                         while ($query->have_posts()) {
                             $query->the_post();
                 ?>
-                        <div class="one-card-news">
-                            <?php get_template_part('template-parts/one-card-news');?>
-                        </div>
                     
+                    <div class="one-card-news">
+                        
+                        <?php  get_template_part('template-parts/one-card-news'); ?>
+                        
+                        <div class="news-tags-container">
+                            <?php
+                            $tags = get_the_terms(get_the_ID(), 'news_tag');
+                            if ($tags && !is_wp_error($tags)) {
+                                foreach ($tags as $tag) {
+                                    // Get color for each tag
+                                    $term_color = get_field('tag_color', 'news_tag_' . $tag->term_id);
+                                    $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
+                                    
+                                    echo '<span class="news-tag" ' . $term_color_style . '>' . esc_html($tag->name) . '</span>';
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                        
                 <?php
                     }
                         wp_reset_postdata();
@@ -126,6 +144,14 @@ get_header();
                     }    
                 ?>
             </div>
+            <button class="news_archive_btn button_green_new" id="load-more" data-page="1" data-max-page="<?php echo $query->max_num_pages; ?>" >
+                <p class='load_more_news_archive_btn__text'>
+                    <?php the_field('show_more_btn', 'option'); ?>
+                </p>
+                <svg class="icon-paw" width="16" height="15">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                </svg>
+            </button>
         </div>
     </section>
 

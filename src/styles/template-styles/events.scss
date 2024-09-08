@@ -182,6 +182,7 @@
     }
     &__last-button {
         gap: 8px;
+        margin: 0 auto;
         @media screen and (min-width: $desktop) {
             margin: 0;
         }
@@ -309,11 +310,12 @@
 
     &__show-more-button {
         gap: 8px;
+        margin: 0 auto;
         @media screen and (min-width: $tablet) {
             margin-top: 24px;
         }
         @media screen and (min-width: $desktop) {
-            margin-top: 40px;
+            margin: 40px 0 0;
         }
     }
 
@@ -447,10 +449,13 @@
 
     &__show-more-button {
         display: none;
-        margin-top: 40px;
+        margin: 40px auto 0;
         gap: 8px;
         @media screen and (min-width: $tablet) {
             display: flex;
+        }
+        @media screen and (min-width: $desktop) {
+            margin: 40px 0 0;
         }
     }
 }
@@ -598,10 +603,10 @@
 
     &__show-more-button,
     &__show-less-button {
-        margin-top: 24px;
+        margin: 24px auto 0;
         gap: 8px;
         @media screen and (min-width: $desktop) {
-            margin-top: 40px;
+            margin: 40px 0 0;
         }
     }
     
