@@ -57,7 +57,7 @@ get_header();
                                     </use>
                                 </svg>
                             </button>
-                            <button onclick="paginateNext()"
+                            <button id="partners-pagination-next" onclick="paginateNext()"
                                     class="partners-btn">
                                 <svg width="10.37" height="16.97">
                                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
@@ -93,8 +93,6 @@ get_header();
                     wp_reset_postdata();
                     ?>
                 </div>
-                <p class="message">No more posts
-                <p>
                 <div id="partners-posts-tablet" class="our-partners-container">
                     <?php
                     $args = array(
@@ -178,7 +176,6 @@ get_header();
                             </a>
                         </div>
 
-
                         <a class="button red_medium_button laboklin-btn"
                            href="<?php echo esc_attr(the_field('laboklin-link')); ?>">
                             <?php the_field('laboklin-text'); ?>
@@ -248,7 +245,6 @@ get_header();
                 </div>
             </div>
         </section>
-
 
         <section class="section our-friends-photographs">
             <div class="container">
