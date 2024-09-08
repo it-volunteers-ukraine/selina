@@ -136,7 +136,7 @@ get_header();
 
       <!--- BUTTON --->
         <div class="news-section__first-button button red_medium_button">
-          <a class="news-section__first-btn" href="/">
+          <a class="news-section__first-btn" href="<?php the_field('form_link'); ?>">
             <p class="news-section__first-button-text">
               Заповнити Анкету
             </p>
