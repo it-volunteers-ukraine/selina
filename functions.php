@@ -216,6 +216,11 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
     }
 
+    if (is_singular() && locate_template('template-parts/course-card.php')) {
+        wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
+    }
+
+
     if (is_singular() && locate_template('template-parts/one-card-news.php')) {
         wp_enqueue_style('one-card-news-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-news.css', array('main'));
     }
@@ -344,25 +349,41 @@ add_action('wp_enqueue_scripts', 'init_load_more_posts');
 
 function load_more_posts()
 {
-
     $page = $_POST['page'];
     $width = $_POST['width'];
     $postType = (isset($_POST['postType'])) ? $_POST['postType'] : '';
     $taxonomy = (isset($_POST['taxonomy'])) ? $_POST['taxonomy'] : '';
     $terms = isset($_POST['terms']) ? $_POST['terms'] : '';
 
+    $taxQuery =  array(
+        array(
+            'taxonomy' => $taxonomy,
+            'field' => 'slug',
+            'terms' => $terms
+        )
+    );
 
     $number = get_posts_per_page($width);
-    $total_posts = wp_count_posts()->publish;
-    $total_pages = ceil($total_posts / $number);
 
 
-    // change template-parts by terms
+    // change template-parts by terms or postType
     if ($terms === 'friends-clubs') {
         $template = 'template-parts/friends-clubs-card';
     } else if ($terms === 'our-photographers') {
         $template = 'template-parts/photograph-card';
         $number /= 2;
+    } else if ($terms === 'vebinars') {
+        $template = 'template-parts/education-card';
+        $number /= 2;
+    } else if ($terms === 'literature') {
+        $template = 'template-parts/education-card';
+        $number /= 3;
+    } else if ($terms === 'zoopsychology') {
+        $template = 'template-parts/education-card';
+        $number /= 3;
+    } else if ($postType === 'courses') {
+        $template = 'template-parts/course-card';
+        $number /= 4;
     }
 
     $args = array(
@@ -370,15 +391,8 @@ function load_more_posts()
         'posts_per_page' => $number,
         'order' => 'ASC',
         'paged' => $page,
-        'tax_query' => array(
-            array(
-                'taxonomy' => $taxonomy,
-                'field' => 'slug',
-                'terms' => $terms
-            )
-        )
+        'tax_query' => $taxQuery
     );
-
 
     $query = new WP_Query($args);
 
@@ -391,6 +405,8 @@ function load_more_posts()
     endif;
     $html = ob_get_clean();
     wp_reset_postdata();
+
+    $total_pages = $query->max_num_pages;
 
     wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
     wp_die();
@@ -410,6 +426,7 @@ function get_posts_per_page($width)
         return 9;
     }
 }
+
 
 /*** AJAX breeders */
 add_action('wp_ajax_load_breeders', 'load_breeders');
@@ -532,6 +549,13 @@ function load_partners_pagination()
         'order' => 'ASC',
         'paged' => $page,
         'post_status' => 'publish',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'partners_categories',
+                'field' => 'slug',
+                'terms' => 'our-partners'
+            )
+        )
     );
 
 
