@@ -32,24 +32,24 @@ if ($user_ID) {
         // Перевіряємо, чи є email і чи дійсний він
         $email = $wpdb->escape($_REQUEST['email']);
         if (!is_email($email)) {
-            $errors['email'] = "Будь ласка, введіть дійсний email";
+            $errors['email'] = get_field('email-exists');
         } elseif (email_exists($email)) {
-            $errors['email'] = "Такий email вже зареєстрований";
+            $errors['email'] = get_field('email-registered');
         }
 
         // Перевірка пароля на валідність
         if (0 === preg_match("/.{6,}/", $_POST['password'])) {
-            $errors['password'] = "Пароль повинен складатися не менше ніж із шести символів.";
+            $errors['password'] = get_field('password-six');
         }
 
         // Перевірка повторного введення пароля
         if (0 !== strcmp($_POST['password'], $_POST['password_confirmation'])) {
-            $errors['password_confirmation'] = "Паролі не збігаються";
+            $errors['password_confirmation'] = get_field('password-match');
         }
 
         // Перевірити згоду з умовами обслуговування
         if ($_POST['terms'] != "Yes") {
-            $errors['terms'] = "Ви повинні погодитись з Умовами використання";
+            $errors['terms'] = get_field('to-agree');
         }
         // якщо помилок немає
         if (0 === count($errors)) {
@@ -65,7 +65,7 @@ if ($user_ID) {
             header('Location:' . get_bloginfo('url') . '/login/?success=1&u=' . $username);
 
         } else {
-            $message = 'Є помилки у заповненні форми';
+            $message = get_field('last-errors');
         }
     }
 }
@@ -79,7 +79,7 @@ if ($user_ID) {
              <h3 class="section_heading register-page-section__heading">
                 <?php the_field('register-page__title'); ?>
             </h3>
-            <p id="message"><?= isset($message) ? $message : '' ?></p>
+            <p class="register-page-section__first-message" id="message"><?= isset($message) ? $message : '' ?></p>
             <p class="register-page-section__message">
                 <?php the_field('register-page__message'); ?>
                 <a class="register-page-section__message-link" href="<?php the_field('register-page__link'); ?>">
@@ -88,49 +88,62 @@ if ($user_ID) {
             </p>
             <form id="wp_signup_form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post"
                 style="max-width: 500px">
-
                 <p class="register-page-section__form-field">
                     <label for="username"><?php the_field('register-page__name'); ?></label>
                     <input type="text" name="username" id="username" 
                     placeholder="<?php the_field('register-page__name_field'); ?>"
                         value="<?= isset($_REQUEST['username']) ? $_REQUEST['username'] : '' ?>">
-                    <span class="error"><?= isset($errors['username']) ? $errors['username'] : '' ?></span>
+                    <span class="register-page-section__error error"><?= isset($errors['username']) ? $errors['username'] : '' ?></span>
                 </p>
-                <p>
+
+                <p class="register-page-section__form-field">
                     <label for="email"><?php the_field('register-page__email'); ?></label>
                     <input type="text" name="email" id="email"
+                     placeholder="<?php the_field('register-page__email-field'); ?>"
                         value="<?= isset($_REQUEST['email']) ? $_REQUEST['email'] : '' ?>">
-                    <span class="error"><?= isset($errors['email']) ? $errors['email'] : '' ?></span>
+                    <span class="register-page-section__error error"><?= isset($errors['email']) ? $errors['email'] : '' ?></span>
                 </p>
-                <p>
-                    <label for="password">Пароль</label>
+
+                <p class="register-page-section__form-field">
+                    <label for="password"><?php the_field('register-page__password'); ?></label>
                     <input type="password" name="password" id="password"
+                    placeholder="<?php the_field('register-page__password-field'); ?>"
                         value="<?= isset($_REQUEST['password']) ? $_REQUEST['password'] : '' ?>">
-                    <span class="error"><?= isset($errors['password']) ? $errors['password'] : '' ?></span>
+                    <span class="register-page-section__error error"><?= isset($errors['password']) ? $errors['password'] : '' ?></span>
                 </p>
-                <p>
-                    <label for="password_confirmation">Повторіть пароль</label>
+
+                <p class="register-page-section__form-field">
+                    <label for="password_confirmation"><?php the_field('register-page__password-repeat'); ?></label>
                     <input type="password" name="password_confirmation" id="password_confirmation"
+                    placeholder="<?php the_field('register-page__password-repeat-field'); ?>"
                         value="<?= isset($_REQUEST['password_confirmation']) ? $_REQUEST['password_confirmation'] : '' ?>">
                     <span
-                        class="error"><?= isset($errors['password_confirmation']) ? $errors['password_confirmation'] : '' ?></span>
+                        class="register-page-section__error error"><?= isset($errors['password_confirmation']) ? $errors['password_confirmation'] : '' ?></span>
                 </p>
 
-                <p> <input name="terms" id="terms" type="checkbox" value="Yes">
-                    <label for="terms">Я погоджуюсь з умовами надання послуг</label><br>
-                    <span class="error"><?= isset($errors['terms']) ? $errors['terms'] : '' ?></span>
+                 <p class="register-page-section__message-star">
+                    <?php the_field('register-page__message-field'); ?>
                 </p>
-                <input type="submit" id="submitbtn" name="submit" value="Зареєструватись" />
 
-            </form>
-           </div>
+
+                <p class="register-page-section__message-agree"> 
+                    <input name="terms" id="terms" type="checkbox" value="Yes">
+                    <label for="terms"><?php the_field('register-page__message-agree'); ?></label><br>
+                    <span class="register-page-section__error error"><?= isset($errors['terms']) ? $errors['terms'] : '' ?></span>
+                </p>
+                <button class="button red_medium_button register-page-section__button"
+                type="submit" id="submitbtn" name="submit">
+                <?php the_field('register-page__btn-text'); ?>
+                 <svg class="register-page-section__button-svg" width="16" height="15">
+                <use
+                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                </use>
+                </svg>
+                </button>
+           </form>
         </div>
-
+        </div>
     </section>
-
-
-
-    <?php get_template_part('template-parts/join-us'); ?>
 </main>
 <?php
 get_footer();

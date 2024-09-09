@@ -1,10 +1,12 @@
 @import "../variables.scss";
 
 .register-page-section {
+  background-color: #cfe4e6;
+
   &__wrapper {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 8px;
-    margin: 16px;
+    padding: 20px;
   }
 
   &__heading {
@@ -35,5 +37,63 @@
   &__form-field {
     display: flex;
     flex-direction: column;
+    font-size: 16px;
+    margin-bottom: 20px;
+
+    input {
+      background-color: rgba(255, 255, 255, 1);
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 13px;
+    }
+  }
+  &__button {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    display: flex;
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 4px;
+  }
+  &__message-star {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  &__message-agree {
+    display: flex;
+    font-size: 10px;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 24px;
+    input {
+      background-color: rgba(255, 255, 255, 1);
+      border-radius: 4px;
+      width: 20px;
+      height: 20px;
+      border-color: transparent;
+    }
+  }
+
+  &__first-message {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  &__error {
+    color: red;
+    font-size: 10px;
+    margin-top: 10px;
   }
 }

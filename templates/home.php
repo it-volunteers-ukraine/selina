@@ -79,30 +79,30 @@ get_header();
             </div>
             <div class="partners-section__swiper-outer">
                 <div class="partners-section__swiper swiper">
-                <div class="partners-section__list swiper-wrapper">
-                    <?php
-                    $args = array(
-                        'post_type' => 'all_partners',
-                        'order' => 'ASC',
-                        'posts_per_page' => -1,
-                        'tax_query' => array(
-                            array(
-                                'taxonomy' => 'partners_categories',
-                                'field' => 'slug',
-                                'terms' => 'our-partners'
+                    <div class="partners-section__list swiper-wrapper">
+                        <?php
+                        $args = array(
+                            'post_type' => 'all_partners',
+                            'order' => 'ASC',
+                            'posts_per_page' => -1,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'partners_categories',
+                                    'field' => 'slug',
+                                    'terms' => 'our-partners'
+                                )
                             )
-                        )
-                    );
-                    $myposts = get_posts($args);
-                    foreach ($myposts as $post):
-                        setup_postdata($post); ?>
-                        <div class="swiper-slide partners-section__item">
-                            <img src="<?php the_field('partner_img') ?>" />
-                        </div>
-                    <?php endforeach;
-                    wp_reset_postdata(); ?>
+                        );
+                        $myposts = get_posts($args);
+                        foreach ($myposts as $post):
+                            setup_postdata($post); ?>
+                            <div class="swiper-slide partners-section__item">
+                                <img src="<?php the_field('partner_img') ?>" />
+                            </div>
+                        <?php endforeach;
+                        wp_reset_postdata(); ?>
+                    </div>
                 </div>
-            </div>
             </div>
 
             <a class="partners-section__button button red_medium_button"
@@ -269,13 +269,13 @@ get_header();
                     <?php
                     $counter = 0;
                     $args = array(
-                        'orderby'           => 'date', 
-                        'order'             => 'DESC',
+                        'orderby' => 'date',
+                        'order' => 'DESC',
                         'post_type' => 'news',
                         'showposts' => -1,
-                    ); 
-        
-                    $myposts = get_posts( $args );
+                    );
+
+                    $myposts = get_posts($args);
                     foreach ($myposts as $post):
                         $count = count($myposts);
                         $counter++;
@@ -293,7 +293,7 @@ get_header();
                                         $term_color = get_field('tag_color', 'news_tag_' . $tag->term_id);
                                         $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
                                         $tag_name = $tag->name;
-                                        
+
                                     }
                                 }
                                 if ($tag_name):
@@ -311,15 +311,48 @@ get_header();
                                         <?php the_field('news_text') ?>
                                     </p>
 
-                                    <a class="news-section__button button red_medium_button"
-                                        href="<?php the_field('news_link'); ?>">
-                                        <?php the_field('news_btn'); ?>
-                                        <svg class="news-section__button-svg" width="16" height="15">
-                                            <use
-                                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                                            </use>
-                                        </svg>
-                                    </a>
+                                    <!-- Button types -->
+                                    <?php
+                                    $news_disk_link = get_field('news_choice-button_disc');
+                                    $news_outer_link = get_field('news_choice-button_outer-link');
+                                    ?>
+
+                                    <!-- google-disk -->
+                                    <?php if (!empty($news_disk_link)): ?>
+                                        <a href="<?php the_field('news_choice-button_disc') ?>"
+                                            class='news-section__button button red_medium_button' target='_blank'>
+                                            <p><?php the_field('news_btn') ?></p>
+                                            <svg width="16" height="14">
+                                                <use
+                                                    href="<?php bloginfo('template_url'); ?>/assets/images/sprite.svg#icon-google">
+                                                </use>
+                                            </svg>
+                                        </a>
+
+                                        <!-- outer-link -->
+                                    <?php elseif (!empty($news_outer_link)): ?>
+                                        <a href="<?php the_field('news_choice-button_outer-link') ?>"
+                                            class='news-section__button button red_medium_button' target='_blank'>
+                                            <p><?php the_field('news_btn') ?></p>
+                                            <svg class="icon-paw" width="16" height="15">
+                                                <use
+                                                    href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right">
+                                                </use>
+                                            </svg>
+                                        </a>
+
+                                        <!-- inner-link -->
+                                    <?php else: ?>
+                                        <a class="news-section__button button red_medium_button"
+                                            href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                                            <p><?php the_field('news_btn'); ?></p>
+                                            <svg class="news-section__button-svg" width="16" height="15">
+                                                <use
+                                                    href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw">
+                                                </use>
+                                            </svg>
+                                        </a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="news-section__counter-wrapper">
@@ -345,68 +378,70 @@ get_header();
                 </svg>
                 <?php the_field('exhibitions-section__heading'); ?>
             </h2>
-        <div class="exhibitions-section__list">
+            <div class="exhibitions-section__list">
                 <?php
-                        $args = array(
-                            'orderby' => 'date',
-                            'order' => 'DESC',
-                            'post_type' => 'news',
-                            'posts_per_page' => 1,
-                            'tax_query' => array(
-                                array(
-                                    'taxonomy' => 'news_categories',
-                                    'field' => 'slug',
-                                    'terms' => 'exhibition'
-                                )
-                            )
-                        );
-                        $myposts = get_posts( $args );
-                        if ($myposts) {
-                            foreach ($myposts as $post) : setup_postdata($post);
-                            $current_date = new DateTime();
-                            $news_date = new DateTime(get_field('news_date'));
-                            if ($news_date >= $current_date) :
+                $args = array(
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'post_type' => 'news',
+                    'posts_per_page' => 1,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'news_categories',
+                            'field' => 'slug',
+                            'terms' => 'exhibition'
+                        )
+                    )
+                );
+                $myposts = get_posts($args);
+                if ($myposts) {
+                    foreach ($myposts as $post):
+                        setup_postdata($post);
+                        $current_date = new DateTime();
+                        $news_date = new DateTime(get_field('news_date'));
+                        if ($news_date >= $current_date):
                             ?>
-                                <div class="exhibitions-section__item">
-                                    <?php
- ?>
-                                  <!-- Template-part exhibition ------------------------------------- -->
-                                  <?php get_template_part('template-parts/one-card-event'); ?>
+                            <div class="exhibitions-section__item">
+                                <?php
+                                ?>
+                                <!-- Template-part exhibition ------------------------------------- -->
+                                <?php get_template_part('template-parts/one-card-event'); ?>
 
-                                </div>
+                            </div>
                             <?php
-                                endif;
-                            endforeach;
-                            wp_reset_postdata();
-                        } else {
-                            echo '<p>No exhibition.</p>';
-                        }
-                    ?>
-        </div>
-    </section>
-    <section class="support-section section" style="background-image: url(<?php the_field('support-section__photo') ?>);">
-            <div class="container">
-                <div class="support-section__wrapper">
-                    <h2 class="support-section__heading heading">
-                        <svg class="home-heading-svg" width="42" height="60">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
-                            </use>
-                        </svg>
-                        <?php the_field('support-section__heading') ?>
-                    </h2>
-                    <p class="support-section__text">
-                        <?php the_field('support-section__text') ?>
-                    </p>
-                    <a class="support-section__button button red_medium_button"
-                        href="<?php the_field('support-section__link'); ?>">
-                        <?php the_field('support-section__button'); ?>
-                        <svg class="support-section__button-svg" width="16" height="15">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                            </use>
-                        </svg>
-                    </a>
-                </div>
+                        endif;
+                    endforeach;
+                    wp_reset_postdata();
+                } else {
+                    echo '<p>No exhibition.</p>';
+                }
+                ?>
             </div>
+    </section>
+    <section class="support-section section"
+        style="background-image: url(<?php the_field('support-section__photo') ?>);">
+        <div class="container">
+            <div class="support-section__wrapper">
+                <h2 class="support-section__heading heading">
+                    <svg class="home-heading-svg" width="42" height="60">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                        </use>
+                    </svg>
+                    <?php the_field('support-section__heading') ?>
+                </h2>
+                <p class="support-section__text">
+                    <?php the_field('support-section__text') ?>
+                </p>
+                <a class="support-section__button button red_medium_button"
+                    href="<?php the_field('support-section__link'); ?>">
+                    <?php the_field('support-section__button'); ?>
+                    <svg class="support-section__button-svg" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                        </use>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </section>
     <?php get_template_part('template-parts/feedbacks'); ?>
     <?php get_template_part('template-parts/contact-form'); ?>
