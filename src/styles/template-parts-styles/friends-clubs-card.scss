@@ -74,13 +74,17 @@
   }
 }
 
-.nine-elem {
-  display: none;
+.friends-clubs-item:last-child {
+
+  @media screen and (min-width: $tablet) {
+    display: block;
+  }
+
+  @media screen and (min-width: $desktop) {
+    display: block;
+  }
 }
 
-.nine-elem + .friends-clubs-item:nth-child(2n+2) {
-  display: none;
-}
 
 
 

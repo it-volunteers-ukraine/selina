@@ -3,13 +3,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let visibleImagesCount = 6;
 
     // Ініціалізація Masonry
-    let $grid = jQuery('#gallery').masonry({
-        itemSelector: '.gallery-item',
-        columnWidth: '.gallery-item',
-        percentPosition: true
+    let $grid = jQuery('#gallery').imagesLoaded(function () {
+        $grid.masonry({
+            itemSelector: '.gallery-item',
+            columnWidth: '.gallery-item',
+            percentPosition: true
+        });
+        $grid.masonry('layout'); // Перерахування елементів після завантаження
     });
-
-   
 
     loadMoreButton.addEventListener('click', function() {
         const hiddenImages = document.querySelectorAll('.gallery-item.visually-hidden');
@@ -21,15 +22,17 @@ document.addEventListener('DOMContentLoaded', function() {
         visibleImagesCount += 6;
 
         // Оновлення розташування елементів у Masonry після відображення нових елементів
-        $grid.imagesLoaded().progress( function() {
+        $grid.imagesLoaded().progress(function () {
             $grid.masonry('layout');
         });
-        
     });
 
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
         $grid.masonry('layout'); // Оновлення розміру елементів Masonry при зміні розміру вікна
     });
 
-    
+    // Виконуємо вирівнювання після початкового завантаження
+    $grid.imagesLoaded().progress(function() {
+        $grid.masonry('layout');
+    });
 });

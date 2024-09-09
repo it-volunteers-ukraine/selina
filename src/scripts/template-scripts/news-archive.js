@@ -1,9 +1,17 @@
 jQuery(document).ready(function($){
+    // If there are no posts to load, hide the button immediately
+    if (!myAjax.hasMorePosts) {
+        $('#load-more').hide();
+    }
+
     $('#load-more').click(function(){
-        var button = $(this);
-        var page = button.data('page');
-        var newPage = page + 1;
-        var maxPage = button.data('max-page');
+        let button = $(this);
+        let page = button.data('page');
+        let newPage = page + 1;
+        let maxPage = button.data('max-page');
+        let activeTags = myAjax.activeTags; // Retrieve active tags from PHP
+
+        button.addClass('loading');
 
         $.ajax({
             url: myAjax.ajaxUrl, 
@@ -11,6 +19,7 @@ jQuery(document).ready(function($){
             data: {
                 action: 'load_news_archive',
                 page: newPage,
+                filter_tags: activeTags, // Pass active tags in the request
                 nonce: myAjax.nonce
             },
             cache: false,
@@ -31,6 +40,8 @@ jQuery(document).ready(function($){
                 console.log('AJAX Error:', error);
             },
             complete: function() {
+                button.removeClass('loading');
+                button.blur();
                 console.log('AJAX request complete');
             }
         });

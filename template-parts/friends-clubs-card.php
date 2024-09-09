@@ -23,11 +23,24 @@
                             $position = $row['position'];
                             $name = $row['name'];
                             ?>
-                            <span><?php echo $position ?></span>
-                            <span><?php echo $name ?></span>
+                            <span>
+                                 <?php
+                                 echo mb_strimwidth($position, 0, 27);
+                                 ?>
+                            </span>
+                            <span>
+                               <?php
+                               echo mb_strimwidth($name, 0, 27);
+                               ?>
+                            </span>
                         <?php endforeach; ?>
                     </div>
-                    <span class="address"><?php the_field('address'); ?></span>
+                    <span class="address">
+                        <?php
+                        $address = get_field('address');
+                        echo mb_strimwidth($address, 0, 92);
+                        ?>
+                    </span>
                 </div>
                 <div class="social-media">
                     <?php

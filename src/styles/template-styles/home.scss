@@ -839,22 +839,19 @@
   }
 
   &__item {
+    margin-bottom: 24px;
+    box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: $light-green;
+    padding: 16px;
+    border-radius: 10px;
     @media screen and (min-width: $tablet) {
       display: flex;
       gap: 24px;
-      background-color: #eff8f9;
-      padding: 16px;
-      box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
-
-      img {
-        max-width: calc(50% - 24px);
-        object-fit: cover;
-        overflow: hidden;
-        border-radius: 10px;
-      }
-      @media screen and (min-width: $desktop) {
-        padding: 24px;
-      }
+      padding: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 32px;
+      margin-bottom: 40px;
     }
   }
 

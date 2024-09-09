@@ -38,7 +38,6 @@
       font-size: 45px;
     }
     @media screen and (min-width: $desktop) {
-      margin-bottom: 24px;
       font-size: 60px;
     }
   }
@@ -286,10 +285,15 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
-    &:hover {
+    &:active {
       background-color: $white;
       color: $primary-color;
+    }
+    @media screen and (min-width: $desktop) {
+      &:hover {
+        background-color: $white;
+        color: $primary-color;
+      }
     }
   }
   &__pagination {

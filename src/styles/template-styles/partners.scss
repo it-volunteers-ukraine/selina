@@ -406,7 +406,14 @@
   background-color: $background;
 
   .photographs-title {
-    font-size: 26px;
+
+    @media screen and (min-width: 320px) {
+      font-size: 23px;
+    }
+
+    @media screen and (min-width: $mobile) {
+      font-size: 26px;
+    }
 
     @media screen and (min-width: $tablet) {
       font-size: 30px;

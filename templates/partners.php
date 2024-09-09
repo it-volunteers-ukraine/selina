@@ -93,7 +93,8 @@ get_header();
                     wp_reset_postdata();
                     ?>
                 </div>
-                <p class="message">No more posts<p>
+                <p class="message">No more posts
+                <p>
                 <div id="partners-posts-tablet" class="our-partners-container">
                     <?php
                     $args = array(
@@ -162,7 +163,12 @@ get_header();
                         <img class="img rounded-image" src="<?php the_field('friends-image'); ?>" alt="cat">
                     </div>
                     <div class="info">
-                        <p class="description"><?php the_field('description'); ?></p>
+                        <div class="description">
+                            <?php
+                            $description = get_field('description');
+                            echo mb_strimwidth($description, 0, 552);
+                            ?>
+                        </div>
                         <div class="links">
                             <a href="" rel="noopener noreferrer">
                                 <?php echo esc_html(the_field('prices-link')); ?>
@@ -229,7 +235,9 @@ get_header();
                 </div>
                 <div class="button-flex">
                     <button id="load-more-friends"
-                            data-post-type="friends_clubs"
+                            data-post-type="all_partners"
+                            data-post-taxonomy="partners_categories"
+                            data-post-terms="friends-clubs"
                             class="button button_green_new show-btn">
                         <?php the_field('show-btn'); ?>
                         <svg width="18" height="17">
@@ -282,7 +290,9 @@ get_header();
                 </div>
                 <div class="button-flex">
                     <button id="load-more-photographs"
-                            data-post-type="our_photographs"
+                            data-post-type="all_partners"
+                            data-post-taxonomy="partners_categories"
+                            data-post-terms="our-photographers"
                             class="button button_green_new show-btn">
                         <?php the_field('show-btn'); ?>
                         <svg width="18" height="17">

@@ -142,4 +142,55 @@
       }
     }
   }
+
+  .media-course-section {
+    background-color: $background;
+    &__heading {
+      margin-bottom: 16px;
+      @media screen and (min-width: $tablet) {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+      @media screen and (min-width: $desktop) {
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+      .heading-svg {
+        display: none;
+        @media screen and (min-width: $tablet) {
+          display: initial;
+          width: 26.32px;
+          height: 23.53px;
+        }
+        @media screen and (min-width: $desktop) {
+          width: 36.85px;
+          height: 32.94px;
+        }
+      }
+    }
+    .course-page-galery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+
+      &__item {
+        width: calc((100% - 24px) / 2);
+
+        img {
+          width: 100%;
+          aspect-ratio: 1/1;
+          border-radius: 12px;
+        }
+      }
+    }
+    .course-page-video {
+      width: 100%;
+      aspect-ratio: 3/2;
+      margin-top: 24px;
+      border-radius: 12px;
+    }
+  }
 }

@@ -81,32 +81,6 @@ function replacePosts(html) {
 }
 
 
-// show posts
-const cardsContainer = document.querySelector('#more-friends');
-const items = cardsContainer.querySelectorAll('.friends-clubs-item')
-
-function showPosts() {
-    const viewportWidth = window.innerWidth;
-    const isMobile = viewportWidth < 768;
-    const isLargeScreen = viewportWidth >= 992;
-
-    items.forEach(function (item, index) {
-            const everyNineElem = (index + 1) % 9 === 0;
-            if ((isMobile && everyNineElem) || (isLargeScreen && everyNineElem)) {
-                item.classList.add('nine-elem');
-            } else {
-                item.classList.remove('nine-elem');
-            }
-        }
-    )
-}
-
-showPosts();
-
-window.addEventListener('resize', showPosts);
-
-
-
 // show-more button
 jQuery(document).ready(function ($) {
     let pageMapping = {};
@@ -114,6 +88,7 @@ jQuery(document).ready(function ($) {
     const containerPhotographs = $('#more-photographs');
     const loadBtnFriends = $('#load-more-friends');
     const loadBtnPhotographs = $('#load-more-photographs');
+    const lastItem = containerFriends.find('.friends-clubs-item:last-child');
     var viewportWidth = window.innerWidth;
 
     // get nonce
@@ -121,7 +96,19 @@ jQuery(document).ready(function ($) {
         return my_ajax.nonce;
     }
 
-    function loadPosts(postType, targetContainer) {
+    function handleResize() {
+
+        if (viewportWidth > 1349.98 || viewportWidth < 767.98) {
+            lastItem.hide();
+        } else {
+            lastItem.show();
+        }
+    }
+
+    handleResize();
+
+
+    function loadPosts(postType, taxonomy, terms, targetContainer) {
         if (!pageMapping[postType]) {
             pageMapping[postType] = 2;
         }
@@ -135,6 +122,8 @@ jQuery(document).ready(function ($) {
                 page: pageMapping[postType],
                 width: viewportWidth,
                 postType: postType,
+                taxonomy: taxonomy,
+                terms: terms,
             },
             success: function (response) {
                 targetContainer.append(response.html)
@@ -148,14 +137,19 @@ jQuery(document).ready(function ($) {
 
     loadBtnFriends.on('click', function () {
         var postType = $(this).data('post-type');
-        const ninthElem = $('#more-friends .nine-elem');
-        ninthElem.css('display', 'block');
-        loadPosts(postType, containerFriends);
+        var taxonomy = $(this).data('post-taxonomy');
+        var terms = $(this).data('post-terms');
+
+        loadPosts(postType, taxonomy, terms, containerFriends);
+
     });
 
     loadBtnPhotographs.on('click', function () {
         var postType = $(this).data('post-type');
-        loadPosts(postType, containerPhotographs);
+        var taxonomy = $(this).data('post-taxonomy');
+        var terms = $(this).data('post-terms');
+
+        loadPosts(postType, taxonomy, terms, containerPhotographs);
     });
 
 });
