@@ -35,13 +35,15 @@ get_header();
       $breadcrumb_link = get_field('breadcrumb_link');
 
       if ($breadcrumb_title && $breadcrumb_link) {
-          echo '<span class="breadcrumbs-events"><a href="' . esc_url($breadcrumb_link) . '" class="breadcrumb-link">' . esc_html($breadcrumb_title) . '</a> / </span>';
-      } else {
-          echo '<span class="breadcrumbs-events breadcrumb-link">Виставки клубу / </span>';
+          echo '<span class="breadcrumbs-events">
+            <a href="' . esc_url($breadcrumb_link) . '" class="breadcrumb-link">' . esc_html($breadcrumb_title) . '</a> / 
+          </span>';
       }
       ?>
       <br class="responsive-br">
-      <span class="breadcrumbs-event breadcrumb-title">Ternopil - Ukraine WCF SHOW LICENSING</span>
+      <span class="breadcrumbs-event breadcrumb-title">
+        <?php the_field('news_name'); ?>
+      </span>
     </p>
    </div>
   </div>
@@ -138,7 +140,7 @@ get_header();
         <div class="news-section__first-button button red_medium_button">
           <a class="news-section__first-btn" href="<?php the_field('form_link'); ?>">
             <p class="news-section__first-button-text">
-              Заповнити Анкету
+              <?php the_field('form_button_text'); ?>
             </p>
             <svg class="news-section__button-svg" width="16" height="15">
               <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-arrow_left_up"></use>
@@ -170,7 +172,7 @@ get_header();
         <?php if ($images && count($images) > 6): ?>
             <div class="gallary-button button green_medium_button">
                 <button id="load-more" class="gallary-section__last-btn">
-                    <p class="gallary-section__last-btn-text">Показати більше</p>
+                    <p class="gallary-section__last-btn-text"><?php the_field('gallery_button_text'); ?></p>
                     <svg class="gallary-section__button-svg" width="16" height="15">
                         <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
