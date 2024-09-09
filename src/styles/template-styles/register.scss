@@ -3,19 +3,45 @@
 .register-page-section {
   background-color: #cfe4e6;
 
+  &__container {
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+  }
+
   &__wrapper {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 8px;
     padding: 20px;
+    @media screen and (min-width: $tablet) {
+      padding: 40px 58px;
+    }
+    @media screen and (min-width: $tablet) {
+      padding: 40px 40px;
+    }
+  }
+
+  &__wrapper-img {
+    display: none;
+    @media screen and (min-width: $desktop) {
+      display: block;
+    }
   }
 
   &__heading {
     color: $primary-color;
     font-size: 26px;
     font-weight: 800;
-    line-height: 26px;
-    text-align: left;
+    line-height: 1;
     margin-bottom: 28px;
+    @media screen and (min-width: $tablet) {
+      font-size: 30px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
   }
 
   &__message {
@@ -34,12 +60,22 @@
     }
   }
 
+  &__form-wrapper {
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      justify-content: space-between;
+      gap: 60px;
+    }
+  }
+
   &__form-field {
     display: flex;
     flex-direction: column;
     font-size: 16px;
     margin-bottom: 20px;
-
+    @media screen and (min-width: $tablet) {
+      min-width: 264px;
+    }
     input {
       background-color: rgba(255, 255, 255, 1);
       border-radius: 10px;
@@ -54,10 +90,7 @@
     line-height: 1.5;
     display: flex;
     @media screen and (min-width: $tablet) {
-      margin-top: 24px;
-    }
-    @media screen and (min-width: $desktop) {
-      margin-top: 40px;
+      margin-top: 0;
     }
   }
   &__button-svg {
@@ -95,5 +128,14 @@
     color: red;
     font-size: 10px;
     margin-top: 10px;
+  }
+}
+
+.register-page-heading-svg {
+  display: none;
+  @media screen and (min-width: $tablet) {
+    display: initial;
+    width: 27.14px;
+    height: 24.29px;
   }
 }

@@ -28,7 +28,7 @@ if ($_POST) {
     //Передаємо параметр error для використання його потім у скрипті
     header("Location: " . home_url() . "/login?error=true");
   } else {
-    echo "<script>window.location='" . home_url() . "'</script>";
+    header("Location: " . home_url());
     exit();
   }
 }
@@ -41,7 +41,7 @@ get_header();
         <h3 class="section_heading login-page-section__heading">
           <?php the_field('login-page__title'); ?>
         </h3>
-        <p class="login-page-section__message" id="message">
+        <p class="login-page-section__message">
           <?php the_field('login-page__first-message'); ?>
           <a class="login-page-section__message-link" href="<?php the_field('login-page__link'); ?>">
             <?php the_field('login-page__message-link'); ?>
@@ -67,16 +67,12 @@ get_header();
           </button>
         </form>
       </div>
+      <div class="register-page-section__wrapper-img">
+            <img class="register-page-section__img" src="<?php the_field('login-page__img') ?>" />
+        </div>
     </div>
   </section>
 </main>
-<script>
-  let message = document.getElementById('message');
-  if (location.search.indexOf('error') > -1) {
-    message.innerHTML = 'Неправильні облікові дані';
-  }
-</script>
-
 <?php
 get_footer();
 ?>

@@ -7,6 +7,34 @@
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 8px;
     padding: 20px;
+    @media screen and (min-width: $tablet) {
+      padding: 40px 58px;
+    }
+    @media screen and (min-width: $tablet) {
+      padding: 40px 40px;
+    }
+  }
+
+  &__container {
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+  }
+
+  &__wrapper-img {
+    display: none;
+    @media screen and (min-width: $desktop) {
+      display: block;
+    }
+  }
+
+  &__img {
+    display: none;
+    @media screen and (min-width: $desktop) {
+      max-height: 10px;
+    }
   }
 
   &__heading {

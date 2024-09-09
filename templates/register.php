@@ -77,6 +77,10 @@ if ($user_ID) {
         <div class="container register-page-section__container">
            <div class="register-page-section__wrapper">
              <h3 class="section_heading register-page-section__heading">
+                <svg class="register-page-heading-svg" width="42" height="60">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
                 <?php the_field('register-page__title'); ?>
             </h3>
             <p class="register-page-section__first-message" id="message"><?= isset($message) ? $message : '' ?></p>
@@ -86,8 +90,9 @@ if ($user_ID) {
                     <?php the_field('register-page__message-link'); ?>
                 </a>
             </p>
-            <form id="wp_signup_form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post"
-                style="max-width: 500px">
+            <form id="wp_signup_form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+                <div class="register-page-section__form-wrapper">
+                <div>
                 <p class="register-page-section__form-field">
                     <label for="username"><?php the_field('register-page__name'); ?></label>
                     <input type="text" name="username" id="username" 
@@ -103,7 +108,9 @@ if ($user_ID) {
                         value="<?= isset($_REQUEST['email']) ? $_REQUEST['email'] : '' ?>">
                     <span class="register-page-section__error error"><?= isset($errors['email']) ? $errors['email'] : '' ?></span>
                 </p>
+                </div>
 
+                <div>
                 <p class="register-page-section__form-field">
                     <label for="password"><?php the_field('register-page__password'); ?></label>
                     <input type="password" name="password" id="password"
@@ -120,12 +127,13 @@ if ($user_ID) {
                     <span
                         class="register-page-section__error error"><?= isset($errors['password_confirmation']) ? $errors['password_confirmation'] : '' ?></span>
                 </p>
-
+                </div>
+                </div>
                  <p class="register-page-section__message-star">
                     <?php the_field('register-page__message-field'); ?>
                 </p>
 
-
+                <div class="register-page-section__form-wrapper">
                 <p class="register-page-section__message-agree"> 
                     <input name="terms" id="terms" type="checkbox" value="Yes">
                     <label for="terms"><?php the_field('register-page__message-agree'); ?></label><br>
@@ -140,7 +148,11 @@ if ($user_ID) {
                 </use>
                 </svg>
                 </button>
+                </div>
            </form>
+        </div>
+        <div class="register-page-section__wrapper-img">
+            <img class="register-page-section__img" src="<?php the_field('register-page__img') ?>" />
         </div>
         </div>
     </section>
