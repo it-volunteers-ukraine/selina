@@ -16,42 +16,27 @@
 
   @media (min-width: $desktop) {
     gap: 25px;
-    width: 553px;
+    width: 552px;
     box-shadow: none;
   }
 
   .card-image {
-    position: relative;
-    padding: 0 0 86% 0;
-
-    @media (min-width: $tablet) {
-      padding: 0;
-    }
+    display: flex;
+    justify-content: center;
 
     .image {
       width: 260px;
       border-radius: 10px;
-      object-fit: cover;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
 
       @media (min-width: $mobile) {
         width: 312px;
       }
 
-      @media (min-width: $tablet) {
-        position: static;
-      }
-
       @media (min-width: $desktop) {
         width: 505px;
-        gap: 25px;
       }
     }
   }
-
 
   .title {
     font-size: 19px;
@@ -68,8 +53,4 @@
   .description {
     font-size: 16px;
   }
-}
-
-.flex {
-  flex: 1 1 200px;
 }
