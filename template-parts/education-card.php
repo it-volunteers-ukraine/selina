@@ -4,7 +4,7 @@
     </div>
     <div class="title"><?php the_field('education-title') ?></div>
     <div class="description"><?php the_field('education-description') ?></div>
-    <button class="button red_medium_button">
+    <a href="<?php the_permalink(); ?>" class="button red_medium_button">
         <?php the_field('more-details_btn', 'option')?>
-  </button>
+  </a>
 </div>

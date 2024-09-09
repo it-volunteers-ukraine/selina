@@ -268,31 +268,11 @@ get_header();
                 <div class="news-section__list swiper-wrapper">
                     <?php
                     $counter = 0;
-                   
-                    
                     $args = array(
                         'orderby'           => 'date', 
                         'order'             => 'DESC',
                         'post_type' => 'news',
                         'showposts' => -1,
-                        'tax_query' => array(
-                            'relation' => 'OR',
-                            array(
-                            'taxonomy' => 'news_categories',
-                            'field' => 'slug',
-                            'terms' => 'webinar'
-                            ),
-                            array(
-                            'taxonomy' => 'news_categories',
-                            'field' => 'slug',
-                            'terms' => 'presentation'
-                            ),
-                            array(
-                            'taxonomy' => 'news_categories',
-                            'field' => 'slug',
-                            'terms' => 'our-life'
-                        )
-                        )
                     ); 
         
                     $myposts = get_posts( $args );
@@ -304,14 +284,22 @@ get_header();
 
                             <div class="news-section__item">
                                 <?php
-                                $category_detail = get_the_category($post->ID);
-                                $category_name = $category_detail[0]->cat_name;
-                                $category_slug = $category_detail[0]->slug;
-
-                                if ($category_name):
+                                $tags = get_the_terms(get_the_ID(), 'news_tag');
+                                $term_color_style = '';
+                                $tag_name = '';
+                                if ($tags && !is_wp_error($tags)) {
+                                    foreach ($tags as $tag) {
+                                        // Get color for each tag
+                                        $term_color = get_field('tag_color', 'news_tag_' . $tag->term_id);
+                                        $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
+                                        $tag_name = $tag->name;
+                                        
+                                    }
+                                }
+                                if ($tag_name):
                                     ?>
-                                    <div class="news-section__category <?php echo $category_slug . '' ?>">
-                                        <?php echo $category_name . '' ?>
+                                    <div class="news-section__category" <?php echo $term_color_style . '' ?>>
+                                        <?php echo $tag_name . '' ?>
                                     </div>
                                 <?php endif; ?>
                                 <div class="news-section__img"><img src="<?php the_field('news_photo') ?>" /></div>
@@ -357,65 +345,43 @@ get_header();
                 </svg>
                 <?php the_field('exhibitions-section__heading'); ?>
             </h2>
-            <div class="exhibitions-section__list">
+        <div class="exhibitions-section__list">
                 <?php
-                $args = array(
-                        'orderby'           => 'date', 
-                        'order'             => 'DESC',
-                        'post_type' => 'news',
-                        'posts_per_page' => 1,
-                       'tax_query' => array(
+                        $args = array(
+                            'orderby' => 'date',
+                            'order' => 'DESC',
+                            'post_type' => 'news',
+                            'posts_per_page' => 1,
+                            'tax_query' => array(
                                 array(
                                     'taxonomy' => 'news_categories',
                                     'field' => 'slug',
                                     'terms' => 'exhibition'
                                 )
                             )
-                    ); 
-                $myposts = get_posts($args);
-                foreach ($myposts as $post):
-                    setup_postdata($post); ?>
-                    <div class="exhibitions-section__item">
-                        <img src="<?php the_field('news_photo') ?>" />
-                        <div class="exhibitions-section__text-wrapper">
-                            <div class="exhibitions-section__date">
-                                <p>
-                                    <svg width="18" height="18">
-                                        <use
-                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-red-clock">
-                                        </use>
-                                    </svg>
-                                    <?php the_field('news_date') ?>
-                                </p>
-                                <p>
-                                    <svg width="18" height="18">
-                                        <use
-                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-red-calendar">
-                                        </use>
-                                    </svg>
-                                    <?php the_field('news_time') ?>
-                                </p>
-                            </div>
-                            <p class="exhibitions-section__name">
-                                <?php the_field('news_name') ?>
-                            </p>
-                            <p class="exhibitions-section__text">
-                                <?php the_field('news_text') ?>
-                            </p>
-                            <a class="exhibitions-section__button button red_medium_button"
-                                href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                                <?php the_field('news_btn'); ?>
-                                <svg class="exhibitions-section__button-svg" width="16" height="15">
-                                    <use
-                                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                                    </use>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach;
-                wp_reset_postdata(); ?>
+                        );
+                        $myposts = get_posts( $args );
+                        if ($myposts) {
+                            foreach ($myposts as $post) : setup_postdata($post);
+                            $current_date = new DateTime();
+                            $news_date = new DateTime(get_field('news_date'));
+                            if ($news_date >= $current_date) :
+                            ?>
+                                <div class="exhibitions-section__item">
+                                    <?php
+ ?>
+                                  <!-- Template-part exhibition ------------------------------------- -->
+                                  <?php get_template_part('template-parts/one-card-event'); ?>
+
+                                </div>
+                            <?php
+                                endif;
+                            endforeach;
+                            wp_reset_postdata();
+                        } else {
+                            echo '<p>No exhibition.</p>';
+                        }
+                    ?>
         </div>
     </section>
     <section class="support-section section" style="background-image: url(<?php the_field('support-section__photo') ?>);">
@@ -445,7 +411,4 @@ get_header();
     <?php get_template_part('template-parts/feedbacks'); ?>
     <?php get_template_part('template-parts/contact-form'); ?>
 </main>
-
-
-
 <?php get_footer(); ?>
