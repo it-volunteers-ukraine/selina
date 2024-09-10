@@ -173,16 +173,22 @@
   }
 
   &__text-bold {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 800;
     line-height: 1;
     margin-bottom: 24px;
+    @media screen and (min-width: $tablet) {
+      font-size: 20px;
+    }
   }
 
   &__text {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
+    @media screen and (min-width: $tablet) {
+      font-size: 20px;
+    }
   }
 }
 

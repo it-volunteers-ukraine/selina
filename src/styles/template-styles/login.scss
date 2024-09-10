@@ -1,0 +1,95 @@
+@import "../variables.scss";
+
+.login-page-section {
+  background-color: #cfe4e6;
+
+  &__wrapper {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    padding: 20px;
+    @media screen and (min-width: $tablet) {
+      padding: 40px 58px;
+    }
+    @media screen and (min-width: $tablet) {
+      padding: 40px 40px;
+    }
+  }
+
+  &__container {
+    @media screen and (min-width: $desktop) {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+  }
+
+  &__wrapper-img {
+    display: none;
+    @media screen and (min-width: $desktop) {
+      display: block;
+    }
+  }
+
+  &__img {
+    display: none;
+    @media screen and (min-width: $desktop) {
+      max-height: 10px;
+    }
+  }
+
+  &__heading {
+    color: $primary-color;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 26px;
+    text-align: left;
+    margin-bottom: 28px;
+  }
+
+  &__message {
+    color: rgba(7, 7, 7, 1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 28px;
+  }
+  &__message-link {
+    text-decoration: underline;
+    color: black;
+    &:hover {
+      color: blue;
+    }
+  }
+  &__form-field {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin-bottom: 20px;
+
+    input {
+      background-color: rgba(255, 255, 255, 1);
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 13px;
+    }
+  }
+  &__button {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    display: flex;
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 40px;
+    }
+  }
+  &__button-svg {
+    height: 15px;
+    width: 16px;
+    fill: $white;
+    margin-left: 4px;
+  }
+}
