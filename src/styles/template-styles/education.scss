@@ -144,7 +144,27 @@
 
     }
   }
+
   .education-button{
     gap: 5px;
+  }
+
+  .education-btn{
+    @media (min-width: $desktop) {
+      margin-left: 12px;
+    }
+  }
+
+  .button-flex{
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: $tablet) {
+      justify-content: center;
+    }
+
+    @media (min-width: $desktop) {
+     justify-content: flex-start;
+    }
   }
 }

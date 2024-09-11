@@ -266,10 +266,6 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
     }
 
-    if (is_singular() && locate_template('template-parts/course-card.php')) {
-        wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
-    }
-
 
     if (is_singular() && locate_template('template-parts/one-card-news.php')) {
         wp_enqueue_style('one-card-news-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-news.css', array('main'));
@@ -432,7 +428,7 @@ function load_more_posts()
         $template = 'template-parts/education-card';
         $number /= 3;
     } else if ($postType === 'courses') {
-        $template = 'template-parts/course-card';
+        $template = 'template-parts/education-card';
         $number /= 4;
     }
 

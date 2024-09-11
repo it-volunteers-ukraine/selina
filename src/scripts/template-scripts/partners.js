@@ -109,7 +109,7 @@ jQuery(document).ready(function ($) {
 
     function handleResize() {
 
-        if (viewportWidth > 1349.98 || viewportWidth < 767.98) {
+        if (viewportWidth >= 768 || viewportWidth > 1349.98) {
             lastItem.hide();
         } else {
             lastItem.show();
