@@ -23,13 +23,28 @@
   .card-image {
     display: flex;
     justify-content: center;
+    position: relative;
+    padding: 0 0 86% 0;
+
+    @media (min-width: $tablet) {
+      padding: 0;
+    }
 
     .image {
       width: 260px;
       border-radius: 10px;
+      object-fit: cover;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
 
       @media (min-width: $mobile) {
         width: 312px;
+      }
+
+      @media (min-width: $tablet) {
+        position: static;
       }
 
       @media (min-width: $desktop) {
@@ -44,13 +59,27 @@
     font-weight: 800;
     line-height: 24px;
 
+
     @media (min-width: $mobile) {
       font-size: 24px;
+    }
+
+    @media (min-width: $desktop) {
+      padding: 0 5px;
     }
 
   }
 
   .description {
     font-size: 16px;
+    @media (min-width: $desktop) {
+      padding: 0 5px;
+    }
+  }
+  .education-button-text{
+    padding: 0 4px;
+  }
+  .education-icon{
+    margin-top: -2px;
   }
 }
