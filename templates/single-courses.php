@@ -24,7 +24,7 @@ get_header();
     <section class="section description-course-section">
         <div class="container">
             <div class="single-course__breadcrumbs">
-                <a href="<?php the_field('course-page_breadcrumbs_page_name'); ?>">
+                <a href="<?php the_field('course-page_breadcrumbs_page'); ?>">
                     <?php the_field('course-page_breadcrumbs_page_name'); ?> /
                 </a>
                 <a href="<?php the_field('course-page_breadcrumbs_theme'); ?>">
