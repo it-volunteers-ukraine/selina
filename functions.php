@@ -208,6 +208,25 @@ function wp_it_volunteers_scripts()
         wp_enqueue_script('register-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/register.js', array(), false, true);
     }
 
+    if ( class_exists( 'WooCommerce' ) ) {
+    if (is_shop() ) {
+      wp_enqueue_style( 'shop-style', get_template_directory_uri() . '/assets/styles/template-styles/shop.css', array('main') );
+    }
+    if (is_cart() ) {
+      wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main') );
+      wp_enqueue_script( 'woo-cart-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/cart.js', array(), false, true );
+    }
+    if (is_checkout() ) {
+      wp_enqueue_style( 'woo-checkout-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-checkout.css', array('main') );
+      wp_enqueue_script( 'woo-checkout-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/checkout.js', array(), false, true );
+      wp_enqueue_script('maskedinput', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js', array('jquery'), null, true);
+    }
+    if (is_product() ) {
+      wp_enqueue_style( 'woo-product-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-product.css', array('main') );
+      wp_enqueue_script( 'woo-product-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/woo-product.js', array(), false, true );
+    }
+  }
+
     if (is_singular() && locate_template('template-parts/breadcrumbs.php')) {
         wp_enqueue_style('breadcrumbs', get_template_directory_uri() . '/assets/styles/template-parts-styles/breadcrumbs.css', array('main'));
     }
@@ -717,9 +736,14 @@ function load_news_archive() {
 add_action('wp_ajax_load_news_archive', 'load_news_archive');
 add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
 
+if ( class_exists( 'WooCommerce' ) ) {
+require_once(get_template_directory() . '/woo-c.php');
+}
 
 // Відключаємо адмін панель для всіх, крім адміністраторів
 
 if (!current_user_can('administrator')):
   show_admin_bar(false);
 endif;
+
+

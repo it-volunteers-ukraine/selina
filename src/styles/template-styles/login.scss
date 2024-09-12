@@ -30,13 +30,6 @@
     }
   }
 
-  &__img {
-    display: none;
-    @media screen and (min-width: $desktop) {
-      max-height: 10px;
-    }
-  }
-
   &__heading {
     color: $primary-color;
     font-size: 26px;

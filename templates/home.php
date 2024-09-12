@@ -322,7 +322,7 @@ get_header();
                                         <a href="<?php the_field('news_choice-button_disc') ?>"
                                             class='news-section__button button red_medium_button' target='_blank'>
                                             <p><?php the_field('news_btn') ?></p>
-                                            <svg width="16" height="14">
+                                            <svg class="news-section__button-svg" width="16" height="14">
                                                 <use
                                                     href="<?php bloginfo('template_url'); ?>/assets/images/sprite.svg#icon-google">
                                                 </use>
@@ -334,7 +334,7 @@ get_header();
                                         <a href="<?php the_field('news_choice-button_outer-link') ?>"
                                             class='news-section__button button red_medium_button' target='_blank'>
                                             <p><?php the_field('news_btn') ?></p>
-                                            <svg class="icon-paw" width="16" height="15">
+                                            <svg class="news-section__button-svg" width="16" height="15">
                                                 <use
                                                     href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right">
                                                 </use>
