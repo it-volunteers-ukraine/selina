@@ -20,9 +20,9 @@ get_header();
       <img src="<?php the_field('upper-section__background', 'option'); ?>" alt="Background image with cat">
     </div>      
     <h2 class="heading section_heading">
-      Події
+      <?php the_field('list-event'); ?>
     </h2>
-  </div>    
+  </div>
 </section>
 
   <!-- Хлібні крихти -->
@@ -137,16 +137,18 @@ get_header();
         </p>
 
       <!--- BUTTON --->
-        <div class="news-section__first-button button red_medium_button">
-          <a class="news-section__first-btn" href="<?php the_field('form_link'); ?>">
-            <p class="news-section__first-button-text">
-              <?php the_field('form_button_text'); ?>
-            </p>
-            <svg class="news-section__button-svg" width="16" height="15">
-              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-arrow_left_up"></use>
-            </svg>
-          </a>      
-        </div>
+        <?php if ( get_field('form_link') ) : ?>
+          <div class="news-section__first-button button red_medium_button">
+            <a class="news-section__first-btn" href="<?php the_field('form_link'); ?>">
+              <p class="news-section__first-button-text">
+                <?php the_field('form_button_text'); ?>
+              </p>
+              <svg class="news-section__button-svg" width="16" height="15">
+                <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-arrow_left_up"></use>
+              </svg>
+            </a>      
+          </div>        
+        <?php endif; ?>
       </div>
     </div> 
   </div>      
