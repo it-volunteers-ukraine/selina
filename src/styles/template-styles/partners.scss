@@ -304,6 +304,10 @@
     }
 
     .image {
+      margin-bottom: 20px;
+      @media screen and (min-width: $tablet) {
+        margin-bottom: 0;
+      }
       .rounded-image {
         border-radius: 10px;
       }

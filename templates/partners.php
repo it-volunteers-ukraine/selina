@@ -168,10 +168,14 @@ get_header();
                             ?>
                         </div>
                         <div class="links">
-                            <a href="" rel="noopener noreferrer">
+                            <?php
+                            $prices_url = get_field('price-link');
+                            $blank_link = get_field('blank_link');
+                            ?>
+                            <a href="<?php echo esc_url($prices_url); ?>" rel="noopener noreferrer">
                                 <?php echo esc_html(the_field('prices-link')); ?>
                             </a>
-                            <a href="" rel="noopener noreferrer">
+                            <a href="<?php echo esc_url($blank_link); ?>" rel="noopener noreferrer">
                                 <?php echo esc_html(the_field('blank-link')); ?>
                             </a>
                         </div>

@@ -420,7 +420,7 @@ function load_more_posts()
         $number /= 2;
     } else if ($terms === 'vebinars') {
         $template = 'template-parts/education-card';
-        $number /= 2;
+        $number /= 3;
     } else if ($terms === 'literature') {
         $template = 'template-parts/education-card';
         $number /= 3;
