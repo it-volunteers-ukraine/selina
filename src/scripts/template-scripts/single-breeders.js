@@ -41,21 +41,35 @@ const freeCatListBtn = document?.querySelector(
   ".single-breeder-free-cats-section__button"
 );
 
+const hideCatListBtn = document?.querySelector(
+  ".single-breeder-free-cats-section__button-hide"
+);
+
 const freeCatListChildren = Array.from(freeCatList?.children ?? []);
 
 const count = window.innerWidth >= 768 && window.innerWidth < 1440 ? 2 : 3;
 let ca = 0;
-if (freeCatListChildren.length > count) {
+
+function showFirstItems() {
   freeCatList.innerHTML = "";
   freeCatList.append(...freeCatListChildren.slice(0, count));
   freeCatListBtn.classList.remove("visually-hidden");
   ca = count;
+}
+if (freeCatListChildren.length > count) {
+  showFirstItems();
 
   freeCatListBtn?.addEventListener("click", () => {
     freeCatList.append(...freeCatListChildren.slice(ca, ca + count));
     ca = ca + count;
     if (ca >= freeCatListChildren.length) {
       freeCatListBtn.classList.add("visually-hidden");
+      hideCatListBtn?.classList.remove("visually-hidden");
     }
+  });
+
+  hideCatListBtn?.addEventListener("click", () => {
+    showFirstItems();
+    hideCatListBtn.classList.add("visually-hidden");
   });
 }
