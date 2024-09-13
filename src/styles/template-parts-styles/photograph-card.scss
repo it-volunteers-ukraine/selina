@@ -31,6 +31,8 @@
   }
 
   .full-name {
+    justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -47,4 +49,16 @@
       text-align: center;
     }
   }
+}
+
+.photographs-item:last-child {
+
+  @media screen and (min-width: $tablet) {
+    display: none;
+  }
+
+  @media screen and (min-width: $desktop) {
+    display: flex;
+  }
+
 }

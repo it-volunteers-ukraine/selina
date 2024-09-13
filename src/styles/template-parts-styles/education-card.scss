@@ -16,11 +16,13 @@
 
   @media (min-width: $desktop) {
     gap: 25px;
-    width: 553px;
+    width: 552px;
     box-shadow: none;
   }
 
   .card-image {
+    display: flex;
+    justify-content: center;
     position: relative;
     padding: 0 0 86% 0;
 
@@ -47,11 +49,9 @@
 
       @media (min-width: $desktop) {
         width: 505px;
-        gap: 25px;
       }
     }
   }
-
 
   .title {
     font-size: 19px;
@@ -59,17 +59,27 @@
     font-weight: 800;
     line-height: 24px;
 
+
     @media (min-width: $mobile) {
       font-size: 24px;
+    }
+
+    @media (min-width: $desktop) {
+      padding: 0 5px;
     }
 
   }
 
   .description {
     font-size: 16px;
+    @media (min-width: $desktop) {
+      padding: 0 5px;
+    }
   }
-}
-
-.flex {
-  flex: 1 1 200px;
+  .education-button-text{
+    padding: 0 4px;
+  }
+  .education-icon{
+    margin-top: -2px;
+  }
 }

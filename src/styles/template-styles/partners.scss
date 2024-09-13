@@ -113,6 +113,7 @@
         }
         @media screen and (min-width: $desktop) {
           margin-bottom: 20px;
+          font-size: 60px;
         }
       }
 
@@ -303,6 +304,10 @@
     }
 
     .image {
+      margin-bottom: 20px;
+      @media screen and (min-width: $tablet) {
+        margin-bottom: 0;
+      }
       .rounded-image {
         border-radius: 10px;
       }
@@ -406,7 +411,14 @@
   background-color: $background;
 
   .photographs-title {
-    font-size: 26px;
+
+    @media screen and (min-width: 320px) {
+      font-size: 23px;
+    }
+
+    @media screen and (min-width: $mobile) {
+      font-size: 26px;
+    }
 
     @media screen and (min-width: $tablet) {
       font-size: 30px;

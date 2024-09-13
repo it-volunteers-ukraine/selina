@@ -28,12 +28,12 @@ function wp_it_volunteers_scripts()
     wp_enqueue_style('swiper-style', "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css", array('main'));
     wp_enqueue_style('choices-style', "https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css", array('main'));
     wp_enqueue_style('loader-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/loader.css', array('main'));
-    wp_enqueue_style( 'lightbox-style', "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css", array() );
+    wp_enqueue_style('lightbox-style', "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css", array());
 
     wp_enqueue_script('swiper-scripts', 'https://cdn.jsdelivr.net/npm/swiper@10.0.0/swiper-bundle.min.js', array(), false, true);
     wp_enqueue_script('wp-it-volunteers-scripts', get_template_directory_uri() . '/assets/scripts/main.js', array(), false, true);
     wp_enqueue_script('choices-scripts', 'https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js', array(), false, true);
-    wp_enqueue_script( 'lightbox-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js', array(), false, true );
+    wp_enqueue_script('lightbox-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js', array(), false, true);
 
 
     if (is_page_template('templates/home.php')) {
@@ -98,6 +98,13 @@ function wp_it_volunteers_scripts()
 
     }
 
+
+    if (is_page_template('templates/single-courses.php')) {
+        wp_enqueue_script('home-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+        wp_enqueue_script('single-courses-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-courses.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_style('single-courses-style', get_template_directory_uri() . '/assets/styles/template-styles/single-courses.css', array('main'));
+    }
+
     if (is_page_template('templates/single-news.php')) {
         wp_enqueue_script('home-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
         wp_enqueue_script('single-news-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/single-news.js', array('touch-swipe-scripts'), false, true);
@@ -156,6 +163,49 @@ function wp_it_volunteers_scripts()
     if (is_page_template('templates/news-archive.php')) {
         wp_enqueue_style('news-archive-style', get_template_directory_uri() . '/assets/styles/template-styles/news-archive.css', array('main'));
         wp_enqueue_script('news-archive-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/news-archive.js', array(), false, true);
+
+        // Retrieve active tags
+        $active_tags = isset($_GET['filter_tag']) ? (array)$_GET['filter_tag'] : array();
+
+        // Check for available posts
+        $args = array(
+            'post_type' => 'news',
+            'posts_per_page' => 6,
+            'paged' => 1, 
+        );
+        if (!empty($active_tags)) {
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'news_tag',
+                    'field'    => 'slug',
+                    'terms'    => $active_tags,
+                ),
+            );
+        }
+    
+        $query = new WP_Query($args);
+
+        // If there are no posts, pass this information to JavaScript
+        $has_more_posts = $query->found_posts > 6; // Are there more than 6 posts?
+
+        wp_localize_script('news-archive-scripts', 'myAjax', array(
+            'ajaxUrl'       => admin_url('admin-ajax.php'),
+            'nonce'         => wp_create_nonce('news-archive_nonce'),
+            'activeTags'    => $active_tags, // Pass active tags
+            'hasMorePosts'  => $has_more_posts, // Information about more posts
+        ));
+
+        wp_reset_postdata(); // Reset the query
+    }
+    
+    if (is_page_template('templates/login.php')) {
+        wp_enqueue_style('login-style', get_template_directory_uri() . '/assets/styles/template-styles/login.css', array('main'));
+        wp_enqueue_script('login-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/login.js', array(), false, true);
+    }
+    
+    if (is_page_template('templates/register.php')) {
+        wp_enqueue_style('register-style', get_template_directory_uri() . '/assets/styles/template-styles/register.css', array('main'));
+        wp_enqueue_script('register-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/register.js', array(), false, true);
     }
 
     if (is_singular() && locate_template('template-parts/breadcrumbs.php')) {
@@ -167,22 +217,22 @@ function wp_it_volunteers_scripts()
         wp_enqueue_script('contact-form-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/contact-form.js', array('touch-swipe-scripts'), false, true);
     }
 
-if (is_singular()) {
-    if (locate_template('template-parts/feedbacks.php') || locate_template('template-parts/feedbacks-breed.php')) {
-        wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
-        wp_enqueue_style('feedbacks-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/feedbacks.css', array('main'));
-        wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
-        wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
+    if (is_singular()) {
+        if (locate_template('template-parts/feedbacks.php') || locate_template('template-parts/feedbacks-breed.php')) {
+            wp_enqueue_script('touch-swipe-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js', array(), false, true);
+            wp_enqueue_style('feedbacks-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/feedbacks.css', array('main'));
+            wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/styles/vendors/swiper.css', array('main'));
+            wp_enqueue_script('swiper-scripts', get_template_directory_uri() . '/assets/scripts/vendors/swiper-bundle.js', array(), false, true);
 
-        if (locate_template('template-parts/feedbacks.php')) {
-            wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
-        }
+            if (locate_template('template-parts/feedbacks.php')) {
+                wp_enqueue_script('feedbacks-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks.js', array('touch-swipe-scripts'), false, true);
+            }
 
-        if (locate_template('template-parts/feedbacks-breed.php')) {
-            wp_enqueue_script('feedbacks-breed-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks-breed.js', array('touch-swipe-scripts'), false, true);
+            if (locate_template('template-parts/feedbacks-breed.php')) {
+                wp_enqueue_script('feedbacks-breed-scripts', get_template_directory_uri() . '/assets/scripts/template-parts-scripts/feedbacks-breed.js', array('touch-swipe-scripts'), false, true);
+            }
         }
     }
-}
 
 
     if (is_singular() && locate_template('template-parts/join-us.php')) {
@@ -216,6 +266,7 @@ if (is_singular()) {
         wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
     }
 
+
     if (is_singular() && locate_template('template-parts/one-card-news.php')) {
         wp_enqueue_style('one-card-news-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/one-card-news.css', array('main'));
     }
@@ -244,10 +295,12 @@ function add_swiper()
 add_action('wp_enqueue_scripts', 'add_swiper');
 
 /** add Masonry */
-function mason_script() {
-    wp_enqueue_script( 'jquery-masonry' );
+function mason_script()
+{
+    wp_enqueue_script('jquery-masonry');
 }
-add_action( 'wp_enqueue_scripts', 'mason_script' );
+
+add_action('wp_enqueue_scripts', 'mason_script');
 
 /** Register menus */
 function wp_it_volunteers_menus()
@@ -326,7 +379,7 @@ function init_load_more_posts()
 {
 
     wp_enqueue_script('jquery');
-    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-parts-scripts/load-more-button.js', array('jquery'), '1.0', true);
+    wp_register_script('custom-scripts', get_template_directory_uri() . '/src/scripts/template-scripts/partners.js', array('jquery'), '1.0', true);
 
     /* Localize the script with the ajaxurl */
     wp_localize_script('custom-scripts', 'my_ajax', array(
@@ -342,22 +395,41 @@ add_action('wp_enqueue_scripts', 'init_load_more_posts');
 
 function load_more_posts()
 {
-
     $page = $_POST['page'];
     $width = $_POST['width'];
     $postType = (isset($_POST['postType'])) ? $_POST['postType'] : '';
+    $taxonomy = (isset($_POST['taxonomy'])) ? $_POST['taxonomy'] : '';
+    $terms = isset($_POST['terms']) ? $_POST['terms'] : '';
+
+    $taxQuery =  array(
+        array(
+            'taxonomy' => $taxonomy,
+            'field' => 'slug',
+            'terms' => $terms
+        )
+    );
 
     $number = get_posts_per_page($width);
-    $total_posts = wp_count_posts()->publish;
-    $total_pages = ceil($total_posts / $number);
 
 
-    // change template-parts by custom postType
-    if ($postType === 'friends_clubs') {
+    // change template-parts by terms or postType
+    if ($terms === 'friends-clubs') {
         $template = 'template-parts/friends-clubs-card';
-    } else if ($postType === 'our_photographs') {
+    } else if ($terms === 'our-photographers') {
         $template = 'template-parts/photograph-card';
         $number /= 2;
+    } else if ($terms === 'vebinars') {
+        $template = 'template-parts/education-card';
+        $number /= 3;
+    } else if ($terms === 'literature') {
+        $template = 'template-parts/education-card';
+        $number /= 3;
+    } else if ($terms === 'zoopsychology') {
+        $template = 'template-parts/education-card';
+        $number /= 3;
+    } else if ($postType === 'courses') {
+        $template = 'template-parts/education-card';
+        $number /= 4;
     }
 
     $args = array(
@@ -365,8 +437,8 @@ function load_more_posts()
         'posts_per_page' => $number,
         'order' => 'ASC',
         'paged' => $page,
+        'tax_query' => $taxQuery
     );
-
 
     $query = new WP_Query($args);
 
@@ -379,6 +451,8 @@ function load_more_posts()
     endif;
     $html = ob_get_clean();
     wp_reset_postdata();
+
+    $total_pages = $query->max_num_pages;
 
     wp_send_json(array('html' => $html, 'totalPages' => $total_pages));
     wp_die();
@@ -398,6 +472,7 @@ function get_posts_per_page($width)
         return 9;
     }
 }
+
 
 /*** AJAX breeders */
 add_action('wp_ajax_load_breeders', 'load_breeders');
@@ -520,6 +595,13 @@ function load_partners_pagination()
         'order' => 'ASC',
         'paged' => $page,
         'post_status' => 'publish',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'partners_categories',
+                'field' => 'slug',
+                'terms' => 'our-partners'
+            )
+        )
     );
 
 
@@ -570,3 +652,70 @@ function get_breeds_per_page($width)
         return 6;
     }
 }
+
+// load more posts in news-archive
+function load_news_archive() {
+    
+    check_ajax_referer('news-archive_nonce', 'nonce');
+
+    $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $active_tags = isset($_POST['filter_tags']) ? (array)$_POST['filter_tags'] : array();
+
+    $args = array(
+        'post_type' => array('news'),
+        'posts_per_page' => 6,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'paged' => $paged,
+    );
+
+    if (!empty($active_tags)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'news_tag',
+                'field'    => 'slug',
+                'terms'    => $active_tags,
+            ),
+        );
+    }
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) { 
+        while ($query->have_posts()) {
+            $query->the_post();
+
+            ?>
+            <div class="one-card-news">
+                <?php  get_template_part('template-parts/one-card-news'); ?>
+                <div class="news-tags-container">
+                    <?php
+                    $tags = get_the_terms(get_the_ID(), 'news_tag');
+                    if ($tags && !is_wp_error($tags)) {
+                        foreach ($tags as $tag) {
+                            $term_color = get_field('tag_color', 'news_tag_' . $tag->term_id);
+                            $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
+                            echo '<span class="news-tag" ' . $term_color_style . '>' . esc_html($tag->name) . '</span>';
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <?php
+        }
+        wp_reset_postdata();
+    } else {
+        echo 'no_more_posts';
+    }
+    wp_die();
+}
+
+add_action('wp_ajax_load_news_archive', 'load_news_archive');
+add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
+
+
+// Відключаємо адмін панель для всіх, крім адміністраторів
+
+if (!current_user_can('administrator')):
+  show_admin_bar(false);
+endif;

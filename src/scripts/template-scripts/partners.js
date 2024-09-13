@@ -31,6 +31,8 @@ function loadPartners(postType) {
             page: currentPage,
             width: viewportWidth,
             postType: postType,
+            taxonomy: 'partners_categories',
+            terms: 'our-partners'
         },
     }).then(function (response) {
         replacePosts(response.html);
@@ -63,44 +65,133 @@ function replacePosts(html) {
     const isMobile = viewportWidth < 768;
     const isTablet = viewportWidth >= 767.8;
     hasData = !!html;
-    let noPost = document.querySelector('.message');
     if (isMobile && hasData) {
-        noPost.style.display = 'none';
         let partnersMobile = document.getElementById('partners-posts-mobile');
         partnersMobile.innerHTML = html;
     } else if (isTablet && hasData) {
-        noPost.style.display = 'none';
         let partnersTablet = document.getElementById('partners-posts-tablet');
         partnersTablet.innerHTML = html;
     }
 
     if (!hasData) {
-        noPost.style.display = 'block';
+        const nextBtn = document.getElementById('partners-pagination-next');
+        nextBtn.style.display = 'none';
         currentPage--;
+    } else {
+        const nextBtn = document.getElementById('partners-pagination-next');
+        nextBtn.style.display = 'block';
     }
 }
 
 
-// show posts
-const cardsContainer = document.querySelector('#more-friends');
-const items = cardsContainer.querySelectorAll('.friends-clubs-item')
+// show-more button
+jQuery(document).ready(function ($) {
+    let pageMapping = {};
+    const containerFriends = $('#more-friends');
+    const containerPhotographs = $('#more-photographs');
+    const containerCourses = $('#more-courses');
+    const containerVebinars = $('#more-vebinars');
+    const containerZoopsychology = $('#more-zoopsychology');
+    const containerBooks = $('#more-books');
+    const loadBtnFriends = $('#load-more-friends');
+    const loadBtnPhotographs = $('#load-more-photographs');
+    const loadBtnCourses= $('#load-more-courses');
+    const loadBtnVebinars = $('#load-more-vebinars');
+    const loadBtnZoopsychology = $('#load-more-zoopsychology');
+    const loadBtnBooks = $('#load-more-books');
+    const lastItem = containerFriends.find('.friends-clubs-item:last-child');
+    var viewportWidth = window.innerWidth;
 
-function showPosts() {
-    const viewportWidth = window.innerWidth;
-    const isMobile = viewportWidth < 768;
-    const isLargeScreen = viewportWidth >= 992;
+    // get nonce
+    function getNonce() {
+        return my_ajax.nonce;
+    }
 
-    items.forEach(function (item, index) {
-            const everyNineElem = (index + 1) % 9 === 0;
-            if ((isMobile && everyNineElem) || (isLargeScreen && everyNineElem)) {
-                item.classList.add('nine-elem');
-            } else {
-                item.classList.remove('nine-elem');
-            }
+    function handleResize() {
+
+        if (viewportWidth >= 768 || viewportWidth > 1349.98 || viewportWidth < 767.98) {
+            lastItem.hide();
+        } else {
+            lastItem.show();
         }
-    )
-}
+    }
 
-showPosts();
+    handleResize();
 
-window.addEventListener('resize', showPosts);
+
+    function loadPosts(postType, taxonomy, terms, targetContainer) {
+
+        const pageMappingKey = postType + '_' + terms;
+
+        if (!pageMapping[pageMappingKey]) {
+            pageMapping[pageMappingKey] = 2;
+        }
+
+        $.ajax({
+            url: my_ajax.ajaxurl, /* Use the localised ajaxurl variable */
+            type: 'POST',
+            data: {
+                action: 'load_more_posts',
+                page: pageMapping[pageMappingKey],
+                width: viewportWidth,
+                postType: postType,
+                taxonomy: taxonomy,
+                terms: terms,
+                nonce: getNonce(),
+            },
+            success: function (response) {
+                targetContainer.append(response.html)
+                pageMapping[pageMappingKey]++;
+            },
+            error: function (xhr, status, error) {
+                console.error("Request failed: " + error);
+            }
+        });
+    }
+
+    loadBtnFriends.on('click', function () {
+        var postType = $(this).data('post-type');
+        var taxonomy = $(this).data('post-taxonomy');
+        var terms = $(this).data('post-terms');
+        loadPosts(postType, taxonomy, terms, containerFriends);
+
+    });
+
+    loadBtnPhotographs.on('click', function () {
+        var postType = $(this).data('post-type');
+        var taxonomy = $(this).data('post-taxonomy');
+        var terms = $(this).data('post-terms');
+        loadPosts(postType, taxonomy, terms, containerPhotographs);
+    });
+
+
+    loadBtnVebinars.on('click', function () {
+        var postType = $(this).data('post-type');
+        var taxonomy = $(this).data('post-taxonomy');
+        var terms = $(this).data('post-terms');
+        loadPosts(postType,taxonomy, terms, containerVebinars);
+    });
+
+    loadBtnZoopsychology.on('click', function () {
+        var postType = $(this).data('post-type');
+        var taxonomy = $(this).data('post-taxonomy');
+        var terms = $(this).data('post-terms');
+        loadPosts(postType, taxonomy, terms, containerZoopsychology);
+    });
+
+    loadBtnBooks.on('click', function () {
+        var postType = $(this).data('post-type');
+        var taxonomy = $(this).data('post-taxonomy');
+        var terms = $(this).data('post-terms');
+        loadPosts(postType, taxonomy, terms, containerBooks);
+    });
+
+    loadBtnCourses.on('click', function () {
+        var postType = $(this).data('post-type');
+        var taxonomy = $(this).data('post-taxonomy');
+        var terms = $(this).data('post-terms');
+        loadPosts(postType , taxonomy,terms,containerCourses);
+    });
+
+});
+

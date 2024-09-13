@@ -50,12 +50,13 @@
     align-items: baseline;
     color: $primary-color;
     gap: 4px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 800;
     line-height: 1;
     margin-top: 10px;
     @media screen and (min-width: $tablet) {
       gap: 10px;
+      font-size: 20px;
     }
   }
 
@@ -84,7 +85,7 @@
   }
 
   &__content {
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $small-desktop) {
       display: flex;
       flex-direction: row-reverse;
       gap: 24px;
@@ -100,7 +101,7 @@
     @media screen and (min-width: $tablet) {
       font-size: 20px;
     }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $small-desktop) {
       width: calc(50% - 12px);
     }
   }
@@ -110,7 +111,7 @@
     height: auto;
     border-radius: 8px;
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $small-desktop) {
       width: calc(50% - 12px);
     }
   }

@@ -224,10 +224,16 @@ get_header();
                         else:
                         endif;
                         ?>
-
                     </ul>
                     <button class="single-breeder-free-cats-section__button button button_green_new visually-hidden">
                         <?php the_field('breeder-page_free-cats-btn-text'); ?>
+                        <svg class="single-breeder-free-cats-section__button-svg" width="16" height="15">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                    </button>
+                    <button class="single-breeder-free-cats-section__button-hide button button_green_new visually-hidden">
+                        <?php the_field('breeder-page_free-cats-btn-text-hide'); ?>
                         <svg class="single-breeder-free-cats-section__button-svg" width="16" height="15">
                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                             </use>

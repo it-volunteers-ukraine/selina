@@ -57,7 +57,7 @@ get_header();
                                     </use>
                                 </svg>
                             </button>
-                            <button onclick="paginateNext()"
+                            <button id="partners-pagination-next" onclick="paginateNext()"
                                     class="partners-btn">
                                 <svg width="10.37" height="16.97">
                                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
@@ -72,8 +72,15 @@ get_header();
                     <?php
                     $args = array(
                         'post_type' => 'all_partners',
-                        'posts_per_page' => -1,
                         'order' => 'ASC',
+                        'posts_per_page' => -1,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-partners'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -86,13 +93,19 @@ get_header();
                     wp_reset_postdata();
                     ?>
                 </div>
-                <p class="message">No more posts<p>
                 <div id="partners-posts-tablet" class="our-partners-container">
                     <?php
                     $args = array(
                         'post_type' => 'all_partners',
-                        'posts_per_page' => 12,
                         'order' => 'ASC',
+                        'posts_per_page' => 12,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-partners'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -109,8 +122,15 @@ get_header();
                     <?php
                     $args = array(
                         'post_type' => 'all_partners',
-                        'posts_per_page' => 6,
                         'order' => 'ASC',
+                        'posts_per_page' => 6,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-partners'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -141,16 +161,24 @@ get_header();
                         <img class="img rounded-image" src="<?php the_field('friends-image'); ?>" alt="cat">
                     </div>
                     <div class="info">
-                        <p class="description"><?php the_field('description'); ?></p>
+                        <div class="description">
+                            <?php
+                            $description = get_field('description');
+                            echo mb_strimwidth($description, 0, 552);
+                            ?>
+                        </div>
                         <div class="links">
-                            <a href="" rel="noopener noreferrer">
+                            <?php
+                            $prices_url = get_field('price-link');
+                            $blank_link = get_field('blank_link');
+                            ?>
+                            <a href="<?php echo esc_url($prices_url); ?>" rel="noopener noreferrer">
                                 <?php echo esc_html(the_field('prices-link')); ?>
                             </a>
-                            <a href="" rel="noopener noreferrer">
+                            <a href="<?php echo esc_url($blank_link); ?>" rel="noopener noreferrer">
                                 <?php echo esc_html(the_field('blank-link')); ?>
                             </a>
                         </div>
-
 
                         <a class="button red_medium_button laboklin-btn"
                            href="<?php echo esc_attr(the_field('laboklin-link')); ?>">
@@ -184,9 +212,16 @@ get_header();
 
                     <?php
                     $args = array(
-                        'post_type' => 'friends_clubs',
+                        'post_type' => 'all_partners',
                         'order' => 'ASC',
                         'posts_per_page' => 9,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'friends-clubs'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -201,7 +236,9 @@ get_header();
                 </div>
                 <div class="button-flex">
                     <button id="load-more-friends"
-                            data-post-type="friends_clubs"
+                            data-post-type="all_partners"
+                            data-post-taxonomy="partners_categories"
+                            data-post-terms="friends-clubs"
                             class="button button_green_new show-btn">
                         <?php the_field('show-btn'); ?>
                         <svg width="18" height="17">
@@ -212,7 +249,6 @@ get_header();
                 </div>
             </div>
         </section>
-
 
         <section class="section our-friends-photographs">
             <div class="container">
@@ -230,9 +266,16 @@ get_header();
 
                     <?php
                     $args = array(
-                        'post_type' => 'our_photographs',
+                        'post_type' => 'all_partners',
                         'order' => 'ASC',
                         'posts_per_page' => 4,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'partners_categories',
+                                'field' => 'slug',
+                                'terms' => 'our-photographers'
+                            )
+                        )
                     );
 
                     $loop = new WP_Query($args);
@@ -247,7 +290,9 @@ get_header();
                 </div>
                 <div class="button-flex">
                     <button id="load-more-photographs"
-                            data-post-type="our_photographs"
+                            data-post-type="all_partners"
+                            data-post-taxonomy="partners_categories"
+                            data-post-terms="our-photographers"
                             class="button button_green_new show-btn">
                         <?php the_field('show-btn'); ?>
                         <svg width="18" height="17">

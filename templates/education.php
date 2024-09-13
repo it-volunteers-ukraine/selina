@@ -64,26 +64,38 @@ get_header();
             </h3>
             <p class="education-description"><?php the_field('anatomy-description'); ?></p>
 
-            <div class="education-cards">
+            <div id="more-courses" class="education-cards">
                 <?php
                 $args = array(
                     'post_type' => 'courses',
+                    'posts_per_page' => 2,
                     'order' => 'ASC',
-                    'posts_per_page' => -1,
                 );
 
                 $loop = new WP_Query($args);
 
                 if ($loop->have_posts()) :
                     while ($loop->have_posts()) : $loop->the_post(); ?>
-                        <?php get_template_part('template-parts/education-card') ?>
+                        <?php get_template_part('template-parts/education-card')?>
                     <?php endwhile;
                 endif;
                 wp_reset_postdata();
                 ?>
             </div>
+            <div class="button-flex">
+                <button id="load-more-courses"
+                        data-post-type="courses"
+                        data-post-taxonomy="resources_categories"
+                        data-post-terms="anatomy"
+                        class="button button_green_new show-btn education-button education-btn">
+                    <?php the_field('show_more_btn', 'option') ?>
+                    <svg width="18" height="17">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                        </use>
+                    </svg>
+                </button>
+            </div>
         </section>
-
     </div>
 
     <section id="veterinary" class="section veterinary primary-background">
@@ -96,55 +108,98 @@ get_header();
                 <?php the_field('veterinary-title'); ?>
             </h3>
             <p class="education-description"><?php the_field('veterinary-description'); ?></p>
-            <div class="education-cards">
+            <div id="more-vebinars" class="education-cards">
                 <?php
-                $repeater_cards = get_field('repeater-veterinary-cards');
-                foreach ($repeater_cards as $row) : ?>
-                    <div class="card-item frame">
-                        <div class="card-image">
-                            <img class="image" src="<?= $row['image']; ?>" alt="image">
-                        </div>
-                        <div class="title"><?= $row['title']; ?></div>
-                        <div class="description"><?= $row['description']; ?></div>
-                        <button class="button red_medium_button">
-                            <?php the_field('more-details_btn', 'option') ?>
-                        </button>
-                    </div>
-                <?php endforeach; ?>
+                $args = array(
+                    'post_type' => 'courses',
+                    'order' => 'ASC',
+                    'posts_per_page' => 2,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'resources_categories',
+                            'field' => 'slug',
+                            'terms' => 'vebinars'
+                        )
+                    )
+                );
+
+                $loop = new WP_Query($args);
+
+                if ($loop->have_posts()) :
+                    while ($loop->have_posts()) : $loop->the_post(); ?>
+                        <?php get_template_part('template-parts/education-card') ?>
+                    <?php endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>
+            <div class="button-flex">
+                <button id="load-more-vebinars"
+                        data-post-type="courses"
+                        data-post-taxonomy="resources_categories"
+                        data-post-terms="vebinars"
+                        class="button button_green_new show-btn education-button">
+                    <?php the_field('show_more_btn', 'option') ?>
+                    <svg width="18" height="17">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                        </use>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
 
 
-        <section id="zopsychology" class="section">
-            <div class="container">
-                <h3 class="section_heading education-general">
-                    <svg class="icon education-icon" width="41" height="37">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+    <section id="zopsychology" class="section">
+        <div class="container">
+            <h3 class="section_heading education-general">
+                <svg class="icon education-icon" width="41" height="37">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                    </use>
+                </svg>
+                <?php the_field('zopsychology-title'); ?>
+            </h3>
+            <p class="education-description"><?php the_field('zopsychology-description'); ?></p>
+            <div id="more-zoopsychology" class="education-cards">
+                <?php
+                $args = array(
+                    'post_type' => 'courses',
+                    'order' => 'ASC',
+                    'posts_per_page' => 2,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'resources_categories',
+                            'field' => 'slug',
+                            'terms' => 'zoopsychology'
+                        )
+                    )
+                );
+
+                $loop = new WP_Query($args);
+
+                if ($loop->have_posts()) :
+                    while ($loop->have_posts()) : $loop->the_post(); ?>
+                        <?php get_template_part('template-parts/education-card') ?>
+                    <?php endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>
+            <div class="button-flex">
+                <button id="load-more-zoopsychology"
+                        data-post-type="courses"
+                        data-post-taxonomy="resources_categories"
+                        data-post-terms="zoopsychology"
+                        class="button button_green_new show-btn education-button education-btn">
+                    <?php the_field('show_more_btn', 'option') ?>
+                    <svg width="18" height="17">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
                     </svg>
-                    <?php the_field('zopsychology-title'); ?>
-                </h3>
-                <p class="education-description"><?php the_field('zopsychology-description'); ?></p>
-
-                <div class="education-cards">
-                    <?php
-                    $repeater_cards = get_field('repeater-cards');
-                    foreach ($repeater_cards as $row) : ?>
-                        <div class="card-item flex">
-                            <div class="card-image">
-                                <img class="image" src="<?= $row['image']; ?>" alt="image">
-                            </div>
-                            <div class="title"><?= $row['title']; ?></div>
-                            <div class="description"><?= $row['description']; ?></div>
-                            <button class="button red_medium_button">
-                                <?php the_field('more-details_btn', 'option') ?>
-                            </button>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+                </button>
             </div>
-        </section>
+        </div>
+    </section>
 
     <section id="literature" class="section primary-background">
         <div class="container">
@@ -156,25 +211,47 @@ get_header();
                 <?php the_field('literature-title'); ?>
             </h3>
             <p class="education-description"><?php the_field('literature-description'); ?></p>
-            <div class="education-cards">
+            <div id="more-books" class="education-cards">
                 <?php
-                $repeater_cards = get_field('repeater-frame-cards');
-                foreach ($repeater_cards as $row) : ?>
-                    <div class="card-item frame">
-                        <div class="card-image">
-                            <img class="image" src="<?= $row['image']; ?>" alt="image">
-                        </div>
-                        <div class="title"><?= $row['title']; ?></div>
-                        <div class="description"><?= $row['description']; ?></div>
-                        <button class="button red_medium_button">
-                            <?php the_field('more-details_btn', 'option') ?>
-                        </button>
-                    </div>
-                <?php endforeach; ?>
+                $args = array(
+                    'post_type' => 'courses',
+                    'order' => 'ASC',
+                    'posts_per_page' => 2,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'resources_categories',
+                            'field' => 'slug',
+                            'terms' => 'literature'
+                        )
+                    )
+                );
+
+                $loop = new WP_Query($args);
+
+                if ($loop->have_posts()) :
+                    while ($loop->have_posts()) : $loop->the_post(); ?>
+                        <?php get_template_part('template-parts/education-card') ?>
+                    <?php endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>
+            <div class="button-flex">
+                <button id="load-more-books"
+                        data-post-type="courses"
+                        data-post-taxonomy="resources_categories"
+                        data-post-terms="literature"
+                        class="button button_green_new show-btn education-button">
+                    <?php the_field('show_more_btn', 'option') ?>
+                    <svg width="18" height="17">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                        </use>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
-        <?php get_template_part('template-parts/join-us') ?>
+    <?php get_template_part('template-parts/join-us') ?>
 </main>
 
 
