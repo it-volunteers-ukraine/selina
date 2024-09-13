@@ -136,20 +136,10 @@
   }
 
   &__img {
-    width: 288px;
+    width: 100%;
     height: auto;
     border-radius: 5.49px;
 
-    @media screen and (min-width: $mobile) {
-      width: 343px;
-      height: 379.05px;
-    }
-
-    @media screen and (min-width: $tablet) {
-      width: 704px;
-      height: 777.99px;
-      border-radius: 15px;
-    }
     @media screen and (min-width: $desktop) {
       width: 552px;
       height: 610.02px;
@@ -375,7 +365,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    @media screen and (min-width: $tablet) {
+    @media screen and (min-width: 600px) {
       grid-template-columns: 1fr 1fr;
     }
     @media screen and (min-width: $desktop) {
@@ -398,6 +388,10 @@
       width: 344px;
       height: 478px;
     }
+    @media screen and (min-width: 600px) {
+      width: 288px;
+      height: auto;
+    }
     @media screen and (min-width: $tablet) {
       width: 340px;
       padding: 24px 14px;
@@ -414,6 +408,16 @@
     border-radius: 8px;
 
     @media screen and (min-width: $mobile) {
+      width: 312px;
+      height: 268px;
+    }
+
+    @media screen and (min-width: 600px) {
+      width: 256px;
+      height: 276px;
+    }
+
+    @media screen and (min-width: $tablet) {
       width: 312px;
       height: 268px;
     }
@@ -467,6 +471,12 @@
   }
 
   &__button {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  &__button-hide {
     display: flex;
     gap: 8px;
     margin-top: 24px;

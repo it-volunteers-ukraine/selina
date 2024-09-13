@@ -67,8 +67,8 @@ get_header();
           </button>
         </form>
       </div>
-      <div class="register-page-section__wrapper-img">
-            <img class="register-page-section__img" src="<?php the_field('login-page__img') ?>" />
+      <div class="login-page-section__wrapper-img">
+            <img class="login-page-section__img" src="<?php the_field('login-page__img') ?>" />
         </div>
     </div>
   </section>

@@ -47,6 +47,7 @@
 
   &__heading {
     font-size: 30px;
+    line-height: 1;
     margin-bottom: 16px;
     @media screen and (min-width: $tablet) {
       font-size: 45px;
@@ -86,7 +87,7 @@
       gap: 24px;
     }
     @media screen and (min-width: $desktop) {
-      gap: 36px;
+      gap: 16px;
     }
   }
 }
@@ -244,9 +245,15 @@
     justify-content: center;
     cursor: pointer;
 
-    &:hover {
+    &:active {
       background-color: $white;
       color: $primary-color;
+    }
+    @media screen and (min-width: $desktop) {
+      &:hover {
+        background-color: $white;
+        color: $primary-color;
+      }
     }
   }
 
