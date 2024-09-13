@@ -47,22 +47,24 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('home-style', get_template_directory_uri() . '/assets/styles/template-styles/home.css', array('main'));
     }
 
-    // Connected contacts-style & contacts-scripts
     if (is_page_template('templates/contacts.php')) {
         wp_enqueue_style('contacts-style', get_template_directory_uri() . '/assets/styles/template-styles/contacts.css', array('main'));
         wp_enqueue_script('contacts-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/contacts.js', array(), false, true);
     }
 
-    // Connected shows-style & shows-scripts
     if (is_page_template('templates/shows.php')) {
         wp_enqueue_style('shows-style', get_template_directory_uri() . '/assets/styles/template-styles/shows.css', array('main'));
         wp_enqueue_script('shows-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/shows.js', array(), false, true);
     }
 
-    // Connected events-style & events-scripts
     if (is_page_template('templates/events.php')) {
         wp_enqueue_style('events-style', get_template_directory_uri() . '/assets/styles/template-styles/events.css', array('main'));
         wp_enqueue_script('events-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/events.js', array(), false, true);
+    }
+
+    if (is_page_template('templates/user-cabinet.php')) {
+        wp_enqueue_style('user-cabinet-style', get_template_directory_uri() . '/assets/styles/template-styles/user-cabinet.css', array('main'));
+        wp_enqueue_script('user-cabinet-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/user-cabinet.js', array(), false, true);
     }
 
     if (is_page_template('templates/about-us.php')) {
