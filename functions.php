@@ -65,6 +65,11 @@ function wp_it_volunteers_scripts()
     if (is_page_template('templates/user-cabinet.php')) {
         wp_enqueue_style('user-cabinet-style', get_template_directory_uri() . '/assets/styles/template-styles/user-cabinet.css', array('main'));
         wp_enqueue_script('user-cabinet-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/user-cabinet.js', array(), false, true);
+    
+        wp_localize_script('user-cabinet-scripts', 'ajax_object', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('load_user_cabinet_content_nonce')
+        ));
     }
 
     if (is_page_template('templates/about-us.php')) {
@@ -721,3 +726,58 @@ add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
 if (!current_user_can('administrator')):
   show_admin_bar(false);
 endif;
+
+// User cabinet
+
+add_action( 'wp_ajax_'        . 'load_user_cabinet_content', 'load_user_cabinet_content' );
+add_action( 'wp_ajax_nopriv_' . 'load_user_cabinet_content', 'load_user_cabinet_content' );
+
+function load_user_cabinet_content() {
+    check_ajax_referer('load_user_cabinet_content_nonce', 'nonce');
+
+    $content_tab = isset($_POST['contentTab']) ? sanitize_text_field($_POST['contentTab']) : '';
+
+    $response = '';
+
+    $repeater_data = get_field('user-cabinet_education');
+
+    if ($content_tab === 'education') {
+        if (have_rows('user-cabinet_education')) {
+            while (have_rows('user-cabinet_education')) {
+                the_row();
+                $education_image = get_sub_field('user-cabinet_education-image');
+                $education_title = get_sub_field('user-cabinet_education-title');
+                $education_link = get_sub_field('user-cabinet_education-link');
+                
+                $response .= '<div class="education-item">';
+                $response .= '<img src="' . esc_url($education_image) . '" alt="' . esc_attr($education_title) . '" class="education-image" />';
+                $response .= '<h3 class="education-title">' . esc_html($education_title) . '</h3>';
+                $response .= '<a href="' . esc_url($education_link) . '" target="_blank" class="education-link">Докладніше</a>';
+                $response .= '</div>';
+            }
+        } else {
+            $response .= '<p>No education items available.</p>';
+        }
+    } elseif ($content_tab === 'forms') {
+        if (have_rows('user-cabinet_forms')) {
+            while (have_rows('user-cabinet_forms')) {
+                the_row();
+                $forms_image = get_sub_field('user-cabinet_forms-image');
+                $forms_title = get_sub_field('user-cabinet_forms-title');
+                $forms_link = get_sub_field('user-cabinet_forms-link');
+                
+                $response .= '<div class="forms-item">';
+                $response .= '<img src="' . esc_url($forms_image) . '" alt="' . esc_attr($forms_title) . '" class="forms-image" />';
+                $response .= '<h3 class="forms-title">' . esc_html($forms_title) . '</h3>';
+                $response .= '<a href="' . esc_url($forms_link) . '" target="_blank" class="forms-link">Докладніше</a>';
+                $response .= '</div>';
+            }
+        } else {
+            $response .= '<p>No forms items available.</p>';
+        }
+    } else {
+        $response .= '<p>Invalid content type.</p>';
+    }
+
+    wp_send_json_success($response);
+}
