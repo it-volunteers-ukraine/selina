@@ -1,25 +1,18 @@
-jQuery(document).ready(function ($) {
-    $('.tab-content-btn').on('click', function (e) {
-        const contentTab = $(this).data('target');
-
+jQuery(document).ready(function($) {
+    // Функція для відправки AJAX запиту
+    function loadACFRepeaterData() {
         $.ajax({
-            url: ajax_object.ajax_url,
+            url: my_ajax_object.ajax_url, // Адреса для AJAX запиту
             type: 'POST',
             data: {
-                action: 'load_user_cabinet_content',
-                contentTab: contentTab,
-                nonce: ajax_object.nonce
+                action: 'load_acf_repeater_data' // Назва дії
             },
-            success: function (response) {
-                if (response.success) {
-                    $('#content-display').html(response.data);
-                } else {
-                    $('#content-display').html('<p>Error loading content.</p>');
-                }
-            },
-            error: function () {
-                $('#content-display').html('<p>There was an error processing the request.</p>');
+            success: function(response) {
+                $('#acf-repeater-container').html(response); // Вставка результату в контейнер
             }
         });
-    });
+    }
+
+    // Виклик функції
+    loadACFRepeaterData();
 });

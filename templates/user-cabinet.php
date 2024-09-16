@@ -20,43 +20,69 @@ get_header();
             </div>
         </section>
 
-        <nav class="navigation-user-cabinet">
-            <div class="navigation-user-cabinet__tabs">
-                <button class="tab-content-btn" data-target="education">
-                    <p><?php the_field('user-cabinet_learning'); ?></p>
-                </button>
-                <button class="tab-content-btn" data-target="forms">
-                    <p><?php the_field('user-cabinet_forms'); ?></p>
-                </button>
+        <section class="nav-section">
+            <div class="container">
+                <nav class="navigation-user-cabinet">
+                    <div class="navigation-user-cabinet__tabs">
+                        <button class="tab-content-btn" data-target="education">
+                            <p><?php the_field('user-cabinet_learning'); ?></p>
+                        </button>
+                        <button class="tab-content-btn" data-target="forms">
+                            <p><?php the_field('user-cabinet_forms'); ?></p>
+                        </button>
+                    </div>
+                    <div class="navigation-user-cabinet__buttons">
+                        <button class="show-content" data-target="videos">
+                            <p><?php the_field('user-cabinet_videos-button'); ?></p>
+                        </button>
+                        <button class="show-content" data-target="genetic">
+                            <p><?php the_field('user-cabinet_genetic-button'); ?></p>
+                        </button>
+                        <button class="show-content" data-target="books">
+                            <p><?php the_field('user-cabinet_books-button'); ?></p>
+                        </button>
+                        <button class="show-content" data-target="seminars">
+                            <p><?php the_field('user-cabinet_seminars-button'); ?></p>
+                        </button>
+                        <button class="show-content" data-target="systems">
+                            <p><?php the_field('user-cabinet_systems-button'); ?></p>
+                        </button>
+                    </div>
+                </nav>
             </div>
-            <div class="navigation-user-cabinet__buttons">
-                <button class="show-content" data-target="videos">
-                    <p><?php the_field('user-cabinet_videos-button'); ?></p>
-                </button>
-                <button class="show-content" data-target="genetic">
-                    <p><?php the_field('user-cabinet_genetic-button'); ?></p>
-                </button>
-                <button class="show-content" data-target="books">
-                    <p><?php the_field('user-cabinet_books-button'); ?></p>
-                </button>
-                <button class="show-content" data-target="seminars">
-                    <p><?php the_field('user-cabinet_seminars-button'); ?></p>
-                </button>
-                <button class="show-content" data-target="systems">
-                    <p><?php the_field('user-cabinet_systems-button'); ?></p>
-                </button>
+        </section>
+
+        <section class='content-user-cabinet'>
+            <div class="container">
+                <?php
+                    if (have_rows('user-cabinet_education')) {
+                        while (have_rows('user-cabinet_education')) {
+                            the_row();
+                            $content_image = get_sub_field('user-cabinet_education-image');
+                            $content_link = get_sub_field('user-cabinet_education-link');
+                            $content_title = get_sub_field('user-cabinet_education-title');
+
+                            $content_type = get_sub_field('user-cabinet_education-type');
+                            if ($content_type === 'Відео') {
+                                ?>
+                                    <div class="content-user-cabinet__card">
+                                        <img src="<?php echo $content_image['url']; ?>" alt="<?php echo $content_image['alt']; ?>">
+                                        <h3 class="content-user-cabinet__card-title">
+                                            <?php echo $content_title; ?>
+                                        </h3>
+                                        <a href="<?php the_sub_field($content_link) ?>" target="_blank">
+                                            <div class="content-user-cabinet__card-link">
+                                                <p>Переглянути</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                <?php
+                            }
+                        }
+                    }
+                ?>
             </div>
-        </nav>
-
-        <div id="content-display"></div>
-
-
-       <?php if (have_rows('user-cabinet_education')) {
-    echo 'Rows found!';
-} else {
-    echo 'No rows found or incorrect field name.';
-}
-?>
+        </section>
 
     </main>
 
