@@ -133,7 +133,7 @@ get_header();
       
       <!--- TEXT --->   
         <p class="news-section__text">
-          <?php the_field('news_text'); ?>
+          <?php the_field('news_text_full'); ?>
         </p>
 
       <!--- BUTTON --->
@@ -171,10 +171,16 @@ get_header();
             endif;
             ?>                               
         </div>
-        <?php if ($images && count($images) > 6): ?>
+        <?php 
+        $show_more_text = get_field('gallery_button_text');
+        $show_less_text = get_field('gallery_button_text_show_less');
+        
+        if ($images && count($images) > 6): ?>
             <div class="gallary-button button green_medium_button">
-                <button id="load-more" class="gallary-section__last-btn">
-                    <p class="gallary-section__last-btn-text"><?php the_field('gallery_button_text'); ?></p>
+                <button id="load-more" class="gallary-section__last-btn" 
+                data-show-more="<?php echo esc_attr($show_more_text); ?>" 
+                data-show-less="<?php echo esc_attr($show_less_text); ?>">
+                    <p class="gallary-section__last-btn-text"><?php echo esc_html($show_more_text); ?></p>
                     <svg class="gallary-section__button-svg" width="16" height="15">
                         <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
