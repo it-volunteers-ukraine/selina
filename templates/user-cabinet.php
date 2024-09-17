@@ -24,27 +24,27 @@ get_header();
             <div class="container">
                 <nav class="navigation-user-cabinet">
                     <div class="navigation-user-cabinet__tabs">
-                        <button class="tab-content content-type-btn" data-target="videos">
+                        <button class="tab-content content-type-btn" data-target="video">
                             <p><?php the_field('user-cabinet_learning'); ?></p>
                         </button>
-                        <button class="tab-content content-type-btn" data-target="forms">
+                        <button class="tab-content content-type-btn" data-target="form">
                             <p><?php the_field('user-cabinet_forms'); ?></p>
                         </button>
                     </div>
                     <div class="navigation-user-cabinet__buttons">
-                        <button class="show-content content-type-btn" data-target="videos">
+                        <button class="show-content content-type-btn" data-target="video">
                             <p><?php the_field('user-cabinet_videos-button'); ?></p>
                         </button>
                         <button class="show-content content-type-btn" data-target="genetic">
                             <p><?php the_field('user-cabinet_genetic-button'); ?></p>
                         </button>
-                        <button class="show-content content-type-btn" data-target="books">
+                        <button class="show-content content-type-btn" data-target="book">
                             <p><?php the_field('user-cabinet_books-button'); ?></p>
                         </button>
-                        <button class="show-content content-type-btn" data-target="seminars">
+                        <button class="show-content content-type-btn" data-target="seminar">
                             <p><?php the_field('user-cabinet_seminars-button'); ?></p>
                         </button>
-                        <button class="show-content content-type-btn" data-target="systems">
+                        <button class="show-content content-type-btn" data-target="system">
                             <p><?php the_field('user-cabinet_systems-button'); ?></p>
                         </button>
                     </div>
@@ -52,9 +52,9 @@ get_header();
             </div>
         </section>
 
-        <section id='content-display'>
+        <section class='content-section'>
             <div class='container'>
-                
+                <div id='content-display'></div>
             </div>
         </section>
 
