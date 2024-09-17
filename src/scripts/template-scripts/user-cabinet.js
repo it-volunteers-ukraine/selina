@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
     $('.content-type-btn').on('click', function (e) {
         const contentTab = $(this).data('target');
+        console.log(contentTab);
 
         $.ajax({
             url: ajax_object.ajax_url,

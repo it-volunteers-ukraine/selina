@@ -729,55 +729,57 @@ endif;
 
 
 // User cabinet
-
 add_action( 'wp_ajax_'        . 'load_user_cabinet_content', 'load_user_cabinet_content' );
 add_action( 'wp_ajax_nopriv_' . 'load_user_cabinet_content', 'load_user_cabinet_content' );
 
 function load_user_cabinet_content() {
     check_ajax_referer('load_user_cabinet_content_nonce', 'nonce');
-
     $content_tab = isset($_POST['contentTab']) ? sanitize_text_field($_POST['contentTab']) : '';
 
-    $response = '';
+    $page = get_posts(array(
+        'post_type'  => 'page',
+        'meta_key'   => '_wp_page_template',
+        'meta_value' => 'templates/user-cabinet.php'
+    ));
+    
+    if (!empty($page)) {
+        $page_id = $page[0]->ID;
+    } else {
+        $page_id = 0;
+    }
 
-    if ($content_tab === 'videos') {
-        if (have_rows('user-cabinet_videos')) {
-            while (have_rows('user-cabinet_videos')) {
+    // $page_id = 2179;
+    // $repeater = get_field('user-cabinet_videos');
+    $response = '';
+    $response .= $page_id;
+    
+    if (have_rows('user-cabinet_videos', $page_id)) {
+            while (have_rows('user-cabinet_videos', $page_id)) {
                 the_row();
-                $video_image = get_sub_field('user-cabinet_video-image');
-                $video_title = get_sub_field('user-cabinet_video-title');
-                $video_link = get_sub_field('user-cabinet_video-link');
-                
-                $response .= '<div class="education-item">';
-                $response .= '<img src="' . esc_url($video_image) . '" alt="' . esc_attr($video_title) . '" class="education-image" />';
-                $response .= '<h3 class="education-title">' . esc_html($video_title) . '</h3>';
-                $response .= '<a href="' . esc_url($video_link) . '" target="_blank" class="education-link">Докладніше</a>';
-                $response .= '</div>';
-            }
-        } else {
-            $response .= '<p>No video items available.</p>';
-        }
-    } elseif ($content_tab === 'forms') {
-        if (have_rows('user-cabinet_forms')) {
-            while (have_rows('user-cabinet_forms')) {
-                the_row();
-                $form_image = get_sub_field('user-cabinet_form-image');
-                $form_title = get_sub_field('user-cabinet_form-title');
-                $form_link = get_sub_field('user-cabinet_form-link');
-                
-                $response .= '<div class="forms-item">';
-                $response .= '<img src="' . esc_url($form_image) . '" alt="' . esc_attr($form_title) . '" class="forms-image" />';
-                $response .= '<h3 class="forms-title">' . esc_html($form_title) . '</h3>';
-                $response .= '<a href="' . esc_url($form_link) . '" target="_blank" class="forms-link">Докладніше</a>';
-                $response .= '</div>';
-            }
-        } else {
-            $response .= '<p>No forms items available.</p>';
+                $response .= 'true';
         }
     } else {
-        $response .= '<p>Invalid content type.</p>';
+        $response .= 'false';
     }
+    
 
     wp_send_json_success($response);
 }
 
+
+// if (have_rows($repeater)) {
+//     while (have_rows($repeater)) {
+//         the_row();
+//         $video_image = get_sub_field('user-cabinet_video-image');
+//         $video_title = get_sub_field('user-cabinet_video-title');
+//         $video_link = get_sub_field('user-cabinet_video-link');
+        
+//         $response .= '<div class="video-item">';
+//         $response .= '<img src="' . esc_url($video_image) . '" alt="' . esc_attr($video_title) . '" class="education-image" />';
+//         $response .= '<h3 class="video-title">' . esc_html($video_title) . '</h3>';
+//         $response .= '<a href="' . esc_url($video_link) . '" target="_blank" class="video-link">Details</a>';
+//         $response .= '</div>';
+//     }
+// } else {
+// $response .= '<p>No video items available.</p>';;
+// }
