@@ -65,3 +65,74 @@
         }
     }
 }
+
+.navigation-user-cabinet {
+    padding: 32px 0 24px;
+    @media screen and (min-width: $tablet) {
+        padding: 56px 0 40px;
+    }
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+    &__tabs {
+        display: flex;
+        gap: 24px;
+        align-items: start;
+        margin-bottom: 24px;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        color: $black;
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+    }
+    &__tabs p {
+        text-transform: uppercase;;
+    }
+    &__buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        color: $white;
+        button {
+            border-radius: 4px;
+            padding: 12px 10px;
+        }
+        @media screen and (min-width: $tablet) {
+            gap: 20px;
+        }
+        @media screen and (min-width: $desktop) {
+            gap: 24px;
+        }
+    }
+    &__buttons [data-target="video"] {
+        background-color: #62c634;
+    }
+    &__buttons [data-target="genetic"] {
+        background-color: #539cd1;
+    }
+    &__buttons [data-target="book"] {
+        background-color: #9d5dde;
+    }
+    &__buttons [data-target="seminar"] {
+        background-color: #f98114;
+    }
+    &__buttons [data-target="system"] {
+        background-color: #c63462;
+    }
+}
+
+.navigation-user-cabinet__tab-content.active {
+    color: $primary-color;
+    padding-bottom: 4px;
+    border-bottom: 2px solid $primary-color;
+}
+
+.navigation-user-cabinet__show-content.active {
+    border: 3px solid $black;
+}

@@ -24,27 +24,27 @@ get_header();
             <div class="container">
                 <nav class="navigation-user-cabinet">
                     <div class="navigation-user-cabinet__tabs">
-                        <button class="tab-content content-type-btn" data-target="video">
+                        <button class="navigation-user-cabinet__tab-content content-type-btn education-btn" data-target="video">
                             <p><?php the_field('user-cabinet_learning'); ?></p>
                         </button>
-                        <button class="tab-content content-type-btn" data-target="form">
+                        <button class="navigation-user-cabinet__tab-content content-type-btn form-btn" data-target="form">
                             <p><?php the_field('user-cabinet_forms'); ?></p>
                         </button>
                     </div>
                     <div class="navigation-user-cabinet__buttons">
-                        <button class="show-content content-type-btn" data-target="video">
+                        <button class="navigation-user-cabinet__show-content content-type-btn video-btn" data-target="video">
                             <p><?php the_field('user-cabinet_videos-button'); ?></p>
                         </button>
-                        <button class="show-content content-type-btn" data-target="genetic">
+                        <button class="navigation-user-cabinet__show-content content-type-btn" data-target="genetic">
                             <p><?php the_field('user-cabinet_genetic-button'); ?></p>
                         </button>
-                        <button class="show-content content-type-btn" data-target="book">
+                        <button class="navigation-user-cabinet__show-content content-type-btn" data-target="book">
                             <p><?php the_field('user-cabinet_books-button'); ?></p>
                         </button>
-                        <button class="show-content content-type-btn" data-target="seminar">
+                        <button class="navigation-user-cabinet__show-content content-type-btn" data-target="seminar">
                             <p><?php the_field('user-cabinet_seminars-button'); ?></p>
                         </button>
-                        <button class="show-content content-type-btn" data-target="system">
+                        <button class="navigation-user-cabinet__show-content content-type-btn" data-target="system">
                             <p><?php the_field('user-cabinet_systems-button'); ?></p>
                         </button>
                     </div>
