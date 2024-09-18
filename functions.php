@@ -759,7 +759,11 @@ function load_user_cabinet_content() {
                 $content_title = get_sub_field($field_name . '-title');
                 $content_link = get_sub_field($field_name . '-link');
                 
-                $response .= '<div class="content-user-cabinet__form-item">';
+                $response .= '<div class="content-user-cabinet__form-item">
+                                <svg class="content-user-cabinet__clip-svg" width="38" height="90">
+                                    <use href="' . get_bloginfo('template_url') . '/assets/images/sprite.svg#icon-clip"></use>
+                                </svg>
+                            ';
                 $response .= '<h3 class="content-user-cabinet__form-title">' . esc_html($content_title) . '</h3>';
                 $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-user-cabinet__link red_medium_button">
                                 ' . esc_html($button_card_text) . '
