@@ -750,6 +750,7 @@ function load_user_cabinet_content() {
     }
 
     $field_name = 'user-cabinet_' . $content_tab;
+    $button_card_text = get_field('user-cabinet_card-title', $page_id) ?: 'Відкрити/Open';
 
     if ($content_tab === 'form') {
         if (have_rows($field_name, $page_id)) {
@@ -760,7 +761,7 @@ function load_user_cabinet_content() {
                 
                 $response .= '<div class="form-item">';
                 $response .= '<h3 class="form-title">' . esc_html($content_title) . '</h3>';
-                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="form-link">Відкрити</a>';
+                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="form-link">' . esc_html($button_card_text) . '</a>';
                 $response .= '</div>';
             }
         } else {
@@ -777,7 +778,7 @@ function load_user_cabinet_content() {
                 $response .= '<div class="content-item">';
                 $response .= '<img src="' . esc_url($content_image) . '" alt="' . esc_attr($content_title) . '" class="content-image" />';
                 $response .= '<h3 class="content-title">' . esc_html($content_title) . '</h3>';
-                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-link">Відкрити</a>';
+                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-link">' . esc_html($button_card_text) . '</a>';
                 $response .= '</div>';
             }
         } else {
