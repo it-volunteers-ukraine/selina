@@ -67,9 +67,9 @@
 }
 
 .navigation-user-cabinet {
-    padding: 32px 0 24px;
+    padding-top: 32px;
     @media screen and (min-width: $tablet) {
-        padding: 56px 0 40px;
+        padding-top: 56px;
     }
     @media screen and (min-width: $desktop) {
         padding-top: 80px;
@@ -125,10 +125,6 @@
     &__buttons [data-target="system"] {
         background-color: #c63462;
     }
-
-    &__link {
-        gap: 8px;
-    }
 }
 
 .navigation-user-cabinet__tab-content.active {
@@ -139,4 +135,62 @@
 
 .navigation-user-cabinet__show-content.active {
     border: 3px solid $black;
+}
+
+.content-user-cabinet {
+    &__content-section {
+        padding: 24px 0 32px;
+        @media screen and (min-width: $tablet) {
+            padding: 40px 0 56px;
+        }
+        @media screen and (min-width: $desktop) {
+            padding: 40px 0 80px;
+        }
+    }
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        @media screen and (min-width: $tablet) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    &__content-item {
+        border: 1px solid #e8e8ea;
+        border-radius: 10px;
+        padding: 20px 20px 24px 20px;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        background: $white;
+        @media screen and (min-width: $tablet) {
+            width: calc((100% - 20px)/2);
+        }
+        @media screen and (min-width: $desktop) {
+            width: calc((100% - 40px)/3);
+        }
+    }
+    &__content-image {
+        position: relative;
+        height: 240px;
+        margin-bottom: 20px;
+        padding: 0 0 58% 0;
+    }
+    &__content-image img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    &__title {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 120%;
+        color: $primary-color;
+        margin-bottom: 28px;
+    }
+    &__link {
+        gap: 8px;
+    }
 }

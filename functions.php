@@ -759,9 +759,9 @@ function load_user_cabinet_content() {
                 $content_title = get_sub_field($field_name . '-title');
                 $content_link = get_sub_field($field_name . '-link');
                 
-                $response .= '<div class="form-item">';
-                $response .= '<h3 class="form-title">' . esc_html($content_title) . '</h3>';
-                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="navigation-user-cabinet__link red_medium_button">
+                $response .= '<div class="content-user-cabinet__form-item">';
+                $response .= '<h3 class="content-user-cabinet__form-title">' . esc_html($content_title) . '</h3>';
+                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-user-cabinet__link red_medium_button">
                                 ' . esc_html($button_card_text) . '
                                 <svg width="16" height="14"> 
                                     <use href="' . get_bloginfo('template_url') . '/assets/images/sprite.svg#icon-google"></use> 
@@ -780,10 +780,12 @@ function load_user_cabinet_content() {
                 $content_title = get_sub_field($field_name . '-title');
                 $content_link = get_sub_field($field_name . '-link');
                 
-                $response .= '<div class="content-item">';
-                $response .= '<img src="' . esc_url($content_image) . '" alt="' . esc_attr($content_title) . '" class="content-image" />';
-                $response .= '<h3 class="content-title">' . esc_html($content_title) . '</h3>';
-                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="navigation-user-cabinet__link red_medium_button">
+                $response .= '<div class="content-user-cabinet__content-item">';
+                $response .= '<div class="content-user-cabinet__content-image">';
+                $response .= '<img src="' . esc_url($content_image) . '" alt="' . esc_attr($content_title) . '"/>';
+                $response .= '</div>';
+                $response .= '<h3 class="content-user-cabinet__title">' . esc_html($content_title) . '</h3>';
+                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-user-cabinet__link red_medium_button">
                                 ' . esc_html($button_card_text) . '
                                 <svg width="16" height="14"> 
                                     <use href="' . get_bloginfo('template_url') . '/assets/images/sprite.svg#icon-google"></use> 

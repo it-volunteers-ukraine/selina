@@ -52,9 +52,9 @@ get_header();
             </div>
         </section>
 
-        <section class='content-section'>
+        <section class='content-user-cabinet__content-section'>
             <div class='container'>
-                <div id='content-display'></div>
+                <div id='content-display' class='content-user-cabinet__wrapper'></div>
             </div>
         </section>
 
