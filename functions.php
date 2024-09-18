@@ -761,7 +761,12 @@ function load_user_cabinet_content() {
                 
                 $response .= '<div class="form-item">';
                 $response .= '<h3 class="form-title">' . esc_html($content_title) . '</h3>';
-                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="form-link">' . esc_html($button_card_text) . '</a>';
+                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="navigation-user-cabinet__link red_medium_button">
+                                ' . esc_html($button_card_text) . '
+                                <svg width="16" height="14"> 
+                                    <use href="' . get_bloginfo('template_url') . '/assets/images/sprite.svg#icon-google"></use> 
+                                </svg>
+                            </a>';
                 $response .= '</div>';
             }
         } else {
@@ -778,7 +783,12 @@ function load_user_cabinet_content() {
                 $response .= '<div class="content-item">';
                 $response .= '<img src="' . esc_url($content_image) . '" alt="' . esc_attr($content_title) . '" class="content-image" />';
                 $response .= '<h3 class="content-title">' . esc_html($content_title) . '</h3>';
-                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-link">' . esc_html($button_card_text) . '</a>';
+                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="navigation-user-cabinet__link red_medium_button">
+                                ' . esc_html($button_card_text) . '
+                                <svg width="16" height="14"> 
+                                    <use href="' . get_bloginfo('template_url') . '/assets/images/sprite.svg#icon-google"></use> 
+                                </svg>
+                            </a>';
                 $response .= '</div>';
             }
         } else {

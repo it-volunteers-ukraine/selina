@@ -125,6 +125,10 @@
     &__buttons [data-target="system"] {
         background-color: #c63462;
     }
+
+    &__link {
+        gap: 8px;
+    }
 }
 
 .navigation-user-cabinet__tab-content.active {
