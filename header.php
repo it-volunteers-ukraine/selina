@@ -53,9 +53,10 @@
                             echo $personal_account_text;
                             echo '</a>';
 
-                            echo '<a class="button login-btn" href="' . esc_attr(get_field('exit-link', 'option')) . '">';
+                            echo '<a class="button login-btn" href="' .  wp_logout_url( get_permalink() ) . '">';
                             echo esc_html(get_field('exit-text', 'option'));
                             echo '</a>';
+
 
                         } else {
                             $registration_link = esc_attr(get_field('registration-link', 'option'));
@@ -187,7 +188,7 @@
                                     echo $personal_account_text;
                                     echo '</a>';
 
-                                    echo '<a class="button login-btn" href="' . esc_attr(get_field('exit-link', 'option')) . '">';
+                                    echo '<a class="button login-btn" href="' .  wp_logout_url( get_permalink() ) . '">';
                                     echo esc_html(get_field('exit-text', 'option'));
                                     echo '</a>';
 
