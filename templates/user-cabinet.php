@@ -14,7 +14,14 @@ get_header();
                 <div class="heading-section-user-cabinet__wrapper">
                     <div class="heading-section-user-cabinet__list-user-cabinet">
                         <h2><?php the_field('user-cabinet_page_heading'); ?></h2>
-                        <p><?php the_field('user-cabinet_greeting'); ?></p>
+                        <p>
+                            <?php 
+                                the_field('user-cabinet_greeting');
+                                $current_user = wp_get_current_user();
+                                echo ' ' . esc_html( $current_user->display_name );
+                            ?>
+                            !
+                        </p>
                     </div>
                 </div>
             </div>

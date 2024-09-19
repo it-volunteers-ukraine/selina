@@ -804,3 +804,27 @@ function load_user_cabinet_content() {
     
     wp_send_json_success($response);
 }
+
+function custom_login_logo() {
+    ?>
+    <style type="text/css">
+        #login h1 a {
+            background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/src/images/logo_icon.svg');
+            width: 120px;
+            height: 60px;
+            background-size: contain;
+        }
+    </style>
+    <?php
+}
+add_action('login_enqueue_scripts', 'custom_login_logo');
+
+function custom_login_url() {
+    return home_url();
+}
+add_filter('login_headerurl', 'custom_login_url');
+
+function custom_login_title() {
+    return 'Visit Selina homepage';
+}
+add_filter('login_headertext', 'custom_login_title');
