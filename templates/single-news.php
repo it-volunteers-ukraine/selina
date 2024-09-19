@@ -18,10 +18,26 @@ get_header();
   <div class="container">
     <div class="heading-section-news__background-img">
       <img src="<?php the_field('upper-section__background', 'option'); ?>" alt="Background image with cat">
-    </div>      
-    <h2 class="heading section_heading">
-      <?php the_field('list-event'); ?>
-    </h2>
+    </div>
+    
+    <?php
+    // Визначення архівної новини через наявність галереї
+    $gallery = get_field('news_gallery');
+
+    if ($gallery) {
+        ?>
+        <h2 class="heading section_heading">
+          <?php the_field('archive__heading'); // Заголовок для архівних новин ?>
+        </h2>
+        <?php
+    } else {
+        ?>
+        <h2 class="heading section_heading">
+          <?php the_field('list-event'); // Заголовок для подій ?>
+        </h2>
+        <?php
+    }
+    ?>
   </div>
 </section>
 
@@ -57,54 +73,54 @@ get_header();
 
       <!--- DATE --->
       <?php
-                $news_date = get_field('news_date_meta');
-                $news_date_start = get_field('news_date_meta-start');
-                if (!empty(get_field('news_date_meta'))):
-            ?>
-                <div class="news-section__date">
-                    <svg width="22" height="22"> 
-                        <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
-                    </svg> 
-                    <p>
-                        <?php
-                            if (!empty($news_date_start)) {
-                                $date_start = new DateTime($news_date_start);
-                                echo $date_start->format('j').' - ';
-                            }
-                            $current_lang = pll_current_language();
-                            if ($current_lang == 'ua') {
-                                $date_str = get_field('news_date_meta');
+      $news_date = get_field('news_date_meta');
+      $news_date_start = get_field('news_date_meta-start');
+      if (!empty(get_field('news_date_meta'))):
+      ?>
+      <div class="news-section__date">
+        <svg width="22" height="22"> 
+          <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
+        </svg> 
+        <p>
+          <?php
+            if (!empty($news_date_start)) {
+              $date_start = new DateTime($news_date_start);
+              echo $date_start->format('j').' - ';
+            }
+            $current_lang = pll_current_language();
+            if ($current_lang == 'ua') {
+            $date_str = get_field('news_date_meta');
 
-                                if ($date_str) {
-                                    $date = new DateTime($date_str);
-                                    $months = [
-                                        1 => 'Січня', 2 => 'Лютого', 3 => 'Березня', 4 => 'Квітня',
-                                        5 => 'Травня', 6 => 'Червня', 7 => 'Липня', 8 => 'Серпня',
-                                        9 => 'Вересня', 10 => 'Жовтня', 11 => 'Листопада', 12 => 'Грудня'
-                                    ];
-                                    $month_num = (int) $date->format('m');
-                                    echo $date->format('j ') . $months[$month_num];
-                                }
-                            } elseif ($current_lang == 'en') {
-                                $date_str = get_field('news_date_meta');
+            if ($date_str) {
+                $date = new DateTime($date_str);
+                $months = [
+                  1 => 'Січня', 2 => 'Лютого', 3 => 'Березня', 4 => 'Квітня',
+                  5 => 'Травня', 6 => 'Червня', 7 => 'Липня', 8 => 'Серпня',
+                  9 => 'Вересня', 10 => 'Жовтня', 11 => 'Листопада', 12 => 'Грудня'
+                ];
+                $month_num = (int) $date->format('m');
+                echo $date->format('j ') . $months[$month_num];
+              }
+            } elseif ($current_lang == 'en') {
+            $date_str = get_field('news_date_meta');
 
-                                if ($date_str) {
-                                    $date = new DateTime($date_str);
-                                    echo $date->format('j F');
-                                }
-                            }
-                        ?>
-                    </p>
-                </div>
-            <?php endif; ?>
+            if ($date_str) {
+                $date = new DateTime($date_str);
+                echo $date->format('j F');
+              }
+            }
+          ?>
+        </p>
+      </div>
+      <?php endif; ?>
      
         
       <!--- TIME --->
-        <?php
+      <?php
         $time_str = get_field('news_time_meta');
         if(!empty($time_str)):
-        ?>
-        <div class="news-section__time">          
+       ?>
+      <div class="news-section__time">          
             <svg width="18" height="18">
               <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-clock"></use>
             </svg>
@@ -118,8 +134,8 @@ get_header();
             ?>
           </p>
         </div>        
-        <?php endif; ?>
-        </div>
+      <?php endif; ?>
+      </div>
 
       <!--- NAME --->
         <p class="news-section__name">
