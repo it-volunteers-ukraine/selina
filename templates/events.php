@@ -109,7 +109,7 @@ get_header();
                         if ($myposts) {
                             foreach ($myposts as $post) : setup_postdata($post);
                             $current_date = new DateTime();
-                            $news_date = new DateTime(get_field('news_date'));
+                            $news_date = new DateTime(get_field('news_date_meta'));
                             if ($news_date >= $current_date) :
                             ?>
                                 <div class="exhibitions__news-section__item">
