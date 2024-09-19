@@ -53,7 +53,7 @@
                             echo $personal_account_text;
                             echo '</a>';
 
-                            echo '<a class="button login-btn" href="' .  wp_logout_url( get_permalink() ) . '">';
+                            echo '<a class="button login-btn" href="' .  wp_logout_url( home_url() ) . '">';
                             echo esc_html(get_field('exit-text', 'option'));
                             echo '</a>';
 
@@ -188,7 +188,7 @@
                                     echo $personal_account_text;
                                     echo '</a>';
 
-                                    echo '<a class="button login-btn" href="' .  wp_logout_url( get_permalink() ) . '">';
+                                    echo '<a class="button login-btn" href="' .  wp_logout_url( home_url() ) . '">';
                                     echo esc_html(get_field('exit-text', 'option'));
                                     echo '</a>';
 
