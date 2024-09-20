@@ -674,6 +674,14 @@ function load_news_archive() {
         'orderby' => 'date',
         'order' => 'DESC',
         'paged' => $paged,
+        'meta_query' => array(
+            array (
+                'key' => 'news_date_meta',
+                'value' => current_time('Ymd'),
+                'compare' => '<',
+                'type' => 'NUMERIC'
+            )
+        )
     );
 
     if (!empty($active_tags)) {
