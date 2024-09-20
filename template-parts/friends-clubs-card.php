@@ -23,45 +23,65 @@
                             $position = $row['position'];
                             $name = $row['name'];
                             ?>
-                            <span><?php echo $position ?></span>
-                            <span><?php echo $name ?></span>
+                            <span>
+                                 <?php
+                                 echo mb_strimwidth($position, 0, 27);
+                                 ?>
+                            </span>
+                            <span>
+                               <?php
+                               echo mb_strimwidth($name, 0, 27);
+                               ?>
+                            </span>
                         <?php endforeach; ?>
                     </div>
-                    <span class="address"><?php the_field('address'); ?></span>
+                    <span class="address">
+                        <?php
+                        $address = get_field('address');
+                        echo mb_strimwidth($address, 0, 92);
+                        ?>
+                    </span>
                 </div>
                 <div class="social-media">
                     <?php
                     $emails = get_field('emails');
+                    $countEmails = 0;
                     if ($emails) :
                         foreach ($emails as $row) :
                             $iconEmail = $row['icon-email'];
                             $email = $row['email'];
                             ?>
-                            <a href="mailto:<?php esc_url($email); ?>"
-                               rel="noopener noreferrer">
+                            <a href="mailto:<?php echo esc_url($email); ?>" rel="noopener noreferrer">
                                 <img src="<?php echo esc_html($iconEmail); ?>" alt="email">
                             </a>
-                        <?php
+                            <?php
+                            $countEmails++;
+                            if ($countEmails >= 2) {
+                                break;
+                            }
                         endforeach;
                     endif;
-                    ?>
-                    <?php
+
+                    $iconsToShow = ($countEmails === 2) ? 2 : (($countEmails === 1) ? 3 : 4);
+
                     $socialLinks = get_field('social-media');
                     $countIcons = 0;
+
                     foreach ($socialLinks as $row) :
-                        $icon = $row['social-icon'];
-                        $link = $row['social-link'];
-                        if ($countIcons >= 4) {
+                        if ($countIcons >= $iconsToShow) {
                             break;
                         }
+
+                        $icon = $row['social-icon'];
+                        $link = $row['social-link'];
                         ?>
                         <a href="<?php echo esc_url($link); ?>" class="icon">
                             <img src="<?php echo esc_html($icon); ?>" alt="image">
                         </a>
                         <?php
-                        $countIcons++
-                        ?>
-                    <?php endforeach; ?>
+                        $countIcons++;
+                    endforeach;
+                    ?>
                     <?php
                     $iconPhone = get_field('icon-phone');
                     if ($iconPhone) :

@@ -4,10 +4,18 @@
     background: $primary-color;
     color: $white;
     padding: 32px 0 12px;
+<<<<<<< HEAD
         @media screen and (min-width: $tablet) {
         padding: 20px 0 13px;
       }
       @media screen and (min-width: $desktop) {
+=======
+    position: relative;
+        @media screen and (min-width: $tablet) {
+        padding: 20px 0 13px;
+      }
+        @media screen and (min-width: $desktop) {
+>>>>>>> user-cabinet
         padding: 24px 0 16px;
     }
     &__menu-list-wrapper {
@@ -37,7 +45,11 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
+<<<<<<< HEAD
             height: 345px;
+=======
+            height: 337px;
+>>>>>>> user-cabinet
             row-gap: 24px;
             column-gap: 56px;
             justify-content: flex-start;
@@ -78,6 +90,11 @@
             height: 28px;
         }
     }
+    &__icon:hover {
+        @media screen and (min-width: $desktop) {
+            transform: scale(1.2);
+        }
+    }
     &__contacts{
         @media screen and (min-width: $tablet) {
             display: flex;
@@ -91,11 +108,18 @@
             }
             .footer__location {
                 order: 2;
+<<<<<<< HEAD
+=======
+                width: 190px;
+>>>>>>> user-cabinet
             }
             .footer__phone {
                 order: 3;
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> user-cabinet
           }
       
           @media screen and (min-width: $desktop) {
@@ -105,7 +129,7 @@
             padding: 0;
           }
     }
-    &__contacts-icon{
+    &__contacts-icon {
         width: 44px;
         height: 44px;
         @media screen and (min-width: $desktop) {
@@ -114,6 +138,15 @@
         }
     }
 
+<<<<<<< HEAD
+=======
+    &__contacts-icon:hover {
+        @media screen and (min-width: $desktop) {
+            transform: scale(1.2);
+        }
+    }
+
+>>>>>>> user-cabinet
     &__mail,
     &__phone,
     &__location{
@@ -121,6 +154,7 @@
         align-items: center;
         gap: 8px;
         font-size: 16px;
+        font-weight: 500;
         line-height: 131%;
         @media screen and (min-width: $tablet) {
             flex-direction: column;
@@ -147,6 +181,12 @@
         @media screen and (min-width: $tablet) {
             padding-bottom: 0;
         }
+<<<<<<< HEAD
+=======
+        @media screen and (min-width: $desktop) {
+            width: 224px;
+        }
+>>>>>>> user-cabinet
     }
 
     &__line{
@@ -159,6 +199,7 @@
         display: flex;
         justify-content: space-between;
         font-size: 10px;
+        font-weight: 500;
         padding-top: 8px;
         @media screen and (min-width: $desktop) {
             padding-top: 12px;
@@ -189,7 +230,6 @@
         grid-area: politic-copy;
     }
 
-
     .sub-menu{
         height: fit-content !important;
         @media screen and (min-width: $tablet) {
@@ -199,10 +239,6 @@
         @media screen and (min-width: $desktop) {
             display: block !important;
         }
-    }
-
-    .menu-item-custom{
-        margin: 8px 0 8px;
     }
     
     .menu-item a {
@@ -217,6 +253,10 @@
             line-height: 119%;
         }
     }
+
+    .menu-item a:hover {
+        font-weight: 700;
+    }
     
     .menu-item li a {
         display: none;
@@ -229,6 +269,7 @@
       
           @media screen and (min-width: $desktop) {
             margin-top: 8px;
+            height: 20px;
           }
     }
     
@@ -241,7 +282,10 @@
     }
     
     /* changed order of sections 1&2 on 768px*/
+<<<<<<< HEAD
     // .container {
+=======
+>>>>>>> user-cabinet
         @media screen and (min-width: $desktop) {
             display: flex;
             flex-direction: column;
@@ -266,7 +310,14 @@
         .footer__politic-copy {
             order: 5; 
         }
+
+    .footer__logo, .footer__socials, .footer__contacts {
+        @media screen and (min-width: $desktop) {
+            display: none;
+        }
+    }
     
+<<<<<<< HEAD
     //     @media screen and (min-width: $desktop) {
     //         display: block;
     //     }
@@ -288,11 +339,118 @@
     
 
     .footer__logo, .footer__socials, .footer__contacts {
+=======
+    /* changed order of menu items on 768px*/
+    .footer__menu-list-wrapper {
+        @media screen and (min-width: $tablet) and (max-width: 1438px) {
+            li:nth-child(1) {
+                order: 1;
+                margin-left: 65px;
+            }
+
+            li:nth-child(2) {
+                order: 2;
+            }
+            
+            li:nth-child(3) {
+                order: 3;
+            }
+
+            li:nth-child(8) {
+                order: 4;
+                margin-right: 65px;
+                @media screen and (min-width: 850px) {
+                    margin-right: 0;
+                }
+            }
+
+            li:nth-child(9) {
+                order: 5;
+            }
+
+            li:nth-child(4) {
+                order: 6;
+            }
+
+            li:nth-child(5) {
+                order: 7;
+            }
+
+            li:nth-child(7) {
+                order: 8;
+            }
+            li:nth-child(6) {
+                order: 9;
+            }
+
+            li:nth-child(10) {
+                order: 10;
+            }
+            li:nth-child(11) {
+                order: 11;
+            }
+
+            li:nth-child(12) {
+                order: 12;
+            }
+        }
+        @media screen and (min-width: 850px) {
+            li:nth-child(1) {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .footer__menu-list-wrapper li:nth-child(8),
+    .footer__menu-list-wrapper li:nth-child(9),
+    .footer__menu-list-wrapper li:nth-child(10),
+    .footer__menu-list-wrapper li:nth-child(11),
+    .footer__menu-list-wrapper li:nth-child(12) {
+        @media screen and (min-width: $desktop) {
+            height: 25px;
+        }
+    }
+
+    .footer__menu-list-wrapper li:nth-child(2) .menu-item {
+        @media screen and (min-width: $desktop) {
+            width: 178px;
+        }
+    }
+
+    .footer__menu-list-wrapper li:nth-child(3) .menu-item {
+        @media screen and (min-width: $desktop) {
+            width: 177px;
+        }
+    }
+
+    .footer__menu-list-wrapper li:nth-child(5) .menu-item {
+        @media screen and (min-width: $desktop) {
+            width: 166px;
+        }
+    }
+
+
+
+//   Styles for Right-side Logo & Icons etc, appeared at $desktop (class="footer__side-part")
+
+    .big-footer-wrapper {
+        @media screen and (min-width: $desktop) {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            padding-bottom: 12px;
+        }
+    }
+
+    #no-display {
+        display: none;
+>>>>>>> user-cabinet
         @media screen and (min-width: $desktop) {
             display: none;
         }
     }
 
+<<<<<<< HEAD
 
 
     
@@ -423,4 +581,95 @@
     }
 
 
+=======
+    &__logo-side img {
+        width: 227px;
+        height: 65px;
+    }
+
+    &__icons-list {
+        @media screen and (min-width: $desktop) {
+            gap: 16px;
+            padding: 18px 0 25px;
+        }
+    }
+
+    &__contacts-icon img {
+        @media screen and (min-width: $desktop) {
+            width: 28px;
+            width: 28px;
+        }
+    }
+}
+/* ------------------------ Up-btn ------------------*/
+.button-top-wrapper {
+    display: flex;
+    justify-content: end;
+}
+
+.button-top-container {
+    z-index: 10;
+}
+
+.button-container-fixed {
+    position: fixed;
+    bottom: 16px;
+}
+
+.button-container-absolute {
+    position: absolute;
+}
+
+.up_btn {
+    box-sizing: content-box;
+    margin-bottom: 16px;
+    right: 16px;
+    z-index: 10;
+    background-color: transparent;
+    cursor: pointer;
+    @media screen and (min-width: $tablet) {
+        right: 32px;
+      }
+    @media screen and (min-width: $desktop) {
+        right: calc((100% - 1128px) / 2);
+    }
+}
+
+.button-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: $red;
+    box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+    padding-top: 5px;
+    @media screen and (min-width: $desktop) {
+        width: 56px;
+        height: 56px;
+        gap: 0;
+        padding-top: 2px;
+    }
+>>>>>>> user-cabinet
+}
+
+.button-image svg {
+    @media screen and (min-width: $desktop) {
+        width: 40px;
+        height: 40px;
+        margin-bottom: -1px;
+    }
+}
+
+.button-image p {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 10px;
+    line-height: 100%;
+    text-align: center;
+    @media screen and (min-width: $desktop) {
+        font-size: 12px;
+    }
 }

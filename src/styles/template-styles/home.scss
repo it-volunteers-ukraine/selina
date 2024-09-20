@@ -244,6 +244,17 @@
     gap: 8px;
   }
 
+  &__heading-wrapper {
+    align-items: center;
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+    }
+  }
+
   &__button {
     margin-top: 16px;
     font-size: 18px;
@@ -276,9 +287,15 @@
       margin-left: 4px;
     }
 
-    &:hover {
+    &:active {
       background-color: $white;
       color: $primary-color;
+    }
+    @media screen and (min-width: $desktop) {
+      &:hover {
+        background-color: $white;
+        color: $primary-color;
+      }
     }
   }
 
@@ -302,6 +319,7 @@
       background-color: $white;
       border-radius: $big-br;
       padding: 29.5px 38px;
+      box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.12);
     }
     @media screen and (min-width: $desktop) {
       padding: 80px;
@@ -316,7 +334,11 @@
     border-radius: $big-br;
     height: 168px;
     width: 168px;
+    box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.12);
+
     @media screen and (min-width: $tablet) {
+      box-shadow: none;
+
       height: 81px;
     }
     @media screen and (min-width: $desktop) {
@@ -660,9 +682,15 @@
     justify-content: center;
     cursor: pointer;
 
-    &:hover {
+    &:active {
       background-color: $white;
       color: $primary-color;
+    }
+    @media screen and (min-width: $desktop) {
+      &:hover {
+        background-color: $white;
+        color: $primary-color;
+      }
     }
   }
 
@@ -693,7 +721,6 @@
     height: 468px;
     border-radius: $big-br;
     padding: 16px;
-
     box-shadow: 0px 1px 12px 0px #0000001f;
   }
   &__img {
@@ -824,22 +851,19 @@
   }
 
   &__item {
+    margin-bottom: 24px;
+    box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: $light-green;
+    padding: 16px;
+    border-radius: 10px;
     @media screen and (min-width: $tablet) {
       display: flex;
       gap: 24px;
-      background-color: #eff8f9;
-      padding: 16px;
-      box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
-
-      img {
-        max-width: calc(50% - 24px);
-        object-fit: cover;
-        overflow: hidden;
-        border-radius: 10px;
-      }
-      @media screen and (min-width: $desktop) {
-        padding: 24px;
-      }
+      padding: 24px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 32px;
+      margin-bottom: 40px;
     }
   }
 
@@ -868,10 +892,6 @@
     @media screen and (min-width: $tablet) {
       margin-top: 0;
     }
-
-    svg {
-      fill: $red;
-    }
   }
 
   &__text {
@@ -884,9 +904,6 @@
     }
     @media screen and (min-width: $desktop) {
       margin-top: 40px;
-    }
-    svg {
-      fill: $red;
     }
   }
 }

@@ -1,0 +1,616 @@
+@import "../variables.scss";
+
+.heading-section-events {
+    color: $primary-color;
+    background-color: $light-green;
+    padding: 0;
+    position: relative;
+
+    @media screen and (min-width: $desktop) {
+        background-color: $light-green;
+    }
+
+    &__background-img {
+        display: none;
+
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
+    }
+
+    &__wrapper {
+        padding: 20px 0;
+
+        @media screen and (min-width: $tablet) {
+            padding: 30px 0;
+        }
+
+        @media screen and (min-width: $desktop) {
+            position: absolute;
+            background: none;
+            top: 123px;
+            padding: 0;
+            margin: auto;
+        }
+    }
+
+    &__list-events {
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 30px;
+        line-height: 100%;
+        margin-bottom: 10px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 45px;
+            margin-bottom: 14px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            font-size: 60px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 24px;
+        row-gap: 8px;
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        padding: 4px 0;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            padding: 7.5px 0;
+            row-gap: 15px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            column-gap: 36px;
+            row-gap: 16px;
+            padding: 0;
+            width: 660px;
+        }
+    }
+
+    &__nav-li-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__nav-li a svg {
+        @media screen and (min-width: $tablet) {
+            width: 14px;
+            height: 13px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 18px;
+            height: 16px;
+        }
+    }
+}
+
+.exhibitions {
+    background-color: $white;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 42px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+
+    &__heading-container {
+        display: flex;
+        align-items: center;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 100%;
+        margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+            gap: 8px;
+            padding: 6px 0;
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            gap: 12px;
+            padding: 7.5px 0;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__heading-container svg {
+        display: none;
+        
+        @media screen and (min-width: $tablet) {
+            display: block;
+            width: 29px;
+            height: 28px;
+            fill: $primary-color;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: block;
+            width: 41px;
+            height: 37px;
+        }
+    }
+
+    &__description {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+        margin-bottom: 32px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            line-height: 125%;
+            margin-bottom: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 820px;
+            margin-bottom: 40px;
+        }
+    }
+    &__news-section__item {
+        margin-bottom: 24px;
+        box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.1);
+        background-color: $light-green;
+        padding: 16px;
+        border-radius: 10px;
+        @media screen and (min-width: $tablet) {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+    }
+    &__last-button {
+        gap: 8px;
+        margin: 0 auto;
+        @media screen and (min-width: $desktop) {
+            margin: 0;
+        }
+    }
+}
+
+.calendar {
+    background-color: $background;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 42px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+
+    &__heading-container {
+        display: flex;
+        align-items: center;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 100%;
+        margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+            gap: 8px;
+            padding: 6px 0;
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            gap: 12px;
+            padding: 7.5px 0;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__heading-container svg {
+        display: none;
+        
+        @media screen and (min-width: $tablet) {
+            display: block;
+            width: 29px;
+            height: 28px;
+            fill: $primary-color;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: block;
+            width: 41px;
+            height: 37px;
+        }
+    }
+
+    &__description {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        color: $black;
+        margin-bottom: 24px;
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            line-height: 125%;
+        }
+        @media screen and (min-width: $desktop) {
+            width: 820px;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__calendars {
+        @media screen and (min-width: $tablet) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+    }
+
+    &__calendar-card {
+        padding: 16px;
+        border-radius: 10px;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        background: $white;
+        margin-bottom: 24px;
+        @media screen and (min-width: $tablet) {
+            margin-bottom: 0;
+            width: calc((100% - 24px)/2);
+        }
+    }
+
+    &__calendar-card img {
+        border-radius: 8px;
+        margin-bottom: 16px;
+    }
+
+    &__calendar-card-heading {
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 120%;
+        margin-bottom: 12px;
+    }
+
+    &__calendar-card-info {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 131%;
+        @media screen and (min-width: $tablet) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+        }
+    }
+
+    &__calendar-card-button {
+        padding: 10px 8px 10px 16px;
+        gap: 8px;
+        margin-top: 12px;
+    }
+
+    &__show-more-button {
+        gap: 8px;
+        margin: 0 auto;
+        @media screen and (min-width: $tablet) {
+            margin-top: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            margin: 40px 0 0;
+        }
+    }
+
+    &__calendar-card--hidden {
+        display: none;
+    }
+}
+
+.beginners-tips {
+    background-color: $white;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 42px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+
+    &__heading-container {
+        display: flex;
+        align-items: center;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 100%;
+        margin-bottom: 32px;
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+            gap: 8px;
+            padding: 6px 0;
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            gap: 12px;
+            padding: 7.5px 0;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__heading-container svg {
+        display: none;
+        
+        @media screen and (min-width: $tablet) {
+            display: block;
+            width: 29px;
+            height: 28px;
+            fill: $primary-color;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: block;
+            width: 41px;
+            height: 37px;
+        }
+    }
+    
+    &__slider-container {
+        @media screen and (min-width: $tablet) {
+            display: none;
+        }
+    }
+
+    &__cards-container {
+        display: none;
+        @media screen and (min-width: $tablet) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            column-gap: 24px;
+            row-gap: 48px;
+        }
+    }
+
+    &__card {
+        position: relative;
+        background-color: $light-green;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+        padding: 104px 24px 48px;
+        margin-top: 27px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 272px;
+        @media screen and (min-width: $tablet) {
+            width: calc((100% - 24px)/2);
+        }
+        @media screen and (min-width: $desktop) {
+            width: calc((100% - 48px)/3);
+            padding: 88px 32px 64px;
+        }
+    }
+
+    &__card:nth-child(n+9) {
+        @media screen and (min-width: $tablet) and (max-width: $desktop) {
+            display: none;
+        }
+    }
+
+    &__tips-card--hidden {
+        display: none;
+    }
+
+    &__clip-svg {
+        position: absolute;
+        top: -27px;
+        right: 15px;
+        display: initial;
+    }
+
+    &__card-text {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 100%;
+        text-align: center;
+        color: $black;
+        margin-bottom: 28px;
+    }
+
+    &__tips-button {
+        gap: 8px;
+    }
+
+    &__tips_button-icon {
+        width: 16px;
+        height: 15px;
+    }
+
+    &__show-more-button {
+        display: none;
+        margin: 40px auto 0;
+        gap: 8px;
+        @media screen and (min-width: $tablet) {
+            display: flex;
+        }
+        @media screen and (min-width: $desktop) {
+            margin: 40px 0 0;
+        }
+    }
+}
+
+/* Slider */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-navigation-pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.slider-button-prev,
+.slider-button-next {
+    height: 44px;
+    width: 44px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: $primary-color;
+    color: $white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    svg {
+        height: 15px;
+        width: 16px;
+        fill: currentColor;
+        margin: 0 14px;
+    }
+  
+    &:hover {
+        background-color: $white;
+        color: $primary-color;
+        border: 1px solid $primary-color;
+    }
+}
+
+.slider-pagination {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 100%;
+    color: $primary-color;
+    text-align: center;
+}
+
+.awards {
+    background-color: $background;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 56px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+
+    &__heading-container {
+        display: flex;
+        align-items: center;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 100%;
+        margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+            gap: 8px;
+            padding: 6px 0;
+            margin-bottom: 24px;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            gap: 12px;
+            padding: 7.5px 0;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__heading-container svg {
+        display: none;
+        
+        @media screen and (min-width: $tablet) {
+            display: block;
+            width: 29px;
+            height: 28px;
+            fill: $primary-color;
+        }
+        
+        @media screen and (min-width: $desktop) {
+            display: block;
+            width: 41px;
+            height: 37px;
+        }
+    }
+
+    &__gallery {
+        @media screen and (min-width: $tablet) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+    }
+
+    &__gallery-photo {
+        margin-bottom: 16px;
+        @media screen and (min-width: $tablet) {
+            margin-bottom: 0;
+            width: calc((100% - 24px)/2);
+        }
+        @media screen and (min-width: $desktop) {
+            margin-bottom: 0;
+            width: calc((100% - 48px)/3);
+        }
+    }
+
+    &__hidden {
+        display: none;
+    }
+
+    &__gallery-photo img {
+        border-radius: 10px;
+    }
+
+    &__show-more-button,
+    &__show-less-button {
+        margin: 24px auto 0;
+        gap: 8px;
+        @media screen and (min-width: $desktop) {
+            margin: 40px 0 0;
+        }
+    }
+    
+    &__show-less-button {
+        display: none;
+    }
+}

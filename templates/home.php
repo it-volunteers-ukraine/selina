@@ -52,7 +52,7 @@ get_header();
     </section>
     <section class="section partners-section">
         <div class="container">
-            <div class="home-heading-wrapper">
+            <div class="home-heading-wrapper partners-section__heading-wrapper">
                 <h2 class="partners-section__heading section_heading">
                     <svg class="home-heading-svg" width="42" height="60">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
@@ -79,19 +79,30 @@ get_header();
             </div>
             <div class="partners-section__swiper-outer">
                 <div class="partners-section__swiper swiper">
-                <div class="partners-section__list swiper-wrapper">
-                    <?php
-                    $args = array('posts_per_page' => -1, 'post_type' => 'all_partners');
-                    $myposts = get_posts($args);
-                    foreach ($myposts as $post):
-                        setup_postdata($post); ?>
-                        <div class="swiper-slide partners-section__item">
-                            <img src="<?php the_field('partner_img') ?>" />
-                        </div>
-                    <?php endforeach;
-                    wp_reset_postdata(); ?>
+                    <div class="partners-section__list swiper-wrapper">
+                        <?php
+                        $args = array(
+                            'post_type' => 'all_partners',
+                            'order' => 'ASC',
+                            'posts_per_page' => -1,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'partners_categories',
+                                    'field' => 'slug',
+                                    'terms' => 'our-partners'
+                                )
+                            )
+                        );
+                        $myposts = get_posts($args);
+                        foreach ($myposts as $post):
+                            setup_postdata($post); ?>
+                            <div class="swiper-slide partners-section__item">
+                                <img src="<?php the_field('partner_img') ?>" />
+                            </div>
+                        <?php endforeach;
+                        wp_reset_postdata(); ?>
+                    </div>
                 </div>
-            </div>
             </div>
 
             <a class="partners-section__button button red_medium_button"
@@ -257,7 +268,13 @@ get_header();
                 <div class="news-section__list swiper-wrapper">
                     <?php
                     $counter = 0;
-                    $args = array('posts_per_page' => -1, 'post_type' => 'news');
+                    $args = array(
+                        'orderby' => 'date',
+                        'order' => 'DESC',
+                        'post_type' => 'news',
+                        'showposts' => -1,
+                    );
+
                     $myposts = get_posts($args);
                     foreach ($myposts as $post):
                         $count = count($myposts);
@@ -267,14 +284,22 @@ get_header();
 
                             <div class="news-section__item">
                                 <?php
-                                $category_detail = get_the_category($post->ID);
-                                $category_name = $category_detail[0]->cat_name;
-                                $category_slug = $category_detail[0]->slug;
+                                $tags = get_the_terms(get_the_ID(), 'news_tag');
+                                $term_color_style = '';
+                                $tag_name = '';
+                                if ($tags && !is_wp_error($tags)) {
+                                    foreach ($tags as $tag) {
+                                        // Get color for each tag
+                                        $term_color = get_field('tag_color', 'news_tag_' . $tag->term_id);
+                                        $term_color_style = $term_color ? 'style="background-color:' . esc_attr($term_color) . ';"' : '';
+                                        $tag_name = $tag->name;
 
-                                if ($category_name):
+                                    }
+                                }
+                                if ($tag_name):
                                     ?>
-                                    <div class="news-section__category <?php echo $category_slug . '' ?>">
-                                        <?php echo $category_name . '' ?>
+                                    <div class="news-section__category" <?php echo $term_color_style . '' ?>>
+                                        <?php echo $tag_name . '' ?>
                                     </div>
                                 <?php endif; ?>
                                 <div class="news-section__img"><img src="<?php the_field('news_photo') ?>" /></div>
@@ -286,15 +311,48 @@ get_header();
                                         <?php the_field('news_text') ?>
                                     </p>
 
-                                    <a class="news-section__button button red_medium_button"
-                                        href="<?php the_field('news_link'); ?>">
-                                        <?php the_field('news_btn'); ?>
-                                        <svg class="news-section__button-svg" width="16" height="15">
-                                            <use
-                                                href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                                            </use>
-                                        </svg>
-                                    </a>
+                                    <!-- Button types -->
+                                    <?php
+                                    $news_disk_link = get_field('news_choice-button_disc');
+                                    $news_outer_link = get_field('news_choice-button_outer-link');
+                                    ?>
+
+                                    <!-- google-disk -->
+                                    <?php if (!empty($news_disk_link)): ?>
+                                        <a href="<?php the_field('news_choice-button_disc') ?>"
+                                            class='news-section__button button red_medium_button' target='_blank'>
+                                            <p><?php the_field('news_btn') ?></p>
+                                            <svg class="news-section__button-svg" width="16" height="14">
+                                                <use
+                                                    href="<?php bloginfo('template_url'); ?>/assets/images/sprite.svg#icon-google">
+                                                </use>
+                                            </svg>
+                                        </a>
+
+                                        <!-- outer-link -->
+                                    <?php elseif (!empty($news_outer_link)): ?>
+                                        <a href="<?php the_field('news_choice-button_outer-link') ?>"
+                                            class='news-section__button button red_medium_button' target='_blank'>
+                                            <p><?php the_field('news_btn') ?></p>
+                                            <svg class="news-section__button-svg" width="16" height="15">
+                                                <use
+                                                    href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#arrow-up-right">
+                                                </use>
+                                            </svg>
+                                        </a>
+
+                                        <!-- inner-link -->
+                                    <?php else: ?>
+                                        <a class="news-section__button button red_medium_button"
+                                            href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                                            <p><?php the_field('news_btn'); ?></p>
+                                            <svg class="news-section__button-svg" width="16" height="15">
+                                                <use
+                                                    href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw">
+                                                </use>
+                                            </svg>
+                                        </a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="news-section__counter-wrapper">
@@ -322,81 +380,70 @@ get_header();
             </h2>
             <div class="exhibitions-section__list">
                 <?php
-                $args = array('posts_per_page' => 1, 'post_type' => 'exhibitions');
+                $args = array(
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'post_type' => 'news',
+                    'posts_per_page' => 1,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'news_categories',
+                            'field' => 'slug',
+                            'terms' => 'exhibition'
+                        )
+                    )
+                );
                 $myposts = get_posts($args);
-                foreach ($myposts as $post):
-                    setup_postdata($post); ?>
-                    <div class="exhibitions-section__item">
-                        <img src="<?php the_field('exhibition_photo') ?>" />
-                        <div class="exhibitions-section__text-wrapper">
-                            <div class="exhibitions-section__date">
-                                <p>
-                                    <svg width="18" height="18">
-                                        <use
-                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clock">
-                                        </use>
-                                    </svg>
-                                    <?php the_field('exhibition_date') ?>
-                                </p>
-                                <p>
-                                    <svg width="18" height="18">
-                                        <use
-                                            href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-calendar">
-                                        </use>
-                                    </svg>
-                                    <?php the_field('exhibition_time') ?>
-                                </p>
+                if ($myposts) {
+                    foreach ($myposts as $post):
+                        setup_postdata($post);
+                        $current_date = new DateTime();
+                        $news_date = new DateTime(get_field('news_date'));
+                        if ($news_date >= $current_date):
+                            ?>
+                            <div class="exhibitions-section__item">
+                                <?php
+                                ?>
+                                <!-- Template-part exhibition ------------------------------------- -->
+                                <?php get_template_part('template-parts/one-card-event'); ?>
+
                             </div>
-                            <p class="exhibitions-section__name">
-                                <?php the_field('exhibition_name') ?>
-                            </p>
-                            <p class="exhibitions-section__text">
-                                <?php the_field('exhibition_text') ?>
-                            </p>
-                            <a class="exhibitions-section__button button red_medium_button"
-                                href="<?php the_field('exhibition_link'); ?>">
-                                <?php the_field('exhibition_btn'); ?>
-                                <svg class="exhibitions-section__button-svg" width="16" height="15">
-                                    <use
-                                        href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                                    </use>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach;
-                wp_reset_postdata(); ?>
-        </div>
-    </section>
-    <section class="support-section section" style="background-image: url(<?php the_field('support-section__photo') ?>);">
-            <div class="container">
-                <div class="support-section__wrapper">
-                    <h2 class="support-section__heading heading">
-                        <svg class="home-heading-svg" width="42" height="60">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
-                            </use>
-                        </svg>
-                        <?php the_field('support-section__heading') ?>
-                    </h2>
-                    <p class="support-section__text">
-                        <?php the_field('support-section__text') ?>
-                    </p>
-                    <a class="support-section__button button red_medium_button"
-                        href="<?php the_field('support-section__link'); ?>">
-                        <?php the_field('support-section__button'); ?>
-                        <svg class="support-section__button-svg" width="16" height="15">
-                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                            </use>
-                        </svg>
-                    </a>
-                </div>
+                            <?php
+                        endif;
+                    endforeach;
+                    wp_reset_postdata();
+                } else {
+                    echo '<p>No exhibition.</p>';
+                }
+                ?>
             </div>
+    </section>
+    <section class="support-section section"
+        style="background-image: url(<?php the_field('support-section__photo') ?>);">
+        <div class="container">
+            <div class="support-section__wrapper">
+                <h2 class="support-section__heading heading">
+                    <svg class="home-heading-svg" width="42" height="60">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-La_cat">
+                        </use>
+                    </svg>
+                    <?php the_field('support-section__heading') ?>
+                </h2>
+                <p class="support-section__text">
+                    <?php the_field('support-section__text') ?>
+                </p>
+                <a class="support-section__button button red_medium_button"
+                    href="<?php the_field('support-section__link'); ?>">
+                    <?php the_field('support-section__button'); ?>
+                    <svg class="support-section__button-svg" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                        </use>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </section>
     <?php get_template_part('template-parts/feedbacks'); ?>
     <?php get_template_part('template-parts/contact-form'); ?>
 </main>
-
-
-
 <?php get_footer(); ?>

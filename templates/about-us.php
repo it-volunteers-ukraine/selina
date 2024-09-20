@@ -68,24 +68,24 @@ get_header();
                 <?php the_field('club-section__heading'); ?>
             </h2>
             <div class="club-section__wrapper">
-                <div class="top">
+                <div class="club-section__box top">
                     <div class="club-img-1">
                         <?php 
                             $image = get_field('club-img-1');
                             if( !empty( $image ) ): ?>
-                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="club-img"/>
                         <?php endif; ?>
                     </div>
                     <div class="club-info-1 text">
                         <p><?php the_field('club-info-1'); ?></p>
                     </div>
                 </div>
-                <div class="bottom">
+                <div class="club-section__box bottom">
                     <div class="club-img-2">
                         <?php 
                             $image = get_field('club-img-2');
                             if( !empty( $image ) ): ?>
-                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="club-img"/>
                         <?php endif; ?>
                     </div>
                     <div class="club-info-2 text">
@@ -120,7 +120,7 @@ get_header();
                     <?php the_field('map-section__description'); ?>
                 </div> 
                 <button class="map-section__button button red_medium_button">
-                    <a href="<?php echo esc_attr( get_field('map-section__link') ); ?>">
+                    <a href="<?php echo esc_attr( get_field('map-section__link') ); ?>" target="_blank">
                         <?php the_field('open-btn', 'option'); ?>
                     </a> 
                     <svg class="map-section__button-svg" width="16" height="15">
@@ -186,14 +186,14 @@ get_header();
                             $documentLink = get_sub_field('document__link');
                             ?>
                                 <div class="document">
-                                    <div class="document-card">
+                                    
                                         <svg class="clip-svg" width="38" height="90">
                                             <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-clip"></use>
                                         </svg>
                                         <div class="document-card__content">
                                             <div class="document-card__title"><?php echo $documentTitle; ?></div>
                                             <button class="document-card__button button red_medium_button">
-                                                <a href="<?php echo $documentLink; ?>">
+                                                <a href="<?php echo $documentLink; ?>" target="_blank">
                                                     <?php the_field('open-btn', 'option'); ?>
                                                 </a> 
                                                 <svg class="document-card__button-svg" width="16" height="15">
@@ -201,7 +201,7 @@ get_header();
                                                 </svg>
                                             </button>
                                         </div>
-                                    </div>
+                                    
                                 </div>
                             <?php 
                         endwhile;

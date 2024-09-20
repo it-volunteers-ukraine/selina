@@ -1,0 +1,233 @@
+@import "../variables.scss";
+
+.heading-section-user-cabinet {
+    color: $primary-color;
+    background-color: $light-green;
+    padding: 0;
+    position: relative;
+
+    @media screen and (min-width: $desktop) {
+        background-color: $light-green;
+    }
+
+    &__background-img {
+        display: none;
+
+        @media screen and (min-width: $desktop) {
+            display: block;
+        }
+    }
+
+    &__wrapper {
+        padding: 20px 0;
+
+        @media screen and (min-width: $tablet) {
+            padding: 30px 0;
+        }
+
+        @media screen and (min-width: $desktop) {
+            position: absolute;
+            background: none;
+            top: 123px;
+            padding: 0;
+            margin: auto;
+        }
+    }
+
+    &__list-user-cabinet {
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 30px;
+        line-height: 100%;
+        @media screen and (min-width: $tablet) {
+            font-size: 45px;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 60px;
+        }
+    }
+
+    &__list-user-cabinet p {
+        color: $black;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        padding: 9.5px 0;
+        margin-top: 14px;
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            padding: 7.5px 0;
+        }
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+            padding: 0;
+            margin-top: 16px;
+        }
+    }
+}
+
+.navigation-user-cabinet {
+    padding-top: 32px;
+    @media screen and (min-width: $tablet) {
+        padding-top: 56px;
+    }
+    @media screen and (min-width: $desktop) {
+        padding-top: 80px;
+    }
+    &__tabs {
+        display: flex;
+        gap: 24px;
+        align-items: start;
+        margin-bottom: 24px;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        color: $black;
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+    }
+    &__tabs p {
+        text-transform: uppercase;;
+    }
+    &__buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 100%;
+        color: $white;
+        button {
+            border-radius: 4px;
+            padding: 12px 10px;
+        }
+        @media screen and (min-width: $tablet) {
+            gap: 20px;
+        }
+        @media screen and (min-width: $desktop) {
+            gap: 24px;
+        }
+    }
+    &__buttons [data-target="video"] {
+        background-color: #62c634;
+    }
+    &__buttons [data-target="genetic"] {
+        background-color: #539cd1;
+    }
+    &__buttons [data-target="book"] {
+        background-color: #9d5dde;
+    }
+    &__buttons [data-target="seminar"] {
+        background-color: #f98114;
+    }
+    &__buttons [data-target="system"] {
+        background-color: #c63462;
+    }
+}
+
+.navigation-user-cabinet__tab-content.active {
+    color: $primary-color;
+    padding-bottom: 4px;
+    border-bottom: 2px solid $primary-color;
+}
+
+.navigation-user-cabinet__show-content.active {
+    border: 3px solid $black;
+}
+
+.content-user-cabinet {
+    &__content-section {
+        padding: 24px 0 32px;
+        @media screen and (min-width: $tablet) {
+            padding: 40px 0 56px;
+        }
+        @media screen and (min-width: $desktop) {
+            padding: 40px 0 80px;
+        }
+    }
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        @media screen and (min-width: $tablet) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        @media screen and (min-width: $desktop) {
+            gap: 24px;
+        }
+    }
+    &__content-item {
+        border: 1px solid #e8e8ea;
+        border-radius: 10px;
+        padding: 20px 20px 24px 20px;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        background: $white;
+        @media screen and (min-width: $tablet) {
+            width: calc((100% - 20px)/2);
+        }
+        @media screen and (min-width: $desktop) {
+            width: calc((100% - 48px)/3);
+        }
+    }
+    &__content-image {
+        position: relative;
+        height: 240px;
+        margin-bottom: 20px;
+        padding: 0 0 58% 0;
+    }
+    &__content-image img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    &__title {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 120%;
+        color: $primary-color;
+        margin-bottom: 28px;
+    }
+    &__link {
+        gap: 8px;
+    }
+    &__form-item {
+        position: relative;
+        background-color: $light-green;
+        box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+        padding: 80px 32px 64px;
+        margin-top: 27px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 272px;
+        @media screen and (min-width: $tablet) {
+            width: calc((100% - 24px)/2);
+        }
+        @media screen and (min-width: $desktop) {
+            width: calc((100% - 48px)/3);
+            padding: 88px 32px 64px;
+        }
+    }
+    &__clip-svg {
+        position: absolute;
+        top: -27px;
+        right: 15px;
+        display: initial;
+    }
+    &__form-title{
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 100%;
+        text-align: center;
+        color: $black;
+        margin-bottom: 28px;
+    }
+}

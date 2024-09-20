@@ -1,0 +1,85 @@
+@import "../variables";
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+  background: rgb(255, 255, 255);
+  padding: 16px;
+  width: 343px;
+  gap: 16px;
+
+  @media (min-width: $tablet) {
+    width: 340px;
+  }
+
+  @media (min-width: $desktop) {
+    gap: 25px;
+    width: 552px;
+    box-shadow: none;
+  }
+
+  .card-image {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 0 0 86% 0;
+
+    @media (min-width: $tablet) {
+      padding: 0;
+    }
+
+    .image {
+      width: 260px;
+      border-radius: 10px;
+      object-fit: cover;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      @media (min-width: $mobile) {
+        width: 312px;
+      }
+
+      @media (min-width: $tablet) {
+        position: static;
+      }
+
+      @media (min-width: $desktop) {
+        width: 505px;
+      }
+    }
+  }
+
+  .title {
+    font-size: 19px;
+    color: $primary-color;
+    font-weight: 800;
+    line-height: 24px;
+
+
+    @media (min-width: $mobile) {
+      font-size: 24px;
+    }
+
+    @media (min-width: $desktop) {
+      padding: 0 5px;
+    }
+
+  }
+
+  .description {
+    font-size: 16px;
+    @media (min-width: $desktop) {
+      padding: 0 5px;
+    }
+  }
+  .education-button-text{
+    padding: 0 4px;
+  }
+  .education-icon{
+    margin-top: -2px;
+  }
+}

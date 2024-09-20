@@ -1,0 +1,818 @@
+@import "../variables";
+
+html { 
+    scroll-behavior: smooth;
+}
+
+/*Headings for sections ---------------------*/
+.rules-wcf-sections-heading {
+    margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 24px; 
+    }
+    @media screen and (min-width: $desktop) {
+        gap: 12px;
+        margin-bottom: 40px; 
+    }
+    .heading-svg {
+        display: none;
+        @media screen and (min-width: $tablet) {
+            display: initial;
+            width: 26.32px;
+            height: 23.53px;
+        }
+        @media screen and (min-width: $desktop) {
+            width: 36.85px;
+            height: 32.94px;
+        }
+    }   
+}
+
+/*Button Open -----------------------------------*/
+.open-btn {
+    gap: 8px;
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33;
+    border: none;
+}
+
+.wcf {
+   .upper-section {
+        background-color: $light-green;
+        padding: 20px 0;
+        @media screen and (min-width: $tablet) {
+            padding: 30px 0;
+        }
+        @media screen and (min-width: $desktop) {
+            background-color: none;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 118.5px 0;
+        }
+        &__banner {
+            @media screen and (min-width: $desktop) {
+                width: 823px;
+            }
+        }
+        &__heading {
+            font-size: 30px;
+            margin-bottom: 10px;
+            @media screen and (min-width: $tablet) {
+                font-size: 45px;
+                margin-bottom: 14px;
+            }
+            @media screen and (min-width: $desktop) {
+                font-size: 60px;
+                margin-bottom: 24px;
+            }
+        }
+        &__sub-titles {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            column-gap: 24px;
+            @media screen and (min-width: $desktop) {
+                column-gap: 36px;
+                row-gap: 16px;
+            }
+            .sub-title {
+                display: flex;
+                align-items: baseline;
+                gap: 10px;
+                font-weight: 800;
+                font-size: 16px;
+                line-height: 1;
+                color: $primary-color;
+                padding: 4px 0;
+                @media screen and (min-width: $tablet) {
+                    font-size: 20px;
+                    padding: 7.5px 0;
+                }
+                @media screen and (min-width: $desktop) {
+                    padding: 0;
+                }
+                &-svg {
+                    width: 14px;
+                    height: 12px;
+                    @media screen and (min-width: $desktop) {
+                        width: 18px;
+                        height: 16px;
+                    }
+                }
+            }  
+        }
+    }
+    /*About WCF section ---------------------------*/
+    
+    .about_wcf-section {
+        background-color: $background;
+        &__wrapper {
+            display: grid;
+            @media screen and (min-width: $desktop) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto auto;
+                grid-column-gap: 0px;
+                grid-row-gap: 40px;
+                  
+                .about_wcf-section__heading { grid-area: 1 / 1 / 2 / 2; }
+                .about_wcf-section__content { grid-area: 2 / 1 / 3 / 3; }
+                .about_wcf-section__button { grid-area: 1 / 2 / 2 / 3; }
+            }
+        }
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+            @media screen and (min-width: $desktop) {
+                margin-bottom: 0; 
+            }
+        }
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px; 
+            @media screen and (min-width: $desktop) {
+                flex-direction: row-reverse;
+            }
+        }
+        &__upper-card {
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 10px;
+            @media screen and (min-width: $desktop) {
+                width: 50%; 
+            }
+            img {
+                max-width: 100%; 
+                object-fit: contain;
+                @media screen and (min-width: $tablet) {
+                    transform: scale(1.2);
+                }
+                @media screen and (min-width: $desktop) {
+                    transform: none;
+                }
+            }
+        } 
+        &__lower-card {
+            background-color: #fff;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.31;
+            padding: 24px 24px 24px 48px;
+            margin-bottom: 16px;
+            @media screen and (min-width: $tablet) {
+                font-size: 20px;
+                line-height: 1.25;
+                margin-bottom: 24px;
+            }
+            @media screen and (min-width: $desktop) {
+                width: 50%;
+                margin-bottom: 0;
+                block-size: fit-content;
+            }
+            ul {
+                list-style-type: disc;
+                li {
+                    margin-bottom: 21.34px;
+                    @media screen and (min-width: $tablet) {
+                        margin-bottom: 25.012px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                    &:nth-child(5) {
+                        margin-bottom: 0;
+                        @media screen and (min-width: $tablet) {
+                            margin-bottom: 25.012px;
+                        }
+                    }
+                    .wcf_word {
+                        color: $primary-color;
+                    }
+                    &:nth-last-child(-n+2) {
+                        display: none;
+            
+                        @media screen and (min-width: $tablet) {
+                            display: list-item;
+                        }
+                    }
+                }  
+            }
+        }
+        &__button {
+            width: 167px;
+            height: 44px;
+            padding: 10px 8px 10px 16px;
+            gap: 8px;
+            border: none;
+            @media screen and (min-width: $desktop) {
+                justify-self: flex-end;
+            }
+            &-svg {
+                stroke: currentColor;
+            }
+        }
+    }
+    
+    /*WCF system rules section --------------------*/
+    .rules-section {
+        background-color: $background;
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                gap: 24px;
+            }
+        }
+        &__img {
+            height: 240px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            @media screen and (min-width: $tablet) {
+                width: 51.2%;
+            }
+            @media screen and (min-width: 1024px) {
+                height: 300px;
+            }
+            @media screen and (min-width: $desktop) {
+                height: 240px;
+                width: 360px;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+                border-radius: 10px;
+                scale: 1.2;
+            }
+        }
+        &__infobox {
+            @media screen and (min-width: $desktop) {
+                align-self: center;
+            }
+            .infobox {
+                &__large-screen {
+                    display: none;
+                    @media screen and (min-width: $desktop) {
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 1.25;
+                        display: block;
+                        margin-bottom: 32px;
+                    }
+                }
+                &__small-screen {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 1.31;
+                    margin-bottom: 24px;
+                    @media screen and (min-width: $tablet) {
+                        font-size: 20px;
+                        line-height: 1.25;
+                    }
+                    @media screen and (min-width: $desktop) {
+                        display: none;
+                    }
+                }
+            }  
+        }
+        &__button {
+            @extend .open-btn;
+        }
+    }
+    .rules-responsibility {
+        position: relative; 
+        overflow: hidden; 
+        padding: 21px 1.5px;
+        @media screen and (min-width: $tablet) {
+            padding: 58px 1px 58px;
+        }
+        @media screen and (min-width: $desktop) {
+            padding: 80px 0 110px;
+        }
+        &__title {
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 1;
+            text-align: center;
+            margin-bottom: 16px;
+            @media screen and (min-width: $tablet) {
+                font-size: 45px;
+                padding: 0 153.71px;
+            }
+            @media screen and (min-width: $desktop) {
+                font-size: 45px;
+                padding: 0 362px;
+                margin-bottom: 0;
+            }
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            @media screen and (min-width: $desktop) {
+                gap: 24px;
+            }
+            .responsibility-card {
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 24px;
+                gap: 16px;
+                height: 208px;
+                width: 100%;
+                border-radius: 10px;
+                @media screen and (min-width: $tablet) {
+                    max-width: calc((100% - 22px) / 2);
+                }
+                @media screen and (min-width: $desktop) {
+                    width: 360px;
+                    height: 190px;
+                }
+                &__img {
+                    align-self: center;
+                }
+                &__content {
+                    font-weight: 800;
+                    font-size: 20px;
+                    line-height: 1;
+                    text-align: center;
+                    @media screen and (min-width: $tablet) {
+                        font-size: 24px;
+                    }
+                }
+            }  
+        }
+    }
+    .rules-responsibility::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: 0;
+        transform: scale(1.1);
+        z-index: -1; 
+        @media screen and (min-width: $tablet) {
+            background-position: -400px 0;
+        }
+        @media screen and (min-width: 1156px) {
+            background-position: 0;
+        }
+        @media screen and (min-width: $desktop) {
+            transform: scale(1.5);
+        }
+    }
+    /*Breed standards section ----------------------*/
+    .breeds-section {
+        background-color: $background;
+        padding: 32px 0 0;
+        @media screen and (min-width: $tablet) {
+            padding: 56px 0;
+        }
+        @media screen and (min-width: $desktop) {
+            padding: 80px 0;
+        }
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                gap: 24px;
+            }
+        }
+        &__img {
+            height: 240px;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            align-self: center;
+            @media screen and (min-width: 499px) {
+                height: 340px;
+            }
+            @media screen and (min-width: $tablet) {
+                height: 240px;
+                width: 51.2%;
+            }
+            @media screen and (min-width: 1024px) {
+                height: 300px;
+            }
+            @media screen and (min-width: $desktop) {
+                height: 240px;
+                width: 360px;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+        &__infobox {
+            @media screen and (min-width: $desktop) {
+                align-self: center;
+            }
+            .infobox {
+                &__breed-standards {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 1.31;
+                    margin-bottom: 24px;
+                    @media screen and (min-width: $tablet) {
+                        font-size: 20px;
+                        line-height: 1.25;
+                    }
+                    @media screen and (min-width: $desktop) {
+                        margin-bottom: 32px;
+                    }
+                }
+            }  
+        }
+        &__button {
+            @extend .open-btn;
+        }
+    }
+    /*Title system section ----------------------------*/
+    .title_system-section {
+        padding: 32px 0 0;
+        background-color: $background;
+        @media screen and (min-width: $tablet) {
+            background-color: #fff;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 56px 0;
+            @media screen and (min-width: $desktop) {
+                padding: 80px 0 92px;
+            }
+        }
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__small-wrapper {
+            background-color: #fff;
+            width: 100%;
+            border-radius: 10px;
+            margin: 0 auto;
+            padding: 24px;
+            gap: 24px;
+            @media screen and (min-width: $tablet) {
+                display: none;
+            }  
+        }
+        &__description {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.31;
+        } 
+        &__button {
+            @extend .open-btn;
+            margin-top: 24px;
+        }
+        &__big-wrapper {
+            display: none;
+            @media screen and (min-width: $tablet) {
+                display: flex;
+                flex-direction: column;
+                gap: 49px;
+                width: 704px;
+                margin: 0 auto;
+            }
+            @media screen and (min-width: $desktop) {
+                gap: 80px;
+                width: 1139px;
+            }
+            .adult-cats {
+                display: flex;
+                flex-direction: column;
+                &__title-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                &__title {
+                    font-weight: 800;
+                    font-size: 27px;
+                    line-height: 1;
+                    text-align: center;
+                    color: $violet-light;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 45px;
+                    }
+                }
+                &__info-above-card {
+                    font-weight: 800;
+                    font-size: 14px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 24px;
+                        line-height: 1;
+                    }
+                }
+                &__info-above-card-violet {
+                    padding-left: 4px;
+                }
+                &__triangles {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .triangle-down-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 0 8px 16px;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 0 13px 25px;
+                        }
+                    }
+                    .triangle-up-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 20px 11px 0;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 35px 23px 0;
+                        }
+                    }
+                }
+                &__cards {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 54px;
+                    @media screen and (min-width: $desktop) {
+                        gap: 88px;
+                    }
+                }
+                &__card {
+                    display: flex;
+                    flex-direction: column;
+                    width: 103px;
+                    @media screen and (min-width: $desktop) {
+                        width: 168px;
+                    }
+                }
+                &__colored-card {
+                    border-radius: 6px;
+                    height: 125px;
+                    width: 103px;
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                    @media screen and (min-width: $desktop) {
+                        border-radius: 10px;
+                        width: 168px;
+                        height: 204px;
+                        margin-bottom: 16px;
+                    }
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+                &__info-below-card {
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 20px;
+                    }
+                }
+                &__other-cards-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    @media screen and (min-width: $desktop) {
+                        gap: 8px;
+                    }
+                    .other-cards {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                        @media screen and (min-width: $desktop) {
+                            gap: 8px;
+                        }
+                    }
+                    .other-cards-info {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 10px;
+                        align-items: center;
+                        align-self: flex-end;
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 1.17;
+                        text-align: center;
+                        color: $black;
+                        @media screen and (min-width: $desktop) {
+                            font-size: 30px;
+                            gap: 16px;
+                        }
+                        &-svg {
+                            @media screen and (min-width: $tablet) {
+                                width: 58px;
+                                height: 11px;
+                            }
+                            @media screen and (min-width: $desktop) {
+                                width: 93px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+            .adult-neutercats {
+                &__triangles {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .triangle-down-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 0 8px 16px;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 0 13px 25px;
+                        }
+                    }
+                    .triangle-up-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 45px;
+                            height: 24px;
+                            margin: 0 20px 11px 0;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 73px;
+                            height: 38px;
+                            margin: 0 35px 23px 0;
+                        }
+                    }
+                }
+            }
+            .kittens-and-juniors {
+                display: flex;
+                flex-direction: column;
+                gap: 27px;
+                @media screen and (min-width: $desktop) {
+                    gap: 43px;
+                }
+                &__cards-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    width: 266px;
+                    margin: 0 auto;
+                    @media screen and (min-width: $desktop) {
+                        width: 432px;
+                    }
+                    .triangle-right-svg {
+                        @media screen and (min-width: $tablet) {
+                            width: 24px;
+                            height: 45px;
+                            align-self: center;
+                            margin: 25px 15px 0 21px;
+                        }
+                        @media screen and (min-width: $desktop) {
+                            width: 37px;
+                            height: 72px;
+                            margin: 30px 24px 0 34px;
+                        }
+                    }
+                }
+                &__info-above-card {
+                    font-weight: 800;
+                    font-size: 14px;
+                    line-height: 1.25;
+                    text-align: center;
+                    color: $black;
+                    margin-bottom: 10px;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 24px;
+                        line-height: 1;
+                        margin-bottom: 16px;
+                    }
+                }
+                &__colored-card {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    /*WCF EMC CODE section ---------------------------*/
+    .wcf-ems-code-section {
+        background-color: $background;
+        &__heading {
+            @extend .rules-wcf-sections-heading;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                gap: 24px;
+            }
+        }
+        &__img {
+            height: 240px;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            align-self: center;
+            @media screen and (min-width: 499px) {
+                height: 340px;
+            }
+            @media screen and (min-width: $tablet) {
+                height: 240px;
+                width: 51.2%;
+            }
+            @media screen and (min-width: 1024px) {
+                height: 300px;
+            }
+            @media screen and (min-width: $desktop) {
+                height: 240px;
+                width: 360px;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+        &__infobox {
+            @media screen and (min-width: $desktop) {
+                align-self: center;
+            }
+            .wcf-ems-code-infobox {
+                &__large-screen {
+                    display: none;
+                    @media screen and (min-width: $desktop) {
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 1.25;
+                        display: block;
+                        margin-bottom: 32px;
+                    }
+                }
+                &__small-screen {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 1.31;
+                    margin-bottom: 24px;
+                    @media screen and (min-width: $tablet) {
+                        font-size: 20px;
+                        line-height: 1.25;
+                    }
+                    @media screen and (min-width: $desktop) {
+                        display: none;
+                    }
+                }
+            }  
+        }
+        &__button {
+            @extend .open-btn;
+        }
+    }  
+}

@@ -20,13 +20,27 @@
   .pagination-block {
     display: flex;
     flex-direction: row;
-    gap: 47px;
     align-items: center;
     margin-bottom: 40px;
 
+    @media screen and (min-width: 320px) {
+      gap: 16px;
+    }
+
+    @media screen and (min-width: 375px) {
+      gap: 47px;
+    }
+
     .mobile-title {
       white-space: nowrap;
-      font-size: 24px;
+
+      @media screen and (min-width: 320px) {
+        font-size: 24px;
+      }
+
+      @media screen and (min-width: $mobile) {
+        font-size: 26px;
+      }
 
       @media screen and (min-width: $tablet) {
         font-size: 30px;
@@ -92,8 +106,14 @@
 
       .partners-title {
         margin-bottom: 10px;
+        font-size: 30px;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 45px;
+        }
         @media screen and (min-width: $desktop) {
           margin-bottom: 20px;
+          font-size: 60px;
         }
       }
 
@@ -111,6 +131,10 @@
         font-size: 16px;
         font-weight: 800;
         color: $primary-color;
+
+        @media screen and (min-width: $tablet) {
+          font-size: 20px;
+        }
 
         .icon-paw {
           width: 14px;
@@ -156,7 +180,15 @@
 }
 
 #partners-posts-mobile {
-  display: grid;
+  @media screen and (min-width: 320px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 375px) {
+    display: grid;
+  }
 
   @media screen and (min-width: $tablet) {
     display: none;
@@ -201,19 +233,26 @@
 .our-friends-clubs {
   .friends-clubs {
     margin-bottom: 24px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 24px;
 
-    @media screen and (min-width: $tablet) {
+    @media screen and (min-width: 320px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media screen and (min-width: 375px) {
       display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: $tablet) {
       grid-template-columns: 1fr 1fr 1fr;
       gap: 24px;
       margin-bottom: 32px;
     }
 
     @media screen and (min-width: 992px) {
-      display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
       margin-bottom: 48px;
@@ -265,6 +304,10 @@
     }
 
     .image {
+      margin-bottom: 20px;
+      @media screen and (min-width: $tablet) {
+        margin-bottom: 0;
+      }
       .rounded-image {
         border-radius: 10px;
       }
@@ -286,6 +329,19 @@
       display: flex;
       flex-direction: column;
 
+      @media screen and (min-width: 320px) {
+        font-size: 17px;
+      }
+
+      @media screen and (min-width: $mobile) {
+        font-size: 16px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
       .description {
         font-size: 16px;
         margin-bottom: 40px;
@@ -293,6 +349,7 @@
         line-height: 21px;
 
         @media screen and (min-width: $tablet) {
+          margin-bottom: 0;
           font-size: 19px;
           line-height: 25px;
         }
@@ -308,6 +365,7 @@
         flex-direction: column;
         margin-top: 20px;
         margin-bottom: 32px;
+        gap: 20px;
 
         @media screen and (min-width: $tablet) {
           display: flex;
@@ -319,8 +377,8 @@
           gap: 32px;
           display: flex;
           flex-direction: row;
-          margin-bottom: 20px;
-          margin-top: 8px;
+          margin-bottom: 25px;
+          margin-top: 20px;
         }
 
         a {
@@ -353,7 +411,14 @@
   background-color: $background;
 
   .photographs-title {
-    font-size: 20px;
+
+    @media screen and (min-width: 320px) {
+      font-size: 23px;
+    }
+
+    @media screen and (min-width: $mobile) {
+      font-size: 26px;
+    }
 
     @media screen and (min-width: $tablet) {
       font-size: 30px;
@@ -365,10 +430,21 @@
   }
 
   .photographs {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+
     gap: 24px;
     margin-bottom: 32px;
+
+    @media screen and (min-width: 320px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media screen and (min-width: $mobile) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     @media screen and (min-width: $tablet) {
       display: grid;
@@ -393,7 +469,15 @@
   // flip card
   .flip-card {
     position: relative;
-    height: 209px;
+
+    @media screen and (min-width: 320px) {
+      height: 295px;
+    }
+
+    @media screen and (min-width: $mobile) {
+      height: 209px;
+    }
+
 
     @media screen and (min-width: $tablet) {
       height: 287px;
@@ -491,25 +575,35 @@
       flex-direction: column;
       background-color: $white;
       border-radius: 5px;
-      width: 138px;
+
       justify-content: center;
       align-items: center;
       margin-bottom: 14px;
-      padding: 17px 12px;
+
+      @media screen and (min-width: 320px) {
+        width: 192px;
+        height: 213px;
+      }
+
+      @media screen and (min-width: $mobile) {
+        width: 138px;
+        height: 139px;
+      }
 
       @media screen and (min-width: $tablet) {
         width: 194px;
-        padding: 14px 0;
+        height: 204px;
         margin-bottom: 18px;
       }
 
       @media screen and (min-width: $desktop) {
         width: 224px;
-        padding: 34px 0;
+        height: 244px;
         margin-bottom: 26px;
       }
 
       .positions {
+        text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -521,8 +615,15 @@
       }
 
       span {
-        font-size: 13px;
         font-weight: 800;
+
+        @media screen and (min-width: 320px) {
+          font-size: 16px;
+        }
+
+        @media screen and (min-width: $mobile) {
+          font-size: 10px;
+        }
 
         @media screen and (min-width: $tablet) {
           font-size: 14px;
@@ -534,6 +635,7 @@
       }
 
       .address {
+        text-align: center;
         color: $primary-color;
         font-weight: 800;
         @media screen and (min-width: $tablet) {
@@ -545,10 +647,12 @@
     .social-media {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
       gap: 12px;
-      padding: 0 15px;
-      width: 150px;
+
+      @media screen and (min-width: $mobile) {
+        padding: 0 15px;
+        width: 150px;
+      }
 
       @media screen and (min-width: $tablet) {
         width: 194px;
@@ -560,35 +664,39 @@
       }
 
       a {
-        width: 32px;
+        img {
+          width: 32px;
+        }
       }
+
 
     }
 
-    // mobile
-    .social-media a:first-of-type + a,
-    .social-media a:first-of-type + a + a {
-      display: none;
+    .social-media a:nth-child(4) {
+
+      @media screen and (min-width: 320px) {
+        display: flex;
+      }
+
+      @media screen and (min-width: $mobile) {
+        display: none;
+      }
 
       @media screen and (min-width: $tablet) {
         display: flex;
       }
+
       @media screen and (min-width: $desktop) {
         display: flex;
       }
 
     }
 
-    .social-media a:nth-of-type(3) ~ a + a + a {
+    .social-media a:nth-child(5) {
       display: none;
-
-      @media screen and (min-width: $tablet) {
-        display: flex;
-      }
-      @media screen and (min-width: $desktop) {
-        display: flex;
-      }
     }
+
+
   }
 
   .flip-card-front-friends, .flip-card-back-friends {
@@ -620,7 +728,7 @@
 
   @media screen and (min-width: $desktop) {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
 }
