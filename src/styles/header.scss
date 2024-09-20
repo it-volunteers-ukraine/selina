@@ -549,6 +549,19 @@
       }
     }
 
+    .account-btn{
+      @media (min-width: 320px) {
+       font-size: 11px;
+        margin-left: -7px;
+        white-space: nowrap;
+      }
+
+      @media (min-width: $desktop) {
+        white-space: nowrap;
+        margin-left: -25px;
+      }
+    }
+
     .switch {
       position: relative;
       width: 86px;
@@ -558,7 +571,7 @@
 
       .flag-ua {
         @media (min-width: 320px) {
-          left: 39px;
+          left: 36px;
           top: 5px;
           height: 30px;
         }
