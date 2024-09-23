@@ -1,0 +1,103 @@
+.not-found .not-found-section {
+  background-color: #cfe4e6;
+  padding-top: 0;
+}
+@media screen and (min-width: 1439px) {
+  .not-found .not-found-section {
+    padding-top: 32px;
+  }
+}
+.not-found .not-found-content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+@media screen and (min-width: 1439px) {
+  .not-found .not-found-content {
+    flex-direction: row-reverse;
+    gap: 0;
+    align-items: flex-end;
+    justify-content: center;
+  }
+}
+.not-found .not-found-content__img-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.not-found .not-found-content__img-part img {
+  min-width: 227px;
+  width: 60vw;
+}
+@media screen and (min-width: 768px) {
+  .not-found .not-found-content__img-part img {
+    min-width: 371.75px;
+    width: 48.4vw;
+    max-width: 455px;
+  }
+}
+.not-found .not-found-content__img-part h1 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 93.6px;
+  color: #070707;
+}
+@media screen and (min-width: 768px) {
+  .not-found .not-found-content__img-part h1 {
+    font-size: 108px;
+    line-height: 142.56px;
+  }
+}
+@media screen and (min-width: 1439px) {
+  .not-found .not-found-content__img-part h1 {
+    font-size: 148px;
+    line-height: 148px;
+  }
+}
+.not-found .not-found-content__text-part {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.not-found .not-found-content__text-part h2 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 30px;
+  color: #070707;
+}
+@media screen and (min-width: 768px) {
+  .not-found .not-found-content__text-part h2 {
+    font-size: 45px;
+    line-height: 45px;
+  }
+}
+@media screen and (min-width: 1439px) {
+  .not-found .not-found-content__text-part h2 {
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+.not-found .not-found-content__text-part p {
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 25px;
+  color: #070707;
+}
+@media screen and (min-width: 768px) {
+  .not-found .not-found-content__text-part p {
+    max-width: 548px;
+  }
+}
+.not-found .not-found-content__text-part a {
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 16px 32px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 24px;
+}/*# sourceMappingURL=404.css.map */

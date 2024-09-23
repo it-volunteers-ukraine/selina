@@ -1,0 +1,26 @@
+li {
+  background-color: #eff8f9;
+  padding: 16px;
+  box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.1215686275);
+  border-radius: 8px;
+  width: 288px;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 375px) {
+  li {
+    width: 343px;
+  }
+}
+@media screen and (min-width: 768px) {
+  li {
+    width: 340px;
+    padding: 14px;
+  }
+}
+@media screen and (min-width: 1439px) {
+  li {
+    width: 360px;
+    padding: 24px;
+  }
+}/*# sourceMappingURL=shop.css.map */

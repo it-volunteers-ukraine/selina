@@ -1,0 +1,81 @@
+@charset "UTF-8";
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 9999;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56.67px;
+  height: 52px;
+}
+@media screen and (min-width: 768px) {
+  .loader {
+    width: 85px;
+    height: 78px;
+  }
+}
+@media screen and (min-width: 1439px) {
+  .loader {
+    width: 170px;
+    height: 156px;
+  }
+}
+
+/* Анімація для лап */
+@keyframes pawAnimation {
+  0% {
+    fill: #ffffff;
+  }
+  25% {
+    fill: #045c6f;
+  }
+  50% {
+    fill: #ffffff;
+  }
+  75% {
+    fill: #ffffff;
+  }
+  100% {
+    fill: #ffffff;
+  }
+}
+.paw-1 {
+  animation: pawAnimation 2s infinite;
+  animation-delay: 0s;
+}
+
+.paw-2 {
+  animation: pawAnimation 2s infinite;
+  animation-delay: 0.5s;
+}
+
+.paw-3 {
+  animation: pawAnimation 2s infinite;
+  animation-delay: 1s;
+}
+
+.paw-4 {
+  animation: pawAnimation 2s infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes progressBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 164px;
+  }
+}
+.progress-bar {
+  animation: progressBar 2s;
+}/*# sourceMappingURL=loader.css.map */
