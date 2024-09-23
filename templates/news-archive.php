@@ -92,7 +92,16 @@ get_header();
                         'orderby' => 'date', 
                         'order' => 'DESC', 
                         'paged' => 1,
+                        'meta_query' => array(
+                            array (
+                                'key' => 'news_date_meta',
+                                'value' => current_time('Ymd'),
+                                'compare' => '<',
+                                'type' => 'NUMERIC'
+                            )
+                        )
                     );
+                    
 
                     if (!empty($active_tags)) {
                         $tax_queries = array('relation' => 'OR');

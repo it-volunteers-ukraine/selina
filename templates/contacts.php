@@ -60,16 +60,11 @@ get_header();
                 </div>
                 <div class="contacts-contacts__contacts-list">
                     <?php
-                        // Check rows exists.
+
                         if( have_rows('contacts-contacts__contacts-list') ):
-
-                            // Loop through rows.
                             while( have_rows('contacts-contacts__contacts-list') ) : the_row();
-
-                                // Load sub field value.
                                 $contact_title = get_sub_field('contacts-contacts__contacts-title');
                                 $contact_value = get_sub_field('contacts-contacts__contacts-value');
-                                // Do something, but make sure you escape the value if outputting directly...
                                 ?>
                                 <div class="contacts-contacts__title-value">
                                     <div class="contacts-contacts__wrapper">
@@ -84,11 +79,8 @@ get_header();
                                     </div>
                                 </div>
                                 <?php
-                                    // End loop.
                                     endwhile;
-                                    // No value.
                                     else :
-                                    // Do something...
                                     endif;
                                 ?>
                 </div>
