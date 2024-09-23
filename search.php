@@ -1,23 +1,28 @@
 <?php get_header() ?>
 
-<div class="container">
-    <?php if (have_posts()) : ?>
-        <div class='search-wrapper' style='padding-top: 35px'>
-            <h2 style='font-weight:bold;color:#000;'>Results search for: <?php echo esc_html(get_search_query()); ?></h2>
+<section class="search-main">
+    <div class="container">
+        <?php if (have_posts()) : ?>
+        <div class='search-wrapper'>
+            <p class="search-results"><?php the_field('search-results', 'option') ?>
+                <span class="search-world">
+                    “<?php echo esc_html(get_search_query()); ?></span>”
+            </p>
+            <?php while (have_posts()) : the_post(); ?>
+                <div class="searched-results">
+                    <a class="searched" href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                    <p class="searched-description"><?php the_field('description') ?></p>
+                </div>
+            <?php endwhile; ?>
+            <?php else : ?>
+                <div class='search-wrapper'>
+                    <p class="search-results"><?php the_field('nothing-found-search', 'option') ?>
+                        <span class="search-world">
+                    “<?php echo esc_html(get_search_query()); ?></span>”
+                    </p>
+                </div>
+            <?php endif; ?>
         </div>
-        <?php while (have_posts()) : the_post(); ?>
-            <ul class="search-results" style="padding-bottom: 220px">
-                <li>
-                    <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
-                </li>
-            </ul>
-        <?php endwhile; ?>
-    <?php else : ?>
-        <div class='search-wrapper' style='padding-top: 35px'>
-            <p style='font-weight:bold;color:#000;padding-bottom: 321px'>Nothing found: <?php echo esc_html(get_search_query()); ?></>
-        </div>
-    <?php endif; ?>
-</div>
-
-
+</section>
+<?php get_template_part('template-parts/join-us')?>
 <?php get_footer() ?>
