@@ -10,7 +10,7 @@
             </p>
             <?php while (have_posts()) : the_post(); ?>
                 <div class="searched-results">
-                    <a class="searched"><?php the_title() ?></a>
+                    <h3 class="searched"><?php the_title() ?></h3>
                     <p class="searched-description"><?php the_field('description') ?></p>
                     <a style="color: #000" class="searched" href="<?php the_permalink() ?>"><?php the_field('search-link-read-more','option') ?></a>
                 </div>
