@@ -857,22 +857,6 @@ function custom_wp_new_user_notification_email( $wp_new_user_notification_email,
 }
 
 add_filter( 'retrieve_password_message', 'wpdocs_retrieve_password_message', 20, 3 );
-function wpdocs_retrieve_password_message( $wp_retrieve_password_notification_email, $user, $key ) {
-	$key = get_password_reset_key( $user );
-    $message = sprintf(__('Доброго дня, %s!'), $user->user_login ) . "\r\n\r\n";
-
-    $message .= 'Ми отримали запит на скидання пароля для Вашого облікового запису на сайті Селіна.' . "\r\n\r\n";
-    $message .= 'Будь ласка, перейдіть за посиланням, щоб створити новий пароль:' . "\r\n\r\n";
-    $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user->user_login), 'login') . "\r\n\r\n";
-    $message .= "Якщо сталася помилка, просто проігноруйте цей лист." . "\r\n\r\n";
-    $message .= "З повагою," . "\r\n";
-    $message .= "команда Селіна" . "\r\n";
-    $wp_retrieve_password_notification_email['message'] = $message;
-
-	return $wp_retrieve_password_notification_email;
-}
-
-add_filter( 'retrieve_password_message', 'wpdocs_retrieve_password_message', 20, 3 );
 function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
 	$site_name  = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 	$reset_link = network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' );
