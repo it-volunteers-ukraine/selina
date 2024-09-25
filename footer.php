@@ -1,11 +1,5 @@
 <footer id="footer" class="footer">
 
-<<<<<<< HEAD
-    <div class="up_btn-container container">
-        <button type="button" class="up_btn" onclick="topFunction()" id="to-top-btn" title="Go to top">
-            <img class="up_btn-icon" src="<?php echo get_template_directory_uri(); ?>/src/images/up_btn.svg" alt="up">
-        </button>
-=======
     <div class="container button-top-wrapper">
         <div class="button-top-container">
             <button type="button" class="up_btn" id="to-top-btn" title="Go to top">
@@ -17,7 +11,6 @@
                 </div>                
             </button>
         </div>
->>>>>>> user-cabinet
     </div>
 
     <div class="container footer-container">
@@ -109,11 +102,7 @@
                 </div>
                 <!-- side contacts -->
                 <div class="footer__contacts-side">
-<<<<<<< HEAD
-                    <div class="footer__mail">
-=======
                     <a href="mailto:<?php the_field('footer-contacts__mail-address', 'option'); ?>" class="footer__mail" target="_blank">
->>>>>>> user-cabinet
                         <div class="footer__contacts-icon">
                             <?php
                             $image = get_field('footer-contacts__mail-icon', 'option'); 
@@ -124,15 +113,9 @@
                         <div class="footer-contacts__mail-address">
                             <p><?php the_field('footer-contacts__mail-address', 'option'); ?></p>
                         </div>
-<<<<<<< HEAD
-                    </div>
-                    <!-- phone -->
-                    <div class="footer__phone">
-=======
                     </a>
                     <!-- phone -->
                     <a href="tel:<?php the_field('footer-contacts__phone-number', 'option'); ?>" class="footer__phone" target="_blank">
->>>>>>> user-cabinet
                         <div class="footer__contacts-icon">
                             <?php  
                             $image = get_field('footer-contacts__phone-icon', 'option'); 
@@ -143,15 +126,9 @@
                         <div class="footer-contacts__phone-number">
                             <p><?php the_field('footer-contacts__phone-number', 'option'); ?></p>
                         </div>
-<<<<<<< HEAD
-                    </div>
-                    <!-- location--------------------------------------------------- -->
-                    <div class="footer__location">
-=======
                     </a>
                     <!-- location -->
                     <a class="footer__location" target="_blank" href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%9A%D0%B2%D0%B8%D1%82%D0%BA%D1%8B+%D0%A6%D0%B8%D1%81%D1%8B%D0%BA,+43,+%D0%A2%D0%B5%D1%80%D0%BD%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C,+%D0%A2%D0%B5%D1%80%D0%BD%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0,+46002/@49.5578334,25.6166595,17z/data=!3m1!4b1!4m6!3m5!1s0x47303150c913550f:0xd0c110e7bba73ca!8m2!3d49.5578334!4d25.6166595!16s%2Fg%2F11mvg2b1dt?entry=ttu">
->>>>>>> user-cabinet
                         <div class="footer__contacts-icon">
                             <?php  
                             $image = get_field('footer-contacts__location-icon', 'option'); 
@@ -162,19 +139,11 @@
                         <div class="footer-contacts__location-address">
                             <p id="footer-address"><?php the_field('footer-contacts__location-address', 'option'); ?></p>
                         </div>
-<<<<<<< HEAD
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end wrappeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeewwwwwwwwwwwwwwwwwwwwwwwwwwwwww -->
-=======
                     </a>
                 </div>
             </div>
         </div>
         <!-- end class="big-footer-wrapper" -->
->>>>>>> user-cabinet
         
         <!-- Contacts-list -->
         <div class="footer__contacts">
@@ -223,15 +192,10 @@
         </div>
         <!-- politic & copyright -->
          <div class="footer__politic-copy">
-<<<<<<< HEAD
-            <p><?php the_field('footer__politic-field', 'option'); ?></p>
-            <p>Selina 2024 all right reserved.</p>
-=======
             <a href="<?php echo esc_attr( get_field('footer__politic-field-url', 'option') ); ?>" target="_blank">
                 <?php the_field('footer__politic-field', 'option'); ?>
             </a>
             <p>Selina <span><?php echo date("Y"); ?></span> all right reserved.</p>
->>>>>>> user-cabinet
          </div>
     </div>
 </footer>
