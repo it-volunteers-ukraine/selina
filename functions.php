@@ -852,6 +852,7 @@ function custom_wp_new_user_notification_email( $wp_new_user_notification_email,
     $message .= "З повагою," . "\r\n";
     $message .= "команда Селіна" . "\r\n";
     $wp_new_user_notification_email['message'] = $message;
+    $wp_new_user_notification_email['subject'] = "Встановлення паролю";
 
     return $wp_new_user_notification_email;
 }
@@ -862,14 +863,14 @@ function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
 	$reset_link = network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' );
 
 	// Create new message
-	$message = __( 'Ми отримали запит на скидання пароля для Вашого облікового запису на сайті Селіна:' . $user_login, 'text_domain' ) . "\n";
-	$message .= sprintf( __( 'Сайт: %s' ), network_home_url( '/' ) ) . "\n";
-	$message .= sprintf( __( 'Користувач: %s', 'text_domain' ), $user_login ) . "\n";
-	$message .= __( 'Якщо сталася помилка, просто проігноруйте цей лист.', 'text_domain' ) . "\n";
+    $message .= sprintf( __( 'Доброго дня, %s!', 'text_domain' ), $user_login ) . "\n";
+	$message .= 'Ми отримали запит на скидання пароля для Вашого облікового запису на сайті Селіна' . "\r\n\r\n";
 	$message .= __( 'Якщо це зробили Ви, будь ласка, перейдіть за наступним посиланням, щоб створити новий пароль:', 'text_domain' ) . "\n";
 	$message .= $reset_link . "\n";
+    $message .= __( 'Якщо сталася помилка, просто проігноруйте цей лист.', 'text_domain' ) . "\n";
     $message .= "З повагою," . "\r\n";
     $message .= "команда Селіна" . "\r\n";
+    $message['subject'] = "Встановлення паролю";
 
 	return $message;
 }
