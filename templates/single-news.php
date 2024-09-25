@@ -21,21 +21,25 @@ get_header();
     </div>
     
     <?php
-    // Визначення архівної новини через наявність галереї
-    $gallery = get_field('news_gallery');
+    $news_date_str = get_field('news_date_meta');
+    $current_date = new DateTime();
 
-    if ($gallery) {
-        ?>
-        <h2 class="heading section_heading">
-          <?php the_field('archive__heading'); // Заголовок для архівних новин ?>
-        </h2>
-        <?php
-    } else {
-        ?>
-        <h2 class="heading section_heading">
-          <?php the_field('list-event'); // Заголовок для подій ?>
-        </h2>
-        <?php
+    if ($news_date_str) {
+        $news_date = new DateTime($news_date_str); 
+
+        if ($news_date >= $current_date) {
+            ?>
+            <h2 class="heading section_heading">
+              <?php the_field('list-event');?>
+            </h2>
+            <?php
+        } else {
+            ?>
+            <h2 class="heading section_heading">
+              <?php the_field('archive__heading');?>
+            </h2>
+            <?php
+        }
     }
     ?>
   </div>
@@ -174,10 +178,10 @@ get_header();
     <div class="container news-section__gallery">        
         <div class="gallery" id="gallery">
           <?php
-            $images = get_field('news_gallery'); /* Отримуємо зображення з ACF */
+            $images = get_field('news_gallery');
             if($images):
               foreach($images as $index => $image):                
-                $hidden_class = ($index >= 6) ? 'visually-hidden' : ''; /* клас visually-hidden до зображень після 6-го */
+                $hidden_class = ($index >= 6) ? 'visually-hidden' : '';
           ?>
           <div class="gallery-item <?php echo $hidden_class; ?>">
             <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
