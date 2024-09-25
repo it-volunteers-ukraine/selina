@@ -837,3 +837,40 @@ function custom_login_title() {
     return 'Visit Selina homepage';
 }
 add_filter('login_headertext', 'custom_login_title');
+
+
+add_filter( 'wp_new_user_notification_email', 'custom_wp_new_user_notification_email', 10, 3 );
+
+function custom_wp_new_user_notification_email( $wp_new_user_notification_email, $user, $blogname ) {
+    $key = get_password_reset_key( $user );
+    $message = sprintf(__('Доброго дня, %s!'), $user->user_login ) . "\r\n\r\n";
+
+    $message .= 'Ми отримали запит на скидання пароля для Вашого облікового запису на сайті Селіна' . "\r\n\r\n";
+    $message .= 'Якщо це зробили Ви, будь ласка, перейдіть за наступним посиланням, щоб створити новий пароль:' . "\r\n\r\n";
+    $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user->user_login), 'login') . "\r\n\r\n";
+    $message .= "Якщо сталася помилка, просто проігноруйте цей лист." . "\r\n\r\n";
+    $message .= "З повагою," . "\r\n";
+    $message .= "команда Селіна" . "\r\n";
+    $wp_new_user_notification_email['message'] = $message;
+
+    return $wp_new_user_notification_email;
+}
+
+add_filter( 'retrieve_password_message', 'wpdocs_retrieve_password_message', 20, 3 );
+function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
+	$site_name  = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+	$reset_link = network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' );
+
+	// Create new message
+	$message = __( 'Ми отримали запит на скидання пароля для Вашого облікового запису на сайті Селіна:' . $user_login, 'text_domain' ) . "\n";
+	$message .= sprintf( __( 'Сайт: %s' ), network_home_url( '/' ) ) . "\n";
+	$message .= sprintf( __( 'Користувач: %s', 'text_domain' ), $user_login ) . "\n";
+	$message .= __( 'Якщо сталася помилка, просто проігноруйте цей лист.', 'text_domain' ) . "\n";
+	$message .= __( 'Якщо це зробили Ви, будь ласка, перейдіть за наступним посиланням, щоб створити новий пароль:', 'text_domain' ) . "\n";
+	$message .= $reset_link . "\n";
+    $message .= "З повагою," . "\r\n";
+    $message .= "команда Селіна" . "\r\n";
+
+	return $message;
+}
+

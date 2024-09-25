@@ -272,14 +272,17 @@ get_header();
                         'orderby' => 'date',
                         'order' => 'DESC',
                         'post_type' => 'news',
-                        'showposts' => -1,
+                        'showposts' => 20,
                     );
 
                     $myposts = get_posts($args);
                     foreach ($myposts as $post):
                         $count = count($myposts);
                         $counter++;
-                        setup_postdata($post); ?>
+                        setup_postdata($post); 
+                         $current_date = new DateTime();
+                        $news_date = new DateTime(get_field('news_date_meta'));
+                            ?>
                         <div class="swiper-slide">
 
                             <div class="news-section__item">
@@ -363,7 +366,8 @@ get_header();
                                 </span>
                             </div>
                         </div>
-                    <?php endforeach;
+                    <?php
+                    endforeach;
                     wp_reset_postdata(); ?>
                 </div>
             </div>
@@ -398,8 +402,7 @@ get_header();
                     foreach ($myposts as $post):
                         setup_postdata($post);
                         $current_date = new DateTime();
-                        $news_date = new DateTime(get_field('news_date'));
-                        if ($news_date >= $current_date):
+                        $news_date = new DateTime(get_field('news_date_meta'));
                             ?>
                             <div class="exhibitions-section__item">
                                 <?php
@@ -409,7 +412,6 @@ get_header();
 
                             </div>
                             <?php
-                        endif;
                     endforeach;
                     wp_reset_postdata();
                 } else {
