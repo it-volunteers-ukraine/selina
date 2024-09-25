@@ -836,3 +836,8 @@ function custom_login_title() {
     return 'Visit Selina homepage';
 }
 add_filter('login_headertext', 'custom_login_title');
+
+// WooCommerce
+if (class_exists('WooCommerce')) {
+    require_once (get_template_directory() . '/woo-c.php');
+}
