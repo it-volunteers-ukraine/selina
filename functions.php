@@ -872,3 +872,19 @@ function wpdocs_retrieve_password_message( $wp_retrieve_password_notification_em
 	return $wp_retrieve_password_notification_email;
 }
 
+add_filter( 'retrieve_password_message', 'wpdocs_retrieve_password_message', 20, 3 );
+function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
+	$site_name  = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+	$reset_link = network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' );
+
+	// Create new message
+    $message = __( 'Доброго дня, ' . $user_login, 'text_domain' ) . "\r\n\r\n";
+	$message = __( 'Ми отримали запит на скидання паролю для Вашого облікового запису на сайті Селіна.', 'text_domain' ) . "\r\n\r\n";
+	$message .= __( 'Будь ласка, перейдіть за посиланням, щоб створити новий пароль:', 'text_domain' ) . "\r\n\r\n";
+	$message .= $reset_link . "\r\n\r\n";
+    $message .= __( 'Якщо сталася помилка, просто проігноруйте цей лист.', 'text_domain' ) . "\r\n\r\n";
+    $message .= "З повагою," . "\r\n";
+    $message .= "команда Селіна" . "\r\n";
+
+	return $message;
+}
