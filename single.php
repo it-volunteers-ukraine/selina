@@ -15,7 +15,6 @@ get_header();
             $post_type = get_post_type();
             ?>
             <div class="container">
-
                 <div class="search-wrapper-container" style="padding: 56px 0">
                     <?php
                     switch ($post_type) {
@@ -23,10 +22,13 @@ get_header();
                             get_template_part('template-parts/education-card');
                             break;
                         case 'breeders':
-                            get_template_part('template-parts/one-card-breeder.php');
+                            get_template_part('template-parts/one-card-breeder');
                             break;
                         case 'breeds':
-                            get_template_part('template-parts/one-card-breed.php');
+                            get_template_part('template-parts/one-card-breed');
+                            break;
+                        case 'news':
+                            get_template_part('template-parts/one-card-news');
                             break;
                         default:
                             $image_url = get_field('image'); ?>
