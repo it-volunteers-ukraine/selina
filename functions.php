@@ -852,6 +852,7 @@ function custom_wp_new_user_notification_email( $wp_new_user_notification_email,
     $message .= "З повагою," . "\r\n";
     $message .= "команда Селіна" . "\r\n";
     $wp_new_user_notification_email['message'] = $message;
+    $wp_new_user_notification_email['subject'] = "Встановлення паролю";
 
     return $wp_new_user_notification_email;
 }
@@ -869,6 +870,7 @@ function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
     $message .= __( 'Якщо сталася помилка, просто проігноруйте цей лист.', 'text_domain' ) . "\n";
     $message .= "З повагою," . "\r\n";
     $message .= "команда Селіна" . "\r\n";
+    $message['subject'] = "Встановлення паролю";
 
 	return $message;
 }
