@@ -730,7 +730,6 @@ endif;
 
 // User cabinet
 add_action( 'wp_ajax_'        . 'load_user_cabinet_content', 'load_user_cabinet_content' );
-add_action( 'wp_ajax_nopriv_' . 'load_user_cabinet_content', 'load_user_cabinet_content' );
 
 function load_user_cabinet_content() {
     check_ajax_referer('load_user_cabinet_content_nonce', 'nonce');
