@@ -18,9 +18,8 @@ get_header();
                             <?php 
                                 the_field('user-cabinet_greeting');
                                 $current_user = wp_get_current_user();
-                                echo ' ' . esc_html( $current_user->display_name );
+                                echo ' ' . esc_html( $current_user->display_name ) . '!';
                             ?>
-                            !
                         </p>
                     </div>
                 </div>
