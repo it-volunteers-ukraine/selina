@@ -1,17 +1,12 @@
 jQuery(document).ready(function ($) {
-    // Обробник події для кнопок
     $('.content-type-btn').on('click', function (e) {
-        // Визначення цільового контенту з data-атрибуту кнопки
         const contentTab = $(this).data('target');
         console.log(contentTab);
 
-        // Видалення класу 'active' з усіх кнопок
         $('.navigation-user-cabinet__show-content').removeClass('active');
 
-        // Додавання класу 'active' до натиснутої кнопки
         $(this).addClass('active');
 
-        // AJAX запит для завантаження контенту
         $.ajax({
             url: ajax_object.ajax_url,
             type: 'POST',
@@ -33,10 +28,9 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    // Додатково: автоматичне натискання на першу кнопку при завантаженні сторінки
     const educationTab = $('.content-type-btn').first();
     const videoButton = $('.video-btn');
-    educationTab.addClass('active'); // Додаємо клас для активації
+    educationTab.addClass('active');
     videoButton.addClass('active');
     const educationTarget = educationTab.data('target');
     $.ajax({
