@@ -737,8 +737,7 @@ endif;
 
 
 // User cabinet
-add_action( 'wp_ajax_'        . 'load_user_cabinet_content', 'load_user_cabinet_content' );
-add_action( 'wp_ajax_nopriv_' . 'load_user_cabinet_content', 'load_user_cabinet_content' );
+add_action( 'wp_ajax_' . 'load_user_cabinet_content', 'load_user_cabinet_content' );
 
 function load_user_cabinet_content() {
     check_ajax_referer('load_user_cabinet_content_nonce', 'nonce');
@@ -793,10 +792,12 @@ function load_user_cabinet_content() {
                 $content_link = get_sub_field($field_name . '-link');
                 
                 $response .= '<div class="content-user-cabinet__content-item">';
+                $response .= '<div class="content-user-cabinet__image-heading-container">';
                 $response .= '<div class="content-user-cabinet__content-image">';
                 $response .= '<img src="' . esc_url($content_image) . '" alt="' . esc_attr($content_title) . '"/>';
                 $response .= '</div>';
                 $response .= '<h3 class="content-user-cabinet__title">' . esc_html($content_title) . '</h3>';
+                $response .= '</div>';
                 $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-user-cabinet__link red_medium_button">
                                 ' . esc_html($button_card_text) . '
                                 <svg width="16" height="14"> 
@@ -836,3 +837,38 @@ function custom_login_title() {
     return 'Visit Selina homepage';
 }
 add_filter('login_headertext', 'custom_login_title');
+
+
+add_filter( 'wp_new_user_notification_email', 'custom_wp_new_user_notification_email', 10, 3 );
+
+function custom_wp_new_user_notification_email( $wp_new_user_notification_email, $user, $key ) {
+    $key = get_password_reset_key( $user );
+    $message = sprintf(__('Доброго дня, %s!'), $user->user_login ) . "\r\n\r\n";
+
+    $message .= 'Вітаємо з реєстрацією на сайті Селіна!' . "\r\n\r\n";
+    $message .= 'Будь ласка, встановіть власний пароль для Вашого облікового запису:' . "\r\n\r\n";
+    $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user->user_login), 'login') . "\r\n\r\n";
+    $message .= "Якщо сталася помилка, просто проігноруйте цей лист." . "\r\n\r\n";
+    $message .= "З повагою," . "\r\n";
+    $message .= "команда Селіна" . "\r\n";
+    $wp_new_user_notification_email['message'] = $message;
+
+    return $wp_new_user_notification_email;
+}
+
+add_filter( 'retrieve_password_message', 'wpdocs_retrieve_password_message', 20, 3 );
+function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
+	$site_name  = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+	$reset_link = network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' );
+
+	// Create new message
+    $message = __( 'Доброго дня, ' . $user_login, 'text_domain' ) . "\r\n\r\n";
+	$message = __( 'Ми отримали запит на скидання паролю для Вашого облікового запису на сайті Селіна.', 'text_domain' ) . "\r\n\r\n";
+	$message .= __( 'Будь ласка, перейдіть за посиланням, щоб створити новий пароль:', 'text_domain' ) . "\r\n\r\n";
+	$message .= $reset_link . "\r\n\r\n";
+    $message .= __( 'Якщо сталася помилка, просто проігноруйте цей лист.', 'text_domain' ) . "\r\n\r\n";
+    $message .= "З повагою," . "\r\n";
+    $message .= "команда Селіна" . "\r\n";
+
+	return $message;
+}
