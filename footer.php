@@ -192,9 +192,20 @@
         </div>
         <!-- politic & copyright -->
          <div class="footer__politic-copy">
-            <a href="<?php echo esc_attr( get_field('footer__politic-field-url', 'option') ); ?>" target="_blank">
+            <!-- <a href="<?php echo esc_attr( get_field('footer__politic-field-url', 'option') ); ?>" target="_blank">
                 <?php the_field('footer__politic-field', 'option'); ?>
-            </a>
+            </a> -->
+            <div>
+                <?php
+                    $link = get_field('footer__politic-field-url', 'option');
+                    if($link) {
+                        $url = $link['url'];
+                        $title = $link['title'];
+                        $target = $link['target'] ? $link['target'] : '_self';
+                        echo '<a href="' . esc_url($url) . '" target = "' . esc_attr($target) . '">' . esc_html($title) . '</a>';
+                    }
+                ?>
+            </div>
             <p>Selina <span><?php echo date("Y"); ?></span> all right reserved.</p>
          </div>
     </div>
