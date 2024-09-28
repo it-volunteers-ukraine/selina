@@ -3,12 +3,6 @@
 
 .search-main {
   background-color: $background;
-  @media (min-width: $tablet) {
-    padding-bottom: 35px;
-  }
-  @media (min-width: $desktop) {
-    padding-bottom: 149px;
-  }
 
   .search-wrapper {
     padding: 32px 0;
