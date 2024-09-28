@@ -72,6 +72,10 @@ function wp_it_volunteers_scripts()
         ));
     }
 
+    if (is_page_template('templates/privacy-policy.php')) {
+        wp_enqueue_style('privacy-policy-style', get_template_directory_uri() . '/assets/styles/template-styles/privacy-policy.css', array('main'));
+    }
+
     if (is_page_template('templates/about-us.php')) {
         wp_enqueue_style('about-us-style', get_template_directory_uri() . '/assets/styles/template-styles/about-us.css', array('main'));
         wp_enqueue_script('about-us-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/about-us.js', array(), false, true);

@@ -12,7 +12,7 @@
                 <div class="searched-results">
                     <h3 class="searched"><?php the_title() ?></h3>
                     <p class="searched-description"><?php the_field('description') ?></p>
-                    <a style="color: #000" class="searched" href="<?php the_permalink() ?>"><?php the_field('search-link-read-more','option') ?></a>
+                    <a class="searched-link" href="<?php the_permalink() ?>"><?php the_field('search-link-read-more','option') ?></a>
                 </div>
             <?php endwhile; ?>
             <?php else : ?>
