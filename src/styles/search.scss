@@ -3,12 +3,6 @@
 
 .search-main {
   background-color: $background;
-  @media (min-width: $tablet) {
-    padding-bottom: 35px;
-  }
-  @media (min-width: $desktop) {
-    padding-bottom: 149px;
-  }
 
   .search-wrapper {
     padding: 32px 0;
@@ -51,6 +45,14 @@
         @media (min-width: $desktop) {
           font-size: 26px;
         }
+      }
+
+      .searched-link{
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
       }
 
       .searched-description {

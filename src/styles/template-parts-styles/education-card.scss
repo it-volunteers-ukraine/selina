@@ -7,11 +7,11 @@
   box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
   background: rgb(255, 255, 255);
   padding: 16px;
-  width: 343px;
   gap: 16px;
+  width: 100%;
 
   @media (min-width: $tablet) {
-    width: 340px;
+    width: 48%;
   }
 
   @media (min-width: $desktop) {
@@ -30,7 +30,6 @@
     }
 
     .image {
-      width: 260px;
       border-radius: 10px;
       object-fit: cover;
       height: 100%;
@@ -38,9 +37,6 @@
       top: 0;
       left: 0;
 
-      @media (min-width: $mobile) {
-        width: 312px;
-      }
 
       @media (min-width: $tablet) {
         position: static;
