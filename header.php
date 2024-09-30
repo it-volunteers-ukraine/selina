@@ -12,8 +12,9 @@
 <?php get_template_part('template-parts/loader'); ?>
 <div class="wrapper">
     <header class="header">
+        <div id="header-top" class="header-top">
         <div class="container">
-            <div id="header-top" class="header-top">
+            <div class="top-row">
                 <div class="social-media">
                     <?php
                     $socialLinks = get_field('social-media', 'option');
@@ -32,7 +33,6 @@
                         <img src="<?php the_field('icon-phone', 'option') ?>" alt="phone">
                     </a>
                 </div>
-
                 <div class="black-logo">
                     <?php
                     if (has_custom_logo()) {
@@ -116,6 +116,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <div class="header-bottom">
             <div class="container">

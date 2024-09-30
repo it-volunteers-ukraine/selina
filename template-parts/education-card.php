@@ -3,7 +3,7 @@
         <img class="image" src="<?php the_field('education-image') ?>" alt="image">
     </div>
     <div class="title"><?php the_field('education-title') ?></div>
-    <div class="description"><?php the_field('education-description') ?></div>
+    <div class="description"><?php the_field('description') ?></div>
     <?php
     $education_disk_link = get_field('education_choice-button_disc');
     $education_outer_link = get_field('education_choice-button_outer-link');

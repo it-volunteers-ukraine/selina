@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 *,
 ::before,
 ::after {
@@ -213,7 +215,7 @@ select {
   background: transparent;
 }
 
-input{
+input {
   color: inherit;
   font: inherit;
   outline: none;
@@ -223,4 +225,7 @@ input{
 
 .wrapper {
   overflow: hidden;
+  @media screen and (min-width: $desktop) {
+    padding-bottom: 110px;
+  }
 }
