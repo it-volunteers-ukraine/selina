@@ -153,6 +153,7 @@ get_header();
                     }    
                 ?>
             </div>
+
             <button class="news_archive_btn button_green_new" id="load-more" data-page="1" data-max-page="<?php echo $query->max_num_pages; ?>" >
                 <p class='load_more_news_archive_btn__text'>
                     <?php the_field('show_more_btn', 'option'); ?>
@@ -161,6 +162,15 @@ get_header();
                     <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                 </svg>
             </button>
+            <button class="news_archive_btn button_green_new hide_btn" id="hide" style="display: none;" ?>
+                <p class='hide_news_archive_btn__text'>
+                    <?php the_field('hide_btn', 'option'); ?>
+                </p>
+                <svg class="icon-paw" width="16" height="15">
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                </svg>
+            </button>
+
         </div>
     </section>
 
