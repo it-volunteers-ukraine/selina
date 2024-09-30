@@ -1,17 +1,17 @@
 jQuery(document).ready(function($){
     // If there are no posts to load, hide the button immediately
-    if (!myAjax.hasMorePosts) {
-        $('#load-more').hide();
+    if( !myAjax.hasMorePosts ) {
+        $( '#load-more' ).hide();
     }
 
-    $('#load-more').click(function(){
-        let button = $(this);
-        let page = button.data('page');
+    $( '#load-more' ).click( function() {
+        let button = $( this );
+        let page = button.data( 'page' );
         let newPage = page + 1;
-        let maxPage = button.data('max-page');
+        let maxPage = button.data( 'max-page' );
         let activeTags = myAjax.activeTags; // Retrieve active tags from PHP
 
-        button.addClass('loading');
+        button.addClass( 'loading' );
 
         $.ajax({
             url: myAjax.ajaxUrl, 
@@ -23,27 +23,43 @@ jQuery(document).ready(function($){
                 nonce: myAjax.nonce
             },
             cache: false,
-            success: function(response){
+            success: function( response ){
 
-                if ($.trim(response) === 'no_more_posts') {
+                if ( $.trim( response ) === 'no_more_posts') {
                         button.hide();
                 } else {
-                    $('.posts-section__wrapper').append(response);
-                    button.data('page', newPage);
+                    $( '.posts-section__wrapper' ).append( response );
+                    button.data( 'page', newPage );
             
-                    if(newPage >= maxPage) {
+                    if( newPage >= maxPage ) {
                         button.hide();
+                        $( '#hide' ).show(); // Show the "Hide" button when all posts are loaded
                     }
                 } 
             },
-            error: function(xhr, status, error) {
-                console.log('AJAX Error:', error);
+            error: function( xhr, status, error ) {
+                console.log( 'AJAX Error:', error );
             },
             complete: function() {
-                button.removeClass('loading');
+                button.removeClass( 'loading' );
                 button.blur();
-                console.log('AJAX request complete');
+                console.log( 'AJAX request complete' );
             }
         });
+    });
+
+    // Handle the "Hide" button
+    $( '#hide' ).click( function() {
+        let button = $( this );
+        let allPosts = $( '.posts-section__wrapper .one-card-news' );
+
+        // Hide all posts except the first 6
+        allPosts.slice(6).remove();
+
+        // Reset the page counter to load the next set of posts again
+        $( '#load-more' ).data(  'page', 1);
+
+        $( '#load-more' ).show(); // Show the "Load More" button
+        button.hide(); // Hide the "Hide" button
     });
 });
