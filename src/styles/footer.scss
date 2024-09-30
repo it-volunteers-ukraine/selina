@@ -4,18 +4,11 @@
     background: $primary-color;
     color: $white;
     padding: 32px 0 12px;
-<<<<<<< HEAD
-        @media screen and (min-width: $tablet) {
-        padding: 20px 0 13px;
-      }
-      @media screen and (min-width: $desktop) {
-=======
     position: relative;
         @media screen and (min-width: $tablet) {
         padding: 20px 0 13px;
       }
         @media screen and (min-width: $desktop) {
->>>>>>> user-cabinet
         padding: 24px 0 16px;
     }
     &__menu-list-wrapper {
@@ -45,11 +38,7 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-<<<<<<< HEAD
-            height: 345px;
-=======
             height: 337px;
->>>>>>> user-cabinet
             row-gap: 24px;
             column-gap: 56px;
             justify-content: flex-start;
@@ -108,18 +97,11 @@
             }
             .footer__location {
                 order: 2;
-<<<<<<< HEAD
-=======
                 width: 190px;
->>>>>>> user-cabinet
             }
             .footer__phone {
                 order: 3;
             }
-<<<<<<< HEAD
-
-=======
->>>>>>> user-cabinet
           }
       
           @media screen and (min-width: $desktop) {
@@ -138,15 +120,12 @@
         }
     }
 
-<<<<<<< HEAD
-=======
     &__contacts-icon:hover {
         @media screen and (min-width: $desktop) {
             transform: scale(1.2);
         }
     }
 
->>>>>>> user-cabinet
     &__mail,
     &__phone,
     &__location{
@@ -181,12 +160,9 @@
         @media screen and (min-width: $tablet) {
             padding-bottom: 0;
         }
-<<<<<<< HEAD
-=======
         @media screen and (min-width: $desktop) {
             width: 224px;
         }
->>>>>>> user-cabinet
     }
 
     &__line{
@@ -282,10 +258,6 @@
     }
     
     /* changed order of sections 1&2 on 768px*/
-<<<<<<< HEAD
-    // .container {
-=======
->>>>>>> user-cabinet
         @media screen and (min-width: $desktop) {
             display: flex;
             flex-direction: column;
@@ -317,29 +289,6 @@
         }
     }
     
-<<<<<<< HEAD
-    //     @media screen and (min-width: $desktop) {
-    //         display: block;
-    //     }
-    // }
-    
-    // .footer-container {
-    //     @media screen and (min-width: $desktop) {
-    //         display: grid;
-    //         grid-template-columns: 1fr 227px;
-    //         grid-template-areas: 
-    //         "menu logo"
-    //         "menu socials"
-    //         "menu contacts"
-    //         "line line"
-    //         "politic-copy politic-copy";
-    //     }
-    // }
-
-    
-
-    .footer__logo, .footer__socials, .footer__contacts {
-=======
     /* changed order of menu items on 768px*/
     .footer__menu-list-wrapper {
         @media screen and (min-width: $tablet) and (max-width: 1438px) {
@@ -444,144 +393,11 @@
 
     #no-display {
         display: none;
->>>>>>> user-cabinet
         @media screen and (min-width: $desktop) {
             display: none;
         }
     }
 
-<<<<<<< HEAD
-
-
-    
-    /* changed order of menu items on 768px*/
-    .footer__menu-list-wrapper {
-        @media screen and (max-width: $desktop) {
-                // "menu-item-312" "menu-item-310" "menu-item-309" "menu-item-308"
-                // "menu-item-439" "menu-item-307" "menu-item-306" "menu-item-305" "menu-item-311" "menu-item-319"
-                // "menu-item-313" "menu-item-318"
-            .menu-item-312 {
-                order: 1;
-                margin-left: 65px;
-            }
-
-            .menu-item-310 {
-                order: 2;
-            }
-            
-            .menu-item-309 {
-                order: 3;
-            }
-
-            .menu-item-308 {
-                order: 4;
-                margin-right: 65px;
-            }
-
-            .menu-item-439 {
-                order: 5;
-            }
-
-            .menu-item-307 {
-                order: 6;
-            }
-
-            .menu-item-306 {
-                order: 7;
-            }
-
-            .menu-item-305 {
-                order: 8;
-            }
-            .menu-item-311 {
-                order: 9;
-            }
-
-            .menu-item-319 {
-                order: 10;
-            }
-            .menu-item-313 {
-                order: 11;
-            }
-
-            .menu-item-318 {
-                order: 12;
-            }
-        }
-    }
-
-    /*------------------Up-button---------------------------*/
-    .up_btn {
-    display: none;
-    width: 44px;
-    height: 44px;
-    box-sizing: content-box;
-    position: fixed;
-    // bottom: 307px;
-    right: 8px;
-    z-index: 1000;
-    background-color: transparent;
-    cursor: pointer;
-    @media screen and (min-width: $tablet) {
-        // bottom: 401px;
-      }
-    @media screen and (min-width: $desktop) {
-        width: 59px;
-        height: 59px;
-        right: calc((100% - 1128px) / 2 - 8px);
-    }
-  }
-
-//   Styles for Right-side Logo & Icons etc, appeared at $desktop (class="footer__side-part")
-
-    .big-footer-wrapper {
-        @media screen and (min-width: $desktop) {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: space-between;
-        }
-    }
-
-    #no-display {
-        display: none;
-        @media screen and (min-width: $desktop) {
-            display: block;
-        }
-    }
-
-    &__logo-side img {
-        width: 227px;
-        height: 65px;
-    }
-
-    &__icons-list {
-        @media screen and (min-width: $desktop) {
-            gap: 16px;
-            padding: 18px 0 25px;
-        }
-    }
-
-    &__contacts-icon img {
-        @media screen and (min-width: $desktop) {
-            width: 28px;
-            width: 28px;
-        }
-    }
-    // UA
-    .menu-item-366,
-    .menu-item-370,
-    .menu-item-365,
-    // EN
-    .menu-item-560,
-    .menu-item-561,
-    .menu-item-562 {
-        @media screen and (min-width: $desktop) {
-        height: 25px;
-        }
-    }
-
-
-=======
     &__logo-side img {
         width: 227px;
         height: 65px;
@@ -652,7 +468,6 @@
         gap: 0;
         padding-top: 2px;
     }
->>>>>>> user-cabinet
 }
 
 .button-image svg {
