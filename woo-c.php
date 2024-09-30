@@ -59,3 +59,5 @@ add_filter('woocommerce_get_image_size_thumbnail', function($size) {
         'crop'   => 0
     );
 });
+
+
