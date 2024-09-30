@@ -394,7 +394,7 @@
     #no-display {
         display: none;
         @media screen and (min-width: $desktop) {
-            display: none;
+            display: block;
         }
     }
 
