@@ -255,6 +255,12 @@
         color: $primary-color;
       }
     }
+    @media screen and (min-width: $desktop) {
+      &:hover {
+        background-color: $white;
+        color: $primary-color;
+      }
+    }
   }
 
   &__pagination {
