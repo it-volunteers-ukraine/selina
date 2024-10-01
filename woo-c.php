@@ -51,3 +51,9 @@ add_filter('woocommerce_get_image_size_thumbnail', function($size) {
 
 // Disable woocommerce default styles
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+//  Enqueue our own WooCommerce stylesheet
+ if ( class_exists( 'WooCommerce' ) ) {
+    wp_enqueue_style( 'woo-cart', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main'));
+}
+add_action('wp_enqueue_scripts', 'wp_it_volunteers_scripts');
