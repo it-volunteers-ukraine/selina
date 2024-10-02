@@ -18,27 +18,22 @@ get_header();
 
         <div class="container">
             <h2 class="section_heading top-course-section_heading"><?php the_title() ?></h2>
-            <div class="sub-titles">
-                <a class="sub-title primary" href="<?php the_field('course-page_breadcrumbs_page_name'); ?>">
-                    <svg class="icon-paw" width="18" height="16">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                        </use>
-                    </svg>
-                        <?php the_field('course-page_breadcrumbs_page_name'); ?>
-                </a>
-                <a class="sub-title primary" href="<?php the_field('course-page_breadcrumbs_theme'); ?>">
-                    <svg class="icon-paw" width="18" height="16">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                        </use>
-                    </svg>
-                        <?php the_field('course-page_breadcrumbs_theme_name'); ?>
-                </a>
-            </div>
         </div>
     </section>
 
     <section class="section description-course-section">
         <div class="container">
+            <div class="single-course__breadcrumbs">
+                <a href="<?php the_field('course-page_breadcrumbs_page'); ?>">
+                    <?php the_field('course-page_breadcrumbs_page_name'); ?> /
+                </a>
+                <a href="<?php the_field('course-page_breadcrumbs_theme'); ?>">
+                    <?php the_field('course-page_breadcrumbs_theme_name'); ?> /
+                </a>
+                <span class="single-course__breadcrumbs__active">
+                    <?php the_title() ?>
+                </span>
+            </div>
             <?php 
                 $text_description1 = get_field('course-page_description-text1');
                 if( $text_description1 ): ?>

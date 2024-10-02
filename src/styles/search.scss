@@ -1,0 +1,67 @@
+@import "./variables.scss";
+@import "../styles/template-parts-styles/join-us";
+
+.search-main {
+  background-color: $background;
+
+  .search-wrapper {
+    padding: 32px 0;
+    @media (min-width: $tablet) {
+      padding: 56px 0;
+    }
+
+    .search-results {
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 16px;
+      @media (min-width: $tablet) {
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+      @media (min-width: $desktop) {
+        font-size: 30px;
+        margin-bottom: 40px;
+      }
+
+      .search-world {
+        text-transform: capitalize;
+      }
+    }
+
+    .searched-results {
+      background-color: $white;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+
+      .searched {
+        color: $red;
+        font-weight: 800;
+        margin-bottom: 8px;
+        font-size: 16px;
+        @media (min-width: $tablet) {
+          font-size: 20px;
+        }
+        @media (min-width: $desktop) {
+          font-size: 26px;
+        }
+      }
+
+      .searched-link{
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+
+      .searched-description {
+        font-weight: 500;
+        font-size: 13px;
+        @media (min-width: $tablet) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

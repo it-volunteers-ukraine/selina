@@ -8,12 +8,13 @@
     <?php wp_head(); ?>
     <title>It-volunteers</title>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <?php get_template_part('template-parts/loader'); ?>
 <div class="wrapper">
     <header class="header">
+        <div id="header-top" class="header-top">
         <div class="container">
-            <div id="header-top" class="header-top">
+            <div class="top-row">
                 <div class="social-media">
                     <?php
                     $socialLinks = get_field('social-media', 'option');
@@ -32,7 +33,6 @@
                         <img src="<?php the_field('icon-phone', 'option') ?>" alt="phone">
                     </a>
                 </div>
-
                 <div class="black-logo">
                     <?php
                     if (has_custom_logo()) {
@@ -42,15 +42,35 @@
                 </div>
                 <div class="wrapper-buttons">
                     <div class="buttons">
-                        <a class="button red_medium_button registration-btn"
-                           href="
-                <?php echo esc_attr(get_field('registration-link', 'option')); ?>">
-                            <?php the_field('registration-text', 'option'); ?>
-                        </a>
-                        <a class="button login-btn"
-                           href="<?php echo esc_attr(get_field('login-link', 'option')); ?>">
-                            <?php the_field('login-text', 'option'); ?>
-                        </a>
+                        <?php
+                        $is_user_logged_in = is_user_logged_in();
+
+                        if ( $is_user_logged_in ) {
+                            $personal_account_link = esc_attr(get_field('personal-account-link', 'option'));
+                            $personal_account_text = esc_html(get_field('personal-account-text', 'option'));
+
+                            echo '<a class="button red_medium_button registration-btn account-btn" href="' . $personal_account_link . '">';
+                            echo $personal_account_text;
+                            echo '</a>';
+
+                            echo '<a class="button login-btn" href="' .  wp_logout_url( home_url() ) . '">';
+                            echo esc_html(get_field('exit-text', 'option'));
+                            echo '</a>';
+
+
+                        } else {
+                            $registration_link = esc_attr(get_field('registration-link', 'option'));
+                            $registration_text = esc_html(get_field('registration-text', 'option'));
+
+                            echo '<a class="button red_medium_button registration-btn" href="' . $registration_link . '">';
+                            echo $registration_text;
+                            echo '</a>';
+
+                            echo '<a class="button login-btn" href="' . esc_attr(get_field('login-link', 'option')) . '">';
+                            echo esc_html(get_field('login-text', 'option'));
+                            echo '</a>';
+                        }
+                        ?>
                     </div>
 
                     <?php
@@ -96,6 +116,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <div class="header-bottom">
             <div class="container">
@@ -157,15 +178,34 @@
                                 </a>
                             </div>
                             <div class="buttons">
-                                <a class="button red_medium_button registration-btn"
-                                   href="<?php echo esc_attr(get_field('registration-link', 'option')); ?>">
-                                    <?php the_field('registration-text', 'option'); ?>
-                                </a>
-                                <a class="button login-btn"
-                                   href="<?php echo esc_attr(get_field('login-link', 'option')); ?>">
-                                    <?php the_field('login-text', 'option'); ?>
-                                </a>
+                                <?php
+                                $is_user_logged_in = is_user_logged_in();
 
+                                if ( $is_user_logged_in ) {
+                                    $personal_account_link = esc_attr(get_field('personal-account-link', 'option'));
+                                    $personal_account_text = esc_html(get_field('personal-account-text', 'option'));
+
+                                    echo '<a class="button red_medium_button registration-btn account-btn" href="' . $personal_account_link . '">';
+                                    echo $personal_account_text;
+                                    echo '</a>';
+
+                                    echo '<a class="button login-btn" href="' .  wp_logout_url( home_url() ) . '">';
+                                    echo esc_html(get_field('exit-text', 'option'));
+                                    echo '</a>';
+
+                                } else {
+                                    $registration_link = esc_attr(get_field('registration-link', 'option'));
+                                    $registration_text = esc_html(get_field('registration-text', 'option'));
+
+                                    echo '<a class="button red_medium_button registration-btn" href="' . $registration_link . '">';
+                                    echo $registration_text;
+                                    echo '</a>';
+
+                                    echo '<a class="button login-btn" href="' . esc_attr(get_field('login-link', 'option')) . '">';
+                                    echo esc_html(get_field('login-text', 'option'));
+                                    echo '</a>';
+                                }
+                                ?>
                                 <?php
                                 $current_language = (function_exists('pll_current_language')) ? pll_current_language('slug') : '';
                                 if (function_exists('pll_the_languages')) {

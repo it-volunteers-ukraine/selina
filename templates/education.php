@@ -76,7 +76,7 @@ get_header();
 
                 if ($loop->have_posts()) :
                     while ($loop->have_posts()) : $loop->the_post(); ?>
-                        <?php get_template_part('template-parts/course-card')?>
+                        <?php get_template_part('template-parts/education-card')?>
                     <?php endwhile;
                 endif;
                 wp_reset_postdata();
@@ -87,8 +87,8 @@ get_header();
                         data-post-type="courses"
                         data-post-taxonomy="resources_categories"
                         data-post-terms="anatomy"
-                        class="button button_green_new show-btn education-button">
-                    <?php the_field('show-more', 'option') ?>
+                        class="button button_green_new show-btn education-button education-btn">
+                    <?php the_field('show_more_btn', 'option') ?>
                     <svg width="18" height="17">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
@@ -139,7 +139,7 @@ get_header();
                         data-post-taxonomy="resources_categories"
                         data-post-terms="vebinars"
                         class="button button_green_new show-btn education-button">
-                    <?php the_field('show-more', 'option') ?>
+                    <?php the_field('show_more_btn', 'option') ?>
                     <svg width="18" height="17">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
@@ -190,8 +190,8 @@ get_header();
                         data-post-type="courses"
                         data-post-taxonomy="resources_categories"
                         data-post-terms="zoopsychology"
-                        class="button button_green_new show-btn education-button">
-                    <?php the_field('show-more', 'option') ?>
+                        class="button button_green_new show-btn education-button education-btn">
+                    <?php the_field('show_more_btn', 'option') ?>
                     <svg width="18" height="17">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>
@@ -242,7 +242,7 @@ get_header();
                         data-post-taxonomy="resources_categories"
                         data-post-terms="literature"
                         class="button button_green_new show-btn education-button">
-                    <?php the_field('show-more', 'option') ?>
+                    <?php the_field('show_more_btn', 'option') ?>
                     <svg width="18" height="17">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
                         </use>

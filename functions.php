@@ -47,22 +47,33 @@ function wp_it_volunteers_scripts()
         wp_enqueue_style('home-style', get_template_directory_uri() . '/assets/styles/template-styles/home.css', array('main'));
     }
 
-    // Connected contacts-style & contacts-scripts
     if (is_page_template('templates/contacts.php')) {
         wp_enqueue_style('contacts-style', get_template_directory_uri() . '/assets/styles/template-styles/contacts.css', array('main'));
         wp_enqueue_script('contacts-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/contacts.js', array(), false, true);
     }
 
-    // Connected shows-style & shows-scripts
     if (is_page_template('templates/shows.php')) {
         wp_enqueue_style('shows-style', get_template_directory_uri() . '/assets/styles/template-styles/shows.css', array('main'));
         wp_enqueue_script('shows-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/shows.js', array(), false, true);
     }
 
-    // Connected events-style & events-scripts
     if (is_page_template('templates/events.php')) {
         wp_enqueue_style('events-style', get_template_directory_uri() . '/assets/styles/template-styles/events.css', array('main'));
         wp_enqueue_script('events-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/events.js', array(), false, true);
+    }
+
+    if (is_page_template('templates/user-cabinet.php')) {
+        wp_enqueue_style('user-cabinet-style', get_template_directory_uri() . '/assets/styles/template-styles/user-cabinet.css', array('main'));
+        wp_enqueue_script('user-cabinet-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/user-cabinet.js', array(), false, true);
+    
+        wp_localize_script('user-cabinet-scripts', 'ajax_object', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('load_user_cabinet_content_nonce')
+        ));
+    }
+
+    if (is_page_template('templates/privacy-policy.php')) {
+        wp_enqueue_style('privacy-policy-style', get_template_directory_uri() . '/assets/styles/template-styles/privacy-policy.css', array('main'));
     }
 
     if (is_page_template('templates/about-us.php')) {
@@ -208,25 +219,6 @@ function wp_it_volunteers_scripts()
         wp_enqueue_script('register-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/register.js', array(), false, true);
     }
 
-    if ( class_exists( 'WooCommerce' ) ) {
-    if (is_shop() ) {
-      wp_enqueue_style( 'shop-style', get_template_directory_uri() . '/assets/styles/template-styles/shop.css', array('main') );
-    }
-    if (is_cart() ) {
-      wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main') );
-      wp_enqueue_script( 'woo-cart-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/cart.js', array(), false, true );
-    }
-    if (is_checkout() ) {
-      wp_enqueue_style( 'woo-checkout-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-checkout.css', array('main') );
-      wp_enqueue_script( 'woo-checkout-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/checkout.js', array(), false, true );
-      wp_enqueue_script('maskedinput', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js', array('jquery'), null, true);
-    }
-    if (is_product() ) {
-      wp_enqueue_style( 'woo-product-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-product.css', array('main') );
-      wp_enqueue_script( 'woo-product-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/woo-product.js', array(), false, true );
-    }
-  }
-
     if (is_singular() && locate_template('template-parts/breadcrumbs.php')) {
         wp_enqueue_style('breadcrumbs', get_template_directory_uri() . '/assets/styles/template-parts-styles/breadcrumbs.css', array('main'));
     }
@@ -282,10 +274,6 @@ function wp_it_volunteers_scripts()
     }
 
     if (is_singular() && locate_template('template-parts/education-card.php')) {
-        wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
-    }
-
-    if (is_singular() && locate_template('template-parts/course-card.php')) {
         wp_enqueue_style('education-card-style', get_template_directory_uri() . '/assets/styles/template-parts-styles/education-card.css', array('main'));
     }
 
@@ -443,7 +431,7 @@ function load_more_posts()
         $number /= 2;
     } else if ($terms === 'vebinars') {
         $template = 'template-parts/education-card';
-        $number /= 2;
+        $number /= 3;
     } else if ($terms === 'literature') {
         $template = 'template-parts/education-card';
         $number /= 3;
@@ -451,7 +439,7 @@ function load_more_posts()
         $template = 'template-parts/education-card';
         $number /= 3;
     } else if ($postType === 'courses') {
-        $template = 'template-parts/course-card';
+        $template = 'template-parts/education-card';
         $number /= 4;
     }
 
@@ -690,6 +678,14 @@ function load_news_archive() {
         'orderby' => 'date',
         'order' => 'DESC',
         'paged' => $paged,
+        'meta_query' => array(
+            array (
+                'key' => 'news_date_meta',
+                'value' => current_time('Ymd'),
+                'compare' => '<',
+                'type' => 'NUMERIC'
+            )
+        )
     );
 
     if (!empty($active_tags)) {
@@ -747,3 +743,145 @@ if (!current_user_can('administrator')):
 endif;
 
 
+// User cabinet
+add_action( 'wp_ajax_' . 'load_user_cabinet_content', 'load_user_cabinet_content' );
+
+function load_user_cabinet_content() {
+    check_ajax_referer('load_user_cabinet_content_nonce', 'nonce');
+    $content_tab = isset($_POST['contentTab']) ? sanitize_text_field($_POST['contentTab']) : '';
+    $response = '';
+
+    $page = get_posts(array(
+        'post_type'  => 'page',
+        'meta_key'   => '_wp_page_template',
+        'meta_value' => 'templates/user-cabinet.php'
+    ));
+    
+    if (!empty($page)) {
+        $page_id = $page[0]->ID;
+    } else {
+        $page_id = 0;
+    }
+
+    $field_name = 'user-cabinet_' . $content_tab;
+    $button_card_text = get_field('user-cabinet_card-title', $page_id) ?: 'Відкрити/Open';
+
+    if ($content_tab === 'form') {
+        if (have_rows($field_name, $page_id)) {
+            while (have_rows($field_name, $page_id)) {
+                the_row();
+                $content_title = get_sub_field($field_name . '-title');
+                $content_link = get_sub_field($field_name . '-link');
+                
+                $response .= '<div class="content-user-cabinet__form-item">
+                                <svg class="content-user-cabinet__clip-svg" width="38" height="90">
+                                    <use href="' . get_bloginfo('template_url') . '/assets/images/sprite.svg#icon-clip"></use>
+                                </svg>
+                            ';
+                $response .= '<h3 class="content-user-cabinet__form-title">' . esc_html($content_title) . '</h3>';
+                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-user-cabinet__link red_medium_button">
+                                ' . esc_html($button_card_text) . '
+                                <svg width="16" height="14"> 
+                                    <use href="' . get_bloginfo('template_url') . '/assets/images/sprite.svg#icon-google"></use> 
+                                </svg>
+                            </a>';
+                $response .= '</div>';
+            }
+        } else {
+            $response .= '<p>No form items available.</p>';
+        }
+    } else {
+        if (have_rows($field_name, $page_id)) {
+            while (have_rows($field_name, $page_id)) {
+                the_row();
+                $content_image = get_sub_field($field_name . '-image');
+                $content_title = get_sub_field($field_name . '-title');
+                $content_link = get_sub_field($field_name . '-link');
+                
+                $response .= '<div class="content-user-cabinet__content-item">';
+                $response .= '<div class="content-user-cabinet__image-heading-container">';
+                $response .= '<div class="content-user-cabinet__content-image">';
+                $response .= '<img src="' . esc_url($content_image) . '" alt="' . esc_attr($content_title) . '"/>';
+                $response .= '</div>';
+                $response .= '<h3 class="content-user-cabinet__title">' . esc_html($content_title) . '</h3>';
+                $response .= '</div>';
+                $response .= '<a href="' . esc_url($content_link) . '" target="_blank" class="content-user-cabinet__link red_medium_button">
+                                ' . esc_html($button_card_text) . '
+                                <svg width="16" height="14"> 
+                                    <use href="' . get_bloginfo('template_url') . '/assets/images/sprite.svg#icon-google"></use> 
+                                </svg>
+                            </a>';
+                $response .= '</div>';
+            }
+        } else {
+            $response .= '<p>No content items available.</p>';
+        }
+    }
+    
+    wp_send_json_success($response);
+}
+
+function custom_login_logo() {
+    ?>
+    <style type="text/css">
+        #login h1 a {
+            background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/src/images/logo_icon.svg');
+            width: 120px;
+            height: 60px;
+            background-size: contain;
+        }
+    </style>
+    <?php
+}
+add_action('login_enqueue_scripts', 'custom_login_logo');
+
+function custom_login_url() {
+    return home_url();
+}
+add_filter('login_headerurl', 'custom_login_url');
+
+function custom_login_title() {
+    return 'Visit Selina homepage';
+}
+add_filter('login_headertext', 'custom_login_title');
+
+
+add_filter( 'wp_new_user_notification_email', 'custom_wp_new_user_notification_email', 10, 3 );
+
+function custom_wp_new_user_notification_email( $wp_new_user_notification_email, $user, $key ) {
+    $key = get_password_reset_key( $user );
+    $message = sprintf(__('Доброго дня, %s!'), $user->user_login ) . "\r\n\r\n";
+
+    $message .= 'Вітаємо з реєстрацією на сайті Селіна!' . "\r\n\r\n";
+    $message .= 'Будь ласка, встановіть власний пароль для Вашого облікового запису:' . "\r\n\r\n";
+    $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user->user_login), 'login') . "\r\n\r\n";
+    $message .= "Якщо сталася помилка, просто проігноруйте цей лист." . "\r\n\r\n";
+    $message .= "З повагою," . "\r\n";
+    $message .= "команда Селіна" . "\r\n";
+    $wp_new_user_notification_email['message'] = $message;
+
+    return $wp_new_user_notification_email;
+}
+
+add_filter( 'retrieve_password_message', 'wpdocs_retrieve_password_message', 20, 3 );
+function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
+	$site_name  = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+	$reset_link = network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' );
+
+	// Create new message
+    $message = __( 'Доброго дня, ' . $user_login, 'text_domain' ) . "\r\n\r\n";
+	$message = __( 'Ми отримали запит на скидання паролю для Вашого облікового запису на сайті Селіна.', 'text_domain' ) . "\r\n\r\n";
+	$message .= __( 'Будь ласка, перейдіть за посиланням, щоб створити новий пароль:', 'text_domain' ) . "\r\n\r\n";
+	$message .= $reset_link . "\r\n\r\n";
+    $message .= __( 'Якщо сталася помилка, просто проігноруйте цей лист.', 'text_domain' ) . "\r\n\r\n";
+    $message .= "З повагою," . "\r\n";
+    $message .= "команда Селіна" . "\r\n";
+
+	return $message;
+}
+
+
+// WooCommerce
+if (class_exists('WooCommerce')) {
+    require_once (get_template_directory() . '/woo-c.php');
+}

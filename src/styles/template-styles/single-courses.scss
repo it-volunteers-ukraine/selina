@@ -15,48 +15,6 @@
       background-repeat: no-repeat;
     }
 
-    .sub-titles {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 24px;
-
-      @media (min-width: $tablet) {
-        column-gap: 24px;
-        width: 95%;
-      }
-
-      @media (min-width: $desktop) {
-        gap: 16px 36px;
-        width: 50%;
-      }
-
-      .primary {
-        color: $primary-color;
-      }
-
-      .sub-title {
-        font-size: 16px;
-        font-weight: 800;
-
-        @media (min-width: $tablet) {
-          font-size: 20px;
-        }
-
-        .icon-paw {
-          width: 14px;
-          height: 12px;
-          @media (min-width: $desktop) {
-            width: 18px;
-            height: 16px;
-          }
-        }
-
-        @media (min-width: $desktop) {
-          font-size: 20px;
-        }
-      }
-    }
-
     .top-course-section_heading {
       margin-bottom: 14px;
       font-size: 30px;
@@ -74,6 +32,24 @@
   }
 
   .description-course-section {
+    .single-course__breadcrumbs {
+      margin-bottom: 16px;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1;
+      color: $primary-color;
+      @media screen and (min-width: $tablet) {
+        margin-bottom: 24px;
+      }
+      @media screen and (min-width: $desktop) {
+        margin-bottom: 30px;
+      }
+
+      &__active {
+        color: #d11f2a;
+      }
+    }
+
     &__wrapper {
       margin-bottom: 24px;
       @media (min-width: $desktop) {
@@ -113,6 +89,8 @@
     }
 
     .description-course-img {
+      border-radius: 20px;
+      overflow: hidden;
       margin-bottom: 24px;
       @media (min-width: $desktop) {
         margin-bottom: 40px;

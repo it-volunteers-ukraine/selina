@@ -5,6 +5,9 @@
 
   @media screen and (min-width: $desktop) {
     padding-bottom: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
   }
 
   // Header top
@@ -17,79 +20,84 @@
 
     @media screen and (min-width: $desktop) {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
       padding: 12px 0;
+      background-color: $white;
     }
 
-    .social-media {
-      display: flex;
-      flex-direction: row;
-      gap: 15px;
-      margin-bottom: 32px;
-
-      @media screen and (min-width: $tablet) {
-        margin-bottom: 0;
-      }
-
-      @media screen and (min-width: $desktop) {
-        gap: 18px;
-      }
-    }
-
-    .black-logo {
-      display: none;
-
-      a {
-        img {
-          filter: invert(100%) brightness(200%);
-        }
-      }
-
-      @media screen and (min-width: $tablet) {
-        display: block;
-        position: absolute;
-        left: 51%;
-        transform: translate(-50%, 10px);
-      }
-
-      @media screen and (min-width: $desktop) {
-        left: 50%;
-      }
-    }
-
-    .wrapper-buttons {
+    .top-row {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      gap: 15px;
+      align-items: center;
 
-      @media screen and (min-width: $tablet) {
-        gap: 16px;
-      }
-
-      @media screen and (min-width: $desktop) {
-        width: 264px;
-      }
-
-      .buttons {
+      .social-media {
         display: flex;
         flex-direction: row;
         gap: 15px;
+        margin-bottom: 32px;
 
-        .registration-btn {
-          border-radius: $small-br;
-          font-size: 13px;
-          padding: 5px 10px;
+        @media screen and (min-width: $tablet) {
+          margin-bottom: 0;
         }
 
-        .login-btn {
-          border-radius: $small-br;
-          padding: 5px 11px;
-          border: 1px solid $primary-color;
-          color: $primary-color;
-          font-size: 13px;
+        @media screen and (min-width: $desktop) {
+          gap: 18px;
+        }
+      }
+
+      .black-logo {
+        display: none;
+
+        a {
+          img {
+            filter: invert(100%) brightness(200%);
+          }
+        }
+
+        @media screen and (min-width: $tablet) {
+          display: block;
+          position: absolute;
+          left: 51%;
+          transform: translate(-50%, 10px);
+        }
+
+        @media screen and (min-width: $desktop) {
+          left: 50%;
+        }
+      }
+
+      .wrapper-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 15px;
+
+        @media screen and (min-width: $tablet) {
+          gap: 16px;
+        }
+
+        @media screen and (min-width: $desktop) {
+          width: 264px;
+        }
+
+        .buttons {
+          display: flex;
+          flex-direction: row;
+          gap: 15px;
+
+          .registration-btn {
+            border-radius: $small-br;
+            font-size: 13px;
+            padding: 5px 10px;
+          }
+
+          .login-btn {
+            border-radius: $small-br;
+            padding: 5px 11px;
+            border: 1px solid $primary-color;
+            color: $primary-color;
+            font-size: 13px;
+          }
         }
       }
     }
@@ -336,7 +344,7 @@
               width: 383px;
             }
             @media screen and (min-width: $desktop) {
-              width: 231px;
+              width: 255px;
               box-sizing: border-box;
               padding-left: 20px;
             }
@@ -394,7 +402,7 @@
       position: relative;
 
       @media (min-width: 320px) {
-       margin-bottom: 20px;
+        margin-bottom: 20px;
       }
 
       @media (min-width: $mobile) {
@@ -429,6 +437,7 @@
 
           .menu-item {
             margin-bottom: 4px;
+
             a {
               white-space: nowrap;
               font-weight: 500;
@@ -448,7 +457,7 @@
       }
     }
 
-    .active{
+    .active {
       padding-bottom: 85px;
     }
 
@@ -549,6 +558,19 @@
       }
     }
 
+    .account-btn {
+      @media (min-width: 320px) {
+        font-size: 11px;
+        margin-left: -7px;
+        white-space: nowrap;
+      }
+
+      @media (min-width: $desktop) {
+        white-space: nowrap;
+        margin-left: -25px;
+      }
+    }
+
     .switch {
       position: relative;
       width: 86px;
@@ -558,7 +580,7 @@
 
       .flag-ua {
         @media (min-width: 320px) {
-          left: 39px;
+          left: 36px;
           top: 5px;
           height: 30px;
         }
