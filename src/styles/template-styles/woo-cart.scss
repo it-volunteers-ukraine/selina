@@ -1,0 +1,15 @@
+@import "../variables.scss";
+
+.mywoo-cart-table__head {
+    display: none;
+
+    @media screen and (min-width: $tablet) {
+        display: table-header-group;
+    }
+}
+
+.product-thumbnail img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}

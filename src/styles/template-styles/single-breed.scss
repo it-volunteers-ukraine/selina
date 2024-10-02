@@ -244,9 +244,16 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
     &:active {
       background-color: $white;
       color: $primary-color;
+    }
+    @media screen and (min-width: $desktop) {
+      &:hover {
+        background-color: $white;
+        color: $primary-color;
+      }
     }
     @media screen and (min-width: $desktop) {
       &:hover {

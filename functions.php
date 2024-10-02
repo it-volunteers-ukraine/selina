@@ -732,10 +732,6 @@ function load_news_archive() {
 add_action('wp_ajax_load_news_archive', 'load_news_archive');
 add_action('wp_ajax_nopriv_load_news_archive', 'load_news_archive');
 
-if ( class_exists( 'WooCommerce' ) ) {
-require_once(get_template_directory() . '/woo-c.php');
-}
-
 // Відключаємо адмін панель для всіх, крім адміністраторів
 
 if (!current_user_can('administrator')):
@@ -878,4 +874,9 @@ function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
     $message .= "команда Селіна" . "\r\n";
 
 	return $message;
+}
+
+// WooCommerce
+if (class_exists('WooCommerce')) {
+    require_once (get_template_directory() . '/woo-c.php');
 }

@@ -1,13 +1,15 @@
 @import "../variables.scss";
 
-#main > nav {
+body > main > section > div > nav {
     font-weight: 800;
     font-size: 16px;
     line-height: 100%;
     color: $primary-color;
-    margin: 32px 0 16px;
+    margin-bottom: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
 
 .woocommerce-product-gallery__wrapper {
     margin-bottom: 16px;
@@ -26,5 +28,9 @@ div.summary.entry-summary > h1 {
     font-size: 16px;
     line-height: 131%;
     color: $black;
+    margin-bottom: 16px;
+}
+
+.price {
     margin-bottom: 16px;
 }
