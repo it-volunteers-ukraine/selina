@@ -1,1 +1,1 @@
-.woocommerce-cart h1{font-size:44px}.woocommerce-cart .wc-block-components-totals-item__label{background-color:green;color:#fff;padding:10px 20px;border:none;cursor:pointer}
+.mywoo-cart-table__head{display:none}@media screen and (min-width: 768px){.mywoo-cart-table__head{display:table-header-group}}.product-thumbnail img{width:100px;height:100px;-o-object-fit:cover;object-fit:cover}

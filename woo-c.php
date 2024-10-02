@@ -54,7 +54,13 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
 //  Enqueue our own WooCommerce styles
  if ( class_exists( 'WooCommerce' ) ) {
-    wp_enqueue_style( 'woo-cart', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main'));
-    wp_enqueue_style( 'woo-checkout', get_template_directory_uri() . '/assets/styles/template-styles/woo-checkout.css', array('main'));
+    wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main'));
+    wp_enqueue_style( 'woo-checkout-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-checkout.css', array('main'));
 }
 add_action('wp_enqueue_scripts', 'wp_it_volunteers_scripts');
+
+// Add image size for thumbnail in the cart
+function cart_woocommerce_image_size() {
+    add_image_size( 'cart-image-size', 100, 100, true ); 
+}
+add_action( 'after_setup_theme', 'cart_woocommerce_image_size' );

@@ -1,11 +1,15 @@
-.woocommerce-cart h1 {
-    font-size: 44px;
+@import "../variables.scss";
+
+.mywoo-cart-table__head {
+    display: none;
+
+    @media screen and (min-width: $tablet) {
+        display: table-header-group;
+    }
 }
 
-.woocommerce-cart .wc-block-components-totals-item__label {
-    background-color: green;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+.product-thumbnail img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
