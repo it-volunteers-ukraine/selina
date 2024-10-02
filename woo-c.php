@@ -80,3 +80,11 @@ function cart_woocommerce_image_size() {
     add_image_size( 'cart-image-size', 100, 100, true ); 
 }
 add_action( 'after_setup_theme', 'cart_woocommerce_image_size' );
+
+// Positioning price after excerpt (on single-product page)
+function reorder_woocommerce_hooks() {
+    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+
+    add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
+}
+add_action( 'woocommerce_init', 'reorder_woocommerce_hooks' );
