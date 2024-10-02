@@ -20,6 +20,29 @@ function selina_add_woocommerce_support() {
 
 add_action('after_setup_theme', 'selina_add_woocommerce_support');
 
+// Disable woocommerce default styles
+add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+//  Enqueue our own WooCommerce styles
+function woo_wp_it_volunteers_scripts() {
+
+    if ( class_exists( 'WooCommerce' ) ) {
+
+        if ( is_cart() ) {
+            wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main') );
+            wp_enqueue_script( 'woo-cart-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/cart.js', array(), false, true );
+        }
+
+        if ( is_checkout() ) {
+            wp_enqueue_style( 'woo-checkout-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-checkout.css', array('main') );
+            wp_enqueue_script( 'woo-checkout-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/checkout.js', array(), false, true );
+            wp_enqueue_script('maskedinput', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js', array('jquery'), null, true);
+        }
+
+    }
+}
+add_action('wp_enqueue_scripts', 'woo_wp_it_volunteers_scripts');
+
 // Image sizes
 
 // Adjust image size for single product pages
@@ -48,16 +71,6 @@ add_filter('woocommerce_get_image_size_thumbnail', function($size) {
         'crop' => 0
     );
 });
-
-// Disable woocommerce default styles
-add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
-
-//  Enqueue our own WooCommerce styles
- if ( class_exists( 'WooCommerce' ) ) {
-    wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main'));
-    wp_enqueue_style( 'woo-checkout-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-checkout.css', array('main'));
-}
-add_action('wp_enqueue_scripts', 'wp_it_volunteers_scripts');
 
 // Add image size for thumbnail in the cart
 function cart_woocommerce_image_size() {
