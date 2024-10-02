@@ -39,9 +39,6 @@ function woo_wp_it_volunteers_scripts() {
             wp_enqueue_script('maskedinput', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js', array('jquery'), null, true);
         }
 
-        if ( is_shop() ) {
-            wp_enqueue_style( 'shop-style', get_template_directory_uri() . '/assets/styles/template-styles/shop.css', array('main') );
-        }
     }
 }
 add_action('wp_enqueue_scripts', 'woo_wp_it_volunteers_scripts');
