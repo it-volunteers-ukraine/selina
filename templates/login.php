@@ -93,17 +93,8 @@ get_header();
             <button class="login-page-section__forgot_password" type="submit" name="forgot_password">
               <?php the_field('forgot_password') ?>
             </button>
-        </form>
-      </div>
-      <div class="login-page-section__wrapper-img">
-            <img class="login-page-section__img" src="<?php the_field('login-page__img') ?>" />
-        </div>
-    </div>
-  </section>
-</main>
-
-<?php
-// Process forgot password request
+            <?php
+            // Process forgot password request
 if (isset($_POST['forgot_password'])) {
     if (!empty($_POST['username'])) {
         // Make sure the user exists
@@ -136,6 +127,18 @@ if (isset($_POST['forgot_password'])) {
         echo '</div>';
     }
 }
+            ?>
+        </form>
+      </div>
+      <div class="login-page-section__wrapper-img">
+            <img class="login-page-section__img" src="<?php the_field('login-page__img') ?>" />
+        </div>
+    </div>
+  </section>
+</main>
+
+<?php
+
 
 get_footer();
 ?>
