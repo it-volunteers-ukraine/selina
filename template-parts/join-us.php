@@ -2,13 +2,15 @@
 <div class="container">
     <h2 class="section_heading join-us-section__heading"><?php the_field('join_text', 'option'); ?></h2>
     <?php 
-$link = get_field('join_link', 'option');
-if( $link ): ?>
+    if ( !is_page( 'chlenstvo-u-klubi' ) && !is_page( 'club-membership-2' )) : 
+    $link = get_field('join_link', 'option');
+    if( $link ): ?>
     <a class="red_medium_button join-us-section__btn"
     target="_blank"
     href="<?php echo esc_url(  get_field('join_link', 'option')); ?>">
         <?php the_field('join_text-link', 'option'); ?></a>
-<?php endif; ?>
+    <?php endif; 
+    endif;?>
     
 </div>
 
