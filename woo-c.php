@@ -41,6 +41,7 @@ function woo_wp_it_volunteers_scripts() {
 
         if ( is_product() ) {
             wp_enqueue_style( 'woo-product-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-single-product.css', array('main') );
+            wp_enqueue_script( 'woo-product-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/woo-single-product.js', array(), false, true );
         }
     }
 }
