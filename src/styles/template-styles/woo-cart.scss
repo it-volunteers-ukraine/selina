@@ -40,7 +40,7 @@
     } 
 }
 
-.mywoo-cart-table__head .product-name {
+/*.mywoo-cart-table__head .product-name {
 
     @media screen and (min-width: $tablet) {
         width: 58.6%;
@@ -52,12 +52,12 @@
     @media screen and (min-width: $tablet) {
         width: 20.7%; 
     }
-}
+}*/
 
 .mywoo-cart-table__head .product-price {
 
     @media screen and (min-width: $tablet) {
-        width: 20.7%;
+        /*width: 20.7%;*/
         text-align: right;
     }
 }
@@ -95,8 +95,39 @@
     }
 }
 
-.product-thumbnail img {
+.mywoo-cart-table__body .product-thumbnail img {
     width: 100px;
     height: 100px;
     object-fit: cover;
 }
+
+.mywoo-cart-table__body .product-price {
+    text-align: right;
+}
+
+// Table footer
+.mywoo-cart-table__footer tr {
+    th, td {
+        padding: 16px 0;
+
+        @media screen and (min-width: $tablet) {
+            padding: 24px 0;
+        }
+    }
+}
+
+/*body > div.woocommerce > main > section > div > div.mywoo-cart-form.cart-content > form > table > tfoot > tr:nth-child(1) > th {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 100%;
+    text-align: right;
+    color: $red;
+}
+
+.mywoo-cart-table__footer .product-subtotal {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 100%;
+    text-align: right;
+    color: $red;
+}*/

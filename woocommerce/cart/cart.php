@@ -33,8 +33,10 @@ do_action( 'woocommerce_before_main_content' );
 				<thead class="mywoo-cart-table__head">
 					<tr>
 						<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+						<th></th>
 						<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-						<th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
+						<th></th>
+						<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
 
 					</tr>
 				</thead>
@@ -60,7 +62,7 @@ do_action( 'woocommerce_before_main_content' );
 
 							?>
 
-							<tr>
+							<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 								<!-- Product image -->
 								<td class="product-thumbnail">
 									<?php
@@ -147,12 +149,13 @@ do_action( 'woocommerce_before_main_content' );
 									?>
 								</td>
 
-								<!-- Product price -->
-								<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">
+								<!-- Product subtotal -->
+								<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
 									<?php
-										echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
+										echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 									?>
 								</td>
+								
 
 							</tr>
 
@@ -166,27 +169,14 @@ do_action( 'woocommerce_before_main_content' );
 
 					<?php do_action( 'woocommerce_cart_contents' ); ?>
 
-					<!-- Total price -->
-					<tr>
-						<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
+						<td class="actions">
 
-						
-						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
-						<?php
-								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
-							?>
-						</td>
-					</tr>
-
-					<tr>
-						<td colspan="6" class="actions">
-
-							<!-- <?php if ( wc_coupons_enabled() ) { ?>
+							<?php if ( wc_coupons_enabled() ) { ?>
 								<div class="coupon">
 									<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
 									<?php do_action( 'woocommerce_cart_coupon' ); ?>
 								</div>
-							<?php } ?> -->
+							<?php } ?>
 
 							<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 
@@ -203,6 +193,22 @@ do_action( 'woocommerce_before_main_content' );
 
 		<?php do_action( 'woocommerce_after_cart_table' ); ?>
 	</form>
+
+	<?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
+
+	<div class="cart-collaterals">
+		<?php
+			/**
+			 * Cart collaterals hook.
+			 *
+			 * @hooked woocommerce_cross_sell_display
+			 * @hooked woocommerce_cart_totals - 10
+			 */
+			do_action( 'woocommerce_cart_collaterals' );
+		?>
+	</div>
+
+	<?php do_action( 'woocommerce_after_cart' ); ?>
 </div>
 
 <?php do_action( 'woocommerce_after_main_content' ); ?>
