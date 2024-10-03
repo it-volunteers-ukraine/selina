@@ -77,7 +77,7 @@ get_header();
           <p class="login-page-section__form-field">
             <label for="password"><?php the_field('login-page__password'); ?></label>
             <input id="password" type="password" placeholder="<?php the_field('login-page__password-field'); ?>"
-              name="password" required>
+              name="password">
           </p>
           
           <!-- Submit Button -->
