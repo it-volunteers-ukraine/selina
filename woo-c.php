@@ -43,6 +43,10 @@ function woo_wp_it_volunteers_scripts() {
             wp_enqueue_script('maskedinput', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js', array('jquery'), null, true);
         }
 
+        if ( is_product() ) {
+            wp_enqueue_style( 'woo-product-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-single-product.css', array('main') );
+            wp_enqueue_script( 'woo-product-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/woo-single-product.js', array(), false, true );
+        }
     }
 }
 add_action('wp_enqueue_scripts', 'woo_wp_it_volunteers_scripts');
@@ -81,3 +85,11 @@ function cart_woocommerce_image_size() {
     add_image_size( 'cart-image-size', 100, 100, true ); 
 }
 add_action( 'after_setup_theme', 'cart_woocommerce_image_size' );
+
+// Positioning price after excerpt (on single-product page)
+function reorder_woocommerce_hooks() {
+    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+
+    add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
+}
+add_action( 'woocommerce_init', 'reorder_woocommerce_hooks' );
