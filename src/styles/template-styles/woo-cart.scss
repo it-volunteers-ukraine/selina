@@ -119,13 +119,13 @@
     margin: 0 17px;
 }
 
-.product-add2cart input.qty::-webkit-outer-spin-button,
-.product-add2cart input.qty::-webkit-inner-spin-button {
+.mywoo-cart-table__body td.product-quantity input::-webkit-outer-spin-button,
+.mywoo-cart-table__body td.product-quantity input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-.product-add2cart input.qty[type=number],
+.mywoo-cart-table__body td.product-quantity input[type=number],
 .woocommerce-cart-form input.qty[type=number] {
     -moz-appearance: textfield;
     width: 64px;

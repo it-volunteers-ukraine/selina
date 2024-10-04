@@ -21,6 +21,13 @@ do_action( 'woocommerce_before_main_content' );
 
 ?>
 
+<div>
+	<h1 style="font-weight: 800;
+				font-size: 45px;
+				line-height: 100%;
+				color: #121212;"><?php the_title(); ?></h1>
+</div>
+
 <div class="mywoo_before_cart">
 	<?php do_action( 'woocommerce_before_cart' ); ?>
 </div>
