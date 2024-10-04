@@ -12,7 +12,7 @@
     color: $primary-color;
 }
 
-// Table titles
+/* ----------------------------- Table titles --------------------------*/
 .mywoo-cart-table__head {
     display: none;
 
@@ -40,29 +40,14 @@
     } 
 }
 
-/*.mywoo-cart-table__head .product-name {
-
-    @media screen and (min-width: $tablet) {
-        width: 58.6%;
-    }
-}
-
-.mywoo-cart-table__head .product-quantity {
-
-    @media screen and (min-width: $tablet) {
-        width: 20.7%; 
-    }
-}*/
-
 .mywoo-cart-table__head .product-price {
 
     @media screen and (min-width: $tablet) {
-        /*width: 20.7%;*/
         text-align: right;
     }
 }
 
-// Table body
+/* ------------------------------------- Table body ---------------------------------*/
 .mywoo-cart-table__body tr {
     td {
         padding: 0;
@@ -105,7 +90,44 @@
     text-align: right;
 }
 
-// Table footer
+// Buttons - and +
+.single-product__quantity {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 138%;
+    margin-bottom: 8px;
+}
+
+.input-group {
+    display: flex;
+    border: 1px solid rgba(7, 7, 7, 0.15);
+    border-radius: 10px;
+    padding: 0px 8px;
+    width: 168px;
+    height: 44px;
+    margin-bottom: 16px;
+}
+
+.btn-plus {
+    margin: 0 17px;
+}
+
+.product-add2cart input.qty::-webkit-outer-spin-button,
+.product-add2cart input.qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.product-add2cart input.qty[type=number] {
+    -moz-appearance: textfield;
+    width: 64px;
+    text-align:center;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 138%;
+}
+
+/* ----------------------------------------------- Table footer -----------------------------------*/
 .mywoo-cart-table__footer tr {
     th, td {
         padding: 16px 0;
@@ -131,3 +153,5 @@
     text-align: right;
     color: $red;
 }*/
+
+
