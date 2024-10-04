@@ -574,6 +574,7 @@ html {
         &__button {
             align-self: center;
             margin-top: 16px;
+            z-index: 50;
             @media screen and (min-width: $desktop) {
                 order: 3;
             }
