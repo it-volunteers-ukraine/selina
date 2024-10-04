@@ -1,1 +1,1 @@
-jQuery(document).ready((function(t){t(".quantity button").on("click",(function(){let n=t(this),a=n.parent().find(".qty"),u=+a.val(),e=1;n.hasClass("btn-plus")?e=u+1:u>1&&(e=u-1),a.val(e),t(".update-cart").prop("disabled",!1)}))}));
+jQuery(document).ready((function(t){t("main.main").on("click",".quantity button",(function(){let n=t(this),a=n.parent().find(".qty"),i=+a.val(),u=1;n.hasClass("btn-plus")?u=i+1:i>1&&(u=i-1),a.val(u),t(".update-cart").prop("disabled",!1)}))}));

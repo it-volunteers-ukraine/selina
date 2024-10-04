@@ -125,7 +125,8 @@
     margin: 0;
 }
 
-.product-add2cart input.qty[type=number] {
+.product-add2cart input.qty[type=number],
+.woocommerce-cart-form input.qty[type=number] {
     -moz-appearance: textfield;
     width: 64px;
     text-align:center;
