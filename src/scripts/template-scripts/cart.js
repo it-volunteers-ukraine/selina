@@ -13,5 +13,6 @@ jQuery(document).ready(function($){
             }
         }
         inputQty.val(newValue);
+        $( '.update-cart' ).prop( 'disabled', false );
     });
 });

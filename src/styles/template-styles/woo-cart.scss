@@ -40,6 +40,13 @@
     } 
 }
 
+.mywoo-cart-table__head th.product-subtotal {
+
+    @media screen and (min-width: $tablet) {
+        text-align: right;
+    }
+}
+
 .mywoo-cart-table__head .product-price {
 
     @media screen and (min-width: $tablet) {
@@ -86,7 +93,7 @@
     object-fit: cover;
 }
 
-.mywoo-cart-table__body .product-price {
+.mywoo-cart-table__body .product-subtotal {
     text-align: right;
 }
 
