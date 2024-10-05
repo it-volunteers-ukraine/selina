@@ -6,42 +6,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'shop' ); ?>
 
-<div class="shop-page">
+<main class="shop-page">
+    <section class="section shop-filters">
+        <div class="container">
+        <div>
+            <?php
+// Get product categories
+$product_categories = get_terms( array(
+    'taxonomy'   => 'product_cat',
+    'hide_empty' => true, 
+) );
 
-    <!-- Filters Section -->
-    <div class="shop-filters">
-        <div class="shop-filters-categories">
-            <?php 
-                // WooCommerce product categories filter
-                wp_list_categories( array(
-                    'taxonomy'     => 'product_cat',
-                    'title_li'     => '',
-                    'show_count'   => true,
-                    'hide_empty'   => true,
-                    'walker'       => new Walker_Category(), // Optional if you need a custom walker
-                ) ); 
-            ?>
-        </div>
-
-        <div class="shop-filters-products">
-            <button>Товари</button>
-            <button>Послуги</button>
-            <button>Цифрова Продукція</button>
-        </div>
+if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : ?>
+    <div class="filters shop-filters__categories">
+        <button class="filter-button" data-category="all">All</button> <!-- 'All' button for showing all products -->
+        <?php foreach ( $product_categories as $category ) : ?>
+            <button class="filter-button" data-category="<?php echo esc_attr( $category->slug ); ?>">
+                <?php echo esc_html( $category->name ); ?>
+            </button>
+        <?php endforeach; ?>
     </div>
-
-    <!-- Page Description -->
-    <div class="shop-page-description">
+<?php endif; ?>
+        </div>
+         <!-- Page Description -->
+    <div class="shop-filters__description">
         <p>В цьому розділі зібрано все необхідне для вашого котика: товари, послуги та цифрова продукція...</p>
     </div>
-
-    <!-- Sorting Section -->
-    <div class="shop-sorting">
+    <div class="shop-filters__sorting">
         <span><?php woocommerce_catalog_ordering(); ?></span>
     </div>
+    </div>
+    </section>
 
     <!-- Product Grid -->
-    <div class="products-grid">
+    <section class="section shop-grid">
+        <div class="container">
+            <div class="shop-grid__products">
         <?php if ( woocommerce_product_loop() ) : ?>
 
             <?php woocommerce_product_loop_start(); ?>
@@ -49,7 +49,7 @@ get_header( 'shop' ); ?>
             <?php while ( have_posts() ) : ?>
                 <?php the_post(); ?>
 
-                <div class="product-item">
+                <div class="shop-grid__item">
                     <?php wc_get_template_part( 'content', 'product' ); ?>
                 </div>
 
@@ -61,7 +61,7 @@ get_header( 'shop' ); ?>
             <?php wc_get_template( 'loop/no-products-found.php' ); ?>
         <?php endif; ?>
     </div>
-
-</div>
-
+    </div>
+    </section>
+        </main>
 <?php get_footer( 'shop' ); ?>

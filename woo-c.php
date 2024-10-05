@@ -27,7 +27,15 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 function woo_wp_it_volunteers_scripts() {
 
     if ( class_exists( 'WooCommerce' ) ) {
-
+        if ( is_shop() ) {
+            wp_enqueue_style( 'woo-shop-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-shop.css', array('main') );
+            wp_enqueue_script('woo-shop-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+            wp_enqueue_script( 'woo-shop-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/shop.js', array(), false, true );
+     wp_localize_script('woo-shop-scripts', 'myAjax', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('our-breeders_nonce'),
+        ));
+        }
         if ( is_cart() ) {
             wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main') );
             wp_enqueue_script( 'woo-cart-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/cart.js', array(), false, true );
@@ -88,3 +96,35 @@ function reorder_woocommerce_hooks() {
     add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 }
 add_action( 'woocommerce_init', 'reorder_woocommerce_hooks' );
+
+
+function my_ajax_filter_products() {
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1, // You can set a specific number if needed
+    );
+
+    if( isset( $_POST['category'] ) && $_POST['category'] != 'all' ) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug',
+                'terms'    => $_POST['category'],
+            ),
+        );
+    }
+
+    $query = new WP_Query( $args );
+
+    if( $query->have_posts() ) :
+        while( $query->have_posts() ): $query->the_post();
+            wc_get_template_part( 'content', 'product' ); // Load the product template
+        endwhile;
+    else :
+        echo '<p>No products found</p>';
+    endif;
+
+    die();
+}
+add_action('wp_ajax_my_filter', 'my_ajax_filter_products');
+add_action('wp_ajax_nopriv_my_filter', 'my_ajax_filter_products');
