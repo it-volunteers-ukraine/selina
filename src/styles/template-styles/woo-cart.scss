@@ -162,4 +162,10 @@
     color: $red;
 }*/
 
+/*Remove Update cart button from the screen------------------*/
+.woocommerce button[name="update_cart"],
+.woocommerce input[name="update_cart"] {
+    display: none;
+}
+
 
