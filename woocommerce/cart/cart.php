@@ -144,7 +144,12 @@ do_action( 'woocommerce_before_main_content' );
 										echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 											'woocommerce_cart_item_remove_link',
 											sprintf(
-												'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
+												'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">
+													<svg class="remove-svg" width="18" height="17">
+														<use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#remove-icon">
+														</use>
+													</svg>
+												</a>',
 												esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 												/* translators: %s is the product name */
 												esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),

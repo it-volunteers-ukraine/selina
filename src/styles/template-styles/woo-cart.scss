@@ -168,4 +168,23 @@
     display: none;
 }
 
+/*------------------------------------Cart Totals----------------*/
+.woocommerce-cart .order-total th,
+.woocommerce-cart .order-total td {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    text-align: right;
+    color: $red;
+}
+
+.woocommerce-cart .checkout-button {
+    width: 264px;
+}
+
+.woocommerce-cart .cart-checkout-button-svg {
+    margin-left: 8px;
+}
+
+
 
