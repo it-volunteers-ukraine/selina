@@ -31,6 +31,10 @@ function woo_wp_it_volunteers_scripts() {
         if ( is_cart() ) {
             wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main') );
             wp_enqueue_script( 'woo-cart-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/cart.js', array(), false, true );
+            wp_localize_script('woo-cart-scripts', 'ajax_object', array(
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce'    => wp_create_nonce('woo-cart_nonce')
+            ));
         }
 
         if ( is_checkout() ) {

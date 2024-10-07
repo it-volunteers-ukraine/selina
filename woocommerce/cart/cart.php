@@ -21,6 +21,13 @@ do_action( 'woocommerce_before_main_content' );
 
 ?>
 
+<div>
+	<h1 style="font-weight: 800;
+				font-size: 45px;
+				line-height: 100%;
+				color: #121212;"><?php the_title(); ?></h1>
+</div>
+
 <div class="mywoo_before_cart">
 	<?php do_action( 'woocommerce_before_cart' ); ?>
 </div>
@@ -33,12 +40,14 @@ do_action( 'woocommerce_before_main_content' );
 				<thead class="mywoo-cart-table__head">
 					<tr>
 						<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+						<th></th>
 						<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-						<th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
+						<th></th>
+						<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
 
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="mywoo-cart-table__body">
 					<?php do_action( 'woocommerce_before_cart_contents' ); ?>
 
 					<?php
@@ -60,7 +69,7 @@ do_action( 'woocommerce_before_main_content' );
 
 							?>
 
-							<tr>
+							<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 								<!-- Product image -->
 								<td class="product-thumbnail">
 									<?php
@@ -147,36 +156,26 @@ do_action( 'woocommerce_before_main_content' );
 									?>
 								</td>
 
-								<!-- Product price -->
-								<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">
-									<?php
-										echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
-									?>
-								</td>
-
-							</tr>
-
-							<!-- Total price -->
-							<tr>
-								<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
-
 								<!-- Product subtotal -->
 								<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
 									<?php
 										echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 									?>
 								</td>
+								
 							</tr>
 
 							<?php
 						}
 					}
 					?>
+				</tbody>
+
+				<tfoot class="mywoo-cart-table__footer">
 
 					<?php do_action( 'woocommerce_cart_contents' ); ?>
 
-					<tr>
-						<td colspan="6" class="actions">
+						<td class="actions">
 
 							<?php if ( wc_coupons_enabled() ) { ?>
 								<div class="coupon">
@@ -185,7 +184,7 @@ do_action( 'woocommerce_before_main_content' );
 								</div>
 							<?php } ?>
 
-							<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+							<button type="submit" class="update-cart button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 
 							<?php do_action( 'woocommerce_cart_actions' ); ?>
 
@@ -194,11 +193,28 @@ do_action( 'woocommerce_before_main_content' );
 					</tr>
 
 					<?php do_action( 'woocommerce_after_cart_contents' ); ?>
-				</tbody>
+				</tfoot>
+				
 			</table>
 
 		<?php do_action( 'woocommerce_after_cart_table' ); ?>
 	</form>
+
+	<?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
+
+	<div class="cart-collaterals">
+		<?php
+			/**
+			 * Cart collaterals hook.
+			 *
+			 * @hooked woocommerce_cross_sell_display
+			 * @hooked woocommerce_cart_totals - 10
+			 */
+			do_action( 'woocommerce_cart_collaterals' );
+		?>
+	</div>
+
+	<?php do_action( 'woocommerce_after_cart' ); ?>
 </div>
 
 <?php do_action( 'woocommerce_after_main_content' ); ?>
