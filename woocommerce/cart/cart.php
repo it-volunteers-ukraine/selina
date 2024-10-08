@@ -39,10 +39,8 @@ do_action( 'woocommerce_before_main_content' );
 			<table class="mywoo-cart-table shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 				<thead class="mywoo-cart-table__head">
 					<tr>
-						<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-						<th></th>
-						<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-						<th></th>
+						<th colspan="2" class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+						<th colspan="2" class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
 						<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
 
 					</tr>
@@ -86,7 +84,7 @@ do_action( 'woocommerce_before_main_content' );
 								</td>
 
 								<!-- Product name -->
-								<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
+								<td colspan="2" class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
 									<?php
 									if ( ! $product_permalink ) {
 										echo wp_kses_post( $product_name . '&nbsp;' );
@@ -142,7 +140,7 @@ do_action( 'woocommerce_before_main_content' );
 								<td class="product-remove">
 									<?php
 
-										$sprite_url = get_template_directory_uri() . '/assets/images/sprite.svg'; // Отримуємо URL для SVG
+										$sprite_url = get_template_directory_uri() . '/assets/images/sprite.svg';
 
 										echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 											'woocommerce_cart_item_remove_link',
