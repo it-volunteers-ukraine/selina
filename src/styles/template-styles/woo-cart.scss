@@ -2,20 +2,53 @@
 
 /* Header for page-cart.php */
 .cart-header__container {
-    font-weight: 800;
-    font-size: 20px;
-    line-height: 1;
-    color: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     margin: 32px auto 0;
 
     @media screen and (min-width: $tablet) {
-        font-size: 30px;
         margin: 56px auto 24px;
     }
 
     @media screen and (min-width: $desktop) {
-        font-size: 45px;
         margin: 80px auto;
+    }
+
+    h1 {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 1;
+        color: #121212;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+        }
+    
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+        }
+    }
+
+    a {
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1;
+        color: $primary-color;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+        }
+    
+        @media screen and (min-width: $desktop) {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 

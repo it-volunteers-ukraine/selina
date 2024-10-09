@@ -6,12 +6,13 @@
 
         <?php while ( have_posts() ) : the_post(); ?>
             
+            <div class="container cart-header__container">
+                <h1><?php the_title(); ?></h1>
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                    <?php _e( 'Continue Shopping', 'woocommerce' ); ?>
+                </a>
+            </div>
             
-                <div class="container cart-header__container">
-                    <?php the_title(); ?>
-                </div>
-            
-
             <?php the_content(); ?>
         <?php endwhile; ?>
 
