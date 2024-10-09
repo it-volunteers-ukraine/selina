@@ -1,5 +1,69 @@
 @import "../variables.scss";
 
+/* Header for page-cart.php */
+.cart-header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 32px auto 0;
+
+    @media screen and (min-width: $tablet) {
+        margin: 56px auto 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin: 80px auto;
+    }
+
+    h1 {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 1;
+        color: #121212;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+        }
+    
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+        }
+    }
+
+    a {
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1;
+        color: $primary-color;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+        }
+    
+        @media screen and (min-width: $desktop) {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.woocommerce-cart .cart__section {
+    padding: 0 0 32px;
+
+    @media screen and (min-width: $tablet) {
+        padding: 0 0 56px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding: 0 0 80px;
+    }
+}
+
 .woocommerce-cart table.cart {
     border: none;
     width: 100%;
@@ -17,14 +81,18 @@
     display: none;
 
     @media screen and (min-width: $tablet) {
-        display: table-header-group;
+        display: block;
     }
 }
 
 .mywoo-cart-table__head tr {
+
+    @media screen and (min-width: $tablet) {
+        display: flex;
         border-bottom: 1px solid transparent;
         box-shadow: inset 0 -1px 0 0 #e1e3e5;
         background: $white;
+    }
 }
 
 .mywoo-cart-table__head th {
@@ -40,24 +108,44 @@
     } 
 }
 
-.mywoo-cart-table__head th.product-subtotal {
+.mywoo-cart-table__head .product-name {
 
     @media screen and (min-width: $tablet) {
-        text-align: right;
+        width: calc(124px + 41.1%);
     }
+    
+    @media screen and (min-width: $desktop) {
+        width: 688px;
+    }
+    
 }
 
-.mywoo-cart-table__head .product-price {
+.mywoo-cart-table__head .product-subtotal {
 
     @media screen and (min-width: $tablet) {
-        text-align: right;
+        margin-left: auto; 
     }
 }
 
 /* ------------------------------------- Table body ---------------------------------*/
+.mywoo-cart-table__body {
+    display: block;
+}
+
 .mywoo-cart-table__body tr {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media screen and (min-width: $tablet) {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
     td {
         padding: 0;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.31;
 
         @media screen and (min-width: $tablet) {
             padding: 24px 0 0 0;
@@ -73,18 +161,29 @@
     border-bottom: 1px solid transparent;
     box-shadow: inset 0 -1px 0 0 #e1e3e5;
     background: $white;
+    padding-bottom: 32px;
 
-    td {
-        padding-bottom: 32px;
-
-        @media screen and (min-width: $tablet) {
-            padding-bottom: 24px;
-        }
-
-        @media screen and (min-width: $desktop) {
-            padding-bottom: 36px;
-        } 
+    @media screen and (min-width: $tablet) {
+        padding-bottom: 24px;
     }
+
+    @media screen and (min-width: $desktop) {
+        padding-bottom: 36px;
+    } 
+}
+
+.mywoo-cart-table__body .product-thumbnail,
+.mywoo-cart-table__body .product-name {
+    margin: 30px 0 20px;
+
+    @media screen and (min-width: $tablet) {
+        margin: 0;
+    }
+}
+
+.mywoo-cart-table__body .product-thumbnail {
+    width: 100px;
+    margin-right: 24px;
 }
 
 .mywoo-cart-table__body .product-thumbnail img {
@@ -93,29 +192,59 @@
     object-fit: cover;
 }
 
-.mywoo-cart-table__body .product-subtotal {
-    text-align: right;
+.mywoo-cart-table__body .product-name {
+    width: 50%; 
+    vertical-align: top;
+
+    @media screen and (min-width: $mobile) {
+        width: 62%;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: 41.1%;
+        padding-right: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        width: 565px;
+    }
 }
 
-// Buttons - and +
-.single-product__quantity {
+.custom-product-attributes {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.38;
+    color: rgba(7, 7, 7, 0.5);
+    margin-top: 7px;
+}
+
+.mywoo-cart-table__body .product-quantity {
+    margin-right: 9px;
+    vertical-align: top;
+}
+
+/*----- Buttons - and + ----------  */
+.woocommerce-cart .single-product__quantity {
     font-weight: 500;
     font-size: 13px;
     line-height: 138%;
     margin-bottom: 8px;
 }
 
-.input-group {
+.woocommerce-cart .input-group {
     display: flex;
     border: 1px solid rgba(7, 7, 7, 0.15);
     border-radius: 10px;
     padding: 0px 8px;
-    width: 168px;
-    height: 44px;
-    margin-bottom: 16px;
+    width: 138px;
+    height: 44px;   
+
+    @media screen and (min-width: $mobile) {
+        width: 168px;
+    }
 }
 
-.btn-plus {
+.woocommerce-cart .btn-plus {
     margin: 0 17px;
 }
 
@@ -128,44 +257,142 @@
 .mywoo-cart-table__body td.product-quantity input[type=number],
 .woocommerce-cart-form input.qty[type=number] {
     -moz-appearance: textfield;
-    width: 64px;
+    width: 34px;
     text-align:center;
     font-weight: 500;
     font-size: 13px;
     line-height: 138%;
-}
 
-/* ----------------------------------------------- Table footer -----------------------------------*/
-.mywoo-cart-table__footer tr {
-    th, td {
-        padding: 16px 0;
-
-        @media screen and (min-width: $tablet) {
-            padding: 24px 0;
-        }
+    @media screen and (min-width: $mobile) {
+        width: 64px;
     }
 }
 
-/*body > div.woocommerce > main > section > div > div.mywoo-cart-form.cart-content > form > table > tfoot > tr:nth-child(1) > th {
-    font-weight: 800;
-    font-size: 26px;
-    line-height: 100%;
-    text-align: right;
-    color: $red;
+.mywoo-cart-table__body .product-remove {
+    width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: $tablet) {
+        width: 24px;
+        align-items: flex-start;
+        padding-top: 37px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 50px;
+    }
+
+    .remove-svg {
+        display: block;
+    }
 }
 
-.mywoo-cart-table__footer .product-subtotal {
-    font-weight: 800;
-    font-size: 26px;
-    line-height: 100%;
-    text-align: right;
-    color: $red;
-}*/
+.mywoo-cart-table__body .product-subtotal {
+    display: flex;
+    align-items: center;
+    margin-left: auto; 
 
-/*Remove Update cart button from the screen------------------*/
+    @media screen and (min-width: $tablet) {
+        align-items: flex-start;
+        padding-top: 37px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 50px;
+    }
+}
+
+/* ----------------------------------------------- Table footer -----------------------------------*/
+
+/*Remove Update cart button from the screen ---*/
 .woocommerce button[name="update_cart"],
 .woocommerce input[name="update_cart"] {
     display: none;
 }
 
+/*-------------- Cart Totals -------------*/
+.mywoo-cart-totals {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding-top: 16px;
 
+    @media screen and (min-width: $tablet) {
+        align-items: flex-end;
+        gap: 24px;
+        padding-top: 24px;
+    }
+}
+
+.mywoo-cart-totals-table {
+    display: block;
+}
+
+.woocommerce-cart .order-total th,
+.woocommerce-cart .order-total td {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    text-align: right;
+    color: $red;
+}
+
+.woocommerce-cart .order-total th {
+    padding-right: 8px;
+}
+
+.woocommerce-cart .checkout-button {
+    width: 264px;
+}
+
+.woocommerce-cart .cart-checkout-button-svg {
+    margin-left: 8px;
+}
+
+/* WooCommerce messages */
+.mywoo_before_cart .woocommerce-message,
+.woocommerce-message,
+.cart-empty {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    padding: 20px 0 0;
+
+    @media screen and (min-width: $tablet) {
+        padding: 20px 0;
+    }
+}
+
+.mywoo_before_cart .woocommerce-message,
+.woocommerce-cart .woocommerce-message {
+    color: $primary-color;
+}
+
+.woocommerce-cart .cart-empty {
+    color: $red;  
+}
+
+.woocommerce-cart .return-to-shop .button {
+    padding: 20px 0;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    color: $primary-color;
+
+    @media screen and (min-width: $tablet) {
+        font-size: 20px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
