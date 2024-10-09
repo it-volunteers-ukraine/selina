@@ -30,7 +30,7 @@ if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : 
         </div>
          <!-- Page Description -->
     <div class="shop-filters__description">
-        <p>В цьому розділі зібрано все необхідне для вашого котика: товари, послуги та цифрова продукція...</p>
+        <p><?php get_field('shop-description', 'option'); ?></p>
     </div>
     <div class="shop-filters__sorting">
         <span><?php woocommerce_catalog_ordering(); ?></span>

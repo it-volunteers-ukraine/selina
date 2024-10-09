@@ -2,19 +2,22 @@
 
 .shop-page {
   margin-top: 80px;
+  margin-bottom: 80px;
 }
 .shop-filters {
   padding: 0;
+  margin-bottom: 32px;
   &__categories {
     display: flex;
     list-style: none;
+    gap: 24px;
     button {
       display: flex;
       justify-content: center;
       align-items: center;
       width: fit-content;
       cursor: pointer;
-      border: 1px solid transparent;
+      border: 2px solid $primary-color;
       border-radius: $big-br;
       font-family: inherit;
       font-weight: 700;
@@ -22,14 +25,19 @@
       line-height: 1.33;
       text-align: center;
       padding: 10px 16px;
-      color: $white;
-      background-color: $primary-color;
-      &:hover,
-      &:focus {
-        color: $primary-color;
-        background-color: $white;
+      color: $primary-color;
+      background-color: $white;
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: $primary-color;
+        color: $white;
       }
     }
+  }
+  &__sorting {
+    display: flex;
+    justify-content: end;
   }
 }
 
@@ -45,16 +53,41 @@
 
   li {
     border: 1px solid #ddd;
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.18);
+    position: relative;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(239, 248, 249, 1);
     text-align: center;
     .woocommerce-loop-product__title {
       font-size: 18px;
       margin-bottom: 10px;
     }
+    .woocommerce-loop-product__link {
+      .onsale {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background-color: rgba(151, 71, 255, 1);
+        color: rgba(255, 255, 255, 1);
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        padding: 4px;
+      }
+    }
     .price {
       font-size: 16px;
-      color: #1e87f0;
+      display: flex;
+      justify-content: space-between;
+    }
+    ins {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 25px;
+      text-align: left;
+
+      color: rgba(209, 31, 42, 1);
     }
     a.button {
       background-color: #1e87f0;
