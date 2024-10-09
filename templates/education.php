@@ -66,32 +66,56 @@ get_header();
 
             <div id="more-courses" class="education-cards">
                 <?php
-                $args = array(
-                    'post_type' => 'courses',
-                    'posts_per_page' => 2,
-                    'order' => 'ASC',
-                );
+                $paged = get_query_var('paged') ? get_query_var('paged') : 1
+                    >
+                    $args = array(
+                        'post_type' => 'courses',
+                        'posts_per_page' => 2,
+                        'order' => 'ASC',
+                    );
 
                 $loop = new WP_Query($args);
 
                 if ($loop->have_posts()) :
                     while ($loop->have_posts()) : $loop->the_post(); ?>
-                        <?php get_template_part('template-parts/education-card')?>
+                        <?php get_template_part('template-parts/education-card') ?>
                     <?php endwhile;
                 endif;
                 wp_reset_postdata();
                 ?>
+                <?php
+                $args = array(
+                    'post_type' => 'courses',
+                    'posts_per_page' => 2,
+                    'order' => 'ASC',
+                    'paged' => $paged + 1,
+                );
+
+                $loop = new WP_Query($args);
+                $hasData = $loop->have_posts();
+                ?>
             </div>
+            <?php if ($hasData): ?>
+                <div class="button-flex">
+                    <button id="load-more-courses"
+                            data-post-type="courses"
+                            data-post-taxonomy="resources_categories"
+                            data-post-terms="anatomy"
+                            data-bool="<?= $hasData ?>"
+                            class="button button_green_new show-btn education-button education-btn">
+                        <?php the_field('show_more_btn', 'option') ?>
+                        <svg width="18" height="17">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+            <?php endif; ?>
             <div class="button-flex">
-                <button id="load-more-courses"
-                        data-post-type="courses"
-                        data-post-taxonomy="resources_categories"
-                        data-post-terms="anatomy"
-                        class="button button_green_new show-btn education-button education-btn">
-                    <?php the_field('show_more_btn', 'option') ?>
-                    <svg width="18" height="17">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                        </use>
+                <button style="display:none" class='button button_green_new education-button hide_btn-education' id='showHideCourses'>
+                    <?php the_field('hide_btn', 'option'); ?>
+                    <svg class="icon-paw" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
                 </button>
             </div>
@@ -125,6 +149,7 @@ get_header();
 
                 $loop = new WP_Query($args);
 
+
                 if ($loop->have_posts()) :
                     while ($loop->have_posts()) : $loop->the_post(); ?>
                         <?php get_template_part('template-parts/education-card') ?>
@@ -132,17 +157,47 @@ get_header();
                 endif;
                 wp_reset_postdata();
                 ?>
+                <?php
+                $args = array(
+                    'post_type' => 'courses',
+                    'order' => 'ASC',
+                    'posts_per_page' => 2,
+                    'paged' => $paged + 1,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'resources_categories',
+                            'field' => 'slug',
+                            'terms' => 'vebinars'
+                        )
+                    )
+                );
+
+                $loop = new WP_Query($args);
+                $hasData = $loop->have_posts();
+                ?>
+
             </div>
+            <?php if ($hasData): ?>
+                <div class="button-flex">
+                    <button id="load-more-vebinars"
+                            data-post-type="courses"
+                            data-post-taxonomy="resources_categories"
+                            data-post-terms="vebinars"
+                            data-bool="<?= $hasData ?>"
+                            class="button button_green_new show-btn education-button">
+                        <?php the_field('show_more_btn', 'option') ?>
+                        <svg width="18" height="17">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+            <?php endif; ?>
             <div class="button-flex">
-                <button id="load-more-vebinars"
-                        data-post-type="courses"
-                        data-post-taxonomy="resources_categories"
-                        data-post-terms="vebinars"
-                        class="button button_green_new show-btn education-button">
-                    <?php the_field('show_more_btn', 'option') ?>
-                    <svg width="18" height="17">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                        </use>
+                <button style="display:none;" class='button_green_new education-button hide_btn-education' id='showHideWebinars'>
+                    <?php the_field('hide_btn', 'option'); ?>
+                    <svg class="icon-paw" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
                 </button>
             </div>
@@ -184,17 +239,46 @@ get_header();
                 endif;
                 wp_reset_postdata();
                 ?>
+                <?php
+                $args = array(
+                    'post_type' => 'courses',
+                    'order' => 'ASC',
+                    'posts_per_page' => 2,
+                    'paged' => $paged + 1,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'resources_categories',
+                            'field' => 'slug',
+                            'terms' => 'zoopsychology'
+                        )
+                    )
+                );
+
+                $loop = new WP_Query($args);
+                $hasData = $loop->have_posts();
+                ?>
             </div>
+            <?php if ($hasData): ?>
+                <div class="button-flex">
+                    <button id="load-more-zoopsychology"
+                            data-post-type="courses"
+                            data-post-taxonomy="resources_categories"
+                            data-post-terms="zoopsychology"
+                            data-bool="<?= $hasData ?>"
+                            class="button button_green_new show-btn education-button education-btn">
+                        <?php the_field('show_more_btn', 'option') ?>
+                        <svg width="18" height="17">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+            <?php endif; ?>
             <div class="button-flex">
-                <button id="load-more-zoopsychology"
-                        data-post-type="courses"
-                        data-post-taxonomy="resources_categories"
-                        data-post-terms="zoopsychology"
-                        class="button button_green_new show-btn education-button education-btn">
-                    <?php the_field('show_more_btn', 'option') ?>
-                    <svg width="18" height="17">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                        </use>
+                <button style="display:none;" class='button_green_new education-button hide_btn-education' id='showHideZoop'>
+                    <?php the_field('hide_btn', 'option'); ?>
+                    <svg class="icon-paw" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
                 </button>
             </div>
@@ -235,17 +319,46 @@ get_header();
                 endif;
                 wp_reset_postdata();
                 ?>
+                <?php
+                $args = array(
+                    'post_type' => 'courses',
+                    'order' => 'ASC',
+                    'posts_per_page' => 2,
+                    'paged' => $paged + 1,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'resources_categories',
+                            'field' => 'slug',
+                            'terms' => 'literature'
+                        )
+                    )
+                );
+
+                $loop = new WP_Query($args);
+                $hasData = $loop->have_posts();
+                ?>
             </div>
-            <div class="button-flex">
-                <button id="load-more-books"
-                        data-post-type="courses"
-                        data-post-taxonomy="resources_categories"
-                        data-post-terms="literature"
-                        class="button button_green_new show-btn education-button">
-                    <?php the_field('show_more_btn', 'option') ?>
-                    <svg width="18" height="17">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                        </use>
+            <?php if ($hasData): ?>
+                <div class="button-flex">
+                    <button id="load-more-books"
+                            data-post-type="courses"
+                            data-post-taxonomy="resources_categories"
+                            data-post-terms="literature"
+                            data-bool="<?= $hasData ?>"
+                            class="button button_green_new show-btn education-button">
+                        <?php the_field('show_more_btn', 'option') ?>
+                        <svg width="18" height="17">
+                            <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                            </use>
+                        </svg>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <div class="button-flex margin-button">
+                <button style="display:none;" class='button_green_new education-button hide_btn-education' id='showHideBooks'>
+                    <?php the_field('hide_btn', 'option'); ?>
+                    <svg class="icon-paw" width="16" height="15">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
                 </button>
             </div>
