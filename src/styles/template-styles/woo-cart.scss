@@ -185,11 +185,15 @@
 .mywoo-cart-table__body td.product-quantity input[type=number],
 .woocommerce-cart-form input.qty[type=number] {
     -moz-appearance: textfield;
-    width: 64px;
+    width: 34px;
     text-align:center;
     font-weight: 500;
     font-size: 13px;
     line-height: 138%;
+
+    @media screen and (min-width: $mobile) {
+        width: 64px;
+    }
 }
 
 .mywoo-cart-table__body .product-remove {
