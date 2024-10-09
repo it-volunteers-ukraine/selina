@@ -102,3 +102,9 @@ function remove_WC_breadcrumbs_from_cart() {
     }
 }
 
+// Replace currency symbol before price
+add_filter( 'woocommerce_price_format', 'custom_woocommerce_price_format' );
+function custom_woocommerce_price_format( $format ) {
+    return '%1$s%2$s';
+}
+
