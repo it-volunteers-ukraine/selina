@@ -210,6 +210,14 @@
     }
 }
 
+.custom-product-attributes {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.38;
+    color: rgba(7, 7, 7, 0.5);
+    margin-top: 7px;
+}
+
 .mywoo-cart-table__body .product-quantity {
     margin-right: 9px;
     vertical-align: top;
@@ -297,15 +305,6 @@
 }
 
 /* ----------------------------------------------- Table footer -----------------------------------*/
-.mywoo-cart-table__footer tr {
-    th, td {
-        padding: 16px 0;
-
-        @media screen and (min-width: $tablet) {
-            padding: 24px 0;
-        }
-    }
-}
 
 /*Remove Update cart button from the screen ---*/
 .woocommerce button[name="update_cart"],
@@ -314,6 +313,24 @@
 }
 
 /*-------------- Cart Totals -------------*/
+.mywoo-cart-totals {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding-top: 16px;
+
+    @media screen and (min-width: $tablet) {
+        align-items: flex-end;
+        gap: 24px;
+        padding-top: 24px;
+    }
+}
+
+.mywoo-cart-totals-table {
+    display: block;
+}
+
 .woocommerce-cart .order-total th,
 .woocommerce-cart .order-total td {
     font-weight: 800;
@@ -323,10 +340,59 @@
     color: $red;
 }
 
+.woocommerce-cart .order-total th {
+    padding-right: 8px;
+}
+
 .woocommerce-cart .checkout-button {
     width: 264px;
 }
 
 .woocommerce-cart .cart-checkout-button-svg {
     margin-left: 8px;
+}
+
+/* WooCommerce messages */
+.mywoo_before_cart .woocommerce-message,
+.woocommerce-message,
+.cart-empty {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    padding: 20px 0 0;
+
+    @media screen and (min-width: $tablet) {
+        padding: 20px 0;
+    }
+}
+
+.mywoo_before_cart .woocommerce-message,
+.woocommerce-cart .woocommerce-message {
+    color: $primary-color;
+}
+
+.woocommerce-cart .cart-empty {
+    color: $red;  
+}
+
+.woocommerce-cart .return-to-shop .button {
+    padding: 20px 0;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    color: $primary-color;
+
+    @media screen and (min-width: $tablet) {
+        font-size: 20px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
 }

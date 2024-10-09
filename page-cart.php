@@ -8,9 +8,11 @@
             
             <div class="container cart-header__container">
                 <h1><?php the_title(); ?></h1>
-                <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                    <?php _e( 'Continue Shopping', 'woocommerce' ); ?>
-                </a>
+                <?php if ( ! WC()->cart->is_empty() ) : ?>
+                    <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+                        <?php _e( 'Continue Shopping', 'woocommerce' ); ?>
+                    </a>
+                <?php endif; ?>
             </div>
             
             <?php the_content(); ?>

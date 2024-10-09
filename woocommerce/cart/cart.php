@@ -92,6 +92,30 @@ do_action( 'woocommerce_before_main_content' );
 
 									do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
 
+									// Output the attributes
+									$product_attributes = $cart_item['data']->get_attributes(); // Get all attributes
+
+									foreach ( $product_attributes as $attribute_name => $attribute ) {
+										// Check if there are options
+										if ( ! empty( $attribute['options'] ) ) {
+											$attribute_label = wc_attribute_label( str_replace( 'pa_', '', $attribute_name ) ); // Get the attribute label by removing 'pa_'
+											$attribute_values = []; // Array to hold the attribute names
+
+											// Loop through options and get their names
+											foreach ( $attribute['options'] as $option_id ) {
+												$term = get_term_by( 'id', $option_id, $attribute_name ); // Get term by ID
+												if ( ! is_wp_error( $term ) && isset( $term->name ) ) {
+													$attribute_values[] = $term->name; // Add name to the array
+												}
+											}
+
+											// Output attribute label and its values
+											if ( ! empty( $attribute_values ) ) {
+												echo '<p class="custom-product-attributes">' . esc_html( $attribute_label ) . ': ' . esc_html( implode( ', ', $attribute_values ) ) . '</p>';
+											}
+										}
+									}
+
 									// Meta data.
 									echo wc_get_formatted_cart_item_data( $cart_item ); // PHPCS: XSS ok.
 
@@ -176,13 +200,6 @@ do_action( 'woocommerce_before_main_content' );
 					<?php do_action( 'woocommerce_cart_contents' ); ?>
 
 						<td class="actions">
-
-							<?php if ( wc_coupons_enabled() ) { ?>
-								<div class="coupon">
-									<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
-									<?php do_action( 'woocommerce_cart_coupon' ); ?>
-								</div>
-							<?php } ?>
 
 							<button type="submit" class="update-cart button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 

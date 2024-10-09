@@ -102,9 +102,20 @@ function remove_WC_breadcrumbs_from_cart() {
     }
 }
 
-// Replace currency symbol before price
-add_filter( 'woocommerce_price_format', 'custom_woocommerce_price_format' );
-function custom_woocommerce_price_format( $format ) {
-    return '%1$s%2$s';
+// Hide link "Continue Shopping" if the cart is empty, but the cart page is not refreshed yet (link "Return to shop" appears instead)
+add_action( 'wp_footer', 'hide_continue_shopping_on_empty_cart' );
+function hide_continue_shopping_on_empty_cart() {
+    if ( is_cart() ) : ?>
+        <script type="text/javascript">
+            jQuery(function($){
+                $( document.body ).on( 'wc_cart_emptied wc_cart_fragments_refreshed', function() {
+                    // Check if there is a message "Your cart is currently empty."
+                    if ( $('.cart-empty').length > 0 ) {
+                        // Hide link "Continue Shopping"
+                        $('.cart-header__container a').hide();
+                    }
+                });
+            });
+        </script>
+    <?php endif;
 }
-
