@@ -1,5 +1,36 @@
 @import "../variables.scss";
 
+/* Header for page-cart.php */
+.cart-header__container {
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1;
+    color: #121212;
+    margin: 32px auto 0;
+
+    @media screen and (min-width: $tablet) {
+        font-size: 30px;
+        margin: 56px auto 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        font-size: 45px;
+        margin: 80px auto;
+    }
+}
+
+.woocommerce-cart .cart__section {
+    padding: 0 0 32px;
+
+    @media screen and (min-width: $tablet) {
+        padding: 0 0 56px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding: 0 0 80px;
+    }
+}
+
 .woocommerce-cart table.cart {
     border: none;
     width: 100%;
