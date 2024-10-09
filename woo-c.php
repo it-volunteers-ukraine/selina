@@ -93,3 +93,12 @@ function reorder_woocommerce_hooks() {
     add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 }
 add_action( 'woocommerce_init', 'reorder_woocommerce_hooks' );
+
+// Remove breadcrumbs from cart
+add_action( 'template_redirect', 'remove_WC_breadcrumbs_from_cart' );
+function remove_WC_breadcrumbs_from_cart() {
+    if( is_cart() ) {
+        remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+    }
+}
+
