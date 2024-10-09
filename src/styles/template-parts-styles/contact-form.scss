@@ -324,9 +324,13 @@
   line-height: 133%;
   border-radius: 8px;
   padding: 10px 10px 10px 14px;
-  width: 100%;
+  width: 340px;
+  margin: 0 auto;
   height: 44px;
   cursor: pointer;
+  @media screen and (max-width: $mobile) {
+    width: 100%;
+  }
   @media screen and (min-width: $desktop) {
     width: 153px;
   }
