@@ -31,7 +31,7 @@ if ( ! empty( $breadcrumb ) ) {
 		if ( ! empty( $crumb[1] ) && sizeof( $breadcrumb ) !== $key + 1 ) {
 			echo '<a href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a>';
 		} else {
-			echo '<span class="red_breadcrumb_single-product">' . esc_html( $crumb[0] ) . '</span>';
+			echo '<span class="red_breadcrumb">' . esc_html( $crumb[0] ) . '</span>';
 		}
 
 		echo $after;
