@@ -1,6 +1,6 @@
 @import "../variables.scss";
 
-body > main > section > div > nav {
+.woocommerce-breadcrumb {
     font-weight: 800;
     font-size: 16px;
     line-height: 100%;
@@ -9,6 +9,10 @@ body > main > section > div > nav {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.red_breadcrumb_single-product {
+    color: $red;
 }
 
 .woocommerce-product-gallery__wrapper {
@@ -67,4 +71,45 @@ div.summary.entry-summary > h1 {
     font-weight: 500;
     font-size: 13px;
     line-height: 138%;
+}
+
+.single_add_to_cart_button {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color: $white;
+    background-color: $primary-color;
+    width: 340px;
+    padding: 10px 0;
+    margin: 0 auto 8px;
+    border-radius: 10px;
+}
+
+.single_add_to_cart_button svg {
+    margin-left: 12px;
+}
+
+.single_add_to_cart_button-buy {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color: $white;
+    background-color: $red;
+    width: 340px;
+    padding: 10px 0;
+    margin: 0 auto 8px;
+    border-radius: 10px;
+}
+
+.single_add_to_cart_button-connect {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 133%;
+    color: #428bc1;
+    background-color: $white;
+    width: 340px;
+    padding: 10px 0;
+    margin: 0 auto 8px;
+    border: 2px solid #428bc1;
+    border-radius: 10px;
 }
