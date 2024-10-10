@@ -95,10 +95,17 @@ jQuery(document).ready(function ($) {
     const containerBooks = $('#more-books');
     const loadBtnFriends = $('#load-more-friends');
     const loadBtnPhotographs = $('#load-more-photographs');
-    const loadBtnCourses= $('#load-more-courses');
     const loadBtnVebinars = $('#load-more-vebinars');
     const loadBtnZoopsychology = $('#load-more-zoopsychology');
     const loadBtnBooks = $('#load-more-books');
+    const loadBtnCourses = $('#load-more-courses');
+    const showHideCoursesBtn = $('#showHideCourses');
+    const showHideWebinarsBtn = $('#showHideWebinars');
+    const showHideZoop = $('#showHideZoop');
+    const showHideBooks = $('#showHideBooks');
+    // const showHidePhotographs = $('#showHidePhotographs');
+    // const showHideFriends = $('#showHideFriends');
+
     const lastItem = containerFriends.find('.friends-clubs-item:last-child');
     var viewportWidth = window.innerWidth;
 
@@ -119,15 +126,14 @@ jQuery(document).ready(function ($) {
     handleResize();
 
 
-    function loadPosts(postType, taxonomy, terms, targetContainer) {
-
+    function loadPosts(postType, taxonomy, terms, targetContainer, loadBtn, closeBtn) {
         const pageMappingKey = postType + '_' + terms;
 
         if (!pageMapping[pageMappingKey]) {
             pageMapping[pageMappingKey] = 2;
         }
 
-        $.ajax({
+        return $.ajax({
             url: my_ajax.ajaxurl, /* Use the localised ajaxurl variable */
             type: 'POST',
             data: {
@@ -140,8 +146,11 @@ jQuery(document).ready(function ($) {
                 nonce: getNonce(),
             },
             success: function (response) {
-                targetContainer.append(response.html)
-                pageMapping[pageMappingKey]++;
+                if (response.html) {
+                    targetContainer.append($(response.html).addClass('loaded-post'));
+                    pageMapping[pageMappingKey]++;
+                    HasNextPosts(pageMappingKey, postType, taxonomy, terms, loadBtn, closeBtn);
+                }
             },
             error: function (xhr, status, error) {
                 console.error("Request failed: " + error);
@@ -153,15 +162,14 @@ jQuery(document).ready(function ($) {
         var postType = $(this).data('post-type');
         var taxonomy = $(this).data('post-taxonomy');
         var terms = $(this).data('post-terms');
-        loadPosts(postType, taxonomy, terms, containerFriends);
-
+        loadPosts(postType, taxonomy, terms, containerFriends, loadBtnFriends);
     });
 
     loadBtnPhotographs.on('click', function () {
         var postType = $(this).data('post-type');
         var taxonomy = $(this).data('post-taxonomy');
         var terms = $(this).data('post-terms');
-        loadPosts(postType, taxonomy, terms, containerPhotographs);
+        loadPosts(postType, taxonomy, terms, containerPhotographs, loadBtnPhotographs);
     });
 
 
@@ -169,29 +177,91 @@ jQuery(document).ready(function ($) {
         var postType = $(this).data('post-type');
         var taxonomy = $(this).data('post-taxonomy');
         var terms = $(this).data('post-terms');
-        loadPosts(postType,taxonomy, terms, containerVebinars);
+        loadPosts(postType, taxonomy, terms, containerVebinars, loadBtnVebinars, showHideWebinarsBtn);
     });
 
     loadBtnZoopsychology.on('click', function () {
         var postType = $(this).data('post-type');
         var taxonomy = $(this).data('post-taxonomy');
         var terms = $(this).data('post-terms');
-        loadPosts(postType, taxonomy, terms, containerZoopsychology);
+        loadPosts(postType, taxonomy, terms, containerZoopsychology, loadBtnZoopsychology, showHideZoop);
     });
 
     loadBtnBooks.on('click', function () {
         var postType = $(this).data('post-type');
         var taxonomy = $(this).data('post-taxonomy');
         var terms = $(this).data('post-terms');
-        loadPosts(postType, taxonomy, terms, containerBooks);
+        loadPosts(postType, taxonomy, terms, containerBooks, loadBtnBooks, showHideBooks);
     });
 
     loadBtnCourses.on('click', function () {
         var postType = $(this).data('post-type');
         var taxonomy = $(this).data('post-taxonomy');
         var terms = $(this).data('post-terms');
-        loadPosts(postType , taxonomy,terms,containerCourses);
+        loadPosts(postType, taxonomy, terms, containerCourses, loadBtnCourses, showHideCoursesBtn);
     });
 
-});
 
+    function HasNextPosts(pageMappingKey, postType, taxonomy, terms, loadBtn, closeBtn) {
+        $.ajax({
+            url: my_ajax.ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'load_more_posts',
+                page: pageMapping[pageMappingKey],
+                width: viewportWidth,
+                postType: postType,
+                taxonomy: taxonomy,
+                terms: terms,
+                nonce: getNonce(),
+            },
+            success: function (response) {
+                if (response.html) {
+                    loadBtn.show();
+                    closeBtn.hide();
+                } else {
+                    loadBtn.hide();
+                    closeBtn.show();
+                }
+            }
+        });
+    }
+
+
+    function handleHideButton(containerTarget, hideButton, showBtn, sectionId) {
+        containerTarget.find('.loaded-post').remove();
+        hideButton.hide();
+        showBtn.show();
+        const postType = showBtn.data('post-type');
+        const terms = showBtn.data('post-terms');
+        const pageMappingKey = postType + '_' + terms;
+        pageMapping[pageMappingKey] = 2;
+
+        const section = document.getElementById(sectionId);
+        const offset = 100;
+        const position = section.getBoundingClientRect().top + window.scrollY - offset;
+
+        window.scrollTo({
+            top: position,
+            behavior: 'smooth'
+        });
+    }
+
+
+    showHideCoursesBtn.on('click', function () {
+        handleHideButton(containerCourses, showHideCoursesBtn, loadBtnCourses, 'anatomy');
+    });
+
+    showHideWebinarsBtn.on('click', function () {
+        handleHideButton(containerVebinars, showHideWebinarsBtn, loadBtnVebinars, 'veterinary');
+    })
+
+    showHideZoop.on('click', function () {
+        handleHideButton(containerZoopsychology, showHideZoop, loadBtnZoopsychology, 'zopsychology');
+    })
+
+    showHideBooks.on('click', function () {
+        handleHideButton(containerBooks, showHideBooks, loadBtnBooks, 'literature');
+    })
+
+});

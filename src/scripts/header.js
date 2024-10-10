@@ -3,7 +3,6 @@
 const navMenu = document.getElementById("header-nav-menu");
 const burgerBtn = document.getElementById("header-menu-btn");
 const headerTopMobile = document.getElementById("header-mobile");
-const searchMobile = document.getElementById("search-mobile");
 
 // submenu - mobile
 const headerListMobile = document.querySelector(".header__list-mobile");
@@ -19,7 +18,6 @@ burgerBtn.addEventListener("click", () => {
   burgerBtn.classList.toggle("open");
   navMenu.classList.toggle("mobile-menu");
   navMenu.classList.toggle("show-menu");
-  searchMobile.classList.toggle("show-search");
   headerTopMobile.classList.toggle("header-mobile");
 });
 
