@@ -876,3 +876,17 @@ function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
 
 	return $message;
 }
+
+function remove_login_link_from_reset_password_page() {
+    // Check if the current page is 'lostpassword' or 'rp' (reset password)
+    if ( isset( $_GET['action'] ) && ( $_GET['action'] == 'lostpassword' || $_GET['action'] == 'rp' ) ) {
+        ?>
+        <style>
+            .login #nav a[href*="login"] {
+                display: none;
+            }
+        </style>
+        <?php
+    }
+}
+add_action('login_enqueue_scripts', 'remove_login_link_from_reset_password_page');
