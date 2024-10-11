@@ -121,10 +121,10 @@ function hide_continue_shopping_on_empty_cart() {
 }
 
 // Translate 'Add to cart' button on single-product page
-add_filter('gettext', 'change_button_text', 20, 3);
-function change_button_text($translated_text, $text, $domain) {
-    if ($text === 'Add to cart') {
-        $translated_text = 'Додати до кошика';
-    }
-    return $translated_text;
-}
+// add_filter('gettext', 'change_button_text', 20, 3);
+// function change_button_text($translated_text, $text, $domain) {
+//     if ($text === 'Add to cart') {
+//         $translated_text = 'Додати до кошика';
+//     }
+//     return $translated_text;
+// }
