@@ -75,7 +75,8 @@
             -webkit-line-clamp: 6;
         }
         @media screen and (min-width: $desktop) {
-            -webkit-line-clamp: 10;
+            -webkit-line-clamp: 9;
+            margin-bottom: 0;
          }
     }
 
