@@ -882,7 +882,7 @@ function remove_login_link_from_reset_password_page() {
     if ( isset( $_GET['action'] ) && ( $_GET['action'] == 'lostpassword' || $_GET['action'] == 'rp' ) ) {
         ?>
         <style>
-            .login #nav a[href*="login"] {
+            .notice a {
                 display: none;
             }
         </style>
