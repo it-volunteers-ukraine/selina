@@ -44,22 +44,23 @@ if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : 
             <div class="shop-grid__products">
         <?php if ( woocommerce_product_loop() ) : ?>
 
-            <?php woocommerce_product_loop_start(); ?>
+    <?php woocommerce_product_loop_start(); ?>
 
-            <?php while ( have_posts() ) : ?>
-                <?php the_post(); ?>
+    <?php while ( have_posts() ) : ?>
+        <?php the_post(); ?>
 
-                <div class="shop-grid__item">
-                    <?php wc_get_template_part( 'content', 'product' ); ?>
-                </div>
+        <div class="shop-grid__item">
+            <?php wc_get_template_part( 'content', 'product' ); ?>
+        </div>
 
-            <?php endwhile; ?>
+    <?php endwhile; ?>
 
-            <?php woocommerce_product_loop_end(); ?>
+    <?php woocommerce_product_loop_end(); ?>
 
-        <?php else : ?>
-            <?php wc_get_template( 'loop/no-products-found.php' ); ?>
-        <?php endif; ?>
+<?php else : ?>
+    <?php wc_get_template( 'loop/no-products-found.php' ); ?>
+<?php endif; ?>
+
     </div>
     </div>
     </section>
