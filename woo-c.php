@@ -128,3 +128,4 @@ function my_ajax_filter_products() {
 }
 add_action('wp_ajax_my_filter', 'my_ajax_filter_products');
 add_action('wp_ajax_nopriv_my_filter', 'my_ajax_filter_products');
+

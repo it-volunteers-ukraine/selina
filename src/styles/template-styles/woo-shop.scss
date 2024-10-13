@@ -7,6 +7,12 @@
 .shop-filters {
   padding: 0;
   margin-bottom: 32px;
+  &__description {
+    margin-top: 16px;
+    @media screen and (min-width: $tablet) {
+      margin-top: 24px;
+    }
+  }
   &__categories {
     display: flex;
     list-style: none;
@@ -53,26 +59,34 @@
 
   ul > li {
     border: 1px solid #ddd;
+    border-radius: 8px;
     box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.18);
     position: relative;
     padding: 20px;
+    overflow: hidden;
     background-color: rgba(239, 248, 249, 1);
     text-align: center;
     .woocommerce-loop-product__title {
       font-size: 18px;
       margin-bottom: 10px;
+      margin-top: 12px;
+      height: 52px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
     }
     .woocommerce-loop-product__link {
       .onsale {
         position: absolute;
-        top: 12px;
-        left: 12px;
+        top: 32px;
+        left: 32px;
         background-color: rgba(151, 71, 255, 1);
         color: rgba(255, 255, 255, 1);
         border-radius: 10px;
-        font-size: 13px;
+        font-size: 20px;
         font-weight: 500;
-        line-height: 18px;
+        line-height: 32px;
         padding: 4px;
       }
     }
@@ -80,6 +94,12 @@
       font-size: 16px;
       display: flex;
       justify-content: space-between;
+      margin-right: 0;
+    }
+    .woocommerce-Price-amount bdi {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 25px;
     }
     ins {
       font-size: 20px;
@@ -90,14 +110,80 @@
       color: rgba(209, 31, 42, 1);
     }
     a.button {
-      background-color: #1e87f0;
-      color: #fff;
+      background-color: $primary-color;
+      color: $white;
       padding: 10px;
       border-radius: 5px;
       text-decoration: none;
       &:hover {
-        background-color: #0056b3;
+        &:active,
+        &:focus,
+        &:hover {
+          background-color: $white;
+          color: $primary-color;
+          border: 2px solid $primary-color;
+        }
       }
     }
+    img {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  }
+}
+/* Styles for the button wrapper to align buttons */
+.button-wrapper {
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: row-reverse;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between;
+  margin-top: 16px;
+  .woocommerce-loop-product__link {
+    display: none;
+  }
+}
+
+.button-wrapper .button {
+  text-align: center; /* Center the text */
+}
+.buy-now-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+  border: 2px solid $primary-color;
+  border-radius: $big-br;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.33;
+  text-align: center;
+  padding: 10px 16px;
+  color: $primary-color;
+  background-color: $white;
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $primary-color;
+    color: $white;
+  }
+}
+.woocommerce-ordering {
+  select {
+    background-color: $white;
+    border-radius: 10px;
+    width: fit-content;
+    color: $primary-color;
+    font-family: $primary-font;
+    margin: 0;
+  }
+  option {
+    background-color: $white;
+    border-radius: 10px;
+    width: fit-content;
+    color: $primary-color;
+    font-family: $primary-font;
+    margin: 0;
   }
 }

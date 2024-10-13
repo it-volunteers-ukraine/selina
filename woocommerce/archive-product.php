@@ -30,7 +30,27 @@ if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : 
         </div>
          <!-- Page Description -->
     <div class="shop-filters__description">
-        <p><?php get_field('shop-description', 'option'); ?></p>
+    <?php
+if ( function_exists('pll_current_language') ) {
+    $current_language = pll_current_language();
+    if ($current_language === 'uk') { 
+        $store_description = 'В цьому розділі зібрано все необхідне для вашого котика: 
+        товари, послуги та цифрова продукція. Ви зможете знайти як якісні речі для 
+        догляду і розваг, так і професійні послуги для здоров\'я та комфорту улюбленця. 
+        Усе для того, щоб ваш котик був щасливим і задоволеним';
+    } elseif ($current_language === 'en') { 
+        $store_description = 'This section contains everything you need for your cat:
+ goods, services and digital products. You will be able to find both quality things for
+ care and entertainment, as well as professional services for the health and comfort of a pet.
+ Everything to keep your kitty happy and satisfied';
+    } else {
+        $store_description = ' ';
+    }
+    echo '<div class="store-description">' . wp_kses_post($store_description) . '</div>';
+} else {
+    echo '<p> </p>';
+}
+?>
     </div>
     <div class="shop-filters__sorting">
         <span><?php woocommerce_catalog_ordering(); ?></span>
