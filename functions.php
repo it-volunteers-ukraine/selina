@@ -877,16 +877,37 @@ function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
 	return $message;
 }
 
-function remove_login_link_from_reset_password_page() {
-    // Check if the current page is 'lostpassword' or 'rp' (reset password)
-    if ( isset( $_GET['action'] ) && ( $_GET['action'] == 'lostpassword' || $_GET['action'] == 'rp' ) ) {
+
+add_action('login_form_resetpass', 'customize_reset_pass_page');
+
+function customize_reset_pass_page() {
+    if (isset($_GET['key'])) {
         ?>
         <style>
             .notice a {
+                display: none;
+            }
+            .message a {
                 display: none;
             }
         </style>
         <?php
     }
 }
-add_action('login_enqueue_scripts', 'remove_login_link_from_reset_password_page');
+
+add_action('login_form_rp', 'customize_rp_pass_page');
+
+function customize_rp_pass_page() {
+    if (isset($_GET['key'])) {
+        ?>
+        <style>
+            .notice a {
+                display: none;
+            }
+            .message a {
+                display: none;
+            }
+        </style>
+        <?php
+    }
+}
