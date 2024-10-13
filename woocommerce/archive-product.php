@@ -19,7 +19,7 @@ $product_categories = get_terms( array(
 
 if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : ?>
     <div class="filters shop-filters__categories">
-        <button class="filter-button" data-category="all">All</button> <!-- 'All' button for showing all products -->
+        <button class="filter-button active" data-category="all">All</button> <!-- 'All' button for showing all products -->
         <?php foreach ( $product_categories as $category ) : ?>
             <button class="filter-button" data-category="<?php echo esc_attr( $category->slug ); ?>">
                 <?php echo esc_html( $category->name ); ?>
@@ -49,9 +49,9 @@ if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : 
     <?php while ( have_posts() ) : ?>
         <?php the_post(); ?>
 
-        <div class="shop-grid__item">
+    
             <?php wc_get_template_part( 'content', 'product' ); ?>
-        </div>
+  
 
     <?php endwhile; ?>
 

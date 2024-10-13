@@ -33,7 +33,7 @@ function woo_wp_it_volunteers_scripts() {
             wp_enqueue_script( 'woo-shop-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/shop.js', array(), false, true );
      wp_localize_script('woo-shop-scripts', 'myAjax', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('our-breeders_nonce'),
+            'nonce' => wp_create_nonce('my-shop_nonce'),
         ));
         }
         if ( is_cart() ) {

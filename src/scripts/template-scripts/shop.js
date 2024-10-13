@@ -10,7 +10,7 @@ jQuery(function ($) {
         category: category, // Pass selected category
       },
       success: function (response) {
-        $(".shop-grid__products ul").html(response); // Update product grid
+        $(".shop-grid__products ul").html(response); // Update product grid/
       },
     });
   });
