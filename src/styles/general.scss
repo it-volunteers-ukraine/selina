@@ -23,7 +23,7 @@ body {
   color: $black;
   scroll-padding-top: 80px;
   @media screen and (min-width: $desktop) {
-    scroll-padding-top: 0;
+    scroll-padding-top: 80px;
   }
 }
 

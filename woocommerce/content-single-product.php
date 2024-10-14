@@ -33,7 +33,7 @@ if ( post_password_required() ) {
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 	<div class="single-product__flex-container">
-		<div>
+		<div class='single-product__image-sharing-container'>
 			<?php
 			/**
 			 * Hook: woocommerce_before_single_product_summary.

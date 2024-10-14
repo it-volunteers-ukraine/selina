@@ -111,7 +111,18 @@ div.summary.entry-summary > h1 {
         justify-content: space-between;
         gap: 24px;
     }
-    
+    @media screen and (min-width: $desktop) {
+        gap: 40px;
+    }
+}
+
+.single-product__flex-container > *:first-child {
+    @media screen and (min-width: $tablet) {
+        width: calc((100% - 24px) - 322px);
+    }
+    @media screen and (min-width: $desktop) {
+        width: calc((100% - 40px) - 440px);
+    }
 }
 
 .entry-summary {
