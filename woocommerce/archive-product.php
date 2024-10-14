@@ -1,97 +1,88 @@
 <?php
-/**
- * The Template for displaying product archives, including the main shop page which is a post type archive
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/archive-product.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see https://woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
- * @version 8.6.0
- */
-
-defined( 'ABSPATH' ) || exit;
-
-get_header( 'shop' );
-
-/**
- * Hook: woocommerce_before_main_content.
- *
- * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
- * @hooked woocommerce_breadcrumb - 20
- * @hooked WC_Structured_Data::generate_website_data() - 30
- */
-do_action( 'woocommerce_before_main_content' );
-
-/**
- * Hook: woocommerce_shop_loop_header.
- *
- * @since 8.6.0
- *
- * @hooked woocommerce_product_taxonomy_archive_header - 10
- */
-do_action( 'woocommerce_shop_loop_header' );
-
-if ( woocommerce_product_loop() ) {
-
-	/**
-	 * Hook: woocommerce_before_shop_loop.
-	 *
-	 * @hooked woocommerce_output_all_notices - 10
-	 * @hooked woocommerce_result_count - 20
-	 * @hooked woocommerce_catalog_ordering - 30
-	 */
-	do_action( 'woocommerce_before_shop_loop' );
-
-	woocommerce_product_loop_start();
-
-	if ( wc_get_loop_prop( 'total' ) ) {
-		while ( have_posts() ) {
-			the_post();
-
-			/**
-			 * Hook: woocommerce_shop_loop.
-			 */
-			do_action( 'woocommerce_shop_loop' );
-
-			wc_get_template_part( 'content', 'product' );
-		}
-	}
-
-	woocommerce_product_loop_end();
-
-	/**
-	 * Hook: woocommerce_after_shop_loop.
-	 *
-	 * @hooked woocommerce_pagination - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop' );
-} else {
-	/**
-	 * Hook: woocommerce_no_products_found.
-	 *
-	 * @hooked wc_no_products_found - 10
-	 */
-	do_action( 'woocommerce_no_products_found' );
+// Ensure WooCommerce is loaded
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
 }
 
-/**
- * Hook: woocommerce_after_main_content.
- *
- * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
- */
-do_action( 'woocommerce_after_main_content' );
+get_header( 'shop' ); ?>
 
-/**
- * Hook: woocommerce_sidebar.
- *
- * @hooked woocommerce_get_sidebar - 10
- */
-do_action( 'woocommerce_sidebar' );
+<main class="shop-page">
+    <section class="section shop-filters">
+        <div class="container">
+        <div>
+            <?php
+// Get product categories
+$product_categories = get_terms( array(
+    'taxonomy'   => 'product_cat',
+    'hide_empty' => true, 
+) );
 
-get_footer( 'shop' );
+if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : ?>
+    <div class="filters shop-filters__categories">
+        <button class="filter-button active" data-category="all">All</button> <!-- 'All' button for showing all products -->
+        <?php foreach ( $product_categories as $category ) : ?>
+            <button class="filter-button" data-category="<?php echo esc_attr( $category->slug ); ?>">
+                <?php echo esc_html( $category->name ); ?>
+            </button>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+        </div>
+         <!-- Page Description -->
+    <div class="shop-filters__description">
+    <?php
+if ( function_exists('pll_current_language') ) {
+    $current_language = pll_current_language();
+    if ($current_language === 'uk') { 
+        $store_description = 'В цьому розділі зібрано все необхідне для вашого котика: 
+        товари, послуги та цифрова продукція. Ви зможете знайти як якісні речі для 
+        догляду і розваг, так і професійні послуги для здоров\'я та комфорту улюбленця. 
+        Усе для того, щоб ваш котик був щасливим і задоволеним';
+    } elseif ($current_language === 'en') { 
+        $store_description = 'This section contains everything you need for your cat:
+ goods, services and digital products. You will be able to find both quality things for
+ care and entertainment, as well as professional services for the health and comfort of a pet.
+ Everything to keep your kitty happy and satisfied';
+    } else {
+        $store_description = ' ';
+    }
+    echo '<div class="store-description">' . wp_kses_post($store_description) . '</div>';
+} else {
+    echo '<p> </p>';
+}
+?>
+    </div>
+    <div class="shop-filters__sorting">
+        <span><?php woocommerce_catalog_ordering(); ?></span>
+    </div>
+    </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="section shop-grid">
+        <div class="container">
+            <div class="shop-grid__products">
+        <?php if ( woocommerce_product_loop() ) : ?>
+
+    <?php woocommerce_product_loop_start(); ?>
+
+    <?php while ( have_posts() ) : ?>
+        <?php the_post(); ?>
+
+    
+            <?php wc_get_template_part( 'content', 'product' ); ?>
+  
+
+    <?php endwhile; ?>
+
+    <?php woocommerce_product_loop_end(); ?>
+
+<?php else : ?>
+    <?php wc_get_template( 'loop/no-products-found.php' ); ?>
+<?php endif; ?>
+
+    </div>
+    </div>
+    </section>
+        </main>
+<?php get_footer( 'shop' ); ?>

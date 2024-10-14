@@ -1,0 +1,1 @@
+jQuery((function(t){t(".filter-button").on("click",(function(){var a=t(this).data("category");t.ajax({url:myAjax.ajaxUrl,type:"POST",data:{action:"my_filter",category:a},success:function(a){t(".shop-grid__products ul").html(a)}})}))}));
