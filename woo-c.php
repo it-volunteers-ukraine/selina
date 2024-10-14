@@ -68,8 +68,8 @@ add_filter('woocommerce_get_image_size_single', function($size) {
 // Adjust image size for shop (product archive) pages
 add_filter('woocommerce_get_image_size_shop_catalog', function($size) {
     return array (
-        'width' => 300,
-        'height' => 300,
+        'width' => 340,
+        'height' => 340,
         'crop' => 0
     );
 });

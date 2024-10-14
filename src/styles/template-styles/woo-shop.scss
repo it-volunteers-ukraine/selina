@@ -93,8 +93,11 @@
     .price {
       font-size: 16px;
       display: flex;
-      justify-content: space-between;
-      margin-right: 0;
+      justify-content: end;
+      gap: 168px;
+    }
+    .woocommerce-Price-amount.amount {
+      text-decoration: none;
     }
     .woocommerce-Price-amount bdi {
       font-size: 20px;
@@ -167,23 +170,5 @@
   &:hover {
     background-color: $primary-color;
     color: $white;
-  }
-}
-.woocommerce-ordering {
-  select {
-    background-color: $white;
-    border-radius: 10px;
-    width: fit-content;
-    color: $primary-color;
-    font-family: $primary-font;
-    margin: 0;
-  }
-  option {
-    background-color: $white;
-    border-radius: 10px;
-    width: fit-content;
-    color: $primary-color;
-    font-family: $primary-font;
-    margin: 0;
   }
 }
