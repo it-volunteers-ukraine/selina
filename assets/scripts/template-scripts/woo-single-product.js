@@ -1,0 +1,1 @@
+jQuery(document).ready((function(t){t(".quantity button").on("click",(function(){let n=t(this),a=n.parent().find(".qty"),u=+a.val(),i=1;n.hasClass("btn-plus")?i=u+1:u>1&&(i=u-1),a.val(i)}))}));

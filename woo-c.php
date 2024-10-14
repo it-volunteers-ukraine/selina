@@ -39,6 +39,10 @@ function woo_wp_it_volunteers_scripts() {
         if ( is_cart() ) {
             wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main') );
             wp_enqueue_script( 'woo-cart-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/cart.js', array(), false, true );
+            wp_localize_script('woo-cart-scripts', 'ajax_object', array(
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce'    => wp_create_nonce('woo-cart_nonce')
+            ));
         }
 
         if ( is_checkout() ) {
@@ -49,6 +53,7 @@ function woo_wp_it_volunteers_scripts() {
 
         if ( is_product() ) {
             wp_enqueue_style( 'woo-product-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-single-product.css', array('main') );
+            wp_enqueue_script( 'woo-product-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/woo-single-product.js', array(), false, true );
         }
     }
 }
@@ -96,6 +101,33 @@ function reorder_woocommerce_hooks() {
     add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 }
 add_action( 'woocommerce_init', 'reorder_woocommerce_hooks' );
+
+// Remove breadcrumbs from cart
+add_action( 'template_redirect', 'remove_WC_breadcrumbs_from_cart' );
+function remove_WC_breadcrumbs_from_cart() {
+    if( is_cart() ) {
+        remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+    }
+}
+
+// Hide link "Continue Shopping" if the cart is empty, but the cart page is not refreshed yet (link "Return to shop" appears instead)
+add_action( 'wp_footer', 'hide_continue_shopping_on_empty_cart' );
+function hide_continue_shopping_on_empty_cart() {
+    if ( is_cart() ) : ?>
+        <script type="text/javascript">
+            jQuery(function($){
+                $( document.body ).on( 'wc_cart_emptied wc_cart_fragments_refreshed', function() {
+                    // Check if there is a message "Your cart is currently empty."
+                    if ( $('.cart-empty').length > 0 ) {
+                        // Hide link "Continue Shopping"
+                        $('.cart-header__container a').hide();
+                    }
+                });
+            });
+        </script>
+    <?php endif;
+}
+
 
 
 function my_ajax_filter_products() {
