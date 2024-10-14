@@ -164,7 +164,7 @@ function wp_it_volunteers_scripts()
     if (is_page_template('templates/partners.php')) {
         wp_enqueue_style('partners-style', get_template_directory_uri() . '/assets/styles/template-styles/partners.css', array('main'));
         wp_enqueue_script('partners-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
-        wp_enqueue_script('partners-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/partners.js', array('touch-swipe-scripts'), false, true);
+        wp_enqueue_script('partners-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/partners.js', array(), false, true);
     }
 
     if (is_page_template('templates/education.php')) {
@@ -879,4 +879,38 @@ function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
 // WooCommerce
 if (class_exists('WooCommerce')) {
     require_once (get_template_directory() . '/woo-c.php');
+}
+
+add_action('login_form_resetpass', 'customize_reset_pass_page');
+
+function customize_reset_pass_page() {
+    if (isset($_GET['key'])) {
+        ?>
+        <style>
+            .notice a {
+                display: none;
+            }
+            .message a {
+                display: none;
+            }
+        </style>
+        <?php
+    }
+}
+
+add_action('login_form_rp', 'customize_rp_pass_page');
+
+function customize_rp_pass_page() {
+    if (isset($_GET['key'])) {
+        ?>
+        <style>
+            .notice a {
+                display: none;
+            }
+            .message a {
+                display: none;
+            }
+        </style>
+        <?php
+    }
 }
