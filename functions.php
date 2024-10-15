@@ -876,3 +876,14 @@ function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
 
 	return $message;
 }
+
+function custom_login_link() {
+    ?>
+    <style type="text/css">
+        #login .notice.notice-info.message.reset-pass a {
+  display: none;
+} 
+    </style>
+    <?php
+}
+add_action('login_enqueue_scripts', 'custom_login_link');

@@ -22,9 +22,6 @@ body {
   overflow-x: hidden;
   color: $black;
   scroll-padding-top: 80px;
-  @media screen and (min-width: $desktop) {
-    scroll-padding-top: 0;
-  }
 }
 
 html.modal__opened {
@@ -228,8 +225,4 @@ input {
   @media screen and (min-width: $desktop) {
     padding-bottom: 110px;
   }
-}
-
-.notice.notice-info.message.reset-pass a {
-  display: none;
 }
