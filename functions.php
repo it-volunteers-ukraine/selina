@@ -877,37 +877,13 @@ function wpdocs_retrieve_password_message( $message, $key, $user_login ) {
 	return $message;
 }
 
-
-add_action('login_form_resetpass', 'customize_reset_pass_page');
-
-function customize_reset_pass_page() {
-    if (isset($_GET['key'])) {
-        ?>
-        <style>
-            .notice a {
-                display: none;
-            }
-            .message a {
-                display: none;
-            }
-        </style>
-        <?php
-    }
+function custom_login_link() {
+    ?>
+    <style type="text/css">
+        #login .notice.notice-info.message.reset-pass a {
+  display: none;
+} 
+    </style>
+    <?php
 }
-
-add_action('login_form_rp', 'customize_rp_pass_page');
-
-function customize_rp_pass_page() {
-    if (isset($_GET['key'])) {
-        ?>
-        <style>
-            .notice a {
-                display: none;
-            }
-            .message a {
-                display: none;
-            }
-        </style>
-        <?php
-    }
-}
+add_action('login_enqueue_scripts', 'custom_login_link');
