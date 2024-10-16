@@ -19,10 +19,24 @@ $product_categories = get_terms( array(
 
 if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : ?>
     <div class="filters shop-filters__categories">
-        <button class="filter-button active" data-category="all">All</button> <!-- 'All' button for showing all products -->
+        <button class="filter-button active" data-category="all">    
+        Всі
+    <span class="button-icon">
+                <svg width="14" height="12">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                        </use>
+                    </svg>
+            </span>
+        </button> <!-- 'All' button for showing all products -->
         <?php foreach ( $product_categories as $category ) : ?>
             <button class="filter-button" data-category="<?php echo esc_attr( $category->slug ); ?>">
                 <?php echo esc_html( $category->name ); ?>
+                <span class="button-icon">
+                <svg width="14" height="12">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
+                        </use>
+                    </svg>
+            </span>
             </button>
         <?php endforeach; ?>
     </div>

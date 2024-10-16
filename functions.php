@@ -886,3 +886,8 @@ function custom_login_link() {
     <?php
 }
 add_action('login_enqueue_scripts', 'custom_login_link');
+
+// WooCommerce
+if (class_exists('WooCommerce')) {
+    require_once (get_template_directory() . '/woo-c.php');
+}
