@@ -21,6 +21,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<main class="main">
-	<section class="section">
-		<div class="container">
+<section class="section cart__section">
+	<div class="container">

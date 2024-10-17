@@ -53,6 +53,32 @@
       color: blue;
     }
   }
+  &__forgot_password {
+    text-decoration: underline;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-top: 10px;
+    margin-left: 0;
+    &:hover {
+      color: blue;
+    }
+  }
+  &__error-message {
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 10px;
+  }
+  &__success-message {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 10px;
+  }
   &__form-field {
     display: flex;
     flex-direction: column;

@@ -27,10 +27,24 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 function woo_wp_it_volunteers_scripts() {
 
     if ( class_exists( 'WooCommerce' ) ) {
-
+        if ( is_shop() ) {
+            wp_enqueue_style( 'woo-shop-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-shop.css', array('main') );
+            wp_enqueue_script('woo-shop-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
+             wp_enqueue_style('choices-style', "https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css", array('main'));
+            wp_enqueue_script('choices-scripts', 'https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js', array(), false, true);
+            wp_enqueue_script( 'woo-shop-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/shop.js', array(), false, true );
+     wp_localize_script('woo-shop-scripts', 'myAjax', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('my-shop_nonce'),
+        ));
+        }
         if ( is_cart() ) {
             wp_enqueue_style( 'woo-cart-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-cart.css', array('main') );
             wp_enqueue_script( 'woo-cart-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/cart.js', array(), false, true );
+            wp_localize_script('woo-cart-scripts', 'ajax_object', array(
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce'    => wp_create_nonce('woo-cart_nonce')
+            ));
         }
 
         if ( is_checkout() ) {
@@ -41,6 +55,7 @@ function woo_wp_it_volunteers_scripts() {
 
         if ( is_product() ) {
             wp_enqueue_style( 'woo-product-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-single-product.css', array('main') );
+            wp_enqueue_script( 'woo-product-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/woo-single-product.js', array(), false, true );
         }
 
         if ( is_order_received_page() ) {
@@ -64,8 +79,8 @@ add_filter('woocommerce_get_image_size_single', function($size) {
 // Adjust image size for shop (product archive) pages
 add_filter('woocommerce_get_image_size_shop_catalog', function($size) {
     return array (
-        'width' => 300,
-        'height' => 300,
+        'width' => 340,
+        'height' => 340,
         'crop' => 0
     );
 });
@@ -92,3 +107,62 @@ function reorder_woocommerce_hooks() {
     add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 }
 add_action( 'woocommerce_init', 'reorder_woocommerce_hooks' );
+
+// Remove breadcrumbs from cart
+add_action( 'template_redirect', 'remove_WC_breadcrumbs_from_cart' );
+function remove_WC_breadcrumbs_from_cart() {
+    if( is_cart() ) {
+        remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+    }
+}
+
+// Hide link "Continue Shopping" if the cart is empty, but the cart page is not refreshed yet (link "Return to shop" appears instead)
+add_action( 'wp_footer', 'hide_continue_shopping_on_empty_cart' );
+function hide_continue_shopping_on_empty_cart() {
+    if ( is_cart() ) : ?>
+        <script type="text/javascript">
+            jQuery(function($){
+                $( document.body ).on( 'wc_cart_emptied wc_cart_fragments_refreshed', function() {
+                    // Check if there is a message "Your cart is currently empty."
+                    if ( $('.cart-empty').length > 0 ) {
+                        // Hide link "Continue Shopping"
+                        $('.cart-header__container a').hide();
+                    }
+                });
+            });
+        </script>
+    <?php endif;
+}
+
+
+
+function my_ajax_filter_products() {
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1, // You can set a specific number if needed
+    );
+
+    if( isset( $_POST['category'] ) && $_POST['category'] != 'all' ) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug',
+                'terms'    => $_POST['category'],
+            ),
+        );
+    }
+
+    $query = new WP_Query( $args );
+
+    if( $query->have_posts() ) :
+        while( $query->have_posts() ): $query->the_post();
+            wc_get_template_part( 'content', 'product' ); // Load the product template
+        endwhile;
+    else :
+        echo '<p>No products found</p>';
+    endif;
+
+    die();
+}
+add_action('wp_ajax_my_filter', 'my_ajax_filter_products');
+add_action('wp_ajax_nopriv_my_filter', 'my_ajax_filter_products');
