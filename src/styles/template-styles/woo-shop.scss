@@ -20,8 +20,8 @@
   }
   &__categories {
     display: flex;
-    list-style: none;
     gap: 24px;
+    list-style: none;
     font-size: 16px;
     font-weight: 800;
     line-height: 1;
@@ -59,9 +59,6 @@
     line-height: 21px;
     margin-top: 16px;
     @media screen and (min-width: $tablet) {
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 25px;
       margin-top: 24px;
     }
     @media screen and (min-width: $desktop) {
@@ -167,7 +164,9 @@
     }
     img {
       border-radius: 8px;
+      object-fit: cover;
       overflow: hidden;
+      height: 264px;
     }
   }
 }
@@ -240,7 +239,6 @@
   color: $primary-color;
   font-family: $primary-font;
   margin: 0;
-
   &.is-focused,
   &.is-open {
     .choices__inner {
