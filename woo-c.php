@@ -42,6 +42,10 @@ function woo_wp_it_volunteers_scripts() {
         if ( is_product() ) {
             wp_enqueue_style( 'woo-product-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-single-product.css', array('main') );
         }
+
+        if ( is_order_received_page() ) {
+            wp_enqueue_style( 'woo-thank-you-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-thank-you.css', array('main') );
+        }
     }
 }
 add_action('wp_enqueue_scripts', 'woo_wp_it_volunteers_scripts');
