@@ -729,6 +729,9 @@
     margin-bottom: 16px;
     overflow: hidden;
     border-radius: $big-br;
+    img {
+      min-height: 202px;
+    }
   }
 
   &__category {
