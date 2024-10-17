@@ -17,6 +17,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+do_action( 'woocommerce_before_main_content' );
+
 /*
  * @hooked wc_empty_cart_message - 10
  */
@@ -37,3 +39,5 @@ if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 		</a>
 	</p>
 <?php endif; ?>
+
+<?php do_action( 'woocommerce_after_main_content' ); ?>

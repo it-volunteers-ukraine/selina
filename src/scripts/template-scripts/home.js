@@ -2,6 +2,15 @@ console.log("home");
 const firstSectionSwiper = new Swiper(".first__container", {
   effect: "slide",
   loop: true,
+  slidesToScroll: 1,
+  speed: 2000,
+
+  Infinite: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  pauseOnFocus: false,
+  pauseOnHover: false,
+  pauseOnDotsHover: false,
   slidesPerView: 1,
   spaceBetween: 50,
   direction: "horizontal",

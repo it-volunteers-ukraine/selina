@@ -280,13 +280,15 @@
   &__button-wrapper {
     position: relative; /* colored paddings of container */
     background-color: $primary-color;
-    padding: 16px 1px;
+    padding: 16px 0;
     @media screen and (min-width: $tablet) {
       background-color: transparent;
     }
     @media screen and (min-width: $desktop) {
       background-color: transparent;
-      padding: 0 0 16px 0;
+      padding: 0;
+      margin-bottom: 28px;
+      height: 44px;
     }
   }
 

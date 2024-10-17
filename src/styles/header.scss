@@ -191,6 +191,16 @@
         align-items: center;
       }
 
+      .search-desktop {
+        display: none;
+        @media screen and (min-width: $desktop) {
+          display: flex;
+          width: 264px;
+          justify-content: flex-end;
+          height: 33px;
+        }
+      }
+
       .header__list {
         display: none;
 
@@ -282,19 +292,29 @@
         }
       }
 
+      .search-mobile {
+        height: 44px;
+        display: flex;
+      }
+
       .search {
-        display: none;
         border-radius: $big-br;
         background-color: $white;
         border: 1px solid $white;
+        align-items: center;
+        width: 292px;
+
+        @media screen and (min-width: $mobile) {
+          width: 343px;
+        }
+
+        @media screen and (min-width: $tablet) {
+          width: 423px;
+        }
 
         @media screen and (min-width: $desktop) {
           width: 264px;
-          display: flex;
-          padding: 3px 8px;
-          border: 1px solid $primary-color;
-          position: static;
-          margin-top: 0;
+          height: 33px;
         }
 
         .search-wrapper {
@@ -302,10 +322,10 @@
           flex-direction: row;
           align-items: baseline;
           gap: 2px;
-          padding: 0 8px;
           @media screen and (min-width: $desktop) {
-            padding: 0 0;
             position: relative;
+            top: 3px;
+            left: 7px;
           }
 
           ::placeholder {
@@ -339,7 +359,11 @@
 
           input {
             font-size: 17px;
-            width: 304px;
+            width: 256px;
+            text-overflow: ellipsis;
+            @media screen and (min-width: $mobile) {
+              width: 304px;
+            }
             @media screen and (min-width: $tablet) {
               width: 383px;
             }
@@ -365,6 +389,25 @@
     display: none;
   }
 
+  @media (orientation: landscape) {
+    .show-menu {
+      position: fixed;
+      height: calc(100% - 80px);
+      z-index: 2;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .search {
+      width: 423px;
+      height: 44px;
+      position: relative;
+    }
+    .search-wrapper{
+      position: absolute;
+      top: 6px;
+    }
+  }
+
   .mobile-menu {
     position: fixed;
     background-color: #eff8f9;
@@ -383,7 +426,7 @@
       right: 0;
       max-width: 487px;
       padding: 32px;
-      top: 89px;
+      top: 88px;
     }
   }
 
@@ -396,7 +439,7 @@
 
     .header__list-mobile {
       text-align: left;
-      padding-top: 65px;
+      padding-top: 32px;
       display: flex;
       flex-wrap: wrap;
       position: relative;
@@ -502,31 +545,6 @@
     }
   }
 
-  .show-search {
-    margin-top: 16px;
-    display: flex !important;
-    align-items: center;
-    background: #fff;
-    position: absolute;
-    top: 84px;
-    height: 44px;
-    z-index: 1;
-
-    @media (min-width: 320px) {
-      width: 291px;
-    }
-
-    @media (min-width: 375px) {
-      width: 343px;
-    }
-
-    @media (min-width: $tablet) {
-      width: 423px;
-      right: 32px;
-      margin-top: 16px;
-    }
-  }
-
   .buttons {
     display: flex;
     flex-direction: row;
@@ -580,7 +598,7 @@
 
       .flag-ua {
         @media (min-width: 320px) {
-          left: 36px;
+          left: 42px;
           top: 5px;
           height: 30px;
         }
@@ -590,7 +608,7 @@
         }
 
         @media (min-width: 375px) {
-          left: 43px;
+          left: 45px;
           top: 4px;
           height: 32px;
         }
@@ -615,6 +633,7 @@
 }
 
 .switch > span.on-lang {
+  display: none;
   @media (min-width: 320px) {
     top: 6px;
     left: 6px;
@@ -633,8 +652,9 @@
     left: 7px;
   }
   @media (min-width: $desktop) {
-    left: 5px;
+    left: 3px;
     top: 2px;
+    align-items: baseline;
   }
 }
 
@@ -654,7 +674,7 @@
   }
 
   @media (min-width: $desktop) {
-    left: 25px;
+    left: 27px;
     top: 2px;
   }
 }
@@ -662,10 +682,14 @@
 .switch > span.off {
   right: 0;
   @media (min-width: $tablet) {
-    top: 6px;
+    top: 4px;
   }
   @media (min-width: $desktop) {
     left: 30px;
+    top: 3px;
+  }
+  @media (min-width: $desktop) {
+    left: 3px;
     top: 3px;
   }
 }
@@ -723,6 +747,7 @@ input.check-toggle-round-flat + span:after {
   background-image: url("../images/ua_flag-2.svg");
   background-repeat: no-repeat;
   background-size: contain;
+  width: 100%;
   @media (min-width: 320px) {
     height: 28px;
   }
@@ -810,13 +835,25 @@ input.check-toggle-round-flat:checked ~ .on {
 }
 
 input.check-toggle-round-flat:checked ~ .off-lang {
-  text-indent: -99999px;
+  //text-indent: -99999px;
 }
 
 input.check-toggle-round-flat:not(:checked) ~ .on-lang {
+  display: flex;
+}
+
+input.check-toggle-round-flat:not(:checked) ~ .off-lang {
   text-indent: -99999px;
 }
 
 input.check-toggle-round-flat:not(:checked) ~ .off {
   background-image: none;
+}
+
+input.check-toggle-round-flat:not(:checked) ~ .on {
+  @media (min-width: $desktop) {
+    display: flex;
+    top: 3px;
+    right: 3px;
+  }
 }

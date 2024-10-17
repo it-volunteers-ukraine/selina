@@ -72,6 +72,13 @@
     line-height: 21px;
     margin-bottom: 10px;
   }
+  &__success-message {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 10px;
+  }
   &__form-field {
     display: flex;
     flex-direction: column;

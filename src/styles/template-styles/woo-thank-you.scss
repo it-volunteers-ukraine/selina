@@ -1,0 +1,42 @@
+.thank-you-page-wrapper {
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh; /* сторінка займає всю висоту екрану */
+  flex-direction: column; /* елементи вирівнюються вертикально */
+  line-height: 1.6;
+
+  @media screen and (min-width: 768px) {
+      line-height: 2;
+    }
+}
+
+.woo-c-thank-you-title {
+  font-size: 24px;
+  color: black;
+
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
+}
+
+.woo-c-thank-you-text {
+  font-size: 16px;
+  color: black;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+.thank-you-logo {
+    width: 240px;
+    height: 270px; 
+
+  @media screen and (min-width: 768px) {
+      width: 456px;
+      height: 505px;
+    }
+}

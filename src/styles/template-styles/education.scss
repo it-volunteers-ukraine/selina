@@ -1,7 +1,7 @@
 @import "../variables";
 
 
-.education{
+.education {
   .learning-section {
     background-color: $background;
     padding-top: 20px;
@@ -147,11 +147,25 @@
     }
   }
 
-  .education-button{
+  .education-button {
     gap: 5px;
   }
 
-  .button-flex{
+  .hide_btn-education {
+    display: flex;
+  }
+
+  .margin-button {
+    margin-bottom: 0;
+    @media (min-width: $tablet) {
+      margin-bottom: 25px;
+    }
+    @media (min-width: $desktop) {
+      margin-bottom: 0;
+    }
+  }
+
+  .button-flex {
     display: flex;
     justify-content: center;
 
@@ -160,7 +174,7 @@
     }
 
     @media (min-width: $desktop) {
-     justify-content: flex-start;
+      justify-content: flex-start;
     }
   }
 }

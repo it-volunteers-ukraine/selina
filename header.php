@@ -97,7 +97,7 @@
                                         onchange="redirectToPage('<?= esc_url($langUrl); ?>')"
                                         id="language-toggle"
                                         class="check-toggle check-toggle-round-flat"
-                                    <?= $lang === 'ua' ? 'checked' : ''; ?>
+                                    <?= $lang === 'en' ? 'checked' : ''; ?>
                                         type="checkbox"
                                 >
                                 <?php $inputSet = true; ?>
@@ -107,9 +107,9 @@
                         <label for="language-toggle"></label>
 
                         <?php foreach ($languages as $lang => $language): ?>
-                            <span class="<?= $lang !== 'ua' ? 'on' : 'off' ?> flag-<?= $language['slug']; ?>">
+                            <span class="<?= $lang !== 'en' ? 'on' : 'off' ?> flag-<?= $language['slug']; ?>">
         </span>
-                            <span class="lang-size <?= $lang !== 'ua' ? 'on-lang' : 'off-lang' ?>">
+                            <span class="lang-size <?= $lang !== 'en' ? 'on-lang' : 'off-lang' ?>">
             <?= $language['slug']; ?>
         </span>
                         <?php endforeach; ?>
@@ -143,9 +143,16 @@
                         'items_wrap' => '<ul id="%1$s" class="header__list %2$s">%3$s</ul>',
                     ])
                     ?>
+                    <div class="search-desktop search">
+                        <?php get_search_form() ?>
+                    </div>
+
 
                     <div id="header-mobile" class="content-mobile">
                         <nav id="header-nav-menu">
+                            <div class="search-mobile search">
+                                <?php get_search_form() ?>
+                            </div>
                             <?php wp_nav_menu([
                                 'theme_location' => 'header',
                                 'container' => false,
@@ -230,7 +237,7 @@
                                                     onchange="redirectToPage('<?= esc_url($langUrl); ?>')"
                                                     id="language-toggle"
                                                     class="check-toggle check-toggle-round-flat"
-                                                <?= $lang === 'ua' ? 'checked' : ''; ?>
+                                                <?= $lang === 'en' ? 'checked' : ''; ?>
                                                     type="checkbox"
                                             >
                                             <?php $inputSet = true; ?>
@@ -240,9 +247,9 @@
                                     <label for="language-toggle"></label>
 
                                     <?php foreach ($languages as $lang => $language): ?>
-                                        <span class="<?= $lang !== 'ua' ? 'on' : 'off' ?> flag-<?= $language['slug']; ?>">
+                                        <span class="<?= $lang !== 'en' ? 'on' : 'off' ?> flag-<?= $language['slug']; ?>">
         </span>
-                                        <span class="lang-size <?= $lang !== 'ua' ? 'on-lang' : 'off-lang' ?>">
+                                        <span class="lang-size <?= $lang !== 'en' ? 'on-lang' : 'off-lang' ?>">
             <?= $language['slug']; ?>
         </span>
                                     <?php endforeach; ?>
@@ -250,7 +257,6 @@
 
                             </div>
                     </div>
-                    <?php get_search_form() ?>
                 </nav>
             </div>
         </div>
