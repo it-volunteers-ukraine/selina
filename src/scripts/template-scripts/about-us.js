@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     function updateAboutClub() {
-        const textElements = document.querySelectorAll(".text");
+        const textElements = document.querySelectorAll(".club-text");
         const contentElements = document.querySelectorAll(".club-section__box");
         const imgElements = document.querySelectorAll(".club-img");
 
