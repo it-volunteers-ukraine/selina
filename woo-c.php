@@ -112,6 +112,15 @@ function remove_WC_breadcrumbs_from_cart() {
     }
 }
 
+// Change text "Home" to "Shop" in first breadcrumb
+add_filter( 'woocommerce_breadcrumb_defaults', 'custom_breadcrumbs' );
+function custom_breadcrumbs( $defaults ) {
+    $shop_text = esc_html__( 'Магазин', 'woocommerce' );
+    $shop_url = get_permalink( wc_get_page_id( 'shop' ) );
+    $defaults['home'] = '<a href="' . esc_url( $shop_url ) . '">' . $shop_text . '</a>';
+    return $defaults;
+}
+
 // Hide link "Continue Shopping" if the cart is empty, but the cart page is not refreshed yet (link "Return to shop" appears instead)
 add_action( 'wp_footer', 'hide_continue_shopping_on_empty_cart' );
 function hide_continue_shopping_on_empty_cart() {

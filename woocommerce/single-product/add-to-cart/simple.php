@@ -48,8 +48,12 @@ if ( $product->is_in_stock() ) : ?>
 			do_action( 'woocommerce_after_add_to_cart_quantity' );
 			?>
 
-			<button class="single_add_to_cart_button-buy button">Купити</button>
-			<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
+			<button class="single_add_to_cart_button-buy button red_medium_button">
+				<a href="<?php echo esc_url( wc_get_checkout_url() . '?add-to-cart=' . get_the_ID() ); ?>">
+					<?php echo esc_html__( 'Купити', 'woocommerce' ); ?>
+				</a>
+			</button>
+			<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button green_medium_button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
 				<?php echo esc_html( $product->single_add_to_cart_text() ); ?>
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M20.8 16.8C21.2243 16.8 21.6313 16.9686 21.9314 17.2686C22.2314 17.5687 22.4 17.9757 22.4 18.4C22.4 18.8243 22.2314 19.2313 21.9314 19.5314C21.6313 19.8314 21.2243 20 20.8 20C20.3757 20 19.9687 19.8314 19.6686 19.5314C19.3686 19.2313 19.2 18.8243 19.2 18.4C19.2 17.512 19.912 16.8 20.8 16.8ZM8 4H10.616L11.368 5.6H23.2C23.4122 5.6 23.6157 5.68429 23.7657 5.83431C23.9157 5.98434 24 6.18783 24 6.4C24 6.536 23.96 6.672 23.904 6.8L21.04 11.976C20.768 12.464 20.24 12.8 19.64 12.8H13.68L12.96 14.104L12.936 14.2C12.936 14.253 12.9571 14.3039 12.9946 14.3414C13.0321 14.3789 13.083 14.4 13.136 14.4H22.4V16H12.8C12.3757 16 11.9687 15.8314 11.6686 15.5314C11.3686 15.2313 11.2 14.8243 11.2 14.4C11.2 14.12 11.272 13.856 11.392 13.632L12.48 11.672L9.6 5.6H8V4ZM12.8 16.8C13.2243 16.8 13.6313 16.9686 13.9314 17.2686C14.2314 17.5687 14.4 17.9757 14.4 18.4C14.4 18.8243 14.2314 19.2313 13.9314 19.5314C13.6313 19.8314 13.2243 20 12.8 20C12.3757 20 11.9687 19.8314 11.6686 19.5314C11.3686 19.2313 11.2 18.8243 11.2 18.4C11.2 17.512 11.912 16.8 12.8 16.8ZM20 11.2L22.224 7.2H12.112L14 11.2H20Z" fill="white" />
