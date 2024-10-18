@@ -23,7 +23,7 @@
         height: 218px;
         margin-top: 16px;
         @media screen and (min-width: $desktop) {
-            height: 207px;
+            height: 215px;
             margin-top: 24px;
         }
     }
@@ -33,14 +33,6 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 6;
         text-overflow: ellipsis;
-        max-height: calc(1.3em * 6);
-        margin-bottom: 28px;
-        @media screen and (min-width: 389px) {
-            margin-bottom: 29px;
-        }
-        @media screen and (min-width: $desktop) {
-            margin-bottom: 0;
-        }
     }
     &__news-section__name {
         font-weight: 800;
