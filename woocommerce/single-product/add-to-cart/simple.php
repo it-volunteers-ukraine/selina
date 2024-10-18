@@ -48,11 +48,9 @@ if ( $product->is_in_stock() ) : ?>
 			do_action( 'woocommerce_after_add_to_cart_quantity' );
 			?>
 
-			<button class="single_add_to_cart_button-buy button red_medium_button">
-				<a href="<?php echo esc_url( wc_get_checkout_url() . '?add-to-cart=' . get_the_ID() ); ?>">
-					<?php echo esc_html__( 'Купити', 'woocommerce' ); ?>
-				</a>
-			</button>
+			<a class="single_add_to_cart_button-buy button red_medium_button" href="<?php echo esc_url( wc_get_checkout_url() . '?add-to-cart=' . get_the_ID() ); ?>">
+				<?php echo esc_html__( 'Купити', 'woocommerce' ); ?>
+			</a>
 			<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button green_medium_button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
 				<?php echo esc_html( $product->single_add_to_cart_text() ); ?>
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
