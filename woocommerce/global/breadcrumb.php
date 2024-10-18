@@ -28,6 +28,11 @@ if ( ! empty( $breadcrumb ) ) {
 
 		echo $before;
 
+		// Fix link on Shop
+		if ( $key === 0 && ($crumb[0] === 'Магазин' || $crumb[0] === 'Shop') ) {
+			$crumb[1] = get_permalink( wc_get_page_id( 'shop' ) );
+		}
+
 		if ( ! empty( $crumb[1] ) && sizeof( $breadcrumb ) !== $key + 1 ) {
 			echo '<a href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a>';
 		} else {

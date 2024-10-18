@@ -97,6 +97,38 @@ html {
                 @media screen and (min-width: $tablet) {
                     max-width: calc((100% - 24px) / 2); 
                 }
+                &__news-section__content-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 246px;
+                    margin-top: 16px;
+                    @media screen and (min-width: $desktop) {
+                        height: 179px;
+                        margin-top: 24px;
+                    }
+                }
+                &__news-section__text-wrapper {
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 7;
+                    text-overflow: ellipsis;
+                    @media screen and (min-width: $desktop) {
+                        -webkit-line-clamp: 4;
+                    }
+                }
+                &__news-section__name {
+                    font-weight: 800;
+                    font-size: 20px;
+                    line-height: 1.2;
+                    color: $primary-color;
+                    margin-bottom:  12px;
+                    @media screen and (min-width: $desktop) {
+                        font-size: 24px;
+                        line-height: 1.17;
+                    }
+                }
                 .news-tags-container {
                     position: absolute;
                     top: 32px;
