@@ -33,3 +33,15 @@ jQuery ( function( $ ) {
         }, 500 );
     });
 });
+
+// Cross-sell Swiper
+const swiper = new Swiper('.crossSellSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },   
+});
+
+
