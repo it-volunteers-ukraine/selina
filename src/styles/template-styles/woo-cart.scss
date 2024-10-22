@@ -1,5 +1,24 @@
 @import "../variables.scss";
 
+body > main > div.woocommerce > section > div {
+    padding: 0;
+}
+
+.mywoo_before_cart,
+.woocommerce-cart-form, 
+.mywoo-cart-totals, 
+.cross-sells {
+    padding: 0 16px;
+
+    @media screen and (min-width: $tablet) {
+        padding: 0 32px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding: 0;
+    }
+}
+
 /* Header for page-cart.php */
 .cart-header__container {
     display: flex;
@@ -130,6 +149,11 @@
 /* ------------------------------------- Table body ---------------------------------*/
 .mywoo-cart-table__body {
     display: block;
+    /*padding: 0 16px;
+
+    @media screen and (min-width: $tablet) {
+        padding: 0 32px;
+    }*/
 }
 
 .mywoo-cart-table__body tr {
@@ -398,6 +422,7 @@
 }
 
 /* Discounts */
+
 .discounts-wrapper {
     display: flex;
     flex-direction: column;
