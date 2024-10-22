@@ -227,30 +227,36 @@ do_action( 'woocommerce_before_main_content' );
 			 * @hooked woocommerce_cross_sell_display
 			 * @hooked woocommerce_cart_totals - 10
 			 */
+			remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
+			remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display', 10 );
+
+			add_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
+			add_action( 'woocommerce_cart_collaterals', 'discounts_block', 15 );
+			add_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display', 20 );
+
 			do_action( 'woocommerce_cart_collaterals' );
 		?>
 	</div>
 
-
 	<?php do_action( 'woocommerce_after_cart' ); ?>
+
+	<?php
+		function discounts_block() { ?>
+			<div class="discounts-wrapper">
+				<p class="discounts_text"><?php echo get_field( 'discounts_text', get_the_ID() ); ?></p>
+
+				<?php $discounts_link = get_field( 'discounts_link' );
+				if( $discounts_link ): ?>
+					<a class="discounts__button button red_medium_button" href="<?php echo esc_url( $discounts_link ); ?>">
+						<p><?php the_field( 'more-details_btn', 'option' ); ?></p>
+						<svg class="news-section__button-svg" width="16" height="15">
+							<use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
+						</svg>
+					</a>
+				<?php endif; ?>
+			</div>
+		<?php }
+	?>
 </div>
-
-<?php
-	add_action( 'woocommerce_after_main_content', function() { ?>
-		<div class="discounts-wrapper">
-   			<p class="discounts_text"><?php echo get_field( 'discounts_text', get_the_ID() ); ?></p>
-
-			<?php $discounts_link = get_field( 'discounts_link' );
-			if( $discounts_link ): ?>
-				<a class="discounts__button button red_medium_button" href="<?php echo esc_url( $discounts_link ); ?>">
-					<p><?php the_field( 'more-details_btn', 'option' ); ?></p>
-					<svg class="news-section__button-svg" width="16" height="15">
-						<use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
-					</svg>
-				</a>
-			<?php endif; ?>
-   		</div>
-<?php });
-?>
 
 <?php do_action( 'woocommerce_after_main_content' ); ?>
