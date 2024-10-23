@@ -163,6 +163,15 @@
         }
     }
 
+    &__hide-whole-button {
+        display: none;
+        margin-top: 24px;
+        gap: 8px;
+        @media screen and (min-width: $desktop) {
+            display: none;
+        }
+    }
+
     &__slider {
         @media screen and (min-width: $tablet) {
             margin-top: 56px;
