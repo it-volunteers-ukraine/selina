@@ -27,3 +27,12 @@ var swiper = new Swiper('.single-product-slider', {
         clickable: true,
     },
 });
+
+// Zoom
+document.addEventListener('DOMContentLoaded', function() {
+    Fancybox.bind('.swiper-slide a.zoom', {
+        Toolbar: {
+            display: ['zoom', 'close'],
+        }
+    });
+});
