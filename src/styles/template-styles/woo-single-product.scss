@@ -138,3 +138,27 @@ div.summary.entry-summary > h1 {
     margin-top: 60px;
     text-align: center;
 }
+
+.single-product-slider {
+    height: 348px;
+    @media screen and (min-width: $desktop) {
+        height: 648px;
+    }
+}
+
+.swiper-slide img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    background-color: $paws-patern;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 10px;
+    padding: 13px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    content: '' !important;
+}

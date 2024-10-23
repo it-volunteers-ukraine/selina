@@ -175,3 +175,31 @@ function my_ajax_filter_products() {
 }
 add_action('wp_ajax_my_filter', 'my_ajax_filter_products');
 add_action('wp_ajax_nopriv_my_filter', 'my_ajax_filter_products');
+
+// Disable woocommerce-gallery lightbox and slider
+add_action( 'after_setup_theme', 'remove_woocommerce_gallery_features', 99 );
+function remove_woocommerce_gallery_features() {
+    remove_theme_support( 'wc-product-gallery-lightbox' );
+    remove_theme_support( 'wc-product-gallery-slider' );
+}
+
+// Swiper for single-product-page
+function enqueue_custom_slider_scripts() {
+    wp_enqueue_style( 'swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css' );
+    wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), null, true );
+
+    wp_add_inline_script( 'swiper-js', "
+        var swiper = new Swiper('.swiper', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    " );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_custom_slider_scripts' );
