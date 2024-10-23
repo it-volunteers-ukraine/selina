@@ -80,6 +80,12 @@ get_header();
                                 <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                             </svg>
                         </button>
+                        <button class='single-tip__hide-whole-button button_green_new' id='hideWholeTipTextButton'>
+                            <p><?php the_field('tips_button-hide-whole-text'); ?></p>
+                            <svg class="icon-paw" width="16" height="15">
+                                <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                            </svg>
+                        </button>
                     </div>
                     <div class="single-tip__sidebar">
                         <!-- Side navigation -->

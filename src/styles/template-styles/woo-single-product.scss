@@ -15,8 +15,23 @@
     color: $red;
 }
 
-.woocommerce-product-gallery__wrapper {
+.single-product__image-container {
     margin-bottom: 16px;
+    @media screen and (min-width: $tablet) {
+        margin: 0;
+
+    }
+}
+
+.single-product__image-container > .woocommerce-product-share {
+    display: none;
+    @media screen and (min-width: $tablet) {
+        display: block;
+        margin: 50px 0 0;
+    }
+    @media screen and (min-width: $desktop) {
+        display: none;
+    }
 }
 
 div.summary.entry-summary > h1 {
@@ -106,13 +121,16 @@ div.summary.entry-summary > h1 {
 }
 
 .single-product__flex-container {
+    margin-bottom: 32px;
     @media screen and (min-width: $tablet) {
         display: flex;
         justify-content: space-between;
         gap: 24px;
+        margin-bottom: 56px;
     }
     @media screen and (min-width: $desktop) {
         gap: 40px;
+        margin-bottom: 80px;
     }
 }
 
@@ -134,7 +152,75 @@ div.summary.entry-summary > h1 {
     }
 }
 
-.single-product__sharing-buttons {
-    margin-top: 60px;
-    text-align: center;
+.single-product-slider {
+    height: 348px;
+    @media screen and (min-width: $desktop) {
+        height: 648px;
+    }
+}
+
+.swiper-slide img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    background-color: $paws-patern;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 10px;
+    padding: 13px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    content: '' !important;
+}
+
+.zoom-btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 16px;
+    left: 16px;
+    padding: 1px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.zoom-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.swiper-slide {
+    position: relative;
+}
+
+.woocommerce-product-share {
+    @media screen and (min-width: $tablet) {
+        display: none;
+    }
+    @media screen and (min-width: $desktop) {
+        display: block;
+        margin-top: 120px;
+    }
+
+    &__icons-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__title {
+        margin-bottom: 16px;
+    }
+    &__icons-container img {
+        height: 32px;
+    }
+}
+
+.product_meta {
+    display: none;
+}
+
+.woocommerce-tabs {
+    display: none;
 }
