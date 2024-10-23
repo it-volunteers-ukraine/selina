@@ -84,6 +84,11 @@ if ( post_password_required() ) {
 				</div>
 				<!-- <div class="swiper-pagination"></div> -->
 			</div>
+			<?php
+    if ( function_exists( 'woocommerce_template_single_sharing' ) ) {
+        woocommerce_template_single_sharing();
+    }
+?>
 		</div>
 
 		<div class="summary entry-summary">
