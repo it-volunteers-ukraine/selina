@@ -184,22 +184,39 @@ function remove_woocommerce_gallery_features() {
 }
 
 // Swiper for single-product-page
-function enqueue_custom_slider_scripts() {
-    wp_enqueue_style( 'swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css' );
-    wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), null, true );
+// function enqueue_custom_slider_scripts() {
+//     wp_enqueue_style( 'swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css' );
+//     wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), null, true );
 
-    wp_add_inline_script( 'swiper-js', "
-        var swiper = new Swiper('.swiper', {
-            loop: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
+//     wp_add_inline_script( 'swiper-js', "
+//         var swiper = new Swiper('.single-product-slider', {
+//             loop: true,
+//             navigation: {
+//                 nextEl: '.swiper-button-next',
+//                 prevEl: '.swiper-button-prev',
+//             },
+//             pagination: {
+//                 el: '.swiper-pagination',
+//                 clickable: true,
+//             },
+//         });
+//     " );
+// }
+// add_action( 'wp_enqueue_scripts', 'enqueue_custom_slider_scripts' );
+
+// Zoom (fancybox libr) on slides single-product-page
+function enqueue_custom_zoom_scripts() {
+    wp_enqueue_style( 'fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0/dist/fancybox.css' );
+    wp_enqueue_script( 'fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0/dist/fancybox.umd.js', array(), null, true );
+
+    wp_add_inline_script( 'fancybox-js', "
+        document.addEventListener('DOMContentLoaded', function() {
+            Fancybox.bind('.swiper-slide a.zoom', {
+                Toolbar: {
+                    display: ['zoom', 'close'],
+                }
+            });
         });
     " );
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_custom_slider_scripts' );
+add_action( 'wp_enqueue_scripts', 'enqueue_custom_zoom_scripts' );

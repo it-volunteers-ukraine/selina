@@ -162,3 +162,23 @@ div.summary.entry-summary > h1 {
 .swiper-button-next:after, .swiper-button-prev:after {
     content: '' !important;
 }
+
+.zoom-btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 16px;
+    left: 16px;
+    padding: 1px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.zoom-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.swiper-slide {
+    position: relative;
+}

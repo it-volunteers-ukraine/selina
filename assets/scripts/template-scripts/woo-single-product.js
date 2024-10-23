@@ -1,1 +1,1 @@
-jQuery(document).ready((function(t){t(".quantity button").on("click",(function(){let n=t(this),a=n.parent().find(".qty"),u=+a.val(),i=1;n.hasClass("btn-plus")?i=u+1:u>1&&(i=u-1),a.val(i)}))}));
+jQuery(document).ready((function(n){n(".quantity button").on("click",(function(){let t=n(this),i=t.parent().find(".qty"),e=+i.val(),a=1;t.hasClass("btn-plus")?a=e+1:e>1&&(a=e-1),i.val(a)}))}));var swiper=new Swiper(".single-product-slider",{loop:!0,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0}});

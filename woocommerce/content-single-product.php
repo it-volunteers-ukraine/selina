@@ -47,6 +47,13 @@ if ( post_password_required() ) {
 			<?php if ( $main_image_id ) : ?>
 				<div class="swiper-slide">
 					<?php echo wp_get_attachment_image( $main_image_id, 'full' ); ?>
+					<a href="<?php echo wp_get_attachment_url( $main_image_id ); ?>" class="zoom-btn" data-fancybox="gallery">
+						<svg class="zoom-button" width="30" height="30">
+							<use
+								href="<?php echo get_template_directory_uri() ?>/assets/images/zoom-button.svg">
+							</use>
+						</svg>
+					</a>
 				</div>
 			<?php endif; ?>
 
@@ -54,6 +61,13 @@ if ( post_password_required() ) {
 				<?php foreach ( $attachment_ids as $attachment_id ) : ?>
 					<div class="swiper-slide">
 						<?php echo wp_get_attachment_image( $attachment_id, 'full' ); ?>
+						<a href="<?php echo wp_get_attachment_url( $attachment_id ); ?>" class="zoom-btn" data-fancybox="gallery">
+							<svg class="zoom-button" width="30" height="30">
+                                <use
+                                    href="<?php echo get_template_directory_uri() ?>/assets/images/zoom-button.svg">
+                                </use>
+                            </svg>
+						</a>
 					</div>
 				<?php endforeach; ?>
 			<?php endif; ?>
