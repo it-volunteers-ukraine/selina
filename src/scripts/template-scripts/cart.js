@@ -1,4 +1,4 @@
-// // Add ability to change quantity of product with custom buttons - and + 
+// Add ability to change quantity of product with custom buttons - and + 
 jQuery(document).ready(function($){
     $('main.main').on('click', '.quantity button', function() {
         let btn = $(this);
@@ -48,4 +48,65 @@ const swiper = new Swiper('.crossSellSwiper', {
       },   
 });
 
+// Cross-sell Grid
+document.addEventListener('DOMContentLoaded', function() {
+    const gridItems = document.querySelectorAll('.crossSellGrid .grid-item');
+    const showMoreButton = document.querySelector('.crossSellGrid .show-more');
+    
+    function showInitialItems() {
+        let visibleItems = 0;
+        
+        let screenWidth = window.innerWidth;
+        if (screenWidth < 1439 && screenWidth > 375) {
+            visibleItems = crossSellVisibleItems.tablet;
+        } else {
+            visibleItems = crossSellVisibleItems.desktop;
+        }
 
+        for (let i = 0; i < visibleItems && i < gridItems.length; i++) {
+            gridItems[i].style.display = 'block';
+        }
+        
+        if (visibleItems >= gridItems.length) {
+            showMoreButton.style.display = 'none';
+        }
+    }
+
+    function showMore() {
+        let screenWidth = window.innerWidth;
+        let showMoreCount = screenWidth < 1439 && screenWidth > 375 ? showMoreItems.tablet : showMoreItems.desktop;
+        
+        let newVisible = 0;
+        for (let i = 0; i < gridItems.length; i++) {
+            if (gridItems[i].style.display === 'none') {
+                gridItems[i].style.display = 'block';
+                newVisible++;
+                if (newVisible >= showMoreCount) {
+                    break;
+                }
+            }
+        }
+        
+        // Hide button "Show more", if there are no more posts
+        let hiddenItems = Array.from(gridItems).filter(item => item.style.display === 'none');
+        if (hiddenItems.length === 0) {
+            showMoreButton.style.display = 'none';
+        }
+    }
+
+    showInitialItems();
+
+    showMoreButton.addEventListener('click', function() {
+        showMore();
+    });
+});
+
+let crossSellCounter = 0;
+let crossSellVisibleItems = {
+    tablet: 4,
+    desktop: 3
+};
+let showMoreItems = {
+    tablet: 2,
+    desktop: 3
+};

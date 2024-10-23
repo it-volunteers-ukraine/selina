@@ -472,43 +472,6 @@ body > main > div.woocommerce > section > div {
 }
 
 /*Cross-sell block ---------------------------*/
-
-.mobile-only {
-    display: block;
-
-    @media screen and (min-width: $tablet) {
-        display: none;
-    }
-}
-
-.desktop-only {
-    display: none; 
-
-    @media screen and (min-width: $tablet) {
-        display: block;
-    } 
-}
-
-/*Mobile styles*/
-.crossSellSwiper {
-    overflow: hidden;
-}
-
-/* Grid styles */
-.crossSellGrid .grid-wrapper {
-    @media screen and (min-width: $tablet) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 24px;
-        row-gap: 24px;
-    }
-
-    @media screen and (min-width: $desktop) {
-        grid-template-columns: 1fr 1fr 1fr;
-        column-gap: auto;
-    }
-} 
-
 .cross_sell_heading {
     font-weight: 800;
     font-size: 26px;
@@ -523,6 +486,7 @@ body > main > div.woocommerce > section > div {
     }
 }
 
+/* Product card */
 .swiper-slide,
 .grid-item {
     border: 1px solid #ddd;
@@ -614,7 +578,27 @@ body > main > div.woocommerce > section > div {
     list-style: none;
 }
 
-/*For slider*/
+.mobile-only {
+    display: block;
+
+    @media screen and (min-width: $tablet) {
+        display: none;
+    }
+}
+
+.desktop-only {
+    display: none; 
+
+    @media screen and (min-width: $tablet) {
+        display: block;
+    } 
+}
+
+/* For mobile (slider) */
+.crossSellSwiper {
+    overflow: hidden;
+}
+
 .cross-sell__nav-pag {
     display: flex;
     justify-content: space-between;
@@ -647,4 +631,50 @@ body > main > div.woocommerce > section > div {
     line-height: 1;
     color: $primary-color;
     width: 80px;
+}
+
+/* For tablet and desktop (grid) */
+.crossSellGrid .grid-wrapper {
+    @media screen and (min-width: $tablet) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+        row-gap: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: auto;
+    }
+} 
+
+.crossSellGrid .grid-item {
+    display: none; 
+}
+
+.crossSellGrid .grid-item.visible {
+    display: block; 
+}
+
+/* for tablet */
+.crossSellGrid .grid-item:nth-child(-n+4) {
+    @media screen and (min-width: $tablet) {
+        display: block; 
+    } 
+}
+
+/*for desktop*/
+.crossSellGrid .grid-item:nth-child(-n+3) {
+    @media screen and (min-width: $desktop) {
+        display: block; 
+    }
+}
+
+.cross-sell__show-more {
+    gap: 8px;
+    margin: 24px auto 0;
+
+    @media screen and (min-width: $desktop) {
+        margin: 40px auto 0 0;
+    }
 }
