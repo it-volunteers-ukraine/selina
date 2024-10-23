@@ -1,10 +1,24 @@
 let showWholeTipTextButton = document.getElementById('showWholeTipTextButton');
+let hideWholeTipTextButton = document.getElementById('hideWholeTipTextButton');
 let textContent = document.querySelector('.single-tip__text-content');
 
 if (showWholeTipTextButton && textContent) {
     showWholeTipTextButton.addEventListener('click', function() {
         textContent.style.webkitLineClamp = 'unset';
-        this.blur(); 
+        this.blur();
+        showWholeTipTextButton.style.display = 'none';
+        hideWholeTipTextButton.style.display = 'flex';
+         
+    });
+}
+
+if (hideWholeTipTextButton && textContent) {
+    hideWholeTipTextButton.addEventListener('click', function() {
+        textContent.style.webkitLineClamp = '13';
+        this.blur();
+        showWholeTipTextButton.style.display = 'flex';
+        hideWholeTipTextButton.style.display = 'none';
+         
     });
 }
 

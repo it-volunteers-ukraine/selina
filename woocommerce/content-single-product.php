@@ -33,18 +33,62 @@ if ( post_password_required() ) {
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 	<div class="single-product__flex-container">
-		<div class='single-product__image-sharing-container'>
-			<?php
-			/**
-			 * Hook: woocommerce_before_single_product_summary.
-			 *
-			 * @hooked woocommerce_show_product_sale_flash - 10
-			 * @hooked woocommerce_show_product_images - 20
-			 */
-			do_action( 'woocommerce_before_single_product_summary' );
+		<div class='single-product__image-container'>
+					<!-- Swiper -->
+			<?php 
+				global $product;
+				$main_image_id = $product->get_image_id();
+				$attachment_ids = $product->get_gallery_image_ids(); 
 			?>
 
-			<div class='single-product__sharing-buttons'>???Шарінг кнопки???</div>
+			<div class="single-product-slider swiper">
+				<div class="swiper-wrapper">
+					<?php if ( $main_image_id ) : ?>
+						<div class="swiper-slide">
+							<?php echo wp_get_attachment_image( $main_image_id, 'full' ); ?>
+							<a href="<?php echo wp_get_attachment_url( $main_image_id ); ?>" class="zoom-btn" data-fancybox="gallery">
+								<svg class="zoom-button" width="30" height="30">
+									<use
+										href="<?php echo get_template_directory_uri() ?>/assets/images/zoom-button.svg">
+									</use>
+								</svg>
+							</a>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( $attachment_ids && $product->get_image_id() ) : ?>
+						<?php foreach ( $attachment_ids as $attachment_id ) : ?>
+							<div class="swiper-slide">
+								<?php echo wp_get_attachment_image( $attachment_id, 'full' ); ?>
+								<a href="<?php echo wp_get_attachment_url( $attachment_id ); ?>" class="zoom-btn" data-fancybox="gallery">
+									<svg class="zoom-button" width="30" height="30">
+										<use
+											href="<?php echo get_template_directory_uri() ?>/assets/images/zoom-button.svg">
+										</use>
+									</svg>
+								</a>
+							</div>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</div>
+
+				<div class="swiper-button-next">
+					<svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7.56094 8.99998L0.960938 2.39998L2.84627 0.514648L11.3316 8.99998L2.84627 17.4853L0.960938 15.6L7.56094 8.99998Z" fill="#045C6F" />
+					</svg>
+				</div>
+				<div class="swiper-button-prev">
+					<svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M4.43906 8.99998L11.0391 2.39998L9.15373 0.514648L0.668395 8.99998L9.15373 17.4853L11.0391 15.6L4.43906 8.99998Z" fill="#045C6F" />
+					</svg>
+				</div>
+				<!-- <div class="swiper-pagination"></div> -->
+			</div>
+			<?php
+    if ( function_exists( 'woocommerce_template_single_sharing' ) ) {
+        woocommerce_template_single_sharing();
+    }
+?>
 		</div>
 
 		<div class="summary entry-summary">

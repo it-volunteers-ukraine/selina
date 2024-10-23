@@ -175,3 +175,10 @@ function my_ajax_filter_products() {
 }
 add_action('wp_ajax_my_filter', 'my_ajax_filter_products');
 add_action('wp_ajax_nopriv_my_filter', 'my_ajax_filter_products');
+
+// Disable woocommerce-gallery lightbox and slider
+add_action( 'after_setup_theme', 'remove_woocommerce_gallery_features', 99 );
+function remove_woocommerce_gallery_features() {
+    remove_theme_support( 'wc-product-gallery-lightbox' );
+    remove_theme_support( 'wc-product-gallery-slider' );
+}

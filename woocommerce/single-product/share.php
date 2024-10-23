@@ -21,6 +21,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+global $product;
+$product_url = get_permalink( $product->get_id() );
+$product_title = get_the_title( $product->get_id() );
+?>
+
+<div class="woocommerce-product-share">
+    <h4 class="woocommerce-product-share__title">Поділитися:</h4>
+	<div class="woocommerce-product-share__icons-container">
+		<!-- Facebook -->
+		<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode( $product_url ); ?>" target="_blank" class="share-btn facebook">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="32" height="32">
+		</a>
+
+		<!-- Twitter -->
+		<a href="https://x.com/intent/tweet?text=<?php echo rawurlencode( $product_title ); ?>&url=<?php echo urlencode( $product_url ); ?>" target="_blank" class="share-btn twitter">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" alt="X" width="32" height="32">
+		</a>
+		
+		<!-- Pinterest -->
+		<a href="https://pinterest.com/pin/create/button/?url=<?php echo urlencode( $product_url ); ?>&media=<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>&description=<?php echo rawurlencode( $product_title ); ?>" target="_blank" class="share-btn pinterest">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest" width="32" height="32">
+		</a>
+
+		<!-- Telegram -->
+		<a href="https://t.me/share/url?url=<?php echo urlencode( $product_url ); ?>&text=<?php echo rawurlencode( $product_title ); ?>" target="_blank" class="share-btn telegram">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" width="32" height="32">
+		</a>
+
+		<!-- WhatsApp -->
+		<a href="https://wa.me/?text=<?php echo urlencode( $product_title . ' ' . $product_url ); ?>" target="_blank" class="share-btn whatsapp">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="32" height="32">
+		</a>
+	</div>
+</div>
+
+<?php
 do_action( 'woocommerce_share' ); // Sharing plugins can hook into here.
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
