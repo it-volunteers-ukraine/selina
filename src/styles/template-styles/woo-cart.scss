@@ -1,21 +1,26 @@
 @import "../variables.scss";
 
+/*Revove padding for container in the cart*/
 body > main > div.woocommerce > section > div {
     padding: 0;
 }
 
+/*Add padding for container in certain blocks*/
 .mywoo_before_cart,
 .woocommerce-cart-form, 
-.mywoo-cart-totals, 
-.cross-sell__wrapper {
-    padding: 0 16px;
+.mywoo-cart-totals,
+.cross_sell_heading,
+.crossSellSwiper,
+.cross-sell__nav-pag,
+.crossSellGrid {
+    margin: 0 16px;
 
     @media screen and (min-width: $tablet) {
-        padding: 0 32px;
+        margin: 0 32px;
     }
 
     @media screen and (min-width: $desktop) {
-        padding: 0;
+        margin: 0;
     }
 }
 
@@ -416,7 +421,7 @@ body > main > div.woocommerce > section > div {
     }
 }
 
-/* Discounts */
+/* Discounts block ---------------------------*/
 
 .discounts-wrapper {
     display: flex;
@@ -466,16 +471,10 @@ body > main > div.woocommerce > section > div {
     }
 }
 
-/*Cross-sells*/
-/*.cross-sells {
-    @media screen and (min-width: $desktop) {
-        padding-top: 36px;
-    }
-}*/
+/*Cross-sell block ---------------------------*/
 
 .mobile-only {
     display: block;
-    overflow: hidden;
 
     @media screen and (min-width: $tablet) {
         display: none;
@@ -488,6 +487,11 @@ body > main > div.woocommerce > section > div {
     @media screen and (min-width: $tablet) {
         display: block;
     } 
+}
+
+/*Mobile styles*/
+.crossSellSwiper {
+    overflow: hidden;
 }
 
 /* Grid styles */
@@ -504,6 +508,20 @@ body > main > div.woocommerce > section > div {
         column-gap: auto;
     }
 } 
+
+.cross_sell_heading {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 24px;
+
+    @media screen and (min-width: $tablet) {
+        font-size: 30px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 40px;
+    }
+}
 
 .swiper-slide,
 .grid-item {
@@ -596,16 +614,37 @@ body > main > div.woocommerce > section > div {
     list-style: none;
 }
 
-.cross_sell_heading {
-    font-weight: 800;
-    font-size: 26px;
-    line-height: 1;
-    margin-bottom: 24px;
+/*For slider*/
+.cross-sell__nav-pag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
 
     @media screen and (min-width: $tablet) {
-        font-size: 30px;
+        display: none;
     }
-    @media screen and (min-width: $desktop) {
-        margin-bottom: 40px;
-    }
+}
+
+.cross-sell__arrow-btn {
+    display: flex;               
+    justify-content: center;     
+    align-items: center;
+    border-radius: 10px;
+    padding: 6px;
+    width: 44px;
+    height: 44px;
+    background-color: $primary-color;
+    color: #fff;
+}
+
+.cross-sell__pagination {
+    display: flex;                 
+    justify-content: center;       
+    align-items: center;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1;
+    color: $primary-color;
+    width: 80px;
 }

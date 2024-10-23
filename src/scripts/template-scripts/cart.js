@@ -39,9 +39,13 @@ const swiper = new Swiper('.crossSellSwiper', {
     slidesPerView: 1,
     spaceBetween: 10,
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },   
+        nextEl: '.cross-sell__arrow-right-btn',
+        prevEl: '.cross-sell__arrow-left-btn',
+    },
+    pagination: {
+        el: ".cross-sell__pagination",
+        type: "fraction",
+      },   
 });
 
 

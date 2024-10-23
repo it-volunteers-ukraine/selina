@@ -252,58 +252,74 @@ do_action( 'woocommerce_before_main_content' );
 			</div>
 		<?php } ?>
 		
+		<?php
+		add_action( 'woocommerce_cart_collaterals', 'custom_cross_sell_slider', 20 ); ?>
+
 		<div class="cross-sell__wrapper">
+
 			<?php
-			add_action( 'woocommerce_cart_collaterals', 'custom_cross_sell_slider', 20 );
-
 			function custom_cross_sell_slider() { ?>
-				
-				<h2 class="cross_sell_heading"><?php the_field( 'cross_sell_heading' ); ?></h2>
+			
+			<h2 class="cross_sell_heading"><?php the_field( 'cross_sell_heading' ); ?></h2>
 
-				<?php
-					$cross_sells = WC()->cart->get_cross_sells();
-					if ( ! empty( $cross_sells ) ) {
-						// for mobile (slider)
-						echo '<div class="crossSellSwiper mobile-only">';
-						echo '<div class="swiper-wrapper">';
-			
-						foreach ( $cross_sells as $cross_sell_id ) {
-							$post_object = get_post( $cross_sell_id );
-							setup_postdata( $GLOBALS['post'] =& $post_object );
-			
-							echo '<div class="swiper-slide">';
-							wc_get_template_part( 'content', 'product' );
-							echo '</div>';
-						}
+			<?php
+				$cross_sells = WC()->cart->get_cross_sells();
+				if ( ! empty( $cross_sells ) ) {
+				// For mobile (slider)
+				echo '<div class="crossSellSwiper mobile-only">';
+				echo '<div class="swiper-wrapper">';
 		
-						wp_reset_postdata();
-						echo '</div>';
-						echo '<div class="swiper-button-next"></div>';
-						echo '<div class="swiper-button-prev"></div>';
-						echo '</div>';
-
-						// dor tablet and desktop (grid)
-						echo '<div class="crossSellGrid desktop-only">';
-						echo '<div class="grid-wrapper">';
-		
-						foreach ( $cross_sells as $cross_sell_id ) {
-							$post_object = get_post( $cross_sell_id );
-							setup_postdata( $GLOBALS['post'] =& $post_object );
-			
-							echo '<div class="grid-item">';
-							wc_get_template_part( 'content', 'product' );
-							echo '</div>';
-						}
-			
-						wp_reset_postdata();
-						echo '</div>';
-						echo '</div>';
-					}
+				foreach ( $cross_sells as $cross_sell_id ) {
+					$post_object = get_post( $cross_sell_id );
+					setup_postdata( $GLOBALS['post'] =& $post_object );
+	
+					echo '<div class="swiper-slide">';
+					wc_get_template_part( 'content', 'product' );
+					echo '</div>';
 				}
-			
-				do_action( 'woocommerce_cart_collaterals' );
-			?>
+	
+				wp_reset_postdata();
+				echo '</div>';
+				echo '</div>';
+
+				echo '<div class="cross-sell__nav-pag">';
+				echo '<button class="cross-sell__arrow-left-btn cross-sell__arrow-btn">';
+				echo '<svg class="cross-sell__arrow-left one-arrow" width="10.37" height="16.97">';
+				echo '<use href="' . get_template_directory_uri() . '/assets/images/sprite.svg#icon-to-left"></use>';
+				echo '</svg>';
+				echo '</button>';
+				echo '<div class="cross-sell__pagination">';
+				echo '</div>';
+				echo '<button class="cross-sell__arrow-right-btn cross-sell__arrow-btn">';
+				echo '<svg class="cross-sell__arrow-right one-arrow" width="10.37" height="16.97">';
+				echo '<use href="' . get_template_directory_uri() . '/assets/images/sprite.svg#icon-to-right"></use>';
+				echo '</svg>';
+				echo '</button>';
+				echo '</div>';
+					
+
+				// For tablet and desktop (grid)
+				echo '<div class="crossSellGrid desktop-only">';
+				echo '<div class="grid-wrapper">';
+
+				foreach ( $cross_sells as $cross_sell_id ) {
+					$post_object = get_post( $cross_sell_id );
+					setup_postdata( $GLOBALS['post'] =& $post_object );
+	
+					echo '<div class="grid-item">';
+					wc_get_template_part( 'content', 'product' );
+					echo '</div>';
+				}
+		
+				wp_reset_postdata();
+				echo '</div>';
+				echo '</div>';
+				}
+			} ?>
 		</div>
+
+		<?php do_action( 'woocommerce_cart_collaterals' ); ?>
+
 	</div>
 
 	<?php do_action( 'woocommerce_after_cart' ); ?>
