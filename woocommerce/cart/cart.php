@@ -223,81 +223,87 @@ do_action( 'woocommerce_before_main_content' );
 
 	<div class="cart-collaterals">
 		<?php
-			/**
-			 * Cart collaterals hook.
-			 *
-			 * @hooked woocommerce_cross_sell_display
-			 * @hooked woocommerce_cart_totals - 10
-			 */
-			remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
-			remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display', 10 );
+		/**
+		 * Cart collaterals hook.
+		 *
+		 * @hooked woocommerce_cross_sell_display
+		 * @hooked woocommerce_cart_totals - 10
+		 */
+		remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
+		remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display', 10 );
 
-			add_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
+		add_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
 
-			add_action( 'woocommerce_cart_collaterals', 'discounts_block', 15 );
+		add_action( 'woocommerce_cart_collaterals', 'discounts_block', 15 );
 
-			function discounts_block() { ?>
-				<div class="discounts-wrapper">
-					<p class="discounts_text"><?php echo get_field( 'discounts_text', get_the_ID() ); ?></p>
-	
-					<?php $discounts_link = get_field( 'discounts_link' );
-					if( $discounts_link ): ?>
-						<a class="discounts__button button red_medium_button" href="<?php echo esc_url( $discounts_link ); ?>">
-							<p><?php the_field( 'more-details_btn', 'option' ); ?></p>
-							<svg class="news-section__button-svg" width="16" height="15">
-								<use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
-							</svg>
-						</a>
-					<?php endif; ?>
-				</div>
-			<?php }
+		function discounts_block() { ?>
+			<div class="discounts-wrapper">
+				<p class="discounts_text"><?php echo get_field( 'discounts_text', get_the_ID() ); ?></p>
+
+				<?php $discounts_link = get_field( 'discounts_link' );
+				if( $discounts_link ): ?>
+					<a class="discounts__button button red_medium_button" href="<?php echo esc_url( $discounts_link ); ?>">
+						<p><?php the_field( 'more-details_btn', 'option' ); ?></p>
+						<svg class="news-section__button-svg" width="16" height="15">
+							<use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-paw"></use>
+						</svg>
+					</a>
+				<?php endif; ?>
+			</div>
+		<?php } ?>
 		
-			// add_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display', 20 );
-
+		<div class="cross-sell__wrapper">
+			<?php
 			add_action( 'woocommerce_cart_collaterals', 'custom_cross_sell_slider', 20 );
-			function custom_cross_sell_slider() {
-				$cross_sells = WC()->cart->get_cross_sells();
-				if ( ! empty( $cross_sells ) ) {
-					// Відображення для мобільних пристроїв (слайдер)
-					echo '<div class="crossSellSwiper mobile-only">';
-					echo '<div class="swiper-wrapper">';
-		
-					foreach ( $cross_sells as $cross_sell_id ) {
-						$post_object = get_post( $cross_sell_id );
-						setup_postdata( $GLOBALS['post'] =& $post_object );
-		
-						echo '<div class="swiper-slide">';
-						wc_get_template_part( 'content', 'product' );
-						echo '</div>';
-					}
-		
-					wp_reset_postdata();
-					echo '</div>';
-					echo '<div class="swiper-button-next"></div>';
-					echo '<div class="swiper-button-prev"></div>';
-					echo '</div>';
 
-					// Відображення для планшетів і десктопів (сітка)
-					echo '<div class="crossSellGrid desktop-only">';
-					echo '<div class="grid-wrapper">';
+			function custom_cross_sell_slider() { ?>
+				
+				<h2 class="cross_sell_heading"><?php the_field( 'cross_sell_heading' ); ?></h2>
+
+				<?php
+					$cross_sells = WC()->cart->get_cross_sells();
+					if ( ! empty( $cross_sells ) ) {
+						// for mobile (slider)
+						echo '<div class="crossSellSwiper mobile-only">';
+						echo '<div class="swiper-wrapper">';
+			
+						foreach ( $cross_sells as $cross_sell_id ) {
+							$post_object = get_post( $cross_sell_id );
+							setup_postdata( $GLOBALS['post'] =& $post_object );
+			
+							echo '<div class="swiper-slide">';
+							wc_get_template_part( 'content', 'product' );
+							echo '</div>';
+						}
 		
-					foreach ( $cross_sells as $cross_sell_id ) {
-						$post_object = get_post( $cross_sell_id );
-						setup_postdata( $GLOBALS['post'] =& $post_object );
+						wp_reset_postdata();
+						echo '</div>';
+						echo '<div class="swiper-button-next"></div>';
+						echo '<div class="swiper-button-prev"></div>';
+						echo '</div>';
+
+						// dor tablet and desktop (grid)
+						echo '<div class="crossSellGrid desktop-only">';
+						echo '<div class="grid-wrapper">';
 		
-						echo '<div class="grid-item">';
-						wc_get_template_part( 'content', 'product' );
+						foreach ( $cross_sells as $cross_sell_id ) {
+							$post_object = get_post( $cross_sell_id );
+							setup_postdata( $GLOBALS['post'] =& $post_object );
+			
+							echo '<div class="grid-item">';
+							wc_get_template_part( 'content', 'product' );
+							echo '</div>';
+						}
+			
+						wp_reset_postdata();
+						echo '</div>';
 						echo '</div>';
 					}
-		
-					wp_reset_postdata();
-					echo '</div>';
-					echo '</div>';
 				}
-			}
 			
-			do_action( 'woocommerce_cart_collaterals' );
-		?>
+				do_action( 'woocommerce_cart_collaterals' );
+			?>
+		</div>
 	</div>
 
 	<?php do_action( 'woocommerce_after_cart' ); ?>

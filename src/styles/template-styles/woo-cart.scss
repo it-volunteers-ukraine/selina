@@ -7,7 +7,7 @@ body > main > div.woocommerce > section > div {
 .mywoo_before_cart,
 .woocommerce-cart-form, 
 .mywoo-cart-totals, 
-.cross-sells {
+.cross-sell__wrapper {
     padding: 0 16px;
 
     @media screen and (min-width: $tablet) {
@@ -149,11 +149,6 @@ body > main > div.woocommerce > section > div {
 /* ------------------------------------- Table body ---------------------------------*/
 .mywoo-cart-table__body {
     display: block;
-    /*padding: 0 16px;
-
-    @media screen and (min-width: $tablet) {
-        padding: 0 32px;
-    }*/
 }
 
 .mywoo-cart-table__body tr {
@@ -472,14 +467,15 @@ body > main > div.woocommerce > section > div {
 }
 
 /*Cross-sells*/
-.cross-sells {
+/*.cross-sells {
     @media screen and (min-width: $desktop) {
         padding-top: 36px;
     }
-}
+}*/
 
 .mobile-only {
     display: block;
+    overflow: hidden;
 
     @media screen and (min-width: $tablet) {
         display: none;
@@ -598,4 +594,18 @@ body > main > div.woocommerce > section > div {
 .swiper-slide li,
 .grid-item li {
     list-style: none;
+}
+
+.cross_sell_heading {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 24px;
+
+    @media screen and (min-width: $tablet) {
+        font-size: 30px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 40px;
+    }
 }
