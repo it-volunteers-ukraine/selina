@@ -41,11 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
 let relativeProductSwiper = new Swiper(".related-product-swiper", {
     loop: true,
     navigation: {
-        nextEl: ".related-product-swiper-button-next",
-        prevEl: ".related-product-swiper-button-prev",
+        nextEl: ".related-product-swiper__button-next",
+        prevEl: ".related-product-swiper__button-prev",
       },
     pagination: {
-      el: ".related-product-swiper-pagination",
+      el: ".related-product-swiper__pagination",
       type: "fraction",
     },
 });

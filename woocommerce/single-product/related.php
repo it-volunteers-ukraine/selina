@@ -33,7 +33,7 @@ if ( $related_products ) : ?>
 
 			<!------------ Swiper ------------------>
 		<div class="swiper related-product-swiper">
-			<div class="swiper-wrapper">
+			<div class="swiper-wrapper related-product-swiper__swiper-wrapper">
 
 				<?php foreach ( $related_products as $related_product ) : ?>
 
@@ -42,7 +42,7 @@ if ( $related_products ) : ?>
 
 					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
 					?>
-					<div class="swiper-slide">
+					<div class="swiper-slide related-product-swiper__swiper-slide">
 						<?php wc_get_template_part( 'content', 'product' ); ?>
 					</div>
 
@@ -50,15 +50,15 @@ if ( $related_products ) : ?>
 
 			</div>
 			<div class="related-product-swiper__navigation">
-				<div class="related-product-swiper-button-prev">
+				<div class="related-product-swiper__button-prev">
 					<svg class="related-product-swiper__arrow-left one-arrow" width="10.37" height="16.97">
 						<use
 							href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
 						</use>
 					</svg>
 				</div>
-				<div class="related-product-swiper-pagination"></div>
-				<div class="related-product-swiper-button-next">
+				<div class="related-product-swiper__pagination"></div>
+				<div class="related-product-swiper__button-next">
 					<svg class="related-product-swiper__arrow-right one-arrow" width="10.37" height="16.97">
 						<use
 							href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">

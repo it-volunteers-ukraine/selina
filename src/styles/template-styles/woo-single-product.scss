@@ -248,3 +248,80 @@ section .related {
         margin-bottom: 32px;
     }
 }
+
+/* ---------------------------related-product-swiper------------------------------------ */
+.related-product-swiper {
+    &__swiper-slide {
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.18);
+        background: $light-green;
+        padding: 0px 0px 16px 0px;
+        border-radius: 10px;
+    }
+    &__swiper-slide img {
+        margin-bottom: 12px;
+        border-radius: 10px 10px 0 0;
+    }
+    &__swiper-slide h2{
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 125%;
+        margin: 0 16px 8px;
+    }
+    &__swiper-slide .price {
+        margin: 0 16px 16px;
+        display: flex;
+        justify-content: end;
+        font-weight: 800;
+        line-height: 125%;
+    }
+    &__swiper-slide .button-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0 16px 0;
+    }
+    &__navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+    &__button-prev,
+    &__button-next {
+        height: 44px;
+        width: 44px;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: $primary-color;
+        color: $white;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        svg {
+            height: 15px;
+            width: 16px;
+            fill: currentColor;
+            margin: 0 14px;
+        }
+      
+        &:hover {
+            background-color: $white;
+            color: $primary-color;
+            border: 1px solid $primary-color;
+        }
+    }
+
+    &__pagination {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 100%;
+        color: $primary-color;
+        text-align: center;
+    }
+
+    @media screen and (min-width: $tablet) {
+        display: none;
+    }
+}
+/* ---------------------------related-product Grid------------------------------------ */
