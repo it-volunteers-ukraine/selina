@@ -682,3 +682,26 @@ body > main > div.woocommerce > section > div {
         margin: 40px auto 0 0;
     }
 }
+
+/* Join-us section */
+.woocommerce-cart .join-us-section__heading {
+    padding: 0 16px;
+
+    @media screen and (min-width: $tablet) {
+        padding: 0 0 0 36px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding: 0;
+    }
+}
+
+.woocommerce-cart .join-us-section__btn {
+    @media screen and (min-width: $tablet) {
+        margin: 24px auto 0 36px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin: 24px auto 0 0;
+    }
+}
