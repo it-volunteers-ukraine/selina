@@ -12,7 +12,11 @@ body > main > div.woocommerce > section > div {
 .cross_sell_heading,
 .crossSellSwiper,
 .cross-sell__nav-pag,
-.crossSellGrid {
+.crossSellGrid,
+.woocommerce-notices-wrapper,
+.return-to-shop,
+.wc-empty-cart-message
+{
     margin: 0 16px;
 
     @media screen and (min-width: $tablet) {
