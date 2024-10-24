@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php get_header();
+
+/**
+ * Template Name: Cart Page
+ */
+
+?>
 
 <main class="main">
 
