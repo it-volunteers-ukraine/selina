@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 });
 
 // Swiper single-product
-var swiper = new Swiper('.single-product-slider', {
+let swiper = new Swiper('.single-product-slider', {
     loop: true,
     navigation: {
         nextEl: '.swiper-button-next',
@@ -35,4 +35,17 @@ document.addEventListener('DOMContentLoaded', function() {
             display: ['zoom', 'close'],
         }
     });
+});
+
+// Relative products Swiper
+let relativeProductSwiper = new Swiper(".related-product-swiper", {
+    loop: true,
+    navigation: {
+        nextEl: ".related-product-swiper-button-next",
+        prevEl: ".related-product-swiper-button-prev",
+      },
+    pagination: {
+      el: ".related-product-swiper-pagination",
+      type: "fraction",
+    },
 });
