@@ -85,6 +85,10 @@ if ( $related_products ) : ?>
 				<?php endforeach; ?>
 
 			<?php woocommerce_product_loop_end(); ?>
+
+			<button style='margin-top: 30px; border: 2px solid black; padding: 10px;'>
+				<p>Показати більше</p>
+			</button>
 		</div>
 	</section>
 	<?php

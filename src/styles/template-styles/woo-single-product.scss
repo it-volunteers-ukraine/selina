@@ -380,7 +380,58 @@ section .related {
 }
 /* ---------------------------related-products Grid------------------------------------ */
 
-.related-product-grid-container .button-wrapper {
-    display: flex;
-    flex-direction: row-reverse;
+.related-product-grid-container {
+    display: none;
+    @media screen and (min-width: $tablet) {
+        display: block;
+    }
+
+    .columns-4 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 24px;
+
+        @media screen and (min-width: $desktop) {
+            gap: 54px;
+        }
+    }
+
+    .shop-grid__item {
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.18);
+        background: $light-green;
+        padding: 0px 0px 16px 0px;
+        border-radius: 10px;
+        height: 425px;
+        width: 340px;
+    }
+
+    img {
+        margin-bottom: 12px;
+        border-radius: 10px 10px 0 0;
+        height: 264px;
+        object-fit: cover;
+    }
+
+    h2{
+        height: 40px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 125%;
+        margin: 0 16px 0;
+    }
+
+    .price {
+        margin: 0 16px 16px;
+        display: flex;
+        justify-content: end;
+        font-weight: 800;
+        line-height: 125%;
+    }
+
+    .button-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0 16px 0;
+    }
 }
