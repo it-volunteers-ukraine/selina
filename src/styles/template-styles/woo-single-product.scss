@@ -332,6 +332,19 @@ section .related {
     display: flex;
     flex-direction: column;
     height: 100%;
+
+    .onsale {
+        position: absolute;
+        bottom: 173px;
+        left: 12px;
+        color: $white;
+        background: $violet-light;
+        font-weight: 500;
+        font-size: 13px;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        border-radius: 99px;
+    }
 }
 
 .button-wrapper {
@@ -404,6 +417,7 @@ section .related {
         border-radius: 10px;
         height: 425px;
         width: 340px;
+        position: relative;
     }
 
     img {
