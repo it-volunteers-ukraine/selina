@@ -178,10 +178,15 @@
   justify-content: space-between;
   margin-top: 16px;
   font-size: 18px;
+
   font-weight: 700;
   line-height: 24px;
   .woocommerce-loop-product__link {
     display: none;
+  }
+  .add-to-cart-icon {
+    height: 44px;
+    width: 44px;
   }
 }
 
@@ -204,6 +209,8 @@
   padding: 10px 16px;
   color: $primary-color;
   background-color: $white;
+  width: 240px;
+  height: 44px;
   &:active,
   &:focus,
   &:hover {
@@ -235,7 +242,7 @@
 .choices {
   background-color: $white;
   border-radius: 10px;
-  width: fit-content;
+  width: 345px;
   color: $primary-color;
   font-family: $primary-font;
   margin: 0;
@@ -289,4 +296,11 @@
     padding: 8px 12px;
     border-radius: 10px;
   }
+}
+
+.icon-cart {
+  width: 32px;
+  height: 32px;
+  fill: white;
+  color: white;
 }

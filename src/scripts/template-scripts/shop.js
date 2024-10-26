@@ -73,3 +73,33 @@ if (selector) {
     },
   });
 }
+
+jQuery(function ($) {
+  // On button click
+  $("body").on("click", ".add-to-cart-icon", function (e) {
+    e.preventDefault(); // Prevent default action
+
+    var button = $(this);
+    var product_id = button.data("product_id");
+
+    // AJAX request to add product to cart
+    $.ajax({
+      type: "POST",
+      url: woocommerce_params.ajax_url,
+      data: {
+        action: "woocommerce_add_to_cart",
+        product_id: product_id,
+      },
+      success: function (response) {
+        if (response.error) {
+          // Handle error
+          alert("Error adding to cart.");
+        } else {
+          // Optionally update cart count or show a message
+          $(document.body).trigger("wc_fragment_refresh");
+          alert("Product added to cart!"); // Example alert
+        }
+      },
+    });
+  });
+});

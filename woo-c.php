@@ -182,3 +182,17 @@ function remove_woocommerce_gallery_features() {
     remove_theme_support( 'wc-product-gallery-lightbox' );
     remove_theme_support( 'wc-product-gallery-slider' );
 }
+// Change 'Add to Basket' button text to an icon and enable AJAX add to cart
+add_filter('woocommerce_loop_add_to_cart_link', 'custom_add_to_cart_icon_button', 10, 2);
+function custom_add_to_cart_icon_button($button, $product) {
+    // Use the AJAX URL for adding to the cart
+    $url = esc_url(wc_get_cart_url());
+    $icon = '<svg class="icon-cart" width="32" height="32"><use xlink:href="' . esc_url(get_template_directory_uri() . '/assets/images/sprite.svg#icon-cart') . '"></use></svg>';
+
+    // Make it an anchor tag but prevent default behavior
+    return '<a href="' . $url . '" class="button add-to-cart-icon" data-product_id="' . $product->get_id() . '" data-product_sku="' . $product->get_sku() . '">' . $icon . '</a>';
+}
+
+// Remove the 'View Basket' button after adding to cart
+add_filter('wc_add_to_cart_message_html', '__return_null');
+
