@@ -15,7 +15,7 @@ get_header();
       }
     }
   </style>
-  <div class="container">
+  <div class="container heading-container">
     <div class="heading-section-news__background-img">
       <img src="<?php the_field('upper-section__background', 'option'); ?>" alt="Background image with cat">
     </div>
@@ -47,7 +47,7 @@ get_header();
 
   <!-- Хлібні крихти -->
 <section class="section wrapper-breadcrumbs-section">
-  <div class="container">
+  <div class="container breadcrumbs-container">
     <div class="breadcrumbs-section">
     <p>
       <?php
@@ -56,7 +56,7 @@ get_header();
 
       if ($breadcrumb_title && $breadcrumb_link) {
           echo '<span class="breadcrumbs-events">
-            <a href="' . esc_url($breadcrumb_link) . '" class="breadcrumb-link">' . esc_html($breadcrumb_title) . '</a> / 
+            <a href="' . esc_url($breadcrumb_link) . '" class="breadcrumb-link">' . esc_html($breadcrumb_title) .'</a> <span class="breadcrumbs-slash">/</span> 
           </span>';
       }
       ?>
@@ -82,7 +82,7 @@ get_header();
       if (!empty(get_field('news_date_meta'))):
       ?>
       <div class="news-section__date">
-        <svg width="22" height="22"> 
+        <svg width="18" height="18"> 
           <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
         </svg> 
         <p>
