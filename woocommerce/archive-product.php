@@ -20,7 +20,7 @@ $product_categories = get_terms( array(
 if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : ?>
     <div class="filters shop-filters__categories">
         <button class="filter-button active" data-category="all">    
-        Всі
+        <?php echo pll_current_language() === 'en' ? 'All' : 'Всі'; ?>
     <span class="button-icon">
                 <svg width="14" height="12">
                         <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">

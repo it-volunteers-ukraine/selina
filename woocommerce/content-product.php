@@ -45,7 +45,14 @@
         // Custom "Buy Now" button
         ?>
         <a href="<?php echo esc_url( wc_get_checkout_url() . '?add-to-cart=' . get_the_ID() ); ?>" class="buy-now-button">
-            <?php echo esc_html__( 'Купити', 'woocommerce' ); ?>
-        </a>
+    <?php
+    // Check if the current language is English
+    if ( pll_current_language() == 'en' ) {
+        echo esc_html__( 'Buy', 'woocommerce' );
+    } else {
+        echo esc_html__( 'Купити', 'woocommerce' );
+    }
+    ?>
+</a>
     </div>
 </li>
