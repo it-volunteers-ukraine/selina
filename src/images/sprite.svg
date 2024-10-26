@@ -16,7 +16,7 @@
 <path fill="none" stroke="#045c6f" style="stroke: var(--color2, #045c6f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M2.5 16l3-3M5.5 13l10.5-10.5 10.5 10.5M5.5 13v15c0 0.828 0.672 1.5 1.5 1.5h4.5M26.5 13l3 3M26.5 13v15c0 0.828-0.672 1.5-1.5 1.5h-4.5M11.5 29.5c0.828 0 1.5-0.672 1.5-1.5v-6c0-0.828 0.672-1.5 1.5-1.5h3c0.828 0 1.5 0.672 1.5 1.5v6c0 0.828 0.672 1.5 1.5 1.5M11.5 29.5h9"></path>
 </symbol>
 <symbol id="icon-clock" viewBox="0 0 32 32">
-<path fill="none" stroke="#045c6f" style="stroke: var(--color2, #045c6f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.2" d="M16 9.6v6.4l4.8 4.8M30.4 16c0 7.953-6.447 14.4-14.4 14.4s-14.4-6.447-14.4-14.4c0-7.953 6.447-14.4 14.4-14.4s14.4 6.447 14.4 14.4z"></path>
+<path fill="currentColor" d="M16 9.6v6.4l4.8 4.8M30.4 16c0 7.953-6.447 14.4-14.4 14.4s-14.4-6.447-14.4-14.4c0-7.953 6.447-14.4 14.4-14.4s14.4 6.447 14.4 14.4z"></path>
 </symbol>
 <symbol id="icon-calendar" viewBox="0 0 32 32">
 <path fill="none" stroke="#045c6f" style="stroke: var(--color2, #045c6f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.2" d="M9.6 8v-6.4M22.4 8v-6.4M8 14.4h16M4.8 30.4h22.4c1.767 0 3.2-1.433 3.2-3.2v-19.2c0-1.767-1.433-3.2-3.2-3.2h-22.4c-1.767 0-3.2 1.433-3.2 3.2v19.2c0 1.767 1.433 3.2 3.2 3.2z"></path>
