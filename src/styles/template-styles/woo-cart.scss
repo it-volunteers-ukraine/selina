@@ -1,0 +1,680 @@
+@import "../variables.scss";
+
+/*Revove padding for container in the cart*/
+body > main > div.woocommerce > section > div {
+    padding: 0;
+}
+
+/*Add padding for container in certain blocks*/
+.mywoo_before_cart,
+.woocommerce-cart-form, 
+.mywoo-cart-totals,
+.cross_sell_heading,
+.crossSellSwiper,
+.cross-sell__nav-pag,
+.crossSellGrid {
+    margin: 0 16px;
+
+    @media screen and (min-width: $tablet) {
+        margin: 0 32px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin: 0;
+    }
+}
+
+/* Header for page-cart.php */
+.cart-header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 32px auto 0;
+
+    @media screen and (min-width: $tablet) {
+        margin: 56px auto 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin: 80px auto;
+    }
+
+    h1 {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 1;
+        color: #121212;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 30px;
+        }
+    
+        @media screen and (min-width: $desktop) {
+            font-size: 45px;
+        }
+    }
+
+    a {
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 1;
+        color: $primary-color;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 20px;
+        }
+    
+        @media screen and (min-width: $desktop) {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.woocommerce-cart .cart__section {
+    padding: 0 0 32px;
+
+    @media screen and (min-width: $tablet) {
+        padding: 0 0 56px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding: 0 0 80px;
+    }
+}
+
+.woocommerce-cart table.cart {
+    border: none;
+    width: 100%;
+}
+
+.woocommerce-cart table.cart th {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.38;
+    color: $primary-color;
+}
+
+/* ----------------------------- Table titles --------------------------*/
+.mywoo-cart-table__head {
+    display: none;
+
+    @media screen and (min-width: $tablet) {
+        display: block;
+    }
+}
+
+.mywoo-cart-table__head tr {
+
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        border-bottom: 1px solid transparent;
+        box-shadow: inset 0 -1px 0 0 #e1e3e5;
+        background: $white;
+    }
+}
+
+.mywoo-cart-table__head th {
+
+    @media screen and (min-width: $tablet) {
+        text-transform: uppercase;
+        text-align: left;
+        padding: 0;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding: 0 0 18px 0;
+    } 
+}
+
+.mywoo-cart-table__head .product-name {
+
+    @media screen and (min-width: $tablet) {
+        width: calc(124px + 41.1%);
+    }
+    
+    @media screen and (min-width: $desktop) {
+        width: 688px;
+    }
+    
+}
+
+.mywoo-cart-table__head .product-subtotal {
+
+    @media screen and (min-width: $tablet) {
+        margin-left: auto; 
+    }
+}
+
+/* ------------------------------------- Table body ---------------------------------*/
+.mywoo-cart-table__body {
+    display: block;
+}
+
+.mywoo-cart-table__body tr {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media screen and (min-width: $tablet) {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    td {
+        padding: 0;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.31;
+
+        @media screen and (min-width: $tablet) {
+            padding: 24px 0 0 0;
+        }
+
+        @media screen and (min-width: $desktop) {
+            padding: 36px 0 0 0;
+        }  
+    } 
+}
+
+.mywoo-cart-table__body tr:last-child {
+    border-bottom: 1px solid transparent;
+    box-shadow: inset 0 -1px 0 0 #e1e3e5;
+    background: $white;
+    padding-bottom: 32px;
+
+    @media screen and (min-width: $tablet) {
+        padding-bottom: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-bottom: 36px;
+    } 
+}
+
+.mywoo-cart-table__body .product-thumbnail,
+.mywoo-cart-table__body .product-name {
+    margin: 30px 0 20px;
+
+    @media screen and (min-width: $tablet) {
+        margin: 0;
+    }
+}
+
+.mywoo-cart-table__body .product-thumbnail {
+    width: 100px;
+    margin-right: 24px;
+}
+
+.mywoo-cart-table__body .product-thumbnail img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.mywoo-cart-table__body .product-name {
+    width: 50%; 
+    vertical-align: top;
+
+    @media screen and (min-width: $mobile) {
+        width: 62%;
+    }
+
+    @media screen and (min-width: $tablet) {
+        width: 41.1%;
+        padding-right: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        width: 565px;
+    }
+}
+
+.custom-product-attributes {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.38;
+    color: rgba(7, 7, 7, 0.5);
+    margin-top: 7px;
+}
+
+.mywoo-cart-table__body .product-quantity {
+    margin-right: 9px;
+    vertical-align: top;
+}
+
+/*----- Buttons - and + ----------  */
+.woocommerce-cart .single-product__quantity {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 138%;
+    margin-bottom: 8px;
+}
+
+.woocommerce-cart .input-group {
+    display: flex;
+    border: 1px solid rgba(7, 7, 7, 0.15);
+    border-radius: 10px;
+    padding: 0px 8px;
+    width: 138px;
+    height: 44px;   
+
+    @media screen and (min-width: $mobile) {
+        width: 168px;
+    }
+}
+
+.woocommerce-cart .btn-plus {
+    margin: 0 17px;
+}
+
+.mywoo-cart-table__body td.product-quantity input::-webkit-outer-spin-button,
+.mywoo-cart-table__body td.product-quantity input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.mywoo-cart-table__body td.product-quantity input[type=number],
+.woocommerce-cart-form input.qty[type=number] {
+    -moz-appearance: textfield;
+    width: 34px;
+    text-align:center;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 138%;
+
+    @media screen and (min-width: $mobile) {
+        width: 64px;
+    }
+}
+
+.mywoo-cart-table__body .product-remove {
+    width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: $tablet) {
+        width: 24px;
+        align-items: flex-start;
+        padding-top: 37px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 50px;
+    }
+
+    .remove-svg {
+        display: block;
+    }
+}
+
+.mywoo-cart-table__body .product-subtotal {
+    display: flex;
+    align-items: center;
+    margin-left: auto; 
+
+    @media screen and (min-width: $tablet) {
+        align-items: flex-start;
+        padding-top: 37px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-top: 50px;
+    }
+}
+
+/* ----------------------------------------------- Table footer -----------------------------------*/
+
+/*Remove Update cart button from the screen ---*/
+.woocommerce button[name="update_cart"],
+.woocommerce input[name="update_cart"] {
+    display: none;
+}
+
+/*-------------- Cart Totals -------------*/
+.mywoo-cart-totals {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding-top: 16px;
+
+    @media screen and (min-width: $tablet) {
+        align-items: flex-end;
+        gap: 24px;
+        padding-top: 24px;
+    }
+}
+
+.mywoo-cart-totals-table {
+    display: block;
+}
+
+.woocommerce-cart .order-total th,
+.woocommerce-cart .order-total td {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    text-align: right;
+    color: $red;
+}
+
+.woocommerce-cart .order-total th {
+    padding-right: 8px;
+}
+
+.woocommerce-cart .checkout-button {
+    width: 264px;
+}
+
+.woocommerce-cart .cart-checkout-button-svg {
+    margin-left: 8px;
+}
+
+/* WooCommerce messages */
+.mywoo_before_cart .woocommerce-message,
+.woocommerce-message,
+.cart-empty {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    padding: 20px 0 0;
+
+    @media screen and (min-width: $tablet) {
+        padding: 20px 0;
+    }
+}
+
+.mywoo_before_cart .woocommerce-message,
+.woocommerce-cart .woocommerce-message {
+    color: $primary-color;
+}
+
+.woocommerce-cart .cart-empty {
+    color: $red;  
+}
+
+.woocommerce-cart .return-to-shop .button {
+    padding: 20px 0;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    color: $primary-color;
+
+    @media screen and (min-width: $tablet) {
+        font-size: 20px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* Discounts block ---------------------------*/
+
+.discounts-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+    background-color: $paws-patern;
+    padding: 32px 16px;
+    margin: 32px 0;
+
+    @media screen and (min-width: $tablet) {
+        gap: 32px;
+        padding: 56px 32px;
+        margin: 56px 0;
+    }
+
+    @media screen and (min-width: $desktop) {
+        max-width: 1128px;
+        margin: 0 auto;
+        padding: 52px 300px;
+        margin: 80px 0;
+    }
+
+    .discounts_text {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 1;
+        text-align: center;
+        color: #0a142f;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            font-size: 30px;
+        }
+    }
+
+    .discounts__button {
+        gap: 8px;
+        border-radius: 10px;
+        padding: 10px 10px 10px 14px;
+        width: 160px;
+        height: 44px;
+    }
+}
+
+/*Cross-sell block ---------------------------*/
+.cross_sell_heading {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 24px;
+
+    @media screen and (min-width: $tablet) {
+        font-size: 30px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 40px;
+    }
+}
+
+/* Product card */
+.swiper-slide,
+.grid-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.18);
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+    background-color: rgba(239, 248, 249, 1);
+    text-align: center;
+
+    .woocommerce-loop-product__title {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        text-align: left;
+        margin-bottom: 10px;
+        margin-top: 12px;
+        height: 52px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+    }
+    .woocommerce-loop-product__link {
+    .onsale {
+        position: absolute;
+        top: 32px;
+        left: 32px;
+        background-color: rgba(151, 71, 255, 1);
+        color: rgba(255, 255, 255, 1);
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 32px;
+        padding: 4px;
+    }
+    }
+    .price {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 25px;
+    display: flex;
+    justify-content: end;
+    gap: 148px;
+    }
+    .woocommerce-Price-amount.amount {
+    text-decoration: none;
+    }
+    .woocommerce-Price-amount bdi {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 25px;
+    }
+    ins {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 25px;
+    text-align: left;
+
+    color: rgba(209, 31, 42, 1);
+    }
+    a.button {
+    background-color: $primary-color;
+    color: $white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    &:hover {
+        &:active,
+        &:focus,
+        &:hover {
+        background-color: $white;
+        color: $primary-color;
+        border: 2px solid $primary-color;
+        }
+    }
+    }
+    img {
+    border-radius: 8px;
+    object-fit: cover;
+    overflow: hidden;
+    height: 264px;
+    }  
+}
+
+.swiper-slide li,
+.grid-item li {
+    list-style: none;
+}
+
+.mobile-only {
+    display: block;
+
+    @media screen and (min-width: $tablet) {
+        display: none;
+    }
+}
+
+.desktop-only {
+    display: none; 
+
+    @media screen and (min-width: $tablet) {
+        display: block;
+    } 
+}
+
+/* For mobile (slider) */
+.crossSellSwiper {
+    overflow: hidden;
+}
+
+.cross-sell__nav-pag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+
+    @media screen and (min-width: $tablet) {
+        display: none;
+    }
+}
+
+.cross-sell__arrow-btn {
+    display: flex;               
+    justify-content: center;     
+    align-items: center;
+    border-radius: 10px;
+    padding: 6px;
+    width: 44px;
+    height: 44px;
+    background-color: $primary-color;
+    color: #fff;
+}
+
+.cross-sell__pagination {
+    display: flex;                 
+    justify-content: center;       
+    align-items: center;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1;
+    color: $primary-color;
+    width: 80px;
+}
+
+/* For tablet and desktop (grid) */
+.crossSellGrid .grid-wrapper {
+    @media screen and (min-width: $tablet) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+        row-gap: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: auto;
+    }
+} 
+
+.crossSellGrid .grid-item {
+    display: none; 
+}
+
+.crossSellGrid .grid-item.visible {
+    display: block; 
+}
+
+/* for tablet */
+.crossSellGrid .grid-item:nth-child(-n+4) {
+    @media screen and (min-width: $tablet) {
+        display: block; 
+    } 
+}
+
+/*for desktop*/
+.crossSellGrid .grid-item:nth-child(-n+3) {
+    @media screen and (min-width: $desktop) {
+        display: block; 
+    }
+}
+
+.cross-sell__show-more {
+    gap: 8px;
+    margin: 24px auto 0;
+
+    @media screen and (min-width: $desktop) {
+        margin: 40px auto 0 0;
+    }
+}

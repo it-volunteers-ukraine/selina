@@ -8,7 +8,7 @@
     <?php wp_head(); ?>
     <title>It-volunteers</title>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <?php get_template_part('template-parts/loader'); ?>
 <div class="wrapper">
     <header class="header">
