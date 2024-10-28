@@ -258,13 +258,18 @@ do_action( 'woocommerce_before_main_content' );
 		<div class="cross-sell__wrapper">
 
 			<?php
-			function custom_cross_sell_slider() { ?>
-			
-			<h2 class="cross_sell_heading"><?php the_field( 'cross_sell_heading' ); ?></h2>
+			function custom_cross_sell_slider() { 
 
-			<?php
 				$cross_sells = WC()->cart->get_cross_sells();
+
 				if ( ! empty( $cross_sells ) ) {
+					$cross_sell_heading = get_field( 'cross_sell_heading' );
+					
+					if ( !empty( $cross_sell_heading ) ) {
+						?>
+						<h2 class="cross_sell_heading"><?php echo esc_html( $cross_sell_heading ); ?></h2>
+						<?php
+					}
 				// For mobile (slider)
 				echo '<div class="crossSellSwiper mobile-only">';
 				echo '<div class="swiper-wrapper">';
