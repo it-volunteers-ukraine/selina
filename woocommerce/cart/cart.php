@@ -32,9 +32,9 @@ do_action( 'woocommerce_before_main_content' );
 			<table class="mywoo-cart-table shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 				<thead class="mywoo-cart-table__head">
 					<tr>
-						<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-						<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-						<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
+						<th class="product-name"><?php echo esc_html( get_field( 'product', get_the_ID() ) ); ?></th>
+						<th class="product-quantity"><?php echo esc_html( get_field( 'quantity', get_the_ID() ) ); ?></th>
+						<th class="product-subtotal"><?php echo esc_html( get_field( 'subtotal', get_the_ID()) ); ?></th>
 
 					</tr>
 				</thead>
@@ -337,3 +337,4 @@ do_action( 'woocommerce_before_main_content' );
 </div>
 
 <?php do_action( 'woocommerce_after_main_content' ); ?>
+<?php get_template_part('template-parts/join-us'); ?>
