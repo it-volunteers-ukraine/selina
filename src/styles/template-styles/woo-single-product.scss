@@ -465,3 +465,17 @@ section .related {
         padding: 0 16px 0;
     }
 }
+
+.related-product-show-more,
+.related-product-show-less {
+    display: none;
+    gap: 8px;
+    margin: 24px auto 0;
+    @media screen and (min-width: $desktop) {
+        margin: 32px 0 0;
+    }
+}
+
+.shop__grid-item:nth-last-child() {
+    display: none;
+}
