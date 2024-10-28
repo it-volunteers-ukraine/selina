@@ -490,13 +490,6 @@ body > main > div.woocommerce > section > div {
     }
 }
 
-.crossSellSwiper {
-    border-radius: 10px;
-    padding: 0px 0px 16px 0px;
-    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.18);
-    background: $light-green;
-}
-
 /* Product card */
 .swiper-slide,
 .grid-item {
@@ -655,6 +648,10 @@ body > main > div.woocommerce > section > div {
 
 /* For mobile (slider) */
 .crossSellSwiper {
+    border-radius: 10px;
+    padding: 0px 0px 16px 0px;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.18);
+    background: $light-green;
     overflow: hidden;
 }
 
@@ -709,6 +706,15 @@ body > main > div.woocommerce > section > div {
 
 .crossSellGrid .grid-item {
     display: none; 
+
+    @media screen and (min-width: $tablet) {
+        display: block; 
+        border-radius: 10px;
+        padding: 0px 0px 16px 0px;
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.18);
+        background: $light-green;
+        overflow: hidden;
+    }
 }
 
 .crossSellGrid .grid-item.visible {
