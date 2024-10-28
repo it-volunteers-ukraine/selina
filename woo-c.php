@@ -196,3 +196,33 @@ function custom_add_to_cart_icon_button($button, $product) {
 // Remove the 'View Basket' button after adding to cart
 add_filter('wc_add_to_cart_message_html', '__return_null');
 
+
+// Integrate ACF field into "Cart updated" message to translate it
+add_filter( 'gettext', 'update_cart_message', 20, 3 );
+function update_cart_message( $cart_updated_text, $text, $domain ) {
+    if ( 'woocommerce' === $domain && 'Cart updated.' === $text ) {
+        $cart_updated_message = get_field( 'cart_updated_message', 'option' ); 
+        $cart_updated_text = $cart_updated_message ? $cart_updated_message : 'Кошик оновлено.'; 
+    }
+    return $cart_updated_text;
+}
+
+// Integrate ACF field into "Product has been removed" message to translate it
+add_filter( 'gettext', 'remove_product_message', 20, 3 );
+function remove_product_message( $remove_text, $text, $domain ) {
+    if ( 'woocommerce' === $domain && strpos( $text, 'removed' ) !== false ) {
+        $remove_message = get_field( 'remove_message', 'option' ); 
+        $remove_text = $remove_message ? $remove_message : 'Товар видалено.'; 
+    }
+    return $remove_text;
+}
+
+// Integrate ACF field into "Your cart is currently empty" message to translate it
+add_filter( 'gettext', 'empty_cart_message', 20, 3 );
+function empty_cart_message( $empty_cart_text, $text, $domain ) {
+    if ( 'woocommerce' === $domain && 'Your cart is currently empty.' === $text ) {
+        $empty_cart_message = get_field( 'empty_cart_message', 'option' ); 
+        $empty_cart_text = $empty_cart_message ? $empty_cart_message : 'Ваш кошик наразі порожній.'; 
+    }
+    return $empty_cart_text;
+}
