@@ -30,23 +30,66 @@ if ( $related_products ) : ?>
 			?>
 			<h2><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
-		
-		<?php woocommerce_product_loop_start(); ?>
 
-			<?php foreach ( $related_products as $related_product ) : ?>
+			<!------------ Swiper ------------------>
+		<div class="swiper related-product-swiper">
+			<div class="swiper-wrapper related-product-swiper__swiper-wrapper">
+
+				<?php foreach ( $related_products as $related_product ) : ?>
 
 					<?php
 					$post_object = get_post( $related_product->get_id() );
 
 					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-					wc_get_template_part( 'content', 'product' );
 					?>
+					<div class="swiper-slide related-product-swiper__swiper-slide">
+						<?php wc_get_template_part( 'content', 'product' ); ?>
+					</div>
 
-			<?php endforeach; ?>
+				<?php endforeach; ?>
 
-		<?php woocommerce_product_loop_end(); ?>
+			</div>
+			<div class="related-product-swiper__navigation">
+				<div class="related-product-swiper__button-prev">
+					<svg class="related-product-swiper__arrow-left one-arrow" width="10.37" height="16.97">
+						<use
+							href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-left">
+						</use>
+					</svg>
+				</div>
+				<div class="related-product-swiper__pagination"></div>
+				<div class="related-product-swiper__button-next">
+					<svg class="related-product-swiper__arrow-right one-arrow" width="10.37" height="16.97">
+						<use
+							href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-to-right">
+						</use>
+					</svg>
+				</div>
+			</div>
+		</div>
+		
+		<!-------------------- Grid ------------------------------>
+		<div class="related-product-grid-container">
+			<?php woocommerce_product_loop_start(); ?>
 
+				<?php foreach ( $related_products as $related_product ) : ?>
+
+						<?php
+						$post_object = get_post( $related_product->get_id() );
+
+						setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+
+						wc_get_template_part( 'content', 'product' );
+						?>
+
+				<?php endforeach; ?>
+
+			<?php woocommerce_product_loop_end(); ?>
+
+			<button style='margin-top: 30px; border: 2px solid black; padding: 10px;'>
+				<p>Показати більше</p>
+			</button>
+		</div>
 	</section>
 	<?php
 endif;
