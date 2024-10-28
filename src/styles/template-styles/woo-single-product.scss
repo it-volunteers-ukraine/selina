@@ -368,7 +368,6 @@ section .related {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: fit-content;
     cursor: pointer;
     border: 2px solid $primary-color;
     border-radius: $big-br;
@@ -381,6 +380,8 @@ section .related {
     color: $primary-color;
     background-color: $light-green;
     margin-right: 12px;
+    height: 44px;
+    width: 240px;
     &:active,
     &:focus,
     &:hover {
@@ -388,6 +389,13 @@ section .related {
         color: $white;
     }
 }
+
+.add-to-cart-icon {
+    height: 44px;
+    width: 56px;
+    background-color: $primary-color;
+}
+
 .ajax_add_to_cart {
     width: fit-content;
     border-radius: $big-br;
@@ -474,8 +482,4 @@ section .related {
     @media screen and (min-width: $desktop) {
         margin: 32px 0 0;
     }
-}
-
-.shop__grid-item:nth-last-child() {
-    display: none;
 }
