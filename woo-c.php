@@ -119,9 +119,17 @@ function remove_WC_breadcrumbs_from_cart() {
 // Change text "Home" to "Shop" in first breadcrumb
 add_filter( 'woocommerce_breadcrumb_defaults', 'custom_breadcrumbs' );
 function custom_breadcrumbs( $defaults ) {
-    $shop_text = esc_html__( 'Магазин', 'woocommerce' );
+    $current_language = pll_current_language();
+    
+    if ( $current_language === 'en' ) {
+        $shop_text = esc_html__( 'Shop', 'woocommerce' );
+    } else {
+        $shop_text = esc_html__( 'Магазин', 'woocommerce' );
+    }
+    
     $shop_url = get_permalink( wc_get_page_id( 'shop' ) );
     $defaults['home'] = '<a href="' . esc_url( $shop_url ) . '">' . $shop_text . '</a>';
+    
     return $defaults;
 }
 
