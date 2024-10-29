@@ -238,6 +238,14 @@ body > main > div.woocommerce > section > div > div.woocommerce-notices-wrapper,
     }
 }
 
+.mywoo-cart-table__body .product-name a {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .custom-product-attributes {
     font-weight: 500;
     font-size: 13px;
