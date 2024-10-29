@@ -117,6 +117,13 @@
       padding: 12px 0;
     }
 
+    .cart-desktop {
+      display: none;
+      @media screen and (min-width: $desktop) {
+        display: flex;
+      }
+    }
+
     .bottom-row {
       display: flex;
       flex-direction: row;
@@ -195,9 +202,7 @@
         display: none;
         @media screen and (min-width: $desktop) {
           display: flex;
-          width: 264px;
           justify-content: flex-end;
-          height: 33px;
         }
       }
 
@@ -302,26 +307,31 @@
         background-color: $white;
         border: 1px solid $white;
         align-items: center;
-        width: 292px;
+
+        @media screen and (min-width: 320px) {
+          width: 237px;
+          padding: 0;
+        }
 
         @media screen and (min-width: $mobile) {
-          width: 343px;
+          width: 278px;
+          padding: 3px;
         }
 
         @media screen and (min-width: $tablet) {
-          width: 423px;
+          width: 366px;
         }
 
         @media screen and (min-width: $desktop) {
-          width: 264px;
-          height: 33px;
+          width: 260px;
+          height: 38px;
         }
 
         .search-wrapper {
           display: flex;
-          flex-direction: row;
-          align-items: baseline;
           gap: 2px;
+
+
           @media screen and (min-width: $desktop) {
             position: relative;
             top: 3px;
@@ -329,7 +339,6 @@
           }
 
           ::placeholder {
-            font-size: 16px;
             color: $primary-color;
             @media screen and (min-width: $desktop) {
               font-size: 13px;
@@ -345,12 +354,21 @@
               height: 18px;
               position: absolute;
               top: -3px;
+              left: -5px;
             }
           }
 
           svg {
-            width: 12px;
-            height: 12px;
+            @media screen and (min-width: 320px) {
+              width: 18px;
+              height: 12px
+            }
+
+            @media screen and (min-width: $mobile) {
+              width: 12px;
+              height: 12px;
+            }
+
             @media screen and (min-width: $desktop) {
               width: 10px;
               height: 10px;
@@ -358,19 +376,26 @@
           }
 
           input {
-            font-size: 17px;
-            width: 256px;
-            text-overflow: ellipsis;
-            @media screen and (min-width: $mobile) {
-              width: 304px;
-            }
+            width: 236px;
+
             @media screen and (min-width: $tablet) {
               width: 383px;
             }
             @media screen and (min-width: $desktop) {
               width: 255px;
               box-sizing: border-box;
-              padding-left: 20px;
+              padding-left: 15px;
+              margin-top: -3px;
+            }
+          }
+
+          input::placeholder {
+            @media screen and (min-width: 320px) {
+              font-size: 12px;
+              text-overflow:ellipsis;
+            }
+            @media screen and (min-width: $mobile) {
+              font-size: 13px;
             }
           }
         }
@@ -402,7 +427,7 @@
       height: 44px;
       position: relative;
     }
-    .search-wrapper{
+    .search-wrapper {
       position: absolute;
       top: 6px;
     }
@@ -428,6 +453,17 @@
       padding: 32px;
       top: 88px;
     }
+
+    .block {
+      display: flex;
+      flex-direction: row;
+      gap: 26px;
+      align-items: center;
+
+      .cart-mobile{
+        filter: brightness(0) saturate(100%) invert(22%) sepia(55%) saturate(2087%) hue-rotate(163deg) brightness(94%) contrast(97%);
+      }
+    }
   }
 
   .header-mobile {
@@ -436,6 +472,7 @@
     @media screen and (min-width: $desktop) {
       display: none;
     }
+
 
     .header__list-mobile {
       text-align: left;
