@@ -13,7 +13,7 @@ body > main > div.woocommerce > section > div {
 .crossSellSwiper,
 .cross-sell__nav-pag,
 .crossSellGrid,
-.woocommerce-notices-wrapper,
+body > main > div.woocommerce > section > div > div.woocommerce-notices-wrapper,
 .return-to-shop,
 .wc-empty-cart-message
 {
@@ -236,6 +236,14 @@ body > main > div.woocommerce > section > div {
     @media screen and (min-width: $desktop) {
         width: 565px;
     }
+}
+
+.mywoo-cart-table__body .product-name a {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .custom-product-attributes {
