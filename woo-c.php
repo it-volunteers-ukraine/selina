@@ -217,6 +217,16 @@ function remove_product_message( $remove_text, $text, $domain ) {
     return $remove_text;
 }
 
+// Integrate ACF field into "Undo?" message to translate it
+add_filter('gettext', 'custom_undo_message', 20, 3);
+function custom_undo_message( $undo_text, $text, $domain ) {
+    if ( 'woocommerce' === $domain && 'Undo?' === $text ) {
+        $custom_undo_message = get_field('undo_text', 'option');
+        $undo_text = $custom_undo_message ? $custom_undo_message : 'Повернути?'; 
+    }
+    return $undo_text;
+}
+
 // Integrate ACF field into "Your cart is currently empty" message to translate it
 add_filter( 'gettext', 'empty_cart_message', 20, 3 );
 function empty_cart_message( $empty_cart_text, $text, $domain ) {
