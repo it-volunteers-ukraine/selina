@@ -86,13 +86,13 @@ if ( $related_products ) : ?>
 
 			<?php woocommerce_product_loop_end(); ?>
 
-			<button id='showMoreProductsButton' class='related-product-show-more green_medium_button'>
+			<button id='showMoreProductsButton' class='related-product-show-more button_green_new'>
 				<p>Показати більше</p>
 				<svg class="icon-paw" width="17" height="15">
 					<use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
 				</svg>
 			</button>
-			<button id='showLessProductsButton' class='related-product-show-less green_medium_button'>
+			<button id='showLessProductsButton' class='related-product-show-less button_green_new'>
 				<p>Сховати</p>
 				<svg class="icon-paw" width="17" height="15">
 					<use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>

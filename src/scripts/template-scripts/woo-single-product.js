@@ -66,20 +66,24 @@ function setupProductDisplay(initialCount, increment) {
     });
 
     showMoreProductsButton.addEventListener('click', () => {
-        let maxProductsToShow = window.innerWidth > 1438 ? 9 : numberOfRelatedProducts;
-
-        let newProductsCount = Math.min(shownProductsCount + increment, maxProductsToShow);
+        let maxProductsToShow = window.innerWidth > 1438 ? 9 : 10;
+    
+        let newProductsCount = Math.min(shownProductsCount + increment, numberOfRelatedProducts);
+        
         relatedProductItems.forEach((child, index) => {
             if (index < newProductsCount) {
                 child.style.display = 'block';
             }
         });
+        
         shownProductsCount = newProductsCount;
-
-        if (shownProductsCount >= maxProductsToShow) {
+    
+        if (shownProductsCount >= maxProductsToShow || shownProductsCount >= numberOfRelatedProducts) {
             showMoreProductsButton.style.display = 'none';
             showLessProductsButton.style.display = 'flex';
         }
+        
+        showMoreProductsButton.blur();
     });
 
     showLessProductsButton.addEventListener('click', () => {
