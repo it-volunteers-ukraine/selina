@@ -54,6 +54,7 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_sidebar' );
 	?>
+<?php get_template_part('template-parts/join-us') ?>
 <?php
 get_footer( 'shop' );
 

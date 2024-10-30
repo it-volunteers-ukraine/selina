@@ -106,6 +106,10 @@ div.summary.entry-summary > h1 {
     margin-left: 12px;
 }
 
+.single_add_to_cart_button svg:hover {
+    color: #000;
+}
+
 .single_add_to_cart_button-buy {
     color: $white;
     background-color: $red;
@@ -187,18 +191,23 @@ div.summary.entry-summary > h1 {
 
 .zoom-btn {
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    background-color: $white;
     width: 30px;
     height: 30px;
     top: 16px;
     left: 16px;
     padding: 1px;
+    border: 1px solid #f0f0f0;
     border-radius: 50%;
     z-index: 10;
     transition: background-color 0.3s;
 }
 
 .zoom-btn:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .swiper-slide {
@@ -368,7 +377,6 @@ section .related {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: fit-content;
     cursor: pointer;
     border: 2px solid $primary-color;
     border-radius: $big-br;
@@ -381,6 +389,8 @@ section .related {
     color: $primary-color;
     background-color: $light-green;
     margin-right: 12px;
+    height: 44px;
+    width: 240px;
     &:active,
     &:focus,
     &:hover {
@@ -388,6 +398,13 @@ section .related {
         color: $white;
     }
 }
+
+.add-to-cart-icon {
+    height: 44px;
+    width: 56px;
+    background-color: $primary-color;
+}
+
 .ajax_add_to_cart {
     width: fit-content;
     border-radius: $big-br;
@@ -463,5 +480,15 @@ section .related {
         display: flex;
         flex-direction: row-reverse;
         padding: 0 16px 0;
+    }
+}
+
+.related-product-show-more,
+.related-product-show-less {
+    display: none;
+    gap: 8px;
+    margin: 24px auto 0;
+    @media screen and (min-width: $desktop) {
+        margin: 32px 0 0;
     }
 }

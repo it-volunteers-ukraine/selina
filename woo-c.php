@@ -119,9 +119,17 @@ function remove_WC_breadcrumbs_from_cart() {
 // Change text "Home" to "Shop" in first breadcrumb
 add_filter( 'woocommerce_breadcrumb_defaults', 'custom_breadcrumbs' );
 function custom_breadcrumbs( $defaults ) {
-    $shop_text = esc_html__( 'Магазин', 'woocommerce' );
+    $current_language = pll_current_language();
+    
+    if ( $current_language === 'en' ) {
+        $shop_text = esc_html__( 'Shop', 'woocommerce' );
+    } else {
+        $shop_text = esc_html__( 'Магазин', 'woocommerce' );
+    }
+    
     $shop_url = get_permalink( wc_get_page_id( 'shop' ) );
     $defaults['home'] = '<a href="' . esc_url( $shop_url ) . '">' . $shop_text . '</a>';
+    
     return $defaults;
 }
 
@@ -196,6 +204,12 @@ function custom_add_to_cart_icon_button($button, $product) {
 // Remove the 'View Basket' button after adding to cart
 add_filter('wc_add_to_cart_message_html', '__return_null');
 
+// Change number of showed related products on single-product page (was 4)
+function custom_related_products_limit( $args ) {
+    $args['posts_per_page'] = 10;
+    return $args;
+}
+add_filter( 'woocommerce_output_related_products_args', 'custom_related_products_limit', 20 );
 
 // Integrate ACF field into "Cart updated" message to translate it
 add_filter( 'gettext', 'update_cart_message', 20, 3 );

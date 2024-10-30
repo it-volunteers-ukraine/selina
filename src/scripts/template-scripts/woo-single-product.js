@@ -49,3 +49,51 @@ let relativeProductSwiper = new Swiper(".related-product-swiper", {
       type: "fraction",
     },
 });
+
+// Relative products show-more button
+let relatedProductsContainer = document.querySelector('.columns-4');
+let relatedProductItems = Array.from(relatedProductsContainer.children);
+let numberOfRelatedProducts = relatedProductsContainer.childElementCount;
+let showMoreProductsButton = document.getElementById('showMoreProductsButton');
+let showLessProductsButton = document.getElementById('showLessProductsButton');
+
+function setupProductDisplay(initialCount, increment) {
+    showMoreProductsButton.style.display = 'flex';
+    let shownProductsCount = initialCount;
+
+    relatedProductItems.forEach((child, index) => {
+        child.style.display = index < initialCount ? 'block' : 'none';
+    });
+
+    showMoreProductsButton.addEventListener('click', () => {
+        let maxProductsToShow = window.innerWidth > 1438 ? 9 : numberOfRelatedProducts;
+
+        let newProductsCount = Math.min(shownProductsCount + increment, maxProductsToShow);
+        relatedProductItems.forEach((child, index) => {
+            if (index < newProductsCount) {
+                child.style.display = 'block';
+            }
+        });
+        shownProductsCount = newProductsCount;
+
+        if (shownProductsCount >= maxProductsToShow) {
+            showMoreProductsButton.style.display = 'none';
+            showLessProductsButton.style.display = 'flex';
+        }
+    });
+
+    showLessProductsButton.addEventListener('click', () => {
+        shownProductsCount = initialCount;
+        relatedProductItems.forEach((child, index) => {
+            child.style.display = index < initialCount ? 'block' : 'none';
+        });
+        showMoreProductsButton.style.display = 'flex';
+        showLessProductsButton.style.display = 'none';
+    });
+}
+
+if (window.innerWidth < 1439 && numberOfRelatedProducts > 4) {
+    setupProductDisplay(4, 2);
+} else if (window.innerWidth >= 1439 && numberOfRelatedProducts > 3) {
+    setupProductDisplay(3, 3);
+}
