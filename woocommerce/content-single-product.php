@@ -47,9 +47,9 @@ if ( post_password_required() ) {
 						<div class="swiper-slide">
 							<?php echo wp_get_attachment_image( $main_image_id, 'full' ); ?>
 							<a href="<?php echo wp_get_attachment_url( $main_image_id ); ?>" class="zoom-btn" data-fancybox="gallery">
-								<svg class="zoom-button" width="30" height="30">
+								<svg class="zoom-button" width="12" height="12">
 									<use
-										href="<?php echo get_template_directory_uri() ?>/assets/images/zoom-button.svg">
+										href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-zoom">
 									</use>
 								</svg>
 							</a>

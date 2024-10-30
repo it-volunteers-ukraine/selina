@@ -106,6 +106,10 @@ div.summary.entry-summary > h1 {
     margin-left: 12px;
 }
 
+.single_add_to_cart_button svg:hover {
+    color: #000;
+}
+
 .single_add_to_cart_button-buy {
     color: $white;
     background-color: $red;
@@ -187,18 +191,23 @@ div.summary.entry-summary > h1 {
 
 .zoom-btn {
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    background-color: $white;
     width: 30px;
     height: 30px;
     top: 16px;
     left: 16px;
     padding: 1px;
+    border: 1px solid #f0f0f0;
     border-radius: 50%;
     z-index: 10;
     transition: background-color 0.3s;
 }
 
 .zoom-btn:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .swiper-slide {
