@@ -486,6 +486,7 @@ section .related {
 .related-product-show-more,
 .related-product-show-less {
     display: none;
+    
     gap: 8px;
     margin: 24px auto 0;
     @media screen and (min-width: $desktop) {
