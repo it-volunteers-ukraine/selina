@@ -144,8 +144,16 @@
                     ])
                     ?>
 
-                    <a href="<?php the_field('cart-link', 'option') ?>" rel="noopener noreferrer" class="icon">
-                        <img class="cart-desktop" src="<?php the_field('cart', 'option') ?>" alt="cart">
+                    <!-- Cart count desktop -->
+                    <a href="<?php the_field('cart-link', 'option') ?>" rel="noopener noreferrer" class="icon cart-wrapper">
+                        <?php if( count( WC()->cart->get_cart() ) > 0 ) : ?>
+                            <img class="cart-desktop" src="<?php the_field('full_cart', 'option') ?>" alt="full cart">
+                            <span class="cart-count cart-count__desktop">
+                                <?php echo count( WC()->cart->get_cart() ); ?>
+                            </span>
+                        <?php else : ?>
+                            <img class="cart-desktop" src="<?php the_field('cart', 'option') ?>" alt="cart">
+                        <?php endif; ?>
                     </a>
 
                     <div class="search-desktop search">
@@ -160,8 +168,16 @@
                                     <?php get_search_form() ?>
                                 </div>
 
-                                <a href="<?php the_field('cart-link', 'option') ?>" rel="noopener noreferrer" class="icon">
-                                    <img class="cart-mobile" src="<?php the_field('cart', 'option') ?>" alt="cart">
+                                <!-- Cart count mobile -->
+                                <a href="<?php the_field('cart-link', 'option') ?>" rel="noopener noreferrer" class="icon cart-wrapper">
+                                    <?php if( count( WC()->cart->get_cart() ) > 0 ) : ?>
+                                        <img class="cart-mobile" src="<?php the_field('full_cart', 'option') ?>" alt="full cart">
+                                        <span class="cart-count cart-count__mobile">
+                                            <?php echo count( WC()->cart->get_cart() ); ?>
+                                        </span>
+                                    <?php else : ?>
+                                        <img class="cart-mobile" src="<?php the_field('cart', 'option') ?>" alt="cart">
+                                    <?php endif; ?>
                                 </a>
 
                             </div>
