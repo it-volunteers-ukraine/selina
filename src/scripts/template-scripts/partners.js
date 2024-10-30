@@ -17,8 +17,8 @@ function flipCardMobile(event) {
 }
 
 // pagination
-let currentPage = 1;
-let hasData = true;
+var currentPagePartners = 1;
+var hasDataPartners = true;
 
 function loadPartners(postType) {
     const viewportWidth = window.innerWidth;
@@ -28,7 +28,7 @@ function loadPartners(postType) {
         type: 'POST',
         data: {
             action: 'load_partners_pagination',
-            page: currentPage,
+            page: currentPagePartners,
             width: viewportWidth,
             postType: postType,
             taxonomy: 'partners_categories',
@@ -47,36 +47,37 @@ function getNonce() {
 
 
 function paginatePrev() {
-    if (currentPage > 1) {
-        currentPage--;
+    if (currentPagePartners > 1) {
+        currentPagePartners--;
     }
     loadPartners('all_partners');
 }
 
 function paginateNext() {
-    if (hasData) {
-        currentPage++;
+    if (hasDataPartners) {
+        currentPagePartners++;
     }
     loadPartners('all_partners');
 }
+
 
 function replacePosts(html) {
     const viewportWidth = window.innerWidth;
     const isMobile = viewportWidth < 768;
     const isTablet = viewportWidth >= 767.8;
-    hasData = !!html;
-    if (isMobile && hasData) {
+    hasDataPartners = !!html;
+    if (isMobile && hasDataPartners) {
         let partnersMobile = document.getElementById('partners-posts-mobile');
         partnersMobile.innerHTML = html;
-    } else if (isTablet && hasData) {
+    } else if (isTablet && hasDataPartners) {
         let partnersTablet = document.getElementById('partners-posts-tablet');
         partnersTablet.innerHTML = html;
     }
 
-    if (!hasData) {
+    if (!hasDataPartners) {
         const nextBtn = document.getElementById('partners-pagination-next');
         nextBtn.style.display = 'none';
-        currentPage--;
+        currentPagePartners--;
     } else {
         const nextBtn = document.getElementById('partners-pagination-next');
         nextBtn.style.display = 'block';
@@ -103,8 +104,6 @@ jQuery(document).ready(function ($) {
     const showHideWebinarsBtn = $('#showHideWebinars');
     const showHideZoop = $('#showHideZoop');
     const showHideBooks = $('#showHideBooks');
-    // const showHidePhotographs = $('#showHidePhotographs');
-    // const showHideFriends = $('#showHideFriends');
 
     const lastItem = containerFriends.find('.friends-clubs-item:last-child');
     var viewportWidth = window.innerWidth;

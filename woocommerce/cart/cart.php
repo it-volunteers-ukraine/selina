@@ -32,9 +32,9 @@ do_action( 'woocommerce_before_main_content' );
 			<table class="mywoo-cart-table shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 				<thead class="mywoo-cart-table__head">
 					<tr>
-						<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-						<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-						<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
+						<th class="product-name"><?php echo esc_html( get_field( 'product', get_the_ID() ) ); ?></th>
+						<th class="product-quantity"><?php echo esc_html( get_field( 'quantity', get_the_ID() ) ); ?></th>
+						<th class="product-subtotal"><?php echo esc_html( get_field( 'subtotal', get_the_ID()) ); ?></th>
 
 					</tr>
 				</thead>
@@ -258,13 +258,18 @@ do_action( 'woocommerce_before_main_content' );
 		<div class="cross-sell__wrapper">
 
 			<?php
-			function custom_cross_sell_slider() { ?>
-			
-			<h2 class="cross_sell_heading"><?php the_field( 'cross_sell_heading' ); ?></h2>
+			function custom_cross_sell_slider() { 
 
-			<?php
 				$cross_sells = WC()->cart->get_cross_sells();
+
 				if ( ! empty( $cross_sells ) ) {
+					$cross_sell_heading = get_field( 'cross_sell_heading' );
+					
+					if ( !empty( $cross_sell_heading ) ) {
+						?>
+						<h2 class="cross_sell_heading"><?php echo esc_html( $cross_sell_heading ); ?></h2>
+						<?php
+					}
 				// For mobile (slider)
 				echo '<div class="crossSellSwiper mobile-only">';
 				echo '<div class="swiper-wrapper">';
@@ -337,3 +342,4 @@ do_action( 'woocommerce_before_main_content' );
 </div>
 
 <?php do_action( 'woocommerce_after_main_content' ); ?>
+<?php get_template_part('template-parts/join-us'); ?>

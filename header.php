@@ -143,6 +143,11 @@
                         'items_wrap' => '<ul id="%1$s" class="header__list %2$s">%3$s</ul>',
                     ])
                     ?>
+
+                    <a href="<?php the_field('cart-link', 'option') ?>" rel="noopener noreferrer" class="icon">
+                        <img class="cart-desktop" src="<?php the_field('cart', 'option') ?>" alt="cart">
+                    </a>
+
                     <div class="search-desktop search">
                         <?php get_search_form() ?>
                     </div>
@@ -150,8 +155,15 @@
 
                     <div id="header-mobile" class="content-mobile">
                         <nav id="header-nav-menu">
-                            <div class="search-mobile search">
-                                <?php get_search_form() ?>
+                            <div class="block">
+                                <div class="search-mobile search">
+                                    <?php get_search_form() ?>
+                                </div>
+
+                                <a href="<?php the_field('cart-link', 'option') ?>" rel="noopener noreferrer" class="icon">
+                                    <img class="cart-mobile" src="<?php the_field('cart', 'option') ?>" alt="cart">
+                                </a>
+
                             </div>
                             <?php wp_nav_menu([
                                 'theme_location' => 'header',

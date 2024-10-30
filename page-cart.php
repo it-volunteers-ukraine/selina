@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php get_header();
+
+/**
+ * Template Name: Cart Page
+ */
+
+?>
 
 <main class="main">
 
@@ -10,7 +16,7 @@
                 <h1><?php the_title(); ?></h1>
                 <?php if ( ! WC()->cart->is_empty() ) : ?>
                     <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
-                        <?php _e( 'Continue Shopping', 'woocommerce' ); ?>
+                        <?php echo esc_html( get_field( 'continue_shopping', get_the_ID() ) ); ?>
                     </a>
                 <?php endif; ?>
             </div>

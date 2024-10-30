@@ -130,6 +130,13 @@
   }
 }
 
+.breadcrumbs-section {
+  @media screen and (min-width: $tablet) {
+    padding-left: 32px;
+  }
+}
+
+
 .responsive-br {
   display: inline;
 
@@ -197,7 +204,7 @@
     margin-bottom: 24px;
     padding-left: 24px;
     padding-right: 24px;
-    max-width: 1128px;
+    max-width: 1440px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
   }
@@ -235,6 +242,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding-bottom: 24px;
 
     @media screen and (min-width: $desktop) {
       display: grid;
@@ -417,9 +425,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 16px;    
-  
-    
+    margin-top: 16px;
   }
 }
 
