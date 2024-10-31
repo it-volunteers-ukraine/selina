@@ -166,7 +166,6 @@ function wp_it_volunteers_scripts()
     if (is_page_template('templates/partners.php')) {
         wp_enqueue_style('partners-style', get_template_directory_uri() . '/assets/styles/template-styles/partners.css', array('main'));
         wp_enqueue_script('partners-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
-        wp_enqueue_script('partners-scripts', get_template_directory_uri() . '/assets/scripts/template-scripts/partners.js', array(), false, true);
     }
 
     if (is_page_template('templates/education.php')) {
