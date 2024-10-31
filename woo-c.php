@@ -206,7 +206,7 @@ add_filter('wc_add_to_cart_message_html', '__return_null');
 
 // Change number of showed related products on single-product page (was 4)
 function custom_related_products_limit( $args ) {
-    $args['posts_per_page'] = 10;
+    $args['posts_per_page'] = 6;
     return $args;
 }
 add_filter( 'woocommerce_output_related_products_args', 'custom_related_products_limit', 20 );
