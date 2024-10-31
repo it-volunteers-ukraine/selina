@@ -17,8 +17,8 @@ function flipCardMobile(event) {
 }
 
 // pagination
-var currentPagePartners = 1;
-var hasDataPartners = true;
+let currentPage = 1;
+let hasData = true;
 
 function loadPartners(postType) {
     const viewportWidth = window.innerWidth;
@@ -28,7 +28,7 @@ function loadPartners(postType) {
         type: 'POST',
         data: {
             action: 'load_partners_pagination',
-            page: currentPagePartners,
+            page: currentPage,
             width: viewportWidth,
             postType: postType,
             taxonomy: 'partners_categories',
@@ -47,15 +47,15 @@ function getNonce() {
 
 
 function paginatePrev() {
-    if (currentPagePartners > 1) {
-        currentPagePartners--;
+    if (currentPage > 1) {
+        currentPage--;
     }
     loadPartners('all_partners');
 }
 
 function paginateNext() {
-    if (hasDataPartners) {
-        currentPagePartners++;
+    if (hasData) {
+        currentPage++;
     }
     loadPartners('all_partners');
 }
@@ -65,19 +65,19 @@ function replacePosts(html) {
     const viewportWidth = window.innerWidth;
     const isMobile = viewportWidth < 768;
     const isTablet = viewportWidth >= 767.8;
-    hasDataPartners = !!html;
-    if (isMobile && hasDataPartners) {
+    hasData = !!html;
+    if (isMobile && hasData) {
         let partnersMobile = document.getElementById('partners-posts-mobile');
         partnersMobile.innerHTML = html;
-    } else if (isTablet && hasDataPartners) {
+    } else if (isTablet && hasData) {
         let partnersTablet = document.getElementById('partners-posts-tablet');
         partnersTablet.innerHTML = html;
     }
 
-    if (!hasDataPartners) {
+    if (!hasData) {
         const nextBtn = document.getElementById('partners-pagination-next');
         nextBtn.style.display = 'none';
-        currentPagePartners--;
+        currentPage--;
     } else {
         const nextBtn = document.getElementById('partners-pagination-next');
         nextBtn.style.display = 'block';
@@ -217,10 +217,16 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.html) {
                     loadBtn.show();
-                    closeBtn.hide();
+                    if (!closeBtn) {
+                        return;
+                    } else {
+                        closeBtn.hide();
+                    }
                 } else {
                     loadBtn.hide();
-                    closeBtn.show();
+                    if (closeBtn) {
+                        closeBtn.show();
+                    }
                 }
             }
         });
