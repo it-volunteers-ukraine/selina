@@ -71,7 +71,7 @@ get_header();
 
 <!-- Сeкція новини -->
 <section class="section wrapper-news-section">
-  <div class="container">    
+  <div class="container news-container">    
     <div class="news-section__item">
       <div class="news-section__text-wrapper">
 
@@ -126,7 +126,7 @@ get_header();
        ?>
       <div class="news-section__time">          
             <svg width="18" height="18">
-              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-clock"></use>
+              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#clock-icon"></use>
             </svg>
           <p>
             <?php

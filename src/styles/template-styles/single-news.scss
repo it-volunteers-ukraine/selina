@@ -19,9 +19,12 @@
 }
 
 .heading-container {
+  @media screen and (min-width: $tablet) {
+      margin: 0 auto;
+    }
+
   @media screen and (min-width: $desktop) {
-    margin-left: 74px;
-    margin-right: 0px; 
+    margin: 0 auto; 
   }
 }
 
@@ -81,7 +84,6 @@
     font-family: $primary-font;    
    
     @media screen and (min-width: $tablet) {
-      margin-left: 32px;
       font-size: 45px;
     }  
      
@@ -105,14 +107,6 @@
 
 /* Хлібні крихти */
 
-.breadcrumbs-container {
-  @media screen and (min-width: $desktop) {
-      margin-right: 0px;
-      margin-left: 74px;
-    }
-}
-
-
 .wrapper-breadcrumbs-section {  
   @media screen and (max-width: $mobile) {
     padding-top: 13.5px;
@@ -130,12 +124,11 @@
   }
 }
 
-.breadcrumbs-section {
-  @media screen and (min-width: $tablet) {
-    padding-left: 32px;
+.breadcrumbs-container {
+  @media screen and (min-width: $desktop) {
+    margin: 0 auto;
   }
 }
-
 
 .responsive-br {
   display: inline;
@@ -177,36 +170,32 @@
 
 .wrapper-news-section {
   padding-top: 14.5px;
-  padding-bottom: 0px;  
-
-  @media screen and (min-width: $tablet) {   
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }  
-
-}
-
-.wrapper-news-section {
+  padding-bottom: 0px;
   margin-top: 0;
   margin-bottom: 0;
 
   @media screen and (min-width: $tablet) {
       margin-bottom: 22px;
-      margin-right: 74px;
-      margin-left: 74px;
-      padding-left: 32px;
-      padding-right: 32px;
+      margin-right: 32px;
+      margin-left: 32px;
+      padding: 24px;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       border-radius: 10px;
     }
   
   @media screen and (min-width: $desktop) {
-    margin-bottom: 24px;
+    margin: 0 auto;
     padding-left: 24px;
     padding-right: 24px;
-    max-width: 1440px;
+    max-width: 1128px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
+  }
+}
+
+.news-container {
+  @media screen and (min-width: $tablet) {
+    padding: 0;
   }
 }
 
@@ -278,9 +267,9 @@
   }
 
   &__img {    
-    width: 100%;
+    width: 524px;
     max-width: 100%;
-    height: auto;
+    height: 344px;
     object-fit: cover;
     border-radius: 10px;    
   
@@ -433,13 +422,15 @@
 
 .wrapper-news-section-gallary {
   padding: 0;
-
 }
 
 .news-section__gallery {
-  width: 100%;
-  max-width: 1128px;
-  margin: 0 auto;  
+  @media screen and (min-width: $tablet) {
+    width: 100%;
+    max-width: 1128px;
+    margin: 0 auto;
+    padding: 0;
+  }
 }
 
 .gallery {
@@ -521,7 +512,8 @@
   @media screen and (min-width: $desktop) {
     text-align: left;
     margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 24px;
+    margin-bottom: 30px;
   }
 
 }
