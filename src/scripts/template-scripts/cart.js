@@ -16,13 +16,14 @@ jQuery(document).ready(function($){
 
         inputQty.val(newValue).change(); 
         $('.update-cart').prop('disabled', false);
+
+        // Update cart count in header
+        updateCartCount();
     });
-});
 
-// Update cart by click on buttons + and -
-let timeout;
+    // Update cart by click on buttons + and -
+    let timeout;
 
-jQuery ( function( $ ) {
     $( '.woocommerce' ).on( 'change', '.qty', function() { 
         if ( timeout !== undefined ) {
             clearTimeout( timeout );
@@ -30,8 +31,23 @@ jQuery ( function( $ ) {
 
         timeout = setTimeout( function() {
             $( "[name='update_cart']" ).trigger( "click" );
+            // Update cart count in header
+            updateCartCount();
         }, 500 );
     });
+
+    // Update cart count function
+    function updateCartCount() {
+        let cartCount = 0;
+
+        // Counting of products in the cart
+        $('.qty').each(function() {
+            cartCount += parseInt($(this).val());
+        });
+
+        // Updating count in the cart in header
+        $('.cart-count').text(cartCount);
+    }
 });
 
 // Cross-sell Swiper
