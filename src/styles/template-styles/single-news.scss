@@ -236,7 +236,6 @@
     @media screen and (min-width: $desktop) {
       display: grid;
       align-items: flex-start;
-      gap: 24px;
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
           "img date"
@@ -348,8 +347,8 @@
     @media screen and (min-width: $desktop) {
       margin: 0px;
       grid-area: name;
-      padding-top: 22px;
-      padding-bottom: 22px;
+      padding-top: 0;
+      padding-bottom: 0;
     }
   }    
   
@@ -425,6 +424,8 @@
 }
 
 .news-section__gallery {
+  padding-bottom: 16px;
+
   @media screen and (min-width: $tablet) {
     width: 100%;
     max-width: 1128px;
@@ -495,12 +496,9 @@
   border-color: green;
   border-radius: 10px;
   font-size: 18px;
-
-  @media screen and (max-width: $mobile) {
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 16px;
-    }
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;  
 
   @media screen and (min-width: $tablet) {
     margin-left: auto;
