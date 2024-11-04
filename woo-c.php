@@ -226,7 +226,6 @@ function custom_add_to_cart_icon_button($button, $product) {
             </a>';
 }
 
-
 // Remove the 'View Basket' button after adding to cart
 add_filter('wc_add_to_cart_message_html', '__return_null');
 
