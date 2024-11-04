@@ -209,13 +209,11 @@ function custom_add_to_cart_icon_button($button, $product) {
 // Change 'Add to Basket' button text to an icon and enable AJAX add to cart
 add_filter('woocommerce_loop_add_to_cart_link', 'custom_add_to_cart_icon_button', 10, 2);
 function custom_add_to_cart_icon_button($button, $product) {
-    // URL для додавання товару до кошика
+    // URL for adding product to the cart
     $url = esc_url($product->add_to_cart_url());
     
-    // Іконка для кнопки
     $icon = '<svg class="icon-cart" width="32" height="32"><use xlink:href="' . esc_url(get_template_directory_uri() . '/assets/images/sprite.svg#icon-cart') . '"></use></svg>';
 
-    // Зміна стандартного вигляду кнопки
     return '<a href="' . $url . '" 
                 class="button add-to-cart-icon ajax_add_to_cart" 
                 data-product_id="' . esc_attr($product->get_id()) . '" 
@@ -254,16 +252,6 @@ function remove_product_message( $remove_text, $text, $domain ) {
         $remove_text = $remove_message ? $remove_message : 'Товар видалено.'; 
     }
     return $remove_text;
-}
-
-// Integrate ACF field into "Undo?" message to translate it
-add_filter('gettext', 'custom_undo_message', 20, 3);
-function custom_undo_message( $undo_text, $text, $domain ) {
-    if ( 'woocommerce' === $domain && 'Undo?' === $text ) {
-        $custom_undo_message = get_field('undo_text', 'option');
-        $undo_text = $custom_undo_message ? $custom_undo_message : 'Повернути?'; 
-    }
-    return $undo_text;
 }
 
 // Integrate ACF field into "Your cart is currently empty" message to translate it
