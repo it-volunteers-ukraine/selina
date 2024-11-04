@@ -57,7 +57,25 @@ if ( $product->is_in_stock() ) : ?>
 					<use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-cart"></use>
 				</svg>
 			</button>
-			<button class="single_add_to_cart_button-connect button">Зв'язатися з нами</button>
+
+			<!-- Contact-us buttons -->
+			<?php if (!empty (get_field('shop_contact_us_title_telegram'))) :
+				$telegram_icon = get_field('shop_contact_us_icon_telegram');
+				?>
+				<a class="single_contact_us_link button" href='<?php the_field('shop_contact_us_link_telegram') ?>' target='_blank'>
+					<p><?php the_field('shop_contact_us_title_telegram'); ?></p>
+					<img src='<?php echo esc_url($telegram_icon['url']); ?>' alt='<?php the_field('shop_contact_us_title_telegram')?>'>
+				</a>
+			<?php endif; ?>
+
+			<?php if (!empty (get_field('shop_contact_us_title_viber'))) :
+				$viber_icon = get_field('shop_contact_us_icon_viber');
+				?>
+				<a class="single_contact_us_link button" href='<?php the_field('shop_contact_us_link_viber') ?>' target='_blank'>
+					<p><?php the_field('shop_contact_us_title_viber'); ?></p>
+					<img src='<?php echo esc_url($viber_icon['url']); ?>' alt='<?php the_field('shop_contact_us_title_viber')?>'>
+				</a>
+			<?php endif; ?>
 
 			<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 		</div>
