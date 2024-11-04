@@ -74,6 +74,8 @@ if (selector) {
   });
 }
 
+/*
+
 jQuery(function ($) {
   // On button click
   $("body").on("click", ".add-to-cart-icon", function (e) {
@@ -103,3 +105,5 @@ jQuery(function ($) {
     });
   });
 });
+
+*/
