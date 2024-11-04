@@ -172,7 +172,7 @@ get_header();
       </div>
     </div> 
   </div>      
-</section>
+
 <!-- Галерея з кнопкою -->
   <section class="section wrapper-news-section-gallary">
     <div class="container news-section__gallery">        
@@ -209,6 +209,7 @@ get_header();
         <?php endif; ?>
     </div>
   </section>
+</section>
 
   <?php get_template_part('template-parts/join-us'); ?>
 </main>
