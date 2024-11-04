@@ -190,15 +190,23 @@ function remove_woocommerce_gallery_features() {
     remove_theme_support( 'wc-product-gallery-lightbox' );
     remove_theme_support( 'wc-product-gallery-slider' );
 }
+
 // Change 'Add to Basket' button text to an icon and enable AJAX add to cart
 add_filter('woocommerce_loop_add_to_cart_link', 'custom_add_to_cart_icon_button', 10, 2);
 function custom_add_to_cart_icon_button($button, $product) {
-    // Use the AJAX URL for adding to the cart
-    $url = esc_url(wc_get_cart_url());
+    // URL for adding product to the cart
+    $url = esc_url($product->add_to_cart_url());
+    
     $icon = '<svg class="icon-cart" width="32" height="32"><use xlink:href="' . esc_url(get_template_directory_uri() . '/assets/images/sprite.svg#icon-cart') . '"></use></svg>';
 
-    // Make it an anchor tag but prevent default behavior
-    return '<a href="' . $url . '" class="button add-to-cart-icon" data-product_id="' . $product->get_id() . '" data-product_sku="' . $product->get_sku() . '">' . $icon . '</a>';
+    return '<a href="' . $url . '" 
+                class="button add-to-cart-icon ajax_add_to_cart" 
+                data-product_id="' . esc_attr($product->get_id()) . '" 
+                data-product_sku="' . esc_attr($product->get_sku()) . '" 
+                data-quantity="1" 
+                aria-label="' . esc_attr($product->add_to_cart_description()) . '">
+                ' . $icon . '
+            </a>';
 }
 
 // Remove the 'View Basket' button after adding to cart
@@ -229,16 +237,6 @@ function remove_product_message( $remove_text, $text, $domain ) {
         $remove_text = $remove_message ? $remove_message : 'Товар видалено.'; 
     }
     return $remove_text;
-}
-
-// Integrate ACF field into "Undo?" message to translate it
-add_filter('gettext', 'custom_undo_message', 20, 3);
-function custom_undo_message( $undo_text, $text, $domain ) {
-    if ( 'woocommerce' === $domain && 'Undo?' === $text ) {
-        $custom_undo_message = get_field('undo_text', 'option');
-        $undo_text = $custom_undo_message ? $custom_undo_message : 'Повернути?'; 
-    }
-    return $undo_text;
 }
 
 // Integrate ACF field into "Your cart is currently empty" message to translate it

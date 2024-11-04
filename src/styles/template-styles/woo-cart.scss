@@ -411,6 +411,10 @@ body > main > div.woocommerce > section > div > div.woocommerce-notices-wrapper,
     color: $red;  
 }
 
+.woocommerce-message .restore-item {
+    display: none;
+}
+
 .woocommerce-cart .return-to-shop .button {
     padding: 20px 0;
     font-weight: 800;

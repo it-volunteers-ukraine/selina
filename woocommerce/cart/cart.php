@@ -163,7 +163,7 @@ do_action( 'woocommerce_before_main_content' );
 											echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 												'woocommerce_cart_item_remove_link',
 												sprintf(
-													'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">
+													'<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-product_sku="%s">
 														<svg class="remove-svg" width="18" height="17">
 															<use href="%s#remove-icon">
 															</use>

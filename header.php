@@ -145,16 +145,17 @@
                     ?>
 
                     <!-- Cart count desktop -->
-                    <a href="<?php the_field('cart-link', 'option') ?>" rel="noopener noreferrer" class="icon cart-wrapper">
-                        <?php if( count( WC()->cart->get_cart() ) > 0 ) : ?>
+                    <a href="<?php echo wc_get_cart_url(); ?>" class="icon cart-wrapper">
+                        <?php if( ( WC()->cart->get_cart_contents_count() ) > 0) : ?>
                             <img class="cart-desktop" src="<?php the_field('full_cart', 'option') ?>" alt="full cart">
                             <span class="cart-count cart-count__desktop">
-                                <?php echo count( WC()->cart->get_cart() ); ?>
+                                <?php echo WC()->cart->get_cart_contents_count(); ?>
                             </span>
                         <?php else : ?>
                             <img class="cart-desktop" src="<?php the_field('cart', 'option') ?>" alt="cart">
                         <?php endif; ?>
                     </a>
+
 
                     <div class="search-desktop search">
                         <?php get_search_form() ?>
@@ -169,16 +170,17 @@
                                 </div>
 
                                 <!-- Cart count mobile -->
-                                <a href="<?php the_field('cart-link', 'option') ?>" rel="noopener noreferrer" class="icon cart-wrapper">
-                                    <?php if( count( WC()->cart->get_cart() ) > 0 ) : ?>
+                                <a href="<?php echo wc_get_cart_url(); ?>" class="icon cart-wrapper">
+                                    <?php if( ( WC()->cart->get_cart_contents_count() ) > 0) : ?>
                                         <img class="cart-mobile" src="<?php the_field('full_cart', 'option') ?>" alt="full cart">
                                         <span class="cart-count cart-count__mobile">
-                                            <?php echo count( WC()->cart->get_cart() ); ?>
+                                            <?php echo WC()->cart->get_cart_contents_count(); ?>
                                         </span>
                                     <?php else : ?>
                                         <img class="cart-mobile" src="<?php the_field('cart', 'option') ?>" alt="cart">
                                     <?php endif; ?>
-                                </a>
+                                </a> 
+
 
                             </div>
                             <?php wp_nav_menu([
