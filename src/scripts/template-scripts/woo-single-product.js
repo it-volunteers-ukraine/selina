@@ -66,7 +66,7 @@ function setupProductDisplay(initialCount, increment) {
     });
 
     showMoreProductsButton.addEventListener('click', () => {
-        let maxProductsToShow = window.innerWidth > 1438 ? 9 : 10;
+        let maxProductsToShow = 6;
     
         let newProductsCount = Math.min(shownProductsCount + increment, numberOfRelatedProducts);
         
