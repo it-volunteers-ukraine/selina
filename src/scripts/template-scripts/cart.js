@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             item.style.display = index < visibleItems ? 'block' : 'none';
         });
 
-        showMoreButton.style.display = visibleItems < gridItems.length ? 'block' : 'none';
+        showMoreButton.style.display = visibleItems < gridItems.length ? 'flex' : 'none';
         hideButton.style.display = 'none';
     }
 
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let hiddenItems = Array.from(gridItems).filter(item => item.style.display === 'none');
         if (hiddenItems.length === 0) {
             showMoreButton.style.display = 'none';
-            hideButton.style.display = 'block';
+            hideButton.style.display = 'flex';
         }
     }
 
