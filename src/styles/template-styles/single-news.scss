@@ -184,9 +184,12 @@
     }
   
   @media screen and (min-width: $desktop) {
-    margin: 0 auto;
+    margin-top: 0;
+    margin-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 24px;
-    padding-right: 24px;
+    padding-right: 24px;    
     max-width: 1128px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
@@ -511,7 +514,7 @@
     text-align: left;
     margin-left: 10px;
     margin-top: 24px;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
   }
 
 }
