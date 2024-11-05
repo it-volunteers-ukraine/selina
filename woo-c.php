@@ -27,7 +27,7 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 function woo_wp_it_volunteers_scripts() {
 
     if ( class_exists( 'WooCommerce' ) ) {
-        if ( is_shop() ) {
+        if ( is_shop() || is_product_category() ) {
             wp_enqueue_style( 'woo-shop-style', get_template_directory_uri() . '/assets/styles/template-styles/woo-shop.css', array('main') );
             wp_enqueue_script('woo-shop-jquery', 'https://code.jquery.com/jquery-2.2.0.min.js', array(), false, false);
              wp_enqueue_style('choices-style', "https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css", array('main'));
