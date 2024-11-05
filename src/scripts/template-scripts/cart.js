@@ -68,6 +68,9 @@ const swiper = new Swiper('.crossSellSwiper', {
 document.addEventListener('DOMContentLoaded', function() {
     const gridItems = document.querySelectorAll('.crossSellGrid .grid-item');
     const showMoreButton = document.querySelector('.crossSellGrid .show-more');
+    const hideButton = document.querySelector('.crossSellGrid .hide');
+
+    if( !showMoreButton || !hideButton) return;
     
     function showInitialItems() {
         let visibleItems = 0;
@@ -79,13 +82,12 @@ document.addEventListener('DOMContentLoaded', function() {
             visibleItems = crossSellVisibleItems.desktop;
         }
 
-        for (let i = 0; i < visibleItems && i < gridItems.length; i++) {
-            gridItems[i].style.display = 'block';
-        }
-        
-        if (visibleItems >= gridItems.length) {
-            showMoreButton.style.display = 'none';
-        }
+        gridItems.forEach((item, index) => {
+            item.style.display = index < visibleItems ? 'block' : 'none';
+        });
+
+        showMoreButton.style.display = visibleItems < gridItems.length ? 'flex' : 'none';
+        hideButton.style.display = 'none';
     }
 
     function showMore() {
@@ -103,17 +105,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Hide button "Show more", if there are no more posts
+        // Hide button "Show more", if there are no more posts, display button "Hide" instead
         let hiddenItems = Array.from(gridItems).filter(item => item.style.display === 'none');
         if (hiddenItems.length === 0) {
             showMoreButton.style.display = 'none';
+            hideButton.style.display = 'flex';
         }
+    }
+
+    function hideItems() {
+        showInitialItems();
     }
 
     showInitialItems();
 
     showMoreButton.addEventListener('click', function() {
         showMore();
+    });
+
+    hideButton.addEventListener('click', function() {
+        hideItems();
     });
 });
 
