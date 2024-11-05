@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const gridItems = document.querySelectorAll('.crossSellGrid .grid-item');
     const showMoreButton = document.querySelector('.crossSellGrid .show-more');
     const hideButton = document.querySelector('.crossSellGrid .hide');
+
+    if( !showMoreButton || !hideButton) return;
     
     function showInitialItems() {
         let visibleItems = 0;
