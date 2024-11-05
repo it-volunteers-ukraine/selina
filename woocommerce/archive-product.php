@@ -19,25 +19,23 @@ $product_categories = get_terms( array(
 
 if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : ?>
     <div class="filters shop-filters__categories">
-        <button class="filter-button active" data-category="all">    
-        <?php echo pll_current_language() === 'en' ? 'All' : 'Всі'; ?>
-    <span class="button-icon">
+        <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>" class="filter-button active" data-category="all">
+            <?php echo pll_current_language() === 'en' ? 'All' : 'Всі'; ?>
+            <span class="button-icon">
                 <svg width="14" height="12">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                        </use>
-                    </svg>
+                    <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
+                </svg>
             </span>
-        </button> <!-- 'All' button for showing all products -->
+        </a> <!-- 'All' button for showing all products -->
         <?php foreach ( $product_categories as $category ) : ?>
-            <button class="filter-button" data-category="<?php echo esc_attr( $category->slug ); ?>">
+            <a href="<?php echo esc_url( get_term_link( $category ) ); ?>" class="filter-button" data-category="<?php echo esc_attr( $category->slug ); ?>">
                 <?php echo esc_html( $category->name ); ?>
                 <span class="button-icon">
-                <svg width="14" height="12">
-                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
-                        </use>
+                    <svg width="14" height="12">
+                        <use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
                     </svg>
-            </span>
-            </button>
+                </span>
+            </a>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
