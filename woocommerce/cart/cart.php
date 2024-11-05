@@ -273,14 +273,17 @@ do_action( 'woocommerce_before_main_content' );
 				// For mobile (slider)
 				echo '<div class="crossSellSwiper mobile-only">';
 				echo '<div class="swiper-wrapper">';
-		
+
+				$counter = 0;
 				foreach ( $cross_sells as $cross_sell_id ) {
+					if( $counter >= 6 ) break;
 					$post_object = get_post( $cross_sell_id );
 					setup_postdata( $GLOBALS['post'] =& $post_object );
 	
 					echo '<div class="swiper-slide">';
 					wc_get_template_part( 'content', 'product' );
 					echo '</div>';
+					$counter++;
 				}
 	
 				wp_reset_postdata();
@@ -309,6 +312,7 @@ do_action( 'woocommerce_before_main_content' );
 
 					$counter = 0;
 					foreach ( $cross_sells as $cross_sell_id ) {
+						if( $counter >= 6 ) break;
 						$post_object = get_post( $cross_sell_id );
 						setup_postdata( $GLOBALS['post'] =& $post_object );
 
