@@ -30,7 +30,16 @@ if ( $product->is_in_stock() ) : ?>
 	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 	<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
-		<p class='single-product__quantity'>Кількість</p>
+		<p class='single-product__quantity'>
+			<?php
+				// Check if the current language is English
+				if ( pll_current_language() == 'en' ) {
+					echo esc_html__( 'Number', 'woocommerce' );
+				} else {
+					echo esc_html__( 'Кількість', 'woocommerce' );
+				}
+			?>
+		</p>
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 		<?php do_action( 'woocommerce_before_add_to_cart_quantity' );?>
@@ -49,7 +58,14 @@ if ( $product->is_in_stock() ) : ?>
 			?>
 
 			<a class="single_add_to_cart_button-buy button red_medium_button" href="<?php echo esc_url( wc_get_checkout_url() . '?add-to-cart=' . get_the_ID() ); ?>">
-				<?php echo esc_html__( 'Купити', 'woocommerce' ); ?>
+				<?php
+					// Check if the current language is English
+					if ( pll_current_language() == 'en' ) {
+						echo esc_html__( 'Buy', 'woocommerce' );
+					} else {
+						echo esc_html__( 'Купити', 'woocommerce' );
+					}
+				?>
 			</a>
 			<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button green_medium_button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
 				<?php echo esc_html( $product->single_add_to_cart_text() ); ?>

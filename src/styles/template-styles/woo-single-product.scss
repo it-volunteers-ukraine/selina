@@ -159,6 +159,9 @@ div.summary.entry-summary > h1 {
         gap: 40px;
         margin-bottom: 80px;
     }
+    .in-stock {
+        display: none;
+    }
 }
 
 .single-product__flex-container > *:first-child {
