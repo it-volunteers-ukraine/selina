@@ -313,6 +313,7 @@ do_action( 'woocommerce_before_main_content' );
 					$counter = 0;
 					foreach ( $cross_sells as $cross_sell_id ) {
 						if( $counter >= 6 ) break;
+
 						$post_object = get_post( $cross_sell_id );
 						setup_postdata( $GLOBALS['post'] =& $post_object );
 
@@ -326,8 +327,16 @@ do_action( 'woocommerce_before_main_content' );
 					wp_reset_postdata();
 					echo '</div>';
 
+					// Show more button
 					echo '<button class="cross-sell__show-more show-more button_green_new">';
                 	echo '<p class="cross-sell__show_more_btn">' . the_field("show_more_btn", "option") . '</p>';
+                	echo '<svg class="icon-paw" width="16" height="15">';
+                    echo '<use href="' . get_template_directory_uri() . '/assets/images/sprite.svg#icon-paw"></use>';
+                	echo '</svg>';
+            		echo '</button>';
+					// Hide button
+					echo '<button class="cross-sell__hide hide button_green_new" style="display: none">';
+                	echo '<p class="cross-sell__hide_btn">' . the_field("hide_btn", "option") . '</p>';
                 	echo '<svg class="icon-paw" width="16" height="15">';
                     echo '<use href="' . get_template_directory_uri() . '/assets/images/sprite.svg#icon-paw"></use>';
                 	echo '</svg>';
