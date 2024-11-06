@@ -232,9 +232,7 @@ div.summary.entry-summary > h1 {
 }
 
 .woocommerce-product-share {
-    @media screen and (min-width: $tablet) {
-        display: none;
-    }
+    display: none;
     @media screen and (min-width: $desktop) {
         display: block;
         margin-top: 120px;
