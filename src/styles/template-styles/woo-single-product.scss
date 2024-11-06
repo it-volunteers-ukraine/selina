@@ -4,22 +4,23 @@
     font-weight: 800;
     font-size: 16px;
     line-height: 100%;
-    color: $primary-color;
+    color: $red;
     margin-bottom: 16px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.red_breadcrumb {
-    color: $red;
+    &__green_slash {
+        color: $primary-color;
+    }
+    a {
+        color: $primary-color;
+    }
 }
 
 .single-product__image-container {
     margin-bottom: 16px;
     @media screen and (min-width: $tablet) {
         margin: 0;
-
     }
 }
 
