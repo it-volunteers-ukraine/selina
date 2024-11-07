@@ -20,7 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".filter-button");
 
   buttons.forEach((button) => {
-    button.addEventListener("click", function () {
+    const category = button.dataset.category;
+    button.classList.remove("active");
+    const pathMatch = window.location.pathname.includes(category);
+
+    if (pathMatch) {
+      button.classList.add("active");
+    }
+
+    button.addEventListener("click", function (e) {
       // Remove 'active' class and hide the icon from all buttons
       buttons.forEach((btn) => {
         btn.classList.remove("active");

@@ -209,6 +209,16 @@ function custom_add_to_cart_icon_button($button, $product) {
             </a>';
 }
 
+// Change 'Add to Basket' to 'Add to Cart' + translate on single-product-page
+function custom_single_add_to_cart_text() {
+    if ( pll_current_language() == 'en') {
+        return __( 'Add to cart', 'textdomain' );
+    } else {
+        return __( 'Додати до кошика', 'textdomain' );
+    }
+}
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'custom_single_add_to_cart_text' );
+
 // Remove the 'View Basket' button after adding to cart
 add_filter('wc_add_to_cart_message_html', '__return_null');
 

@@ -4,22 +4,23 @@
     font-weight: 800;
     font-size: 16px;
     line-height: 100%;
-    color: $primary-color;
+    color: $red;
     margin-bottom: 16px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.red_breadcrumb {
-    color: $red;
+    &__green_slash {
+        color: $primary-color;
+    }
+    a {
+        color: $primary-color;
+    }
 }
 
 .single-product__image-container {
     margin-bottom: 16px;
     @media screen and (min-width: $tablet) {
         margin: 0;
-
     }
 }
 
@@ -106,8 +107,10 @@ div.summary.entry-summary > h1 {
     margin-left: 12px;
 }
 
-.single_add_to_cart_button svg:hover {
-    color: #000;
+.single_add_to_cart_button:hover {
+    .single_add-to-cart-icon path {
+        fill: $primary-color;
+    }
 }
 
 .single_add_to_cart_button-buy {
@@ -158,6 +161,9 @@ div.summary.entry-summary > h1 {
     @media screen and (min-width: $desktop) {
         gap: 40px;
         margin-bottom: 80px;
+    }
+    .in-stock {
+        display: none;
     }
 }
 
@@ -213,7 +219,7 @@ div.summary.entry-summary > h1 {
     height: 30px;
     top: 16px;
     left: 16px;
-    padding: 1px;
+    padding: 10px 8px 8px 10px;
     border: 1px solid #f0f0f0;
     border-radius: 50%;
     z-index: 10;
@@ -229,9 +235,7 @@ div.summary.entry-summary > h1 {
 }
 
 .woocommerce-product-share {
-    @media screen and (min-width: $tablet) {
-        display: none;
-    }
+    display: none;
     @media screen and (min-width: $desktop) {
         display: block;
         margin-top: 120px;

@@ -28,7 +28,14 @@ if ( $related_products ) : ?>
 
 		if ( $heading ) :
 			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
+			<h2>
+				<?php
+					if ( pll_current_language() == 'en') { echo esc_html( $heading );
+					} else {
+						echo esc_html__( 'Рекомендовані товари', 'woocommerce' );
+					}
+				?>
+			</h2>
 		<?php endif; ?>
 
 			<!------------ Swiper ------------------>
@@ -87,13 +94,13 @@ if ( $related_products ) : ?>
 			<?php woocommerce_product_loop_end(); ?>
 
 			<button id='showMoreProductsButton' class='related-product-show-more button_green_new'>
-				<p>Показати більше</p>
+				<p><?php the_field('show_more_btn', 'option') ?></p>
 				<svg class="icon-paw" width="17" height="15">
 					<use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
 				</svg>
 			</button>
 			<button id='showLessProductsButton' class='related-product-show-less button_green_new'>
-				<p>Сховати</p>
+				<p><?php the_field('hide_btn', 'option') ?></p>
 				<svg class="icon-paw" width="17" height="15">
 					<use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw"></use>
 				</svg>
