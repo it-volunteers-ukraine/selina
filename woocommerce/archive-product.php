@@ -19,7 +19,7 @@ $product_categories = get_terms( array(
 
 if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : ?>
     <div class="filters shop-filters__categories">
-        <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>" class="filter-button active" data-category="all">
+        <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>" class="filter-button active" data-category="shop">
             <?php echo pll_current_language() === 'en' ? 'All' : 'Всі'; ?>
             <span class="button-icon">
                 <svg width="14" height="12">

@@ -197,7 +197,7 @@ function custom_add_to_cart_icon_button($button, $product) {
     // URL for adding product to the cart
     $url = esc_url($product->add_to_cart_url());
     
-    $icon = '<svg class="icon-cart" width="32" height="32"><use xlink:href="' . esc_url(get_template_directory_uri() . '/assets/images/sprite.svg#icon-cart') . '"></use></svg>';
+    $icon = '<svg class="icon-cart" width="32" height="32"><use xlink:href="' . esc_url(get_template_directory_uri() . '/assets/images/sprite.svg#icon-paw') . '"></use></svg>';
 
     return '<a href="' . $url . '" 
                 class="button add-to-cart-icon ajax_add_to_cart" 
