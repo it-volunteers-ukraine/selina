@@ -107,8 +107,10 @@ div.summary.entry-summary > h1 {
     margin-left: 12px;
 }
 
-.single_add_to_cart_button svg:hover {
-    color: #000;
+.single_add_to_cart_button:hover {
+    .single_add-to-cart-icon path {
+        fill: $primary-color;
+    }
 }
 
 .single_add_to_cart_button-buy {
