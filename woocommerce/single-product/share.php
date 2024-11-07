@@ -27,7 +27,16 @@ $product_title = get_the_title( $product->get_id() );
 ?>
 
 <div class="woocommerce-product-share">
-    <h4 class="woocommerce-product-share__title">Поділитися:</h4>
+    <h4 class="woocommerce-product-share__title">
+		<?php
+			// Check if the current language is English
+			if ( pll_current_language() == 'en' ) {
+				echo esc_html__( 'Share', 'woocommerce' );
+			} else {
+				echo esc_html__( 'Поділитися', 'woocommerce' );
+			}
+		?>
+	</h4>
 	<div class="woocommerce-product-share__icons-container">
 		<!-- Facebook -->
 		<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode( $product_url ); ?>" target="_blank" class="share-btn facebook">

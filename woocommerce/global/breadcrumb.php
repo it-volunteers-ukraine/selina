@@ -42,7 +42,7 @@ if ( ! empty( $breadcrumb ) ) {
 		echo $after;
 
 		if ( sizeof( $breadcrumb ) !== $key + 1 ) {
-			echo $delimiter;
+			echo '<span class="woocommerce-breadcrumb__green_slash">' . $delimiter . '</span>';
 		}
 	}
 
