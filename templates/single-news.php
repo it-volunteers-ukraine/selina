@@ -84,7 +84,8 @@ get_header();
       <div class="news-section__date">
         <svg width="18" height="18"> 
           <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
-        </svg> 
+        </svg>
+         
         <p>
           <?php
             if (!empty($news_date_start)) {
@@ -112,6 +113,11 @@ get_header();
                 $date = new DateTime($date_str);
                 echo $date->format('j F');
               }
+            }
+            // YEAR
+            if ($date_str) {
+                $date = new DateTime($date_str);
+                echo $date->format(' Y');
             }
           ?>
         </p>
