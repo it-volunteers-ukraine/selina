@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadMoreButton = document.getElementById('load-more');
     const showMoreText = loadMoreButton.getAttribute('data-show-more');
     const showLessText = loadMoreButton.getAttribute('data-show-less');
-    let visibleImagesCount = 6;
+    let visibleImagesCount = 3;
     const galleryItems = document.querySelectorAll('.gallery-item');
     const totalImages = galleryItems.length;
 
@@ -25,20 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isExpanded) {
             // Якщо стан "Показати менше", ховаємо всі додаткові зображення
             galleryItems.forEach((item, index) => {
-                if (index >= 6) {
+                if (index >= 3) {
                     item.classList.add('visually-hidden');
                 }
             });
             loadMoreButton.innerHTML = `<p class="gallary-section__last-btn-text">${showMoreText}</p><svg class="gallary-section__button-svg" width="16" height="15"><use href="${loadMoreButton.querySelector('svg use').getAttribute('href')}"></use></svg>`;
             loadMoreButton.setAttribute('data-expanded', 'false');
-            visibleImagesCount = 6; // Повертаємося до початкового стану
+            visibleImagesCount = 3; // Повертаємося до початкового стану
         } else {
-            // Якщо стан "Показати більше", показуємо наступні 6 зображень
+            // Якщо стан "Показати більше", показуємо наступні зображення
             const hiddenImages = document.querySelectorAll('.gallery-item.visually-hidden');
-            for (let i = 0; i < 6 && i < hiddenImages.length; i++) {
+            for (let i = 0; i < 3 && i < hiddenImages.length; i++) {
                 hiddenImages[i].classList.remove('visually-hidden');
             }
-            visibleImagesCount += 6;
+            visibleImagesCount += 3;
 
             // Якщо всі зображення показані, змінюємо текст кнопки
             if (visibleImagesCount >= totalImages) {

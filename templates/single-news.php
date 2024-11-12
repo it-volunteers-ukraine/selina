@@ -181,7 +181,7 @@ get_header();
             $images = get_field('news_gallery');
             if($images):
               foreach($images as $index => $image):                
-                $hidden_class = ($index >= 6) ? 'visually-hidden' : '';
+                $hidden_class = ($index >= 3) ? 'visually-hidden' : '';
           ?>
           <div class="gallery-item <?php echo $hidden_class; ?>">
             <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
@@ -195,7 +195,7 @@ get_header();
         $show_more_text = get_field('gallery_button_text');
         $show_less_text = get_field('gallery_button_text_show_less');
         
-        if ($images && count($images) > 6): ?>
+        if ($images && count($images) > 3): ?>
             <div class="gallary-button button green_medium_button">
                 <button id="load-more" class="gallary-section__last-btn" 
                 data-show-more="<?php echo esc_attr($show_more_text); ?>" 
