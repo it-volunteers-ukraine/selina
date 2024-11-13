@@ -43,14 +43,18 @@
         do_action( 'woocommerce_after_shop_loop_item' );
 
         // Custom "Buy Now" button
-        ?>
-        <a href="<?php echo esc_url( wc_get_checkout_url() . '?add-to-cart=' . get_the_ID() ); ?>" class="buy-now-button">
+$product_id = get_the_ID();
+$is_in_stock = get_post_meta($product_id, '_stock_status', true) === 'instock';
+?>
+<a href="<?php echo $is_in_stock ? esc_url( wc_get_checkout_url() . '?add-to-cart=' . $product_id ) : '#'; ?>" 
+   class="buy-now-button" 
+   <?php echo !$is_in_stock ? 'data-disabled="true" style="pointer-events: none; opacity: 0.5;"' : ''; ?>>
     <?php
     // Check if the current language is English
     if ( pll_current_language() == 'en' ) {
-        echo esc_html__( 'Buy', 'woocommerce' );
+        echo $is_in_stock ? esc_html__( 'Buy', 'woocommerce' ) : esc_html__( 'Out of Stock', 'woocommerce' );
     } else {
-        echo esc_html__( 'Купити', 'woocommerce' );
+        echo $is_in_stock ? esc_html__( 'Купити', 'woocommerce' ) : esc_html__( 'Немає в наявності', 'woocommerce' );
     }
     ?>
 </a>
