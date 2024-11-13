@@ -275,10 +275,10 @@ function custom_woocommerce_catalog_ordering($sort_args) {
         );
     } else {
         $sort_args = array(
-            'title_asc' => __('Назва (А-Я)', 'woocommerce'),
-            'title_desc' => __('Назва (Я-А)', 'woocommerce'),
-            'price_asc' => __('Ціна (від низької)', 'woocommerce'),
-            'price_desc' => __('Ціна (від високої)', 'woocommerce'),
+            'title_asc' => __('Назвою (А-Я)', 'woocommerce'),
+            'title_desc' => __('Назвою (Я-А)', 'woocommerce'),
+            'price_asc' => __('Ціною (від низької)', 'woocommerce'),
+            'price_desc' => __('Ціною (від високої)', 'woocommerce'),
         );
     }
     
