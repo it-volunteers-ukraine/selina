@@ -176,7 +176,7 @@ get_header();
 <!-- Галерея з кнопкою -->
   <section class="section wrapper-news-section-gallary">
     <div class="container news-section__gallery">        
-        <div class="gallery" id="gallery">
+        <div class="gallery" id="gallery" data-visible-count="3">
           <?php
             $images = get_field('news_gallery');
             if($images):
