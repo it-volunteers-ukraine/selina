@@ -197,7 +197,10 @@ function custom_add_to_cart_icon_button($button, $product) {
     // URL for adding product to the cart
     $url = esc_url($product->add_to_cart_url());
     
-    $icon = '<svg class="icon-cart" width="32" height="32"><use xlink:href="' . esc_url(get_template_directory_uri() . '/assets/images/sprite.svg#icon-paw') . '"></use></svg>';
+    $icon = '<svg class="icon-cart" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M27.8 21.8C28.357 21.8 28.8911 22.0212 29.2849 22.4151C29.6787 22.8089 29.9 23.343 29.9 23.9C29.9 24.457 29.6787 24.9911 29.2849 25.3849C28.8911 25.7787 28.357 26 27.8 26C27.243 26 26.7089 25.7787 26.3151 25.3849C25.9212 24.9911 25.7 24.457 25.7 23.9C25.7 22.7345 26.6345 21.8 27.8 21.8ZM11 5H14.4335L15.4205 7.1H30.95C31.2285 7.1 31.4955 7.21062 31.6925 7.40754C31.8894 7.60445 32 7.87152 32 8.15C32 8.3285 31.9475 8.507 31.874 8.675L28.115 15.4685C27.758 16.109 27.065 16.55 26.2775 16.55H18.455L17.51 18.2615L17.4785 18.3875C17.4785 18.4571 17.5062 18.5239 17.5554 18.5731C17.6046 18.6223 17.6714 18.65 17.741 18.65H29.9V20.75H17.3C16.743 20.75 16.2089 20.5287 15.8151 20.1349C15.4212 19.7411 15.2 19.207 15.2 18.65C15.2 18.2825 15.2945 17.936 15.452 17.642L16.88 15.0695L13.1 7.1H11V5ZM17.3 21.8C17.857 21.8 18.3911 22.0212 18.7849 22.4151C19.1788 22.8089 19.4 23.343 19.4 23.9C19.4 24.457 19.1788 24.9911 18.7849 25.3849C18.3911 25.7787 17.857 26 17.3 26C16.743 26 16.2089 25.7787 15.8151 25.3849C15.4212 24.9911 15.2 24.457 15.2 23.9C15.2 22.7345 16.1345 21.8 17.3 21.8ZM26.75 14.45L29.669 9.2H16.397L18.875 14.45H26.75Z" fill="white" />
+					<path d="M5 20C4.70899 20 4.48413 19.9206 4.3254 19.7619C4.16667 19.5899 4.0873 19.3585 4.0873 19.0675V15.8135H0.892857C0.615079 15.8135 0.396825 15.7407 0.238095 15.5952C0.0793651 15.4365 0 15.2183 0 14.9405C0 14.6627 0.0793651 14.4511 0.238095 14.3056C0.396825 14.1468 0.615079 14.0675 0.892857 14.0675H4.0873V10.9127C4.0873 10.6217 4.16667 10.3968 4.3254 10.2381C4.48413 10.0794 4.71561 10 5.01984 10C5.31085 10 5.5291 10.0794 5.6746 10.2381C5.83333 10.3968 5.9127 10.6217 5.9127 10.9127V14.0675H9.10714C9.39815 14.0675 9.6164 14.1468 9.7619 14.3056C9.92063 14.4511 10 14.6627 10 14.9405C10 15.2183 9.92063 15.4365 9.7619 15.5952C9.6164 15.7407 9.39815 15.8135 9.10714 15.8135H5.9127V19.0675C5.9127 19.3585 5.83333 19.5899 5.6746 19.7619C5.5291 19.9206 5.30423 20 5 20Z" fill="white" />
+				</svg>';
 
     return '<a href="' . $url . '" 
                 class="button add-to-cart-icon ajax_add_to_cart" 
@@ -258,3 +261,55 @@ function empty_cart_message( $empty_cart_text, $text, $domain ) {
     }
     return $empty_cart_text;
 }
+function custom_woocommerce_catalog_ordering($sort_args) {
+    // Determine if the language is English
+    $current_lang = get_locale();
+    
+    // Define sort options based on language
+    if ($current_lang === 'en_GB') {
+        $sort_args = array(
+            'title_asc' => __('Name (A-Z)', 'woocommerce'),
+            'title_desc' => __('Name (Z-A)', 'woocommerce'),
+            'price_asc' => __('Price (low to high)', 'woocommerce'),
+            'price_desc' => __('Price (high to low)', 'woocommerce'),
+        );
+    } else {
+        $sort_args = array(
+            'title_asc' => __('Назва (А-Я)', 'woocommerce'),
+            'title_desc' => __('Назва (Я-А)', 'woocommerce'),
+            'price_asc' => __('Ціна (від низької)', 'woocommerce'),
+            'price_desc' => __('Ціна (від високої)', 'woocommerce'),
+        );
+    }
+    
+    return $sort_args;
+}
+add_filter('woocommerce_catalog_orderby', 'custom_woocommerce_catalog_ordering');
+
+function custom_woocommerce_orderby_query($query) {
+    if (!is_admin() && $query->is_main_query() && is_woocommerce()) {
+        $orderby = isset($_GET['orderby']) ? wc_clean($_GET['orderby']) : 'title_asc';
+
+        switch ($orderby) {
+            case 'title_asc':
+                $query->set('orderby', 'title');
+                $query->set('order', 'ASC');
+                break;
+            case 'title_desc':
+                $query->set('orderby', 'title');
+                $query->set('order', 'DESC');
+                break;
+            case 'price_asc':
+                $query->set('meta_key', '_price');
+                $query->set('orderby', 'meta_value_num');
+                $query->set('order', 'ASC');
+                break;
+            case 'price_desc':
+                $query->set('meta_key', '_price');
+                $query->set('orderby', 'meta_value_num');
+                $query->set('order', 'DESC');
+                break;
+        }
+    }
+}
+add_action('pre_get_posts', 'custom_woocommerce_orderby_query');
