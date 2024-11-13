@@ -202,14 +202,23 @@ function custom_add_to_cart_icon_button($button, $product) {
 					<path d="M5 20C4.70899 20 4.48413 19.9206 4.3254 19.7619C4.16667 19.5899 4.0873 19.3585 4.0873 19.0675V15.8135H0.892857C0.615079 15.8135 0.396825 15.7407 0.238095 15.5952C0.0793651 15.4365 0 15.2183 0 14.9405C0 14.6627 0.0793651 14.4511 0.238095 14.3056C0.396825 14.1468 0.615079 14.0675 0.892857 14.0675H4.0873V10.9127C4.0873 10.6217 4.16667 10.3968 4.3254 10.2381C4.48413 10.0794 4.71561 10 5.01984 10C5.31085 10 5.5291 10.0794 5.6746 10.2381C5.83333 10.3968 5.9127 10.6217 5.9127 10.9127V14.0675H9.10714C9.39815 14.0675 9.6164 14.1468 9.7619 14.3056C9.92063 14.4511 10 14.6627 10 14.9405C10 15.2183 9.92063 15.4365 9.7619 15.5952C9.6164 15.7407 9.39815 15.8135 9.10714 15.8135H5.9127V19.0675C5.9127 19.3585 5.83333 19.5899 5.6746 19.7619C5.5291 19.9206 5.30423 20 5 20Z" fill="white" />
 				</svg>';
 
-    return '<a href="' . $url . '" 
-                class="button add-to-cart-icon ajax_add_to_cart" 
-                data-product_id="' . esc_attr($product->get_id()) . '" 
-                data-product_sku="' . esc_attr($product->get_sku()) . '" 
-                data-quantity="1" 
-                aria-label="' . esc_attr($product->add_to_cart_description()) . '">
-                ' . $icon . '
-            </a>';
+    // Check stock status and adjust button attributes
+    if (!$product->is_in_stock()) {
+        // Button for out-of-stock products
+        return '<a href="#" class="button add-to-cart-icon" data-disabled="true" style="pointer-events: none; opacity: 0.5;" aria-disabled="true">
+                    ' . $icon . '
+                </a>';
+    } else {
+        // Button for in-stock products
+        return '<a href="' . $url . '" 
+                    class="button add-to-cart-icon ajax_add_to_cart" 
+                    data-product_id="' . esc_attr($product->get_id()) . '" 
+                    data-product_sku="' . esc_attr($product->get_sku()) . '" 
+                    data-quantity="1" 
+                    aria-label="' . esc_attr($product->add_to_cart_description()) . '">
+                    ' . $icon . '
+                </a>';
+    }
 }
 
 // Change 'Add to Basket' to 'Add to Cart' + translate on single-product-page
