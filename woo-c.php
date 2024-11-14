@@ -271,11 +271,15 @@ function add_images_to_order_review_items() {
         echo '<td class="product-image">';
         echo $product_image;
         echo '</td>';
+
         echo '<td class="product-name">';
         echo $product->get_name();
-        echo '&nbsp;<strong class="product-quantity">×&nbsp;' . $cart_item['quantity'] . '</strong>';
         echo '</td>';
-        
+
+        echo '<td class="product-price-quantity">';
+        echo wc_price( $product->get_price() ) . '&nbsp;<span class="product-quantity">×&nbsp;' . $cart_item['quantity'] . ' од' . '</span>';
+        echo '</td>';
+
         echo '<td class="product-total">';
         echo wc_price( $cart_item['line_total'] );
         echo '</td>';
