@@ -1,0 +1,22 @@
+@import "../variables.scss";
+
+.checkout-cart {
+    thead .product-name,
+    thead .product-total {
+        display: none;
+    }
+    &__wrapper {
+        padding-top: 32px;
+        border: 1px solid red;
+    }
+    &__heading-edit-container {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 800;
+        padding: 8px 0;
+        h4 {
+            font-size: 16px;
+            color: $primary-color;
+        }
+    }
+}
