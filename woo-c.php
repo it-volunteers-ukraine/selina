@@ -258,3 +258,27 @@ function empty_cart_message( $empty_cart_text, $text, $domain ) {
     }
     return $empty_cart_text;
 }
+
+// add product-image to products in cart on checkout-page
+add_action( 'woocommerce_review_order_before_cart_contents', 'add_images_to_order_review_items' );
+
+function add_images_to_order_review_items() {
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product = $cart_item['data'];
+        $product_image = $product->get_image( 'thumbnail' );
+        
+        echo '<tr class="cart_item">';
+        echo '<td class="product-image">';
+        echo $product_image;
+        echo '</td>';
+        echo '<td class="product-name">';
+        echo $product->get_name();
+        echo '&nbsp;<strong class="product-quantity">×&nbsp;' . $cart_item['quantity'] . '</strong>';
+        echo '</td>';
+        
+        echo '<td class="product-total">';
+        echo wc_price( $cart_item['line_total'] );
+        echo '</td>';
+        echo '</tr>';
+    }
+}
