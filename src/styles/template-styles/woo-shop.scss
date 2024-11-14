@@ -20,7 +20,8 @@
   }
   &__categories {
     display: flex;
-    gap: 24px;
+    flex-wrap: wrap;
+    gap: 8px;
     list-style: none;
     font-size: 16px;
     font-weight: 800;
@@ -29,6 +30,7 @@
       font-size: 18px;
       line-height: 24px;
       font-weight: 700;
+      gap: 24px;
     }
     a {
       display: flex;
@@ -69,7 +71,7 @@
     .choices {
       background-color: $white;
       border-radius: 10px;
-      width: 200px;
+      width: 170px;
       color: $primary-color;
       font-family: $primary-font;
       margin: 0;
@@ -78,6 +80,9 @@
         .choices__inner {
           border-radius: 10px;
         }
+      }
+      @media screen and (min-width: $tablet) {
+        width: 200px;
       }
 
       &.is-open {
@@ -105,7 +110,10 @@
     }
 
     .choices__item {
-      font-size: 16px;
+      font-size: 14px;
+      @media screen and (min-width: $tablet) {
+        font-size: 16px;
+      }
     }
 
     .choices__list--single {
@@ -126,7 +134,10 @@
     }
   }
   &__sorting-text {
-    font-size: 20px;
+    font-size: 16px;
+    @media screen and (min-width: $tablet) {
+      font-size: 20px;
+    }
   }
 }
 
