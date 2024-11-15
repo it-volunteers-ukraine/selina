@@ -322,3 +322,35 @@ function custom_woocommerce_orderby_query($query) {
     }
 }
 add_action('pre_get_posts', 'custom_woocommerce_orderby_query');
+
+// add product-image to products in cart on checkout-page
+add_action( 'woocommerce_review_order_before_cart_contents', 'add_images_to_order_review_items' );
+
+function add_images_to_order_review_items() {
+    if ( WC()->cart->get_cart() ) {
+        foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+            $product = $cart_item['data'];
+            $product_image = $product->get_image( 'thumbnail' );
+
+            echo '<tr class="checkout-cart__item">';
+            
+            echo '<td class="checkout-cart__product-image">';
+            echo $product_image;
+            echo '</td>';
+
+            echo '<td class="checkout-cart__product-name">';
+            echo $product->get_name();
+            echo '</td>';
+
+            echo '<td class="checkout-cart__product-price-quantity">';
+            echo wc_price( $product->get_price() ) . '&nbsp;<span class="checkout-cart__product-quantity">×&nbsp;' . $cart_item['quantity'] . ' од' . '</span>';
+            echo '</td>';
+
+            echo '<td class="checkout-cart__product-total">';
+            echo wc_price( $cart_item['line_total'] );
+            echo '</td>';
+
+            echo '</tr>';
+        }
+    }
+}
