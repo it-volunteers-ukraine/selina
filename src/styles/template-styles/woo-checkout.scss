@@ -11,6 +11,8 @@
         @media screen and (min-width: $desktop) {
             width: 472px;
             padding-top: 0;
+            background-color: $light-green;
+            padding: 32px;
         }
     }
     &__heading-edit-container {
@@ -79,6 +81,7 @@
         }
         @media screen and (min-width: $desktop) {
             grid-area: 1 / 2 / 2 / 4;
+            padding-top: 12px;
         }
     }
     &__product-price-quantity {
@@ -90,6 +93,10 @@
         }
         @media screen and (min-width: $desktop) {
             grid-area: 2 / 2 / 3 / 3;
+            font-size: 13px;
+            font-weight: 700;
+            color: $black;
+            padding-bottom: 12px;
         }
     }
     &__product-total {
@@ -102,6 +109,9 @@
         }
         @media screen and (min-width: $desktop) {
             grid-area: 2 / 3 / 3 / 4;
+            font-size: 20px;
+            font-weight: 800;
+            padding-bottom: 12px;
         }
     }
 }
@@ -111,5 +121,8 @@
 }
 
 body > section > div > div > form.checkout.woocommerce-checkout {
-    display: flex;
+    @media screen and (min-width: $desktop) {
+        display: flex;
+        justify-content: space-between;
+    }
 }
