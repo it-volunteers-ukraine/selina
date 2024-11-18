@@ -126,3 +126,42 @@ body > section > div > div > form.checkout.woocommerce-checkout {
         justify-content: space-between;
     }
 }
+
+/* coupon-form */
+.checkout_coupon.woocommerce-form-coupon {
+    display: flex !important;
+}
+
+.woocommerce-form-coupon-toggle,
+.checkout_coupon.woocommerce-form-coupon p:first-child {
+    display: none;
+}
+
+.form-row.form-row-first {
+    width: calc(50% - 8px);
+}
+
+.form-row.form-row-first .enter-code {
+    width: 100%;
+    border: 1px solid rgba(7, 7, 7, 0.15);
+    border-radius: 10px;
+    height: 44px;
+    padding: 11.5px 16px;
+}
+
+.form-row.form-row-first .input-text::placeholder{
+    color: $primary-color;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+}
+
+.form-row.form-row-last {
+    width: calc(50% - 8px);
+}
+
+.form-row.form-row-last button {
+    width: 100%;
+    margin-left: 16px;
+    height: 44px;
+}
