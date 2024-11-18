@@ -369,5 +369,5 @@ function woocommerce_checkout_coupon_form_custom() {
         )
     );
 
-    echo '</td</tr>';
+    echo '</td></tr>';
 }
