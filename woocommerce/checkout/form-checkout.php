@@ -54,7 +54,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	<div class="checkout-cart checkout-cart__wrapper">
 		<div class="checkout-cart__heading-edit-container">
 			<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
-			<h4>Редагувати</h4>
+			<a href='<?php echo wc_get_cart_url(); ?>'>Редагувати</a>
 		</div>
 		<div class="checkout-cart__column-naming">
 			<h5>Товар</h5>

@@ -20,7 +20,7 @@
         justify-content: space-between;
         font-weight: 800;
         padding: 7px 0;
-        h4 {
+        a {
             font-size: 16px;
             color: $primary-color;
             padding: 3px 10px;
@@ -54,10 +54,12 @@
         @media screen and (min-width: $tablet) {
             grid-template-columns: repeat(4, auto);
             grid-template-rows: 1fr;
+            margin-bottom: 24px;
         }
         @media screen and (min-width: $desktop) {
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
+            margin-bottom: 40px;
         }
     }
     &__product-image {
@@ -125,4 +127,75 @@ body > section > div > div > form.checkout.woocommerce-checkout {
         display: flex;
         justify-content: space-between;
     }
+}
+
+/* coupon-form */
+.checkout_coupon.woocommerce-form-coupon {
+    display: flex !important;
+    margin-bottom: 24px;
+    @media screen and (min-width: $tablet) {
+        width: 366px;
+    }
+    @media screen and (min-width: $desktop) {
+        width: 408px;
+    }
+}
+
+.woocommerce-form-coupon-toggle,
+.checkout_coupon.woocommerce-form-coupon p:first-child {
+    display: none;
+}
+
+.form-row.form-row-first {
+    width: calc(50% - 8px);
+    @media screen and (min-width: $tablet) {
+        width: 210px;
+    }
+    @media screen and (min-width: $desktop) {
+        width: 252px;
+    }
+}
+
+.form-row.form-row-first .enter-code {
+    color: $primary-color;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    width: 100%;
+    border: 1px solid rgba(7, 7, 7, 0.15);
+    border-radius: 10px;
+    height: 44px;
+    padding: 11.5px 16px;
+    
+}
+
+.form-row.form-row-first .input-text::placeholder{
+    color: $primary-color;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+}
+
+.form-row.form-row-last {
+    width: calc(50% - 8px);
+    @media screen and (min-width: $tablet) {
+        width: 140px;
+    }
+}
+
+.form-row.form-row-last button {
+    width: 100%;
+    margin-left: 16px;
+    height: 44px;
+}
+
+tfoot .order-total {
+    color: $red;
+    font-size: 26px;
+    font-weight: 800;
+    padding-top: 8px;
+}
+
+.woocommerce-remove-coupon {
+    display: none;
 }
