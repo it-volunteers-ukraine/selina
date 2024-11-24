@@ -19,42 +19,59 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce-billing-fields">
-  <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-
-  <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
-
-  <?php else : ?>
-
-  <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
-
+  <?php if ( WC()->cart->needs_shipping() ) : ?>
+  
+    <h3 class="woocommerce-billing-title">
+      <?php
+        if ( function_exists( 'pll_current_language' ) ) {
+            $current_lang = pll_current_language();
+            if ( $current_lang === 'uk' ) {
+                echo esc_html__( 'Оформлення замовлення', 'woocommerce' );
+            } elseif ( $current_lang === 'en' ) {
+                echo esc_html__( 'Order Checkout', 'woocommerce' );
+            }
+        } else {
+            echo esc_html__( 'Order Checkout', 'woocommerce' ); // Англійська версія за замовчуванням
+        }
+      ?>
+    </h3>
   <?php endif; ?>
+
+<!-- Заголовок для контактних даних -->
+  <h3 class="contact-details-header">
+    <?php
+      if ( function_exists( 'pll_current_language' ) ) {
+          $current_lang = pll_current_language();
+          if ( $current_lang === 'uk' ) {
+              echo esc_html__( 'Контактні дані', 'woocommerce' );
+          } elseif ( $current_lang === 'en' ) {
+              echo esc_html__( 'Contact Details', 'woocommerce' );
+          }
+      } else {
+          echo esc_html__( 'Contact Details', 'woocommerce' ); // Англійська версія за замовчуванням
+      }
+    ?>
+  </h3>
 
   <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
+  <!-- Поля форми для даних платника -->
   <div class="woocommerce-billing-fields__field-wrapper">
     <?php
-		$fields = $checkout->get_checkout_fields( 'billing' );
+    // Поля для даних платника
+    $fields = $checkout->get_checkout_fields( 'billing' );
 
-		foreach ( $fields as $key => $field ) {
-			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-		}
-		?>
-  </div>
+    foreach ( $fields as $key => $field ) {
+        // Відображення полів через функцію WooCommerce
+        woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+    }
+    ?>
+  </div>  
 
-  <div class="woo-custom-shipping-container">
-    <?php if ( WC()->cart->needs_shipping() ) : ?>
-    <p><?php the_field('shipping_choices', 'options'); ?></p>
-    <?php endif; ?>
-
-    <?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : 
-        do_action( 'woocommerce_review_order_before_shipping' );
-        wc_cart_totals_shipping_html();
-        do_action( 'woocommerce_review_order_after_shipping' );
-    endif; ?>
-  </div>
   <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
 
+<!-- Якщо користувач не авторизований і реєстрація активна -->
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 <div class="woocommerce-account-fields">
   <?php if ( ! $checkout->is_registration_required() ) : ?>

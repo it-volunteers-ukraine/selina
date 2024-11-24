@@ -371,3 +371,86 @@ function woocommerce_checkout_coupon_form_custom() {
 
     echo '</td></tr>';
 }
+
+// Add custom fields to billing
+add_filter( 'woocommerce_checkout_fields', 'customize_checkout_fields' );
+
+function customize_checkout_fields( $fields ) {
+    error_log('Зміна полів чекауту...');
+
+    // Видаляємо зайві поля
+    unset($fields['billing']['billing_company']); 
+    unset($fields['billing']['billing_address_1']);
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_city']);
+    unset($fields['billing']['billing_postcode']);
+    unset($fields['billing']['billing_country']);
+    unset($fields['billing']['billing_state']);
+
+    // Налаштовуємо потрібні поля
+    $fields['billing']['billing_first_name']['label'] = ''; 
+    $fields['billing']['billing_first_name']['placeholder'] = __( 'Ім’я*', 'text-domain' );
+    
+    $fields['billing']['billing_last_name']['label'] = ''; 
+    $fields['billing']['billing_last_name']['placeholder'] = __( 'Прізвище*', 'text-domain' );
+    
+    $fields['billing']['billing_phone']['label'] = ''; 
+    $fields['billing']['billing_phone']['placeholder'] = __( 'Номер телефону*', 'text-domain' );
+    
+    $fields['billing']['billing_email']['label'] = ''; 
+    $fields['billing']['billing_email']['placeholder'] = __( 'Email*', 'text-domain' );
+    
+    // Коментарі переміщуємо до секції 'order'
+    $fields['order']['order_comments']['label'] = ''; 
+    $fields['order']['order_comments']['placeholder'] = __( 'Коментар (не обов’язково)', 'text-domain' );
+
+    // Діагностика для перевірки завершення виконання функції
+    error_log('Поля змінено успішно');
+
+    // Додаємо обмеження для полів Ім'я, Прізвище, Телефон, Email
+    $fields['billing']['billing_first_name']['maxlength'] = 50;
+    $fields['billing']['billing_first_name']['minlength'] = 3;
+    
+    $fields['billing']['billing_last_name']['maxlength'] = 50;
+    $fields['billing']['billing_last_name']['minlength'] = 3;
+    
+    $fields['billing']['billing_phone']['maxlength'] = 50;
+    $fields['billing']['billing_phone']['minlength'] = 3;
+    
+    $fields['billing']['billing_email']['maxlength'] = 50;
+    $fields['billing']['billing_email']['minlength'] = 3;
+
+    // Для Коментарів додаємо обмеження
+    $fields['order']['order_comments']['maxlength'] = 300;
+    $fields['order']['order_comments']['minlength'] = 3;
+
+    return $fields;
+}
+
+echo '<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const deliveryOptions = document.querySelectorAll(".delivery-pickup, .delivery-nova-poshta");
+
+        deliveryOptions.forEach(option => {
+            option.addEventListener("click", function () {
+                deliveryOptions.forEach(opt => opt.classList.remove("selected"));
+                this.classList.add("selected");
+            });
+        });
+    });
+</script>';
+
+echo '<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const deliveryOptions = document.querySelectorAll(".payment-1, .payment-2, .payment-3, .payment-4");
+
+        deliveryOptions.forEach(option => {
+            option.addEventListener("click", function () {
+                deliveryOptions.forEach(opt => opt.classList.remove("selected"));
+                this.classList.add("selected");
+            });
+        });
+    });
+</script>';
+
+
