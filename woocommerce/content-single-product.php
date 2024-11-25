@@ -61,6 +61,10 @@ if ( post_password_required() ) {
 								</svg>
 							</a>
 						</div>
+						<?php else : ?>
+							<div class="swiper-slide">
+								<?php echo wc_placeholder_img( 'full' ); ?>
+							</div>
 					<?php endif; ?>
 
 					<?php if ( $attachment_ids && $product->get_image_id() ) : ?>
@@ -92,10 +96,10 @@ if ( post_password_required() ) {
 				<!-- <div class="swiper-pagination"></div> -->
 			</div>
 			<?php
-    if ( function_exists( 'woocommerce_template_single_sharing' ) ) {
-        woocommerce_template_single_sharing();
-    }
-?>
+				if ( function_exists( 'woocommerce_template_single_sharing' ) ) {
+					woocommerce_template_single_sharing();
+				}
+			?>
 		</div>
 
 		<div class="summary entry-summary">
