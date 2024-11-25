@@ -19,6 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
+$checkout = WC()->checkout();
+
 do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
@@ -29,6 +32,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 
+<!-- Checkout forma  -->
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
 	<?php if ( $checkout->get_checkout_fields() ) : ?>
@@ -48,28 +52,70 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
 	<?php endif; ?>
-	
-	<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-	
-	<div class="checkout-cart checkout-cart__wrapper">
-		<div class="checkout-cart__heading-edit-container">
-			<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
-			<a href='<?php echo wc_get_cart_url(); ?>'>Редагувати</a>
-		</div>
-		<div class="checkout-cart__column-naming">
-			<h5>Товар</h5>
-			<h5>Кількість</h5>
-			<h5>Сума</h5>
-		</div>
-		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-		<!-- div with items-list & payments-->
-		<div id="order_review" class="woocommerce-checkout-review-order">
-			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-		</div>
+<!-- Delivery -->
+	<div class="delivery-block">
+    <h3 class="delivery-title">
+        <?php
+        if ( function_exists( 'pll_current_language' ) ) {
+            $current_lang = pll_current_language();
+            if ( $current_lang === 'uk' ) {
+                echo esc_html__( 'Доставка', 'woocommerce' );
+            } elseif ( $current_lang === 'en' ) {
+                echo esc_html__( 'Delivery', 'woocommerce' );
+            }
+        } else {
+            echo esc_html__( 'Delivery', 'woocommerce' );
+        }
+        ?>
+    </h3>
 	</div>
-	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-
+	<div class="delivery-option">
+        <div class="delivery-pickup">
+            <p class="delivery-pickup-title"><?php esc_html_e( 'Самовивіз', 'woocommerce' ); ?></p>
+            <p class="delivery-pickup-text"><?php esc_html_e( 'м. Тернопіль, вул. Квітки Цісик, 43', 'woocommerce' ); ?></p>
+        </div>
+        <div class="delivery-nova-poshta">
+            <img src="<?php echo esc_url( get_template_directory_uri() . '/src/images/nova-poshta-logo.png' ); ?>" alt="Нова пошта">
+        </div>
+    </div>
+    <!-- Payment -->
+ <div class="payment-block">
+    <h3 class="payment-title">
+        <?php
+        if ( function_exists( 'pll_current_language' ) ) {
+            $current_lang = pll_current_language();
+            if ( $current_lang === 'uk' ) {
+                echo esc_html__( 'Оплата', 'woocommerce' );
+            } elseif ( $current_lang === 'en' ) {
+                echo esc_html__( 'Payment', 'woocommerce' );
+            }
+        } else {
+            echo esc_html__( 'Payment', 'woocommerce' );
+        }
+        ?>
+    </h3>
+	</div>
+	<div class="payment-option">        
+            <div class="payment-1">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/src/images/paypal-logo.png' ); ?>" alt="Нова пошта">
+            </div>
+            <div class="payment-2">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/src/images/paypal-logo.png' ); ?>" alt="Нова пошта">
+            </div>
+            <div class="payment-3">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/src/images/paypal-logo.png' ); ?>" alt="Нова пошта">
+            </div>
+            <div class="payment-4">
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/src/images/paypal-logo.png' ); ?>" alt="Нова пошта">
+            </div>
+        </div>
+        <!-- Checkout button -->
+        <div class="checkout-button">
+            <button class="checkout-button-title"><?php esc_html_e( 'Оформити', 'woocommerce' ); ?></button>
+        </div> 
+    </div>       
+</div>
 </form>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
