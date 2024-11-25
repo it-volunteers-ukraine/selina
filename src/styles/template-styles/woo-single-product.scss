@@ -45,6 +45,10 @@ h1 {
     }
 }
 
+.entry-summary .out-of-stock {
+    display: none;
+}
+
 .woocommerce-product-details__short-description {
     font-weight: 500;
     font-size: 16px;
@@ -163,7 +167,7 @@ h1 {
     }
     @media screen and (min-width: $desktop) {
         gap: 40px;
-        margin-bottom: 80px;
+        margin-bottom: 0;
     }
     .in-stock {
         display: none;
