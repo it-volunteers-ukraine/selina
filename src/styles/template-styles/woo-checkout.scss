@@ -7,7 +7,6 @@
     }
     &__wrapper {
         padding-top: 32px;
-        border: 1px solid red;
         @media screen and (min-width: $desktop) {
             width: 472px;
             padding-top: 0;
@@ -41,16 +40,18 @@
         @media screen and (min-width: $desktop) {
             display: none;
         }
+        &__qty {
+            margin-left: 120px;
+        }
     }
     &__item {
         display: grid;
-        grid-template-columns: 124px 1fr;
+        grid-template-columns: 124px 215px;
         grid-template-rows: repeat(3, auto);
         font-size: 16px;
         font-weight: 500;
         line-height: 21px;
         margin-bottom: 16px;
-        width: 100%;
         @media screen and (min-width: $tablet) {
             grid-template-columns: repeat(4, auto);
             grid-template-rows: 1fr;
@@ -77,6 +78,7 @@
     }
     &__product-name {
         grid-area: 1 / 2 / 2 / 3;
+        width: 100%;
         @media screen and (min-width: $tablet) {
             grid-area: 1 / 2 / 1 / 2;
             width: 264px;
@@ -92,6 +94,9 @@
         @media screen and (min-width: $tablet) {
             grid-area: 1 / 3 / 1 / 3;
             text-align: left;
+            width: 150px;
+            display: flex;
+            flex-direction: column;
         }
         @media screen and (min-width: $desktop) {
             grid-area: 2 / 2 / 3 / 3;
@@ -99,6 +104,7 @@
             font-weight: 700;
             color: $black;
             padding-bottom: 12px;
+            display: block;
         }
     }
     &__product-total {
@@ -126,6 +132,7 @@ body > section > div > div > form.checkout.woocommerce-checkout {
     @media screen and (min-width: $desktop) {
         display: flex;
         justify-content: space-between;
+        flex-direction: column;
     }
 }
 
@@ -200,6 +207,35 @@ tfoot .order-total {
     display: none;
 }
 
+.woocommerce-checkout-review-order-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+tfoot .cart-subtotal th,
+tfoot .order-total th {
+    width: 50%;
+    text-align: left;
+    white-space: nowrap;
+}
+
+tfoot .cart-subtotal td,
+tfoot .order-total td {
+    text-align: right;
+}
+
+#form-cart-container {
+    @media screen and (min-width: $desktop) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+#customer_details {
+    @media screen and (min-width: $desktop) {
+        width: 616px;
+    }
+}
 
 /* form-checkout title */
 
@@ -580,5 +616,6 @@ textarea:focus {
 
 .checkout-button-title {
     font-size: 24px;
-    font-weight: bold;}
+    font-weight: bold;
+}
 
