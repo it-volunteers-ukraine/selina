@@ -200,6 +200,23 @@ tfoot .order-total {
     display: none;
 }
 
+.woocommerce-checkout-review-order-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+tfoot .cart-subtotal th,
+tfoot .order-total th {
+    width: 50%;
+    text-align: left;
+    white-space: nowrap;
+}
+
+tfoot .cart-subtotal td,
+tfoot .order-total td {
+    text-align: right;
+}
+
 
 /* form-checkout title */
 
