@@ -26,7 +26,17 @@ do_action( 'woocommerce_cart_is_empty' );
 
 if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
 	<p class="return-to-shop">
-		<a class="button wc-backward<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
+		<a class="button wc-backward<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" 
+		href="<?php 
+               // Get the ID of the shop page
+               $shop_page_id = wc_get_page_id( 'shop' );
+
+               // Get the translated shop page ID for the current language
+               $translated_shop_page_id = pll_get_post( $shop_page_id );
+
+               // Get the translated shop page URL
+               echo esc_url( get_permalink( $translated_shop_page_id ) );
+           ?>">
 			<?php
 				/**
 				 * Filter "Return To Shop" text.
