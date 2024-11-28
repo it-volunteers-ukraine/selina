@@ -448,30 +448,16 @@ function customize_checkout_fields( $fields ) {
     return $fields;
 }
 
-echo '<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const deliveryOptions = document.querySelectorAll(".delivery-pickup, .delivery-nova-poshta");
+add_action( 'woocommerce_after_checkout_form', 'add_custom_checkout_button' );
 
-        deliveryOptions.forEach(option => {
-            option.addEventListener("click", function () {
-                deliveryOptions.forEach(opt => opt.classList.remove("selected"));
-                this.classList.add("selected");
-            });
-        });
-    });
-</script>';
-
-echo '<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const deliveryOptions = document.querySelectorAll(".payment-1, .payment-2, .payment-3, .payment-4");
-
-        deliveryOptions.forEach(option => {
-            option.addEventListener("click", function () {
-                deliveryOptions.forEach(opt => opt.classList.remove("selected"));
-                this.classList.add("selected");
-            });
-        });
-    });
-</script>';
-
-
+function add_custom_checkout_button() {
+    ?>
+    <div class="delivery-option">        
+        <div class="checkout-button">
+            <button class="checkout-button-title">
+                <?php esc_html_e( 'Оформити', 'woocommerce' ); ?>
+            </button>
+        </div> 
+    </div>
+    <?php
+}
