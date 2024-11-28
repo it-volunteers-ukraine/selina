@@ -21,6 +21,16 @@ jQuery(document).ready(function($){
         updateCartCount();
     });
 
+     // Prevent input of 0 in quantity field
+     $(document).on('input', '.qty', function() {
+        let input = $(this);
+        let value = parseInt(input.val());
+
+        if (value <= 0 || isNaN(value)) {
+            input.val(1).change();
+        }
+    });
+
     // Update cart by click on buttons + and -
     let timeout;
 

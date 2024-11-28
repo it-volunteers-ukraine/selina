@@ -101,3 +101,20 @@ if (window.innerWidth < 1439 && numberOfRelatedProducts > 4) {
 } else if (window.innerWidth >= 1439 && numberOfRelatedProducts > 3) {
     setupProductDisplay(3, 3);
 }
+
+document.getElementById('shareButton').addEventListener('click', async () => {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: 'Product',
+                text: 'selina product',
+                url: window.location.href
+            });
+            console.log('ok');
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    } else {
+        alert('Web Share API не підтримується на вашому пристрої.');
+    }
+});
