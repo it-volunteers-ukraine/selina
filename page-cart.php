@@ -20,6 +20,11 @@
                     </a>
                 <?php endif; ?> -->
                 <?php if ( ! WC()->cart->is_empty() ) : ?>
+                    <a href="<?php  echo esc_url( pll_current_language() === 'en' ? site_url( '/en/shop' ) : get_permalink( wc_get_page_id( 'shop' ) ) ); ?>">
+                    <?php echo esc_html( get_field( 'continue_shopping', get_the_ID() ) ); ?>
+                    </a>
+                <?php endif; ?>
+                <!-- <?php if ( ! WC()->cart->is_empty() ) : ?>
                     <?php 
                         // Get the ID of the shop page
                         $shop_page_id = wc_get_page_id( 'shop' );
@@ -33,7 +38,7 @@
                     <a href="<?php echo esc_url( $shop_url ); ?>">
                         <?php echo esc_html( get_field( 'continue_shopping', get_the_ID() ) ); ?>
                     </a>
-                <?php endif; ?>
+                <?php endif; ?> -->
 
             </div>
             
