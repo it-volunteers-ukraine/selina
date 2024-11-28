@@ -53,6 +53,27 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
         <?php endif; ?>
 
+        <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+
+        <div class="checkout-cart checkout-cart__wrapper">
+            <div class="checkout-cart__heading-edit-container">
+                <h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
+                <a href='<?php echo wc_get_cart_url(); ?>'>Редагувати</a>
+            </div>
+            <div class="checkout-cart__column-naming">
+                <h5>Товар</h5>
+                <h5 class="checkout-cart__column-naming__qty">Кількість</h5>
+                <h5>Сума</h5>
+            </div>
+            <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+
+            <!-- div with items-list & payments-->
+            <div id="order_review" class="woocommerce-checkout-review-order">
+                <?php do_action( 'woocommerce_checkout_order_review' ); ?>
+            </div>
+        </div>
+    </div>
+
 <!-- Checkout button -->
           <div class="delivery-option">
             <div class="checkout-button">
