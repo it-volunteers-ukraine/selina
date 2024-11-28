@@ -350,17 +350,13 @@ body>section>div>div>form.checkout.woocommerce-checkout {
 .woocommerce-billing-fields__field-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    /* Одно стовпець для мобільних пристроїв */
     gap: 24px;
-    /* Відступи між елементами */
     margin: 0 auto;
     padding: 0;
     max-width: 100%;
 
-    /* Медіа-запит для планшетів */
     @media (min-width: $tablet) {
         grid-template-columns: 1fr 1fr;
-        /* Два стовпці для планшетів і більших екранів */
     }
 
     @media (min-width: $desktop) {
