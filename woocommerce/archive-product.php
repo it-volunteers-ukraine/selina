@@ -77,5 +77,6 @@ if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) : 
     </div>
     </div>
     </section>
+    <?php get_template_part('template-parts/join-us'); ?>
         </main>
 <?php get_footer( 'shop' ); ?>

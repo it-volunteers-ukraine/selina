@@ -143,6 +143,14 @@
 
 .shop-grid {
   padding: 0;
+  margin-bottom: 32px;
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 56px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 80px;
+  }
+
   &__products {
     ul {
       display: grid;
