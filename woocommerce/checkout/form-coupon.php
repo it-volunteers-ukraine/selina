@@ -35,9 +35,9 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 		<input type="text" name="coupon_code" class="enter-code input-text" placeholder="<?php esc_attr_e( 'Введіть код % ', 'woocommerce' ); ?>" id="coupon_code" value="" />
 	</p>
 
-	<p class="form-row form-row-last">
+	<div class="form-row form-row-last">
 		<button type="submit" class="red_medium_button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Застосувати', 'woocommerce' ); ?></button>
-	</p>
+	</div>
 
 	<div class="clear"></div>
 </form>

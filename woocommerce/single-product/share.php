@@ -50,7 +50,7 @@ $product_title = get_the_title( $product->get_id() );
 		
 		<!-- Pinterest -->
 		<a href="https://pinterest.com/pin/create/button/?url=<?php echo urlencode( $product_url ); ?>&media=<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>&description=<?php echo rawurlencode( $product_title ); ?>" target="_blank" class="share-btn pinterest">
-			<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest" width="32" height="32">
+			<img id="pinterest-icon" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest" width="32" height="32">
 		</a>
 
 		<!-- Telegram -->
@@ -60,7 +60,7 @@ $product_title = get_the_title( $product->get_id() );
 
 		<!-- WhatsApp -->
 		<a href="https://wa.me/?text=<?php echo urlencode( $product_title . ' ' . $product_url ); ?>" target="_blank" class="share-btn whatsapp">
-			<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="32" height="32">
+			<img id="whatsapp-icon" src="https://img.icons8.com/?size=100&id=85088&format=png&color=40C057" alt="WhatsApp" width="40" height="40">
 		</a>
 	</div>
 </div>
