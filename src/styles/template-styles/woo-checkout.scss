@@ -239,6 +239,10 @@ tfoot .order-total td {
 
 /* form-checkout title */
 
+.woocommerce-billing-fields h3 {
+    display: none;
+}
+
 .woocommerce-billing-title {
     margin: 0 0 16px;
     padding: 0;
@@ -246,9 +250,9 @@ tfoot .order-total td {
     box-sizing: border-box;
     width: 100%;
     font-size: 26px;
-    color: #121212;
     text-align: justify;
     padding: 0;
+    color: #121212;
     
 
     @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -264,8 +268,21 @@ tfoot .order-total td {
     }
 }
 
+body>section>div>div>form.checkout.woocommerce-checkout {
+    display: block;
+}
+
+.col-1 {
+    width: 100%;
+
+    @media screen and (min-width: 1024px) {
+        width: 616px;
+    }    
+}
+
 /* header for Contact details form */
 .contact-details-header {
+    display: block;
     margin: 0 0 20px;
     text-align: left;
     font-size: 26px;
@@ -278,6 +295,7 @@ tfoot .order-total td {
     }
 
     @media screen and (min-width: 1024px) {
+        display: block;
         margin: 0 0 20px;        
         font-size: 30px;
         color: #070707;
@@ -292,27 +310,31 @@ tfoot .order-total td {
     display: none;
 }
 
-/* General styles */
-input[type="text"],
-input[type="email"],
-input[type="tel"] {
+
+/* General styles Checkout form*/
+.custom-first-name,
+.custom-last-name,
+.custom-phone,
+.custom-email {
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 48px;
+    padding-left: 14px;
+    padding-right: 10px;
     border-radius: 10px;
     border: 1px solid #eff8f9;
-    background-color: #eff8f9;
-    padding-left: 14px;
+    background-color: #eff8f9;    
     font-size: 16px;
     resize: none;
     color: #045C6F;
 
     @media screen and (min-width: 1024px) {
         width: 616px;
-    }
-    
+    }    
 }
 
-textarea {
+.custom-order-comments {
     width: 100%;
     height: 140px;
     border-radius: 10px;
@@ -330,28 +352,28 @@ textarea {
     }
 }
 
-/* Placeholder style*/
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="tel"]::placeholder{
+.custom-first-name::placeholder,
+.custom-last-name::placeholder,
+.custom-phone::placeholder,
+.custom-email::placeholder {
     color: #045C6F;
     opacity: 1;
     width: 100%;
     height: 48px;
 }
 
-textarea::placeholder {
+.custom-order-comments::placeholder {
     color: #045C6F;
     opacity: 1;
     width: 100%;
     height: 140px;    
 }
 
-/* Styling for fields in focus */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-textarea:focus {
+.custom-first-name:focus,
+.custom-last-name:focus,
+.custom-phone:focus,
+.custom-email:focus,
+.custom-order-comments:focus {
     border-color: #0071a1;
     box-shadow: 0 0 5px rgba(0, 113, 161, 0.5);
     outline: none;
@@ -362,18 +384,25 @@ textarea:focus {
 }
 
 .woocommerce-billing-fields__field-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 24px;
     margin: 0 auto;
     padding: 0;
-    max-width: 100%;    
+    max-width: 100%;
+
+    @media (min-width: $tablet) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: $desktop) {
+        grid-template-columns: 1fr;
+    }
 }
 
-#billing_first_name_field,
-#billing_last_name_field,
-#billing_phone_field,
-#billing_email_field {
+.form-row.form-row-first,
+.form-row.form-row-last,
+.form-row.form-row-wide {
     width: 100%;
     box-sizing: border-box;
 
@@ -383,11 +412,46 @@ textarea:focus {
     }
 }
 
-#order_comments_field {
+#billing_first_name_field,
+#billing_last_name_field,
+#billing_phone_field, 
+#billing_email_field,
+#order_comments {
+    text-align: start;
     width: 100%;
-    margin-bottom: 24px;
-    box-sizing: border-box;
+
 }
+
+#billing_first.input-text::placeholder,
+#billing_last_name.input-text::placeholder,
+#billing_phone.input-text::placeholder,
+#billing_email.input-text::placeholder,
+#order_comments.input-text::placeholder {
+    color: #045C6F;    
+}
+
+#billing_first.input-text,
+#billing_last_name.input-text,
+#billing_phone.input-text,
+#billing_email.input-text,
+#order_comments.input-text {
+    width: 100%;
+    padding-right: 10px;
+}
+
+#order_comments.input-text {
+    padding-right: 10px;
+    width: 100%;
+    resize: none;
+}
+
+.woocommerce-input-wrapper {
+    width: 100%;
+}
+
+
+
+/* Delivery block */
 
 .delivery-title {
     padding-top: 32px;
@@ -505,7 +569,7 @@ textarea:focus {
     outline: none;
 }
 
-
+/* Payment block */
 .payment-block {
     margin-left: 16px;
 
@@ -587,7 +651,9 @@ textarea:focus {
 .payment-4 img { 
     width: 76.06px;
     height: 72px;
-} 
+}
+
+/* Last Button */
 
 .checkout-button {
     display: flex;

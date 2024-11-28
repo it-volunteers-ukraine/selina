@@ -372,13 +372,35 @@ function woocommerce_checkout_coupon_form_custom() {
     echo '</td></tr>';
 }
 
-// Add custom fields to billing
+// Checkout page - custom fields to billing
+add_action( 'woocommerce_before_checkout_form', 'custom_checkout_page_title', 5 );
+
+function custom_checkout_page_title() {
+    if ( is_checkout() && ! is_order_received_page() ) {
+        $title = ( is_language_uk() ) ? 'Оформлення замовлення' : 'Checkout';
+        echo '<h2 class="woocommerce-billing-title">' . esc_html( $title ) . '</h2>';
+    }
+}
+
+function is_language_uk() {
+    return get_locale() === 'uk';
+}
+
+add_filter( 'woocommerce_checkout_fields', 'customize_checkout_section_titles' );
+
+function customize_checkout_section_titles( $fields ) {
+    $title = ( is_language_uk() ) ? 'Контактні дані' : 'Contact Information';
+    
+    echo '<h3 class="contact-details-header">' . esc_html( $title ) . '</h3>';
+
+    return $fields;
+}
+
+
 add_filter( 'woocommerce_checkout_fields', 'customize_checkout_fields' );
 
 function customize_checkout_fields( $fields ) {
-    error_log('Зміна полів чекауту...');
 
-    // Видаляємо зайві поля
     unset($fields['billing']['billing_company']); 
     unset($fields['billing']['billing_address_1']);
     unset($fields['billing']['billing_address_2']);
@@ -387,27 +409,27 @@ function customize_checkout_fields( $fields ) {
     unset($fields['billing']['billing_country']);
     unset($fields['billing']['billing_state']);
 
-    // Налаштовуємо потрібні поля
     $fields['billing']['billing_first_name']['label'] = ''; 
     $fields['billing']['billing_first_name']['placeholder'] = __( 'Ім’я*', 'text-domain' );
+    $fields['billing']['billing_first_name']['class'][] = 'custom-first-name';
     
     $fields['billing']['billing_last_name']['label'] = ''; 
     $fields['billing']['billing_last_name']['placeholder'] = __( 'Прізвище*', 'text-domain' );
+    $fields['billing']['billing_last_name']['class'][] = 'custom-last-name'; 
     
     $fields['billing']['billing_phone']['label'] = ''; 
     $fields['billing']['billing_phone']['placeholder'] = __( 'Номер телефону*', 'text-domain' );
+    $fields['billing']['billing_phone']['class'][] = 'custom-phone';
     
     $fields['billing']['billing_email']['label'] = ''; 
     $fields['billing']['billing_email']['placeholder'] = __( 'Email*', 'text-domain' );
-    
-    // Коментарі переміщуємо до секції 'order'
+    $fields['billing']['billing_email']['class'][] = 'custom-email';
     $fields['order']['order_comments']['label'] = ''; 
     $fields['order']['order_comments']['placeholder'] = __( 'Коментар (не обов’язково)', 'text-domain' );
+    $fields['order']['order_comments']['class'][] = 'custom-order-comments';
 
-    // Діагностика для перевірки завершення виконання функції
     error_log('Поля змінено успішно');
 
-    // Додаємо обмеження для полів Ім'я, Прізвище, Телефон, Email
     $fields['billing']['billing_first_name']['maxlength'] = 50;
     $fields['billing']['billing_first_name']['minlength'] = 3;
     
@@ -417,10 +439,9 @@ function customize_checkout_fields( $fields ) {
     $fields['billing']['billing_phone']['maxlength'] = 50;
     $fields['billing']['billing_phone']['minlength'] = 3;
     
-    $fields['billing']['billing_email']['maxlength'] = 50;
+    $fields['billing']['billing_email']['maxlength'] = 100;
     $fields['billing']['billing_email']['minlength'] = 3;
 
-    // Для Коментарів додаємо обмеження
     $fields['order']['order_comments']['maxlength'] = 300;
     $fields['order']['order_comments']['minlength'] = 3;
 
