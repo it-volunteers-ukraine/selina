@@ -449,7 +449,6 @@ function customize_checkout_fields( $fields ) {
 }
 
 add_action( 'woocommerce_after_checkout_form', 'add_custom_checkout_button' );
-
 function add_custom_checkout_button() {
     ?>
     <div class="delivery-option">        
