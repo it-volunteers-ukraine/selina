@@ -448,5 +448,15 @@ function customize_checkout_fields( $fields ) {
     return $fields;
 }
 
-
-
+add_action( 'woocommerce_after_checkout_form', 'add_custom_checkout_button' );
+function add_custom_checkout_button() {
+    ?>
+    <div class="delivery-option">        
+        <div class="checkout-button">
+            <button class="checkout-button-title">
+                <?php esc_html_e( 'Оформити', 'woocommerce' ); ?>
+            </button>
+        </div> 
+    </div>
+    <?php
+}

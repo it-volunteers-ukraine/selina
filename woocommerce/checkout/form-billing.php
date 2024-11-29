@@ -20,49 +20,33 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce-billing-fields">
   <?php if ( WC()->cart->needs_shipping() ) : ?>
-  
+
+    
+    <?php
+      $current_lang = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
+
+      $order_checkout_title = $current_lang === 'uk' ? 'Оформлення замовлення' : 'Order Checkout';
+
+      $contact_details_title = $current_lang === 'uk' ? 'Контактні дані' : 'Contact Details';
+    ?>
+
     <h3 class="woocommerce-billing-title">
-      <?php
-        if ( function_exists( 'pll_current_language' ) ) {
-            $current_lang = pll_current_language();
-            if ( $current_lang === 'uk' ) {
-                echo esc_html__( 'Оформлення замовлення', 'woocommerce' );
-            } elseif ( $current_lang === 'en' ) {
-                echo esc_html__( 'Order Checkout', 'woocommerce' );
-            }
-        } else {
-            echo esc_html__( 'Order Checkout', 'woocommerce' ); // Англійська версія за замовчуванням
-        }
-      ?>
+      <?php echo esc_html__( $order_checkout_title, 'woocommerce' ); ?>
+    </h3>
+
+    <h3 class="contact-details-header">
+      <?php echo esc_html__( $contact_details_title, 'woocommerce' ); ?>
     </h3>
   <?php endif; ?>
 
-<!-- Заголовок для контактних даних -->
-  <h3 class="contact-details-header">
-    <?php
-      if ( function_exists( 'pll_current_language' ) ) {
-          $current_lang = pll_current_language();
-          if ( $current_lang === 'uk' ) {
-              echo esc_html__( 'Контактні дані', 'woocommerce' );
-          } elseif ( $current_lang === 'en' ) {
-              echo esc_html__( 'Contact Details', 'woocommerce' );
-          }
-      } else {
-          echo esc_html__( 'Contact Details', 'woocommerce' ); // Англійська версія за замовчуванням
-      }
-    ?>
-  </h3>
-
   <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
-  <!-- Поля форми для даних платника -->
+  <!-- Form fields for payer data -->
   <div class="woocommerce-billing-fields__field-wrapper">
     <?php
-    // Поля для даних платника
     $fields = $checkout->get_checkout_fields( 'billing' );
 
     foreach ( $fields as $key => $field ) {
-        // Відображення полів через функцію WooCommerce
         woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
     }
     ?>
@@ -71,7 +55,7 @@ defined( 'ABSPATH' ) || exit;
   <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
 
-<!-- Якщо користувач не авторизований і реєстрація активна -->
+<!-- If the user is not authorized and registration is active -->
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 <div class="woocommerce-account-fields">
   <?php if ( ! $checkout->is_registration_required() ) : ?>
