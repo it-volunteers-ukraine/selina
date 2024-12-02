@@ -56,14 +56,57 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
         <div class="checkout-cart checkout-cart__wrapper">
+            <?php
+                $shop_language = pll_current_language();
+            ?>
             <div class="checkout-cart__heading-edit-container">
-                <h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
-                <a href='<?php echo wc_get_cart_url(); ?>'>Редагувати</a>
+                <h3 id="order_review_heading">
+                    <?php
+                        if ($shop_language == 'en') {
+                            esc_html_e( 'Your order', 'woocommerce' );
+                        } else {
+                            esc_html_e( 'Кошик', 'woocommerce' );
+                        };
+                    ?>
+                </h3>
+                <a href='<?php echo wc_get_cart_url(); ?>'>
+                    <?php
+                        if ($shop_language == 'en') {
+                            esc_html_e( 'Edit', 'woocommerce' );
+                        } else {
+                            esc_html_e( 'Редагувати', 'woocommerce' );
+                        };
+                    ?>
+                </a>
             </div>
             <div class="checkout-cart__column-naming">
-                <h5>Товар</h5>
-                <h5 class="checkout-cart__column-naming__qty">Кількість</h5>
-                <h5>Сума</h5>
+                <h5>
+                    <?php
+                        if ($shop_language == 'en') {
+                            esc_html_e( 'Item', 'woocommerce' );
+                        } else {
+                            esc_html_e( 'Товар', 'woocommerce' );
+                        };
+                    ?>
+                </h5>
+                <h5 class="checkout-cart__column-naming__qty">
+                    <?php
+                        if ($shop_language == 'en') {
+                            esc_html_e( 'Quantity', 'woocommerce' );
+                        } else {
+                            esc_html_e( 'Кількість', 'woocommerce' );
+                        };
+                    ?>
+                </h5>
+                <h5>
+                    <?php
+                        if ($shop_language == 'en') {
+                            esc_html_e( 'Amount', 'woocommerce' );
+                        } else {
+                            esc_html_e( 'Сума', 'woocommerce' );
+                        };
+                    ?>
+                </h5>
             </div>
             <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
