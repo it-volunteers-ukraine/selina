@@ -69,12 +69,14 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         };
                     ?>
                 </h3>
-                <a href='<?php echo wc_get_cart_url(); ?>'>
+                
                     <?php
                         if ($shop_language == 'en') {
-                            esc_html_e( 'Edit', 'woocommerce' );
+                            ?>
+                            <a href='<?php echo pll_home_url( 'en' ) . 'cart-2/'; ?>'><?php esc_html_e( 'Edit', 'woocommerce' );
                         } else {
-                            esc_html_e( 'Редагувати', 'woocommerce' );
+                            ?>
+                            <a href='<?php echo wc_get_cart_url(); ?>'><?php esc_html_e( 'Редагувати', 'woocommerce' );
                         };
                     ?>
                 </a>
