@@ -53,7 +53,7 @@ defined( 'ABSPATH' ) || exit;
 	<tfoot>
 
 		<tr class="cart-subtotal">
-			<th><?php esc_html_e( 'Сума:', 'woocommerce' ); ?></th>
+			<th><?php echo pll_current_language() === 'en' ? 'Total:' : 'Сума:'; ?></th>
 			<td><?php wc_cart_totals_subtotal_html(); ?></td>
 		</tr>
 
@@ -106,7 +106,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 		<tr class="order-total">
-			<th><?php esc_html_e( 'До сплати:', 'woocommerce' ); ?></th>
+			<th><?php echo pll_current_language() === 'en' ? 'Total Due:' : 'До сплати:'; ?></th>
 			<td><?php wc_cart_totals_order_total_html(); ?></td>
 		</tr>
 

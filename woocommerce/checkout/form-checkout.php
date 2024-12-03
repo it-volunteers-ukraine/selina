@@ -69,7 +69,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                         };
                     ?>
                 </h3>
-                
                     <?php
                         if ($shop_language == 'en') {
                             ?>
