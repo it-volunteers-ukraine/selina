@@ -383,7 +383,11 @@ function custom_checkout_page_title() {
 }
 
 function is_language_uk() {
-    return get_locale() === 'uk';
+    if ( function_exists( 'pll_current_language' ) ) {
+        return pll_current_language() === 'uk';
+    }
+
+    return strpos( get_locale(), 'uk' ) !== false;
 }
 
 add_filter( 'woocommerce_checkout_fields', 'customize_checkout_section_titles' );
@@ -391,7 +395,9 @@ add_filter( 'woocommerce_checkout_fields', 'customize_checkout_section_titles' )
 function customize_checkout_section_titles( $fields ) {
     $title = ( is_language_uk() ) ? 'Контактні дані' : 'Contact Information';
     
-    echo '<h3 class="contact-details-header">' . esc_html( $title ) . '</h3>';
+    if ( isset( $fields['billing'] ) ) {
+        $fields['billing']['billing_first_name']['label'] = $title;
+    }
 
     return $fields;
 }
@@ -465,37 +471,74 @@ function add_custom_checkout_button() {
 
 add_filter( 'woocommerce_checkout_required_field_notice', 'remove_billing_from_required_field_notice', 10, 2 );
 
-function translate_required_field_notice( $notice, $field_label ) {
-    $current_lang = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
+function translate_and_clean_required_field_notice( $notice, $field_label ) {
+    $shop_language = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
 
-    if ( $current_lang === 'uk' ) {
+    $notice = str_replace('Billing ', '', $notice);
+
+    if ( $shop_language === 'uk' ) {
         $translations = [
-            'Ім’я* is a required field.' => 'Ім’я* є обов’язковим полем.',
-            'Прізвище* is a required field.' => 'Прізвище* є обов’язковим полем.',
-            'Номер телефону* is a required field.' => 'Номер телефону* є обов’язковим полем.',
-            'Email* is a required field.' => 'Email* є обов’язковим полем.',
+            __( 'Ім’я* is a required field.', 'woocommerce' ) => __( 'Ім’я* є обов’язковим полем.', 'woocommerce' ),
+            __( 'Прізвище* is a required field.', 'woocommerce' ) => __( 'Прізвище* є обов’язковим полем.', 'woocommerce' ),
+            __( 'Номер телефону* is a required field.', 'woocommerce' ) => __( 'Номер телефону* є обов’язковим полем.', 'woocommerce' ),
+            __( 'Email* is a required field.', 'woocommerce' ) => __( 'Email* є обов’язковим полем.', 'woocommerce' ),
         ];
     } else {
         $translations = [
-            'Ім’я* is a required field.' => 'First name* is a required field.',
-            'Прізвище* is a required field.' => 'Last name* is a required field.',
-            'Номер телефону* is a required field.' => 'Phone number* is a required field.',
-            'Email* is a required field.' => 'Email* is a required field.',
+            __( 'Ім’я* is a required field.', 'woocommerce' ) => __( 'First name* is a required field.', 'woocommerce' ),
+            __( 'Прізвище* is a required field.', 'woocommerce' ) => __( 'Last name* is a required field.', 'woocommerce' ),
+            __( 'Номер телефону* is a required field.', 'woocommerce' ) => __( 'Phone number* is a required field.', 'woocommerce' ),
+            __( 'Email* is a required field.', 'woocommerce' ) => __( 'Email* is a required field.', 'woocommerce' ),
         ];
     }
 
     return $translations[$notice] ?? $notice;
 }
 
-add_filter( 'woocommerce_error', 'remove_unwanted_checkout_errors', 10, 2 );
+add_filter( 'woocommerce_add_error', 'filter_woocommerce_errors', 10, 1 );
 
-function remove_unwanted_checkout_errors( $error ) {
-    if ( strpos( $error, 'Please enter an address to continue.' ) !== false ) {
-        return '';
-    }
-    if ( strpos( $error, 'Invalid payment method.' ) !== false ) {
-        return '';
+function filter_woocommerce_errors( $error ) {
+    $errors_to_hide = [
+        __( 'Please enter an address to continue.', 'woocommerce' ),
+        __( 'Invalid payment method.', 'woocommerce' ),
+        __( 'Будь ласка, введіть адресу для продовження.', 'woocommerce' ),
+        __( 'Невірний спосіб оплати.', 'woocommerce' ),
+    ];
+
+    foreach ( $errors_to_hide as $hidden_error ) {
+        if ( strpos( $error, $hidden_error ) !== false ) {
+            return '';
+        }
     }
 
     return $error;
 }
+
+add_action( 'woocommerce_after_checkout_validation', 'restore_required_field_errors', 10, 2 );
+
+function restore_required_field_errors( $data, $errors ) {
+    $shop_language = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
+
+    if ( $shop_language === 'uk' ) {
+        $required_fields = [
+            'billing_first_name' => 'Ім’я*',
+            'billing_last_name'  => 'Прізвище*',
+            'billing_phone'      => 'Номер телефону*',
+            'billing_email'      => 'Email*',
+        ];
+    } else {
+        $required_fields = [
+            'billing_first_name' => 'First Name*',
+            'billing_last_name'  => 'Last Name*',
+            'billing_phone'      => 'Phone Number*',
+            'billing_email'      => 'Email*',
+        ];
+    }
+
+    foreach ( $required_fields as $field => $label ) {
+        if ( empty( $data[ $field ] ) ) {
+            $errors->add( 'required-field', sprintf( __( '%s is a required field.', 'woocommerce' ), $label ) );
+        }
+    }
+}
+
