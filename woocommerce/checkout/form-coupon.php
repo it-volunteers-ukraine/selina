@@ -32,11 +32,15 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 
 	<p class="form-row form-row-first">
 		<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
-		<input type="text" name="coupon_code" class="enter-code input-text" placeholder="<?php esc_attr_e( 'Введіть код % ', 'woocommerce' ); ?>" id="coupon_code" value="" />
+		<input type="text" name="coupon_code" class="enter-code input-text" placeholder="<?php echo pll_current_language() === 'en' ? esc_attr_e( 'Enter code %', 'woocommerce' ) : esc_attr_e( 'Введіть код %', 'woocommerce' ); ?>" id="coupon_code" value="" />
 	</p>
 
 	<div class="form-row form-row-last">
-		<button type="submit" class="red_medium_button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Застосувати', 'woocommerce' ); ?></button>
+		<button type="submit" class="red_medium_button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" 
+			name="apply_coupon" 
+			value="<?php echo esc_attr( pll_current_language() === 'en' ? 'Apply' : 'Застосувати' ); ?>">
+			<?php echo esc_html( pll_current_language() === 'en' ? 'Apply' : 'Застосувати' ); ?>
+		</button>
 	</div>
 
 	<div class="clear"></div>

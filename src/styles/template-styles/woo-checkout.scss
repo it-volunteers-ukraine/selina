@@ -9,6 +9,7 @@
         padding-top: 32px;
         @media screen and (min-width: $desktop) {
             width: 472px;
+            border-radius: 10px;
             padding-top: 0;
             background-color: $light-green;
             padding: 32px;
@@ -120,6 +121,7 @@
             font-size: 20px;
             font-weight: 800;
             padding-bottom: 12px;
+            width: 100px;
         }
     }
 }
@@ -165,6 +167,7 @@ body > section > div > div > form.checkout.woocommerce-checkout {
 
 .form-row.form-row-first .enter-code {
     color: $primary-color;
+    background: $white;
     font-size: 16px;
     font-weight: 500;
     line-height: 21px;
@@ -173,7 +176,9 @@ body > section > div > div > form.checkout.woocommerce-checkout {
     border-radius: 10px;
     height: 44px;
     padding: 11.5px 16px;
-    
+    @media screen and (min-width: $desktop) {
+        width: 252px;
+    }
 }
 
 .form-row.form-row-first .input-text::placeholder{
@@ -194,6 +199,9 @@ body > section > div > div > form.checkout.woocommerce-checkout {
     width: 100%;
     margin-left: 16px;
     height: 44px;
+    @media screen and (min-width: $desktop) {
+        width: 140px;
+    }
 }
 
 tfoot .order-total {
@@ -235,6 +243,14 @@ tfoot .order-total td {
     @media screen and (min-width: $desktop) {
         width: 616px;
     }
+}
+
+.form-row.place-order {
+    display: none;
+}
+
+#payment {
+    display: none;
 }
 
 /* form-checkout title */
