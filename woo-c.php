@@ -460,3 +460,42 @@ function add_custom_checkout_button() {
     </div>
     <?php
 }
+
+// Error for Checkout page
+
+add_filter( 'woocommerce_checkout_required_field_notice', 'remove_billing_from_required_field_notice', 10, 2 );
+
+function translate_required_field_notice( $notice, $field_label ) {
+    $current_lang = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
+
+    if ( $current_lang === 'uk' ) {
+        $translations = [
+            'Ім’я* is a required field.' => 'Ім’я* є обов’язковим полем.',
+            'Прізвище* is a required field.' => 'Прізвище* є обов’язковим полем.',
+            'Номер телефону* is a required field.' => 'Номер телефону* є обов’язковим полем.',
+            'Email* is a required field.' => 'Email* є обов’язковим полем.',
+        ];
+    } else {
+        $translations = [
+            'Ім’я* is a required field.' => 'First name* is a required field.',
+            'Прізвище* is a required field.' => 'Last name* is a required field.',
+            'Номер телефону* is a required field.' => 'Phone number* is a required field.',
+            'Email* is a required field.' => 'Email* is a required field.',
+        ];
+    }
+
+    return $translations[$notice] ?? $notice;
+}
+
+add_filter( 'woocommerce_error', 'remove_unwanted_checkout_errors', 10, 2 );
+
+function remove_unwanted_checkout_errors( $error ) {
+    if ( strpos( $error, 'Please enter an address to continue.' ) !== false ) {
+        return '';
+    }
+    if ( strpos( $error, 'Invalid payment method.' ) !== false ) {
+        return '';
+    }
+
+    return $error;
+}
