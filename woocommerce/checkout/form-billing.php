@@ -46,6 +46,7 @@ defined( 'ABSPATH' ) || exit;
         } else {
             esc_html_e( 'Contact Details', 'woocommerce' );
         }
+      ?>
     </h3>
   <?php endif; ?>
 
