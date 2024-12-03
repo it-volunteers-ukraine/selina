@@ -20,22 +20,32 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce-billing-fields">
   <?php if ( WC()->cart->needs_shipping() ) : ?>
-
     
     <?php
-      $current_lang = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
-
-      $order_checkout_title = $current_lang === 'uk' ? 'Оформлення замовлення' : 'Order Checkout';
-
-      $contact_details_title = $current_lang === 'uk' ? 'Контактні дані' : 'Contact Details';
+      if ( function_exists( 'pll_current_language' ) ) {
+          $shop_language = pll_current_language();
+      } else {
+          $shop_language = 'en';
+      }
     ?>
 
     <h3 class="woocommerce-billing-title">
-      <?php echo esc_html__( $order_checkout_title, 'woocommerce' ); ?>
+      <?php
+        if ( $shop_language === 'uk' ) {
+            esc_html_e( 'Оформлення замовлення', 'woocommerce' );
+        } else {
+            esc_html_e( 'Order Checkout', 'woocommerce' );
+        }
+      ?>
     </h3>
 
     <h3 class="contact-details-header">
-      <?php echo esc_html__( $contact_details_title, 'woocommerce' ); ?>
+      <?php
+      if ( $shop_language === 'uk' ) {
+            esc_html_e( 'Контактні дані', 'woocommerce' );
+        } else {
+            esc_html_e( 'Contact Details', 'woocommerce' );
+        }
     </h3>
   <?php endif; ?>
 
