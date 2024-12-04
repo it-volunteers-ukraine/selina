@@ -21,6 +21,11 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 	return;
 }
 
+// test
+$shop_language = pll_current_language();
+echo 'Current language: ' . $shop_language;
+// test
+
 ?>
 <div class="woocommerce-form-coupon-toggle">
 	<?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'woocommerce' ) . ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'woocommerce' ) . '</a>' ), 'notice' ); ?>

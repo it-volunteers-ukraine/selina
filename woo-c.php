@@ -541,4 +541,3 @@ function restore_required_field_errors( $data, $errors ) {
         }
     }
 }
-
