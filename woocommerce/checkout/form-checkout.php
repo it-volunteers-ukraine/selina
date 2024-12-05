@@ -19,10 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// test
-$shop_language = pll_current_language();
-echo 'Current language: ' . $shop_language;
-// test
 
 $checkout = WC()->checkout();
 

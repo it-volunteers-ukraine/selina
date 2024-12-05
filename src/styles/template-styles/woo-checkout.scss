@@ -204,6 +204,10 @@ body > section > div > div > form.checkout.woocommerce-checkout {
     }
 }
 
+tfoot .cart-subtotal {
+    font-weight: 800;
+}
+
 tfoot .order-total {
     color: $red;
     font-size: 26px;
@@ -221,6 +225,7 @@ tfoot .order-total {
 }
 
 tfoot .cart-subtotal th,
+tfoot .cart-discount th,
 tfoot .order-total th {
     width: 50%;
     text-align: left;
@@ -228,8 +233,13 @@ tfoot .order-total th {
 }
 
 tfoot .cart-subtotal td,
+tfoot .cart-discount td,
 tfoot .order-total td {
     text-align: right;
+}
+
+tfoot .cart-discount th {
+    font-weight: 400;
 }
 
 #form-cart-container {

@@ -15,11 +15,6 @@
  * @version 5.2.0
  */
 
-// test
-$shop_language = pll_current_language();
-echo 'Current language: ' . $shop_language;
-// test
-
 defined( 'ABSPATH' ) || exit;
 ?>
 <table class="shop_table woocommerce-checkout-review-order-table">
