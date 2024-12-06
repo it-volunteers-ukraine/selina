@@ -62,7 +62,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
             <div class="checkout-cart__heading-edit-container">
                 <h3 id="order_review_heading">
                     <?php
-                        if ($shop_language == 'en') {
+                        if (pll_current_language() == 'en') {
                             esc_html_e( 'Your order', 'woocommerce' );
                         } else {
                             esc_html_e( 'Кошик', 'woocommerce' );
@@ -70,7 +70,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     ?>
                 </h3>
                     <?php
-                        if ($shop_language == 'en') {
+                        if (pll_current_language() == 'en') {
                             ?>
                             <a href='<?php echo pll_home_url( 'en' ) . 'cart-2/'; ?>'><?php esc_html_e( 'Edit', 'woocommerce' );
                         } else {
@@ -83,7 +83,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
             <div class="checkout-cart__column-naming">
                 <h5>
                     <?php
-                        if ($shop_language == 'en') {
+                        if (pll_current_language() == 'en') {
                             esc_html_e( 'Item', 'woocommerce' );
                         } else {
                             esc_html_e( 'Товар', 'woocommerce' );
@@ -92,7 +92,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 </h5>
                 <h5 class="checkout-cart__column-naming__qty">
                     <?php
-                        if ($shop_language == 'en') {
+                        if (pll_current_language() == 'en') {
                             esc_html_e( 'Quantity', 'woocommerce' );
                         } else {
                             esc_html_e( 'Кількість', 'woocommerce' );
@@ -101,7 +101,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 </h5>
                 <h5>
                     <?php
-                        if ($shop_language == 'en') {
+                        if (pll_current_language()== 'en') {
                             esc_html_e( 'Amount', 'woocommerce' );
                         } else {
                             esc_html_e( 'Сума', 'woocommerce' );

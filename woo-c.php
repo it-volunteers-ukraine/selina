@@ -542,3 +542,34 @@ function restore_required_field_errors( $data, $errors ) {
     }
 }
 
+function translate_checkout_page_cart()
+{ 
+    if (is_checkout()) { 
+        ?> 
+        <script type="text/javascript"> 
+            jQuery(document).ready(function ($) { 
+                function updateShippingAndPaymentLabels() 
+                { 
+                    $('.enter-code').attr('placeholder', '<?php echo esc_js(get_field("enter_the_code", "options")); ?>');
+                    $('.form-row-last button').text('<?php echo esc_js(get_field("apply_code", "options")); ?>');
+                    $('.cart-discount th').each(function () {
+                        let text = $(this).text();
+                        let firstWord = text.split(' ')[0];
+                        let restOfText = text.substring(firstWord.length);
+                        $(this).text('<?php echo esc_js(get_field("cart_discount", "options")); ?>' + restOfText);
+                    });
+                    $('.order-total th').text('<?php echo esc_js(get_field("order_total", "options")); ?>');
+                    $('.cart-subtotal th').text('<?php echo esc_js(get_field("total_sum", "options")); ?>'); 
+                } 
+ 
+                updateShippingAndPaymentLabels(); 
+                $(document.body).on('updated_checkout', function () { 
+                    updateShippingAndPaymentLabels(); 
+                }); 
+            }); 
+        </script> 
+        <?php 
+    } 
+} 
+ 
+add_action('wp_footer', 'translate_checkout_page_cart');
