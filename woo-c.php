@@ -542,8 +542,7 @@ function restore_required_field_errors( $data, $errors ) {
     }
 }
 
-// translate test
-function custom_update_labels_after_ajax() 
+function translate_checkout_page_cart()
 { 
     if (is_checkout()) { 
         ?> 
@@ -573,4 +572,4 @@ function custom_update_labels_after_ajax()
     } 
 } 
  
-add_action('wp_footer', 'custom_update_labels_after_ajax');
+add_action('wp_footer', 'translate_checkout_page_cart');
