@@ -573,3 +573,36 @@ function translate_checkout_page_cart()
 } 
  
 add_action('wp_footer', 'translate_checkout_page_cart');
+
+add_action('wp_footer', 'custom_checkout_page_translations');
+
+function custom_checkout_page_translations() {
+    if (is_checkout() && !is_order_received_page()) {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                function updateCheckoutPageLabels() {
+                    // Update Checkout Page Title
+                    let checkoutTitle = '<?php echo esc_js(get_field("checkout_title", "options")); ?>';
+                    $('.woocommerce-billing-title').text(checkoutTitle);
+
+                    // Update Field Placeholders and Labels
+                    $('input[name="billing_first_name"]').attr('placeholder', '<?php echo esc_js(get_field("billing_first_name_placeholder", "options")); ?>');
+                    $('input[name="billing_last_name"]').attr('placeholder', '<?php echo esc_js(get_field("billing_last_name_placeholder", "options")); ?>');
+                    $('input[name="billing_phone"]').attr('placeholder', '<?php echo esc_js(get_field("billing_phone_placeholder", "options")); ?>');
+                    $('input[name="billing_email"]').attr('placeholder', '<?php echo esc_js(get_field("billing_email_placeholder", "options")); ?>');
+                    $('textarea[name="order_comments"]').attr('placeholder', '<?php echo esc_js(get_field("order_comments_placeholder", "options")); ?>');
+
+                    // Update Buttons
+                    $('.checkout-button-title').text('<?php echo esc_js(get_field("checkout_button_text", "options")); ?>');
+                }
+
+                updateCheckoutPageLabels();
+                $(document.body).on('updated_checkout', function () {
+                    updateCheckoutPageLabels();
+                });
+            });
+        </script>
+        <?php
+    }
+}
