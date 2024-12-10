@@ -717,3 +717,9 @@ function custom_checkout_page_translations() {
         <?php
     }
 }
+
+add_filter('woocommerce_payment_complete_order_status', 'auto_complete_order', 10, 2);
+
+function auto_complete_order($status, $order_id) {
+    return 'completed'; // Set the status to 'completed'
+}
