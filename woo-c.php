@@ -718,8 +718,11 @@ function custom_checkout_page_translations() {
     }
 }
 
-add_filter('woocommerce_payment_complete_order_status', 'auto_complete_order', 10, 2);
+add_filter('woocommerce_order_needs_payment', '__return_false');
+add_action('woocommerce_thankyou', 'auto_complete_order');
 
-function auto_complete_order($status, $order_id) {
-    return 'completed'; // Set the status to 'completed'
+function auto_complete_order($order_id) {
+    if (!$order_id) return;
+    $order = wc_get_order($order_id);
+    $order->update_status('completed'); // Auto-complete the order
 }
