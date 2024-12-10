@@ -218,7 +218,10 @@
       line-height: 25px;
       display: flex;
       justify-content: end;
-      gap: 148px;
+      gap: 168px;
+    }
+    .price del bdi {
+      font-size: 16px;
     }
     .woocommerce-Price-amount.amount {
       text-decoration: none;
