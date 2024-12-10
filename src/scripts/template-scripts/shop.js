@@ -81,3 +81,9 @@ if (selector) {
     },
   });
 }
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.href.indexOf("?add-to-cart=") > -1) {
+    const newURL = window.location.href.split("?add-to-cart=")[0];
+    window.history.replaceState({}, document.title, newURL);
+  }
+});
