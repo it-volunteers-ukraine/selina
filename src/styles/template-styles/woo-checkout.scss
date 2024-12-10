@@ -202,10 +202,10 @@ body > section > div > div > form.checkout.woocommerce-checkout {
     @media screen and (min-width: $desktop) {
         width: 140px;
     }
+
+
 }
 
-tfoot .cart-subtotal {
-    font-weight: 800;
 }
 
 tfoot .order-total {
@@ -467,7 +467,10 @@ body>section>div>div>form.checkout.woocommerce-checkout {
 
 #order_comments.input-text {
     padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
     width: 100%;
+    height: 100%;
     resize: none;
 }
 
@@ -512,6 +515,7 @@ body>section>div>div>form.checkout.woocommerce-checkout {
 }
 
 .woocommerce-error {
+    padding-bottom: 20px;
     color: #D11F2A;
 }
 

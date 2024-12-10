@@ -377,8 +377,41 @@ add_action( 'woocommerce_before_checkout_form', 'custom_checkout_page_title', 5 
 
 function custom_checkout_page_title() {
     if ( is_checkout() && ! is_order_received_page() ) {
-        $title = ( is_language_uk() ) ? 'Оформлення замовлення' : 'Checkout';
-        echo '<h2 class="woocommerce-billing-title">' . esc_html( $title ) . '</h2>';
+        ?>
+        <h2 class="woocommerce-billing-title">
+            <?php
+                echo ( pll_current_language() === 'uk' ) ? 'Оформлення замовлення' : 'Checkout';
+            ?>
+        </h2>
+
+        <h3 class="contact-details-header">
+            <?php
+                echo ( pll_current_language() === 'uk' ) ? 'Контактні дані' : 'Contact Information';
+            ?>
+        </h3>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                function updateCheckoutTitle() {
+                    var title = (pll_current_language() === 'uk') ? 'Оформлення замовлення' : 'Checkout';
+                    $('.woocommerce-billing-title').text(title);
+                }
+
+                function updateSectionTitle() {
+                    var title = (pll_current_language() === 'uk') ? 'Контактні дані' : 'Contact Information';
+                    $('.contact-details-header').text(title);  // Оновлення заголовка "Контактні дані"
+                }
+
+                updateCheckoutTitle();
+                updateSectionTitle();
+            
+                $(document.body).on('language_changed', function() {
+                    updateCheckoutTitle();
+                    updateSectionTitle();
+                });
+            });
+        </script>
+        <?php
     }
 }
 
@@ -400,6 +433,28 @@ function customize_checkout_section_titles( $fields ) {
     }
 
     return $fields;
+}
+
+add_action( 'wp_footer', 'update_checkout_section_title_script' );
+function update_checkout_section_title_script() {
+    if ( is_checkout() ) {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                function updateSectionTitle() {
+                    var title = (pll_current_language() === 'uk') ? 'Контактні дані' : 'Contact Information';
+                    $('.contact-details-header').text(title);
+                }
+
+                updateSectionTitle();
+
+                $(document.body).on('language_changed', function() {
+                    updateSectionTitle();
+                });
+            });
+        </script>
+        <?php
+    }
 }
 
 
@@ -454,22 +509,82 @@ function customize_checkout_fields( $fields ) {
     return $fields;
 }
 
+add_action( 'wp_footer', 'update_checkout_placeholders_script' );
+function update_checkout_placeholders_script() {
+    if ( is_checkout() ) {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                function updatePlaceholders() {
+                    var lang = pll_current_language();
+                    
+                    var placeholders = {
+                        'billing_first_name': lang === 'uk' ? 'Ім’я*' : 'First Name*',
+                        'billing_last_name': lang === 'uk' ? 'Прізвище*' : 'Last Name*',
+                        'billing_phone': lang === 'uk' ? 'Номер телефону*' : 'Phone Number*',
+                        'billing_email': lang === 'uk' ? 'Email*' : 'Email*',
+                        'order_comments': lang === 'uk' ? 'Коментар (не обов’язково)' : 'Order Comment (optional)'
+                    };
+
+                    for (var field in placeholders) {
+                        if (placeholders.hasOwnProperty(field)) {
+                            $('input[name="' + field + '"], textarea[name="' + field + '"]').attr('placeholder', placeholders[field]);
+                        }
+                    }
+                }
+
+                updatePlaceholders();
+
+                $(document.body).on('language_changed', function() {
+                    updatePlaceholders();
+                });
+            });
+        </script>
+        <?php
+    }
+}
+
+
 add_action( 'woocommerce_after_checkout_form', 'add_custom_checkout_button' );
 function add_custom_checkout_button() {
     ?>
     <div class="delivery-option">        
         <div class="checkout-button">
             <button class="checkout-button-title">
-                <?php esc_html_e( 'Оформити', 'woocommerce' ); ?>
+                <?php                
+                echo pll_current_language() === 'uk' ? 'Оформити' : 'Place Order';
+                ?>
             </button>
         </div> 
     </div>
     <?php
 }
 
+add_action( 'wp_footer', 'update_checkout_button_text_script' );
+function update_checkout_button_text_script() {
+    if ( is_checkout() ) {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                function updateCheckoutButtonText() {
+                    var buttonText = (pll_current_language() === 'uk') ? 'Оформити' : 'Place Order';
+                    $('.checkout-button-title').text(buttonText);
+                }
+
+                updateCheckoutButtonText();  
+                
+                $(document.body).on('language_changed', function() {
+                    updateCheckoutButtonText();
+                });
+            });
+        </script>
+        <?php
+    }
+}
+
 // Error for Checkout page
 
-add_filter( 'woocommerce_checkout_required_field_notice', 'remove_billing_from_required_field_notice', 10, 2 );
+add_filter( 'woocommerce_checkout_required_field_notice', 'translate_and_clean_required_field_notice', 10, 2 );
 
 function translate_and_clean_required_field_notice( $notice, $field_label ) {
     $shop_language = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
@@ -478,22 +593,23 @@ function translate_and_clean_required_field_notice( $notice, $field_label ) {
 
     if ( $shop_language === 'uk' ) {
         $translations = [
-            __( 'Ім’я* is a required field.', 'woocommerce' ) => __( 'Ім’я* є обов’язковим полем.', 'woocommerce' ),
-            __( 'Прізвище* is a required field.', 'woocommerce' ) => __( 'Прізвище* є обов’язковим полем.', 'woocommerce' ),
-            __( 'Номер телефону* is a required field.', 'woocommerce' ) => __( 'Номер телефону* є обов’язковим полем.', 'woocommerce' ),
-            __( 'Email* is a required field.', 'woocommerce' ) => __( 'Email* є обов’язковим полем.', 'woocommerce' ),
+            'First name* is a required field.' => 'Ім’я* є обов’язковим полем.',
+            'Last name* is a required field.'  => 'Прізвище* є обов’язковим полем.',
+            'Phone number* is a required field.' => 'Номер телефону* є обов’язковим полем.',
+            'Email* is a required field.' => 'Email* є обов’язковим полем.',
         ];
     } else {
         $translations = [
-            __( 'Ім’я* is a required field.', 'woocommerce' ) => __( 'First name* is a required field.', 'woocommerce' ),
-            __( 'Прізвище* is a required field.', 'woocommerce' ) => __( 'Last name* is a required field.', 'woocommerce' ),
-            __( 'Номер телефону* is a required field.', 'woocommerce' ) => __( 'Phone number* is a required field.', 'woocommerce' ),
-            __( 'Email* is a required field.', 'woocommerce' ) => __( 'Email* is a required field.', 'woocommerce' ),
+            'First name* is a required field.' => 'First name* is a required field.',
+            'Last name* is a required field.'  => 'Last name* is a required field.',
+            'Phone number* is a required field.' => 'Phone number* is a required field.',
+            'Email* is a required field.' => 'Email* is a required field.',
         ];
     }
 
-    return $translations[$notice] ?? $notice;
+    return isset($translations[$notice]) ? $translations[$notice] : $notice;
 }
+
 
 add_filter( 'woocommerce_add_error', 'filter_woocommerce_errors', 10, 1 );
 
@@ -519,28 +635,21 @@ add_action( 'woocommerce_after_checkout_validation', 'restore_required_field_err
 function restore_required_field_errors( $data, $errors ) {
     $shop_language = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
 
-    if ( $shop_language === 'uk' ) {
-        $required_fields = [
-            'billing_first_name' => 'Ім’я*',
-            'billing_last_name'  => 'Прізвище*',
-            'billing_phone'      => 'Номер телефону*',
-            'billing_email'      => 'Email*',
-        ];
-    } else {
-        $required_fields = [
-            'billing_first_name' => 'First Name*',
-            'billing_last_name'  => 'Last Name*',
-            'billing_phone'      => 'Phone Number*',
-            'billing_email'      => 'Email*',
-        ];
-    }
+    $required_fields = [
+        'billing_first_name' => $shop_language === 'uk' ? 'Ім’я*' : 'First Name*',
+        'billing_last_name'  => $shop_language === 'uk' ? 'Прізвище*' : 'Last Name*',
+        'billing_phone'      => $shop_language === 'uk' ? 'Номер телефону*' : 'Phone Number*',
+        'billing_email'      => $shop_language === 'uk' ? 'Email*' : 'Email*',
+    ];
 
     foreach ( $required_fields as $field => $label ) {
         if ( empty( $data[ $field ] ) ) {
-            $errors->add( 'required-field', sprintf( __( '%s is a required field.', 'woocommerce' ), $label ) );
+            $errors->add( 'required-field', sprintf( __( '%s є обов’язковим полем.', 'woocommerce' ), $label ) );
         }
     }
 }
+
+
 
 function translate_checkout_page_cart()
 { 
@@ -573,3 +682,4 @@ function translate_checkout_page_cart()
 } 
  
 add_action('wp_footer', 'translate_checkout_page_cart');
+
