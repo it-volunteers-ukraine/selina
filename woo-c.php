@@ -732,3 +732,4 @@ function auto_complete_order($order_id) {
     $order = wc_get_order($order_id);
     $order->update_status('completed'); // Auto-complete the order
 }
+// Add custom checkout field validation and add custom classes for empty fields

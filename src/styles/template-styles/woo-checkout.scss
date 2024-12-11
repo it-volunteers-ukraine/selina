@@ -508,6 +508,9 @@ body > section > div > div > form.checkout.woocommerce-checkout {
 }
 
 .woocommerce-error {
-  padding-bottom: 20px;
-  color: #d11f2a;
+  display: none;
+}
+
+p.woocommerce-invalid-required-field {
+  background-color: #f8d7da !important;
 }
