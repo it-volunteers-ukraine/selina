@@ -696,7 +696,10 @@ function custom_checkout_page_translations() {
                     // Update Checkout Page Title
                     let checkoutTitle = '<?php echo esc_js(get_field("checkout_title", "options")); ?>';
                     $('.woocommerce-billing-title').text(checkoutTitle);
-
+                    let checkoutContacts = '<?php echo esc_js(get_field("contact-details-header", "options")); ?>'
+                    $('.contact-details-header').text(checkoutContacts); 
+                    let additionalContacts = '<?php echo esc_js(get_field("woocommerce-additional-fields", "options")); ?>'
+                    $('.woocommerce-additional-fields h3').text(additionalContacts); 
                     // Update Field Placeholders and Labels
                     $('input[name="billing_first_name"]').attr('placeholder', '<?php echo esc_js(get_field("billing_first_name_placeholder", "options")); ?>');
                     $('input[name="billing_last_name"]').attr('placeholder', '<?php echo esc_js(get_field("billing_last_name_placeholder", "options")); ?>');
