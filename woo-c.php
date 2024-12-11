@@ -683,6 +683,9 @@ function translate_checkout_page_cart()
  
 add_action('wp_footer', 'translate_checkout_page_cart');
 
+add_action('woocommerce_before_order_notes', function() {
+    echo '<h3>' . esc_html__('Additional Information', 'woocommerce') . '</h3>';
+});
 
 
 add_action('wp_footer', 'custom_checkout_page_translations');
