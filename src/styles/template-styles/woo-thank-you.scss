@@ -47,3 +47,9 @@ body.woocommerce-order-received .container:first-of-type {
   padding: 0 !important;
   margin: 0 !important;
 }
+
+body.woocommerce-order-received .header.header-bottom,
+body.woocommerce-order-received .join-us-section__heading {
+  padding-left: 16px;
+  padding-right: 16px;
+}
