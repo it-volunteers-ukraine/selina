@@ -732,4 +732,36 @@ function auto_complete_order($order_id) {
     $order = wc_get_order($order_id);
     $order->update_status('completed'); // Auto-complete the order
 }
-// Add custom checkout field validation and add custom classes for empty fields
+
+add_action('woocommerce_thankyou', 'send_admin_order_notification', 10, 1);
+
+function send_admin_order_notification($order_id) {
+    if (!$order_id) {
+        return;
+    }
+
+    // Get order object
+    $order = wc_get_order($order_id);
+
+    // Define email recipients
+    $admin_email = get_option('admin_email');
+    $additional_email = 'irinamaliy22@gmail.com';
+    $recipients = $admin_email . ', ' . $additional_email;
+
+    // Email subject and body
+    $subject = 'New Order Received - Order #' . $order_id;
+    $body = "A new order has been received on your website. Here are the details:\n\n";
+    $body .= 'Order ID: ' . $order_id . "\n";
+    $body .= 'Order Total: ' . $order->get_formatted_order_total() . "\n";
+    $body .= 'Customer Name: ' . $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() . "\n";
+    $body .= 'Customer Email: ' . $order->get_billing_email() . "\n\n";
+
+    // Loop through order items
+    $body .= "Order Items:\n";
+    foreach ($order->get_items() as $item_id => $item) {
+        $body .= $item->get_name() . ' x ' . $item->get_quantity() . "\n";
+    }
+
+    // Send email
+    wp_mail($recipients, $subject, $body);
+}
