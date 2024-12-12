@@ -733,3 +733,11 @@ function auto_complete_order($order_id) {
     $order->update_status('completed'); // Auto-complete the order
 }
 // Add custom checkout field validation and add custom classes for empty fields
+
+add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
+    if ( isset( $_REQUEST['data-redirect'] ) && $_REQUEST['data-redirect'] === 'yes' ) {
+        return wc_get_checkout_url();
+    }
+
+    return $url;
+});
