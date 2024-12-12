@@ -20,6 +20,10 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
+<?php if ( ! is_checkout() || ! is_order_received_page() ) : ?>
+    <div class="container">
+<?php endif; ?>
+
 <div class="woocommerce-order thank-you-page">
     
     <?php if ( $order ) : ?>
@@ -63,4 +67,9 @@ defined( 'ABSPATH' ) || exit;
 
 </div>
 
+<?php if ( ! is_checkout() || ! is_order_received_page() ) : ?>
+    </div>
+<?php endif; ?>
+
 <?php get_footer(); ?>
+
