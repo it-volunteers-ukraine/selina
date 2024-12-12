@@ -72,3 +72,4 @@ defined( 'ABSPATH' ) || exit;
 <?php endif; ?>
 
 <?php get_footer(); ?>
+
