@@ -514,3 +514,7 @@ body > section > div > div > form.checkout.woocommerce-checkout {
 p.woocommerce-invalid-required-field {
   background-color: #f8d7da !important;
 }
+
+.woocommerce-message {
+  display: none;
+}
