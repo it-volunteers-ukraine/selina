@@ -48,8 +48,51 @@ body.woocommerce-order-received .container:first-of-type {
   margin: 0 !important;
 }
 
-body.woocommerce-order-received .header.header-bottom,
+body.woocommerce-order-received .header.header-bottom {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media screen and (min-width: $table) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-left: 155px;
+    padding-right: 155px;
+  }
+}
+
+body.woocommerce-order-recevied .header.header-top.top-row {
+
+  @media screen and (min-width: $desktop) {
+    padding-left: 155px;
+    padding-right: 155px;
+  }
+}
+
 body.woocommerce-order-received .join-us-section__heading {
   padding-left: 16px;
   padding-right: 16px;
+
+  @media screen and (min-width: $table) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 750px;
+    padding-left: 155px;    
+  }
+}
+
+body.woocommerce-order-recevied .red_medium_button join-us-section__btn {
+
+  @media screen and (min-width: $table) {
+    margin-left: 32px;
+  }
+  
+  @media screen and (min-width: $desktop) {
+    padding-left: 155px;
+  }
 }
