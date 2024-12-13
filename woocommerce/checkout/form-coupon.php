@@ -32,7 +32,7 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 
 	<p class="form-row form-row-first">
 		<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
-		<input type="text" name="coupon_code" class="enter-code input-text" placeholder="<?php echo pll_current_language() === 'en' ? esc_attr_e( 'Enter code %', 'woocommerce' ) : esc_attr_e( 'Введіть код %', 'woocommerce' ); ?>" id="coupon_code" value="" />
+		<input type="text" name="coupon_code" class="enter-code input-text" placeholder="<?php echo pll_current_language() === 'en' ? esc_attr_e( 'Enter code', 'woocommerce' ) : esc_attr_e( 'Введіть код', 'woocommerce' ); ?>" id="coupon_code" value="" />
 	</p>
 
 	<div class="form-row form-row-last">
