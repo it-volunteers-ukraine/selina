@@ -1,5 +1,5 @@
-jQuery(document).ready(function($){
-    $('.quantity button').on('click', function() {
+jQuery(document).ready(function($) {
+    $(document).on('click', '.quantity button', function() {
         let btn = $(this);
         let inputQty = btn.parent().find('.qty');
         let prevValue = +(inputQty.val());
@@ -11,7 +11,19 @@ jQuery(document).ready(function($){
                 newValue = prevValue - 1;
             }
         }
-        inputQty.val(newValue);
+        inputQty.val(newValue).trigger('change');
+    });
+});
+
+document.querySelectorAll('button[data-redirect]').forEach(button => {
+    button.addEventListener('click', function() {
+        const form = this.closest('form');
+
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'data-redirect';
+        hiddenInput.value = this.getAttribute('data-redirect');
+        form.appendChild(hiddenInput);
     });
 });
 

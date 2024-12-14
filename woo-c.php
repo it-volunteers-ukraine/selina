@@ -584,3 +584,94 @@ function translate_checkout_page_cart()
  
 add_action('wp_footer', 'translate_checkout_page_cart');
 
+add_action('woocommerce_before_order_notes', function() {
+    echo '<h3>' . esc_html__('Additional Information', 'woocommerce') . '</h3>';
+});
+
+
+add_action('wp_footer', 'custom_checkout_page_translations');
+
+function custom_checkout_page_translations() {
+    if (is_checkout() && !is_order_received_page()) {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                function updateCheckoutPageLabels() {
+                    // Update Checkout Page Title
+                    let checkoutTitle = '<?php echo esc_js(get_field("checkout_title", "options")); ?>';
+                    $('.woocommerce-billing-title').text(checkoutTitle);
+                    let checkoutContacts = '<?php echo esc_js(get_field("contact-details-header", "options")); ?>'
+                    $('.contact-details-header').text(checkoutContacts); 
+                    let additionalContacts = '<?php echo esc_js(get_field("woocommerce-additional-fields", "options")); ?>'
+                    $('.woocommerce-additional-fields h3').text(additionalContacts); 
+                    // Update Field Placeholders and Labels
+                    $('input[name="billing_first_name"]').attr('placeholder', '<?php echo esc_js(get_field("billing_first_name_placeholder", "options")); ?>');
+                    $('input[name="billing_last_name"]').attr('placeholder', '<?php echo esc_js(get_field("billing_last_name_placeholder", "options")); ?>');
+                    $('input[name="billing_phone"]').attr('placeholder', '<?php echo esc_js(get_field("billing_phone_placeholder", "options")); ?>');
+                    $('input[name="billing_email"]').attr('placeholder', '<?php echo esc_js(get_field("billing_email_placeholder", "options")); ?>');
+                    $('textarea[name="order_comments"]').attr('placeholder', '<?php echo esc_js(get_field("order_comments_placeholder", "options")); ?>');
+
+                    // Update Buttons
+                    $('.checkout-button-title').text('<?php echo esc_js(get_field("checkout_button_text", "options")); ?>');
+                }
+
+                updateCheckoutPageLabels();
+                $(document.body).on('updated_checkout', function () {
+                    updateCheckoutPageLabels();
+                });
+            });
+        </script>
+        <?php
+    }
+}
+
+add_filter('woocommerce_order_needs_payment', '__return_false');
+add_action('woocommerce_thankyou', 'auto_complete_order');
+
+function auto_complete_order($order_id) {
+    if (!$order_id) return;
+    $order = wc_get_order($order_id);
+    $order->update_status('completed'); // Auto-complete the order
+}
+// Add custom checkout field validation and add custom classes for empty fields
+
+add_filter( 'woocommerce_add_to_cart_redirect', function( $url ) {
+    if ( isset( $_REQUEST['data-redirect'] ) && $_REQUEST['data-redirect'] === 'yes' ) {
+        return wc_get_checkout_url();
+    }
+
+    return $url;
+});
+
+add_action('woocommerce_thankyou', 'send_admin_order_notification', 10, 1);
+
+function send_admin_order_notification($order_id) {
+    if (!$order_id) {
+        return;
+    }
+
+    // Get order object
+    $order = wc_get_order($order_id);
+
+    // Define email recipients
+    $admin_email = get_option('admin_email');
+    $additional_email = 'irinamaliy22@gmail.com';
+    $recipients = $admin_email . ', ' . $additional_email;
+
+    // Email subject and body
+    $subject = 'New Order Received - Order #' . $order_id;
+    $body = "A new order has been received on your website. Here are the details:\n\n";
+    $body .= 'Order ID: ' . $order_id . "\n";
+    $body .= 'Order Total: ' . $order->get_formatted_order_total() . "\n";
+    $body .= 'Customer Name: ' . $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() . "\n";
+    $body .= 'Customer Email: ' . $order->get_billing_email() . "\n\n";
+
+    // Loop through order items
+    $body .= "Order Items:\n";
+    foreach ($order->get_items() as $item_id => $item) {
+        $body .= $item->get_name() . ' x ' . $item->get_quantity() . "\n";
+    }
+
+    // Send email
+    wp_mail($recipients, $subject, $body);
+}
