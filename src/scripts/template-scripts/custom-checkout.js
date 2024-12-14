@@ -1,4 +1,15 @@
+// @ts-ignore
+
 jQuery(document).ready(function ($) {
+
+    function getCurrentLanguage() {
+        if (typeof pll_current_language === 'function') {
+            return pll_current_language();
+        } else {
+            console.warn('Polylang не знайдено');
+            return 'uk';
+        }
+    }
     
     function updateCheckoutTitle() {
         var title = (pll_current_language() === 'uk') ? 'Оформлення замовлення' : 'Checkout';
@@ -29,13 +40,14 @@ jQuery(document).ready(function ($) {
     }
 
     function updateCheckoutButton() {
-        var buttonText = (pll_current_language() === 'uk') ? 'Оформити' : 'Place Order';
+        var buttonText = (pll_current_language() === 'uk') ? 'Оформити' : 'Order';
         $('.checkout-button-title').text(buttonText);
     }
 
     updateCheckoutTitle();
     updateSectionTitle();
     updatePlaceholders();
+    updateCheckoutButton();
 
     $(document.body).on('language_changed', function() {
         updateCheckoutTitle();

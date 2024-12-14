@@ -533,7 +533,7 @@ function filter_woocommerce_errors( $error ) {
 
 add_action( 'woocommerce_after_checkout_validation', 'restore_required_field_errors', 10, 2 );
 
-function restore_required_field_errors( $data, $errors ) {
+function custom_required_field_errors( $data, $errors ) {
     $shop_language = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
 
     $required_fields = [
@@ -544,12 +544,14 @@ function restore_required_field_errors( $data, $errors ) {
     ];
 
     foreach ( $required_fields as $field => $label ) {
-        if ( empty( $data[ $field ] ) ) {
-            $errors->add( 'required-field', sprintf( __( '%s є обов’язковим полем.', 'woocommerce' ), $label ) );
-        }
+        add_filter( 'woocommerce_checkout_fields', function( $fields ) use ( $field ) {
+            if ( isset( $fields['billing'][$field] ) ) {
+                $fields['billing'][$field]['class'][] = 'error-field';
+            }
+                return $fields;
+        });
     }
 }
-
 
 
 function translate_checkout_page_cart()
