@@ -388,29 +388,7 @@ function custom_checkout_page_title() {
             <?php
                 echo ( pll_current_language() === 'uk' ) ? 'Контактні дані' : 'Contact Information';
             ?>
-        </h3>
-
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                function updateCheckoutTitle() {
-                    var title = (pll_current_language() === 'uk') ? 'Оформлення замовлення' : 'Checkout';
-                    $('.woocommerce-billing-title').text(title);
-                }
-
-                function updateSectionTitle() {
-                    var title = (pll_current_language() === 'uk') ? 'Контактні дані' : 'Contact Information';
-                    $('.contact-details-header').text(title);  // Оновлення заголовка "Контактні дані"
-                }
-
-                updateCheckoutTitle();
-                updateSectionTitle();
-            
-                $(document.body).on('language_changed', function() {
-                    updateCheckoutTitle();
-                    updateSectionTitle();
-                });
-            });
-        </script>
+        </h3>       
         <?php
     }
 }
@@ -433,28 +411,6 @@ function customize_checkout_section_titles( $fields ) {
     }
 
     return $fields;
-}
-
-add_action( 'wp_footer', 'update_checkout_section_title_script' );
-function update_checkout_section_title_script() {
-    if ( is_checkout() ) {
-        ?>
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                function updateSectionTitle() {
-                    var title = (pll_current_language() === 'uk') ? 'Контактні дані' : 'Contact Information';
-                    $('.contact-details-header').text(title);
-                }
-
-                updateSectionTitle();
-
-                $(document.body).on('language_changed', function() {
-                    updateSectionTitle();
-                });
-            });
-        </script>
-        <?php
-    }
 }
 
 
@@ -489,8 +445,6 @@ function customize_checkout_fields( $fields ) {
     $fields['order']['order_comments']['placeholder'] = __( 'Коментар (не обов’язково)', 'text-domain' );
     $fields['order']['order_comments']['class'][] = 'custom-order-comments';
 
-    error_log('Поля змінено успішно');
-
     $fields['billing']['billing_first_name']['maxlength'] = 50;
     $fields['billing']['billing_first_name']['minlength'] = 3;
     
@@ -509,42 +463,6 @@ function customize_checkout_fields( $fields ) {
     return $fields;
 }
 
-add_action( 'wp_footer', 'update_checkout_placeholders_script' );
-function update_checkout_placeholders_script() {
-    if ( is_checkout() ) {
-        ?>
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                function updatePlaceholders() {
-                    var lang = pll_current_language();
-                    
-                    var placeholders = {
-                        'billing_first_name': lang === 'uk' ? 'Ім’я*' : 'First Name*',
-                        'billing_last_name': lang === 'uk' ? 'Прізвище*' : 'Last Name*',
-                        'billing_phone': lang === 'uk' ? 'Номер телефону*' : 'Phone Number*',
-                        'billing_email': lang === 'uk' ? 'Email*' : 'Email*',
-                        'order_comments': lang === 'uk' ? 'Коментар (не обов’язково)' : 'Order Comment (optional)'
-                    };
-
-                    for (var field in placeholders) {
-                        if (placeholders.hasOwnProperty(field)) {
-                            $('input[name="' + field + '"], textarea[name="' + field + '"]').attr('placeholder', placeholders[field]);
-                        }
-                    }
-                }
-
-                updatePlaceholders();
-
-                $(document.body).on('language_changed', function() {
-                    updatePlaceholders();
-                });
-            });
-        </script>
-        <?php
-    }
-}
-
-
 add_action( 'woocommerce_after_checkout_form', 'add_custom_checkout_button' );
 function add_custom_checkout_button() {
     ?>
@@ -560,26 +478,9 @@ function add_custom_checkout_button() {
     <?php
 }
 
-add_action( 'wp_footer', 'update_checkout_button_text_script' );
-function update_checkout_button_text_script() {
-    if ( is_checkout() ) {
-        ?>
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                function updateCheckoutButtonText() {
-                    var buttonText = (pll_current_language() === 'uk') ? 'Оформити' : 'Place Order';
-                    $('.checkout-button-title').text(buttonText);
-                }
-
-                updateCheckoutButtonText();  
-                
-                $(document.body).on('language_changed', function() {
-                    updateCheckoutButtonText();
-                });
-            });
-        </script>
-        <?php
-    }
+add_action( 'wp_enqueue_scripts', 'enqueue_custom_checkout_scripts' );
+function enqueue_custom_checkout_scripts() {
+    wp_enqueue_script( 'custom-checkout-scripts', get_template_directory_uri() . '/src/scripts/template-scripts/custom-checkout.js', array('jquery'), null, true );
 }
 
 // Error for Checkout page
