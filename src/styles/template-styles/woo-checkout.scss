@@ -360,7 +360,6 @@ body > section > div > div > form.checkout.woocommerce-checkout {
   border-radius: 10px;
   border: 1px solid #eff8f9;
   background-color: #eff8f9;
-  padding-left: 14px;
   font-size: 16px;
   resize: none;
   color: #045c6f;
@@ -397,6 +396,12 @@ body > section > div > div > form.checkout.woocommerce-checkout {
   border-color: #0071a1;
   box-shadow: 0 0 5px rgba(0, 113, 161, 0.5);
   outline: none;
+}
+
+.error-field input,
+.error-field textarea {
+  border: 2px solid #DB3F3F;
+  background-color: #E8C8C8;
 }
 
 .woocommerce-billing-fields {
@@ -475,6 +480,10 @@ body > section > div > div > form.checkout.woocommerce-checkout {
   padding-bottom: 32px;
 }
 
+.woocommerce-additional-fields h3 {
+  display: none;
+}
+
 /* Last Button */
 
 .checkout-button {
@@ -518,3 +527,5 @@ p.woocommerce-invalid-required-field {
 .woocommerce-message {
   display: none;
 }
+
+
