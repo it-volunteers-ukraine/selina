@@ -52,12 +52,12 @@ body.woocommerce-order-received .header.header-bottom {
   padding-left: 16px !important;
   padding-right: 16px !important;
 
-  @media screen and (min-width: $table) {
+  @media screen and (min-width: 768px) {
     padding-left: 32px !important;
     padding-right: 32px !important;
   }
 
-  @media screen and (min-width: $desktop) {
+  @media screen and (min-width: 1440px) {
     padding-left: 155px !important;
     padding-right: 155px !important;
   }
@@ -65,7 +65,7 @@ body.woocommerce-order-received .header.header-bottom {
 
 body.woocommerce-order-received .header.header-top.top-row {
 
-  @media screen and (min-width: $desktop) {
+  @media screen and (min-width: 1440px) {
     padding-left: 155px !important;
     padding-right: 155px !important;
   }
@@ -75,12 +75,12 @@ body.woocommerce-order-received .join-us-section__heading {
   padding-left: 16px !important;
   padding-right: 16px !important;
 
-  @media screen and (min-width: $table) {
+  @media screen and (min-width: 786px) {
     padding-left: 32px !important;
     padding-right: 32px !important;
   }
 
-  @media screen and (min-width: $desktop) {
+  @media screen and (min-width: 1440px) {
     width: 750px !important;
     padding-left: 155px !important;
   }
@@ -88,11 +88,11 @@ body.woocommerce-order-received .join-us-section__heading {
 
 body.woocommerce-order-recevied .red_medium_button.join-us-section__btn {
 
-  @media screen and (min-width: $table) {
+  @media screen and (min-width: 768px) {
     margin-left: 32px !important;
   }
   
-  @media screen and (min-width: $desktop) {
+  @media screen and (min-width: 1440px) {
     padding-left: 155px !important;
   }
 }
