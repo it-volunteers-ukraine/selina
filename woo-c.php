@@ -483,39 +483,16 @@ function enqueue_custom_checkout_scripts() {
     wp_enqueue_script( 'custom-checkout-scripts', get_template_directory_uri() . '/src/scripts/template-scripts/custom-checkout.js', array('jquery'), null, true );
 }
 
-// Error for Checkout page
-
-add_filter( 'woocommerce_checkout_required_field_notice', 'translate_and_clean_required_field_notice', 10, 2 );
-
-function translate_and_clean_required_field_notice( $notice, $field_label ) {
-    $shop_language = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
-
-    $notice = str_replace('Billing ', '', $notice);
-
-    if ( $shop_language === 'uk' ) {
-        $translations = [
-            'First name* is a required field.' => 'Ім’я* є обов’язковим полем.',
-            'Last name* is a required field.'  => 'Прізвище* є обов’язковим полем.',
-            'Phone number* is a required field.' => 'Номер телефону* є обов’язковим полем.',
-            'Email* is a required field.' => 'Email* є обов’язковим полем.',
-        ];
-    } else {
-        $translations = [
-            'First name* is a required field.' => 'First name* is a required field.',
-            'Last name* is a required field.'  => 'Last name* is a required field.',
-            'Phone number* is a required field.' => 'Phone number* is a required field.',
-            'Email* is a required field.' => 'Email* is a required field.',
-        ];
-    }
-
-    return isset($translations[$notice]) ? $translations[$notice] : $notice;
-}
-
+// Error Message for Checkout page
 
 add_filter( 'woocommerce_add_error', 'filter_woocommerce_errors', 10, 1 );
 
 function filter_woocommerce_errors( $error ) {
     $errors_to_hide = [
+        __( 'First name* is a required field.', 'woocommerce' ),
+        __( 'Last name* is a required field.', 'woocommerce' ),
+        __( 'Phone number* is a required field.', 'woocommerce' ),
+        __( 'Email* is a required field.', 'woocommerce' ),
         __( 'Please enter an address to continue.', 'woocommerce' ),
         __( 'Invalid payment method.', 'woocommerce' ),
         __( 'Будь ласка, введіть адресу для продовження.', 'woocommerce' ),
@@ -529,28 +506,6 @@ function filter_woocommerce_errors( $error ) {
     }
 
     return $error;
-}
-
-add_action( 'woocommerce_after_checkout_validation', 'restore_required_field_errors', 10, 2 );
-
-function custom_required_field_errors( $data, $errors ) {
-    $shop_language = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
-
-    $required_fields = [
-        'billing_first_name' => $shop_language === 'uk' ? 'Ім’я*' : 'First Name*',
-        'billing_last_name'  => $shop_language === 'uk' ? 'Прізвище*' : 'Last Name*',
-        'billing_phone'      => $shop_language === 'uk' ? 'Номер телефону*' : 'Phone Number*',
-        'billing_email'      => $shop_language === 'uk' ? 'Email*' : 'Email*',
-    ];
-
-    foreach ( $required_fields as $field => $label ) {
-        add_filter( 'woocommerce_checkout_fields', function( $fields ) use ( $field ) {
-            if ( isset( $fields['billing'][$field] ) ) {
-                $fields['billing'][$field]['class'][] = 'error-field';
-            }
-                return $fields;
-        });
-    }
 }
 
 

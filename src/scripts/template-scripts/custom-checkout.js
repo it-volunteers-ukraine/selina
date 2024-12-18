@@ -44,15 +44,24 @@ jQuery(document).ready(function ($) {
         $('.checkout-button-title').text(buttonText);
     }
 
+    function removeAdditionalInfoHeader() {
+        const additionalInfoHeader = document.querySelector(".woocommerce-additional-fields h3");
+        if (additionalInfoHeader) {
+            additionalInfoHeader.remove();
+        }
+    }
+
     updateCheckoutTitle();
     updateSectionTitle();
     updatePlaceholders();
     updateCheckoutButton();
+    removeAdditionalInfoHeader();
 
     $(document.body).on('language_changed', function() {
         updateCheckoutTitle();
         updateSectionTitle();
         updatePlaceholders();
         updateCheckoutButton();
+        removeAdditionalInfoHeader();
     });
 });

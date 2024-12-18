@@ -516,16 +516,15 @@ body > section > div > div > form.checkout.woocommerce-checkout {
   font-weight: bold;
 }
 
-.woocommerce-error {
-  display: none;
+// Error Message
+
+.woocommerce-invalid-required-field,
+.woocommerce-invalid {
+  border: 2px solid #ff0000;
+  background-color: #fff0f0;
 }
 
-p.woocommerce-invalid-required-field {
-  background-color: #f8d7da !important;
+.woocommerce-invalid-required-field input,
+.woocommerce-invalid input {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
 }
-
-.woocommerce-message {
-  display: none;
-}
-
-
