@@ -1,6 +1,6 @@
 <?php
 /**
- * Thankyou page
+ * Template Name: Thankyou page
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/checkout/thankyou.php.
  *
@@ -49,8 +49,6 @@ defined( 'ABSPATH' ) || exit;
                     </div>
                 </div>
 
-                <?php get_template_part('template-parts/join-us'); ?>
-
             </main>
 
         <?php endif; ?>        
@@ -61,6 +59,9 @@ defined( 'ABSPATH' ) || exit;
 
     <?php endif; ?>
 
+</div>
+<div class="join-us-wrapper">
+    <?php get_template_part('template-parts/join-us'); ?>
 </div>
 
 <?php get_footer(); ?>
