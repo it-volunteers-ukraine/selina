@@ -437,6 +437,18 @@ body > section > div > div > form.checkout.woocommerce-checkout {
   }
 }
 
+#billing_first_name {
+  width: 100%;
+}
+
+#billing_first_name,
+#billing_last_name,
+#billing_phone,
+#billing_email {
+  box-shadow: none;
+  outline: none;
+}
+
 #billing_first_name_field,
 #billing_last_name_field,
 #billing_phone_field,
@@ -485,7 +497,6 @@ body > section > div > div > form.checkout.woocommerce-checkout {
 }
 
 /* Last Button */
-
 .checkout-button {
   display: flex;
   align-items: center;
@@ -516,15 +527,15 @@ body > section > div > div > form.checkout.woocommerce-checkout {
   font-weight: bold;
 }
 
-// Error Message
-
+/* Error Message */
 .woocommerce-invalid-required-field,
 .woocommerce-invalid {
   border: 2px solid #ff0000;
   background-color: #fff0f0;
 }
 
-.woocommerce-invalid-required-field input,
-.woocommerce-invalid input {
-  box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+.woocommerce-NoticeGroup,
+.woocommerce-error,
+ul.woocommerce-error {
+  display: none;
 }
