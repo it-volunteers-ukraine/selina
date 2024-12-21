@@ -40,3 +40,20 @@
       height: 505px;
     }
 }
+
+body.woocommerce-order-received .join-us-wrapper .container {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+body.woocommerce-order-received .container {
+  position: relative;
+}
+
+body.woocommerce-order-received .join-us-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  overflow: visible;
+}
