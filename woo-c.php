@@ -484,7 +484,29 @@ function enqueue_custom_checkout_scripts() {
 }
 
 // Error Message for Checkout page
-add_filter( 'woocommerce_add_error', '__return_false' );
+add_filter( 'woocommerce_add_error', 'filter_woocommerce_errors', 10, 1 );
+
+function filter_woocommerce_errors( $error ) {
+    $errors_to_hide = [
+        __( 'First name* is a required field.', 'woocommerce' ),
+        __( 'Last name* is a required field.', 'woocommerce' ),
+        __( 'Phone number* is a required field.', 'woocommerce' ),
+        __( 'Email* is a required field.', 'woocommerce' ),
+        __( 'Please enter an address to continue.', 'woocommerce' ),
+        __( 'Invalid payment method.', 'woocommerce' ),
+        __( 'Будь ласка, введіть адресу для продовження.', 'woocommerce' ),
+        __( 'Невірний спосіб оплати.', 'woocommerce' ),
+    ];
+
+    foreach ( $errors_to_hide as $hidden_error ) {
+        if ( strpos( $error, $hidden_error ) !== false ) {
+            return '';
+        }
+    }
+
+    return $error;
+}
+
 add_filter( 'woocommerce_output_error_messages', '__return_false' );
 
 
