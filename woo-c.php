@@ -633,3 +633,22 @@ function send_admin_order_notification($order_id) {
     // Send email
     wp_mail($recipients, $subject, $body);
 }
+
+// Moving "join-us-wrapper" and footer outside the div.woocommerce
+
+add_filter('woocommerce_thankyou', 'modify_thank_you_html_structure', 10, 1);
+
+function modify_thank_you_html_structure($content) {
+    ob_start();
+    ?>
+    <div class="join-us-wrapper">
+        <?php get_template_part('template-parts/join-us'); ?>
+    </div>
+    <?php get_footer(); ?>
+    <?php
+    return str_replace(
+        '</div></div>', 
+        ob_get_clean() . '</div></div>', 
+        $content
+    );
+}

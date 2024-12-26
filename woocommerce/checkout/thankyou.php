@@ -26,10 +26,8 @@ defined( 'ABSPATH' ) || exit;
     
         <?php do_action( 'woocommerce_before_thankyou', $order->get_id() ); ?>
 
-        <?php if ( $order->has_status( 'failed' ) ) : ?>            
-
+        <?php if ( $order->has_status( 'failed' ) ) : ?>
             <p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed"><?php esc_html_e( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'woocommerce' ); ?></p>
-
             <p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions">
                 <a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="button pay"><?php esc_html_e( 'Pay', 'woocommerce' ); ?></a>
                 <?php if ( is_user_logged_in() ) : ?>
@@ -48,9 +46,7 @@ defined( 'ABSPATH' ) || exit;
                         <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo-cat-paw-right.svg' ); ?>" alt="<?php esc_attr_e( 'Logo', 'woocommerce' ); ?>">
                     </div>
                 </div>
-
             </main>
-
         <?php endif; ?>        
 
     <?php else : ?>
@@ -58,11 +54,6 @@ defined( 'ABSPATH' ) || exit;
         <?php wc_get_template( 'checkout/order-received.php', array( 'order' => false ) ); ?>
 
     <?php endif; ?>
-
-</div>
-<div class="join-us-wrapper">
-    <?php get_template_part('template-parts/join-us'); ?>
 </div>
 
-<?php get_footer(); ?>
 
