@@ -60,6 +60,7 @@ function paginateNext() {
     loadPartners('all_partners');
 }
 
+
 function replacePosts(html) {
     const viewportWidth = window.innerWidth;
     const isMobile = viewportWidth < 768;
@@ -103,8 +104,6 @@ jQuery(document).ready(function ($) {
     const showHideWebinarsBtn = $('#showHideWebinars');
     const showHideZoop = $('#showHideZoop');
     const showHideBooks = $('#showHideBooks');
-    // const showHidePhotographs = $('#showHidePhotographs');
-    // const showHideFriends = $('#showHideFriends');
 
     const lastItem = containerFriends.find('.friends-clubs-item:last-child');
     var viewportWidth = window.innerWidth;
@@ -218,10 +217,16 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.html) {
                     loadBtn.show();
-                    closeBtn.hide();
+                    if (!closeBtn) {
+                        return;
+                    } else {
+                        closeBtn.hide();
+                    }
                 } else {
                     loadBtn.hide();
-                    closeBtn.show();
+                    if (closeBtn) {
+                        closeBtn.show();
+                    }
                 }
             }
         });

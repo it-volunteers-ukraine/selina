@@ -12,7 +12,7 @@
                 <div class="one-card-event__news-section__date-container">
                     <svg width="22" height="22"> 
                         <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
-                    </svg> 
+                    </svg>
                     <p class="one-card-event__news-section__date">
                         <?php
                             if (!empty($news_date_start)) {
@@ -31,15 +31,21 @@
                                         9 => 'Вересня', 10 => 'Жовтня', 11 => 'Листопада', 12 => 'Грудня'
                                     ];
                                     $month_num = (int) $date->format('m');
-                                    echo $date->format('j ') . $months[$month_num];
+                                    echo $date->format('j ') . $months[$month_num] . ' ';
                                 }
                             } elseif ($current_lang == 'en') {
                                 $date_str = get_field('news_date_meta');
 
                                 if ($date_str) {
                                     $date = new DateTime($date_str);
-                                    echo $date->format('j F');
+                                    echo $date->format('j F ');
                                 }
+                            }
+                        
+                            // YEAR
+                            if ($date_str) {
+                                $date = new DateTime($date_str);
+                                echo $date->format('Y');
                             }
                         ?>
                     </p>

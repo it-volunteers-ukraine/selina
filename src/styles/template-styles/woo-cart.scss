@@ -1,5 +1,33 @@
 @import "../variables.scss";
 
+/*Revove padding for container in the cart*/
+body > main > div.woocommerce > section > div {
+    padding: 0;
+}
+
+/*Add padding for container in certain blocks*/
+.mywoo_before_cart,
+.woocommerce-cart-form, 
+.mywoo-cart-totals,
+.cross_sell_heading,
+.crossSellSwiper,
+.cross-sell__nav-pag,
+.crossSellGrid,
+body > main > div.woocommerce > section > div > div.woocommerce-notices-wrapper,
+.return-to-shop,
+.wc-empty-cart-message
+{
+    margin: 0 16px;
+
+    @media screen and (min-width: $tablet) {
+        margin: 0 32px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin: 0;
+    }
+}
+
 /* Header for page-cart.php */
 .cart-header__container {
     display: flex;
@@ -210,6 +238,14 @@
     }
 }
 
+.mywoo-cart-table__body .product-name a {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .custom-product-attributes {
     font-weight: 500;
     font-size: 13px;
@@ -375,6 +411,10 @@
     color: $red;  
 }
 
+.woocommerce-message .restore-item {
+    display: none;
+}
+
 .woocommerce-cart .return-to-shop .button {
     padding: 20px 0;
     font-weight: 800;
@@ -394,5 +434,348 @@
 
     &:hover {
         text-decoration: underline;
+    }
+}
+
+/* Discounts block ---------------------------*/
+
+.discounts-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+    background-color: $paws-patern;
+    padding: 32px 16px;
+    margin: 32px 0;
+
+    @media screen and (min-width: $tablet) {
+        gap: 32px;
+        padding: 56px 32px;
+        margin: 56px 0;
+    }
+
+    @media screen and (min-width: $desktop) {
+        max-width: 1128px;
+        margin: 0 auto;
+        padding: 52px 300px;
+        margin: 80px 0;
+    }
+
+    .discounts_text {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 1;
+        text-align: center;
+        color: #0a142f;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 24px;
+        }
+
+        @media screen and (min-width: $desktop) {
+            font-size: 30px;
+        }
+    }
+
+    .discounts__button {
+        gap: 8px;
+        border-radius: 10px;
+        padding: 10px 10px 10px 14px;
+        width: 160px;
+        height: 44px;
+    }
+}
+
+/*Cross-sell block ---------------------------*/
+.cross_sell_heading {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 24px;
+
+    @media screen and (min-width: $tablet) {
+        font-size: 30px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-bottom: 40px;
+    }
+}
+
+/* Product card */
+.swiper-slide,
+.grid-item {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        border-radius: 10px 10px 0 0;
+        object-fit: cover;
+        overflow: hidden;
+        height: 264px;
+    }
+
+    .woocommerce-loop-product__link {
+        .onsale {
+            position: absolute;
+            top: 227px;
+            left: 13px;
+            background-color: rgba(151, 71, 255, 1);
+            color: rgba(255, 255, 255, 1);
+            border-radius: 99px;
+            padding: 4px 12px;
+            width: 57px;
+            height: 26px;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 1.38;
+            text-transform: uppercase;
+        }
+
+        .woocommerce-loop-product__title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            text-align: left;
+            margin: 12px 16px 8px;
+            height: 40px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+        }   
+    }
+    
+    .price {
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.25;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        width: 100%;
+        padding: 0 16px;
+        margin: 0 0 16px;
+
+        del {
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 1.31;
+            margin-right: auto; 
+        }
+    
+        ins {
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 1.25;
+            text-decoration: none;
+            color: rgba(209, 31, 42, 1);
+        }
+    }
+
+    .button-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 16px;
+
+        .woocommerce-loop-product__link {
+            display: none;
+        }
+
+        .buy-now-button {
+            border: 2px solid $primary-color;
+            border-radius: 10px;
+            padding: 10px 10px 10px 14px;
+            width: 240px;
+            height: 44px;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.33;
+            color: $primary-color;
+            text-align: center;
+            margin-right: 12px;
+
+            &:active,
+            &:focus,
+            &:hover {
+                background-color: $primary-color;
+                color: $white;
+            }
+        }
+
+        .add-to-cart-icon {
+            border-radius: 10px;
+            padding: 10px 16px;
+            width: 56px;
+            height: 44px;
+            background: $primary-color;
+            color: $white;
+
+            .icon-cart {
+                width: 33px;
+                height: 32px;
+                fill: white;
+                color: white;
+              }
+        }
+    }
+
+    a.button {
+        text-decoration: none;
+        &:hover {
+            &:active,
+            &:focus,
+            &:hover {
+                background-color: $white;
+                color: $primary-color;
+                border: 2px solid $primary-color;
+            }
+        }
+    }   
+}
+
+.swiper-slide li,
+.grid-item li {
+    list-style: none;
+}
+
+.mobile-only {
+    display: block;
+
+    @media screen and (min-width: $tablet) {
+        display: none;
+    }
+}
+
+.desktop-only {
+    display: none; 
+
+    @media screen and (min-width: $tablet) {
+        display: block;
+    } 
+}
+
+/* For mobile (slider) */
+.crossSellSwiper {
+    border-radius: 10px;
+    padding: 0px 0px 16px 0px;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.18);
+    background: $light-green;
+    overflow: hidden;
+}
+
+.cross-sell__nav-pag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+
+    @media screen and (min-width: $tablet) {
+        display: none;
+    }
+}
+
+.cross-sell__arrow-btn {
+    display: flex;               
+    justify-content: center;     
+    align-items: center;
+    border-radius: 10px;
+    padding: 6px;
+    width: 44px;
+    height: 44px;
+    background-color: $primary-color;
+    color: #fff;
+}
+
+.cross-sell__pagination {
+    display: flex;                 
+    justify-content: center;       
+    align-items: center;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1;
+    color: $primary-color;
+    width: 80px;
+}
+
+/* For tablet and desktop (grid) */
+.crossSellGrid .grid-wrapper {
+    @media screen and (min-width: $tablet) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+        row-gap: 24px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: auto;
+    }
+} 
+
+.crossSellGrid .grid-item {
+    display: none; 
+
+    @media screen and (min-width: $tablet) {
+        display: block; 
+        border-radius: 10px;
+        padding: 0px 0px 16px 0px;
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.18);
+        background: $light-green;
+        overflow: hidden;
+    }
+}
+
+.crossSellGrid .grid-item.visible {
+    display: block; 
+}
+
+/* for tablet */
+.crossSellGrid .grid-item:nth-child(-n+4) {
+    @media screen and (min-width: $tablet) {
+        display: block; 
+    } 
+}
+
+/*for desktop*/
+.crossSellGrid .grid-item:nth-child(-n+3) {
+    @media screen and (min-width: $desktop) {
+        display: block; 
+    }
+}
+
+.cross-sell__show-more,
+.cross-sell__hide {
+    gap: 8px;
+    margin: 24px auto 0;
+
+    @media screen and (min-width: $desktop) {
+        margin: 40px auto 0 0;
+    }
+}
+
+/* Join-us section */
+.woocommerce-cart .join-us-section__heading {
+    padding: 0 16px;
+
+    @media screen and (min-width: $tablet) {
+        padding: 0 0 0 36px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding: 0;
+    }
+}
+
+.woocommerce-cart .join-us-section__btn {
+    @media screen and (min-width: $tablet) {
+        margin: 24px auto 0 36px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        margin: 24px auto 0 0;
     }
 }

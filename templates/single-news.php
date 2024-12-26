@@ -15,7 +15,7 @@ get_header();
       }
     }
   </style>
-  <div class="container">
+  <div class="container heading-container">
     <div class="heading-section-news__background-img">
       <img src="<?php the_field('upper-section__background', 'option'); ?>" alt="Background image with cat">
     </div>
@@ -47,7 +47,7 @@ get_header();
 
   <!-- Хлібні крихти -->
 <section class="section wrapper-breadcrumbs-section">
-  <div class="container">
+  <div class="container breadcrumbs-container">
     <div class="breadcrumbs-section">
     <p>
       <?php
@@ -56,7 +56,7 @@ get_header();
 
       if ($breadcrumb_title && $breadcrumb_link) {
           echo '<span class="breadcrumbs-events">
-            <a href="' . esc_url($breadcrumb_link) . '" class="breadcrumb-link">' . esc_html($breadcrumb_title) . '</a> / 
+            <a href="' . esc_url($breadcrumb_link) . '" class="breadcrumb-link">' . esc_html($breadcrumb_title) .'</a> <span class="breadcrumbs-slash">/</span> 
           </span>';
       }
       ?>
@@ -71,7 +71,7 @@ get_header();
 
 <!-- Сeкція новини -->
 <section class="section wrapper-news-section">
-  <div class="container">    
+  <div class="container news-container">    
     <div class="news-section__item">
       <div class="news-section__text-wrapper">
 
@@ -82,9 +82,10 @@ get_header();
       if (!empty(get_field('news_date_meta'))):
       ?>
       <div class="news-section__date">
-        <svg width="22" height="22"> 
+        <svg width="18" height="18"> 
           <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#calendar-icon"></use> 
-        </svg> 
+        </svg>
+         
         <p>
           <?php
             if (!empty($news_date_start)) {
@@ -113,6 +114,11 @@ get_header();
                 echo $date->format('j F');
               }
             }
+            // YEAR
+            if ($date_str) {
+                $date = new DateTime($date_str);
+                echo $date->format(' Y');
+            }
           ?>
         </p>
       </div>
@@ -126,7 +132,7 @@ get_header();
        ?>
       <div class="news-section__time">          
             <svg width="18" height="18">
-              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#icon-clock"></use>
+              <use href="<?php echo get_template_directory_uri(); ?>/assets/images/sprite.svg#clock-icon"></use>
             </svg>
           <p>
             <?php
@@ -172,16 +178,16 @@ get_header();
       </div>
     </div> 
   </div>      
-</section>
+
 <!-- Галерея з кнопкою -->
   <section class="section wrapper-news-section-gallary">
     <div class="container news-section__gallery">        
-        <div class="gallery" id="gallery">
+        <div class="gallery" id="gallery" data-visible-count="3">
           <?php
             $images = get_field('news_gallery');
             if($images):
               foreach($images as $index => $image):                
-                $hidden_class = ($index >= 6) ? 'visually-hidden' : '';
+                $hidden_class = ($index >= 3) ? 'visually-hidden' : '';
           ?>
           <div class="gallery-item <?php echo $hidden_class; ?>">
             <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
@@ -195,7 +201,7 @@ get_header();
         $show_more_text = get_field('gallery_button_text');
         $show_less_text = get_field('gallery_button_text_show_less');
         
-        if ($images && count($images) > 6): ?>
+        if ($images && count($images) > 3): ?>
             <div class="gallary-button button green_medium_button">
                 <button id="load-more" class="gallary-section__last-btn" 
                 data-show-more="<?php echo esc_attr($show_more_text); ?>" 
@@ -209,6 +215,8 @@ get_header();
         <?php endif; ?>
     </div>
   </section>
+  
+</section>
 
   <?php get_template_part('template-parts/join-us'); ?>
 </main>

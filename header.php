@@ -143,6 +143,31 @@
                         'items_wrap' => '<ul id="%1$s" class="header__list %2$s">%3$s</ul>',
                     ])
                     ?>
+
+                    <!-- Cart count desktop -->
+                    <a href="<?php 
+                        // Get the ID of the cart page
+                        $cart_page_id = wc_get_page_id( 'cart' );
+
+                        // Get the ID of the translated version of the cart page for the current language
+                        $translated_cart_page_id = pll_get_post( $cart_page_id );
+
+                        // Get the URL of the translated cart page
+                        echo esc_url( get_permalink( $translated_cart_page_id ) ); 
+                        ?>" class="icon cart-wrapper">
+
+                        <?php if( ( WC()->cart->get_cart_contents_count() ) > 0) : ?>
+                            <img class="cart-desktop" src="<?php the_field('full_cart', 'option') ?>" alt="full cart">
+                            <span class="cart-count cart-count__desktop">
+                                <?php echo WC()->cart->get_cart_contents_count(); ?>
+                            </span>
+                        <?php else : ?>
+                            <img class="cart-desktop" src="<?php the_field('cart', 'option') ?>" alt="cart">
+                        <?php endif; ?>
+
+                    </a>
+
+
                     <div class="search-desktop search">
                         <?php get_search_form() ?>
                     </div>
@@ -150,8 +175,35 @@
 
                     <div id="header-mobile" class="content-mobile">
                         <nav id="header-nav-menu">
-                            <div class="search-mobile search">
-                                <?php get_search_form() ?>
+                            <div class="block">
+                                <div class="search-mobile search">
+                                    <?php get_search_form() ?>
+                                </div>
+
+                                <!-- Cart count mobile -->
+                                <a href="<?php 
+                                    // Get the ID of the cart page
+                                    $cart_page_id = wc_get_page_id( 'cart' );
+
+                                    // Get the ID of the translated version of the cart page for the current language
+                                    $translated_cart_page_id = pll_get_post( $cart_page_id );
+
+                                    // Get the URL of the translated cart page
+                                    echo esc_url( get_permalink( $translated_cart_page_id ) ); 
+                                    ?>" class="icon cart-wrapper">
+
+                                    <?php if( ( WC()->cart->get_cart_contents_count() ) > 0) : ?>
+                                        <img class="cart-mobile" src="<?php the_field('full_cart', 'option') ?>" alt="full cart">
+                                        <span class="cart-count cart-count__mobile">
+                                            <?php echo WC()->cart->get_cart_contents_count(); ?>
+                                        </span>
+                                    <?php else : ?>
+                                        <img class="cart-mobile" src="<?php the_field('cart', 'option') ?>" alt="cart">
+                                    <?php endif; ?>
+                                    
+                                </a> 
+
+
                             </div>
                             <?php wp_nav_menu([
                                 'theme_location' => 'header',

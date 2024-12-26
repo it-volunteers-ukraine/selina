@@ -19,42 +19,54 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce-billing-fields">
-  <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
+  <?php if ( WC()->cart->needs_shipping() ) : ?>
+    
+    <?php
+      if ( function_exists( 'pll_current_language' ) ) {
+          $shop_language = pll_current_language();
+      } else {
+          $shop_language = 'en';
+      }
+    ?>
 
-  <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
+    <h3 class="woocommerce-billing-title">
+      <?php
+        if ( $shop_language === 'uk' ) {
+            esc_html_e( 'Оформлення замовлення', 'woocommerce' );
+        } else {
+            esc_html_e( 'Order Checkout', 'woocommerce' );
+        }
+      ?>
+    </h3>
 
-  <?php else : ?>
-
-  <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
-
+    <h3 class="contact-details-header">
+      <?php
+      if ( $shop_language === 'uk' ) {
+            esc_html_e( 'Контактні дані', 'woocommerce' );
+        } else {
+            esc_html_e( 'Contact Details', 'woocommerce' );
+        }
+      ?>
+    </h3>
   <?php endif; ?>
 
   <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
+  <!-- Form fields for payer data -->
   <div class="woocommerce-billing-fields__field-wrapper">
     <?php
-		$fields = $checkout->get_checkout_fields( 'billing' );
+    $fields = $checkout->get_checkout_fields( 'billing' );
 
-		foreach ( $fields as $key => $field ) {
-			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-		}
-		?>
-  </div>
+    foreach ( $fields as $key => $field ) {
+        woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+    }
+    ?>
+  </div>  
 
-  <div class="woo-custom-shipping-container">
-    <?php if ( WC()->cart->needs_shipping() ) : ?>
-    <p><?php the_field('shipping_choices', 'options'); ?></p>
-    <?php endif; ?>
-
-    <?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : 
-        do_action( 'woocommerce_review_order_before_shipping' );
-        wc_cart_totals_shipping_html();
-        do_action( 'woocommerce_review_order_after_shipping' );
-    endif; ?>
-  </div>
   <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
 
+<!-- If the user is not authorized and registration is active -->
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 <div class="woocommerce-account-fields">
   <?php if ( ! $checkout->is_registration_required() ) : ?>

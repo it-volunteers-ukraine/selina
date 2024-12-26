@@ -189,6 +189,10 @@
     }
 }
 
+.one-card-event__news-section__time-container {
+    display: none !important;
+}
+
 .calendar {
     background-color: $background;
 
@@ -305,7 +309,7 @@
     &__calendar-card-button {
         padding: 10px 8px 10px 16px;
         gap: 8px;
-        margin-top: 12px;
+        margin-top: 16px;
     }
 
     &__show-more-button {

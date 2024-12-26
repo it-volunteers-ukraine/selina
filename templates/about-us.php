@@ -76,7 +76,7 @@ get_header();
                                 <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="club-img"/>
                         <?php endif; ?>
                     </div>
-                    <div class="club-info-1 text">
+                    <div class="club-info-1 text club-text">
                         <p><?php the_field('club-info-1'); ?></p>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ get_header();
                                 <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="club-img"/>
                         <?php endif; ?>
                     </div>
-                    <div class="club-info-2 text">
+                    <div class="club-info-2 text club-text">
                         <p><?php the_field('club-info-2'); ?></p>
                         <div class="club-info-bold">
                             <p><b><?php the_field('club-info-bold-1'); ?></b></p>

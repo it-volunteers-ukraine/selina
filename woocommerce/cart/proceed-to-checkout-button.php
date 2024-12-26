@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="red_medium_button checkout-button button alt wc-forward<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
-	<?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
+	<?php echo esc_html( get_field('proceed_to_checkout', get_the_ID()) ); ?>
 	<svg class="cart-checkout-button-svg" width="16" height="15">
 		<use href="<?php echo get_template_directory_uri() ?>/assets/images/sprite.svg#icon-paw">
 		</use>
