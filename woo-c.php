@@ -166,3 +166,23 @@ function my_ajax_filter_products() {
 }
 add_action('wp_ajax_my_filter', 'my_ajax_filter_products');
 add_action('wp_ajax_nopriv_my_filter', 'my_ajax_filter_products');
+
+
+// Moving "join-us-wrapper" and footer outside the div.woocommerce
+
+add_filter('woocommerce_thankyou', 'modify_thank_you_html_structure', 10, 1);
+
+function modify_thank_you_html_structure($content) {
+    ob_start();
+    ?>
+    <div class="join-us-wrapper">
+        <?php get_template_part('template-parts/join-us'); ?>
+    </div>
+    <?php get_footer(); ?>
+    <?php
+    return str_replace(
+        '</div></div>', 
+        ob_get_clean() . '</div></div>', 
+        $content
+    );
+}
